@@ -15,6 +15,7 @@
 in {
   imports = [
     ./binds.nix
+    ./windowrules.nix
   ];
   services.mako = {
     enable = true;
