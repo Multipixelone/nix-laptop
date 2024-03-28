@@ -5,11 +5,11 @@
   ...
 }: {
   home.packages = with pkgs; [
-    #sunshine
+    sunshine
     prismlauncher
     gamescope
-    #discord
-    #lutris
+    discord
+    lutris
     gamemode
     mangohud
   ];

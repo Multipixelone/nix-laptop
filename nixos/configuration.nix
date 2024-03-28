@@ -3,8 +3,13 @@
   pkgs,
   lib,
   inputs,
+  stylix,
   ...
 }: {
+  imports = [
+    ./hardware-configuration.nix
+    ./greetd.nix
+  ];
   environment.systemPackages = with pkgs; [
     vim
     git
@@ -12,13 +17,23 @@
     virt-manager
     qemu_kvm
     qemu
-    inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
+    #inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
     xdg-utils
     greetd.greetd
     appimage-run
     pyprland
+    xcb-util-cursor
+    libsmbios
+    papirus-icon-theme
+    papirus-folders
+    arc-theme
+    libsForQt5.kio
+    libsForQt5.kio-extras
+    latte-dock
+    (import ./scripts/ipod.nix {inherit pkgs;})
     #inputs.packages.${pkgs.system}.qtscrob
   ];
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
   # Automatic Upgrade
   system.autoUpgrade = {
     enable = true;
@@ -44,8 +59,9 @@
     isNormalUser = true;
     home = "/home/tunnel";
     shell = pkgs.fish;
-    extraGroups = ["wheel" "audio" "libvirtd" "plugdev" "dialout"];
+    extraGroups = ["networkmanager" "wheel" "audio" "libvirtd" "plugdev" "dialout"];
   };
+  time.timeZone = "America/New_York";
   # Theme
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
   stylix.image = ./SU_NY.JPG;
@@ -53,14 +69,18 @@
   boot.plymouth.enable = true;
   boot.loader.systemd-boot.enable = false;
   boot.loader.efi = {
-    efiSysMountPoint = "/boot/efi";
+    efiSysMountPoint = "/boot";
     canTouchEfiVariables = true;
   };
   boot.loader.grub = {
     enable = true;
     efiSupport = true;
     device = "nodev";
-    timeoutStyle = "hidden";
+    #gfxmodeEfi = "3440x1440";
+    #lib.mkForce font = true;
+    #font = "${pkgs.hack-font}/share/fonts/hack/Hack-Regular.ttf";
+    fontSize = 36;
+    #timeoutStyle = "hidden";
   };
   boot.kernel.sysctl = {
     "vm.max_map_count" = 2147483642;
@@ -71,9 +91,12 @@
   # Networking
   networking.networkmanager.enable = true;
   networking.firewall.trustedInterfaces = ["tailscale0"];
+  networking.hostName = "zelda";
+  systemd.services.NetworkManager-wait-online.enable = false;
   networking.firewall.allowedTCPPorts = [22 5900 8384 22000 47984 47989 48010 59999];
   networking.firewall.allowedUDPPorts = [config.services.tailscale.port 22000 21027 47998 47999 48000 48002 48010];
   # System Services
+  security.polkit.enable = true;
   services.flatpak.enable = true;
   services.openssh.enable = true;
   services.tailscale.enable = true;
@@ -82,11 +105,13 @@
   services.avahi.enable = true;
   services.desktopManager.plasma6.enable = true;
   services.xserver.enable = false;
-  services.xserver.displayManager.sddm.wayland.enable = true;
+  services.xserver.displayManager.sddm.enable = false;
+  services.xserver.displayManager.sddm.wayland.enable = false;
   services.printing.enable = true;
   # Programs
   programs.fish.enable = true;
   programs.mosh.enable = true;
+  programs.nm-applet.enable = true;
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -101,6 +126,9 @@
         xdg-desktop-portal-gtk
       ];
     };
+  };
+  xdg.mime.defaultApplications = {
+    "x-scheme-handler/http" = "firefox";
   };
   # Audio + Music
   musnix.enable = true;
@@ -130,9 +158,29 @@
         "deck" = {id = "WPTWVQC-SJIKJOM-6SXC474-A6AJXVA-CBS5WQB-SREKAIH-XP6YCHN-PGK7KQE";};
       };
       folders = {
-        "Music" = {
+        "4bvms-ufujg" = {
           path = "/home/tunnel/Music/Library";
           devices = ["link" "alexandria"];
+        };
+        "playlists" = {
+          path = "/home/tunnel/Music/Playlists";
+          devices = ["link" "alexandria"];
+        };
+        "multimc" = {
+          path = "/home/tunnel/.local/share/PrismLauncher/instances/";
+          devices = ["link" "alexandria" "deck"];
+        };
+        "multimc-icons" = {
+          path = "/home/tunnel/.local/share/PrismLauncher/icons/";
+          devices = ["link" "alexandria" "deck"];
+        };
+        "sakft-erofr" = {
+          path = "/home/tunnel/Games/ship-of-harkinian";
+          devices = ["link" "alexandria" "deck"];
+        };
+        "singing" = {
+          path = "/home/tunnel/Music/Singing";
+          devices = ["link" "alexandria" "deck"];
         };
       };
     };
@@ -157,4 +205,5 @@
       };
     };
   };
+  system.stateVersion = "23.11";
 }

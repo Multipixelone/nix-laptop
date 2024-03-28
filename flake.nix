@@ -22,11 +22,14 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-hardware.url = "github:NixOS/nixos-hardware/master";
   };
   outputs = inputs @ {
     nixpkgs,
     home-manager,
     nixos-generators,
+    nixos-hardware,
+    stylix,
     ...
   }: {
     nixosConfigurations = {
@@ -36,6 +39,7 @@
         modules = [
           ./nixos/configuration.nix
           inputs.musnix.nixosModules.musnix
+          nixos-hardware.nixosModules.dell-xps-15-9560
           inputs.stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
           {

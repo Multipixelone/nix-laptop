@@ -3,13 +3,16 @@
   config,
   pkgs,
   nix-gaming,
+  stylix,
   ...
 }: {
   home.username = "tunnel";
   home.homeDirectory = "/home/tunnel";
 
   imports = [
-    #./desktop/gaming.nix
+    ./desktop/gaming.nix
+    ./fish.nix
+    ./hyprland/default.nix
   ];
 
   home.packages = with pkgs; [
@@ -25,7 +28,16 @@
     vlc
     strawberry
     anki
-    qgis
+    plexamp
+    spotify
+    blanket
+    _1password-gui
+    _1password
+    moonlight-qt
+
+    # LaTeX
+    zotero
+    texliveFull
 
     # Terminal & Shell Stuff
     neovim
@@ -41,7 +53,7 @@
     ledfx
 
     # Utilities
-    waybar
+    #waybar
     hyprpaper
     rofi-wayland
     profile-sync-daemon
@@ -67,8 +79,17 @@
     builtins.elem (lib.getName pkg) [
       "vscode"
       "obsidian"
+      "spotify"
+      "plexamp"
     ];
   services.udiskie.enable = true;
+  programs.kitty = {
+    enable = true;
+    settings = {
+      background_opacity = pkgs.lib.mkForce "0.6";
+      confirm_os_window_close = 0;
+    };
+  };
   # basic configuration of git, please change to your own
   #wayland.windowManager.hyprland.enable = true;
   programs.git = {
@@ -77,7 +98,18 @@
     userEmail = "finn@cnwr.net";
   };
   home.stateVersion = "23.11";
-
+  gtk = {
+    enable = true;
+    theme = pkgs.lib.mkForce {
+      package = pkgs.arc-theme;
+      name = "Arc-Dark";
+    };
+    iconTheme = pkgs.lib.mkForce {
+      package = pkgs.papirus-icon-theme;
+      name = "Papirus-Dark";
+    };
+  };
+  stylix.targets.kde.enable = false;
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
