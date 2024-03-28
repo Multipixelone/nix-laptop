@@ -4,15 +4,10 @@
   nix-gaming,
   ...
 }: let
-  terminal = pkgs.kitty + "/bin/kitty";
-  rofi = pkgs.rofi-wayland + "/bin/rofi";
-  launcher = "${rofi} -show drun";
   hyprpaper = pkgs.hyprpaper + "/bin/hyprpaper";
   swayosd-server = pkgs.swayosd + "/bin/swayosd-server";
-  swayosd-client = pkgs.swayosd + "/bin/swayosd-client";
   notifs = pkgs.mako + "/bin/mako";
   idle = pkgs.hypridle + "/bin/hypridle";
-  lock = pkgs.hyprlock + "/bin/hyprlock";
   wallpaper = builtins.fetchurl {
     url = "https://drive.usercontent.google.com/download?id=1OrRpU17DU78sIh--SNOVI6sl4BxE06Zi";
     sha256 = "sha256:14nh77xn8x58693y2na5askm6612xqbll2kr6237y8pjr1jc24xp";

@@ -2,7 +2,13 @@
   inputs,
   pkgs,
   ...
-}: {
+}: let
+  terminal = pkgs.kitty + "/bin/kitty";
+  rofi = pkgs.rofi-wayland + "/bin/rofi";
+  launcher = "${rofi} -show drun";
+  lock = pkgs.hyprlock + "/bin/hyprlock";
+  swayosd-client = pkgs.swayosd + "/bin/swayosd-client";
+in {
   "$mod" = "ALT";
   bind = [
     "ALT_SHIFT, Q, killactive"
