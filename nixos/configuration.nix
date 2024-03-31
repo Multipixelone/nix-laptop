@@ -65,6 +65,22 @@
   # Theme
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
   stylix.image = ./SU_NY.JPG;
+  stylix = {
+    fonts = {
+      serif = {
+        name = "PragmataPro Liga";
+        package = pkgs.callPackage ../pkgs/pragmata/default.nix {};
+      };
+      sansSerif = {
+        name = "PragmataPro Liga";
+        package = pkgs.callPackage ../pkgs/pragmata/default.nix {};
+      };
+      monospace = {
+        name = "PragmataPro Mono Liga";
+        package = pkgs.callPackage ../pkgs/pragmata/default.nix {};
+      };
+    };
+  };
   # Boot
   boot.plymouth.enable = true;
   boot.loader.systemd-boot.enable = false;
@@ -182,6 +198,16 @@
           path = "/home/tunnel/Music/Singing";
           devices = ["link" "alexandria" "deck"];
         };
+      };
+    };
+  };
+  # Fonts
+  fonts = {
+    fontconfig = {
+      defaultFonts = {
+        serif = ["PragmataPro Liga"];
+        sansSerif = ["PragmataPro Liga"];
+        monospace = ["PragmataPro Mono Liga"];
       };
     };
   };
