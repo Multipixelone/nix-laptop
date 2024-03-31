@@ -114,6 +114,7 @@
   # System Services
   security.polkit.enable = true;
   services.flatpak.enable = true;
+  services.gnome.gnome-keyring.enable = true;
   services.openssh.enable = true;
   services.tailscale.enable = true;
   services.psd.enable = true;
@@ -160,6 +161,22 @@
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
   ];
+  # Laptop Stuff
+  services.tlp = {
+    enable = false;
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+
+      CPU_MIN_PERF_ON_AC = 0;
+      CPU_MAX_PERF_ON_AC = 100;
+      CPU_MIN_PERF_ON_BAT = 0;
+      CPU_MAX_PERF_ON_BAT = 40;
+    };
+  };
   # Syncthing
   services.syncthing = {
     enable = true;
