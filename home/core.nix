@@ -4,6 +4,7 @@
   pkgs,
   nix-gaming,
   stylix,
+  inputs,
   ...
 }: {
   home.username = "tunnel";
@@ -14,6 +15,7 @@
     ./fish.nix
     ./hyprland/default.nix
   ];
+  fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
     sysstat
@@ -49,12 +51,13 @@
     zellij
     ripgrep
 
-    # RGB
-    ledfx
+    # Fonts
+    (nerdfonts.override {fonts = ["FiraCode" "DroidSansMono"];})
+    (pkgs.callPackage ../pkgs/pragmata/default.nix {})
 
     # Utilities
     #waybar
-    hyprpaper
+    #hyprpaper
     rofi-wayland
     profile-sync-daemon
     udiskie
@@ -108,6 +111,7 @@
       package = pkgs.papirus-icon-theme;
       name = "Papirus-Dark";
     };
+    #font = (pkgs.callPackage ../pkgs/pragmata/default.nix {});
   };
   stylix.targets.kde.enable = false;
   # Let home Manager install and manage itself.
