@@ -23,6 +23,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs @ {
     nixpkgs,
@@ -30,6 +34,7 @@
     nixos-generators,
     nixos-hardware,
     stylix,
+    nixvim,
     ...
   }: {
     nixosConfigurations = {
