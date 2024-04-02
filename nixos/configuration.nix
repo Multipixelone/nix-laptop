@@ -127,6 +127,7 @@
   services.printing.enable = true;
   # Programs
   programs.fish.enable = true;
+  programs.steam.enable = true;
   programs.mosh.enable = true;
   programs.nm-applet.enable = true;
   programs.hyprland = {
