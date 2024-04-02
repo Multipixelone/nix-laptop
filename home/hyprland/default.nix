@@ -128,7 +128,7 @@ in {
       }
 
       # turn off keyboard backlight, comment out this section if you dont have a keyboard backlight.
-      listener { 
+      listener {
           timeout = 150                                          # 2.5min.
           on-timeout = brightnessctl -sd rgb:kbd_backlight set 0 # turn off keyboard backlight.
           on-resume = brightnessctl -rd rgb:kbd_backlight        # turn on keyboard backlight.
@@ -149,63 +149,116 @@ in {
           timeout = 1800                                # 30min
           on-timeout = systemctl suspend                # suspend pc
       }
-'';
+    '';
   };
   programs.waybar = {
     enable = true;
     style = ''
-      ${builtins.readFile "${pkgs.waybar}/etc/xdg/waybar/style.css"}
+      ${builtins.readFile (builtins.fetchurl {
+        url = "https://github.com/catppuccin/waybar/releases/download/v1.1/mocha.css";
+        sha256 = "sha256:14anxdkg8s4rgd2xz7jar9b2vgidkwn1kk5pnn84i665wkvg6ncn";
+      })}
       * {
         font-family: "PragmataPro Liga", "FiraCode Nerd Font";
-        border-radius: 10;
       }
       window#waybar {
         background: transparent;
-        color: #${config.lib.stylix.colors.base05};
-        border-bottom: none;
+        color: @text;
+        margin: 5px 5px;
       }
-      #window {
-        margin-top: 6px;
-        margin-bottom: 6px;
-        padding-left: 10px;
-        padding-right: 10px;
-        border-radius: 10px;
-        background: transparent;
+
+      #workspaces {
+        border-radius: 1rem;
+        margin: 5px;
+        background-color: @surface0;
+        margin-left: 1rem;
       }
+
+      #workspaces button {
+        color: @lavender;
+        border-radius: 1rem;
+        padding: 0.4rem;
+      }
+
+      #workspaces button.active {
+        color: @sky;
+        border-radius: 1rem;
+      }
+
+      #workspaces button:hover {
+        color: @sapphire;
+        border-radius: 1rem;
+      }
+
+      #custom-music,
+      #tray,
+      #backlight,
       #clock,
       #battery,
-      #cpu,
-      #memory,
-      #temperature,
-      #backlight,
-      #network,
       #pulseaudio,
-      #custom-media,
-      #tray,
-      #mode,
-      #idle_inhibitor {
-        margin-top: 6px;
-        margin-left: 8px;
-        padding-left: 10px;
-        padding-right: 10px;
-        margin-bottom: 0px;
-        border-radius: 10px;
-        color: #${config.lib.stylix.colors.base05};
-      }
+      #custom-lock,
+      #custom-power,
       #network {
-        background: #${config.lib.stylix.colors.base0B};
+        background-color: @surface0;
+        padding: 0.5rem 1rem;
+        margin: 5px 0;
       }
-      #pulseaudio {
-        background: #${config.lib.stylix.colors.base0A};
+      #custom-playerlabel {
+        border-radius: 1rem;
+        margin: 5px;
+        background-color: @surface0;
+        padding: 0.5rem;
       }
       #battery {
-        background: #${config.lib.stylix.colors.base0D};
+        color: @green;
+        border-radius: 0px 1rem 1rem 0px;
       }
+
+      #clock {
+        color: @blue;
+      }
+
+      #battery.charging {
+        color: @green;
+      }
+
+      #battery.warning:not(.charging) {
+        color: @red;
+      }
+
+      #backlight {
+        color: @yellow;
+      }
+
+      #backlight, #audio {
+          border-radius: 0;
+      }
+
+      #network {
+        color: @maroon;
+        border-radius: 1rem 0px 0px 1rem;
+        margin-left: 1rem;
+      }
+
+      #clock {
+        color: @mauve;
+        border-radius: 1rem;
+      }
+
+      #custom-lock {
+          border-radius: 1rem 0px 0px 1rem;
+          color: @lavender;
+      }
+
+      #custom-power {
+          margin-right: 1rem;
+          border-radius: 0px 1rem 1rem 0px;
+          color: @red;
+      }
+
       #tray {
-        background: #${config.lib.stylix.colors.base0E};
-      }
-      #workspaces button.focused {
-        background: #${config.lib.stylix.colors.base0A};
+        margin-right: 1rem;
+        border-radius: 1rem;
       }
     '';
     settings = [
@@ -215,11 +268,12 @@ in {
         position = "top";
         modules-left = ["hyprland/workspaces" "custom/playerlabel"];
         modules-center = ["clock"];
-        modules-right = ["network" "pulseaudio" "battery" "tray"];
+        #modules-right = ["network" "pulseaudio" "battery" "tray"];
+        modules-right = ["network" "pulseaudio" "backlight" "battery" "tray"];
         "custom/playerlabel" = {
           format = ''<span>{}</span>'';
           return-type = "json";
-          max-length = 56;
+          max-length = 80;
           exec = "${mediaplayer}/bin/mediaplayer.py";
         };
         "hyprland/workspaces" = {
@@ -246,6 +300,17 @@ in {
             default = ["󰕿" "󰖀" "󰕾"];
           };
           on-click = "pavucontrol";
+        };
+        backlight = {
+          format = "{icon} {percent}%";
+          format-icons = ["󰃚" "󰃛" "󰃜" "󰃝" "󰃞" "󰃟" "󰃠"];
+        };
+        clock = {
+          format = "{%A, %d %b %Y} at {%l:%M %p}";
+        };
+        battery = {
+          format = "{icon} {capacity}%";
+          format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
         };
       }
     ];
