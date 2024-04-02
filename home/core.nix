@@ -13,10 +13,13 @@
   imports = [
     ./desktop/gaming.nix
     ./fish.nix
+    #inputs.nixvim.homeManagerModules.nixvim
     ./hyprland/default.nix
   ];
   fonts.fontconfig.enable = true;
-
+  #programs.nixvim = {
+  #  enable = true;
+  #};
   home.packages = with pkgs; [
     sysstat
     # Apps
