@@ -170,6 +170,8 @@ in {
       })}
       * {
         font-family: "PragmataPro Liga", "FiraCode Nerd Font";
+        font-size: 13px;
+        min-height: 0;
       }
       window#waybar {
         background: transparent;
@@ -182,12 +184,14 @@ in {
         margin: 5px;
         background-color: @surface0;
         margin-left: 1rem;
+        border: none;
       }
 
       #workspaces button {
         color: @lavender;
-        border-radius: 1rem;
+        border-radius: 0;
         padding: 0.4rem;
+        border: none;
       }
 
       #workspaces button.active {
@@ -197,7 +201,8 @@ in {
 
       #workspaces button:hover {
         color: @sapphire;
-        border-radius: 1rem;
+        border-radius: 0;
+        border: none;
       }
 
       #custom-music,
@@ -210,7 +215,7 @@ in {
       #custom-power,
       #network {
         background-color: @surface0;
-        padding: 0.5rem 1rem;
+        padding: 0.7rem 0.5rem;
         margin: 5px 0;
       }
       #custom-playerlabel {
@@ -223,7 +228,9 @@ in {
         color: @green;
         border-radius: 0px 1rem 1rem 0px;
       }
-
+      #pulseaudio {
+        color: @mauve
+      }
       #clock {
         color: @blue;
       }
@@ -298,7 +305,7 @@ in {
           };
         };
         network = {
-          format = "{icon} {essid} ({signalStrength}%)";
+          format = "{icon}  {essid} ({signalStrength}%)";
           format-icons = ["󰤯" "󰤟" "󰤢" "󰤥" "󰤨"];
           format-disconnected = "󰤭";
         };
@@ -316,10 +323,11 @@ in {
           format-icons = ["󰃚" "󰃛" "󰃜" "󰃝" "󰃞" "󰃟" "󰃠"];
         };
         clock = {
-          format = "{%A, %d %b %Y} at {%l:%M %p}";
+          format = "󰥔  {:%A, %b %d %R}";
         };
         battery = {
           format = "{icon} {capacity}%";
+          format-charging = "󰂄 {capacity}%";
           format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
         };
       }
