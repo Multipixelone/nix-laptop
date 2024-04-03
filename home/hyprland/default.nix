@@ -151,6 +151,16 @@ in {
       }
     '';
   };
+  programs.rofi = {
+    enable = true;
+    package = pkgs.rofi-wayland;
+    #theme = "Arc-Dark";
+    extraConfig = {
+      show-icons = true;
+      icon-theme = "Papirus Dark";
+      display-drun = "";
+    };
+  };
   programs.waybar = {
     enable = true;
     style = ''
