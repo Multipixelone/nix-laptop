@@ -18,6 +18,7 @@
     qemu_kvm
     qemu
     #inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
+    wineWowPackages.staging
     xdg-utils
     greetd.greetd
     appimage-run
@@ -29,7 +30,7 @@
     arc-theme
     libsForQt5.kio
     libsForQt5.kio-extras
-    latte-dock
+    brightnessctl
     (import ./scripts/ipod.nix {inherit pkgs;})
     #inputs.packages.${pkgs.system}.qtscrob
   ];
@@ -59,7 +60,7 @@
     isNormalUser = true;
     home = "/home/tunnel";
     shell = pkgs.fish;
-    extraGroups = ["networkmanager" "wheel" "audio" "libvirtd" "plugdev" "dialout"];
+    extraGroups = ["networkmanager" "wheel" "audio" "libvirtd" "plugdev" "dialout" "video"];
   };
   time.timeZone = "America/New_York";
   # Theme
@@ -94,8 +95,8 @@
     device = "nodev";
     #gfxmodeEfi = "3440x1440";
     #lib.mkForce font = true;
-    #font = "${pkgs.hack-font}/share/fonts/hack/Hack-Regular.ttf";
-    fontSize = 36;
+    font = lib.mkForce "${pkgs.callPackage ../pkgs/pragmata/default.nix {}}/share/fonts/truetype/PragmataPro_Bold_0827.ttf";
+    fontSize = 60;
     #timeoutStyle = "hidden";
   };
   boot.kernel.sysctl = {
@@ -126,6 +127,7 @@
   services.xserver.displayManager.sddm.wayland.enable = false;
   services.printing.enable = true;
   # Programs
+  programs.command-not-found.enable = false;
   programs.fish.enable = true;
   programs.steam.enable = true;
   programs.mosh.enable = true;

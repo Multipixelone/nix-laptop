@@ -6,8 +6,8 @@
   terminal = pkgs.kitty + "/bin/kitty";
   rofi = pkgs.rofi-wayland + "/bin/rofi";
   launcher = "${rofi} -show drun";
-  lock = pkgs.hyprlock + "/bin/hyprlock";
   swayosd-client = pkgs.swayosd + "/bin/swayosd-client";
+  brightness = pkgs.brightnessctl + "/bin/brightnessctl";
 in {
   wayland.windowManager.hyprland.settings = {
     "$mod" = "ALT";
@@ -19,7 +19,6 @@ in {
       "$mod, M, exit"
       "$mod, V, togglefloating"
       "SUPER, F, fullscreen"
-      "SUPER, L, exec, ${lock}"
       "$mod, 1, workspace, 1"
       "$mod, 2, workspace, 2"
       "$mod, 3, workspace, 3"
@@ -49,8 +48,8 @@ in {
       ", XF86AudioRaiseVolume, exec, ${swayosd-client} --output-volume raise"
       ", XF86AudioLowerVolume, exec, ${swayosd-client} --output-volume lower"
       ", XF86AudioMute, exec, ${swayosd-client} --output-volume mute-toggle"
-      ", XF86MonBrightnessUp, exec, ${swayosd-client} --brightness raise"
-      ", XF86MonBrightnessDown, exec, ${swayosd-client} --brightness lower"
+      ", XF86MonBrightnessUp, exec, ${brightness} s +5%"
+      ", XF86MonBrightnessDown, exec, ${brightness} s 5%-"
     ];
   };
 }

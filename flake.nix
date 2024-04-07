@@ -27,6 +27,8 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = inputs @ {
     nixpkgs,
@@ -35,6 +37,7 @@
     nixos-hardware,
     stylix,
     nixvim,
+    nix-index-database,
     ...
   }: {
     nixosConfigurations = {
@@ -50,7 +53,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-
+            home-manager.extraSpecialArgs = {inherit inputs;};
             home-manager.users.tunnel = import ./home/core.nix;
           }
         ];

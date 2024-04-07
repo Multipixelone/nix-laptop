@@ -11,22 +11,21 @@
   home.homeDirectory = "/home/tunnel";
 
   imports = [
-    ./desktop/gaming.nix
+    #./desktop/gaming.nix
     ./fish.nix
+    ./lf.nix
+    inputs.nix-index-database.hmModules.nix-index
     #inputs.nixvim.homeManagerModules.nixvim
     ./hyprland/default.nix
   ];
   fonts.fontconfig.enable = true;
-  #programs.nixvim = {
-  #  enable = true;
-  #};
   home.packages = with pkgs; [
     sysstat
     # Apps
     firefox
     chromium
     vscode
-    # musescore
+    musescore
     reaper
     obsidian
     gitkraken
@@ -45,17 +44,21 @@
     texliveFull
 
     # Terminal & Shell Stuff
-    neovim
     fish
     eza
     fzf
+    fd
     kitty
     bat
     zellij
     ripgrep
+    (inputs.nixvim.legacyPackages."${system}".makeNixvimWithModule {
+      inherit pkgs;
+      module = ./vim;
+    })
 
     # Fonts
-    (nerdfonts.override {fonts = ["FiraCode" "DroidSansMono"];})
+    (nerdfonts.override {fonts = ["FiraCode"];})
     (pkgs.callPackage ../pkgs/pragmata/default.nix {})
 
     # Utilities
@@ -72,7 +75,7 @@
     yabridge
     yabridgectl
     helvum
-    playerctl
+    #playerctl
 
     just
     i2c-tools
@@ -118,5 +121,7 @@
   };
   stylix.targets.kde.enable = false;
   # Let home Manager install and manage itself.
+  programs.command-not-found.enable = false;
+  programs.nix-index.enable = true;
   programs.home-manager.enable = true;
 }

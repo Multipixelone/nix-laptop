@@ -7,7 +7,6 @@
   hyprpaper = pkgs.hyprpaper + "/bin/hyprpaper";
   swayosd-server = pkgs.swayosd + "/bin/swayosd-server";
   notifs = pkgs.mako + "/bin/mako";
-  idle = pkgs.hypridle + "/bin/hypridle";
   obsidian = pkgs.obsidian + "/bin/obsidian";
   blanket = pkgs.blanket + "/bin/blanket";
   plexamp = pkgs.plexamp + "/bin/plexamp";
@@ -15,16 +14,17 @@
   agent = pkgs.openssh + "/bin/ssh-agent";
   waybar = pkgs.waybar + "/bin/waybar";
   vlc = pkgs.vlc + "/bin/vlc";
-  mediaplayer = pkgs.callPackage ./mediaplayer.nix {};
+  mediaplayer = pkgs.callPackage ./modules/mediaplayer.nix {};
   wallpaper = builtins.fetchurl {
     url = "https://drive.usercontent.google.com/download?id=1OrRpU17DU78sIh--SNOVI6sl4BxE06Zi";
     sha256 = "sha256:14nh77xn8x58693y2na5askm6612xqbll2kr6237y8pjr1jc24xp";
   };
 in {
   imports = [
-    ./binds.nix
-    ./windowrules.nix
-    ./workspaces.nix
+    ./conf/binds.nix
+    ./conf/windowrules.nix
+    ./conf/workspaces.nix
+    ./modules/lockidle.nix
   ];
   services.mako = {
     enable = true;
@@ -52,12 +52,26 @@ in {
     exec-once = ${waybar}
     exec-once = ${hyprpaper}
     exec-once = ${notifs}
-    exec-once = ${idle}
     exec-once = ${swayosd-server}
     exec-once = ${obsidian}
     exec-once = ${blanket}
     exec-once = ${plexamp}
     exec-once = ${vlc} --start-paused /home/tunnel/Music/Playlists/02\ vgm\ st.m3u8
+    bezier = wind, 0.05, 0.9, 0.1, 1.05
+    bezier = winIn, 0.1, 1.1, 0.1, 1.1
+    bezier = winOut, 0.3, -0.3, 0, 1
+    bezier = liner, 1, 1, 1, 1
+    bezier = linear, 0.0, 0.0, 1.0, 1.0
+
+    animations {
+        enabled = true
+        # bezier = overshot, 0.05, 0.9, 0.1, 1.1
+        bezier = overshot, 0.13, 0.99, 0.29, 1.1
+        animation = windows, 1, 4, overshot, slide
+        animation = border, 1, 10, default
+        animation = fade, 1, 10, default
+        animation = workspaces, 1, 6, overshot, slide
+    }
   '';
   wayland.windowManager.hyprland.settings = {
     decoration = {
@@ -108,47 +122,14 @@ in {
     xwayland = {
       force_zero_scaling = true;
     };
+    animations = {
+
+    };
   };
   home.file = {
     ".config/hypr/hyprpaper.conf".text = ''
       preload = ${wallpaper}
       wallpaper = eDP-1, ${wallpaper}
-    '';
-    ".config/hypr/hypridle.conf".text = ''
-      general {
-          lock_cmd = pidof hyprlock || hyprlock       # avoid starting multiple hyprlock instances.
-          before_sleep_cmd = loginctl lock-session    # lock before suspend.
-          after_sleep_cmd = hyprctl dispatch dpms on  # to avoid having to press a key twice to turn on the display.
-      }
-
-      listener {
-          timeout = 150                                # 2.5min.
-          on-timeout = brightnessctl -s set 10         # set monitor backlight to minimum, avoid 0 on OLED monitor.
-          on-resume = brightnessctl -r                 # monitor backlight restor.
-      }
-
-      # turn off keyboard backlight, comment out this section if you dont have a keyboard backlight.
-      listener {
-          timeout = 150                                          # 2.5min.
-          on-timeout = brightnessctl -sd rgb:kbd_backlight set 0 # turn off keyboard backlight.
-          on-resume = brightnessctl -rd rgb:kbd_backlight        # turn on keyboard backlight.
-      }
-
-      listener {
-          timeout = 300                                 # 5min
-          on-timeout = loginctl lock-session            # lock screen when timeout has passed
-      }
-
-      listener {
-          timeout = 330                                 # 5.5min
-          on-timeout = hyprctl dispatch dpms off        # screen off when timeout has passed
-          on-resume = hyprctl dispatch dpms on          # screen on when activity is detected after timeout has fired.
-      }
-
-      listener {
-          timeout = 1800                                # 30min
-          on-timeout = systemctl suspend                # suspend pc
-      }
     '';
   };
   programs.rofi = {
@@ -172,18 +153,19 @@ in {
         font-family: "PragmataPro Liga", "FiraCode Nerd Font";
         font-size: 13px;
         min-height: 0;
+        box-shadow: none;
       }
       window#waybar {
         background: transparent;
         color: @text;
-        margin: 5px 5px;
+        margin: 3px 3px;
       }
 
       #workspaces {
         border-radius: 1rem;
         margin: 5px;
         background-color: @surface0;
-        margin-left: 1rem;
+        margin-left: 0.5rem;
         border: none;
       }
 
@@ -196,7 +178,16 @@ in {
 
       #workspaces button.active {
         color: @sky;
-        border-radius: 1rem;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+      }
+
+      #workspaces button.focused {
+        color: @sky;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
       }
 
       #workspaces button:hover {
@@ -220,9 +211,10 @@ in {
       }
       #custom-playerlabel {
         border-radius: 1rem;
-        margin: 5px;
         background-color: @surface0;
         padding: 0.5rem;
+        margin-top: 5px;
+        margin-bottom: 5px;
       }
       #battery {
         color: @green;
@@ -274,8 +266,10 @@ in {
       }
 
       #tray {
-        margin-right: 1rem;
+        margin-right: 0.5rem;
         border-radius: 1rem;
+        margin: 5px;
+        padding: 0.7rem 0.5rem;
       }
     '';
     settings = [
@@ -305,7 +299,7 @@ in {
           };
         };
         network = {
-          format = "{icon}  {essid} ({signalStrength}%)";
+          format = "{icon} {essid}";
           format-icons = ["󰤯" "󰤟" "󰤢" "󰤥" "󰤨"];
           format-disconnected = "󰤭";
         };
