@@ -9,7 +9,9 @@
 }: {
   home.username = "tunnel";
   home.homeDirectory = "/home/tunnel";
-
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
   imports = [
     #./desktop/gaming.nix
     ./fish.nix
@@ -48,6 +50,7 @@
     eza
     fzf
     fd
+    grc
     kitty
     bat
     zellij
