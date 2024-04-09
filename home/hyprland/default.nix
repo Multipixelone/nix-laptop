@@ -14,7 +14,6 @@
   agent = pkgs.openssh + "/bin/ssh-agent";
   waybar = pkgs.waybar + "/bin/waybar";
   vlc = pkgs.vlc + "/bin/vlc";
-  mediaplayer = pkgs.callPackage ./modules/mediaplayer.nix {};
   wallpaper = builtins.fetchurl {
     url = "https://drive.usercontent.google.com/download?id=1OrRpU17DU78sIh--SNOVI6sl4BxE06Zi";
     sha256 = "sha256:14nh77xn8x58693y2na5askm6612xqbll2kr6237y8pjr1jc24xp";
@@ -25,6 +24,7 @@ in {
     ./conf/windowrules.nix
     ./conf/workspaces.nix
     ./modules/lockidle.nix
+    ./modules/waybar.nix
   ];
   services.mako = {
     enable = true;
@@ -122,9 +122,6 @@ in {
     xwayland = {
       force_zero_scaling = true;
     };
-    animations = {
-
-    };
   };
   home.file = {
     ".config/hypr/hyprpaper.conf".text = ''
@@ -141,190 +138,5 @@ in {
       icon-theme = "Papirus Dark";
       display-drun = "";
     };
-  };
-  programs.waybar = {
-    enable = true;
-    style = ''
-      ${builtins.readFile (builtins.fetchurl {
-        url = "https://github.com/catppuccin/waybar/releases/download/v1.1/mocha.css";
-        sha256 = "sha256:14anxdkg8s4rgd2xz7jar9b2vgidkwn1kk5pnn84i665wkvg6ncn";
-      })}
-      * {
-        font-family: "PragmataPro Liga", "FiraCode Nerd Font";
-        font-size: 13px;
-        min-height: 0;
-        box-shadow: none;
-      }
-      window#waybar {
-        background: transparent;
-        color: @text;
-        margin: 3px 3px;
-      }
-
-      #workspaces {
-        border-radius: 1rem;
-        margin: 5px;
-        background-color: @surface0;
-        margin-left: 0.5rem;
-        border: none;
-      }
-
-      #workspaces button {
-        color: @lavender;
-        border-radius: 0;
-        padding: 0.4rem;
-        border: none;
-      }
-
-      #workspaces button.active {
-        color: @sky;
-        border-radius: 0;
-        border: none;
-        box-shadow: none;
-      }
-
-      #workspaces button.focused {
-        color: @sky;
-        border-radius: 0;
-        border: none;
-        box-shadow: none;
-      }
-
-      #workspaces button:hover {
-        color: @sapphire;
-        border-radius: 0;
-        border: none;
-      }
-
-      #custom-music,
-      #tray,
-      #backlight,
-      #clock,
-      #battery,
-      #pulseaudio,
-      #custom-lock,
-      #custom-power,
-      #network {
-        background-color: @surface0;
-        padding: 0.7rem 0.5rem;
-        margin: 5px 0;
-      }
-      #custom-playerlabel {
-        border-radius: 1rem;
-        background-color: @surface0;
-        padding: 0.5rem;
-        margin-top: 5px;
-        margin-bottom: 5px;
-      }
-      #battery {
-        color: @green;
-        border-radius: 0px 1rem 1rem 0px;
-      }
-      #pulseaudio {
-        color: @mauve
-      }
-      #clock {
-        color: @blue;
-      }
-
-      #battery.charging {
-        color: @green;
-      }
-
-      #battery.warning:not(.charging) {
-        color: @red;
-      }
-
-      #backlight {
-        color: @yellow;
-      }
-
-      #backlight, #audio {
-          border-radius: 0;
-      }
-
-      #network {
-        color: @maroon;
-        border-radius: 1rem 0px 0px 1rem;
-        margin-left: 1rem;
-      }
-
-      #clock {
-        color: @mauve;
-        border-radius: 1rem;
-      }
-
-      #custom-lock {
-          border-radius: 1rem 0px 0px 1rem;
-          color: @lavender;
-      }
-
-      #custom-power {
-          margin-right: 1rem;
-          border-radius: 0px 1rem 1rem 0px;
-          color: @red;
-      }
-
-      #tray {
-        margin-right: 0.5rem;
-        border-radius: 1rem;
-        margin: 5px;
-        padding: 0.7rem 0.5rem;
-      }
-    '';
-    settings = [
-      {
-        height = 30;
-        layer = "top";
-        position = "top";
-        modules-left = ["hyprland/workspaces" "custom/playerlabel"];
-        modules-center = ["clock"];
-        #modules-right = ["network" "pulseaudio" "battery" "tray"];
-        modules-right = ["network" "pulseaudio" "backlight" "battery" "tray"];
-        "custom/playerlabel" = {
-          format = ''<span>{}</span>'';
-          return-type = "json";
-          max-length = 80;
-          exec = "${mediaplayer}/bin/mediaplayer.py";
-        };
-        "hyprland/workspaces" = {
-          on-click = "activate";
-          format = "{icon}";
-          format-icons = {
-            "1" = "󰎤";
-            "2" = "󰎧";
-            "3" = "󰎪";
-            "4" = "󰎚";
-            "5" = "󰝚";
-          };
-        };
-        network = {
-          format = "{icon} {essid}";
-          format-icons = ["󰤯" "󰤟" "󰤢" "󰤥" "󰤨"];
-          format-disconnected = "󰤭";
-        };
-        pulseaudio = {
-          format = "{icon} {volume}";
-          format-muted = "󰝟";
-          format-icons = {
-            headphones = "󰋋";
-            default = ["󰕿" "󰖀" "󰕾"];
-          };
-          on-click = "pavucontrol";
-        };
-        backlight = {
-          format = "{icon} {percent}%";
-          format-icons = ["󰃚" "󰃛" "󰃜" "󰃝" "󰃞" "󰃟" "󰃠"];
-        };
-        clock = {
-          format = "󰥔  {:%A, %b %d %R}";
-        };
-        battery = {
-          format = "{icon} {capacity}%";
-          format-charging = "󰂄 {capacity}%";
-          format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
-        };
-      }
-    ];
   };
 }
