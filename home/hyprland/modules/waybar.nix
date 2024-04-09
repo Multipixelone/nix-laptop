@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  mediaplayer = pkgs.callPackage ./modules/mediaplayer.nix {};
+  mediaplayer = pkgs.callPackage ./mediaplayer.nix {};
 in {
   programs.waybar = {
     enable = true;
@@ -13,9 +13,12 @@ in {
         font-size: 13px;
         min-height: 0;
         box-shadow: none;
+        background: transparent;
+        background-color: rgba(255,0,0,0.0);
       }
       window#waybar {
         background: transparent;
+        background-color: rgba(255,0,0,0.0);
         color: @text;
         margin: 3px 3px;
       }
