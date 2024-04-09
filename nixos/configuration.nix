@@ -18,7 +18,7 @@
     qemu_kvm
     qemu
     #inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
-    wineWowPackages.staging
+    wineWowPackages.waylandFull
     xdg-utils
     greetd.greetd
     appimage-run
