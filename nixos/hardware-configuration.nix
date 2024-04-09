@@ -32,6 +32,11 @@
     fsType = "btrfs";
     options = ["subvol=@music" "compress=zstd:4" "ssd" "relatime" "discard=async"];
   };
+  fileSystems."/home/tunnel/tmp" = {
+    device = "none";
+    fsType = "tmpfs";
+    options = ["defaults" "size=2G" "mode=755"];
+  };
   fileSystems."/media/Data/Music" = {
     device = "/dev/disk/by-uuid/576fdcd4-d642-4229-9073-90724eb72043";
     fsType = "btrfs";
