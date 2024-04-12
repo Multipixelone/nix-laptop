@@ -9,11 +9,12 @@
 }: {
   home.username = "tunnel";
   home.homeDirectory = "/home/tunnel";
+  stylix.targets.waybar.enable = false;
   home.sessionVariables = {
     EDITOR = "nvim";
   };
   imports = [
-    #./desktop/gaming.nix
+    ./desktop/gaming.nix
     ./fish.nix
     ./lf.nix
     inputs.nix-index-database.hmModules.nix-index
@@ -55,6 +56,7 @@
     bat
     zellij
     ripgrep
+    nil
     (inputs.nixvim.legacyPackages."${system}".makeNixvimWithModule {
       inherit pkgs;
       module = ./vim;

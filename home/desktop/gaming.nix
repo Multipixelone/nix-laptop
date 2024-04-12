@@ -9,7 +9,7 @@
     prismlauncher
     gamescope
     #discord
-    #lutris
+    lutris
     gamemode
     mangohud
   ];
