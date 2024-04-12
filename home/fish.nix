@@ -14,7 +14,7 @@
     shellAbbrs = {
       c = "clear";
       ls = "exa --color=auto --icons --git";
-      la = "exa --color=auto --icons --git -a";
+      la = "exa --color=auto --icons --git -lah";
       vim = "nvim";
       lg = "nix run nixpkgs#lazygit";
       fetch = "nix run nixpkgs#nitch";
