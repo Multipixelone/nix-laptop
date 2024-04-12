@@ -15,6 +15,7 @@
       c = "clear";
       ls = "exa --color=auto --icons --git";
       la = "exa --color=auto --icons --git -lah";
+      ii = "systemd-inhibit --what=idle --who=Caffeine --why=Caffeine --mode=block sleep inf";
       vim = "nvim";
       lg = "nix run nixpkgs#lazygit";
       fetch = "nix run nixpkgs#nitch";
