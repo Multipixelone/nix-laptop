@@ -11,7 +11,7 @@ in {
     enable = true;
     settings = {
       default_session = {
-        command = "${tuigreet} --greeting \"Welcome Finn\" --time --remember --remember-session --sessions ${hyprland-session}:${kde-session}";
+        command = "${tuigreet} --greeting \"hi finn :)\" --time --remember --remember-session --sessions ${hyprland-session}:${kde-session}";
         user = "greeter";
       };
     };
