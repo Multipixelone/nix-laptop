@@ -60,11 +60,12 @@
     isNormalUser = true;
     home = "/home/tunnel";
     shell = pkgs.fish;
-    extraGroups = ["networkmanager" "wheel" "audio" "libvirtd" "plugdev" "dialout" "video"];
+    extraGroups = ["networkmanager" "wheel" "audio" "libvirtd" "plugdev" "dialout" "video" "kvm" "libvirt" "input"];
   };
   time.timeZone = "America/New_York";
   # Theme
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+  stylix.polarity = "dark";
   stylix.image = ./SU_NY.JPG;
   stylix = {
     fonts = {
@@ -163,6 +164,7 @@
   # Required for Obsidian
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
+    "electron-28.2.10"
   ];
   # Laptop Stuff
   services.tlp = {
