@@ -17,8 +17,8 @@
       la = "exa --color=auto --icons --git -lah";
       ii = "systemd-inhibit --what=idle --who=Caffeine --why=Caffeine --mode=block sleep inf";
       vim = "nvim";
-      lg = "nix run nixpkgs#lazygit";
-      nixlg = "cd ~/Documents/Git/nix-laptop && lg";
+      lg = "lazygit";
+      nixlg = "cd ~/Documents/Git/nix-laptop && lazygit";
       fetch = "nix run nixpkgs#nitch";
       ff = "nix run nixpkgs#fastfetch";
       alej = "nix run nixpkgs#alejandra .";

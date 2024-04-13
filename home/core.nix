@@ -52,6 +52,7 @@
     fzf
     fd
     grc
+    lazygit
     kitty
     bat
     zellij
