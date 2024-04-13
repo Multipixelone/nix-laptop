@@ -17,7 +17,7 @@ in {
       "ALT_SHIFT, W, exec, firefox"
       "$mod, SPACE, exec, ${launcher}"
       "$mod, M, exit"
-      "$mod, N, systemctl suspend"
+      "$mod, N, exec, systemctl suspend"
       "$mod, V, togglefloating"
       "SUPER, F, fullscreen"
       "$mod, 1, workspace, 1"
