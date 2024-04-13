@@ -18,6 +18,7 @@
       ii = "systemd-inhibit --what=idle --who=Caffeine --why=Caffeine --mode=block sleep inf";
       vim = "nvim";
       lg = "nix run nixpkgs#lazygit";
+      nixlg = "cd ~/Documents/Git/nix-laptop && lg";
       fetch = "nix run nixpkgs#nitch";
       ff = "nix run nixpkgs#fastfetch";
       alej = "nix run nixpkgs#alejandra .";
