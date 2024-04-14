@@ -19,7 +19,7 @@
     ./modules/lf.nix
     inputs.nix-index-database.hmModules.nix-index
     #inputs.nixvim.homeManagerModules.nixvim
-    ./hyprland/default.nix
+    ./modules/hyprland/default.nix
   ];
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
@@ -60,7 +60,7 @@
     nil
     (inputs.nixvim.legacyPackages."${system}".makeNixvimWithModule {
       inherit pkgs;
-      module = ./vim;
+      module = ./modules/vim;
     })
 
     # Fonts
