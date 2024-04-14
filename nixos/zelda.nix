@@ -13,7 +13,56 @@
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
-
+  boot.loader.efi = {
+    efiSysMountPoint = "/boot";
+    canTouchEfiVariables = true;
+  };
+  environment.systemPackages = [
+    (import ./modules/scripts/ipod.nix {inherit pkgs;})
+  ];
+  # Syncthing
+  services.syncthing = {
+    enable = true;
+    user = "tunnel";
+    configDir = "/home/tunnel/.config/syncthing";
+    overrideDevices = true;
+    overrideFolders = true;
+    settings = {
+      devices = {
+        "link" = {id = "XOMPLRL-64GMF4T-P4SQ4XN-GCG26C2-3BKWACO-4DSWVCW-BU755ZU-KOJUDQ2";};
+        "alexandria" = {id = "RBYKQEM-33KIP3W-D6KE3OD-V66VRWA-O6HZMFD-PKBWCWI-FZF6JD7-IZGLHAK";};
+        "deck" = {id = "WPTWVQC-SJIKJOM-6SXC474-A6AJXVA-CBS5WQB-SREKAIH-XP6YCHN-PGK7KQE";};
+      };
+      folders = {
+        "4bvms-ufujg" = {
+          path = "/home/tunnel/Music/Library";
+          devices = ["link" "alexandria"];
+        };
+        "playlists" = {
+          path = "/home/tunnel/Music/Playlists";
+          devices = ["link" "alexandria"];
+        };
+        "multimc" = {
+          path = "/home/tunnel/.local/share/PrismLauncher/instances/";
+          devices = ["link" "alexandria" "deck"];
+        };
+        "multimc-icons" = {
+          path = "/home/tunnel/.local/share/PrismLauncher/icons/";
+          devices = ["link" "alexandria" "deck"];
+        };
+        "sakft-erofr" = {
+          path = "/home/tunnel/Games/ship-of-harkinian";
+          devices = ["link" "alexandria" "deck"];
+        };
+        "singing" = {
+          path = "/home/tunnel/Music/Singing";
+          devices = ["link" "alexandria" "deck"];
+        };
+      };
+    };
+  };
+  networking.networkmanager.enable = true;
+  networking.hostName = "zelda";
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/576fdcd4-d642-4229-9073-90724eb72043";
     fsType = "btrfs";

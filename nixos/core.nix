@@ -30,7 +30,6 @@
     libsForQt5.kio
     libsForQt5.kio-extras
     brightnessctl
-    (import ./scripts/ipod.nix {inherit pkgs;})
     #inputs.packages.${pkgs.system}.qtscrob
   ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -65,7 +64,10 @@
   # Theme
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
   stylix.polarity = "dark";
-  stylix.image = ./SU_NY.JPG;
+  stylix.image = builtins.fetchurl {
+    url = "https://drive.usercontent.google.com/download?id=1OrRpU17DU78sIh--SNOVI6sl4BxE06Zi";
+    sha256 = "sha256:14nh77xn8x58693y2na5askm6612xqbll2kr6237y8pjr1jc24xp";
+  };
   stylix = {
     fonts = {
       serif = {
@@ -85,10 +87,6 @@
   # Boot
   boot.plymouth.enable = true;
   boot.loader.systemd-boot.enable = false;
-  boot.loader.efi = {
-    efiSysMountPoint = "/boot";
-    canTouchEfiVariables = true;
-  };
   boot.loader.grub = {
     enable = true;
     efiSupport = true;
@@ -106,12 +104,9 @@
   boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.binfmt.emulatedSystems = ["aarch64-linux"];
   # Networking
-  networking.networkmanager.enable = true;
   networking.firewall.trustedInterfaces = ["tailscale0"];
-  networking.hostName = "zelda";
   systemd.services.NetworkManager-wait-online.enable = false;
-  networking.firewall.allowedTCPPorts = [22 5900 8384 22000 47984 47989 48010 59999];
-  networking.firewall.allowedUDPPorts = [config.services.tailscale.port 22000 21027 47998 47999 48000 48002 48010];
+  networking.firewall.allowedUDPPorts = [config.services.tailscale.port];
   # System Services
   security.polkit.enable = true;
   services.flatpak.enable = true;
@@ -126,6 +121,7 @@
   services.xserver.displayManager.sddm.enable = false;
   services.xserver.displayManager.sddm.wayland.enable = false;
   services.printing.enable = true;
+  services.avahi.publish.userServices = true;
   # Programs
   programs.command-not-found.enable = false;
   programs.fish.enable = true;
@@ -179,47 +175,6 @@
       CPU_MAX_PERF_ON_AC = 100;
       CPU_MIN_PERF_ON_BAT = 0;
       CPU_MAX_PERF_ON_BAT = 40;
-    };
-  };
-  # Syncthing
-  services.syncthing = {
-    enable = true;
-    user = "tunnel";
-    configDir = "/home/tunnel/.config/syncthing";
-    overrideDevices = true;
-    overrideFolders = true;
-    settings = {
-      devices = {
-        "link" = {id = "XOMPLRL-64GMF4T-P4SQ4XN-GCG26C2-3BKWACO-4DSWVCW-BU755ZU-KOJUDQ2";};
-        "alexandria" = {id = "RBYKQEM-33KIP3W-D6KE3OD-V66VRWA-O6HZMFD-PKBWCWI-FZF6JD7-IZGLHAK";};
-        "deck" = {id = "WPTWVQC-SJIKJOM-6SXC474-A6AJXVA-CBS5WQB-SREKAIH-XP6YCHN-PGK7KQE";};
-      };
-      folders = {
-        "4bvms-ufujg" = {
-          path = "/home/tunnel/Music/Library";
-          devices = ["link" "alexandria"];
-        };
-        "playlists" = {
-          path = "/home/tunnel/Music/Playlists";
-          devices = ["link" "alexandria"];
-        };
-        "multimc" = {
-          path = "/home/tunnel/.local/share/PrismLauncher/instances/";
-          devices = ["link" "alexandria" "deck"];
-        };
-        "multimc-icons" = {
-          path = "/home/tunnel/.local/share/PrismLauncher/icons/";
-          devices = ["link" "alexandria" "deck"];
-        };
-        "sakft-erofr" = {
-          path = "/home/tunnel/Games/ship-of-harkinian";
-          devices = ["link" "alexandria" "deck"];
-        };
-        "singing" = {
-          path = "/home/tunnel/Music/Singing";
-          devices = ["link" "alexandria" "deck"];
-        };
-      };
     };
   };
   # Fonts
