@@ -57,6 +57,7 @@
     zellij
     ripgrep
     nil
+    nom
     (inputs.nixvim.legacyPackages."${system}".makeNixvimWithModule {
       inherit pkgs;
       module = ./modules/vim;
