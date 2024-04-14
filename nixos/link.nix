@@ -18,7 +18,7 @@
   hardware.opengl.driSupport32Bit = true; # For 32 bit applications
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  environment.systemPakages = [
+  environment.systemPackages = [
     (import ./modules/scripts/ipodlink.nix {inherit pkgs;})
     (import ./modules/scripts/streammon.nix {inherit pkgs;})
     (import ./modules/scripts/sleep.nix {inherit pkgs;})
