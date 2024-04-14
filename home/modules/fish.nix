@@ -19,6 +19,7 @@
       vim = "nvim";
       lg = "lazygit";
       nixlg = "cd ~/Documents/Git/nix-laptop && lazygit";
+      ciara = "echo \"i dont know\"";
       fetch = "nix run nixpkgs#nitch";
       ff = "nix run nixpkgs#fastfetch";
       alej = "nix run nixpkgs#alejandra .";
