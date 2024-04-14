@@ -18,6 +18,7 @@ in {
       "$mod, SPACE, exec, ${launcher}"
       "$mod, M, exit"
       "$mod, N, exec, systemctl suspend"
+      "$mod, B, exec, pypr expose"
       "$mod, V, togglefloating"
       "SUPER, F, fullscreen"
       "$mod, 1, workspace, 1"

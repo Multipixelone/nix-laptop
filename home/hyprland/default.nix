@@ -57,6 +57,7 @@ in {
     exec-once = ${blanket}
     exec-once = ${plexamp}
     exec-once = flatpak run app.bluebubbles.BlueBubbles
+    exec-once = pypr
     exec-once = ${vlc} --start-paused /home/tunnel/Music/Playlists/02\ vgm\ st.m3u8
     bezier = wind, 0.05, 0.9, 0.1, 1.05
     bezier = winIn, 0.1, 1.1, 0.1, 1.1
@@ -128,6 +129,10 @@ in {
     ".config/hypr/hyprpaper.conf".text = ''
       preload = ${wallpaper}
       wallpaper = eDP-1, ${wallpaper}
+    '';
+    ".config/hypr/pyprland.toml".text = ''
+      [pyprland]
+      plugins = ["expose"]
     '';
   };
   programs.rofi = {
