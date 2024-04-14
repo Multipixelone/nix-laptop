@@ -7,7 +7,7 @@
   inputs,
   ...
 }: {
-imports = [
-  ./core.nix
-];
+  imports = [
+    ./core.nix
+  ];
 }

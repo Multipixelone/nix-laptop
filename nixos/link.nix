@@ -1,10 +1,9 @@
 {
-  lib,
   config,
   pkgs,
-  nix-gaming,
-  stylix,
+  lib,
   inputs,
+  stylix,
   ...
 }: {
   imports = [

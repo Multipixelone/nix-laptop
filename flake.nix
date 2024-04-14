@@ -45,7 +45,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
-          ./nixos/configuration.nix
+          ./nixos/zelda.nix
           inputs.musnix.nixosModules.musnix
           nixos-hardware.nixosModules.dell-xps-15-9560
           inputs.stylix.nixosModules.stylix
@@ -62,7 +62,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
-          ./nixos/configuration.nix
+          ./nixos/link.nix
           inputs.musnix.nixosModules.musnix
           inputs.stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
