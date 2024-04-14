@@ -54,7 +54,23 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {inherit inputs;};
-            home-manager.users.tunnel = import ./home/core.nix;
+            home-manager.users.tunnel = import ./home/zelda.nix;
+          }
+        ];
+      };
+      link = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./nixos/configuration.nix
+          inputs.musnix.nixosModules.musnix
+          inputs.stylix.nixosModules.stylix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {inherit inputs;};
+            home-manager.users.tunnel = import ./home/link.nix;
           }
         ];
       };
