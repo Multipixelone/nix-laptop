@@ -7,8 +7,7 @@
   ...
 }: {
   imports = [
-    ./hardware-configuration.nix
-    ./greetd.nix
+    ./modules/greetd.nix
   ];
   environment.systemPackages = with pkgs; [
     vim
