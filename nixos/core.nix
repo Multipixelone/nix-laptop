@@ -115,6 +115,8 @@
   programs.fish.enable = true;
   programs.steam.enable = true;
   programs.mosh.enable = true;
+  programs.wireshark.enable = true;
+  programs.nix-ld.enable = true;
   programs.nm-applet.enable = true;
   programs.hyprland = {
     enable = true;
