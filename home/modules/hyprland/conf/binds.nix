@@ -15,6 +15,7 @@ in {
       "ALT_SHIFT, Q, killactive"
       "$mod, RETURN, exec, ${terminal}"
       "ALT_SHIFT, W, exec, firefox"
+      "ALT_SHIFT, S, exec, steam"
       "$mod, SPACE, exec, ${launcher}"
       "$mod, M, exit"
       "$mod, N, exec, systemctl suspend"
