@@ -2,6 +2,8 @@
   config,
   pkgs,
   nix-gaming,
+  lib,
+  osConfig,
   ...
 }: let
   hyprpaper = pkgs.hyprpaper + "/bin/hyprpaper";
@@ -37,7 +39,6 @@ in {
   };
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.extraConfig = ''
-    monitor=,highres,auto,2
     env = GDK_SCALE,2
     env = QT_AUTO_SCREEN_SCALE_FACTOR,1
     env = QT_SCALE_FACTOR,2
@@ -76,6 +77,10 @@ in {
     }
   '';
   wayland.windowManager.hyprland.settings = {
+    monitorSettings = lib.mkMerge [
+      (lib.mkIf (osConfig.networking.hostName == "link") {monitor = ["DP-1,2560x1440@240,1200x0,1" "DP-3,1920x1200@60,0x0,1,transform,1"];})
+      (lib.mkIf (osConfig.networking.hostName == "zelda") {monitor = ["highres,auto,2"];})
+    ];
     decoration = {
       rounding = "6";
       shadow_offset = "0 2";
