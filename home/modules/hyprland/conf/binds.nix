@@ -8,6 +8,8 @@
   launcher = "${rofi} -show drun";
   swayosd-client = pkgs.swayosd + "/bin/swayosd-client";
   brightness = pkgs.brightnessctl + "/bin/brightnessctl";
+  screenshot = pkgs.grimblast + "/bin/grimblast";
+  screenshotarea = ''hyprctl keyword animation "fadeOut,0,0,default"; ${screenshot} --notify copysave area; hyprctl keyword animation "fadeOut,1,4,default"'';
 in {
   wayland.windowManager.hyprland.settings = {
     "$mod" = "ALT";
@@ -17,6 +19,8 @@ in {
       "ALT_SHIFT, W, exec, firefox"
       "ALT_SHIFT, D, exec, discord"
       "ALT_SHIFT, S, exec, steam"
+      ", Print, exec, ${screenshot} --notify --cursor copysave output"
+      "ALT , Print, exec, ${screenshotarea}"
       "$mod, SPACE, exec, ${launcher}"
       "$mod, M, exit"
       "$mod, N, exec, systemctl suspend"

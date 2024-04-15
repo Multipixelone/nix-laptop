@@ -12,6 +12,7 @@
   stylix.targets.waybar.enable = false;
   home.sessionVariables = {
     EDITOR = "nvim";
+    XDG_SCREENSHOTS_DIR = "/home/tunnel/Pictures/Screenshots";
   };
   imports = [
     ./modules/gaming.nix

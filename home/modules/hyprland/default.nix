@@ -42,6 +42,7 @@ in {
     env = GDK_SCALE,2
     env = QT_AUTO_SCREEN_SCALE_FACTOR,1
     env = QT_SCALE_FACTOR,2
+    env = XDG_SCREENSHOT_DIR,/home/tunnel/Pictures/Screenshots
     env = QT_QPA_PLATFORM,"wayland;xcb"
     env = XCURSOR_SIZE,32
     env = XDG_CURRENT_DESKTOP,Hyprland
