@@ -17,7 +17,7 @@ jobs:
         run: nix flake update
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: ⚙️ Bump flake.lock
+          commit_message: ⚙️ bump flake.lock
           branch: main
           commit_options: '--no-verify --signoff'
           file_pattern: flake.lock
