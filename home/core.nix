@@ -42,6 +42,7 @@
     _1password
     moonlight-qt
     imv
+    zoom-us
 
     # LaTeX
     zotero
@@ -99,6 +100,7 @@
       "obsidian"
       "spotify"
       "plexamp"
+      "zoom-us"
     ];
   services.udiskie.enable = true;
   programs.kitty = {
