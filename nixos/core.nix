@@ -9,6 +9,7 @@
   imports = [
     ./modules/greetd.nix
   ];
+  hardware.enableRedistributableFirmware = true;
   environment.systemPackages = with pkgs; [
     vim
     git
