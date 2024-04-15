@@ -20,6 +20,10 @@
     url = "https://drive.usercontent.google.com/download?id=1OrRpU17DU78sIh--SNOVI6sl4BxE06Zi";
     sha256 = "sha256:14nh77xn8x58693y2na5askm6612xqbll2kr6237y8pjr1jc24xp";
   };
+  sidewallpaper = builtins.fetchurl {
+    url = "https://blusky.s3.us-west-2.amazonaws.com/SU_SKY.PNG";
+    sha256 = "sha256:05jbbil1zk8pj09y52yhmn5b2np2fqnd4jwx49zw1h7pfyr7zsc8";
+  };
 in {
   imports = [
     ./conf/binds.nix
