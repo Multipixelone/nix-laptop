@@ -1,4 +1,9 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  osConfig,
+  ...
+}: let
   mediaplayer = pkgs.callPackage ./mediaplayer.nix {};
 in {
   programs.waybar = {
@@ -139,6 +144,7 @@ in {
         height = 30;
         layer = "top";
         position = "top";
+        output = lib.mkIf (osConfig.networking.hostName == "link") "DP-1";
         modules-left = ["hyprland/workspaces" "custom/playerlabel"];
         modules-center = ["clock"];
         #modules-right = ["network" "pulseaudio" "battery" "tray"];
