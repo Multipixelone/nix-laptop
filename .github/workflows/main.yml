@@ -1,0 +1,26 @@
+name: update-flake-lock
+on:
+  workflow_dispatch: # allows manual triggering
+  schedule:
+    - cron: '0 6 * * *' # runs daily at 6am
+jobs:
+  lockfile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+      - name: Update flake.lock
+        run: nix flake update
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: ⚙️ Bump flake.lock
+          branch: main
+          commit_options: '--no-verify --signoff'
+          file_pattern: flake.lock
+          commit_user_name: Flake Bot # defaults to "GitHub Actions"
+          #commit_user_email: my-github-actions-bot@example.org # defaults to "actions@github.com"
+          commit_author: Flake Bot <actions@github.com> # defaults to author of the commit that triggered the run
+          skip_dirty_check: false
+          skip_fetch: true
