@@ -19,6 +19,7 @@ in {
       "ALT_SHIFT, W, exec, firefox"
       "ALT_SHIFT, D, exec, discord"
       "ALT_SHIFT, S, exec, steam"
+      "ALT_SHIFT, C, exec, code"
       ", Print, exec, ${screenshot} --notify --cursor copysave output"
       "ALT , Print, exec, ${screenshotarea}"
       "$mod, SPACE, exec, ${launcher}"
