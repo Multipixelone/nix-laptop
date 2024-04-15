@@ -41,6 +41,7 @@
     _1password-gui
     _1password
     moonlight-qt
+    imv
 
     # LaTeX
     zotero
