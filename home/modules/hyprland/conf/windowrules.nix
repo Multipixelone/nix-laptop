@@ -25,6 +25,7 @@
       # idle inhibit while watching videos
       "idleinhibit focus, class:^(mpv|.+exe|celluloid)$"
       "idleinhibit focus, class:^(firefox)$, title:^(.*YouTube.*)$"
+      "idleinhibit always, title:^(Zoom Meeting)$"
       "idleinhibit fullscreen, class:^(firefox)$"
 
       # Music Player & Blanket
