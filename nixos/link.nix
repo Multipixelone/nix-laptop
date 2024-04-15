@@ -12,7 +12,12 @@
     ./modules/rgb.nix
   ];
   hardware.i2c.enable = true;
-
+  console = {
+    earlySetup = true;
+    font = "${pkgs.terminus_font}/share/consolefonts/ter-132n.psf.gz";
+    packages = with pkgs; [ terminus_font ];
+    keyMap = "us";
+  };
   networking.useDHCP = lib.mkDefault false;
   hardware.opengl.driSupport = true; # This is already enabled by default
   hardware.opengl.driSupport32Bit = true; # For 32 bit applications
