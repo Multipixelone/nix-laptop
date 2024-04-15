@@ -103,13 +103,36 @@
       "zoom-us"
     ];
   services.udiskie.enable = true;
-  programs.kitty = {
+  programs.foot = {
     enable = true;
     settings = {
-      background_opacity = pkgs.lib.mkForce "0.6";
-      confirm_os_window_close = 0;
+      main = {
+        box-drawings-uses-font-glyphs = "yes";
+        pad = "0x0 center";
+        notify = "notify-send -a \${app-id} -i \${app-id} \${title} \${body}";
+        selection-target = "clipboard";
+      };
+      scrollback = {
+        lines = 10000;
+        multiplier = 3;
+      };
+      url = {
+        launch = "xdg-open \${url}";
+        label-letters = "sadfjklewcmpgh";
+        osc8-underline = "url-mode";
+        protocols = "http, https, ftp, ftps, file";
+        uri-characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.,~:;/?#@!$&%*+=\"'()[]";
+      };
+      cursor = {
+        style = "beam";
+        beam-thickness = 1;
+      };
+      colors = {
+        alpha = pkgs.lib.mkForce "0.6";
+      };
     };
   };
+  stylix.targets.foot.enable = true;
   # basic configuration of git, please change to your own
   #wayland.windowManager.hyprland.enable = true;
   programs.git = {

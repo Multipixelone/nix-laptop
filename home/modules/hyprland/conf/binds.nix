@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  terminal = pkgs.kitty + "/bin/kitty";
+  terminal = pkgs.foot + "/bin/foot";
   rofi = pkgs.rofi-wayland + "/bin/rofi";
   launcher = "${rofi} -show drun";
   swayosd-client = pkgs.swayosd + "/bin/swayosd-client";
