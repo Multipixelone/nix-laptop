@@ -20,6 +20,7 @@
       "workspace 5 silent, class:^(com.rafaelmardojai.Blanket)$"
       "workspace 4 silent, class:^(obsidian)$"
       "workspace 6 silent, class:^(bluebubbles)$"
+      "workspace 6 silent, class:^(discord)$"
 
       # idle inhibit while watching videos
       "idleinhibit focus, class:^(mpv|.+exe|celluloid)$"
