@@ -12,7 +12,7 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
       - name: Update flake.lock
-        uses: DeterminateSystems/update-flake-lock@main
+        run: nix flake update
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: ⚙️ Bump flake.lock
