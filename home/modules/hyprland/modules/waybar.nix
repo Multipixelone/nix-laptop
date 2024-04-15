@@ -148,7 +148,7 @@ in {
         modules-left = ["hyprland/workspaces" "custom/playerlabel"];
         modules-center = ["clock"];
         #modules-right = ["network" "pulseaudio" "battery" "tray"];
-        modules-right = ["network" "pulseaudio" "backlight" "battery" "tray"];
+        modules-right = lib.mkIf (osConfig.networking.hostName == "zelda") ["network" "pulseaudio" "backlight" "battery" "tray"];
         "custom/playerlabel" = {
           format = ''<span>{}</span>'';
           return-type = "json";
