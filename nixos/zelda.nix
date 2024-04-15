@@ -56,7 +56,7 @@
         };
         "singing" = {
           path = "/home/tunnel/Music/Singing";
-          devices = ["link" "alexandria" "deck"];
+          devices = ["link" "alexandria"];
         };
       };
     };
