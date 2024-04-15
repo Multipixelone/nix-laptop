@@ -16,8 +16,7 @@
     virt-manager
     qemu_kvm
     qemu
-    #inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
-    wineWowPackages.waylandFull
+    inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
     xdg-utils
     greetd.greetd
     appimage-run
