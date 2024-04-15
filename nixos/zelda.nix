@@ -58,6 +58,10 @@
           path = "/home/tunnel/Music/Singing";
           devices = ["link" "alexandria"];
         };
+        "screenshots" = {
+          path = "/home/tunnel/Pictures/Screenshots";
+          devices = ["link" "alexandria"];
+        };
       };
     };
   };
