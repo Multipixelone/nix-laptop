@@ -53,6 +53,7 @@
     fzf
     fd
     grc
+    btop
     lazygit
     kitty
     bat

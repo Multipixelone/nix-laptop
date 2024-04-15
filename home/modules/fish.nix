@@ -17,6 +17,7 @@
       la = "exa --color=auto --icons --git -lah";
       ii = "systemd-inhibit --what=idle --who=Caffeine --why=Caffeine --mode=block sleep inf";
       vim = "nvim";
+      top = "btop";
       lg = "lazygit";
       nixlg = "cd ~/Documents/Git/nix-laptop && lazygit";
       ciara = "echo \"i dont know\"";
