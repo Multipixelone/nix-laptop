@@ -33,18 +33,6 @@
     #inputs.packages.${pkgs.system}.qtscrob
   ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  # Automatic Upgrade
-  system.autoUpgrade = {
-    enable = true;
-    flake = inputs.self.outPath;
-    flags = [
-      "--update-input"
-      "nixpkgs"
-      "-L" # print build logs
-    ];
-    dates = "12:00";
-    randomizedDelaySec = "45min";
-  };
   # Nix Stuff
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
