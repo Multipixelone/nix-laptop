@@ -17,6 +17,7 @@
   hardware.opengl.driSupport = true; # This is already enabled by default
   hardware.opengl.driSupport32Bit = true; # For 32 bit applications
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.enableRedistributableFirmware = true;
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   environment.systemPackages = [
     (import ./modules/scripts/ipodlink.nix {inherit pkgs;})
