@@ -106,8 +106,6 @@
   services.avahi.enable = true;
   services.desktopManager.plasma6.enable = true;
   services.xserver.enable = false;
-  services.xserver.displayManager.sddm.enable = false;
-  services.xserver.displayManager.sddm.wayland.enable = false;
   services.printing.enable = true;
   services.avahi.publish.userServices = true;
   # Programs
