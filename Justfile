@@ -5,7 +5,6 @@
 ############################################################################
 
 deploy:
-	git pull
 	nixos-rebuild switch --flake . --use-remote-sudo
 
 debug:
