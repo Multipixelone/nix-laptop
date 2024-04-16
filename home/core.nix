@@ -140,6 +140,9 @@
     userName = "Multipixelone";
     userEmail = "finn@cnwr.net";
   };
+  programs.ncmpcpp = {
+    enable = true;
+  };
   home.stateVersion = "23.11";
   gtk = {
     enable = true;
