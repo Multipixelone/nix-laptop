@@ -53,6 +53,7 @@ in {
     env = XDG_SESSION_TYPE,wayland
     env = XDG_SESSION_DESKTOP,Hyprland
     env = MOZ_ENABLE_WAYLAND,1
+    exec-once = foot --app-id=mpd ncmpcpp
     exec-once = ${polkit}
     exec-once = ${agent}
     exec-once = ${waybar}
@@ -60,11 +61,8 @@ in {
     exec-once = ${notifs}
     exec-once = ${swayosd-server}
     exec-once = ${obsidian}
-    exec-once = ${blanket}
-    exec-once = ${plexamp}
     exec-once = flatpak run app.bluebubbles.BlueBubbles
     exec-once = pypr
-    exec-once = ${vlc} --start-paused /home/tunnel/Music/Playlists/02\ vgm\ st.m3u8
     bezier = wind, 0.05, 0.9, 0.1, 1.05
     bezier = winIn, 0.1, 1.1, 0.1, 1.1
     bezier = winOut, 0.3, -0.3, 0, 1

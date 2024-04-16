@@ -17,6 +17,7 @@
       "workspace 5 silent, title:^(Spotify( Premium)?)$"
       "workspace 5 silent, class:^(Plexamp)$"
       "workspace 5 silent, class:^(vlc)$"
+      "workspace 5 silent, class:^(mpd)"
       "workspace 5 silent, class:^(com.rafaelmardojai.Blanket)$"
       "workspace 4 silent, class:^(obsidian)$"
       "workspace 6 silent, class:^(bluebubbles)$"
