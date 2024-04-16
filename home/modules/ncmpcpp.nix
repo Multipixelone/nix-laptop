@@ -19,13 +19,11 @@
       header_visibility = "no";
       titles_visibility = "no";
       progressbar_look = "━━━";
-      progressbar_color = "black";
-      progressbar_elapsed_color = "white";
-      progressbar_boldness = "yes";
+      progressbar_color = "black:b";
+      progressbar_elapsed_color = "white:b";
       song_status_format = "$b$6%t$/b {$8by} $b$6%a$8$/b";
       song_list_format = "{$8%a ⠂ }{%t}$R{%l}";
       song_columns_list_format = "(50)[magenta]{ar} (50)[green]{t}";
-      main_window_highlight_color = "green";
       main_window_color = "blue";
       color1 = "white";
       color2 = "red";
