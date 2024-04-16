@@ -18,6 +18,7 @@
     ./modules/gaming.nix
     ./modules/fish.nix
     ./modules/lf.nix
+    ./modules/ncmpcpp.nix
     inputs.nix-index-database.hmModules.nix-index
     ./modules/hyprland/default.nix
   ];
@@ -161,9 +162,6 @@
     enable = true;
     userName = "Multipixelone";
     userEmail = "finn@cnwr.net";
-  };
-  programs.ncmpcpp = {
-    enable = true;
   };
   home.stateVersion = "23.11";
   gtk = {
