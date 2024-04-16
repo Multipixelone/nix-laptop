@@ -8,6 +8,7 @@
   launcher = "${rofi} -show drun";
   swayosd-client = pkgs.swayosd + "/bin/swayosd-client";
   brightness = pkgs.brightnessctl + "/bin/brightnessctl";
+  playerctl = pkgs.playerctl + "/bin/playerctl";
   screenshot = pkgs.grimblast + "/bin/grimblast";
   screenshotarea = ''hyprctl keyword animation "fadeOut,0,0,default"; ${screenshot} --notify copysave area; hyprctl keyword animation "fadeOut,1,4,default"'';
 in {
@@ -28,6 +29,9 @@ in {
       "$mod, B, exec, pypr expose"
       "$mod, V, togglefloating"
       "SUPER, F, fullscreen"
+      ", XF86AudioPlay, exec, ${playerctl} play-pause"
+      ", XF86AudioNext, exec, ${playerctl} next"
+      ", XF86AudioPrev, exec, ${playerctl} previous"
       "$mod, 1, workspace, 1"
       "$mod, 2, workspace, 2"
       "$mod, 3, workspace, 3"
