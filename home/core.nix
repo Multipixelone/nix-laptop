@@ -179,7 +179,7 @@
   programs.ssh = {
     enable = true;
     addKeysToAgent = "yes";
-    forwardAgent = "yes";
+    forwardAgent = true;
   };
   home.stateVersion = "23.11";
   gtk = {
