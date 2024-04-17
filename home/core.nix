@@ -24,6 +24,7 @@
     ./modules/fish.nix
     ./modules/lf.nix
     ./modules/ncmpcpp.nix
+    ./modules/mpv.nix
     inputs.nix-index-database.hmModules.nix-index
     ./modules/hyprland/default.nix
     ./modules/secrets.nix
