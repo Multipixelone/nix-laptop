@@ -5,6 +5,7 @@
   nix-gaming,
   stylix,
   inputs,
+  osConfig,
   ...
 }: {
   home.username = "tunnel";
@@ -14,6 +15,7 @@
     EDITOR = "nvim";
     XDG_SCREENSHOTS_DIR = "/home/tunnel/Pictures/Screenshots";
     RESTIC_PASSWORD_FILE = config.age.secrets."restic/password".path;
+    RESTIC_REPOSITORY = "rclone:onedrive:Backups/${osConfig.networking.hostName};"
   };
   imports = [
     ./modules/gaming.nix
