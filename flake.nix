@@ -29,6 +29,10 @@
     };
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    secrets = {
+      url = "git+ssh://git@github.com/Multipixelone/nix-secrets.git";
+      flake = false;
+    };
   };
   outputs = inputs @ {
     nixpkgs,
@@ -38,6 +42,8 @@
     stylix,
     nixvim,
     nix-index-database,
+    agenix,
+    secrets,
     ...
   }: {
     nixosConfigurations = {
@@ -50,6 +56,7 @@
           nixos-hardware.nixosModules.dell-xps-15-9560
           inputs.stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
+          agenix.nixosModules.default
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

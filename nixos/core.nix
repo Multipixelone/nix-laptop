@@ -30,6 +30,7 @@
     libsForQt5.kio
     libsForQt5.kio-extras
     brightnessctl
+    inputs.agenix.packages.${pkgs.system}.default
     #inputs.packages.${pkgs.system}.qtscrob
   ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1";

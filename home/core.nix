@@ -21,6 +21,8 @@
     ./modules/ncmpcpp.nix
     inputs.nix-index-database.hmModules.nix-index
     ./modules/hyprland/default.nix
+    ./modules/secrets.nix
+    inputs.agenix.homeManagerModules.default
   ];
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
