@@ -176,6 +176,11 @@
     userName = "Multipixelone";
     userEmail = "finn@cnwr.net";
   };
+  programs.ssh = {
+    enable = true;
+    addKeysToAgent = true;
+    forwardAgent = true;
+  };
   home.stateVersion = "23.11";
   gtk = {
     enable = true;
