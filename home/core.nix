@@ -13,6 +13,7 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     XDG_SCREENSHOTS_DIR = "/home/tunnel/Pictures/Screenshots";
+    RESTIC_PASSWORD_FILE = config.age.secrets."restic/password".path;
   };
   imports = [
     ./modules/gaming.nix

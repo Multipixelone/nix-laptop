@@ -11,4 +11,7 @@
   age.secrets."scrobble" = {
     file = "${inputs.secrets}/scrobble.age";
   };
+  age.secrets."restic/password" = {
+    file = "${inputs.secrets}/restic/password.age";
+  };
 }
