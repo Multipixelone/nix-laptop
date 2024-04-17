@@ -920,7 +920,24 @@
         "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixvim": "nixvim",
+        "secrets": "secrets",
         "stylix": "stylix"
+      }
+    },
+    "secrets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1713332237,
+        "narHash": "sha256-NO1rtZBYT8EzJRSQpby/K4Ws2iNK8ppuErLpaWdsh/g=",
+        "ref": "refs/heads/main",
+        "rev": "f8397d0cefc5f0fad1e2f06b93f908d7e7e597c6",
+        "revCount": 4,
+        "type": "git",
+        "url": "ssh://git@github.com/Multipixelone/nix-secrets.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/Multipixelone/nix-secrets.git"
       }
     },
     "stylix": {
