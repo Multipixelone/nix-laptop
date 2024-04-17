@@ -45,6 +45,7 @@
         ".config/Ryujinx"
         ".config/discord"
         "Documents/Git"
+        "Music/Library"
         "Downloads"
         ".var/app"
         ".mozilla"
