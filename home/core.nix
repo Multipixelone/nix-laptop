@@ -71,6 +71,7 @@
     ripgrep
     nil
     nom
+    restic
     (inputs.nixvim.legacyPackages."${system}".makeNixvimWithModule {
       inherit pkgs;
       module = ./modules/vim;
