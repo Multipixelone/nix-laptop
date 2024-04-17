@@ -14,7 +14,7 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     XDG_SCREENSHOTS_DIR = "/home/tunnel/Pictures/Screenshots";
-    RESTIC_PASSWORD_FILE = config.age.secrets."restic/password".path;
+    RESTIC_PASSWORD_FILE = config.age.secrets."restic/passwordhome".path;
     RESTIC_REPOSITORY = "rclone:onedrive:Backups/${osConfig.networking.hostName}";
   };
   imports = [
@@ -126,7 +126,7 @@
       };
       scrobbler = {
         username = "Tunnelmaker";
-        password = config.age.secrets.scrobble.path;
+        password = config.age.secrets."scrobblehome".path;
       };
       m3u = {
         enabled = true;
