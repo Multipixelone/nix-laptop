@@ -73,6 +73,7 @@
           inputs.musnix.nixosModules.musnix
           inputs.stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
+          agenix.nixosModules.default
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
