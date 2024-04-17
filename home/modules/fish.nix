@@ -45,10 +45,6 @@
         src = pkgs.fishPlugins.z.src;
       }
       {
-        name = "hydro";
-        src = pkgs.fishPlugins.hydro.src;
-      }
-      {
         name = "fzf-fish";
         src = pkgs.fishPlugins.fzf-fish.src;
       }
@@ -63,6 +59,10 @@
       {
         name = "grc";
         src = pkgs.fishPlugins.grc.src;
+      }
+      {
+        name = "pure";
+        src = pkgs.fishPlugins.pure.src;
       }
     ];
   };
