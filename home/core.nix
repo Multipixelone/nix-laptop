@@ -121,6 +121,10 @@
         country = "US";
         locale = "en_US";
       };
+      scrobbler = {
+        username = "Tunnelmaker";
+        password = config.age.secrets.scrobble.path;
+      };
       m3u = {
         enabled = true;
         playlists_dir = "/home/tunnel/Music/Playlists";
