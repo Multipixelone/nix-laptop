@@ -32,6 +32,8 @@
       set pure_enable_nixdevshell true
       set pure_color_mute cyan
       set pure_check_for_new_release false
+      set pure_color_primary white
+      set pure_color_info blue
       fish_config theme choose "Catppuccin Mocha"
     '';
     plugins = [
