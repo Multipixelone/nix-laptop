@@ -290,7 +290,7 @@ in {
       sub-auto = "fuzzy";
 
       # Screenshots
-      screenshot-directory = "~/Pictures";
+      screenshot-directory = "~/Pictures/Screenshots";
       screenshot-template = "mpv-%f-%wH.%wM.%wS.%wT-#%#00n"; # name-hour-minute-second-millisecond-ssnumb
     };
     scriptOpts.uosc = {
