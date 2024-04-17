@@ -18,6 +18,7 @@
     RCLONE_CONFIG = config.age.secrets."restic/rclone".path;
     RESTIC_REPOSITORY = "rclone:onedrive:Backups/${osConfig.networking.hostName}";
   };
+  systemd.user.startServices = "sd-switch";
   imports = [
     ./modules/gaming.nix
     ./modules/fish.nix
