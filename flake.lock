@@ -514,11 +514,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1713351856,
-        "narHash": "sha256-5lf6GAXWtJanOTgu3jH0tF4aqoqCv8IcP43wp+pemWg=",
+        "lastModified": 1713372286,
+        "narHash": "sha256-TgwYLtNx9lLQjoVbAlvDfabAo3RaeM7jd9hh/ndFH/w=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "e57a2d7ec87ae775828ea8628ef4eeafce8e6e70",
+        "rev": "78b04c3a76614015a6f79f7b3c0e4ebe05548594",
         "type": "github"
       },
       "original": {
@@ -927,11 +927,11 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1713368477,
-        "narHash": "sha256-IbBWI5ZmFCd25DPU07XTrTEGasZu6ul4oUcY/EhW/a4=",
+        "lastModified": 1713373358,
+        "narHash": "sha256-maQeBjGE5sKAAk8zUaEAL1hWWx08Jc7WSV70H34+Gto=",
         "ref": "refs/heads/main",
-        "rev": "48a7e676ed1ba255169d9f84575823d20cbdee18",
-        "revCount": 7,
+        "rev": "f5ca024986c54b25dc1c0e687644d88cca8aaaa7",
+        "revCount": 8,
         "type": "git",
         "url": "ssh://git@github.com/Multipixelone/nix-secrets.git"
       },

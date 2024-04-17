@@ -8,7 +8,7 @@
     #"restic/env".file = "${inputs.secrets}/restic/env.age";
     #"restic/repo".file = "${inputs.secrets}/restic/repo.age";
     "restic/password".file = "${inputs.secrets}/restic/password.age";
-    "restic/rclone".file = "${inputs.secrets}/restic/rclone.age";
+    "restic/rclone".file = "${inputs.secrets}/restic/${config.networking.hostName}rclone.age";
   };
   services.restic.backups = {
     home = {
