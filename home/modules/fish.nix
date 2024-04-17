@@ -28,6 +28,10 @@
     };
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
+      set pure_enable_single_line_prompt true
+      set pure_enable_nixdevshell true
+      set pure_color_mute cyan
+      set pure_check_for_new_release false
       fish_config theme choose "Catppuccin Mocha"
     '';
     plugins = [
