@@ -178,8 +178,8 @@
   };
   programs.ssh = {
     enable = true;
-    addKeysToAgent = true;
-    forwardAgent = true;
+    addKeysToAgent = "yes";
+    forwardAgent = "yes";
   };
   home.stateVersion = "23.11";
   gtk = {
