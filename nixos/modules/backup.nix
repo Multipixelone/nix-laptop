@@ -21,6 +21,17 @@
       paths = [
         "/home/tunnel"
       ];
+      pruneOpts = [
+        "--keep-daily 14"
+        "--keep-weekly 10"
+        "--keep-monthly 12"
+        "--keep-yearly 75"
+      ];
+      timerConfig = {
+        OnCalendar = "00:00";
+        Persistent = true;
+        RandomizedDelaySec = "10m";
+      };
       exclude = [
         ".cache"
         ".local/share/Steam"
