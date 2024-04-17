@@ -18,9 +18,6 @@
       rcloneConfigFile = config.age.secrets."restic/rclone".path;
       passwordFile = config.age.secrets."restic/password".path;
 
-      paths = [
-        "/home/tunnel"
-      ];
       pruneOpts = [
         "--keep-daily 14"
         "--keep-weekly 10"
@@ -32,6 +29,10 @@
         Persistent = true;
         RandomizedDelaySec = "10m";
       };
+
+      paths = [
+        "/home/tunnel"
+      ];
       exclude = [
         ".cache"
         ".local/share/Steam"
