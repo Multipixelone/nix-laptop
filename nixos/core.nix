@@ -112,6 +112,7 @@
   services.avahi.publish.userServices = true;
   # Programs
   programs.command-not-found.enable = false;
+  programs.ssh.startAgent = true;
   programs.fish.enable = true;
   programs.steam.enable = true;
   programs.mosh.enable = true;
