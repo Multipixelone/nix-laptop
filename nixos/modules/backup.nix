@@ -18,6 +18,8 @@
       rcloneConfigFile = config.age.secrets."restic/rclone".path;
       passwordFile = config.age.secrets."restic/password".path;
 
+      extraBackupArgs = ["--one-file-system"];
+
       pruneOpts = [
         "--keep-daily 14"
         "--keep-weekly 10"
