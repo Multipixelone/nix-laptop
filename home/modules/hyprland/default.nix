@@ -48,6 +48,7 @@ in {
     env = QT_SCALE_FACTOR,2
     env = XDG_SCREENSHOTS_DIR,/home/tunnel/Pictures/Screenshots
     env = QT_QPA_PLATFORM,wayland
+    env = QT_QPA_PLATFORMTHEME,qt5ct
     env = XCURSOR_SIZE,32
     env = XDG_CURRENT_DESKTOP,Hyprland
     env = XDG_SESSION_TYPE,wayland
