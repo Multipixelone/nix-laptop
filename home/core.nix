@@ -122,6 +122,9 @@
         ];
         scan_timeout = 5000;
       };
+      http = {
+        hostname = "0.0.0.0";
+      };
       iris = {
         enabled = true;
         country = "US";

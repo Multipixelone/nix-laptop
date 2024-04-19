@@ -59,7 +59,7 @@
     efiSysMountPoint = "/boot/efi";
     canTouchEfiVariables = true;
   };
-  networking.firewall.allowedTCPPorts = [22 5900 8384 22000 47984 47989 48010 59999];
+  networking.firewall.allowedTCPPorts = [6680 22 5900 8384 22000 47984 47989 48010 59999];
   networking.firewall.allowedUDPPorts = [22000 21027 47998 47999 48000 48002 48010];
   networking = {
     interfaces.enp6s0.ipv4.addresses = [
