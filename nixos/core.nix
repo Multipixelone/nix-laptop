@@ -37,6 +37,7 @@
       wine = inputs.nix-gaming.packages.${pkgs.system}.wine-tkg;
     })
     yabridgectl
+    pulseaudioFull
   ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   # Nix Stuff
