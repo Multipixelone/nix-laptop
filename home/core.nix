@@ -92,8 +92,6 @@
     # Audio
     pavucontrol
     nicotine-plus
-    yabridge
-    yabridgectl
     helvum
     #playerctl
 
