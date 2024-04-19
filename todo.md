@@ -4,5 +4,4 @@
 - Rework how playlists sync between devices
 - Auto git pull
 - Fix Neovim
-- qtscrob package
 - Stylix all Waybar colors & Hyprland Borders
