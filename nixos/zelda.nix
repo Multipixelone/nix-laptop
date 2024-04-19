@@ -17,9 +17,6 @@
     efiSysMountPoint = "/boot";
     canTouchEfiVariables = true;
   };
-  environment.systemPackages = [
-    (import ./modules/scripts/ipod.nix {inherit pkgs;})
-  ];
   # Syncthing
   services.syncthing = {
     enable = true;
