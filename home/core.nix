@@ -30,6 +30,7 @@
     ./modules/secrets.nix
     ./modules/spicetify.nix
     ./modules/btop.nix
+    ./modules/bat.nix
     inputs.agenix.homeManagerModules.default
   ];
   fonts.fontconfig.enable = true;
