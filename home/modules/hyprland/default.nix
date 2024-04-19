@@ -137,7 +137,10 @@ in {
   home.file = {
     ".config/hypr/hyprpaper.conf".text = ''
       preload = ${wallpaper}
+      preload = ${sidewallpaper}
       wallpaper = eDP-1, ${wallpaper}
+      wallpaper = DP-1,${wallpaper}
+      wallpaper = DP-3,${sidewallpaper}
     '';
     ".config/hypr/pyprland.toml".text = ''
       [pyprland]
