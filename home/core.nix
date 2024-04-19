@@ -28,6 +28,7 @@
     inputs.nix-index-database.hmModules.nix-index
     ./modules/hyprland/default.nix
     ./modules/secrets.nix
+    ./modules/spicetify.nix
     inputs.agenix.homeManagerModules.default
   ];
   fonts.fontconfig.enable = true;
@@ -45,7 +46,6 @@
     strawberry
     anki
     plexamp
-    spotify
     blanket
     _1password-gui
     _1password

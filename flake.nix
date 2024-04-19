@@ -33,6 +33,7 @@
       url = "git+ssh://git@github.com/Multipixelone/nix-secrets.git";
       flake = false;
     };
+    spicetify-nix.url = "github:the-argus/spicetify-nix";
   };
   outputs = inputs @ {
     nixpkgs,
