@@ -9,6 +9,7 @@
   age.identityPaths = [
     "/home/tunnel/.ssh/agenix"
   ];
+  age.secretsDir = "/home/tunnel/.secrets";
   age.secrets."scrobblehome" = {
     file = "${inputs.secrets}/scrobble.age";
   };

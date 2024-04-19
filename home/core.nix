@@ -114,6 +114,7 @@
   services.mopidy = {
     enable = true;
     extensionPackages = with pkgs; [mopidy-mpd mopidy-iris mopidy-mpris mopidy-scrobbler mopidy-local mopidy-spotify];
+    extraConfigFiles = ["${config.age.secrets."scrobblehome".path}"];
     settings = {
       local = {
         media_dir = [
@@ -125,10 +126,6 @@
         enabled = true;
         country = "US";
         locale = "en_US";
-      };
-      scrobbler = {
-        username = "Tunnelmaker";
-        password = config.age.secrets."scrobblehome".path;
       };
       m3u = {
         enabled = true;
