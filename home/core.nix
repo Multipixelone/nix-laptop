@@ -17,6 +17,7 @@
     RESTIC_PASSWORD_FILE = config.age.secrets."restic/passwordhome".path;
     RCLONE_CONFIG = config.age.secrets."restic/rclone".path;
     RESTIC_REPOSITORY = "rclone:onedrive:Backups/${osConfig.networking.hostName}";
+    MOPIDY_PLAYLISTS = "/home/tunnel/.local/share/mopidy/m3u";
   };
   systemd.user.startServices = "sd-switch";
   imports = [
@@ -134,7 +135,7 @@
       };
       m3u = {
         enabled = true;
-        playlists_dir = "/home/tunnel/Music/Playlists";
+        playlists_dir = "/home/tunnel/.local/share/mopidy/m3u";
         base_dir = "";
       };
     };
