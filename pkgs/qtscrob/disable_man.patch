@@ -1,0 +1,13 @@
+diff --git a/src/cli/cli.pro b/src/cli/cli.pro
+index 6879e0c..af15148 100755
+--- a/src/cli/cli.pro
++++ b/src/cli/cli.pro
+@@ -22,8 +22,6 @@ unix:mac {
+ 
+ unix:!mac {
+     INSTALLS += target \
+-                man \
+-                man-compress
+ 
+     target.path = $$BINDIR
+ 

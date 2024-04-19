@@ -32,7 +32,7 @@
     libsForQt5.kio-extras
     brightnessctl
     inputs.agenix.packages.${pkgs.system}.default
-    #inputs.packages.${pkgs.system}.qtscrob
+    (pkgs.libsForQt5.callPackage ../pkgs/qtscrob/default.nix {})
   ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   # Nix Stuff
