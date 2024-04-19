@@ -5,3 +5,4 @@
 - Auto git pull
 - Fix Neovim
 - qtscrob package
+- Stylix all Waybar colors & Hyprland Borders
