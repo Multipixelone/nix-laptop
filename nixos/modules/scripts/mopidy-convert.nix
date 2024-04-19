@@ -1,6 +1,6 @@
 {pkgs, ...}:
 pkgs.writeShellApplication {
-  name = "mopidy-playlist";
+  name = "mopidy-convert";
   runtimeInputs = [pkgs.jq];
 
   text = ''
