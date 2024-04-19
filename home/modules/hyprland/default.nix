@@ -43,9 +43,6 @@ in {
   };
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.extraConfig = ''
-    env = GDK_SCALE,2
-    env = QT_AUTO_SCREEN_SCALE_FACTOR,1
-    env = QT_SCALE_FACTOR,2
     env = XDG_SCREENSHOTS_DIR,/home/tunnel/Pictures/Screenshots
     env = QT_QPA_PLATFORM,wayland
     env = QT_QPA_PLATFORMTHEME,qt5ct
