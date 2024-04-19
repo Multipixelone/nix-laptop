@@ -2,7 +2,7 @@
 pkgs.writeShellApplication {
   name = "ipod-sync";
 
-  runtimeInputs = [pkgs.rsync];
+  runtimeInputs = [pkgs.rsync (import ./mopidy-convert.nix {inherit pkgs;})];
 
   text = ''
     OUTPUT_PLAYLIST_DIR="/home/tunnel/Music/Playlists"
@@ -34,6 +34,9 @@ pkgs.writeShellApplication {
 
           echo "Processed $FILE -> $OUTPUT_FILE"
           echo "Playlist also saved to ''${OUTPUT_PLAYLIST_DIR}/''${OUTPUT_FILE}"
+          echo "Converting playlists to mopidy local files"
+          cd $OUTPUT_PLAYLIST_DIR
+          mopidy-convert
       done
     else
       echo "No playlists to convert."
