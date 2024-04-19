@@ -1,19 +1,6 @@
 {pkgs, ...}: let
-  # idle daemon definition
   idle = pkgs.hypridle + "/bin/hypridle";
-  # write "lock-script" and set ${lock} to the output path of the script in the nix store
-  lock =
-    pkgs.writeShellApplication {
-      name = "lock-script";
-      runtimeInputs = [pkgs.grim pkgs.imagemagick pkgs.hyprlock];
-      text = ''
-            grim -s 1.5 -l 0 ~/.cache/screenlock.png
-        convert ~/.cache/screenlock.png -scale 20% -blur 0x2 -resize 200% ~/.cache/screenlock.png
-        hyprlock
-
-      '';
-    }
-    + "/bin/lock-script";
+  lock = pkgs.hyprlock + "/bin/hyprlock";
 in {
   home.file = {
     ".config/hypr/hypridle.conf".text = ''
@@ -53,9 +40,37 @@ in {
       }
     '';
     ".config/hypr/hyprlock.conf".text = ''
+      $font = PragmataPro Liga
       background {
         monitor =
-        path = /home/tunnel/.cache/screenlock.png
+        path = screenshot
+        blur_passes = 2
+        blur_size = 7
+        noise = 0.0117
+        contrast = 0.8916
+        brightness = 0.8172
+        vibrancy = 0.1696
+        vibrancy_darkness = 0.0
+      }
+      label {
+        monitor =
+        text = cmd[update:30000] echo "$(date +"%R")"
+        color = rgb(245, 224, 220)
+        font_size = 90
+        font_family = $font
+        position = -30, 0
+        halign = right
+        valign = top
+      }
+      label {
+        monitor = 
+        text = cmd[update:43200000] echo "$(date +"%A, %d %B %Y")"
+        color = rgb(245, 224, 220)
+        font_size = 25
+        font_family = $font
+        position = -30, -150
+        halign = right
+        valign = top
       }
       input-field {
           monitor =
