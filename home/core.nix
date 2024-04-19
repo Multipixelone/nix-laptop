@@ -29,6 +29,7 @@
     ./modules/hyprland/default.nix
     ./modules/secrets.nix
     ./modules/spicetify.nix
+    ./modules/btop.nix
     inputs.agenix.homeManagerModules.default
   ];
   fonts.fontconfig.enable = true;
