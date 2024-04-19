@@ -9,6 +9,7 @@
   imports = [
     ./modules/greetd.nix
     ./modules/backup.nix
+    ./modules/security.nix
   ];
   hardware.enableRedistributableFirmware = true;
   environment.systemPackages = with pkgs; [
