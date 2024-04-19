@@ -6,3 +6,4 @@
 - Fix Neovim
 - Stylix all Waybar colors & Hyprland Borders
 - Import last.fm password secret into mopidy
+- lf file manager
