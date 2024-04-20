@@ -74,4 +74,20 @@
       User = "tunnel";
     };
   };
+  environment.systemPackages = [
+    (pkgs.writeShellApplication {
+      name = "ipod-sync";
+      runtimeInputs = [pkgs.rsync];
+      text = ''
+      IPOD_DIR="/run/media/tunnel/FINNR_S IPO"
+      IPOD_PLAYLISTS_DIR="/home/tunnel/Music/.ipod"
+      MUSIC_DIR="/media/Data/Music"
+      if [ -d "$IPOD_DIR" ]; then
+        rsync -vh --modify-window=1 --exclude="*.csv" --update --recursive --times --info=progress2 --no-inc-recursive "''${IPOD_PLAYLISTS_DIR}/" "''${IPOD_DIR}/Playlists/"
+        echo "Playlists synced. Syncing music..."
+        rsync -vh --modify-window=1 --update --recursive --times --info=progress2 --no-inc-recursive "''${MUSIC_DIR}/" "''${IPOD_DIR}/"
+      fi
+    '';
+    })
+  ];
 }
