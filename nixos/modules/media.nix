@@ -38,6 +38,7 @@
 
       OUTPUT_PLAYLIST_DIR="/home/tunnel/Music/Playlists"
       MOPIDY_PLAYLISTS_DIR="/home/tunnel/.local/share/mopidy/m3u"
+      IPOD_PLAYLISTS_DIR="/home/tunnel/Music/.ipod"
       MUSIC_DIR="/media/Data/Music"
       SECRET_FILE=${config.age.secrets."plex".path}
       read -r PLEX_TOKEN < "$SECRET_FILE"
@@ -52,18 +53,21 @@
         output_file="''${name}.m3u8"
         output_path="''${OUTPUT_PLAYLIST_DIR}/$output_file"
         mopidy_path="''${MOPIDY_PLAYLISTS_DIR}/$output_file"
+        ipod_path="''${IPOD_PLAYLISTS_DIR}/$output_file"
 
         echo "downloading $name"
         curl http://alexandria:32400/playlists/"$playlist_id"/items?X-Plex-Token="$PLEX_TOKEN" | xmlstarlet sel -t -v '//Track/Media/Part/@file' -n | sed 's/amp;//g' | awk 'BEGIN { print "#EXTM3U" } { gsub("/volume1/Media/Music", "'"$MUSIC_DIR"'", $0); print }' > "$output_path"
         echo "saved to $output_path"
-
+        sed 's/\/media\/Data\/Music//g' "$output_path" > "$ipod_path"
+        echo "saved to $ipod_path"
+        rm "$mopidy_path"
         while IFS= read -r line; do
           processed_line=$(convert_filename "$line")
           echo "$processed_line" >> "$mopidy_path"
         done < <(tail -n +2 "$output_path")  # Read from the file, skipping the first line
         echo "saved to $mopidy_path"
       done
-      echo "all playlists downloaded & saved to $OUTPUT_PLAYLIST_DIR and $MOPIDY_PLAYLISTS_DIR"
+      echo "all playlists downloaded & saved to $OUTPUT_PLAYLIST_DIR, $MOPIDY_PLAYLISTS_DIR, and $IPOD_PLAYLISTS_DIR"
     '';
     serviceConfig = {
       Type = "oneshot";
