@@ -174,7 +174,8 @@ in {
         "image#album-art" = {
           exec = "${albumart}";
           size = 30;
-          interval = 5;
+          interval = 30;
+          signal = 5;
         };
         "hyprland/workspaces" = {
           on-click = "activate";

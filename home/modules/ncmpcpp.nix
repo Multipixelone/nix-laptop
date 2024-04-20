@@ -8,7 +8,7 @@
       visualizer_type = "ellipse";
       visualizer_look = "+|";
       playlist_display_mode = "columns";
-      #execute_on_song_change = "bash ~/.config/ncmpcpp/mpd-notification";
+      execute_on_song_change = "pkill -RTMIN+5 waybar";
       message_delay_time = 1;
       autocenter_mode = "yes";
       centered_cursor = "yes";
