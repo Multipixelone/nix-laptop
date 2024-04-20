@@ -5,6 +5,15 @@
   ...
 }: let
   mediaplayer = pkgs.callPackage ./mediaplayer.nix {};
+  albumart = pkgs.writeShellApplication {
+    name = "mopidy-albumart";
+    runtimeInputs = [pkgs.playerctl];
+    text = ''
+    art_url=$(playerctl -p mopidy metadata mpris:artUrl)
+    filename=''${art_url##*/}
+    echo "/home/tunnel/.local/share/mopidy/local/images/$filename"
+    '';
+  } + /bin/mopidy-albumart;
 in {
   programs.waybar = {
     enable = true;
@@ -77,9 +86,16 @@ in {
         margin: 5px 0;
       }
       #custom-playerlabel {
-        border-radius: 1rem;
+        border-radius: 0px 1rem 1rem 0px;
         background-color: @surface0;
-        padding: 0.5rem;
+        padding: 0px 0.5rem 0px 0px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+      #image {
+        border-radius: 1rem 0px 0px 1rem;
+        background-color: @surface0;
+        padding: 0px 0.5rem 0px 0.5rem;
         margin-top: 5px;
         margin-bottom: 5px;
       }
@@ -145,7 +161,7 @@ in {
         layer = "top";
         position = "top";
         output = lib.mkIf (osConfig.networking.hostName == "link") "DP-1";
-        modules-left = ["hyprland/workspaces" "custom/playerlabel"];
+        modules-left = ["hyprland/workspaces" "image#album-art" "custom/playerlabel"];
         modules-center = ["clock"];
         #modules-right = ["network" "pulseaudio" "battery" "tray"];
         modules-right = lib.mkIf (osConfig.networking.hostName == "zelda") ["network" "pulseaudio" "backlight" "battery" "tray"];
@@ -154,6 +170,11 @@ in {
           return-type = "json";
           max-length = 80;
           exec = "${mediaplayer}/bin/mediaplayer.py";
+        };
+        "image#album-art" = {
+          exec = "${albumart}";
+          size = 30;
+          interval = 5;
         };
         "hyprland/workspaces" = {
           on-click = "activate";
