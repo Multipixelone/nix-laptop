@@ -47,7 +47,7 @@ pkgs.writeShellApplication {
           # Process the line using convert_filename
           processed_line=$(convert_filename "$line")
           # Write the processed line to the output file
-          echo "$processed_line" >> "$output_file" 
+          echo "$processed_line" >> "$output_file"
         done < <(tail -n +2 "$file")  # Read from the file, skipping the first line
       fi
     done

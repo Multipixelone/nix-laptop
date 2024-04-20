@@ -63,7 +63,7 @@ in {
         valign = top
       }
       label {
-        monitor = 
+        monitor =
         text = cmd[update:43200000] echo "$(date +"%A, %d %B %Y")"
         color = rgb(245, 224, 220)
         font_size = 25
