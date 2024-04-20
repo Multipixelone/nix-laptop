@@ -60,7 +60,7 @@
         echo "saved to $output_path"
         sed 's/\/media\/Data\/Music//g' "$output_path" > "$ipod_path"
         echo "saved to $ipod_path"
-        rm "$mopidy_path"
+        rm -f "$mopidy_path"
         while IFS= read -r line; do
           processed_line=$(convert_filename "$line")
           echo "$processed_line" >> "$mopidy_path"
