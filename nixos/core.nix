@@ -40,6 +40,7 @@
     yabridgectl
     pulseaudioFull
     (import ./modules/scripts/ipod.nix {inherit pkgs;})
+    (import ./modules/scripts/download-playlists.nix {inherit pkgs;})
   ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   # Nix Stuff

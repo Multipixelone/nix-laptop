@@ -13,9 +13,6 @@
   age.secrets."scrobblehome" = {
     file = "${inputs.secrets}/media/scrobble.age";
   };
-  age.secrets."plex" = {
-    file = "${inputs.secrets}/media/plextoken.age";
-  };
   age.secrets."restic/passwordhome" = {
     file = "${inputs.secrets}/restic/password.age";
   };
