@@ -140,6 +140,7 @@ in {
       wallpaper = eDP-1, ${wallpaper}
       wallpaper = DP-1,${wallpaper}
       wallpaper = DP-3,${sidewallpaper}
+      splash = false
     '';
     ".config/hypr/pyprland.toml".text = ''
       [pyprland]
