@@ -8,3 +8,4 @@
 - Import last.fm password secret into mopidy
 - lf file manager
 - reorganize home modules
+- night shift for devices
