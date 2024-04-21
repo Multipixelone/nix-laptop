@@ -4,11 +4,19 @@
   inputs,
   ...
 }: {
-  age.secrets."plex" = {
-    file = "${inputs.secrets}/media/plextoken.age";
-    mode = "770";
-    owner = "tunnel";
-    group = "users";
+  age.secrets = {
+    "plex" = {
+      file = "${inputs.secrets}/media/plextoken.age";
+      mode = "770";
+      owner = "tunnel";
+      group = "users";
+    };
+    "qtscrob" = {
+      file = "${inputs.secrets}/media/qtscrob.age";
+      mode = "770";
+      owner = "tunnel";
+      group = "users";
+    };
   };
   systemd.timers."playlist-downloader" = {
     wantedBy = ["timers.target"];
@@ -78,17 +86,19 @@
   environment.systemPackages = [
     (pkgs.writeShellApplication {
       name = "ipod-sync";
-      runtimeInputs = [pkgs.rsync];
+      runtimeInputs = [pkgs.rsync (pkgs.libsForQt5.callPackage ../../pkgs/qtscrob/default.nix {})];
       text = ''
-      IPOD_DIR="/run/media/tunnel/FINNR_S IPO"
-      IPOD_PLAYLISTS_DIR="/home/tunnel/Music/.ipod"
-      MUSIC_DIR="/media/Data/Music"
-      if [ -d "$IPOD_DIR" ]; then
-        rsync -vh --modify-window=1 --exclude="*.csv" --update --recursive --times --info=progress2 --no-inc-recursive "''${IPOD_PLAYLISTS_DIR}/" "''${IPOD_DIR}/Playlists/"
-        echo "Playlists synced. Syncing music..."
-        rsync -vh --modify-window=1 --update --recursive --times --info=progress2 --no-inc-recursive "''${MUSIC_DIR}/" "''${IPOD_DIR}/"
-      fi
-    '';
+        IPOD_DIR="/run/media/tunnel/FINNR_S IPO"
+        IPOD_PLAYLISTS_DIR="/home/tunnel/Music/.ipod"
+        MUSIC_DIR="/media/Data/Music"
+        CONFIG_FILE=${config.age.secrets."qtscrob".path}
+        if [ -d "$IPOD_DIR" ]; then
+          scrobbler -c $CONFIG_FILE -f -l $IPOD_DIR
+          rsync -vh --modify-window=1 --exclude="*.csv" --update --recursive --times --info=progress2 --no-inc-recursive "''${IPOD_PLAYLISTS_DIR}/" "''${IPOD_DIR}/Playlists/"
+          echo "Playlists synced. Syncing music..."
+          rsync -vh --modify-window=1 --update --recursive --times --info=progress2 --no-inc-recursive "''${MUSIC_DIR}/" "''${IPOD_DIR}/"
+        fi
+      '';
     })
   ];
 }
