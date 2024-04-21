@@ -86,7 +86,7 @@
   environment.systemPackages = [
     (pkgs.writeShellApplication {
       name = "ipod-sync";
-      runtimeInputs = [pkgs.rsync (pkgs.libsForQt5.callPackage ../../pkgs/qtscrob/default.nix {})];
+      runtimeInputs = [pkgs.rsync];
       text = ''
         IPOD_DIR="/run/media/tunnel/FINNR_S IPO"
         IPOD_PLAYLISTS_DIR="/home/tunnel/Music/.ipod"
