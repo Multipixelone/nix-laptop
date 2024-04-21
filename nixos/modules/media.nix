@@ -93,7 +93,7 @@
         MUSIC_DIR="/media/Data/Music"
         CONFIG_FILE=${config.age.secrets."qtscrob".path}
         if [ -d "$IPOD_DIR" ]; then
-          scrobbler -c $CONFIG_FILE -f -l $IPOD_DIR
+          scrobbler -c "$CONFIG_FILE" -f -l "$IPOD_DIR"
           rsync -vh --modify-window=1 --exclude="*.csv" --update --recursive --times --info=progress2 --no-inc-recursive "''${IPOD_PLAYLISTS_DIR}/" "''${IPOD_DIR}/Playlists/"
           echo "Playlists synced. Syncing music..."
           rsync -vh --modify-window=1 --update --recursive --times --info=progress2 --no-inc-recursive "''${MUSIC_DIR}/" "''${IPOD_DIR}/"
