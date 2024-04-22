@@ -11,6 +11,7 @@ pkgs.writeShellApplication {
     height=''${2:-2160}
     refresh_rate=''${3:-60}
     mon_string="DP-1,''${width}x''${height}@''${refresh_rate},1200x0,1"
+    hyprctl keyword monitor "DP-3,disable"
     hyprctl keyword monitor "$mon_string"
   '';
 }
