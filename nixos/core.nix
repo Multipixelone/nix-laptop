@@ -11,6 +11,7 @@
     ./modules/backup.nix
     ./modules/security.nix
     ./modules/media.nix
+    ./modules/gamestream.nix
   ];
   hardware.enableRedistributableFirmware = true;
   environment.systemPackages = with pkgs; [

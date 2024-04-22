@@ -18,18 +18,12 @@
     packages = with pkgs; [terminus_font];
     keyMap = "us";
   };
-  services.sunshine = {
-    enable = true;
-    capSysAdmin = true;
-    openFirewall = true;
-  };
   networking.useDHCP = lib.mkDefault false;
   hardware.opengl.driSupport = true; # This is already enabled by default
   hardware.opengl.driSupport32Bit = true; # For 32 bit applications
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   environment.systemPackages = [
-    (import ./modules/scripts/streammon.nix {inherit pkgs;})
     (import ./modules/scripts/sleep.nix {inherit pkgs;})
     inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
   ];
