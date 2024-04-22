@@ -8,6 +8,8 @@
   sh = pkgs.bash + "/bin/bash";
   moondeck = "/home/tunnel/Documents/appimages/MoonDeckBuddy-1.6.1-x86_64.AppImage";
   appimagerun = pkgs.appimage-run + "/bin/appimage-run";
+  gamemoderun = pkgs.gamemode + "/bin/gamemoderun";
+  gamescope = pkgs.gamescope + "/bin/gamescope";
   streammon =
     pkgs.writeShellApplication {
       name = "streammon";
