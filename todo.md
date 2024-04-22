@@ -9,3 +9,5 @@
 - lf file manager
 - reorganize home modules
 - night shift for devices
+- sunshine configuration at a nix level
+  - moondeck automatic installation to the nix-store
