@@ -18,6 +18,11 @@
     packages = with pkgs; [terminus_font];
     keyMap = "us";
   };
+  services.sunshine = {
+    enable = true;
+    capSysAdmin = true;
+    openFirewall = true;
+  };
   networking.useDHCP = lib.mkDefault false;
   hardware.opengl.driSupport = true; # This is already enabled by default
   hardware.opengl.driSupport32Bit = true; # For 32 bit applications
