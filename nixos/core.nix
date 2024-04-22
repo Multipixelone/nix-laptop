@@ -59,6 +59,14 @@
     shell = pkgs.fish;
     extraGroups = ["networkmanager" "wheel" "audio" "libvirtd" "plugdev" "dialout" "video" "kvm" "libvirt" "input"];
   };
+  users.users.nixremote = {
+    name = "nixremote";
+    home = "/home/nixremote";
+    shell = "/bin/none";
+    isSystemUser = true;
+    group = "nixremote";
+  };
+  users.groups.nixremote = {};
   time.timeZone = "America/New_York";
   # Theme
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
