@@ -41,6 +41,9 @@
     yabridge
     yabridgectl
     pulseaudioFull
+    (qgis.override {
+      extraPythonPackages = ps: [ps.pandas];
+    })
   ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   # Nix Stuff
