@@ -1,4 +1,8 @@
-{config, inputs, ...}: {
+{
+  config,
+  inputs,
+  ...
+}: {
   age.secrets = {
     "attic".file = "${inputs.secrets}/attic.age";
   };
