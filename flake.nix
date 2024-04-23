@@ -34,6 +34,7 @@
       flake = false;
     };
     spicetify-nix.url = "github:the-argus/spicetify-nix";
+    attic.url = "github:zhaofengli/attic";
   };
   outputs = inputs @ {
     nixpkgs,
@@ -74,6 +75,7 @@
           inputs.musnix.nixosModules.musnix
           inputs.stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
+          inputs.attic.nixosModules.atticd
           agenix.nixosModules.default
           {
             home-manager.useGlobalPkgs = true;
