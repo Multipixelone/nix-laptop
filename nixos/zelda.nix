@@ -59,6 +59,10 @@
           path = "/home/tunnel/Pictures/Screenshots";
           devices = ["link" "alexandria"];
         };
+        "qgis" = {
+          path = "/home/tunnel/Documents/QGIS";
+          devices = ["link" "alexandria"];
+        };
       };
     };
   };
