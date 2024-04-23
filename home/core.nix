@@ -117,7 +117,7 @@
   services.mopidy = {
     enable = true;
     extensionPackages = with pkgs; [mopidy-mpd mopidy-iris mopidy-mpris mopidy-scrobbler mopidy-local mopidy-spotify];
-    extraConfigFiles = ["${config.age.secrets."scrobblehome".path}"];
+    extraConfigFiles = ["${config.age.secrets."scrobblehome".path}" "${config.age.secrets."spotify".path}"];
     settings = {
       local = {
         media_dir = [
