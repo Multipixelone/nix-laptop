@@ -6,7 +6,7 @@
   hyprctl = pkgs.hyprland + "/bin/hyprctl";
   steam = pkgs.steam + "/bin/steam";
   sh = pkgs.bash + "/bin/bash";
-  moondeck = "/home/tunnel/Documents/appimages/MoonDeckBuddy-1.6.1-x86_64.AppImage";
+  moondeck = pkgs.qt6.callPackage ../../pkgs/moondeck/default.nix {};
   appimagerun = pkgs.appimage-run + "/bin/appimage-run";
   gamemoderun = pkgs.gamemode + "/bin/gamemoderun";
   gamescope = pkgs.gamescope + "/bin/gamescope";
@@ -54,8 +54,9 @@ in {
         }
         {
           name = "MoonDeckStream";
-          cmd = "${appimagerun} ${moondeck} --exec MoonDeckStream";
+          cmd = "${moondeck}/bin/MoonDeckStream";
           prep-cmd = prep;
+          auto-detatch = false;
         }
       ];
     };
@@ -64,7 +65,7 @@ in {
     description = "MoonDeck Buddy";
     after = ["graphical-session.target"];
     serviceConfig = {
-      ExecStart = "${appimagerun} ${moondeck} --exec MoonDeckBuddy";
+      ExecStart = "${moondeck}/bin/MoonDeckBuddy";
     };
   };
 }
