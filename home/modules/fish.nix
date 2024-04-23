@@ -25,6 +25,7 @@
       fetch = "nix run nixpkgs#nitch";
       ff = "nix run nixpkgs#fastfetch";
       alej = "nix run nixpkgs#alejandra .";
+      zeldab = "nix build .#nixosConfigurations.zelda.config.system.build.toplevel && attic push tunnel result";
     };
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
