@@ -10,6 +10,7 @@
     ./core.nix
     ./modules/gamemode.nix
     ./modules/rgb.nix
+    ./modules/gamestream.nix
   ];
   hardware.i2c.enable = true;
   console = {
