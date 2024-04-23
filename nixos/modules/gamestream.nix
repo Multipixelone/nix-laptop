@@ -63,7 +63,8 @@ in {
   };
   systemd.user.services.moondeck = {
     description = "MoonDeck Buddy";
-    after = ["graphical-session.target"];
+    wantedBy = ["graphical-session.target"];
+    partOf = ["graphical-session.target"];
     serviceConfig = {
       ExecStart = "${moondeck}/bin/MoonDeckBuddy";
     };
