@@ -116,7 +116,7 @@
   services.udiskie.enable = true;
   services.mopidy = {
     enable = true;
-    extensionPackages = with pkgs; [mopidy-mpd mopidy-iris mopidy-mpris mopidy-scrobbler mopidy-local mopidy-spotify];
+    extensionPackages = with pkgs; [mopidy-mpd mopidy-iris mopidy-mpris mopidy-scrobbler mopidy-local (callPackage ../pkgs/mopidy/spotify.nix {})];
     extraConfigFiles = ["${config.age.secrets."scrobblehome".path}" "${config.age.secrets."spotify".path}"];
     settings = {
       local = {
