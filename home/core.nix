@@ -55,6 +55,7 @@
     moonlight-qt
     imv
     zoom-us
+    qgis
 
     # LaTeX
     zotero
