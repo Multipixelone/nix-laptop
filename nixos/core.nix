@@ -38,7 +38,9 @@
     #(pkgs.callPackage ../pkgs/yabridge/default.nix {
     #  wine = inputs.nix-gaming.packages.${pkgs.system}.wine-tkg;
     #})
-    yabridge
+    (yabridge.override {
+      wine = inputs.nix-gaming.packages.${pkgs.system}.wine-tkg;
+    })
     yabridgectl
     pulseaudioFull
     (qgis.override {
