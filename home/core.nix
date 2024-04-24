@@ -76,6 +76,7 @@
     nom
     restic
     attic-client
+    ani-cli
     (inputs.nixvim.legacyPackages."${system}".makeNixvimWithModule {
       inherit pkgs;
       module = ./modules/vim;
