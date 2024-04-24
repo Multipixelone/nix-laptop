@@ -21,7 +21,6 @@
   };
   systemd.user.startServices = "sd-switch";
   imports = [
-    ./modules/gaming.nix
     ./modules/fish.nix
     ./modules/lf.nix
     ./modules/ncmpcpp.nix
