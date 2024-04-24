@@ -54,6 +54,7 @@
     moonlight-qt
     imv
     zoom-us
+    prismlauncher
 
     # LaTeX
     zotero

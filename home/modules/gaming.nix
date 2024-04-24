@@ -6,7 +6,6 @@
 }: {
   home.packages = with pkgs; [
     sunshine
-    prismlauncher
     gamescope
     discord
     lutris
