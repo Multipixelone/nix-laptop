@@ -11,5 +11,6 @@
     lutris
     gamemode
     mangohud
+    steamtinkerlaunch
   ];
 }
