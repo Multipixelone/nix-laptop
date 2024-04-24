@@ -24,5 +24,4 @@ python3Packages.buildPythonApplication rec {
     python3Packages.pytestCheckHook
     python3Packages.nose
   ];
-
 }

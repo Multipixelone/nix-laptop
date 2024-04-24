@@ -28,11 +28,10 @@ python3Packages.buildPythonApplication rec {
     python3Packages.pyproj
     python3Packages.rtree
     python3Packages.openmatrix
-    python3Packages.geopandas  
+    python3Packages.geopandas
   ];
 
   nativeBuildInputs = [
     python3Packages.pytestCheckHook
   ];
-
 }
