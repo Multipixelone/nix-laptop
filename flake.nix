@@ -35,7 +35,7 @@
     };
     spicetify-nix.url = "github:the-argus/spicetify-nix";
     attic.url = "github:zhaofengli/attic";
-    geospatial.url = "github:imincik/geospatial-nix";
+    geospatial.url = "github:Multipixelone/geospatial-nix";
     geospatial.inputs.nixpkgs.follows = "nixpkgs";    
   };
   outputs = inputs @ {
