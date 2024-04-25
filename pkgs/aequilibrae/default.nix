@@ -3,6 +3,8 @@
   fetchPypi,
   python3Packages,
   callPackage,
+  libspatialite,
+  sqlite,
 }:
 python3Packages.buildPythonApplication rec {
   pname = "aequilibrae";
@@ -32,6 +34,8 @@ python3Packages.buildPythonApplication rec {
     python3Packages.pyqt5
     (callPackage ./openmatrix.nix {})
     (callPackage ./spatialite.nix {})
+    libspatialite
+    sqlite
   ];
 
   nativeBuildInputs = [
