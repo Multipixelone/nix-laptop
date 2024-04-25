@@ -2,13 +2,14 @@
   lib,
   fetchPypi,
   python3Packages,
+  libspatialite,
 }:
 python3Packages.buildPythonApplication rec {
-  pname = "OpenMatrix";
-  version = "0.3.5.0";
+  pname = "spatialite";
+  version = "0.0.3";
   src = fetchPypi {
     inherit pname version;
-    hash = "sha256-HBAVW75l609ULDiIE9ja2PMX3+ZC+09hYnbJXmZUve4=";
+    hash = "sha256-oHYfI5pS8yaxTOQbphtmFN/MgIuXigvsSjfB3prZBx4=";
   };
   doCheck = false;
   #configurePhase = ''
@@ -19,6 +20,7 @@ python3Packages.buildPythonApplication rec {
     python3Packages.setuptools
     python3Packages.numpy
     python3Packages.tables
+    libspatialite
   ];
   nativeBuildInputs = [
   ];

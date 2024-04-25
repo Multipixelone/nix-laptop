@@ -1,19 +1,19 @@
 {
   lib,
-  fetchFromGitHub,
+  fetchPypi,
   python3Packages,
+  callPackage,
 }:
 python3Packages.buildPythonApplication rec {
   pname = "aequilibrae";
   version = "1.0.1";
 
-  src = fetchFromGitHub {
-    owner = "AequilibraE";
-    repo = "aequilibrae";
-    rev = "77edeae154a42dedb764ae4b2e1f32accdd3676c";
-    hash = "sha256-UJCGeFUBRdkhi/UQFYBgyRerF/0kW5X++SU3h8hVnrM=";
+  src = fetchPypi {
+    inherit pname version;
+    hash = "sha256-wpqA7/PLcfwrLm4JN0LkA85Jp59W22S90LvOJ9EXbEU=";
   };
   format = "pyproject";
+  doCheck = false;
 
   propagatedBuildInputs = [
     python3Packages.setuptools
@@ -27,11 +27,13 @@ python3Packages.buildPythonApplication rec {
     python3Packages.pandas
     python3Packages.pyproj
     python3Packages.rtree
-    python3Packages.openmatrix
     python3Packages.geopandas
+    python3Packages.pyarrow
+    python3Packages.pyqt5
+    (callPackage ./openmatrix.nix {})
+    (callPackage ./spatialite.nix {})
   ];
 
   nativeBuildInputs = [
-    python3Packages.pytestCheckHook
   ];
 }
