@@ -1,4 +1,8 @@
-{pkgs, inputs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./btop.nix
     ./bat.nix
@@ -25,5 +29,6 @@
     nom
     restic
     attic-client
+    kubectl
   ];
 }

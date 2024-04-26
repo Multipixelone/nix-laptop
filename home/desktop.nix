@@ -24,6 +24,10 @@
     ./programs/terminal/default.nix
     ./programs/media/default.nix
     ./programs/hyprland/default.nix
+    ./programs/apps/default.nix
+    ./programs/apps/auxprod.nix
+    ./programs/latex/default.nix
+    ./programs/browser/default.nix
     ./secrets.nix
     inputs.nix-index-database.hmModules.nix-index
     inputs.agenix.homeManagerModules.default
@@ -32,48 +36,15 @@
   home.packages = with pkgs; [
     sysstat
     # Apps
-    firefox
-    chromium
-    vscode
-    musescore
-    reaper
-    obsidian
-    gitkraken
-    vlc
-    strawberry
-    anki
-    plexamp
-    blanket
-    _1password-gui
     _1password
     moonlight-qt
-    imv
     zoom-us
-    prismlauncher
-
-    # LaTeX
-    zotero
-    texliveFull
-
-    # Terminal & Shell Stuff
 
     # Fonts
     (nerdfonts.override {fonts = ["FiraCode"];})
     (pkgs.callPackage ../pkgs/pragmata/default.nix {})
 
-    # Utilities
-    #waybar
-    #hyprpaper
-    rofi-wayland
-    profile-sync-daemon
     udiskie
-    kubectl
-
-    # Audio
-    pavucontrol
-    nicotine-plus
-    helvum
-    #playerctl
 
     just
     i2c-tools
