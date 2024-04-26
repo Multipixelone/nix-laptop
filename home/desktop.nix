@@ -21,16 +21,11 @@
   };
   systemd.user.startServices = "sd-switch";
   imports = [
-    ./modules/fish.nix
-    ./modules/lf.nix
-    ./modules/ncmpcpp.nix
-    ./modules/mpv.nix
+    ./programs/terminal/default.nix
+    ./programs/media/default.nix
+    ./programs/hyprland/default.nix
+    ./secrets.nix
     inputs.nix-index-database.hmModules.nix-index
-    ./modules/hyprland/default.nix
-    ./modules/secrets.nix
-    ./modules/spicetify.nix
-    ./modules/btop.nix
-    ./modules/bat.nix
     inputs.agenix.homeManagerModules.default
   ];
   fonts.fontconfig.enable = true;
@@ -61,26 +56,6 @@
     texliveFull
 
     # Terminal & Shell Stuff
-    fish
-    eza
-    fzf
-    fd
-    grc
-    btop
-    lazygit
-    kitty
-    bat
-    zellij
-    ripgrep
-    nil
-    nom
-    restic
-    attic-client
-    ani-cli
-    (inputs.nixvim.legacyPackages."${system}".makeNixvimWithModule {
-      inherit pkgs;
-      module = ./modules/vim;
-    })
 
     # Fonts
     (nerdfonts.override {fonts = ["FiraCode"];})

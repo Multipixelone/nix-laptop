@@ -8,8 +8,8 @@
   ...
 }: {
   imports = [
-    ./core.nix
-    ./modules/gaming.nix
+    ./desktop.nix
+    ./programs/gaming.nix
   ];
   systemd.user.services.ledfx = {
     Unit.Description = "ledfx light control";

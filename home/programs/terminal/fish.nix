@@ -13,8 +13,8 @@
     enable = true;
     shellAbbrs = {
       c = "clear";
-      ls = "exa --color=auto --icons --git";
-      la = "exa --color=auto --icons --git -lah";
+      ls = "eza --color=auto --icons --git";
+      la = "eza --color=auto --icons --git -lah";
       ii = "systemd-inhibit --what=idle --who=Caffeine --why=Caffeine --mode=block sleep inf";
       mx = "chmod +x";
       vim = "nvim";
