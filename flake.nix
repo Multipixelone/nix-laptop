@@ -36,7 +36,7 @@
     spicetify-nix.url = "github:the-argus/spicetify-nix";
     attic.url = "github:zhaofengli/attic";
     geospatial.url = "github:Multipixelone/geospatial-nix";
-    geospatial.inputs.nixpkgs.follows = "nixpkgs";    
+    geospatial.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = inputs @ {
     nixpkgs,
