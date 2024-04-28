@@ -3,7 +3,9 @@
   inputs,
   ...
 }: {
-  imports = [];
+  imports = [
+    ./foot.nix
+  ];
 
   home.packages = with pkgs; [
     vscode
