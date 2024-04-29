@@ -1,4 +1,8 @@
-{pkgs, inputs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   stylix.targets.foot.enable = true;
   programs.foot = {
     enable = true;
