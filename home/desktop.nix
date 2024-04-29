@@ -10,7 +10,6 @@
 }: {
   home.username = "tunnel";
   home.homeDirectory = "/home/tunnel";
-  stylix.targets.waybar.enable = false;
   home.sessionVariables = {
     EDITOR = "nvim";
     XDG_SCREENSHOTS_DIR = "/home/tunnel/Pictures/Screenshots";
@@ -28,6 +27,7 @@
     ./programs/apps/auxprod.nix
     ./programs/latex/default.nix
     ./programs/browser/default.nix
+    ./programs/theming/default.nix
     ./secrets.nix
     inputs.nix-index-database.hmModules.nix-index
     inputs.agenix.homeManagerModules.default
@@ -41,8 +41,6 @@
     zoom-us
 
     # Fonts
-    (nerdfonts.override {fonts = ["FiraCode"];})
-    (pkgs.callPackage ../pkgs/pragmata/default.nix {})
 
     udiskie
 
@@ -75,19 +73,6 @@
     forwardAgent = true;
   };
   home.stateVersion = "23.11";
-  gtk = {
-    enable = true;
-    theme = pkgs.lib.mkForce {
-      package = pkgs.arc-theme;
-      name = "Arc-Dark";
-    };
-    iconTheme = pkgs.lib.mkForce {
-      package = pkgs.papirus-icon-theme;
-      name = "Papirus-Dark";
-    };
-    #font = (pkgs.callPackage ../pkgs/pragmata/default.nix {});
-  };
-  stylix.targets.kde.enable = false;
   # Let home Manager install and manage itself.
   programs.command-not-found.enable = false;
   programs.nix-index.enable = true;
