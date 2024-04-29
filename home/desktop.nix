@@ -51,14 +51,6 @@
     pciutils # lspci
     usbutils # lsusb
   ];
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "vscode"
-      "obsidian"
-      "spotify"
-      "plexamp"
-      "zoom-us"
-    ];
   services.udiskie.enable = true;
   # basic configuration of git, please change to your own
   #wayland.windowManager.hyprland.enable = true;
