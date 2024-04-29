@@ -35,9 +35,6 @@
     brightnessctl
     inputs.agenix.packages.${pkgs.system}.default
     (pkgs.libsForQt5.callPackage ../pkgs/qtscrob/default.nix {})
-    #(pkgs.callPackage ../pkgs/yabridge/default.nix {
-    #  wine = inputs.nix-gaming.packages.${pkgs.system}.wine-tkg;
-    #})
     (yabridge.override {
       wine = inputs.nix-gaming.packages.${pkgs.system}.wine-tkg;
     })
