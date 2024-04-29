@@ -3,8 +3,8 @@
   fetchPypi,
   python3Packages,
   callPackage,
-  libspatialite,
   sqlite,
+  inputs,
 }:
 python3Packages.buildPythonApplication rec {
   pname = "aequilibrae";
@@ -33,8 +33,8 @@ python3Packages.buildPythonApplication rec {
     python3Packages.pyarrow
     python3Packages.pyqt5
     (callPackage ./openmatrix.nix {})
-    (callPackage ./spatialite.nix {})
-    libspatialite
+    (callPackage ./spatialite.nix {inherit inputs;})
+    inputs.geospatial.packages.x86_64-linux.libspatialite
     sqlite
   ];
 

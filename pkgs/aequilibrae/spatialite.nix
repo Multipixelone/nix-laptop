@@ -2,7 +2,7 @@
   lib,
   fetchPypi,
   python3Packages,
-  libspatialite,
+  inputs,
 }:
 python3Packages.buildPythonApplication rec {
   pname = "spatialite";
@@ -20,7 +20,7 @@ python3Packages.buildPythonApplication rec {
     python3Packages.setuptools
     python3Packages.numpy
     python3Packages.tables
-    libspatialite
+    inputs.geospatial.packages.x86_64-linux.libspatialite
   ];
   nativeBuildInputs = [
   ];
