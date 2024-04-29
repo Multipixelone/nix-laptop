@@ -20,6 +20,7 @@
         height=''${2:-2160}
         refresh_rate=''${3:-60}
         mon_string="DP-1,''${width}x''${height}@''${refresh_rate},1200x0,1"
+        curl -X 'PUT' 'http://link.bun-hexatonic.ts.net:8888/api/scenes' -H 'Content-Type: application/json' -d '{"id": "gaming-mode", "action": "activate"}'
         hyprctl keyword monitor "DP-3,disable"
         hyprctl keyword monitor "$mon_string"
       '';
@@ -32,6 +33,7 @@
 
       text = ''
         mon_string="DP-1,2560x1440@240,1200x0,1"
+        curl -X 'PUT' 'http://link.bun-hexatonic.ts.net:8888/api/scenes' -H 'Content-Type: application/json' -d '{"id": "main-purple", "action": "activate"}'
         hyprctl keyword monitor "DP-3,enable"
         hyprctl keyword monitor "$mon_string"
       '';
