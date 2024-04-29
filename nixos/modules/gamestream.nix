@@ -16,8 +16,8 @@
       runtimeInputs = [pkgs.findutils pkgs.gawk pkgs.coreutils pkgs.curl pkgs.hyprland];
 
       text = ''
-        HYPRLAND_INSTANCE_SIGNATURE=$(find /tmp/hypr -print0 -name '*.log' | xargs -0 stat -c '%Y %n' - | sort -rn | head -n 1 | cut -d ' ' -f2 | awk -F '/' '{print $4}')
-        export HYPRLAND_INSTANCE_SIGNATURE
+        #HYPRLAND_INSTANCE_SIGNATURE=$(find /tmp/hypr -print0 -name '*.log' | xargs -0 stat -c '%Y %n' - | sort -rn | head -n 1 | cut -d ' ' -f2 | awk -F '/' '{print $4}')
+        #export HYPRLAND_INSTANCE_SIGNATURE
         width=''${1:-3840}
         height=''${2:-2160}
         refresh_rate=''${3:-60}
