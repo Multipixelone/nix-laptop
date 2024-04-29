@@ -16,8 +16,6 @@
       runtimeInputs = [pkgs.findutils pkgs.gawk pkgs.coreutils pkgs.curl pkgs.hyprland];
 
       text = ''
-        #HYPRLAND_INSTANCE_SIGNATURE=$(find /tmp/hypr -print0 -name '*.log' | xargs -0 stat -c '%Y %n' - | sort -rn | head -n 1 | cut -d ' ' -f2 | awk -F '/' '{print $4}')
-        #export HYPRLAND_INSTANCE_SIGNATURE
         width=''${1:-3840}
         height=''${2:-2160}
         refresh_rate=''${3:-60}
@@ -27,10 +25,22 @@
       '';
     }
     + "/bin/streammon";
+  undo-command =
+    pkgs.writeShellApplication {
+      name = "undo-command";
+      runtimeInputs = [pkgs.findutils pkgs.gawk pkgs.coreutils pkgs.curl pkgs.hyprland];
+
+      text = ''
+        mon_string="DP-1,2560x1440@240,1200x0,1"
+        hyprctl keyword monitor "DP-3,enable"
+        hyprctl keyword monitor "$mon_string"
+      '';
+    }
+    + "/bin/undo-command";
   prep = [
     {
       do = "${sh} -c \"${streammon} \${SUNSHINE_CLIENT_WIDTH} \${SUNSHINE_CLIENT_HEIGHT}\"";
-      undo = "${hyprctl} reload";
+      undo = "${sh} -c \"${undo-command}\"";
     }
   ];
 in {
