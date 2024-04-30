@@ -4,6 +4,7 @@
 - Rework how playlists sync between devices
 - Auto git pull
 - Fix Neovim
+  - https://github.com/tree-sitter-grammars/tree-sitter-hyprlang
 - Stylix all Waybar colors & Hyprland Borders
 - Import last.fm password secret into mopidy
 - lf file manager
