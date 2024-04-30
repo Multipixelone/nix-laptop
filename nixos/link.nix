@@ -118,15 +118,25 @@
   #    fsType = "btrfs";
   #    options = [ "subvol=/@Arch" "compress=zstd:3" "noatime" "space_cache=v2" "autodefrag" ];
   #  };
-  fileSystems."/media/Data" = {
-    device = "/dev/disk/by-label/Data";
+  fileSystems."/media/TeraData" = {
+    device = "/dev/disk/by-label/TeraData";
     fsType = "btrfs";
-    options = ["subvol=/" "compress=zstd:3" "relatime" "ssd" "discard=async" "space_cache=v2"];
+    options = ["subvol=/@games" "compress=zstd:3" "relatime" "ssd" "discard=async" "space_cache=v2"];
+  };
+  fileSystems."/media/Data" = {
+    device = "/dev/disk/by-label/TeraData";
+    fsType = "btrfs";
+    options = ["subvol=/@data" "compress=zstd:3" "relatime" "ssd" "discard=async" "space_cache=v2"];
+  };
+  fileSystems."/home/tunnel/Games/ROMs" = {
+    device = "/dev/disk/by-label/TeraData";
+    fsType = "btrfs";
+    options = ["subvol=/@roms" "compress=zstd:3" "relatime" "ssd" "discard=async" "space_cache=v2"];
   };
   fileSystems."/volume1/Media" = {
-    device = "/dev/disk/by-label/Data";
+    device = "/dev/disk/by-label/TeraData";
     fsType = "btrfs";
-    options = ["subvol=/" "compress=zstd:3" "relatime" "ssd" "discard=async" "space_cache=v2"];
+    options = ["subvol=/@data" "compress=zstd:3" "relatime" "ssd" "discard=async" "space_cache=v2"];
   };
   fileSystems."/media/BigData" = {
     device = "/dev/disk/by-label/BigData";
