@@ -44,6 +44,7 @@ in {
   wayland.windowManager.hyprland.plugins = [
     #inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
   ];
+  wayland.windowManager.hyprland.systemd.variables = ["--all"];
   wayland.windowManager.hyprland.extraConfig = ''
     env = XDG_SCREENSHOTS_DIR,/home/tunnel/Pictures/Screenshots
     env = QT_QPA_PLATFORM,wayland
