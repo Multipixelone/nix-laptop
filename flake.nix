@@ -17,6 +17,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland.url = "github:hyprwm/Hyprland";
+    Hyprspace = {
+      url = "github:KZDKM/Hyprspace";
+      inputs.hyprland.follows = "hyprland";
+    };
     nix-gaming.url = "github:fufexan/nix-gaming";
     nixos-generators = {
       url = "github:nix-community/nixos-generators";

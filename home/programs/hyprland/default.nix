@@ -1,7 +1,6 @@
 {
-  config,
   pkgs,
-  nix-gaming,
+  inputs,
   lib,
   osConfig,
   ...
@@ -42,6 +41,9 @@ in {
     defaultTimeout = 5000;
   };
   wayland.windowManager.hyprland.enable = true;
+  wayland.windowManager.hyprland.plugins = [
+    inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
+  ];
   wayland.windowManager.hyprland.extraConfig = ''
     env = XDG_SCREENSHOTS_DIR,/home/tunnel/Pictures/Screenshots
     env = QT_QPA_PLATFORM,wayland
