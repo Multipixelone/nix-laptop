@@ -28,6 +28,8 @@ in {
       "$mod, N, exec, systemctl suspend"
       "$mod, V, togglefloating"
       "SUPER, F, fullscreen"
+      "$mod, T, exec, pypr toggle term"
+      "$mod, B, exec, pypr toggle volume"
       ", XF86AudioPlay, exec, ${playerctl} play-pause"
       ", XF86AudioNext, exec, ${playerctl} next"
       ", XF86AudioPrev, exec, ${playerctl} previous"

@@ -145,6 +145,22 @@ in {
     '';
     ".config/hypr/pyprland.toml".text = ''
       [pyprland]
+      plugins = ["scratchpads"]
+      [scratchpads.term]
+      animation = "fromTop"
+      command = "foot -a foot-dropterm"
+      class = "foot-dropterm"
+      size = "75% 60%"
+      max_size = "2560px 100%"
+      margin = 50
+
+      [scratchpads.volume]
+      animation = "fromRight"
+      command = "pavucontrol"
+      class = "pavucontrol"
+      size = "40% 90%"
+      unfocus = "hide"
+      lazy = true
     '';
   };
   programs.rofi = {
