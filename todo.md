@@ -10,5 +10,6 @@
 - lf file manager
 - reorganize home modules
 - night shift for devices
+- ROMs backup folder to new subvol on big ass drive that I am going to install
 
 Package: aequilibrae openmatrix
