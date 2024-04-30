@@ -154,6 +154,14 @@ in {
       max_size = "2560px 100%"
       margin = 50
 
+      [scratchpads.music]
+      animation = "fromLeft"
+      command = "foot -a foot-music ncmpcpp"
+      class = "foot-music"
+      size = "40% 90%"
+      unfocus = "hide"
+      lazy = true
+
       [scratchpads.volume]
       animation = "fromRight"
       command = "pavucontrol"
