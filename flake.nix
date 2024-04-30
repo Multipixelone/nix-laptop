@@ -43,10 +43,10 @@
     geospatial.inputs.nixpkgs.follows = "nixpkgs";
     anyrun.url = "github:Kirottu/anyrun";
     anyrun.inputs.nixpkgs.follows = "nixpkgs";
-      hyprgrass = {
-         url = "github:horriblename/hyprgrass";
-         inputs.hyprland.follows = "hyprland"; # IMPORTANT
-      };
+    hyprgrass = {
+      url = "github:horriblename/hyprgrass";
+      inputs.hyprland.follows = "hyprland"; # IMPORTANT
+    };
   };
   outputs = inputs @ {
     nixpkgs,

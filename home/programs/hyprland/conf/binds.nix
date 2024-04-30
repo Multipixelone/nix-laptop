@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   terminal = pkgs.foot + "/bin/foot";
   launcher = "anyrun";
   swayosd-client = pkgs.swayosd + "/bin/swayosd-client";
