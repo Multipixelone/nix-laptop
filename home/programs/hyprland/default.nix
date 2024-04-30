@@ -44,6 +44,7 @@ in {
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.plugins = [
     #inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
+    #inputs.hyprgrass.packages.${pkgs.system}.default
   ];
   wayland.windowManager.hyprland.systemd.variables = ["--all"];
   wayland.windowManager.hyprland.extraConfig = ''

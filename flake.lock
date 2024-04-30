@@ -696,6 +696,26 @@
         "type": "github"
       }
     },
+    "hyprgrass": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ]
+      },
+      "locked": {
+        "lastModified": 1714156846,
+        "narHash": "sha256-h0L8burwYwnO94M+jOXgcSKDPADrn0nGR79plFmVUcI=",
+        "owner": "horriblename",
+        "repo": "hyprgrass",
+        "rev": "b53e851499510518b69875dbba18c3f9800da53e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "horriblename",
+        "repo": "hyprgrass",
+        "type": "github"
+      }
+    },
     "hyprland": {
       "inputs": {
         "hyprcursor": "hyprcursor",
@@ -1202,6 +1222,7 @@
         "attic": "attic",
         "geospatial": "geospatial",
         "home-manager": "home-manager_2",
+        "hyprgrass": "hyprgrass",
         "hyprland": "hyprland",
         "musnix": "musnix",
         "nix-gaming": "nix-gaming",
