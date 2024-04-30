@@ -42,7 +42,7 @@ in {
   };
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.plugins = [
-    inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
+    #inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
   ];
   wayland.windowManager.hyprland.extraConfig = ''
     env = XDG_SCREENSHOTS_DIR,/home/tunnel/Pictures/Screenshots
