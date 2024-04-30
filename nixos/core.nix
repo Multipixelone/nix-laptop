@@ -3,7 +3,6 @@
   pkgs,
   lib,
   inputs,
-  stylix,
   ...
 }: {
   imports = [
@@ -64,11 +63,13 @@
   };
   time.timeZone = "America/New_York";
   # Theme
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-  stylix.polarity = "dark";
-  stylix.image = builtins.fetchurl {
-    url = "https://drive.usercontent.google.com/download?id=1OrRpU17DU78sIh--SNOVI6sl4BxE06Zi";
-    sha256 = "sha256:14nh77xn8x58693y2na5askm6612xqbll2kr6237y8pjr1jc24xp";
+  stylix = {
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    polarity = "dark";
+    image = builtins.fetchurl {
+      url = "https://drive.usercontent.google.com/download?id=1OrRpU17DU78sIh--SNOVI6sl4BxE06Zi";
+      sha256 = "sha256:14nh77xn8x58693y2na5askm6612xqbll2kr6237y8pjr1jc24xp";
+    };
   };
   stylix = {
     fonts = {
@@ -87,59 +88,63 @@
     };
   };
   # Boot
-  boot.plymouth.enable = true;
-  boot.loader.systemd-boot.enable = false;
-  boot.loader.grub = {
-    enable = true;
-    efiSupport = true;
-    device = "nodev";
-    #gfxmodeEfi = "3440x1440";
-    #lib.mkForce font = true;
-    font = lib.mkForce "${pkgs.callPackage ../pkgs/pragmata/default.nix {}}/share/fonts/truetype/PragmataPro_Bold_0827.ttf";
-    fontSize = 60;
-    #timeoutStyle = "hidden";
+  boot = {
+    plymouth.enable = true;
+    loader.systemd-boot.enable = false;
+    loader.grub = {
+      enable = true;
+      efiSupport = true;
+      device = "nodev";
+      #gfxmodeEfi = "3440x1440";
+      #lib.mkForce font = true;
+      font = lib.mkForce "${pkgs.callPackage ../pkgs/pragmata/default.nix {}}/share/fonts/truetype/PragmataPro_Bold_0827.ttf";
+      fontSize = 60;
+      #timeoutStyle = "hidden";
+    };
+    kernel.sysctl = {
+      "vm.max_map_count" = 2147483642;
+      "fs.inotify.max_user_watches" = 600000;
+    };
+    kernelPackages = pkgs.linuxPackages_zen;
+    binfmt.emulatedSystems = ["aarch64-linux"];
   };
-  boot.kernel.sysctl = {
-    "vm.max_map_count" = 2147483642;
-    "fs.inotify.max_user_watches" = 600000;
-  };
-  boot.kernelPackages = pkgs.linuxPackages_zen;
-  boot.binfmt.emulatedSystems = ["aarch64-linux"];
   # Networking
   networking.firewall.trustedInterfaces = ["tailscale0"];
   systemd.services.NetworkManager-wait-online.enable = false;
   networking.firewall.allowedUDPPorts = [config.services.tailscale.port];
   # System Services
   security.polkit.enable = true;
-  services.flatpak.enable = true;
-  services.gnome.gnome-keyring.enable = true;
-  services.openssh.enable = true;
-  services.tailscale.enable = true;
-  services.psd.enable = true;
-  services.udisks2.enable = true;
-  services.avahi.enable = true;
-  services.desktopManager.plasma6.enable = true;
-  services.xserver.enable = false;
-  services.printing.enable = true;
-  services.avahi.publish.userServices = true;
-  # Programs
-  programs.command-not-found.enable = false;
-  programs.ssh.startAgent = true;
-  programs.fish.enable = true;
-  programs.steam.enable = true;
-  programs.mosh.enable = true;
-  programs.wireshark.enable = true;
-  programs.nix-ld.enable = true;
-  programs.nm-applet.enable = true;
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/home/tunnel/Documents/Git/nix-laptop";
+  services = {
+    flatpak.enable = true;
+    gnome.gnome-keyring.enable = true;
+    openssh.enable = true;
+    tailscale.enable = true;
+    psd.enable = true;
+    udisks2.enable = true;
+    desktopManager.plasma6.enable = false;
+    xserver.enable = false;
+    printing.enable = true;
   };
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  # Programs
+  programs = {
+    command-not-found.enable = false;
+    ssh.startAgent = true;
+    fish.enable = true;
+    steam.enable = true;
+    mosh.enable = true;
+    wireshark.enable = true;
+    nix-ld.enable = true;
+    nm-applet.enable = true;
+    nh = {
+      enable = true;
+      clean.enable = true;
+      clean.extraArgs = "--keep-since 4d --keep 3";
+      flake = "/home/tunnel/Documents/Git/nix-laptop";
+    };
+    hyprland = {
+      enable = true;
+      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    };
   };
   # Wayland Stuff
   xdg = {
