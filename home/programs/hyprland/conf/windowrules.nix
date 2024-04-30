@@ -57,7 +57,6 @@
       "float,class:^(nm-applet)$"
     ];
     layerrule = [
-      "blur,anyrun"
       #"blur,waybar"
       "ignorezero,rofi"
       "blur,notifications"
