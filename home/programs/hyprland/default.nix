@@ -145,7 +145,6 @@ in {
     '';
     ".config/hypr/pyprland.toml".text = ''
       [pyprland]
-      plugins = ["expose"]
     '';
   };
   programs.rofi = {
