@@ -1,7 +1,6 @@
 {
   config,
   inputs,
-  agenix,
   ...
 }: {
   age.secrets = {

@@ -1,6 +1,5 @@
 {
   pkgs,
-  inputs,
   ...
 }: {
   stylix.targets.foot.enable = true;
