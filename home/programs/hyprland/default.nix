@@ -30,6 +30,7 @@ in {
     ./conf/workspaces.nix
     ./modules/lockidle.nix
     ./modules/waybar.nix
+    ./modules/anyrun.nix
   ];
   services.mako = {
     enable = true;
@@ -174,15 +175,5 @@ in {
       unfocus = "hide"
       lazy = true
     '';
-  };
-  programs.rofi = {
-    enable = true;
-    package = pkgs.rofi-wayland;
-    #theme = "Arc-Dark";
-    extraConfig = {
-      show-icons = true;
-      icon-theme = "Papirus Dark";
-      display-drun = "";
-    };
   };
 }

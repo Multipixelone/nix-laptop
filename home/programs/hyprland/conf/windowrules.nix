@@ -51,12 +51,13 @@
       "opacity 0.85 0.80,class:^(pavucontrol)$"
       "opacity 0.85 0.80,class:^(nm-applet)$"
       "opacity 0.85 0.80,class:^(org.kde.polkit-kde-authentication-agent-1)$"
+      "opacity 0.85 0.80,class:^(anyrun)$"
       # float rules
       "float,class:^(pavucontrol)$"
       "float,class:^(nm-applet)$"
     ];
     layerrule = [
-      "blur,rofi"
+      "blur,anyrun"
       #"blur,waybar"
       "ignorezero,rofi"
       "blur,notifications"

@@ -3,8 +3,7 @@
   ...
 }: let
   terminal = pkgs.foot + "/bin/foot";
-  rofi = pkgs.rofi-wayland + "/bin/rofi";
-  launcher = "${rofi} -show drun";
+  launcher = "anyrun";
   swayosd-client = pkgs.swayosd + "/bin/swayosd-client";
   brightness = pkgs.brightnessctl + "/bin/brightnessctl";
   playerctl = pkgs.playerctl + "/bin/playerctl";
