@@ -11,5 +11,8 @@
 - reorganize home modules
 - night shift for devices
 - ROMs backup folder to new subvol on big ass drive that I am going to install
+- Sunshine EDID extra monitor
+  - Hyprland config for the monitor to be away from the other ones
+  - Use exec with hypr dispatch to open things on the monitor
 
 Package: aequilibrae openmatrix
