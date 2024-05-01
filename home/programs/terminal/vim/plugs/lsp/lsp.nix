@@ -19,4 +19,7 @@
       };
     };
   };
+  plugins.trouble = {
+    enable = true;
+  };
 }
