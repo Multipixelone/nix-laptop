@@ -1,7 +1,14 @@
 {
+  plugins.copilot-cmp = {
+    enable = true;
+  };
+  plugins.copilot-lua = {
+    enable = true;
+    suggestion = {enabled = false;};
+    panel = {enabled = false;};
+  };
   plugins = {
     cmp-emoji = {enable = true;};
-    luasnip = {enable = true;};
     cmp = {
       enable = true;
       settings = {
@@ -34,11 +41,8 @@
         ];
 
         window = {
-          completion = {
-            border = "rounded";
-            winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None";
-          };
-          documentation = {border = "rounded";};
+          completion = {border = "solid";};
+          documentation = {border = "solid";};
         };
 
         mapping = {
@@ -61,6 +65,10 @@
     cmp-cmdline = {enable = false;}; # autocomplete for cmdline
   };
   extraConfigLua = ''
+            require("copilot").setup({
+            suggestion = { enabled = false },
+            panel = { enabled = false },
+          })
           luasnip = require("luasnip")
           kind_icons = {
             Text = "󰊄",
