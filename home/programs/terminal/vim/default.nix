@@ -16,6 +16,7 @@
     ./plugs/utils/whichkey.nix
     ./plugs/utils/telescope.nix
     ./plugs/ui/goyo.nix
+    ./plugs/ui/nvim-tree.nix
     ./plugs/utils/obsidian.nix
     ./plugs/utils/autopair.nix
     ./plugs/utils/comment.nix
