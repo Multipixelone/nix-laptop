@@ -55,6 +55,9 @@
       # float rules
       "float,class:^(pavucontrol)$"
       "float,class:^(nm-applet)$"
+
+      # tearing rules
+      "immediate,class:^(cs2)$"
     ];
     layerrule = [
       #"blur,waybar"

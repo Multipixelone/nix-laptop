@@ -56,6 +56,7 @@ in {
     env = XDG_SESSION_TYPE,wayland
     env = XDG_SESSION_DESKTOP,Hyprland
     env = MOZ_ENABLE_WAYLAND,1
+    env = WLR_DRM_NO_ATOMIC,1
     exec-once = foot --app-id=mpd ncmpcpp
     exec-once = ${polkit}
     exec-once = ${agent}
@@ -107,6 +108,7 @@ in {
     };
     general = {
       border_size = 3;
+      allow_tearing = true;
       gaps_in = 5;
       gaps_out = 5;
       "col.inactive_border" = pkgs.lib.mkForce "rgb(1e1e2e)";
