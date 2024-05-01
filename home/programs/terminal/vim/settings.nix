@@ -57,6 +57,7 @@
       grepformat = "%f:%l:%c:%m"; # FIgure out what this means LMAO
 
       showmode = false;
+      termguicolors = true;
     };
   };
 }
