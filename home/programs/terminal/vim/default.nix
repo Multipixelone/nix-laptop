@@ -12,6 +12,7 @@
     ./plugs/ui/bufferline.nix
     ./plugs/ui/lazygit.nix
     #./plugs/ui/telescope.nix
+    ./plugs/ui/noice.nix
     ./plugs/ui/goyo.nix
     ./plugs/ui/obsidian.nix
   ];
