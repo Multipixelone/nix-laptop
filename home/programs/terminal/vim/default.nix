@@ -13,6 +13,7 @@
     ./plugs/ui/lazygit.nix
     #./plugs/ui/telescope.nix
     ./plugs/ui/noice.nix
+    ./plugs/ui/notify.nix
     ./plugs/ui/goyo.nix
     ./plugs/ui/obsidian.nix
   ];
