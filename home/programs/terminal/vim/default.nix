@@ -17,5 +17,6 @@
     ./plugs/utils/telescope.nix
     ./plugs/ui/goyo.nix
     ./plugs/utils/obsidian.nix
+    ./plugs/utils/autopair.nix
   ];
 }
