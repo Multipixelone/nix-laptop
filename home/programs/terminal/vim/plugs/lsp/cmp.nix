@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   plugins.copilot-cmp = {
     enable = true;
   };
@@ -6,6 +6,19 @@
     enable = true;
     suggestion = {enabled = false;};
     panel = {enabled = false;};
+  };
+  plugins.luasnip = {
+    enable = true;
+    extraConfig = {
+      enable_autosnippets = true;
+      store_selection_keys = "<Tab>";
+    };
+    fromVscode = [
+      {
+        lazyLoad = true;
+        paths = "${pkgs.vimPlugins.friendly-snippets}";
+      }
+    ];
   };
   plugins = {
     cmp-emoji = {enable = true;};
