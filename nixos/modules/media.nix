@@ -52,8 +52,8 @@
       SECRET_FILE=${config.age.secrets."plex".path}
       read -r PLEX_TOKEN < "$SECRET_FILE"
 
-      playlist_names=( "monthly playlist" "forgotten faves" "good listening and learning" "slipped through" "vgm study" "amtrak" "mackin mabel")
-      playlist_ids=( "24562" "48614" "20340" "26220" "53423" "26224" "61577")
+      playlist_names=( "monthly playlist" "forgotten faves" "good listening and learning" "slipped through" "vgm study" "amtrak" "mackin mabel" "summer jams" )
+      playlist_ids=( "24562" "48614" "20340" "26220" "53423" "26224" "61577" "61792" )
       length=''${#playlist_names[@]}
 
       for (( i=0; i < length; i++ )); do
