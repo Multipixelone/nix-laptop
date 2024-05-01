@@ -10,12 +10,12 @@
     ./plugs/ui/lualine.nix
     ./plugs/ui/staline.nix
     ./plugs/ui/bufferline.nix
-    ./plugs/ui/lazygit.nix
+    ./plugs/utils/lazygit.nix
     ./plugs/ui/noice.nix
     ./plugs/ui/notify.nix
-    ./plugs/ui/whichkey.nix
-    ./plugs/ui/telescope.nix
+    ./plugs/utils/whichkey.nix
+    ./plugs/utils/telescope.nix
     ./plugs/ui/goyo.nix
-    ./plugs/ui/obsidian.nix
+    ./plugs/utils/obsidian.nix
   ];
 }
