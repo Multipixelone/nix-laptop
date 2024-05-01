@@ -47,6 +47,7 @@
       url = "github:horriblename/hyprgrass";
       inputs.hyprland.follows = "hyprland"; # IMPORTANT
     };
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
   };
   outputs = inputs @ {
     nixpkgs,
@@ -62,6 +63,7 @@
     Hyprspace,
     hyprgrass,
     anyrun,
+    chaotic,
     ...
   }: {
     nixosConfigurations = {
@@ -93,6 +95,7 @@
           home-manager.nixosModules.home-manager
           inputs.attic.nixosModules.atticd
           agenix.nixosModules.default
+          chaotic.nixosModules.default
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
