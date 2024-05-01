@@ -12,6 +12,7 @@
   qtconnectivity,
   qthttpserver,
   qtwebsockets,
+  qtwayland,
   procps,
   xrandr,
   libXrandr,
@@ -29,7 +30,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ninja cmake pkg-config wrapQtAppsHook qtconnectivity qthttpserver procps libXrandr qtwebsockets];
-  buildInputs = [qtbase qttools qtconnectivity];
+  buildInputs = [qtbase qtwayland qttools qtconnectivity];
   cmakeFlags = [
     "-DCMAKE_BUILD_TYPE:STRING=Release"
   ];
