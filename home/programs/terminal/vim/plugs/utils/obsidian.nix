@@ -1,5 +1,13 @@
 {
   plugins.obsidian = {
-    enable = false;
+    enable = true;
+    settings = {
+      workspaces = [
+        {
+          name = "Finn";
+          path = "~/Documents/Finn";
+        }
+      ];
+    };
   };
 }
