@@ -3,7 +3,7 @@
     colorschemes.catppuccin = {
       enable = true;
       flavour = "mocha";
-      transparentBackground = true;
+      transparentBackground = false;
       integrations = {
         cmp = true;
         noice = true;
