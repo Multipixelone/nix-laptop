@@ -18,5 +18,6 @@
     ./plugs/ui/goyo.nix
     ./plugs/utils/obsidian.nix
     ./plugs/utils/autopair.nix
+    ./plugs/utils/comment.nix
   ];
 }
