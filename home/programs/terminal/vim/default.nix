@@ -9,6 +9,7 @@
     ./plugs/filetypes/latex.nix
     ./plugs/ui/lualine.nix
     ./plugs/ui/staline.nix
+    ./plugs/ui/bufferline.nix
     #./plugs/ui/telescope.nix
     ./plugs/ui/goyo.nix
     ./plugs/ui/obsidian.nix
