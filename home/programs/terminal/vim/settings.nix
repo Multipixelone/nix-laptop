@@ -40,6 +40,7 @@
     };
     opts = {
       number = true;
+      relativenumber = true;
       tabstop = 2;
       softtabstop = 2;
       showtabline = 2;
@@ -57,6 +58,7 @@
       # Enable incremental searching
       hlsearch = true;
       incsearch = true;
+      wrap = true;
 
       ignorecase = true;
       smartcase = true;
@@ -80,6 +82,20 @@
       foldlevelstart = 99;
       foldenable = true;
       foldexpr = "nvim_treesitter#foldexpr()";
+
+      # Better Completion
+      completeopt = ["menuone" "noselect" "noinsert"]; # mostly just for cmp
+
+      # Enable persistent undo history
+      swapfile = false;
+      backup = false;
+      undofile = true;
+
+      # Line Highlight
+      cursorline = true; # Highlight the line where the cursor is located
+      scrolloff = 8;
+      encoding = "utf-8";
+      fileencoding = "utf-8";
     };
   };
 }
