@@ -7,6 +7,10 @@
     require("telescope").load_extension("lazygit")
   '';
 
+  plugins.git-worktree = {
+    enable = true;
+    enableTelescope = true;
+  };
   plugins.gitsigns = {
     enable = true;
     settings = {
