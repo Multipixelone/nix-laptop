@@ -15,7 +15,7 @@
     ./plugs/ui/notify.nix
     ./plugs/utils/whichkey.nix
     ./plugs/utils/telescope.nix
-    ./plugs/ui/goyo.nix
+    ./plugs/ui/zen-mode.nix
     ./plugs/ui/nvim-tree.nix
     ./plugs/utils/obsidian.nix
     ./plugs/utils/autopair.nix
