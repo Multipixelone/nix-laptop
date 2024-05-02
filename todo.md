@@ -14,5 +14,13 @@
 - Sunshine EDID extra monitor
   - Hyprland config for the monitor to be away from the other ones
   - Use exec with hypr dispatch to open things on the monitor
+- colmena multiple systems
+  - all kube nodes
+  - both rpi piholes
+- long term laptop:
+  - impermanance
+  - encrypted partition
+  - lanzaboote for cold boot attacks
 
 Package: aequilibrae openmatrix
+
