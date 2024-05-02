@@ -21,6 +21,7 @@
     ./plugs/utils/autopair.nix
     ./plugs/utils/comment.nix
     ./plugs/utils/ibl.nix
+    ./plugs/lsp/lspsaga.nix
     ./plugs/utils/illuminate.nix
     ./plugs/utils/flash.nix
     ./plugs/ui/toggleterm.nix
