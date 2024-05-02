@@ -26,6 +26,7 @@
     ./plugs/ui/toggleterm.nix
     ./plugs/ui/alpha.nix
     ./plugs/utils/hardtime.nix
+    ./plugs/utils/undotree.nix
     ./plugs/lsp/treesitter/treesitter.nix
   ];
 }
