@@ -12,6 +12,7 @@
       gopls = {enable = true;};
       terraformls = {enable = true;};
       tsserver = {enable = false;};
+      ltex = {enable = false;};
       yamlls = {
         enable = true;
       };
