@@ -12,14 +12,25 @@
       };
       exclude = {
         filetypes = [
-          ""
-          "checkhealth"
           "help"
+          "alpha"
+          "dashboard"
+          "neo-tree"
+          "Trouble"
+          "trouble"
+          "lazy"
+          "notify"
+          "toggleterm"
+          "lazyterm"
           "lspinfo"
           "packer"
+          "checkhealth"
+          "help"
+          "man"
+          "gitcommit"
           "TelescopePrompt"
           "TelescopeResults"
-          "yaml"
+          "\'\'"
         ];
         buftypes = ["terminal" "quickfix"];
       };
