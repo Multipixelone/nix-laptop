@@ -20,5 +20,6 @@
     ./plugs/utils/obsidian.nix
     ./plugs/utils/autopair.nix
     ./plugs/utils/comment.nix
+    ./plugs/ui/toggleterm.nix
   ];
 }
