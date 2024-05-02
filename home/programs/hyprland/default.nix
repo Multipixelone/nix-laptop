@@ -1,6 +1,5 @@
 {
   pkgs,
-  inputs,
   lib,
   osConfig,
   ...
@@ -9,12 +8,9 @@
   swayosd-server = pkgs.swayosd + "/bin/swayosd-server";
   notifs = pkgs.mako + "/bin/mako";
   obsidian = pkgs.obsidian + "/bin/obsidian";
-  blanket = pkgs.blanket + "/bin/blanket";
-  plexamp = pkgs.plexamp + "/bin/plexamp";
   polkit = pkgs.polkit_gnome + "/libexec/polkit-gnome-authentication-agent-1";
   agent = pkgs.openssh + "/bin/ssh-agent";
   waybar = pkgs.waybar + "/bin/waybar";
-  vlc = pkgs.vlc + "/bin/vlc";
   wallpaper = builtins.fetchurl {
     url = "https://drive.usercontent.google.com/download?id=1OrRpU17DU78sIh--SNOVI6sl4BxE06Zi";
     sha256 = "sha256:14nh77xn8x58693y2na5askm6612xqbll2kr6237y8pjr1jc24xp";
