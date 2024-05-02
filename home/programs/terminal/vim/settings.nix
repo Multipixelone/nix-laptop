@@ -34,6 +34,10 @@
         };
       };
     };
+    clipboard = {
+      register = "unnamedplus";
+      providers = {wl-copy = {enable = true;};};
+    };
     opts = {
       number = true;
       tabstop = 2;
@@ -47,6 +51,9 @@
       # Enable smart indenting (see https://stackoverflow.com/questions/1204149/smart-wrap-in-vim)
       breakindent = true;
 
+      # Mouse
+      mouse = "a";
+
       # Enable incremental searching
       hlsearch = true;
       incsearch = true;
@@ -58,6 +65,21 @@
 
       showmode = false;
       termguicolors = true;
+      conceallevel = 1;
+      listchars = {
+        tab = "󰌒 ";
+        trail = "•";
+        nbsp = "␣";
+      };
+
+      # Folding stuff
+      foldmethod = "expr";
+      foldnestmax = 20;
+      foldminlines = 2;
+      foldlevel = 99;
+      foldlevelstart = 99;
+      foldenable = true;
+      foldexpr = "nvim_treesitter#foldexpr()";
     };
   };
 }

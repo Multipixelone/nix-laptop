@@ -23,5 +23,6 @@
     ./plugs/utils/ibl.nix
     ./plugs/ui/toggleterm.nix
     ./plugs/ui/alpha.nix
+    ./plugs/lsp/treesitter/treesitter.nix
   ];
 }
