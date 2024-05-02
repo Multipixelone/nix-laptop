@@ -22,6 +22,7 @@
     ./plugs/utils/comment.nix
     ./plugs/utils/ibl.nix
     ./plugs/utils/illuminate.nix
+    ./plugs/utils/flash.nix
     ./plugs/ui/toggleterm.nix
     ./plugs/ui/alpha.nix
     ./plugs/lsp/treesitter/treesitter.nix
