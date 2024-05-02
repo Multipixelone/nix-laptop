@@ -20,6 +20,7 @@
     ./plugs/utils/obsidian.nix
     ./plugs/utils/autopair.nix
     ./plugs/utils/comment.nix
+    ./plugs/utils/ibl.nix
     ./plugs/ui/toggleterm.nix
     ./plugs/ui/alpha.nix
   ];
