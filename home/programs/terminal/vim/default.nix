@@ -25,6 +25,7 @@
     ./plugs/utils/flash.nix
     ./plugs/ui/toggleterm.nix
     ./plugs/ui/alpha.nix
+    ./plugs/utils/hardtime.nix
     ./plugs/lsp/treesitter/treesitter.nix
   ];
 }
