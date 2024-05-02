@@ -1,15 +1,7 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: let
-  hyprctl = pkgs.hyprland + "/bin/hyprctl";
+{pkgs, ...}: let
   steam = pkgs.steam + "/bin/steam";
   sh = pkgs.bash + "/bin/bash";
   moondeck = pkgs.qt6.callPackage ../../pkgs/moondeck/default.nix {};
-  appimagerun = pkgs.appimage-run + "/bin/appimage-run";
-  gamemoderun = pkgs.gamemode + "/bin/gamemoderun";
-  gamescope = pkgs.gamescope + "/bin/gamescope";
   streammon =
     pkgs.writeShellApplication {
       name = "streammon";
@@ -82,16 +74,3 @@ in {
     };
   };
 }
-#pkgs.writeShellApplication {
-#name = "wake-screens";
-#runtimeInputs = [ pkgs.findutils pkgs.gawk pkgs.coreutils pkgs.curl ];
-#text = ''
-#HYPRLAND_INSTANCE_SIGNATURE=$(find /tmp/hypr -print0 -name '*.log' | xargs -0 stat -c '%Y %n' - | sort -rn | head -n 1 | cut -d ' ' -f2 | awk -F '/' '{print $4}')
-#export HYPRLAND_INSTANCE_SIGNATURE
-#curl -X 'PUT' 'http://link.bun-hexatonic.ts.net:8888/api/scenes' -H 'Content-Type: application/json' -d '{"id": "main-purple", "action": "activate"}'
-#curl -X 'PUT' 'http://link.bun-hexatonic.ts.net:8888/api/config' -H 'Content-Type:application/json' -d '{"global_brightness": 1.0}'
-#hyprctl reload
-#'';
-#}
-#}
-
