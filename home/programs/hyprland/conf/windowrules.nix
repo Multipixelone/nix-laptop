@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{...}: {
   wayland.windowManager.hyprland.settings = {
     windowrulev2 = [
       # make Firefox PiP window floating and sticky
