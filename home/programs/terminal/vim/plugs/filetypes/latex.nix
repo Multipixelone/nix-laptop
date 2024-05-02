@@ -1,10 +1,11 @@
-{
+{pkgs, ...}: {
   plugins.vimtex = {
     enable = true;
-
+    texlivePackage = pkgs.texliveFull;
     settings = {
       fold_enabled = true;
       view_method = "zathura";
+      compiler_method = "latexrun";
       fold_manual = true;
       fold_types = {
         preamble.enabled = true;
