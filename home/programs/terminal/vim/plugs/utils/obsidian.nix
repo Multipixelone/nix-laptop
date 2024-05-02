@@ -8,6 +8,9 @@
           path = "~/Documents/Finn";
         }
       ];
+      ui = {
+        enable = true;
+      };
     };
   };
 }
