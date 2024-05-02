@@ -21,5 +21,6 @@
     ./plugs/utils/autopair.nix
     ./plugs/utils/comment.nix
     ./plugs/ui/toggleterm.nix
+    ./plugs/ui/alpha.nix
   ];
 }
