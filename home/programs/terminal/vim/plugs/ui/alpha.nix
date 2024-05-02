@@ -69,16 +69,16 @@
           )
           (
             mkButton
-            "fg"
-            "<CMD>lua require('telescope.builtin').oldfiles({hidden = true})<CR>"
-            "󰈚 Recent File"
+            "fr"
+            "<CMD>lua require('telescope.builtin').live_grep({hidden = true})<CR>"
+            "󰈭 Find Word"
             "Operator"
           )
           (
             mkButton
-            "fr"
-            "<CMD>lua require('telescope.builtin').live_grep({hidden = true})<CR>"
-            "󰈭 Find Word"
+            "fg"
+            "<CMD>lua require('telescope.builtin').oldfiles({hidden = true})<CR>"
+            "󰈚 Recent File"
             "Operator"
           )
         ];
