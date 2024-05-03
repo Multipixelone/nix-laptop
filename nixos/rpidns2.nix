@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./core.nix
+    ./modules/tailscale.nix
   ];
   networking = {
     hostName = "rpidns2";

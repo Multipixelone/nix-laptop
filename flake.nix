@@ -93,6 +93,7 @@
           ./nixos/rpidns2.nix
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
           home-manager.nixosModules.home-manager
+          agenix.nixosModules.default
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
