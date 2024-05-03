@@ -50,6 +50,7 @@
   };
   outputs = inputs @ {
     nixpkgs,
+    nixpkgs-stable,
     home-manager,
     nixos-generators,
     nixos-hardware,
