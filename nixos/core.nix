@@ -46,7 +46,11 @@
   ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   # Nix Stuff
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config.allowUnfree = true;
+    buildPlatform.system = "x86_64-linux";
+    hostPlatform.system = "aarch64-linux";
+  };
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings = {
     substituters = ["http://link.bun-hexatonic.ts.net:8080/tunnel" "https://hyprland.cachix.org" "https://nix-community.cachix.org" "https://nix-gaming.cachix.org"];

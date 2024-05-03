@@ -43,10 +43,9 @@
       addKeysToAgent = "yes";
       forwardAgent = true;
     };
-    home.stateVersion = "23.11";
-    # Let home Manager install and manage itself.
     command-not-found.enable = false;
     nix-index.enable = true;
     home-manager.enable = true;
   };
+  home.stateVersion = "23.11";
 }

@@ -86,6 +86,21 @@
           }
         ];
       };
+      rpidns1 = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./nixos/rpidns1.nix
+          "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {inherit inputs;};
+            home-manager.users.tunnel = import ./home/server.nix;
+          }
+        ];
+      };
       link = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
