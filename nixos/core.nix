@@ -43,7 +43,6 @@
       "vm.max_map_count" = 2147483642;
       "fs.inotify.max_user_watches" = 600000;
     };
-    kernelPackages = pkgs.linuxPackages_cachyos;
     binfmt.emulatedSystems = ["aarch64-linux"];
   };
   # Networking
