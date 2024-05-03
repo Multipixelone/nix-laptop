@@ -76,6 +76,13 @@
           )
           (
             mkButton
+            "tt"
+            "<CMD>TodoTelescope<CR>"
+            " Find Todo"
+            "Operator"
+          )
+          (
+            mkButton
             "fg"
             "<CMD>lua require('telescope.builtin').oldfiles({hidden = true})<CR>"
             "󰈚 Recent File"

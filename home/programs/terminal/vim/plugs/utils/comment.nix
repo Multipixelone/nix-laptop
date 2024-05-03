@@ -84,4 +84,14 @@
       pattern = ''\b(KEYWORDS):'';
     };
   };
+  keymaps = [
+    {
+      mode = "n";
+      key = "<leader>tt";
+      action = "<cmd>TodoTelescope<cr>";
+      options = {
+        desc = "Todo Telescope";
+      };
+    }
+  ];
 }
