@@ -32,7 +32,7 @@
   boot = {
     loader.systemd-boot.enable = false;
     loader.grub = {
-      enable = true;
+      enable = lib.mkDefault true;
       efiSupport = true;
       device = "nodev";
       #gfxmodeEfi = "3440x1440";
