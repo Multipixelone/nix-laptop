@@ -1,11 +1,15 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   variant = "mocha";
 in {
   programs.bat = {
     enable = true;
     config = {
       pager = "less -FR";
-      theme = "Catppuccin-${variant}";
+      theme = lib.mkForce "Catppuccin-${variant}";
     };
     themes = let
       src = pkgs.fetchFromGitHub {

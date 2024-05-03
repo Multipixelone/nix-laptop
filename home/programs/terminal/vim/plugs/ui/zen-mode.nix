@@ -4,5 +4,5 @@
   };
   plugins.twilight = {
     enable = true;
-  };  
+  };
 }
