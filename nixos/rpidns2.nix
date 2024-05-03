@@ -7,10 +7,10 @@
     ./core.nix
   ];
   networking = {
-    hostName = "rpidns1";
+    hostName = "rpidns2";
     interfaces.eth0.ipv4.addresses = [
       {
-        address = "192.168.6.111";
+        address = "192.168.6.112";
         prefixLength = 24;
       }
     ];
