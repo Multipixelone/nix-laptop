@@ -7,7 +7,7 @@
   ...
 }: {
   imports = [
-    ./core.nix
+    ./desktop.nix
     ./modules/gamemode.nix
     ./modules/rgb.nix
     ./modules/gamestream.nix
