@@ -5,6 +5,9 @@
       indent = true;
       folding = true;
       nixvimInjections = true;
+      disabledLanguages = [
+        "latex"
+      ];
     };
     ts-context-commentstring = {
       enable = true;
