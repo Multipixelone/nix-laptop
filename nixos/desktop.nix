@@ -63,8 +63,6 @@
   };
   boot = {
     plymouth.enable = true;
-    font = lib.mkForce "${pkgs.callPackage ../pkgs/pragmata/default.nix {}}/share/fonts/truetype/PragmataPro_Bold_0827.ttf";
-    fontSize = 60;
     kernelPackages = pkgs.linuxPackages_cachyos;
   };
   services = {
