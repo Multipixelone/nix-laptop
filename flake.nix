@@ -40,7 +40,6 @@
     spicetify-nix.url = "github:the-argus/spicetify-nix";
     attic.url = "github:zhaofengli/attic";
     geospatial.url = "github:Multipixelone/geospatial-nix";
-    geospatial.inputs.nixpkgs.follows = "nixpkgs";
     anyrun.url = "github:Kirottu/anyrun";
     anyrun.inputs.nixpkgs.follows = "nixpkgs";
     hyprgrass = {
