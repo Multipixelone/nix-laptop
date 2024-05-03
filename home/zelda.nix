@@ -1,12 +1,4 @@
-{
-  lib,
-  config,
-  pkgs,
-  nix-gaming,
-  stylix,
-  inputs,
-  ...
-}: {
+{...}: {
   imports = [
     ./desktop.nix
   ];
