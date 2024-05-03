@@ -48,8 +48,8 @@
   # Nix Stuff
   nixpkgs = {
     config.allowUnfree = true;
-    buildPlatform.system = "x86_64-linux";
-    hostPlatform.system = "aarch64-linux";
+    #  buildPlatform.system = "x86_64-linux";
+    #  hostPlatform.system = "aarch64-linux";
   };
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings = {
