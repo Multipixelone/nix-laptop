@@ -10,18 +10,11 @@
     homeDirectory = "/home/tunnel";
     sessionVariables = {
       EDITOR = "nvim";
-      XDG_SCREENSHOTS_DIR = "/home/tunnel/Pictures/Screenshots";
-      RESTIC_PASSWORD_FILE = config.age.secrets."restic/passwordhome".path;
-      RCLONE_CONFIG = config.age.secrets."restic/rclone".path;
-      RESTIC_REPOSITORY = "rclone:onedrive:Backups/${osConfig.networking.hostName}";
-      MOPIDY_PLAYLISTS = "/home/tunnel/.local/share/mopidy/m3u";
     };
   };
   imports = [
     ./programs/terminal/default.nix
-    ./secrets.nix
     inputs.nix-index-database.hmModules.nix-index
-    inputs.agenix.homeManagerModules.default
   ];
   home.packages = with pkgs; [
     sysstat
