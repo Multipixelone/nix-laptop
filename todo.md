@@ -27,5 +27,6 @@ tags: []
   - [ ] impermanance
   - [ ] encrypted partition
   - [ ] lanzaboote for cold boot attacks
+  - [ ] gaming specialization that switches to NVIDIA only & loads up steam?
 
 Package: aequilibrae openmatrix
