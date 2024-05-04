@@ -26,6 +26,7 @@ in {
       "SUPER, F, fullscreen"
       "$mod, T, exec, pypr toggle term"
       "$mod, B, exec, pypr toggle volume"
+      "$mod, H, exec, pypr toggle helvum"
       #", swipe:3:ld, exec, pypr toggle music"
       ", XF86AudioPlay, exec, ${playerctl} play-pause"
       ", XF86AudioNext, exec, ${playerctl} next"

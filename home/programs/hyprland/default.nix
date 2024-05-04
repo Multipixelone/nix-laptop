@@ -174,6 +174,14 @@ in {
       size = "40% 90%"
       unfocus = "hide"
       lazy = true
+
+      [scratchpads.helvum]
+      animation = "fromRight"
+      command = "helvum"
+      class = "org.pipewire.Helvum"
+      size = "40% 90%"
+      unfocus = "hide"
+      lazy = true
     '';
   };
 }
