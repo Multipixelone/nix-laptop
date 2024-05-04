@@ -66,6 +66,10 @@
     plymouth.enable = true;
     kernelPackages = pkgs.linuxPackages_cachyos;
   };
+  hardware = {
+    bluetooth.enable = true;
+    bluetooth.powerOnBoot = true;
+  };
   services = {
     flatpak.enable = true;
     gnome.gnome-keyring.enable = true;
