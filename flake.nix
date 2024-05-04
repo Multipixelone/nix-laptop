@@ -73,7 +73,6 @@
         modules = [
           ./nixos/zelda.nix
           inputs.musnix.nixosModules.musnix
-          nixos-hardware.nixosModules.dell-xps-15-9560-nvidia
           inputs.stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
           agenix.nixosModules.default
