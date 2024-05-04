@@ -42,6 +42,9 @@ in {
     enable = true;
     capSysAdmin = true;
     openFirewall = true;
+    settings = {
+      channels = 3;
+    };
     applications = {
       env = {
         PATH = "$(PATH)";
