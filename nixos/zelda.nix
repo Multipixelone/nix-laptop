@@ -69,6 +69,10 @@
           path = "/home/tunnel/Documents/QGIS";
           devices = ["link" "alexandria"];
         };
+        "tvhrc-cfaky" = {
+          path = "/home/tunnel/.local/share/Steam/userdata/122579086/config/grid";
+          devices = ["link" "deck" "alexandria"];
+        };
       };
     };
   };
