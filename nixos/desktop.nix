@@ -66,6 +66,7 @@
     kernelPackages = pkgs.linuxPackages_cachyos;
   };
   hardware = {
+    steam-hardware.enable = true;
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;
   };
