@@ -27,6 +27,7 @@ in {
     ./modules/lockidle.nix
     ./modules/waybar.nix
     ./modules/anyrun.nix
+    ./modules/gammastep.nix
   ];
   services.mako = {
     enable = true;

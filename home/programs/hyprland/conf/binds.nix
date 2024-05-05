@@ -3,7 +3,6 @@
   launcher = "anyrun";
   swayosd-client = pkgs.swayosd + "/bin/swayosd-client";
   brightness = pkgs.brightnessctl + "/bin/brightnessctl";
-  # TODO automatically change color temp w time of day
   fluxcommand = pkgs.wlsunset + "/bin/wlsunset -T 4001";
   playerctl = pkgs.playerctl + "/bin/playerctl";
   screenshot = pkgs.grimblast + "/bin/grimblast";
