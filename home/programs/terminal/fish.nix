@@ -20,6 +20,9 @@
       ciara = "echo \"i dont know\"";
       fetch = "nix run nixpkgs#nitch";
       ff = "nix run nixpkgs#fastfetch";
+      # TODO Split this into commands based on hostname
+      pw-get = "pactl load-module module-null-sink media.class=Audio/Sink sink_name=music channel_map=stereo && pactl load-module module-native-protocol-tcp port=4656 listen=192.168.6.6";
+      pw-send = "pactl load-module module-tunnel-sink server=tcp:192.168.6.6:4656";
       alej = "nix run nixpkgs#alejandra .";
       zeldab = "nix build .#nixosConfigurations.zelda.config.system.build.toplevel && attic push tunnel result";
     };
