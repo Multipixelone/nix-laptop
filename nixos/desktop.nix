@@ -79,7 +79,10 @@
     printing.enable = true;
   };
   programs = {
-    steam.enable = true;
+    steam = {
+      enable = true;
+      gamescopeSession.enable = true;
+    };
     wireshark.enable = true;
     nm-applet.enable = true;
     hyprland = {
