@@ -34,9 +34,9 @@
   };
   qt = {
     enable = true;
-    platformTheme.name = "qtct";
+    platformTheme.name = "qt5ct";
     style = {
-      name = "Catppuccin-Frappe-Dark";
+      name = "Catppuccin-Mocha-Dark";
       package = pkgs.catppuccin-kde.override {
         flavour = ["mocha"];
         accents = ["mauve"];
