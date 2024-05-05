@@ -13,7 +13,7 @@
       };
     };
     iconTheme = pkgs.lib.mkForce {
-      package = pkgs.papirus-icon-theme;
+      package = pkgs.catppuccin-papirus-folders;
       name = "Papirus-Dark";
     };
     #font = (pkgs.callPackage ../pkgs/pragmata/default.nix {});
