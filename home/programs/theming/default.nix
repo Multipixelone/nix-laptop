@@ -1,6 +1,9 @@
 {pkgs, ...}: {
-  stylix.targets.waybar.enable = false;
-  stylix.targets.kde.enable = false;
+  stylix.targets = {
+    waybar.enable = false;
+    kde.enable = false;
+    gtk.enable = false;
+  };
   gtk = {
     enable = true;
     theme = pkgs.lib.mkForce {
