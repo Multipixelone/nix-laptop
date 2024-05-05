@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  nix-gaming,
-  ...
-}: {
+{pkgs, ...}: {
   home.file.".config/fish/themes/Catppuccin Mocha.theme".source = pkgs.fetchurl {
     name = "Catppuccin Mocha.theme";
     url = "https://raw.githubusercontent.com/catppuccin/fish/main/themes/Catppuccin%20Mocha.theme";
