@@ -4,8 +4,13 @@
   gtk = {
     enable = true;
     theme = pkgs.lib.mkForce {
-      package = pkgs.arc-theme;
-      name = "Arc-Dark";
+      name = "Catppuccin-Mocha-Compact-Mauve-Dark";
+      package = pkgs.catppuccin-gtk.override {
+        accents = ["mauve"];
+        tweaks = ["rimless"];
+        size = "compact";
+        variant = "mocha";
+      };
     };
     iconTheme = pkgs.lib.mkForce {
       package = pkgs.papirus-icon-theme;
