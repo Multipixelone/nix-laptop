@@ -87,6 +87,9 @@
     steam = {
       enable = true;
       gamescopeSession.enable = true;
+      extraCompatPackages = with pkgs; [
+        proton-ge-bin
+      ];
     };
     wireshark.enable = true;
     nm-applet.enable = true;
