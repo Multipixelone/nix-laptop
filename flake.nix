@@ -47,6 +47,7 @@
       inputs.hyprland.follows = "hyprland"; # IMPORTANT
     };
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
   };
   outputs = inputs @ {
     nixpkgs,
@@ -64,6 +65,7 @@
     hyprgrass,
     anyrun,
     chaotic,
+    jovian,
     ...
   }: {
     nixosConfigurations = {
@@ -77,6 +79,7 @@
           home-manager.nixosModules.home-manager
           agenix.nixosModules.default
           chaotic.nixosModules.default
+          jovian.nixosModules.default
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -112,6 +115,7 @@
           inputs.attic.nixosModules.atticd
           agenix.nixosModules.default
           chaotic.nixosModules.default
+          jovian.nixosModules.default
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
