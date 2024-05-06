@@ -2,6 +2,7 @@
   steam = pkgs.steam + "/bin/steam -gamepadui";
   sh = pkgs.bash + "/bin/bash";
   moondeck = pkgs.qt6.callPackage ../../pkgs/moondeck/default.nix {};
+  hypr-dispatch = pkgs.hyprland + "/bin/hyprctl dispatch exec";
   streammon =
     pkgs.writeShellApplication {
       name = "streammon";
@@ -56,7 +57,7 @@ in {
         }
         {
           name = "Steam Big Picture";
-          cmd = "${steam}";
+          cmd = "${hypr-dispatch} \"${steam}\"";
           prep-cmd = prep;
         }
         {
