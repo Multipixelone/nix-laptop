@@ -29,6 +29,7 @@
         curl -X 'PUT' 'http://link.bun-hexatonic.ts.net:8888/api/scenes' -H 'Content-Type: application/json' -d '{"id": "main-purple", "action": "activate"}'
         hyprctl keyword monitor "DP-3,enable"
         hyprctl keyword monitor "$mon_string"
+        pkill steam
       '';
     }
     + "/bin/undo-command";
