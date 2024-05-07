@@ -96,10 +96,10 @@ in {
       "col.shadow" = pkgs.lib.mkForce "rgba(00000055)";
       blur = {
         enabled = true;
-        contrast = 1.0;
+        brightness = 1.1;
         noise = 0.0117;
         passes = 3;
-        size = 6;
+        size = 16;
         ignore_opacity = true;
       };
       #"col.shadow" = "rgba(00000099)";
