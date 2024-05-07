@@ -6,7 +6,7 @@
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
   hyprland-session = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/share/wayland-sessions";
   kde-session = "${pkgs.plasma-workspace}/share/wayland-sessions";
-  steam-session = "${pkgs.steam}/share/wayland-sessions";
+  steam-session = "${inputs.jovian.packages.${pkgs.system}.gamescope-session}/share/wayland-sessions";
 in {
   services.greetd = {
     enable = true;
