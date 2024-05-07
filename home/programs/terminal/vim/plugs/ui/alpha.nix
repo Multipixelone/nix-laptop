@@ -62,6 +62,13 @@
           )
           (
             mkButton
+            "<c-k>"
+            "<CMD>ObsidianSearch<CR>"
+            " Grep Obsidian Note"
+            "Operator"
+          )
+          (
+            mkButton
             "ff"
             "<CMD>lua require('telescope.builtin').find_files({hidden = true})<CR>"
             " Find File"
