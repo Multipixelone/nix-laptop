@@ -5,14 +5,13 @@
 }: let
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
   hyprland-session = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/share/wayland-sessions";
-  kde-session = "${pkgs.plasma-workspace}/share/wayland-sessions";
   steam-session = "${inputs.jovian.packages.${pkgs.system}.gamescope-session}/share/wayland-sessions";
 in {
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${tuigreet} --greeting \"hi finn :)\" --time --remember --remember-session --sessions ${hyprland-session}:${kde-session}:${steam-session}";
+        command = "${tuigreet} --greeting \"hi finn :)\" --time --remember --remember-session --sessions ${hyprland-session}:${steam-session}";
         user = "greeter";
       };
     };
