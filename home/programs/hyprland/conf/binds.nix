@@ -3,7 +3,6 @@
   launcher = "anyrun";
   swayosd-client = pkgs.swayosd + "/bin/swayosd-client";
   brightness = pkgs.brightnessctl + "/bin/brightnessctl";
-  fluxcommand = pkgs.wlsunset + "/bin/wlsunset -T 4001";
   playerctl = pkgs.playerctl + "/bin/playerctl";
   screenshot = pkgs.grimblast + "/bin/grimblast";
   screenshotarea = ''hyprctl keyword animation "fadeOut,0,0,default"; ${screenshot} --notify copysave area; hyprctl keyword animation "fadeOut,1,4,default"'';
@@ -32,8 +31,6 @@ in {
       ", XF86AudioPlay, exec, ${playerctl} play-pause"
       ", XF86AudioNext, exec, ${playerctl} next"
       ", XF86AudioPrev, exec, ${playerctl} previous"
-      "SUPER, F11, exec, ${fluxcommand}"
-      "SUPER, F12, exec, pkill wlsunset"
       "$mod, 1, workspace, 1"
       "$mod, 2, workspace, 2"
       "$mod, 3, workspace, 3"

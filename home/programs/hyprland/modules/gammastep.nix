@@ -13,6 +13,8 @@
         brightness-day = "1.0";
         brightness-night = "0.8";
         location-provider = "manual";
+        gamma-day = "1.0";
+        gamma-night = "0.8";
       };
       manual = {
         # Brooklyn, NY

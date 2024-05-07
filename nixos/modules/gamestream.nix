@@ -1,7 +1,8 @@
 {pkgs, ...}: let
-  steam = pkgs.steam + "/bin/steam";
+  steam = pkgs.steam + "/bin/steam -steamos3 -steampal -steamdeck -gamepadui";
   sh = pkgs.bash + "/bin/bash";
   moondeck = pkgs.qt6.callPackage ../../pkgs/moondeck/default.nix {};
+  hypr-dispatch = pkgs.hyprland + "/bin/hyprctl dispatch exec";
   streammon =
     pkgs.writeShellApplication {
       name = "streammon";
@@ -28,6 +29,7 @@
         curl -X 'PUT' 'http://link.bun-hexatonic.ts.net:8888/api/scenes' -H 'Content-Type: application/json' -d '{"id": "main-purple", "action": "activate"}'
         hyprctl keyword monitor "DP-3,enable"
         hyprctl keyword monitor "$mon_string"
+        pkill steam
       '';
     }
     + "/bin/undo-command";
@@ -56,7 +58,7 @@ in {
         }
         {
           name = "Steam Big Picture";
-          cmd = "${steam} -steamos -tenfoot -fulldesktopres";
+          cmd = "${hypr-dispatch} \"${steam}\"";
           prep-cmd = prep;
         }
         {
