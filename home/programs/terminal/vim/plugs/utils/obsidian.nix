@@ -11,6 +11,11 @@
       ui = {
         enable = true;
       };
+      picker = {
+        mappings = {
+          new = "<C-n>";
+        };
+      };
     };
   };
 }

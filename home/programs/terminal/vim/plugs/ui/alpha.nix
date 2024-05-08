@@ -56,8 +56,8 @@
           (
             mkButton
             "<c-n>"
-            "<CMD>NvimTreeToggle<CR>"
-            " Open File Browser"
+            "<CMD>ObsidianNew"
+            " New Obsidian Note"
             "Operator"
           )
           (
