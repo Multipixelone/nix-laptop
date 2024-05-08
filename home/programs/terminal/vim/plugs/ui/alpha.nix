@@ -64,7 +64,7 @@
             mkButton
             "<c-k>"
             "<CMD>ObsidianSearch<CR>"
-            " Grep Obsidian Note"
+            " Grep Obsidian Note"
             "Operator"
           )
           (
@@ -78,14 +78,14 @@
             mkButton
             "fr"
             "<CMD>lua require('telescope.builtin').live_grep({hidden = true})<CR>"
-            "󰈭 Find Word"
+            " Find Word"
             "Operator"
           )
           (
             mkButton
             "tt"
             "<CMD>TodoTelescope<CR>"
-            " Find Todo"
+            " Find Todo"
             "Operator"
           )
           (
