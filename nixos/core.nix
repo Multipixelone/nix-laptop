@@ -53,7 +53,13 @@
   # System Services
   security.polkit.enable = true;
   services = {
-    openssh.enable = true;
+    openssh = {
+      enable = true;
+      settings = {
+        PasswordAuthentication = false;
+        PermitRootLogin = lib.mkForce "no";
+      };
+    };
     tailscale.enable = true;
   };
   # Programs
