@@ -54,5 +54,6 @@
     breeze-icons
     (nerdfonts.override {fonts = ["FiraCode"];})
     (pkgs.callPackage ../../../pkgs/pragmata/default.nix {})
+    (pkgs.callPackage ../../../pkgs/apple-fonts/default.nix {})
   ];
 }
