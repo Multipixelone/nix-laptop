@@ -28,6 +28,11 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-tn1QLCSjgo5q4PwE/we80pJavr3nHVgFWrZ8cp29qBk=";
   };
 
+  emoji = fetchurl {
+    url = "https://github.com/samuelngs/apple-emoji-linux/releases/download/v17.4/AppleColorEmoji.ttf";
+    sha256 = "sha256-SG3JQLybhY/fMX+XqmB/BKhQSBB0N1VRqa+H6laVUPE=";
+  };
+
   nativeBuildInputs = [p7zip];
 
   sourceRoot = ".";
@@ -62,6 +67,7 @@ stdenv.mkDerivation rec {
     7z x 'NY Fonts.pkg'
     7z x 'Payload~'
     mv Library/Fonts/* $out/fontfiles
+    cp ${emoji} $out/fontfiles
 
     mkdir -p $out/usr/share/fonts/OTF $out/usr/share/fonts/TTF
     mv $out/fontfiles/*.otf $out/usr/share/fonts/OTF

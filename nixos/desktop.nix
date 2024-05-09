@@ -60,6 +60,10 @@
         name = "PragmataPro Mono Liga";
         package = pkgs.callPackage ../pkgs/pragmata/default.nix {};
       };
+      emoji = {
+        name = "AppleColorEmoji";
+        package = pkgs.callPackage ../pkgs/apple-fonts/default.nix {};
+      };
     };
   };
   boot = {
