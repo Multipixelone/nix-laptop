@@ -133,12 +133,15 @@
     "electron-28.2.10"
   ];
   # Fonts
+  fonts.fonts = with pkgs; [
+    ipafont
+  ];
   fonts = {
     fontconfig = {
       defaultFonts = {
-        serif = ["PragmataPro Liga"];
-        sansSerif = ["PragmataPro Liga"];
-        monospace = ["PragmataPro Mono Liga"];
+        serif = ["PragmataPro Liga" "IPAGothic"];
+        sansSerif = ["PragmataPro Liga" "IPAGothic"];
+        monospace = ["PragmataPro Mono Liga" "IPAGothic"];
       };
     };
   };
