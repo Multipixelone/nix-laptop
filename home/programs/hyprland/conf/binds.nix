@@ -20,6 +20,8 @@ in {
       ", Print, exec, ${screenshot} --notify --cursor copysave output"
       "ALT , Print, exec, ${screenshotarea}"
       "$mod, SPACE, exec, ${launcher}"
+      "$mod, P, submap, passthru"
+      "SUPER, Escape, submap, reset"
       "$mod, M, exit"
       "$mod, N, exec, systemctl suspend"
       "$mod, V, togglefloating"
@@ -49,6 +51,10 @@ in {
       "$mod SHIFT, 7, movetoworkspace, 7"
       "$mod SHIFT, 8, movetoworkspace, 8"
       "$mod SHIFT, 9, movetoworkspace, 9"
+    ];
+    submap = [
+      "passthru"
+      "reset"
     ];
     bindm = [
       # mouse movements
