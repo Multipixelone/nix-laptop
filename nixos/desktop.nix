@@ -76,6 +76,10 @@
     bluetooth.powerOnBoot = true;
   };
   services = {
+    zerotierone = {
+      enable = true;
+      joinNetworks = ["52b337794f640fc8"];
+    };
     flatpak.enable = true;
     gnome.gnome-keyring.enable = true;
     psd.enable = true;
