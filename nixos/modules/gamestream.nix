@@ -35,7 +35,7 @@
     + "/bin/undo-command";
   prep = [
     {
-      do = "${sh} -c \"${streammon} \${SUNSHINE_CLIENT_WIDTH} \${SUNSHINE_CLIENT_HEIGHT}\"";
+      do = "${sh} -c \"${streammon} \${SUNSHINE_CLIENT_WIDTH} \${SUNSHINE_CLIENT_HEIGHT} \${SUNSHINE_CLIENT_FPS}\"";
       undo = "${sh} -c \"${undo-command}\"";
     }
   ];
