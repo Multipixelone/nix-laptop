@@ -10,7 +10,7 @@
   streammon =
     pkgs.writeShellApplication {
       name = "streammon";
-      runtimeInputs = [pkgs.findutils pkgs.gawk pkgs.coreutils pkgs.curl inputs.hyprland.packages.${pkgs.system}.hyprland];
+      runtimeInputs = [pkgs.findutils pkgs.gawk pkgs.coreutils pkgs.curl pkgs.hyprland];
 
       text = ''
         width=''${1:-3840}
@@ -26,7 +26,7 @@
   undo-command =
     pkgs.writeShellApplication {
       name = "undo-command";
-      runtimeInputs = [pkgs.findutils pkgs.gawk pkgs.coreutils pkgs.curl inputs.hyprland.packages.${pkgs.system}.hyprland];
+      runtimeInputs = [pkgs.findutils pkgs.gawk pkgs.coreutils pkgs.curl pkgs.hyprland];
 
       text = ''
         mon_string="DP-1,2560x1440@240,1200x0,1"
