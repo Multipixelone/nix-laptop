@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  nix-gaming,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     gamescope
     discord
