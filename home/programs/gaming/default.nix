@@ -9,8 +9,11 @@
     discord
     lutris
     gamemode
-    mangohud
     steamtinkerlaunch
     prismlauncher
   ];
+  programs.mangohud = {
+    enable = true;
+    enableSessionWide = true;
+  };
 }
