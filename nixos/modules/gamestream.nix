@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  steam = pkgs.steam + "/bin/steam -steamos3 -steampal -steamdeck -gamepadui";
+  steam = "/run/current-system/sw/bin/steam -- -gamepadui";
   sh = pkgs.bash + "/bin/bash";
   moondeck = pkgs.qt6.callPackage ../../pkgs/moondeck/default.nix {};
   hypr-dispatch = pkgs.hyprland + "/bin/hyprctl dispatch exec";
