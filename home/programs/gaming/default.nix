@@ -25,8 +25,7 @@
       wine = true;
       time = true;
       time_no_label = true;
-      frametime = false;
-      histogram = false;
+      frame_timing = 0;
       fps_value = "90,144,240";
       media_player = true;
       media_player_format = "{artist} - {title}";
