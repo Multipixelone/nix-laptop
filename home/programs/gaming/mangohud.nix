@@ -32,7 +32,6 @@
       hud_no_margin = true;
       text_outline_thickness = 2;
       horizontal = true;
-      wine = true;
       time = true;
       vram = true;
       ram = true;
