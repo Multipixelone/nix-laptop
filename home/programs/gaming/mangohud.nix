@@ -22,7 +22,7 @@
     };
     settings = {
       # fix some weird stylix defaults
-      background_alpha = lib.mkForce 0.4;
+      background_alpha = lib.mkForce 0.0; # Background in horizontal for some reason stretches the whole screen?
       font_size = lib.mkForce 24;
       font_size_text = lib.mkForce 24;
       no_small_font = true;
