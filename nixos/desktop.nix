@@ -137,7 +137,7 @@
     "electron-28.2.10"
   ];
   # Fonts
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     ipafont
   ];
   fonts = {
