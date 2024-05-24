@@ -20,7 +20,7 @@
     packages = with pkgs; [terminus_font];
     keyMap = "us";
   };
-   services.kmscon = {
+  services.kmscon = {
     # Use kmscon as the virtual console instead of gettys.
     # kmscon is a kms/dri-based userspace virtual terminal implementation.
     # It supports a richer feature set than the standard linux console VT,
