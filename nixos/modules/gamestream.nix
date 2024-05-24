@@ -1,12 +1,12 @@
 {
   pkgs,
-  inputs,
+  inputs, # TODO change stable hypr for inputs.hyprland.packages.${pkgs.system}.hyprland
   ...
 }: let
   steam = "/run/current-system/sw/bin/steam -- -gamepadui";
   sh = pkgs.bash + "/bin/bash";
   moondeck = pkgs.qt6.callPackage ../../pkgs/moondeck/default.nix {};
-  hypr-dispatch = inputs.hyprland.packages.${pkgs.system}.hyprland + "/bin/hyprctl dispatch exec";
+  hypr-dispatch = pkgs.hyprland + "/bin/hyprctl dispatch exec";
   streammon =
     pkgs.writeShellApplication {
       name = "streammon";
