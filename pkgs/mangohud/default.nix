@@ -35,6 +35,7 @@
   gamescopeSupport ? true, # build mangoapp and mangohudctl
   lowerBitnessSupport ? stdenv.hostPlatform.isx86_64, # Support 32 bit on 64bit
   nix-update-script,
+  libxkbcommon,
 }: let
   # Derived from subprojects/cmocka.wrap
   cmocka = {
@@ -93,14 +94,16 @@
 in
   stdenv.mkDerivation (finalAttrs: {
     pname = "mangohud";
-    version = "0.7.1";
+    version = "0.7.2.rc3.r11.g31f2ca5";
 
     src = fetchFromGitHub {
       owner = "flightlessmango";
       repo = "MangoHud";
-      rev = "refs/tags/v${finalAttrs.version}";
+      #rev = "refs/tags/v${finalAttrs.version}";
       fetchSubmodules = true;
-      hash = "sha256-Gnq+1j+PFbeipAfXGnTq7wZdVQeG9R9vLAKZnZj7Bvs=";
+      #hash = "sha256-Gnq+1j+PFbeipAfXGnTq7wZdVQeG9R9vLAKZnZj7Bvs=";
+      rev = "31f2ca5e306d7bad502ae70d346f0309e1f4764b";
+      hash = "sha256-B/02Ik2Jin9/1iYGrH0Q7SBwsAeuTt/AvkOwf4N1sr0=";
     };
 
     outputs = ["out" "doc" "man"];
@@ -206,6 +209,7 @@ in
         dbus
         nlohmann_json
         spdlog
+        libxkbcommon
       ]
       ++ lib.optionals gamescopeSupport [
         glew
