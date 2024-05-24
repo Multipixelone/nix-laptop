@@ -31,7 +31,7 @@
       text = ''
         mon_string="DP-1,2560x1440@240,1200x0,1"
         #curl -X 'PUT' 'http://link.bun-hexatonic.ts.net:8888/api/scenes' -H 'Content-Type: application/json' -d '{"id": "main-purple", "action": "activate"}'
-        hyprctl keyword monitor "DP-3,enable"
+        hyprctl keyword monitor "DP-3,1920x1200@60,0x0,1,transform,1"
         hyprctl keyword monitor "$mon_string"
         pkill steam
       '';
