@@ -10,6 +10,7 @@ deploy:
 zeldab:
   nix build .#nixosConfigurations.zelda.config.system.build.toplevel
   attic push tunnel result
+  unlink result
 
 debug:
 	nixos-rebuild switch --flake . --use-remote-sudo --show-trace --verbose
