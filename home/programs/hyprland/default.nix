@@ -151,7 +151,7 @@ in {
     '';
     ".config/hypr/pyprland.toml".text = ''
       [pyprland]
-      plugins = ["scratchpads"]
+      plugins = ["scratchpads" "toggle_dpms"]
       [scratchpads.term]
       animation = "fromTop"
       command = "foot -a foot-dropterm"
