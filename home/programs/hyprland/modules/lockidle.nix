@@ -41,12 +41,12 @@ in {
           on-timeout = ${lock}            # lock screen when timeout has passed
       }
 
-      listener {
-          timeout = 300                                 # 5.5min
-          on-timeout = hyprctl dispatch dpms off        # screen off when timeout has passed
-          on-resume = hyprctl dispatch dpms on          # screen on when activity is detected after timeout has fired.
-      }
-      # TODO Make zelda suspend, and link not suspend !
+      # TODO Make zelda suspend and have the screen turn off, but don't have link do any of that.
+      # listener {
+      #     timeout = 300                                 # 5.5min
+      #     on-timeout = hyprctl dispatch dpms off        # screen off when timeout has passed
+      #     on-resume = hyprctl dispatch dpms on          # screen on when activity is detected after timeout has fired.
+      # }
       # listener {
       #     timeout = 600                                # 30min
       #     on-timeout = systemctl suspend                # suspend pc
