@@ -1,6 +1,18 @@
 {pkgs, ...}: let
   idle = pkgs.hypridle + "/bin/hypridle";
   lock = pkgs.hyprlock + "/bin/hyprlock";
+  # TODO I have to stop writing things high. this is so jank too bro.
+  convert-albumart =
+    pkgs.writeShellApplication {
+      name = "convert-albumart";
+      runtimeInputs = [pkgs.imagemagick];
+
+      text = ''
+        convert "$(mopidy-albumart)" -resize 300x300 ~/.local/share/mopidy/coverart.png
+        echo ~/.local/share/mopidy/coverart.png
+      '';
+    }
+    + "/bin/convert-albumart";
 in {
   home.file = {
     ".config/hypr/hypridle.conf".text = ''
@@ -101,6 +113,13 @@ in {
           position = 0, -20
           halign = center
           valign = center
+      }
+      image {
+        path = /home/tunnel/.local/share/mopidy/coverart.png
+        size = 350
+        rounding = 1
+        reload_time = 0
+        reload_cmd = ${convert-albumart}
       }
     '';
   };
