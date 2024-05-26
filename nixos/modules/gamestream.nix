@@ -10,13 +10,15 @@
   streammon =
     pkgs.writeShellApplication {
       name = "streammon";
-      runtimeInputs = [pkgs.findutils pkgs.gawk pkgs.coreutils pkgs.curl pkgs.hyprland];
+      runtimeInputs = [pkgs.findutils pkgs.gawk pkgs.coreutils pkgs.procps pkgs.curl pkgs.hyprland];
 
       text = ''
         width=''${1:-3840}
         height=''${2:-2160}
         refresh_rate=''${3:-60}
         mon_string="DP-1,''${width}x''${height}@''${refresh_rate},1200x0,1"
+        # Unlock PC (so I don't have to type password on Steam Deck)
+        pkill -USR1 hyprlock
         #curl -X 'PUT' 'http://link.bun-hexatonic.ts.net:8888/api/scenes' -H 'Content-Type: application/json' -d '{"id": "gaming-mode", "action": "activate"}'
         hyprctl keyword monitor "DP-3,disable"
         hyprctl keyword monitor "$mon_string"
