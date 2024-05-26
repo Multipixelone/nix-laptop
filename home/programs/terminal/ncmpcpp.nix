@@ -8,7 +8,8 @@
       visualizer_type = "ellipse";
       visualizer_look = "+|";
       playlist_display_mode = "columns";
-      execute_on_song_change = "pkill -RTMIN+5 waybar";
+      # send signal 5 to waybar & SIGUSR2 to hyprlock to update music
+      execute_on_song_change = "pkill -RTMIN+5 waybar && pkill -USR2 hyprlock";
       message_delay_time = 1;
       autocenter_mode = "yes";
       centered_cursor = "yes";
