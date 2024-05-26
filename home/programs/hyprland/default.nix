@@ -62,7 +62,7 @@ in {
     exec-once = ${notifs}
     exec-once = ${swayosd-server}
     exec-once = ${obsidian}
-    exec-once = flatpak run app.bluebubbles.BlueBubbles
+    # exec-once = flatpak run app.bluebubbles.BlueBubbles
     exec-once = pypr
     bezier = wind, 0.05, 0.9, 0.1, 1.05
     bezier = winIn, 0.1, 1.1, 0.1, 1.1
