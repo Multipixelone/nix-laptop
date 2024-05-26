@@ -67,6 +67,7 @@ in {
     env = XDG_SESSION_TYPE,wayland
     env = XDG_SESSION_DESKTOP,Hyprland
     env = MOZ_ENABLE_WAYLAND,1
+    # still required for tearing, for some reason
     env = WLR_DRM_NO_ATOMIC,1
     exec-once = foot --app-id=mpd ncmpcpp
     exec-once = ${polkit}
