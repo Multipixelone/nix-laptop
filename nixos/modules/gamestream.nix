@@ -7,14 +7,6 @@
   sh = pkgs.bash + "/bin/bash";
   moondeck = pkgs.qt6.callPackage ../../pkgs/moondeck/default.nix {};
   hypr-dispatch = pkgs.hyprland + "/bin/hyprctl dispatch exec";
-  stean-kill = pkgs.writeShellApplication {
-    name = "steam-kill";
-    runtimeInputs = [pkgs.procps];
-
-    text = ''
-      pkill steam
-    '';
-  };
   streammon =
     pkgs.writeShellApplication {
       name = "streammon";
