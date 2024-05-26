@@ -46,7 +46,7 @@ in {
         art_url=$(playerctl -p mopidy metadata mpris:artUrl)
         filename=''${art_url##*/}
         img_file="/home/tunnel/.local/share/mopidy/local/images/$filename"
-        convert "$img_file" -resize 300x300 /home/tunnel/.local/share/mopidy/coverart.png
+        convert "$img_file" -resize 500x500 /home/tunnel/.local/share/mopidy/coverart.png
         echo "/home/tunnel/.local/share/mopidy/coverart.png"
       '';
     })
