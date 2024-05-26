@@ -41,11 +41,13 @@ in {
   home.packages = with pkgs; [
     (writeShellApplication {
       name = "mopidy-albumart";
-      runtimeInputs = [pkgs.playerctl];
+      runtimeInputs = [pkgs.playerctl pkgs.imagemagick];
       text = ''
         art_url=$(playerctl -p mopidy metadata mpris:artUrl)
         filename=''${art_url##*/}
-        echo "/home/tunnel/.local/share/mopidy/local/images/$filename"
+        img_file="/home/tunnel/.local/share/mopidy/local/images/$filename"
+        convert "$img_file" -resize 300x300 /home/tunnel/.local/share/mopidy/coverart.png
+        echo "/home/tunnel/.local/share/mopidy/coverart.png"
       '';
     })
   ];

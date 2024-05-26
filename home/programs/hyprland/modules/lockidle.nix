@@ -1,19 +1,6 @@
 {pkgs, ...}: let
   idle = pkgs.hypridle + "/bin/hypridle";
   lock = pkgs.hyprlock + "/bin/hyprlock";
-  # TODO I have to stop writing things high. this is so jank too bro. only png supported tho, so make sure it's converted to png.
-  # TODO maybe break this out into mopidy-albumart to begin w? the waybar could pull from the coverart.png too, its alr 64x64 or smth tiny
-  convert-albumart =
-    pkgs.writeShellApplication {
-      name = "convert-albumart";
-      runtimeInputs = [pkgs.imagemagick];
-
-      text = ''
-        convert "$(mopidy-albumart)" -resize 300x300 ~/.local/share/mopidy/coverart.png
-        echo ~/.local/share/mopidy/coverart.png
-      '';
-    }
-    + "/bin/convert-albumart";
 in {
   home.file = {
     ".config/hypr/hypridle.conf".text = ''
@@ -125,7 +112,7 @@ in {
         size = 350
         rounding = 2
         reload_time = 0
-        reload_cmd = ${convert-albumart}
+        reload_cmd = mopidy-albumart
         position = 30, -20
 
         shadow_passes = 4
