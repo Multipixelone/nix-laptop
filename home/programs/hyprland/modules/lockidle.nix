@@ -1,7 +1,8 @@
 {pkgs, ...}: let
   idle = pkgs.hypridle + "/bin/hypridle";
   lock = pkgs.hyprlock + "/bin/hyprlock";
-  # TODO I have to stop writing things high. this is so jank too bro.
+  # TODO I have to stop writing things high. this is so jank too bro. only png supported tho, so make sure it's converted to png.
+  # TODO maybe break this out into mopidy-albumart to begin w? the waybar could pull from the coverart.png too, its alr 64x64 or smth tiny
   convert-albumart =
     pkgs.writeShellApplication {
       name = "convert-albumart";
@@ -51,41 +52,45 @@ in {
       #     on-timeout = systemctl suspend                # suspend pc
       # }
     '';
+    # TODO Make all the widgets that display on DP-1 also display on eDP-1 for zelda. somehow.
     ".config/hypr/hyprlock.conf".text = ''
       $font = PragmataPro Liga
       background {
         monitor =
         path = screenshot
-        blur_passes = 2
-        blur_size = 7
+        blur_passes = 3
+        blur_size = 8
         noise = 0.0117
-        contrast = 0.8916
-        brightness = 0.8172
+        contrast = 0.9
+        brightness = 1.2
         vibrancy = 0.1696
         vibrancy_darkness = 0.0
       }
       label {
-        monitor =
+        monitor = DP-1
         text = cmd[update:30000] echo "$(date +"%R")"
         color = rgb(245, 224, 220)
         font_size = 90
         font_family = $font
+        shadow_passes = 4
+        shadow_size = 4
+
         position = -30, 0
         halign = right
         valign = top
       }
       label {
-        monitor =
+        monitor = DP-1
         text = cmd[update:43200000] echo "$(date +"%A, %d %B %Y")"
         color = rgb(245, 224, 220)
         font_size = 25
         font_family = $font
-        position = -30, -150
+        position = -30, -140
         halign = right
         valign = top
       }
       input-field {
-          monitor =
+          monitor = DP-1
           size = 200, 50
           outline_thickness = 3
           dots_size = 0.33 # Scale of input-field height, 0.2 - 0.8
@@ -110,16 +115,23 @@ in {
           invert_numlock = false # change color if numlock is off
           swap_font_color = false # see below
 
-          position = 0, -20
+          position = 0, 50
           halign = center
-          valign = center
+          valign = bottom
       }
       image {
+        monitor = DP-3
         path = /home/tunnel/.local/share/mopidy/coverart.png
         size = 350
-        rounding = 1
+        rounding = 2
         reload_time = 0
         reload_cmd = ${convert-albumart}
+        position = 16, -16
+
+        shadow_passes = 4
+        shadow_size = 4
+        halign = left
+        valign = top
       }
     '';
   };
