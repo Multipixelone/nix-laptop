@@ -154,7 +154,6 @@ in {
         output = lib.mkIf (osConfig.networking.hostName == "link") "DP-1";
         modules-left = ["hyprland/workspaces" "image#album-art" "custom/playerlabel"];
         modules-center = ["clock"];
-        #modules-right = ["network" "pulseaudio" "battery" "tray"];
         # TODO there has to be a less jank way to do this...
         modules-right = lib.mkIf (osConfig.networking.hostName == "zelda") ["network" "pulseaudio" "backlight" "battery" "tray"];
         "custom/playerlabel" = {
