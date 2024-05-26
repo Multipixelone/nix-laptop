@@ -38,6 +38,17 @@ in {
     ignoreTimeout = true;
     defaultTimeout = 5000;
   };
+  home.packages = with pkgs; [
+    (writeShellApplication {
+      name = "mopidy-albumart";
+      runtimeInputs = [pkgs.playerctl];
+      text = ''
+        art_url=$(playerctl -p mopidy metadata mpris:artUrl)
+        filename=''${art_url##*/}
+        echo "/home/tunnel/.local/share/mopidy/local/images/$filename"
+      '';
+    })
+  ];
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.plugins = [
     #inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
