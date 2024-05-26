@@ -39,6 +39,7 @@ in {
     defaultTimeout = 5000;
   };
   home.packages = with pkgs; [
+    # TODO move this into a module so that it always comes with lockidle and waybar
     (writeShellApplication {
       name = "mopidy-albumart";
       runtimeInputs = [pkgs.playerctl pkgs.imagemagick];
