@@ -1,7 +1,7 @@
 {pkgs, ...}: let
   idle = pkgs.hypridle + "/bin/hypridle";
   lock = pkgs.hyprlock + "/bin/hyprlock";
-  media-info = pkgs.playerctl + "/bin/playerctl metadata --format \"<b>{{ title }}</i><br/>{{ artist }} - {{ album }}\"";
+  media-info = pkgs.playerctl + "/bin/playerctl metadata --format \"<b>{{ title }}</b><br/>{{ artist }} - {{ album }}\"";
 in {
   home.file = {
     ".config/hypr/hypridle.conf".text = ''
@@ -84,6 +84,9 @@ in {
         font_size = 20
         font_family = $font
         position = 400, -26
+
+        shadow_passes = 5
+        shadow_size = 3
         halign = left
         valign = top
       }
