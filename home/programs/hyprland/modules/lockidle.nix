@@ -126,7 +126,7 @@ in {
         rounding = 2
         reload_time = 0
         reload_cmd = ${convert-albumart}
-        position = 16, -16
+        position = 30, -20
 
         shadow_passes = 4
         shadow_size = 4
