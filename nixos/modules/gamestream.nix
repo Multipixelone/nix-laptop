@@ -1,16 +1,16 @@
 {
   pkgs,
-  inputs,
+  inputs, # TODO change stable hypr for inputs.hyprland.packages.${pkgs.system}.hyprland
   ...
 }: let
   steam = "/run/current-system/sw/bin/steam -- -gamepadui";
   sh = pkgs.bash + "/bin/bash";
   moondeck = pkgs.qt6.callPackage ../../pkgs/moondeck/default.nix {};
-  hypr-dispatch = inputs.hyprland.packages.${pkgs.system}.hyprland + "/bin/hyprctl dispatch exec";
+  hypr-dispatch = pkgs.hyprland + "/bin/hyprctl dispatch exec";
   streammon =
     pkgs.writeShellApplication {
       name = "streammon";
-      runtimeInputs = [pkgs.findutils pkgs.gawk pkgs.coreutils pkgs.procps pkgs.curl inputs.hyprland.packages.${pkgs.system}.hyprland];
+      runtimeInputs = [pkgs.findutils pkgs.gawk pkgs.coreutils pkgs.procps pkgs.curl pkgs.hyprland];
 
       text = ''
         width=''${1:-3840}
@@ -28,7 +28,7 @@
   undo-command =
     pkgs.writeShellApplication {
       name = "undo-command";
-      runtimeInputs = [pkgs.findutils pkgs.gawk pkgs.coreutils pkgs.curl inputs.hyprland.packages.${pkgs.system}.hyprland pkgs.hyprlock];
+      runtimeInputs = [pkgs.findutils pkgs.gawk pkgs.coreutils pkgs.curl pkgs.hyprland pkgs.hyprlock];
 
       text = ''
         mon_string="DP-1,2560x1440@240,1200x0,1"
