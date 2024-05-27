@@ -1,6 +1,8 @@
 {pkgs, ...}: let
   terminal = pkgs.foot + "/bin/foot";
-  launcher = "anyrun";
+  # launcher = "anyrun";
+  # TODO figure out why anyrun is crashing LMAO
+  launcher = "${pkgs.rofi-wayland}/bin/rofi -show drun";
   swayosd-client = pkgs.swayosd + "/bin/swayosd-client";
   brightness = pkgs.brightnessctl + "/bin/brightnessctl";
   playerctl = pkgs.playerctl + "/bin/playerctl";
