@@ -3,7 +3,7 @@
   inputs, # TODO change stable hypr for inputs.hyprland.packages.${pkgs.system}.hyprland
   ...
 }: let
-  steam = "/run/current-system/sw/bin/steam -- -gamepadui";
+  steam = "/run/current-system/sw/bin/steam --";
   sh = pkgs.bash + "/bin/bash";
   moondeck = pkgs.qt6.callPackage ../../pkgs/moondeck/default.nix {};
   hypr-dispatch = pkgs.hyprland + "/bin/hyprctl dispatch exec";
@@ -76,7 +76,12 @@ in {
         }
         {
           name = "Steam Big Picture";
-          cmd = "${hypr-dispatch} \"${steam}\"";
+          cmd = "${hypr-dispatch} \"${steam} -gamepadui\"";
+          prep-cmd = [prep steam-kill];
+        }
+        {
+          name = "Steam (Regular UI)";
+          cmd = "${steam}";
           prep-cmd = [prep steam-kill];
         }
         {
