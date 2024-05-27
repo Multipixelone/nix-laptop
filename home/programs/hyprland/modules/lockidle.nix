@@ -85,8 +85,8 @@ in {
         font_family = $font
         position = 400, -26
 
-        shadow_passes = 5
-        shadow_size = 3
+        shadow_passes = 12
+        shadow_size = 5
         halign = left
         valign = top
       }
