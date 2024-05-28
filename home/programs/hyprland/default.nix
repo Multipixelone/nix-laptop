@@ -4,26 +4,18 @@
   osConfig,
   ...
 }: let
-  hyprpaper = pkgs.hyprpaper + "/bin/hyprpaper";
   swayosd-server = pkgs.swayosd + "/bin/swayosd-server";
   notifs = pkgs.mako + "/bin/mako";
   polkit = pkgs.polkit_gnome + "/libexec/polkit-gnome-authentication-agent-1";
   agent = pkgs.openssh + "/bin/ssh-agent";
   waybar = pkgs.waybar + "/bin/waybar";
-  wallpaper = builtins.fetchurl {
-    url = "https://drive.usercontent.google.com/download?id=1OrRpU17DU78sIh--SNOVI6sl4BxE06Zi";
-    sha256 = "sha256:14nh77xn8x58693y2na5askm6612xqbll2kr6237y8pjr1jc24xp";
-  };
-  sidewallpaper = builtins.fetchurl {
-    url = "https://blusky.s3.us-west-2.amazonaws.com/SU_SKY.PNG";
-    sha256 = "sha256:05jbbil1zk8pj09y52yhmn5b2np2fqnd4jwx49zw1h7pfyr7zsc8";
-  };
 in {
   imports = [
     ./conf/binds.nix
     ./conf/windowrules.nix
     ./conf/workspaces.nix
     ./modules/lockidle.nix
+    ./modules/hyprpaper.nix
     ./modules/waybar.nix
     ./modules/anyrun.nix
     ./modules/gammastep.nix
@@ -70,7 +62,6 @@ in {
     exec-once = ${polkit}
     exec-once = ${agent}
     exec-once = ${waybar}
-    exec-once = ${hyprpaper}
     exec-once = ${notifs}
     exec-once = ${swayosd-server}
     # TODO figure out why INSTANCE_SIGNATURE not working.
@@ -152,14 +143,6 @@ in {
     };
   };
   home.file = {
-    ".config/hypr/hyprpaper.conf".text = ''
-      preload = ${wallpaper}
-      preload = ${sidewallpaper}
-      wallpaper = eDP-1, ${wallpaper}
-      wallpaper = DP-1,${wallpaper}
-      wallpaper = DP-3,${sidewallpaper}
-      splash = false
-    '';
     ".config/hypr/pyprland.toml".text = ''
       [pyprland]
       plugins = ["scratchpads", "toggle_dpms"]
