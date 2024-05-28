@@ -65,10 +65,6 @@ in {
         };
       }
       {
-        name = "z";
-        src = pkgs.fishPlugins.z.src;
-      }
-      {
         name = "fzf-fish";
         src = pkgs.fishPlugins.fzf-fish.src;
       }

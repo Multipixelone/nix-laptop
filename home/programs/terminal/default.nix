@@ -28,6 +28,11 @@
     fd.enable = true;
     lazygit.enable = true;
     jq.enable = true;
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+      options = [];
+    };
     direnv = {
       enable = true;
       nix-direnv.enable = true;
