@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   fzf-config = ''
     set -x FZF_DEFAULT_OPTS "--preview='bat {} --color=always'" \n
     set -x SKIM_DEFAULT_COMMAND "rg --files || fd || find ."
@@ -46,7 +50,10 @@ in {
       pw-send = "pactl load-module module-tunnel-sink server=tcp:192.168.6.6:4656";
       alej = "nix run nixpkgs#alejandra .";
     };
-    interactiveShellInit = fish-config;
+    shellInit = fish-config;
+    interactiveShellInit = ''
+      ${lib.getExe pkgs.any-nix-shell} fish --info-right | source
+    '';
     plugins = [
       {
         name = "fish-exa";
