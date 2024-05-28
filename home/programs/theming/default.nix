@@ -1,4 +1,7 @@
 {pkgs, ...}: {
+  imports = [
+    ./wallpaper.nix
+  ];
   stylix.targets = {
     waybar.enable = false;
     kde.enable = false;

@@ -24,6 +24,7 @@
     ./programs/browser/default.nix
     ./programs/theming/default.nix
     inputs.agenix.homeManagerModules.default
+    ./modules/theme
   ];
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
