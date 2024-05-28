@@ -87,10 +87,6 @@
     xserver.enable = false;
     printing.enable = true;
   };
-  jovian.decky-loader = {
-    enable = true;
-    user = "tunnel";
-  };
   programs = {
     steam = {
       enable = true;
