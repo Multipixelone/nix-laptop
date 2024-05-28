@@ -104,7 +104,6 @@
     nm-applet.enable = true;
     hyprland = {
       enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     };
   };
   # Wayland Stuff

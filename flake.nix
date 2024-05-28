@@ -16,10 +16,8 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     Hyprspace = {
       url = "github:KZDKM/Hyprspace";
-      inputs.hyprland.follows = "hyprland";
     };
     nix-gaming.url = "github:fufexan/nix-gaming";
     nixos-generators = {
@@ -44,7 +42,6 @@
     anyrun.inputs.nixpkgs.follows = "nixpkgs";
     hyprgrass = {
       url = "github:horriblename/hyprgrass";
-      inputs.hyprland.follows = "hyprland"; # IMPORTANT
     };
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     jovian.url = "github:Jovian-Experiments/Jovian-NixOS";

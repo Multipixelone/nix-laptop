@@ -1,6 +1,6 @@
 {pkgs, ...}: let
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
-  hyprland-session = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/share/wayland-sessions";
+  hyprland-session = "${pkgs.hyprland}/share/wayland-sessions";
   steam-session = "${pkgs.gamescope-session}/share/wayland-sessions";
 in {
   services.greetd = {
