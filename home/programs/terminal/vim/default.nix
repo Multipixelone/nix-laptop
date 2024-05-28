@@ -31,6 +31,7 @@
     ./plugs/utils/undotree.nix
     ./plugs/utils/oil.nix
     ./plugs/utils/clipboard.nix
+    ./plugs/utils/diffview.nix
     ./plugs/lsp/treesitter/treesitter.nix
   ];
 }

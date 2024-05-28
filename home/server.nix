@@ -47,9 +47,17 @@
           default = "current";
           autoSetupRemote = true;
         };
+        merge = {
+          stat = "true";
+          conflictStyle = "diff3";
+          tool = "diffview";
+        };
+        mergetool."diffview" = {
+          cmd = "nvim -n -c \"DiffviewOpen\" \"$MERGE\"";
+          prompt = false;
+        };
         init.defaultBranch = "main";
         branch.autosetupmerge = "true";
-        merge.stat = "true";
         repack.usedeltabaseoffset = "true";
         rebase = {
           autoSquash = true;
