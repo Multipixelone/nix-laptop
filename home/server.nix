@@ -35,13 +35,22 @@
       userEmail = "finn@cnwr.net";
 
       extraConfig = {
+        core = {
+          editor = "nvim";
+          whitespace = "fix,-indent-with-non-tab,trailing-space,cr-at-eol";
+        };
+        pull = {
+          ff = "only";
+          rebase = false;
+        };
+        push = {
+          default = "current";
+          autoSetupRemote = true;
+        };
         init.defaultBranch = "main";
         branch.autosetupmerge = "true";
-        push.default = "current";
         merge.stat = "true";
-        core.whitespace = "fix,-indent-with-non-tab,trailing-space,cr-at-eol";
         repack.usedeltabaseoffset = "true";
-        pull.ff = "only";
         rebase = {
           autoSquash = true;
           autoStash = true;
