@@ -55,6 +55,7 @@ in {
     };
     shellInit = fish-config;
     interactiveShellInit = ''
+      eval (direnv hook fish)
       ${lib.getExe pkgs.any-nix-shell} fish --info-right | source
     '';
     plugins = [
