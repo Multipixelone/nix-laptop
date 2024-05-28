@@ -33,10 +33,6 @@
       enableFishIntegration = true;
       options = [];
     };
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
     zellij = {
       enable = true;
       enableFishIntegration = false; # launches on every open of shell
