@@ -94,9 +94,7 @@
     };
     wireshark.enable = true;
     nm-applet.enable = true;
-    hyprland = {
-      enable = true;
-    };
+    hyprland.enable = true;
   };
   # Wayland Stuff
   xdg = {
