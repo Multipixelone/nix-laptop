@@ -75,7 +75,6 @@ in {
     exec-once = ${swayosd-server}
     # TODO figure out why INSTANCE_SIGNATURE not working.
     exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE
-    # exec-once = flatpak run app.bluebubbles.BlueBubbles
     exec-once = pypr
     bezier = wind, 0.05, 0.9, 0.1, 1.05
     bezier = winIn, 0.1, 1.1, 0.1, 1.1
