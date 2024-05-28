@@ -30,6 +30,7 @@
     ./plugs/utils/hardtime.nix
     ./plugs/utils/undotree.nix
     ./plugs/utils/oil.nix
+    ./plugs/utils/clipboard.nix
     ./plugs/lsp/treesitter/treesitter.nix
   ];
 }
