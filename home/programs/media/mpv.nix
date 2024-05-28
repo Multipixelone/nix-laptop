@@ -267,6 +267,7 @@
     };
   };
 in {
+  home.file.".mozilla/native-messaging-hosts/ff2mpv.json".source = "${pkgs.ff2mpv}/lib/mozilla/native-messaging-hosts/ff2mpv.json";
   programs.mpv = {
     enable = true;
     package = pkgs.wrapMpv (pkgs.mpv-unwrapped.override {}) {youtubeSupport = true;};
