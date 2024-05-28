@@ -77,7 +77,7 @@ in {
         }
         {
           name = "Steam (Regular UI)";
-          cmd = "${steam}";
+          cmd = "${hypr-dispatch} \"${steam}\"";
           prep-cmd = [prep steam-kill];
         }
         {
