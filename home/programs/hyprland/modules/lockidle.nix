@@ -45,6 +45,9 @@ in {
     # TODO Make all the widgets that display on DP-1 also display on eDP-1 for zelda. somehow.
     ".config/hypr/hyprlock.conf".text = ''
       $font = PragmataPro Liga
+      general {
+        hide_cursor = true
+      }
       background {
         monitor =
         path = screenshot
