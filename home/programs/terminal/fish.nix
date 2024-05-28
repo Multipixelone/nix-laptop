@@ -1,4 +1,24 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  fzf-config = ''
+    set -x FZF_DEFAULT_OPTS "--preview='bat {} --color=always'" \n
+    set -x SKIM_DEFAULT_COMMAND "rg --files || fd || find ."
+  '';
+  pure-config = ''
+    set pure_enable_single_line_prompt true
+    set pure_enable_nixdevshell true
+    set pure_color_mute cyan
+    set pure_check_for_new_release false
+    set pure_color_primary white
+    set pure_color_info blue
+  '';
+  fish-config =
+    ''
+      set fish_greeting # Disable greeting
+      fish_config theme choose "Catppuccin Mocha"
+    ''
+    + fzf-config
+    + pure-config;
+in {
   home.file.".config/fish/themes/Catppuccin Mocha.theme".source = pkgs.fetchurl {
     name = "Catppuccin Mocha.theme";
     url = "https://raw.githubusercontent.com/catppuccin/fish/main/themes/Catppuccin%20Mocha.theme";
@@ -25,16 +45,7 @@
       pw-send = "pactl load-module module-tunnel-sink server=tcp:192.168.6.6:4656";
       alej = "nix run nixpkgs#alejandra .";
     };
-    interactiveShellInit = ''
-      set fish_greeting # Disable greeting
-      set pure_enable_single_line_prompt true
-      set pure_enable_nixdevshell true
-      set pure_color_mute cyan
-      set pure_check_for_new_release false
-      set pure_color_primary white
-      set pure_color_info blue
-      fish_config theme choose "Catppuccin Mocha"
-    '';
+    interactiveShellInit = fish-config;
     plugins = [
       {
         name = "fish-exa";
