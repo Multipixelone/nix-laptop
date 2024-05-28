@@ -27,6 +27,7 @@
   programs = {
     fd.enable = true;
     lazygit.enable = true;
+    jq.enable = true;
     zellij = {
       enable = true;
       # launches on every open of shell
