@@ -82,8 +82,6 @@
     flatpak.enable = true;
     gnome.gnome-keyring.enable = true;
     psd.enable = true;
-    desktopManager.plasma6.enable = false;
-    xserver.enable = false;
     printing.enable = true;
   };
   programs = {
