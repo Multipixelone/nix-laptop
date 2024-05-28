@@ -1,8 +1,4 @@
-{
-  pkgs,
-  inputs, # TODO change stable hypr for inputs.hyprland.packages.${pkgs.system}.hyprland
-  ...
-}: let
+{pkgs, ...}: let
   steam = "/run/current-system/sw/bin/steam --";
   sh = pkgs.bash + "/bin/bash";
   moondeck = pkgs.qt6.callPackage ../../pkgs/moondeck/default.nix {};
