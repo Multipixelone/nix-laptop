@@ -35,7 +35,8 @@ in {
       ls = "eza --color=auto --icons --git";
       la = "eza --color=auto --icons --git -lah";
       tree = "eza --icons -T";
-      ii = "systemd-inhibit --what=idle --who=Caffeine --why=Caffeine --mode=block sleep inf";
+      # TODO fix idle inhibit command
+      # ii = "systemd-inhibit --what=idle --who=Caffeine --why=Caffeine --mode=block sleep inf";
       mx = "chmod +x";
       vim = "nvim";
       top = "btop";
