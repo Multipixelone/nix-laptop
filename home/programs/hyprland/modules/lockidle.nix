@@ -1,7 +1,9 @@
 {pkgs, ...}: let
   idle = pkgs.hypridle + "/bin/hypridle";
   lock = pkgs.hyprlock + "/bin/hyprlock";
-  media-info = pkgs.playerctl + "/bin/playerctl metadata --format \"<b>{{ title }}</b><br/>{{ artist }} - {{ album }}\"";
+  media-info = ''
+    ${pkgs.playerctl}/bin/playerctl metadata --format "<span size=\"xx-large\" weight=\"bold\">{{ title }}</span><br/>{{ artist }} - {{ album }}"
+  '';
 in {
   home.file = {
     ".config/hypr/hypridle.conf".text = ''
@@ -79,7 +81,7 @@ in {
       }
       label {
         monitor = DP-3
-        text = cmd[update:0:true] echo "$(${media-info})"
+        text = cmd[update:0:true] ${media-info}
         color = rgb(245, 224, 220)
         font_size = 20
         font_family = $font
