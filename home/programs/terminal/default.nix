@@ -34,8 +34,7 @@
     };
     zellij = {
       enable = true;
-      # launches on every open of shell
-      # enableFishIntegration = true;
+      enableFishIntegration = false; # launches on every open of shell
     };
     dircolors = {
       enable = true;
