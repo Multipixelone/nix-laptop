@@ -16,14 +16,7 @@
       inherit pkgs;
       module = ./vim;
     })
-    eza
-    fzf
-    fd
     grc
-    btop
-    lazygit
-    bat
-    zellij
     ripgrep
     nil
     nom
@@ -31,4 +24,24 @@
     attic-client
     kubectl
   ];
+  programs = {
+    fd.enable = true;
+    lazygit.enable = true;
+    zellij = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+    dircolors = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+    eza = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+    fzf = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+  };
 }
