@@ -7,7 +7,6 @@
   hyprpaper = pkgs.hyprpaper + "/bin/hyprpaper";
   swayosd-server = pkgs.swayosd + "/bin/swayosd-server";
   notifs = pkgs.mako + "/bin/mako";
-  obsidian = pkgs.obsidian + "/bin/obsidian";
   polkit = pkgs.polkit_gnome + "/libexec/polkit-gnome-authentication-agent-1";
   agent = pkgs.openssh + "/bin/ssh-agent";
   waybar = pkgs.waybar + "/bin/waybar";
