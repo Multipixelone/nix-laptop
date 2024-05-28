@@ -28,6 +28,10 @@
     fd.enable = true;
     lazygit.enable = true;
     jq.enable = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
     zellij = {
       enable = true;
       # launches on every open of shell
