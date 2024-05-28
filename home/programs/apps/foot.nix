@@ -25,7 +25,7 @@
         beam-thickness = 1;
       };
       colors = {
-        alpha = pkgs.lib.mkForce "0.65";
+        alpha = pkgs.lib.mkForce "0.55";
       };
     };
   };
