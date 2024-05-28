@@ -80,16 +80,16 @@ in {
           cmd = "${hypr-dispatch} \"${steam}\"";
           prep-cmd = [prep steam-kill];
         }
-        {
-          name = "Firefox";
-          cmd = "${hypr-dispatch} \"firefox\"";
-          prep-cmd = [prep];
-        }
-        {
-          name = "Terminal";
-          cmd = "${hypr-dispatch} \"foot\"";
-          prep-cmd = [prep];
-        }
+        # {
+        #   name = "Firefox";
+        #   cmd = "${hypr-dispatch} \"firefox\"";
+        #   prep-cmd = [prep];
+        # }
+        # {
+        #   name = "Terminal";
+        #   cmd = "${hypr-dispatch} \"foot\"";
+        #   prep-cmd = [prep];
+        # }
         {
           name = "MoonDeckStream";
           cmd = "${moondeck}/bin/MoonDeckStream";
