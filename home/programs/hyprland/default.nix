@@ -55,10 +55,6 @@ in {
       enable = true;
       variables = ["--all"];
     };
-    plugins = [
-      #inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
-      #inputs.hyprgrass.packages.${pkgs.system}.default
-    ];
     extraConfig = ''
       env = XDG_SCREENSHOTS_DIR,/home/tunnel/Pictures/Screenshots
       env = QT_QPA_PLATFORM,wayland
