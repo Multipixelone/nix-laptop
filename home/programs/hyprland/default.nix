@@ -12,6 +12,7 @@
   waybar = pkgs.waybar + "/bin/waybar";
   pypr = "${pkgs.pyprland}/bin/pypr";
   music-term = "${pkgs.foot}/bin/foot --app-id=mpd ncmpcpp";
+  dbus = "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE";
 in {
   imports = [
     ./conf/binds.nix
@@ -67,8 +68,6 @@ in {
       env = XDG_SESSION_TYPE,wayland
       env = XDG_SESSION_DESKTOP,Hyprland
       env = MOZ_ENABLE_WAYLAND,1
-      # TODO figure out why INSTANCE_SIGNATURE not working.
-      exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE
       bezier = wind, 0.05, 0.9, 0.1, 1.05
       bezier = winIn, 0.1, 1.1, 0.1, 1.1
       bezier = winOut, 0.3, -0.3, 0, 1
@@ -91,7 +90,7 @@ in {
         (lib.mkIf (osConfig.networking.hostName == "link") {monitor = ["DP-1,2560x1440@240,1200x0,1" "DP-3,1920x1200@60,0x0,1,transform,1"];})
         (lib.mkIf (osConfig.networking.hostName == "zelda") {monitor = [",highres,auto,2"];})
       ];
-      exec-once = [polkit agent waybar notifs swayosd-server music-term pypr];
+      exec-once = [polkit agent waybar notifs swayosd-server music-term pypr dbus];
       decoration = {
         rounding = "6";
         shadow_offset = "0 2";
