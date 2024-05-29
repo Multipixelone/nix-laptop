@@ -4,6 +4,7 @@
   osConfig,
   ...
 }: let
+  # TODO move all of these into a "startup" definition
   swayosd-server = pkgs.swayosd + "/bin/swayosd-server";
   notifs = pkgs.mako + "/bin/mako";
   polkit = pkgs.polkit_gnome + "/libexec/polkit-gnome-authentication-agent-1";
