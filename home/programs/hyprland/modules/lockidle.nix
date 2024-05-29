@@ -82,19 +82,6 @@ in {
         halign = right
         valign = top
       }
-      label {
-        monitor = DP-3
-        text = cmd[update:0:true] ${media-info}
-        color = rgb(245, 224, 220)
-        font_size = 20
-        font_family = $font
-        position = 400, -26
-
-        shadow_passes = 18
-        shadow_size = 5
-        halign = left
-        valign = top
-      }
       input-field {
           monitor = DP-1
           size = 200, 50
@@ -124,6 +111,19 @@ in {
           position = 0, 50
           halign = center
           valign = bottom
+      }
+      label {
+        monitor = DP-3
+        text = cmd[update:0:true] ${media-info}
+        color = rgb(245, 224, 220)
+        font_size = 20
+        font_family = $font
+        position = 400, -26
+
+        shadow_passes = 18
+        shadow_size = 5
+        halign = left
+        valign = top
       }
       image {
         monitor = DP-3
