@@ -147,7 +147,7 @@ in {
         monitor = eDP-1
         text = cmd[update:0:true] ${media-info}
         color = rgb(245, 224, 220)
-        font_size = 20
+        font_size = 50 # diff size for laptop
         font_family = $font
         position = 400, 26
 
