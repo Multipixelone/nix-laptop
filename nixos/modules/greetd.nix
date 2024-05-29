@@ -4,6 +4,7 @@
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
   hyprland-session = "${pkgs.hyprland}/share/wayland-sessions";
 in {
+  services.seatd.enable = true;
   services.greetd = {
     enable = true;
     settings = {
