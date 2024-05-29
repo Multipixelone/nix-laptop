@@ -84,7 +84,7 @@ in {
       (lib.mkIf (osConfig.networking.hostName == "link") {monitor = ["DP-1,2560x1440@240,1200x0,1" "DP-3,1920x1200@60,0x0,1,transform,1"];})
       (lib.mkIf (osConfig.networking.hostName == "zelda") {monitor = [",highres,auto,2"];})
     ];
-    exec = [polkit agent waybar notifs swayosd-server music-term pypr];
+    exec-once = [polkit agent waybar notifs swayosd-server music-term pypr];
     decoration = {
       rounding = "6";
       shadow_offset = "0 2";
