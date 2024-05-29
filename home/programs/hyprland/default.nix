@@ -13,6 +13,7 @@
   pypr = "${pkgs.pyprland}/bin/pypr";
   music-term = "${pkgs.foot}/bin/foot --app-id=mpd ncmpcpp";
   dbus = "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE";
+  foot-server = "${lib.getExe pkgs.foot} --server";
 in {
   imports = [
     ./conf/binds.nix
@@ -86,7 +87,7 @@ in {
         (lib.mkIf (osConfig.networking.hostName == "link") {monitor = ["DP-1,2560x1440@240,1200x0,1" "DP-3,1920x1200@60,0x0,1,transform,1"];})
         (lib.mkIf (osConfig.networking.hostName == "zelda") {monitor = [",highres,auto,2"];})
       ];
-      exec-once = [polkit agent waybar notifs swayosd-server music-term pypr dbus];
+      exec-once = [polkit agent waybar notifs swayosd-server music-term pypr dbus foot-server];
       decoration = {
         rounding = "6";
         shadow_offset = "0 2";
