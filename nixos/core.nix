@@ -6,15 +6,11 @@
 }: {
   hardware.enableRedistributableFirmware = true;
   # Nix Stuff
-  nixpkgs = {
-    config.allowUnfree = true;
-    #  buildPlatform.system = "x86_64-linux";
-    #  hostPlatform.system = "aarch64-linux";
-  };
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nixpkgs.config.allowUnfree = true;
   nix.settings = {
     trusted-users = ["@wheel" "root" "nix-ssh"];
     auto-optimise-store = true;
+    experimental-features = ["nix-command" "flakes"];
     substituters = ["http://link.bun-hexatonic.ts.net:8080/tunnel" "https://hyprland.cachix.org" "https://nix-community.cachix.org" "https://nix-gaming.cachix.org"];
     trusted-substituters = ["http://link.bun-hexatonic.ts.net:8080/tunnel"];
     trusted-public-keys = ["tunnel:iXswb4rlkeD2EdspWLUuZwykAz1e37hmW0KBrb91OrM=" "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
