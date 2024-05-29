@@ -86,6 +86,7 @@
     gnome.gnome-keyring.enable = true;
     gvfs.enable = true;
     ratbagd.enable = true; # for my mouse
+    fail2ban.enable = true;
     geoclue2.enable = true;
     localtimed.enable = true;
     psd.enable = true;
