@@ -1,4 +1,6 @@
 {pkgs, ...}: let
+  # TODO run tuigreet inside of kmscon
+  kmscon = "${pkgs.kmscon}/libexec/kmscon/kmscon";
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
   hyprland-session = "${pkgs.hyprland}/share/wayland-sessions";
 in {
