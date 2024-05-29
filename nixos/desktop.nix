@@ -85,6 +85,8 @@
     flatpak.enable = true;
     gnome.gnome-keyring.enable = true;
     ratbagd.enable = true; # for my mouse
+    geoclue2.enable = true;
+    localtimed.enable = true;
     psd.enable = true;
     printing.enable = true;
     blueman.enable = true;
