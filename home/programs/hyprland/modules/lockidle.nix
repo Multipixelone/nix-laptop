@@ -141,6 +141,35 @@ in {
         halign = left
         valign = top
       }
+      # TODO make this nicer. i'm repeating the whole module. split this into some nice nix code PLEASE
+      # Album art & Media Info for Laptop
+      label {
+        monitor = eDP-1
+        text = cmd[update:0:true] ${media-info}
+        color = rgb(245, 224, 220)
+        font_size = 20
+        font_family = $font
+        position = 400, 26
+
+        shadow_passes = 18
+        shadow_size = 5
+        halign = left
+        valign = bottom
+      }
+      image {
+        monitor = eDP-1
+        path = /home/tunnel/.local/share/mopidy/coverart.png
+        size = 350
+        rounding = 2
+        reload_time = 0
+        reload_cmd = mopidy-albumart
+        position = 30, 20
+
+        shadow_passes = 4
+        shadow_size = 4
+        halign = left
+        valign = bottom
+      }
     '';
   };
   wayland.windowManager.hyprland = {
