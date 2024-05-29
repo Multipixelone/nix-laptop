@@ -83,6 +83,7 @@
     gnome.gnome-keyring.enable = true;
     psd.enable = true;
     printing.enable = true;
+    blueman.enable = true;
   };
   programs = {
     steam = {
