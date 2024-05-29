@@ -84,6 +84,7 @@
     };
     flatpak.enable = true;
     gnome.gnome-keyring.enable = true;
+    ratbagd.enable = true; # for my mouse
     psd.enable = true;
     printing.enable = true;
     blueman.enable = true;
