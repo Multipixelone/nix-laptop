@@ -59,6 +59,7 @@ in {
         vibrancy = 0.1696
         vibrancy_darkness = 0.0
       }
+      # Display next three on DP-1 and eDP-1
       label {
         monitor = DP-1
         text = cmd[update:30000] echo "$(date +"%R")"
@@ -112,6 +113,7 @@ in {
           halign = center
           valign = bottom
       }
+      # Album art & Media Info for Desktop
       label {
         monitor = DP-3
         text = cmd[update:0:true] ${media-info}
