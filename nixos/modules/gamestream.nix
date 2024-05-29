@@ -31,8 +31,6 @@
         #curl -X 'PUT' 'http://link.bun-hexatonic.ts.net:8888/api/scenes' -H 'Content-Type: application/json' -d '{"id": "main-purple", "action": "activate"}'
         hyprctl keyword monitor "DP-3,1920x1200@60,0x0,1,transform,1"
         hyprctl keyword monitor "$mon_string"
-        # # TODO Eventually figure out some non jank way to not display the broken desktop lol. re-locking disabled for now
-        # hyprlock
       '';
     }
     + "/bin/undo-command";
