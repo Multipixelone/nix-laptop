@@ -57,6 +57,9 @@ in {
     interactiveShellInit = ''
       ${lib.getExe pkgs.any-nix-shell} fish --info-right | source
     '';
+    functions = {
+      nvimrg = "nvim -q (rg --vimgrep $argv | psub)";
+    };
     plugins = [
       {
         name = "fish-exa";
