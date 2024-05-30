@@ -19,13 +19,13 @@
 }:
 stdenv.mkDerivation rec {
   pname = "moondeck-buddy";
-  version = "0.11";
+  version = "1.6.1";
 
   src = fetchFromGitHub {
     repo = "moondeck-buddy";
     owner = "FrogTheFrog";
-    rev = "43e599a423eaac7c1875b5ee956787acb78afff5";
-    sha256 = "sha256-I7S6ZGrK8/mf1e2YwcYmxrDs5ZWA/d3tOFxtJQ0a3hs=";
+    rev = "v${version}";
+    sha256 = "sha256-1YprssMx97svStKM+6WWLWKt+/CRxf//uC8oRZO//Cs=";
     fetchSubmodules = true;
   };
 
