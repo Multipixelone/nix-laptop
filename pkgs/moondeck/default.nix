@@ -33,6 +33,7 @@ stdenv.mkDerivation rec {
   buildInputs = [qtbase qtwayland qttools qtconnectivity];
   cmakeFlags = [
     "-DCMAKE_BUILD_TYPE:STRING=Release"
+    "-G Ninja"
   ];
 
   enableParallelBuilding = true;
