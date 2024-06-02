@@ -7,4 +7,17 @@
     libreoffice-fresh
     jdk # Needed for libreoffice?
   ];
+  programs.zathura = {
+    enable = true;
+    options = {
+      adjust-open = "best-fit";
+      pages-per-row = "1";
+      scroll-page-aware = "true";
+      scroll-full-overlap = "0.01";
+      scroll-step = "100";
+      smooth-scroll = true;
+      zoom-min = "10";
+      guioptions = "none";
+    };
+  };
 }
