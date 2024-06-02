@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   plugins.vimtex = {
     # TODO Don't compile vimtex for aarch64
-    enable = false;
+    enable = true;
     texlivePackage = pkgs.texliveFull;
     settings = {
       fold_enabled = true;
