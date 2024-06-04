@@ -12,6 +12,7 @@
     RCLONE_CONFIG = config.age.secrets."restic/rclone".path;
     RESTIC_REPOSITORY = "rclone:onedrive:Backups/${osConfig.networking.hostName}";
     MOPIDY_PLAYLISTS = "/home/tunnel/.local/share/mopidy/m3u";
+    WINEFSYNC = 1;
   };
   imports = [
     ./server.nix
