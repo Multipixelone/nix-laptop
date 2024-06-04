@@ -70,6 +70,8 @@ in {
       ", XF86AudioMute, exec, ${swayosd-client} --output-volume mute-toggle"
       ", XF86MonBrightnessUp, exec, ${brightness} s +5%"
       ", XF86MonBrightnessDown, exec, ${brightness} s 5%-"
+      "Control_L, XF86MonBrightnessUp, exec, systemctl --user stop gammastep"
+      "Control_L, XF86MonBrightnessDown, exec, systemctl --user start gammastep"
     ];
   };
 }
