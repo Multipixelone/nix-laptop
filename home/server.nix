@@ -1,8 +1,6 @@
 {
-  config,
   pkgs,
   inputs,
-  osConfig,
   ...
 }: {
   home = {
@@ -10,6 +8,7 @@
     homeDirectory = "/home/tunnel";
     sessionVariables = {
       EDITOR = "nvim";
+      VISUAL = "nvim";
     };
   };
   imports = [
