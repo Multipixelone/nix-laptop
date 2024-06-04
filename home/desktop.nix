@@ -17,6 +17,7 @@
   imports = [
     ./server.nix
     ./secrets.nix
+    ./bluetooth.nix
     ./programs/media/default.nix
     ./programs/hyprland/default.nix
     ./programs/apps/default.nix
