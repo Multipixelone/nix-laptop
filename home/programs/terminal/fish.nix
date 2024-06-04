@@ -36,7 +36,7 @@ in {
       c = "clear";
       ls = "eza --color=auto --icons --git";
       la = "eza --color=auto --icons --git -lah";
-      tree = "eza --icons -T";
+      tree = "eza --icons -s type -a --git -T -I '.git|node_modules|.next'";
       # TODO fix idle inhibit command
       # ii = "systemd-inhibit --what=idle --who=Caffeine --why=Caffeine --mode=block sleep inf";
       mx = "chmod +x";
