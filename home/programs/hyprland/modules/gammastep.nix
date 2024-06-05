@@ -1,4 +1,6 @@
-{...}: {
+{...}: let
+  sysctluser = "systemctl --user";
+in {
   services.gammastep = {
     enable = true;
     tray = false;
@@ -23,4 +25,8 @@
       };
     };
   };
+  wayland.windowManager.hyprland.settings.bind = [
+    "Control_L, XF86MonBrightnessUp, exec, ${sysctluser} stop gammastep"
+    "Control_L, XF86MonBrightnessDown, exec, ${sysctluser} start gammastep"
+  ];
 }
