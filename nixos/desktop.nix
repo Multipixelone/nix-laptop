@@ -110,9 +110,8 @@
   xdg = {
     portal = {
       enable = true;
-      wlr.enable = true;
+      wlr.enable = false;
       extraPortals = with pkgs; [
-        xdg-desktop-portal-wlr
         xdg-desktop-portal-gtk
       ];
     };
