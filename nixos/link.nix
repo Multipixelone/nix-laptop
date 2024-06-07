@@ -36,7 +36,7 @@
   hardware.opengl.driSupport32Bit = true; # For 32 bit applications
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  chaotic.mesa-git.enable = true;
+  chaotic.mesa-git.enable = false; # Re-enable later LOL
   environment.systemPackages = [
     (import ./modules/scripts/sleep.nix {inherit pkgs;})
     inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
