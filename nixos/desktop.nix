@@ -15,7 +15,8 @@
     qemu_kvm
     qemu
     inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
-    inputs.chaotic.packages.${pkgs.system}.latencyflex-vulkan
+    # TODO fix latency flex
+    # inputs.chaotic.packages.${pkgs.system}.latencyflex-vulkan
     xdg-utils
     appimage-run
     pyprland
