@@ -77,6 +77,7 @@
           SLSKD_REMOTE_CONFIGURATION = "true";
           SLSKD_SHARED_DIR = "/music";
           SLSKD_DOWNLOAD_DIR = "/downloads";
+          SLSKD_SLSK_LISTEN_PORT = "2234";
         };
       };
     };
