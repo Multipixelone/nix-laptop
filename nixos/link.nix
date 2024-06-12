@@ -75,6 +75,7 @@
         environment = {
           SLSKD_REMOTE_CONFIGURATION = "true";
           SLSKD_SHARED_DIR = "/music";
+          SLSKD_DOWNLOAD_DIR = "/downloads";
         };
       };
     };
