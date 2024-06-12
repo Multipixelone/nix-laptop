@@ -4,7 +4,7 @@
     enabled = true;
     disableMouse = true;
     disabledFiletypes = ["Oil"];
-    hint = false;
+    hint = true;
     maxCount = 4;
     maxTime = 1000;
     restrictionMode = "hint";
