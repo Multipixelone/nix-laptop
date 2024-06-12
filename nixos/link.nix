@@ -66,7 +66,7 @@
         image = "slskd/slskd:latest";
         ports = ["5030:5030" "5031:5031" "2234:2234"];
         # user = "tunnel:users";
-        # TODO find some universal way to declare these paths like to my music library so that I can use a variable
+        # TODO find some universal way to declare these paths like my music library so that I can use a variable
         volumes = [
           "/srv/slskd:/app"
           "/media/Data/Music/:/music"
