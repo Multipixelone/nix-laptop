@@ -56,7 +56,7 @@ in {
       pw-send = "pactl load-module module-tunnel-sink server=tcp:192.168.6.6:4656";
       alej = "nix run nixpkgs#alejandra .";
       # TODO move beet into it's own home-manager module
-      beet-import = "nix run nixpkgs#beets -- import /volume1/Media/ImportMusic/NicotineDL/";
+      beet-import = "nix run nixpkgs#beets -- import /volume1/Media/ImportMusic/slskd/";
     };
     shellInit = fish-config;
     interactiveShellInit = ''

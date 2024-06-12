@@ -54,6 +54,31 @@
       SUBSYSTEM=="usb", ATTR{idVendor}=="1209", ATTR{idProduct}=="db42", MODE="0666"
     '';
   };
+  # TODO move this into a module
+  systemd.tmpfiles.rules = [
+    "d /srv/slskd 0770 tunnel users -"
+  ];
+  virtualisation.oci-containers = {
+    backend = "docker";
+    containers = {
+      slskd = {
+        autoStart = true;
+        image = "slskd/slskd:latest";
+        ports = ["5030:5030" "5031:5031" "2234:2234"];
+        # user = "tunnel:users";
+        # TODO find some universal way to declare these paths like to my music library so that I can use a variable
+        volumes = [
+          "/srv/slskd:/app"
+          "/media/Data/Music/:/music"
+          "/media/Data/ImportMusic/slskd/:/downloads"
+        ];
+        environment = {
+          SLSKD_REMOTE_CONFIGURATION = "true";
+          SLSKD_SHARED_DIR = "/music";
+        };
+      };
+    };
+  };
   hardware = {
     opengl.driSupport = true; # This is already enabled by default
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
