@@ -73,13 +73,9 @@
         AllowUsers = ["tunnel"];
         PasswordAuthentication = false;
         PermitRootLogin = lib.mkForce "no";
-        extraConfig = ''
-          AllowTcpForwarding yes
-          X11Forwarding no
-          AllowAgentForwarding no
-          AllowStreamLocalForwarding no
-          AuthenticationMethods publickey
-        '';
+        AllowTcpForwarding = "no";
+        X11Forwarding = "no";
+        AllowStreamLocalForwarding = "no";
       };
     };
     tailscale.enable = true;
