@@ -73,7 +73,7 @@
     consoleLogLevel = 0;
     initrd.verbose = false;
     kernelParams = ["quiet" "splash" "rd.systemd.show_status=false" "rd.udev.log_level=3" "udev.log_priority=3" "boot.shell_on_fail"];
-    kernelPackages = pkgs.linuxPackages_cachyos;
+    kernelPackages = pkgs.linuxPackages_zen;
   };
   hardware = {
     bluetooth.enable = true;
