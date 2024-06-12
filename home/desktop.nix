@@ -28,6 +28,7 @@
     ./programs/mimeo
     inputs.agenix.homeManagerModules.default
     ./modules/theme
+    ./modules/directories
   ];
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [

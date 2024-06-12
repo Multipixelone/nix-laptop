@@ -7,7 +7,10 @@
     ./mpv.nix
     ./spicetify.nix
   ];
-
+  directories.music-directory = "/media/Data/Music/";
+  home.sessionVariables = {
+    MUSIC_DIR = config.directories.music-directory;
+  };
   home.packages = with pkgs; [
     ani-cli
     strawberry
