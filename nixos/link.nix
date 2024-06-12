@@ -73,6 +73,7 @@
           "/media/Data/ImportMusic/slskd/:/downloads"
         ];
         environment = {
+          # TODO add soulseek password as agenix secret
           SLSKD_REMOTE_CONFIGURATION = "true";
           SLSKD_SHARED_DIR = "/music";
           SLSKD_DOWNLOAD_DIR = "/downloads";
