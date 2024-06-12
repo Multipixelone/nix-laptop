@@ -270,7 +270,7 @@ in {
   home.file.".mozilla/native-messaging-hosts/ff2mpv.json".source = "${pkgs.ff2mpv}/lib/mozilla/native-messaging-hosts/ff2mpv.json";
   programs.mpv = {
     enable = true;
-    package = pkgs.wrapMpv (pkgs.mpv-unwrapped.override {}) {youtubeSupport = true;};
+    # package = pkgs.wrapMpv (pkgs.mpv-unwrapped.override {}) {youtubeSupport = true;};
     scripts = with pkgs.mpvScripts; [mpris uosc thumbfast sponsorblock quality-menu];
     # https://github.com/mpv-player/mpv/blob/master/DOCS/man/options.rst
     config = {
