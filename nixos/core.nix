@@ -69,6 +69,7 @@
       enable = true;
       allowSFTP = false;
       settings = {
+        AllowUsers = ["tunnel"];
         PasswordAuthentication = false;
         PermitRootLogin = lib.mkForce "no";
         extraConfig = ''
