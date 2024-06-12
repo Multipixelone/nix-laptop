@@ -7,7 +7,6 @@
   # TODO move all of these into a "startup" definition
   swayosd-server = pkgs.swayosd + "/bin/swayosd-server";
   polkit = pkgs.polkit_gnome + "/libexec/polkit-gnome-authentication-agent-1";
-  agent = pkgs.openssh + "/bin/ssh-agent";
   waybar = lib.getExe pkgs.waybar;
   pypr = lib.getExe pkgs.pyprland;
   term = lib.getExe pkgs.foot;
@@ -28,14 +27,17 @@ in {
     ./modules/anyrun.nix
     ./modules/gammastep.nix
   ];
-  services.mako = {
-    enable = true;
-    borderColor = pkgs.lib.mkForce "#cba6f7";
-    backgroundColor = pkgs.lib.mkForce "#1e1e2e";
-    borderRadius = 6;
-    borderSize = 2;
-    ignoreTimeout = true;
-    defaultTimeout = 5000;
+  services = {
+    ssh-agent.enable = true;
+    mako = {
+      enable = true;
+      borderColor = pkgs.lib.mkForce "#cba6f7";
+      backgroundColor = pkgs.lib.mkForce "#1e1e2e";
+      borderRadius = 6;
+      borderSize = 2;
+      ignoreTimeout = true;
+      defaultTimeout = 5000;
+    };
   };
   home.packages = with pkgs; [
     # TODO move this into a module so that it always comes with lockidle and waybar
