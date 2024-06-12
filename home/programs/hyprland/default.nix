@@ -6,16 +6,15 @@
 }: let
   # TODO move all of these into a "startup" definition
   swayosd-server = pkgs.swayosd + "/bin/swayosd-server";
-  notifs = pkgs.mako + "/bin/mako";
   polkit = pkgs.polkit_gnome + "/libexec/polkit-gnome-authentication-agent-1";
   agent = pkgs.openssh + "/bin/ssh-agent";
-  waybar = pkgs.waybar + "/bin/waybar";
-  pypr = "${pkgs.pyprland}/bin/pypr";
-  music-term = "${pkgs.foot}/bin/foot --app-id=mpd ncmpcpp";
-  dbus = "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE";
-  foot-server = "${lib.getExe pkgs.foot} --server";
+  waybar = lib.getExe pkgs.waybar;
+  pypr = lib.getExe pkgs.pyprland;
+  term = lib.getExe pkgs.foot;
+  music-term = "${term} --app-id=mpd ncmpcpp";
+  foot-server = "${term} --server";
   wl-paste = "${pkgs.wl-clipboard}/bin/wl-paste";
-  cliphist = "${lib.getExe pkgs.cliphist}";
+  cliphist = lib.getExe pkgs.cliphist;
   watch-clipboard = "${wl-paste} --type text --watch ${cliphist} store";
   watch-images = "${wl-paste} --type image --watch ${cliphist} store";
 in {
@@ -92,7 +91,7 @@ in {
         (lib.mkIf (osConfig.networking.hostName == "link") {monitor = ["DP-1,2560x1440@240,1200x0,1" "DP-3,1920x1200@60,0x0,1,transform,1"];})
         (lib.mkIf (osConfig.networking.hostName == "zelda") {monitor = [",highres,auto,2"];})
       ];
-      exec-once = [polkit agent waybar notifs swayosd-server music-term pypr dbus foot-server watch-clipboard watch-images];
+      exec-once = [polkit waybar swayosd-server music-term pypr foot-server watch-clipboard watch-images];
       decoration = {
         rounding = "6";
         shadow_offset = "0 2";
