@@ -27,4 +27,21 @@
       fsType = "vfat";
     };
   };
+  virtualisation = {
+    oci-containers = {
+      backend = "docker";
+      containers = {
+        grocy = {
+          image = "lscr.io/linuxserver/grocy:latest";
+          autoStart = true;
+          ports = ["9283:80"];
+          volumes = [
+            "/srv/grocy:/app"
+          ];
+          environment = {
+          };
+        };
+      };
+    };
+  };
 }
