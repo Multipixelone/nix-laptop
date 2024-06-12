@@ -82,6 +82,24 @@
           }
         ];
       };
+      kubenode1 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./nixos/kubenode1.nix
+          # inputs.musnix.nixosModules.musnix
+          # inputs.stylix.nixosModules.stylix
+          home-manager.nixosModules.home-manager
+          # agenix.nixosModules.default
+          # chaotic.nixosModules.default
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {inherit inputs;};
+            home-manager.users.tunnel = import ./home/server.nix;
+          }
+        ];
+      };
       rpidns2 = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         specialArgs = {inherit inputs;};
