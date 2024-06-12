@@ -74,7 +74,7 @@
         PasswordAuthentication = false;
         PermitRootLogin = lib.mkForce "no";
         AllowTcpForwarding = "no";
-        X11Forwarding = "no";
+        X11Forwarding = false;
         AllowStreamLocalForwarding = "no";
       };
     };
