@@ -1,10 +1,14 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   terminal = pkgs.foot + "/bin/foot";
   # launcher = "anyrun";
   # TODO figure out why anyrun is crashing LMAO
   launcher = "${pkgs.rofi-wayland}/bin/rofi -show drun";
   swayosd-client = pkgs.swayosd + "/bin/swayosd-client";
-  brightness = pkgs.brightnessctl + "/bin/brightnessctl";
+  brightness = lib.getExe pkgs.brillo;
   playerctl = pkgs.playerctl + "/bin/playerctl";
   screenshot = pkgs.grimblast + "/bin/grimblast";
   screenshotarea = ''hyprctl keyword animation "fadeOut,0,0,default"; ${screenshot} --notify copysave area; hyprctl keyword animation "fadeOut,1,4,default"'';
@@ -66,8 +70,8 @@ in {
       ", XF86AudioRaiseVolume, exec, ${swayosd-client} --output-volume raise"
       ", XF86AudioLowerVolume, exec, ${swayosd-client} --output-volume lower"
       ", XF86AudioMute, exec, ${swayosd-client} --output-volume mute-toggle"
-      ", XF86MonBrightnessUp, exec, ${brightness} s +5%"
-      ", XF86MonBrightnessDown, exec, ${brightness} s 5%-"
+      ", XF86MonBrightnessUp, exec, ${brightness} -A 5"
+      ", XF86MonBrightnessDown, exec, ${brightness} -U 5"
     ];
   };
 }

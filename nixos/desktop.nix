@@ -26,7 +26,6 @@
     arc-theme
     libsForQt5.kio
     libsForQt5.kio-extras
-    brightnessctl
     inputs.agenix.packages.${pkgs.system}.default
     (pkgs.libsForQt5.callPackage ../pkgs/qtscrob/default.nix {})
     (pkgs.callPackage ../pkgs/spotify2musicbrainz/default.nix {})
