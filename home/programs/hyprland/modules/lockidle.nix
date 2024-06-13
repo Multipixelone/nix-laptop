@@ -44,13 +44,18 @@ in {
         }
         {
           inherit timeout;
-          on-timeout = "hyprctl dispatch dpms off";
-          on-resume = "hyprctl dispatch dpms on";
+          on-timeout = "loginctl lock-session";
         }
-        {
-          timeout = timeout + 10;
-          on-timeout = suspendScript.outPath;
-        }
+        # TODO do these on zelda, not link
+        # {
+        #   timeout = timeout + 30;
+        #   on-timeout = "hyprctl dispatch dpms off";
+        #   on-resume = "hyprctl dispatch dpms on";
+        # }
+        # {
+        #   timeout = timeout + 60;
+        #   on-timeout = suspendScript.outPath;
+        # }
       ];
     };
   };
