@@ -75,8 +75,10 @@
     kernelPackages = pkgs.linuxPackages_zen;
   };
   hardware = {
-    bluetooth.enable = true;
-    bluetooth.powerOnBoot = true;
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
     brillo.enable = true;
   };
   services = {
