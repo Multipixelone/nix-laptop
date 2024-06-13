@@ -44,6 +44,14 @@
       url = "github:horriblename/hyprgrass";
     };
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    hyprlock = {
+      url = "github:hyprwm/hyprlock";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hypridle = {
+      url = "github:hyprwm/hypridle";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs @ {
     nixpkgs,
