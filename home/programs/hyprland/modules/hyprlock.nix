@@ -1,63 +1,15 @@
 {
   pkgs,
   inputs,
-  config,
-  lib,
   ...
 }: let
-  timeout = 60;
-  lock = lib.getExe config.programs.hyprlock.package;
-  suspendScript = pkgs.writeShellScript "suspend-script" ''
-    ${pkgs.pipewire}/bin/pw-cli i all 2>&1 | ${pkgs.ripgrep}/bin/rg running -q
-    # only suspend if audio isn't running
-    if [ $? == 1 ]; then
-      ${pkgs.systemd}/bin/systemctl suspend
-    fi
-  '';
   media-info = ''
     ${pkgs.playerctl}/bin/playerctl metadata --format "<span size=\"xx-large\" weight=\"bold\">{{ title }}</span><br/>{{ artist }} - {{ album }}"
   '';
-  brillo = lib.getExe pkgs.brillo;
 in {
   programs.hyprlock = {
     enable = true;
     package = inputs.hyprlock.packages.${pkgs.system}.hyprlock;
-  };
-  services.hypridle = {
-    enable = true;
-    package = inputs.hypridle.packages.${pkgs.system}.hypridle;
-    settings = {
-      general = {
-        lock_cmd = lock;
-        before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
-      };
-      listener = [
-        {
-          timeout = timeout - 20;
-          on-timeout = "${brillo} -s dell::kbd_backlight -S 0";
-          on-resume = "${brillo} -s dell::kbd_backlight -S 100";
-        }
-        {
-          timeout = timeout - 10;
-          on-timeout = "${brillo} -O; ${brillo} -u 1000000 -S 10";
-          on-resume = "${brillo} -I -u 500000";
-        }
-        {
-          inherit timeout;
-          on-timeout = "loginctl lock-session";
-        }
-        # TODO do these on zelda, not link
-        # {
-        #   timeout = timeout + 30;
-        #   on-timeout = "hyprctl dispatch dpms off";
-        #   on-resume = "hyprctl dispatch dpms on";
-        # }
-        # {
-        #   timeout = timeout + 60;
-        #   on-timeout = suspendScript.outPath;
-        # }
-      ];
-    };
   };
   home.file.".config/hypr/hyprlock.conf".text = ''
     $font = PragmataPro Liga
@@ -190,7 +142,7 @@ in {
   wayland.windowManager.hyprland = {
     settings = {
       bind = [
-        "SUPER, L, exec, ${lock}"
+        "SUPER, L, exec, loginctl lock-session"
       ];
     };
   };

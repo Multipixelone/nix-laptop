@@ -21,7 +21,8 @@ in {
     ./conf/binds.nix
     ./conf/windowrules.nix
     ./conf/workspaces.nix
-    ./modules/lockidle.nix
+    ./modules/hyprlock.nix
+    ./modules/hypridle.nix
     ./modules/hyprpaper.nix
     ./modules/waybar.nix
     ./modules/anyrun.nix
