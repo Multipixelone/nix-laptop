@@ -77,6 +77,7 @@
   hardware = {
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;
+    brillo.enable = true;
   };
   services = {
     zerotierone = {
