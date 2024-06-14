@@ -97,18 +97,4 @@ in {
       ];
     };
   };
-  systemd.user.services.moondeck = {
-    description = "MoonDeck Buddy";
-    wantedBy = ["graphical-session.target"];
-    partOf = ["graphical-session.target"];
-    wants = ["graphical-session.target"];
-    after = ["graphical-session.target"];
-
-    startLimitIntervalSec = 500;
-    startLimitBurst = 5;
-
-    serviceConfig = {
-      ExecStart = "${moondeck}/bin/MoonDeckBuddy";
-    };
-  };
 }

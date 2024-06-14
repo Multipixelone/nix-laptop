@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./mangohud.nix
+    ./moondeck.nix
   ];
   home.packages = with pkgs; [
     gamescope
