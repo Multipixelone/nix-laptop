@@ -100,5 +100,26 @@
         fi
       '';
     })
+    # TODO this was written by someone who didn't want to put any time or thought into writing something maintainable. i hate every part of it.
+    (pkgs.writeShellApplication {
+      name = "monthly-copy";
+      runtimeInputs = [pkgs.ffmpeg];
+      text = ''
+        OUTPUT_PLAYLIST_DIR="/home/tunnel/Music/Playlists"
+        PLAYLIST="$OUTPUT_PLAYLIST_DIR/monthly playlist.m3u8"
+        DEST_FOLDER=''${1}
+        while IFS= read -r line; do
+          [[ $line == \#* ]] || [[ -z $line ]] && continue
+          song_file=$(basename "$line")
+          extension="''${song_file##*.}"
+          if [[ "$extension" == "flac" ]] || [[ "$extension" == "alac" ]]; then
+            ffmpeg -nostdin -i "$line" -ab 320k "$DEST_FOLDER/''${song_file%.*}.mp3"
+          else
+            # mv "$line" "$DEST_FOLDER/" 2> /dev/null
+            continue
+          fi
+        done < "$PLAYLIST"
+      '';
+    })
   ];
 }
