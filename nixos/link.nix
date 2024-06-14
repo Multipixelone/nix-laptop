@@ -79,6 +79,7 @@
         # TODO find some universal way to declare these paths like my music library so that I can use a variable
         volumes = [
           "/media/Data/ImportMusic/JDownloader/:/output"
+          "/srv/jdownloader/:/config"
         ];
       };
       slskd = {
