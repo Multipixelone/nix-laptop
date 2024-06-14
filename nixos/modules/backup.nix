@@ -51,6 +51,15 @@
       "Games"
     ];
   };
+  # TODO pull this from systemd tmp file declaration
+  srv-folders = {
+    paths = [
+      "/srv/grocy"
+      "/srv/jdownloader"
+      "/srv/slskd"
+    ];
+  };
+in {
   age.secrets = {
     #"restic/env".file = "${inputs.secrets}/restic/env.age";
     #"restic/repo".file = "${inputs.secrets}/restic/repo.age";
@@ -59,5 +68,6 @@
   };
   services.restic.backups = {
     home = lib.mkMerge [default-restic-options home-folders];
+    srv = lib.mkMerge [default-restic-options srv-folders];
   };
 }

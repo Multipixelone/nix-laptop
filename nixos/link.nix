@@ -54,7 +54,7 @@
       SUBSYSTEM=="usb", ATTR{idVendor}=="1209", ATTR{idProduct}=="db42", MODE="0666"
     '';
   };
-  # TODO move this into a module
+  # TODO make this list a definition, and then make some code to turn it into the tmp file rules (can be reused in restic backup)
   systemd.tmpfiles.rules = [
     "d /srv/slskd 0770 tunnel users -"
     "d /srv/grocy 0770 tunnel users -"
