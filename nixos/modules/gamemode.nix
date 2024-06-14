@@ -28,6 +28,8 @@
   endscript = pkgs.writeShellScript "gamemode-end" ''
     export PATH=$PATH:${programs}
     export HYPRLAND_INSTANCE_SIGNATURE=$(find /tmp/hypr -print0 -name '*.log' | xargs -0 stat -c '%Y %n' - | sort -rn | head -n 1 | cut -d ' ' -f2 | awk -F '/' '{print $4}')
+    SECRET=$(cat "${config.age.secrets."syncthing".path}")
+    curl -X POST -H "X-API-Key: $SECRET" http://localhost:8384/rest/system/resume
     # curl -X 'PUT' 'http://link.bun-hexatonic.ts.net:8888/api/scenes' -H 'Content-Type: application/json' -d '{"id": "main-purple", "action": "activate"}'
     hyprctl reload
   '';
