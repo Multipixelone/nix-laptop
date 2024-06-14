@@ -1393,11 +1393,11 @@
     },
     "nixpkgs-stable_2": {
       "locked": {
-        "lastModified": 1718060059,
-        "narHash": "sha256-9XKFni8VMXo81RTq9XygCyaO3I/7UKpwIlM/yn0MdcM=",
+        "lastModified": 1718229064,
+        "narHash": "sha256-ZFav8A9zPNfjZg/wrxh1uZeMJHELRfRgFP+meq01XYk=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "a3c8d64ba846725f040582b2d3b875466d2115bd",
+        "rev": "5c2ec3a5c2ee9909904f860dadc19bc12cd9cc44",
         "type": "github"
       },
       "original": {
@@ -1581,11 +1581,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1718375100,
-        "narHash": "sha256-RmtdtWj2+kudEMbxzDXDEyPrn2oE9kq6AUalTFO2J9Y=",
+        "lastModified": 1718376125,
+        "narHash": "sha256-NIJZxmY2CWsqJK/9BQCRSHfcCY9K6thjq/1XtJobxmU=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "3834c4e0db1929aa0e91fbfd9c12be01dbf976bb",
+        "rev": "7a2a25af02be25987aa43cd681312f4b5ba12317",
         "type": "github"
       },
       "original": {
@@ -1624,11 +1624,11 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1714751746,
-        "narHash": "sha256-5cMDLW2MioKsycpHgJ9WI9p0OWU0bohkKmCtJ5QNdSo=",
+        "lastModified": 1718385013,
+        "narHash": "sha256-n+RwYEYZVj/jmAbHJ0X1B3bUfRCcLlie3dttwNas3lA=",
         "ref": "refs/heads/main",
-        "rev": "38c955ff625020baf2e1ab73c1f1dfdd941d8cc9",
-        "revCount": 16,
+        "rev": "814ae0407bb406d0793a8579f2b105ea222e9b5e",
+        "revCount": 18,
         "type": "git",
         "url": "ssh://git@github.com/Multipixelone/nix-secrets.git"
       },

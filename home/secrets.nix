@@ -21,6 +21,9 @@
       "restic/rclone" = {
         file = "${inputs.secrets}/restic/${osConfig.networking.hostName}rclone.age";
       };
+      "syncthing" = {
+        file = "${inputs.secrets}/media/syncthing.age";
+      };
     };
   };
 }
