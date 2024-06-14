@@ -113,7 +113,8 @@
           song_file=$(basename "$line")
           extension="''${song_file##*.}"
           if [[ "$extension" == "flac" ]] || [[ "$extension" == "alac" ]]; then
-            ffmpeg -nostdin -i "$line" -ab 320k "$DEST_FOLDER/''${song_file%.*}.mp3"
+            ffmpeg -nostdin -i "$line" -aq 2 "$DEST_FOLDER/''${song_file%.*}.mp3"
+            # ffmpeg -nostdin -i "$line" -ab 320k "$DEST_FOLDER/''${song_file%.*}.mp3"
           else
             # mv "$line" "$DEST_FOLDER/" 2> /dev/null
             continue
