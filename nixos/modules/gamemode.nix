@@ -3,6 +3,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: let
   programs = lib.makeBinPath [
@@ -42,6 +43,14 @@ in {
   #      simply running the game will automatically activate GameMode.
   #   2. For others, launching the game through gamemoderun: `gamemoderun ./game`
   #   3. For steam: `gamemoderun steam-runtime`
+  age.secrets = {
+    "syncthing" = {
+      file = "${inputs.secrets}/media/syncthing.age";
+      mode = "770";
+      owner = "tunnel";
+      group = "users";
+    };
+  };
   programs.gamemode = {
     enable = true;
     settings = {
