@@ -132,10 +132,13 @@
     jack.enable = true;
   };
   # Required for Obsidian
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-25.9.0"
-    "electron-28.2.10"
-  ];
+  nixpkgs = {
+    config.permittedInsecurePackages = [
+      "electron-25.9.0"
+      "electron-28.2.10"
+    ];
+    overlays = [inputs.nur.overlay];
+  };
   # Fonts
   fonts.packages = with pkgs; [
     ipafont
