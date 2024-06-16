@@ -52,6 +52,7 @@
       url = "github:hyprwm/hypridle";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nurpkgs.url = "github:nix-community/NUR";
   };
   outputs = inputs @ {
     nixpkgs,
@@ -69,6 +70,7 @@
     hyprgrass,
     anyrun,
     chaotic,
+    nur,
     ...
   }: {
     nixosConfigurations = {
@@ -82,6 +84,7 @@
           home-manager.nixosModules.home-manager
           agenix.nixosModules.default
           chaotic.nixosModules.default
+          nur.nixosModules.nur
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -135,6 +138,7 @@
           inputs.attic.nixosModules.atticd
           agenix.nixosModules.default
           chaotic.nixosModules.default
+          nur.nixosModules.nur
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
