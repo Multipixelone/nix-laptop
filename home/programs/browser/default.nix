@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+    ublock-origin
+  ];
+in {
   imports = [];
 
   home.packages = with pkgs; [
