@@ -79,6 +79,7 @@
       addKeysToAgent = "yes";
       forwardAgent = true;
     };
+    # use nix-index insteam of cnf
     command-not-found.enable = false;
     nix-index = {
       enable = true;
