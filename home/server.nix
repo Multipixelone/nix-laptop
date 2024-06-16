@@ -80,7 +80,10 @@
       forwardAgent = true;
     };
     command-not-found.enable = false;
-    nix-index.enable = true;
+    nix-index = {
+      enable = true;
+      enableFishIntegration = true;
+    };
     home-manager.enable = true;
   };
   home.stateVersion = "23.11";
