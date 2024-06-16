@@ -11,5 +11,8 @@ in {
   ];
   programs.firefox = {
     enable = true;
+    profiles."default" = {
+      inherit extensions;
+    };
   };
 }
