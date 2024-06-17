@@ -37,5 +37,6 @@ in {
     # profiles."default" = {
     #   inherit extensions;
     # };
+    package = pkgs.firefox-beta-bin;
   };
 }
