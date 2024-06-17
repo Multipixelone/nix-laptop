@@ -35,8 +35,8 @@ in {
     package = pkgs.firefox-beta-bin;
     profiles = {
       default = {
-        id = 0;
         inherit extensions settings;
+        id = 0;
       };
     };
   };
