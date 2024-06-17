@@ -135,7 +135,7 @@ in {
         force_default_wallpaper = 0;
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
-        vfr = true;
+        vfr = false;
       };
       input = {
         accel_profile = "flat";
