@@ -26,8 +26,6 @@
     "browser.link.open_newwindow" = true;
   };
 in {
-  imports = [];
-
   home.packages = with pkgs; [
     chromium
     profile-sync-daemon
