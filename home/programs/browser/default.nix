@@ -34,9 +34,12 @@ in {
   ];
   programs.firefox = {
     enable = true;
-    # profiles."default" = {
-    #   inherit extensions;
-    # };
     package = pkgs.firefox-beta-bin;
+    profiles = {
+      default = {
+        id = 0;
+        inherit extensions settings;
+      };
+    };
   };
 }
