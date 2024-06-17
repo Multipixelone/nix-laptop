@@ -21,6 +21,10 @@
     # TODO last.fm unscrobbler
     # TODO readwise
   ];
+  settings = {
+    "app.update.channel" = "default";
+    "browser.link.open_newwindow" = true;
+  };
 in {
   imports = [];
 
