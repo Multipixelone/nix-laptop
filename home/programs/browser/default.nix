@@ -9,7 +9,7 @@
     decentraleyes
     link-cleaner
     clearurls
-    fastforward
+    # fastforward
     # ui
     tree-style-tab
     # utility
