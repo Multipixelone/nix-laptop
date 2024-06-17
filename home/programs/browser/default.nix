@@ -17,6 +17,7 @@
     darkreader
     zotero-connector
     violentmonkey # TODO add last.fm script
+    istilldontcareaboutcookies
     # TODO last.fm unscrobbler
     # TODO readwise
   ];
