@@ -15,8 +15,8 @@ in {
   #   splash = false
   # '';
   #
-    exec-once = "${swww} img ${wallpaper}";
   wayland.windowManager.hyprland.settings = {
+    exec-once = ["${swww} img ${wallpaper}"];
   };
   systemd.user.services.swww = {
     Unit = {
