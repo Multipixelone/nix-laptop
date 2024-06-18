@@ -1,4 +1,6 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  swww-daemon = pkgs.swww + "/bin/swww-daemon";
+in {
   # xdg.configFile."hypr/hyprpaper.conf".text = ''
   #   preload = ${config.theme.wallpaper}
   #   preload = ${config.theme.side-wallpaper}
@@ -14,7 +16,7 @@
       PartOf = ["graphical-session.target"];
     };
     Service = {
-      ExecStart = "${pkgs.swww}/bin/swww-daemon";
+      ExecStart = "${swww-daemon}";
       Restart = "on-failure";
     };
     Install.WantedBy = ["graphical-session.target"];
