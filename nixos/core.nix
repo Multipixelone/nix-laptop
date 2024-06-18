@@ -68,7 +68,7 @@
     fail2ban.enable = true;
     openssh = {
       enable = true;
-      allowSFTP = false;
+      allowSFTP = true;
       settings = {
         AllowUsers = ["tunnel"];
         PasswordAuthentication = false;
