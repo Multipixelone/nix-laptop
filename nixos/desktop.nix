@@ -9,6 +9,7 @@
     ./modules/backup.nix
     ./modules/security.nix
     ./modules/media.nix
+    inputs.nix-gaming.nixosModules.platformOptimizations
   ];
   environment.systemPackages = with pkgs; [
     virt-manager
@@ -100,6 +101,7 @@
     steam = {
       enable = true;
       gamescopeSession.enable = false;
+      platformOptimizations.enable = true;
       extraCompatPackages = with pkgs; [
         proton-ge-bin
       ];
