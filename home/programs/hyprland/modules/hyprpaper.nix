@@ -1,7 +1,4 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [
-    swww
-  ];
   # xdg.configFile."hypr/hyprpaper.conf".text = ''
   #   preload = ${config.theme.wallpaper}
   #   preload = ${config.theme.side-wallpaper}
