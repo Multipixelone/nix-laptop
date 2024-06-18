@@ -23,6 +23,7 @@
       "idleinhibit focus, class:^(mpv|.+exe|celluloid)$"
       "idleinhibit focus, class:^(firefox)$, title:^(.*YouTube.*)$"
       "idleinhibit always, title:^(Zoom Meeting)$"
+      "idleinhibit always, title:^(Steam Big Picture Mode)$"
       "idleinhibit fullscreen, class:^(firefox)$"
 
       # Music Player & Blanket
