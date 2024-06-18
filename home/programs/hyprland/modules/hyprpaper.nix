@@ -1,5 +1,10 @@
 {pkgs, ...}: let
+  swww = pkgs.swww + "/bin/swww";
   swww-daemon = pkgs.swww + "/bin/swww-daemon";
+  wallpaper = builtins.fetchurl {
+    url = "https://blusky.s3.us-west-2.amazonaws.com/castle.GIF";
+    sha256 = "";
+  };
 in {
   # xdg.configFile."hypr/hyprpaper.conf".text = ''
   #   preload = ${config.theme.wallpaper}
@@ -10,6 +15,9 @@ in {
   #   splash = false
   # '';
   #
+  wayland.windowManager.hyprland = {
+    exec-once = "${swww} img ${wallpaper}";
+  };
   systemd.user.services.swww = {
     Unit = {
       Description = "swww wallpaper daemon";
