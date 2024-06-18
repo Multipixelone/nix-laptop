@@ -9,6 +9,7 @@
     ./modules/backup.nix
     ./modules/security.nix
     ./modules/media.nix
+    inputs.nix-gaming.nixosModules.pipewireLowLatency
     inputs.nix-gaming.nixosModules.platformOptimizations
   ];
   environment.systemPackages = with pkgs; [
@@ -132,6 +133,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
+    lowLatency.enable = true;
   };
   # Required for Obsidian
   nixpkgs = {
