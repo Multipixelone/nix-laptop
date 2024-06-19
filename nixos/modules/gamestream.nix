@@ -8,6 +8,7 @@
   moondeck = pkgs.qt6.callPackage ../../pkgs/moondeck/default.nix {};
   hypr-dispatch = pkgs.hyprland + "/bin/hyprctl dispatch exec";
   papirus = pkgs.papirus-icon-theme + /share/icons/Papirus-Dark/128x128/apps;
+  wind-waker = "/media/BigData/Games/roms/wiiu/THE LEGEND OF ZELDA The Wind Waker HD [BCZE01]/code/cking.rpx";
   mkImage = {
     url,
     hash,
@@ -96,6 +97,15 @@ in {
           image-path = pkgs.runCommand "steam.png" {} ''
             ${pkgs.imagemagick}/bin/convert -density 1200 -resize 500x -background none ${papirus}/steam.svg  -gravity center -extent 600x800 $out
           '';
+        }
+        {
+          name = "Wind Waker HD";
+          cmd = "${hypr-dispatch} \"${lib.getExe pkgs.cemu} -g \"${wind-waker}\"\"";
+          prep-cmd = [prep];
+          image-path = mkImage {
+            url = "https://cdn2.steamgriddb.com/grid/8d5c0500d7ec1c04842c4b33673d0f43.png";
+            hash = "sha256-jGDBJeCH7Ch5UGmYxEqypbWtg+qIT+DjEfE0HaVoDcU=";
+          };
         }
         # {
         #   name = "Firefox";
