@@ -111,7 +111,7 @@
     opengl.driSupport32Bit = true;
   };
   # TODO re-enable mesa-git eventually
-  chaotic.mesa-git.enable = false;
+  chaotic.mesa-git.enable = true;
   environment.systemPackages = [
     (import ./modules/scripts/sleep.nix {inherit pkgs;})
     inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
