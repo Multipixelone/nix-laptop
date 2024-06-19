@@ -1,8 +1,16 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   steam = "/run/current-system/sw/bin/steam --";
   sh = pkgs.bash + "/bin/bash";
   moondeck = pkgs.qt6.callPackage ../../pkgs/moondeck/default.nix {};
   hypr-dispatch = pkgs.hyprland + "/bin/hyprctl dispatch exec";
+  mkImage = {
+    url,
+    hash,
+  }: let image = pkgs.fetchurl {inherit url hash;}; in pkgs.runCommand "${lib.nameFromURL url "."}.png" {} ''${pkgs.imagemagick}/bin/convert ${image} -background none -gravity center -extent 600x800 $out'';
   streammon =
     pkgs.writeShellApplication {
       name = "streammon";
