@@ -10,5 +10,6 @@
     gamemode
     steamtinkerlaunch
     prismlauncher
+    cemu
   ];
 }
