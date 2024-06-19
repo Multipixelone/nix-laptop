@@ -7,6 +7,7 @@
   sh = pkgs.bash + "/bin/bash";
   moondeck = pkgs.qt6.callPackage ../../pkgs/moondeck/default.nix {};
   hypr-dispatch = pkgs.hyprland + "/bin/hyprctl dispatch exec";
+  papirus = pkgs.papirus-icon-theme + /share/icons/Papirus-Dark/128x128/apps;
   mkImage = {
     url,
     hash,
@@ -75,16 +76,26 @@ in {
         {
           name = "Desktop";
           prep-cmd = [prep];
+          image-path = pkgs.runCommand "desktop.png" {} ''
+            ${pkgs.imagemagick}/bin/convert -density 1200 -resize 500x -background none ${papirus}/cinnamon-virtual-keyboard.svg  -gravity center -extent 600x800 $out
+          '';
         }
         {
           name = "Steam Big Picture";
           cmd = "${hypr-dispatch} \"${steam} -gamepadui\"";
           prep-cmd = [prep steam-kill];
+          # TODO simplify this and stop repeating myself so much
+          image-path = pkgs.runCommand "steambigpicture.png" {} ''
+            ${pkgs.imagemagick}/bin/convert -density 1200 -resize 500x -background none ${papirus}/steamlink.svg  -gravity center -extent 600x800 $out
+          '';
         }
         {
           name = "Steam (Regular UI)";
           cmd = "${hypr-dispatch} \"${steam}\"";
           prep-cmd = [prep steam-kill];
+          image-path = pkgs.runCommand "steam.png" {} ''
+            ${pkgs.imagemagick}/bin/convert -density 1200 -resize 500x -background none ${papirus}/steam.svg  -gravity center -extent 600x800 $out
+          '';
         }
         # {
         #   name = "Firefox";
@@ -100,6 +111,9 @@ in {
           name = "MoonDeckStream";
           cmd = "${moondeck}/bin/MoonDeckStream";
           prep-cmd = [prep];
+          image-path = pkgs.runCommand "moondeck.png" {} ''
+            ${pkgs.imagemagick}/bin/convert -density 1200 -resize 500x -background none ${papirus}/moonlight.svg  -gravity center -extent 600x800 $out
+          '';
           auto-detatch = false;
         }
       ];
