@@ -11,6 +11,7 @@
     ./modules/rgb.nix
     ./modules/gamestream.nix
     ./modules/attic.nix
+    ./modules/minecraft-server.nix
   ];
   console = {
     earlySetup = true;
