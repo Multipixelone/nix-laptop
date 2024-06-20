@@ -4,7 +4,9 @@
   lib,
   inputs,
   ...
-}: {
+}: let
+  gtfs-subway = pkgs.callPackage ../pkgs/aequilibrae/gtfs-subway.nix {};
+in {
   imports = [
     ./desktop.nix
     ./modules/gamemode.nix
@@ -90,6 +92,7 @@
         ports = ["8002:8002"];
         volumes = [
           "/srv/valhalla:/custom_files"
+          "${gtfs-subway}:/gtfs_feeds"
         ];
         environment = {
           tile_urls = "http://download.geofabrik.de/north-america/us-northeast-latest.osm.pbf";
