@@ -26,6 +26,9 @@
       "idleinhibit always, title:^(Steam Big Picture Mode)$"
       "idleinhibit fullscreen, class:^(firefox)$"
 
+      # Steam Big Picture Stay fullscreen
+      "fullscreen, title:^(Steam Big Picture Mode)$"
+
       # Music Player & Blanket
       "float,class:^(Plexamp)$"
       "float,class:^(com.rafaelmardojai.Blanket)$"
