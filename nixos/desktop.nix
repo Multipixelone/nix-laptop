@@ -181,6 +181,9 @@
         enable = true;
         setSocketVariable = true;
       };
+      daemon.settings = {
+        dns = ["1.1.1.1"];
+      };
     };
     vmVariant = {
       virtualisation = {
