@@ -60,6 +60,7 @@
     "d /srv/slskd 0770 tunnel users -"
     "d /srv/grocy 0770 tunnel users -"
     "d /srv/jdownloader 0770 tunnel users -"
+    "d /srv/valhalla 0770 tunnel users -"
   ];
   virtualisation.oci-containers = {
     backend = "docker";
@@ -82,6 +83,24 @@
           "/media/Data/ImportMusic/JDownloader/:/output"
           "/srv/jdownloader/:/config"
         ];
+      };
+      valhalla = {
+        autoStart = true;
+        image = "ghcr.io/gis-ops/docker-valhalla/valhalla:latest";
+        ports = ["8002:8002"];
+        volumes = [
+          "/srv/valhalla:/custom_files"
+        ];
+        environment = {
+          tile_urls = "http://download.geofabrik.de/north-america/us-northeast-latest.osm.pbf";
+          server_threads = "8";
+          serve_tiles = "True";
+          build_elevation = "True";
+          build_transit = "True";
+          build_admin = "True";
+          build_time_zones = "True";
+          build_tar = "True";
+        };
       };
       slskd = {
         autoStart = true;
