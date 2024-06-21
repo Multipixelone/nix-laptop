@@ -25,7 +25,7 @@ in {
     ./modules/hypridle.nix
     ./modules/hyprpaper.nix
     ./modules/waybar.nix
-    ./modules/anyrun.nix
+    ./modules/rofi.nix
     ./modules/gammastep.nix
   ];
   services = {
