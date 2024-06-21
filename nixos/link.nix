@@ -92,14 +92,14 @@ in {
         ports = ["8002:8002"];
         volumes = [
           "/srv/valhalla:/custom_files"
-          "${gtfs-subway}:/gtfs_feeds"
+          # "${gtfs-subway}:/gtfs_feeds"
         ];
         environment = {
           tile_urls = "http://download.geofabrik.de/north-america/us-northeast-latest.osm.pbf";
           server_threads = "8";
           serve_tiles = "True";
           build_elevation = "True";
-          build_transit = "True";
+          build_transit = "False";
           build_admins = "True";
           build_time_zones = "True";
           build_tar = "True";
