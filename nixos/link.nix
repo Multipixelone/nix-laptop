@@ -100,7 +100,7 @@ in {
           serve_tiles = "True";
           build_elevation = "True";
           build_transit = "True";
-          build_admin = "True";
+          build_admins = "True";
           build_time_zones = "True";
           build_tar = "True";
         };
