@@ -106,19 +106,19 @@
       runtimeInputs = [pkgs.ffmpeg];
       text = ''
         OUTPUT_PLAYLIST_DIR="/home/tunnel/Music/Playlists"
-        PLAYLIST="$OUTPUT_PLAYLIST_DIR/monthly playlist.m3u8"
+        PLAYLIST=''${2:-"$OUTPUT_PLAYLIST_DIR/monthly playlist.m3u8"}
         DEST_FOLDER=''${1}
         while IFS= read -r line; do
           [[ $line == \#* ]] || [[ -z $line ]] && continue
-          song_file=$(basename "$line")
-          extension="''${song_file##*.}"
-          if [[ "$extension" == "flac" ]] || [[ "$extension" == "alac" ]]; then
-            ffmpeg -nostdin -i "$line" -aq 2 "$DEST_FOLDER/''${song_file%.*}.mp3"
+          # song_file=$(basename "$line")
+          # extension="''${song_file##*.}"
+          # if [[ "$extension" == "flac" ]] || [[ "$extension" == "alac" ]]; then
+            # ffmpeg -nostdin -i "$line" -aq 2 "$DEST_FOLDER/''${song_file%.*}.mp3"
             # ffmpeg -nostdin -i "$line" -ab 320k "$DEST_FOLDER/''${song_file%.*}.mp3"
-          else
-            # mv "$line" "$DEST_FOLDER/" 2> /dev/null
-            continue
-          fi
+          # else
+            cp "$line" "$DEST_FOLDER/" 2> /dev/null
+          #   continue
+          # fi
         done < "$PLAYLIST"
       '';
     })
