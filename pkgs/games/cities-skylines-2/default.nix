@@ -9,7 +9,7 @@
   wine,
   dxvk,
   wineFlags ? "",
-  pname ? "stray",
+  pname ? "cities-skylines-ii",
   location ? "$HOME/Games/cities-skylines-ii",
   tricks ? [],
   wineDllOverrides ? ["powershell.exe=n"],
