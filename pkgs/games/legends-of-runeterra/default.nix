@@ -7,7 +7,6 @@
   mangohud,
   winetricks,
   wine,
-  dxvk,
   wineFlags ? "",
   pname ? "legends-of-runeterra",
   location ? "$HOME/Games/legends-of-runeterra",
@@ -80,8 +79,6 @@
       rm -rf "$WINEPREFIX/drive_c/users/$USER/AppData/Roaming/EasyAntiCheat";
     fi
     cd $WINEPREFIX
-
-    ${dxvk}/bin/setup_dxvk.sh install --symlink
 
     ${preCommands}
 
