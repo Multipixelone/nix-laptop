@@ -94,7 +94,7 @@
   icon = pkgs.fetchurl {
     # Source: https://www.steamgriddb.com/icon/45742
     url = "https://cdn2.steamgriddb.com/icon/ecf779950797b04af59fb80a6f81aa2c.png";
-    hash = lib.fakeHash;
+    hash = "sha256-qHRF5T8hkjJWrXT6G9+HcQ2uuHS+i50aV4+IDuyNzAc=";
   };
 
   desktopItems = makeDesktopItem {
