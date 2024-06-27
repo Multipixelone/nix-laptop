@@ -6,7 +6,8 @@
   mangohud,
   gamescope,
   winetricks,
-  wine,
+  umu,
+  proton ? "GE-Proton",
   wineFlags ? "",
   pname ? "legends-of-runeterra",
   location ? "$HOME/Games/legends-of-runeterra",
@@ -36,6 +37,7 @@
     export WINEFSYNC=1
     export WINEESYNC=1
     export WINEPREFIX="${location}"
+    export PROTONPATH="${proton}"
     export WINEDLLOVERRIDES="${lib.strings.concatStringsSep "," wineDllOverrides}"
     # ID for umu, not used for now
     export GAMEID="umu-cities-skylines-ii"
@@ -54,7 +56,7 @@
     # AMD
     export dual_color_blend_by_location=1
 
-    PATH=${lib.makeBinPath [wine winetricks]}:$PATH
+    PATH=${lib.makeBinPath [umu winetricks]}:$PATH
     USER="$(whoami)"
     GAME_PATH="$WINEPREFIX/drive_c/Riot Games/Riot Client"
     GAME_BIN="$GAME_PATH/RiotClientServices.exe --launch-product=bacon --launch-patchline=${version}"
@@ -62,15 +64,11 @@
     if [ ! -d "$WINEPREFIX" ]; then
       # install tricks
       winetricks -q -f ${tricksFmt}
-      wineserver -k
-
       mkdir -p "$GAME_PATH"
 
       # install launcher
       # Use silent install
-      wine ${src} /S
-
-      wineserver -k
+      umu ${src} /S
     fi
 
     # EAC Fix
@@ -82,8 +80,7 @@
 
     ${preCommands}
 
-    ${gamescope}/bin/gamescope -w 2560 -h 1440 -- ${mangohud}/bin/mangohud wine ${wineFlags} "$GAME_BIN" "$@"
-    wineserver -w
+    ${gamescope}/bin/gamescope -w 2560 -h 1440 -- ${mangohud}/bin/mangohud umu ${wineFlags} "$GAME_BIN" "$@"
 
     ${postCommands}
   '';

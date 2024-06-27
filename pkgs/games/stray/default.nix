@@ -6,7 +6,8 @@
   gamemode,
   mangohud,
   winetricks,
-  wine,
+  proton ? "GE-Proton",
+  umu,
   dxvk,
   wineFlags ? "",
   pname ? "stray",
@@ -37,6 +38,7 @@
     export WINEFSYNC=1
     export WINEESYNC=1
     export WINEPREFIX="${location}"
+    export PROTONPATH="${proton}"
     export WINEDLLOVERRIDES="${lib.strings.concatStringsSep "," wineDllOverrides}"
     # ID for umu, not used for now
     export GAMEID="umu-stray"
@@ -55,22 +57,19 @@
     # AMD
     export dual_color_blend_by_location=1
 
-    PATH=${lib.makeBinPath [wine winetricks]}:$PATH
+    PATH=${lib.makeBinPath [umu winetricks]}:$PATH
     USER="$(whoami)"
     GAME_BIN="$WINEPREFIX/drive_c/Stray/Hk_project/Binaries/Win64/Stray-Win64-Shipping.exe"
 
     if [ ! -d "$WINEPREFIX" ]; then
       # install tricks
       winetricks -q -f ${tricksFmt}
-      wineserver -k
 
       mkdir -p "$WINEPREFIX/drive_c/Stray/Hk_project/Binaries/Win64/"
 
       # install launcher
       # Use silent install
-      wine ${src} /S
-
-      wineserver -k
+      umu ${src} /S
     fi
 
     # EAC Fix
@@ -84,8 +83,7 @@
 
     ${preCommands}
 
-    ${gamemode}/bin/gamemoderun ${mangohud}/bin/mangohud wine ${wineFlags} "$GAME_BIN" "$@"
-    wineserver -w
+    ${gamemode}/bin/gamemoderun ${mangohud}/bin/mangohud umu ${wineFlags} "$GAME_BIN" "$@"
 
     ${postCommands}
   '';

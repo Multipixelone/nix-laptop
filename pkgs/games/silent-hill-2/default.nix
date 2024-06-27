@@ -6,7 +6,8 @@
   gamemode,
   mangohud,
   winetricks,
-  wine,
+  umu,
+  proton ? "GE-Proton",
   dxvk,
   wineFlags ? "",
   pname ? "silent-hill-2",
@@ -37,6 +38,7 @@
     export WINEFSYNC=1
     export WINEESYNC=1
     export WINEPREFIX="${location}"
+    export PROTONPATH="${proton}"
     export WINEDLLOVERRIDES="${lib.strings.concatStringsSep "," wineDllOverrides}"
     # ID for umu, not used for now
     export GAMEID="umu-silent-hill-2"
@@ -55,7 +57,7 @@
     # AMD
     export dual_color_blend_by_location=1
 
-    PATH=${lib.makeBinPath [wine winetricks]}:$PATH
+    PATH=${lib.makeBinPath [umu winetricks]}:$PATH
     USER="$(whoami)"
     GAME_PATH="$WINEPREFIX/drive_c/Program Files (x86)/Konami/Silent Hill 2 - Directors Cut"
     GAME_BIN="$GAME_PATH/sh2pc.exe"
@@ -63,15 +65,11 @@
     if [ ! -d "$WINEPREFIX" ]; then
       # install tricks
       winetricks -q -f ${tricksFmt}
-      wineserver -k
-
       mkdir -p "$GAME_PATH"
 
       # install launcher
       # Use silent install
-      wine ${src} /S
-
-      wineserver -k
+      umu ${src} /S
     fi
 
     # EAC Fix
@@ -81,12 +79,9 @@
     fi
     cd $WINEPREFIX
 
-    ${dxvk}/bin/setup_dxvk.sh install --symlink
-
     ${preCommands}
 
-    ${gamemode}/bin/gamemoderun ${mangohud}/bin/mangohud wine ${wineFlags} "$GAME_BIN" "$@"
-    wineserver -w
+    ${gamemode}/bin/gamemoderun ${mangohud}/bin/mangohud umu ${wineFlags} "$GAME_BIN" "$@"
 
     ${postCommands}
   '';
