@@ -16,7 +16,6 @@
     virt-manager
     qemu_kvm
     qemu
-    inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
     # TODO fix latency flex
     # inputs.chaotic.packages.${pkgs.system}.latencyflex-vulkan
     xdg-utils
@@ -32,7 +31,7 @@
     (pkgs.libsForQt5.callPackage ../pkgs/qtscrob/default.nix {})
     (pkgs.callPackage ../pkgs/spotify2musicbrainz/default.nix {})
     (yabridge.override {
-      wine = inputs.nix-gaming.packages.${pkgs.system}.wine-tkg;
+      wine = inputs.nix-gaming.packages.${pkgs.system}.wine-ge;
     })
     yabridgectl
     pulseaudioFull
