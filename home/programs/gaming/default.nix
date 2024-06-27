@@ -28,5 +28,9 @@ in {
       inherit wine mangohud;
       location = "/media/TeraData/Games/cities-skylines-ii";
     })
+    (callPackage ../../../pkgs/games/silent-hill-2 {
+      inherit wine mangohud;
+      location = "/media/BigData/Games/silent-hill-2-directors-cut";
+    })
   ];
 }
