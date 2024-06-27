@@ -1712,7 +1712,8 @@
         "nurpkgs": "nurpkgs",
         "secrets": "secrets",
         "spicetify-nix": "spicetify-nix",
-        "stylix": "stylix"
+        "stylix": "stylix",
+        "umu": "umu"
       }
     },
     "secrets": {
@@ -1962,6 +1963,30 @@
         "owner": "numtide",
         "repo": "treefmt-nix",
         "type": "github"
+      }
+    },
+    "umu": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "dir": "packaging/nix",
+        "lastModified": 1719430666,
+        "narHash": "sha256-mfWcgjhlZTry2JliNxK9AhqPw3E0GlAfIs3cW5x9JlQ=",
+        "ref": "refs/heads/main",
+        "rev": "2d758321ec63b98d708079b4a737d4b18641c4f3",
+        "revCount": 590,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging/nix"
+      },
+      "original": {
+        "dir": "packaging/nix",
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging/nix"
       }
     },
     "xdph": {
