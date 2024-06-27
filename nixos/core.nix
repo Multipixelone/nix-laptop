@@ -44,6 +44,7 @@
     };
     kernel.sysctl = {
       "fs.inotify.max_user_watches" = 600000;
+      "fs.file-max" = 524288;
     };
     binfmt.emulatedSystems = ["aarch64-linux"];
   };

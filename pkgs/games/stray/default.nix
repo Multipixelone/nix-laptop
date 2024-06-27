@@ -35,7 +35,7 @@
   script = writeShellScriptBin pname ''
     export WINEARCH="win64"
     export WINEFSYNC=1
-    # export WINEESYNC=1
+    export WINEESYNC=1
     export WINEPREFIX="${location}"
     export WINEDLLOVERRIDES="${lib.strings.concatStringsSep "," wineDllOverrides}"
     # ID for umu, not used for now
