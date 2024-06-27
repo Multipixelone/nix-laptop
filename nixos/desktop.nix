@@ -28,8 +28,8 @@
     libsForQt5.kio
     libsForQt5.kio-extras
     inputs.agenix.packages.${pkgs.system}.default
-    (pkgs.libsForQt5.callPackage ../pkgs/qtscrob/default.nix {})
-    (pkgs.callPackage ../pkgs/spotify2musicbrainz/default.nix {})
+    (libsForQt5.callPackage ../pkgs/qtscrob/default.nix {})
+    (callPackage ../pkgs/spotify2musicbrainz/default.nix {})
     (yabridge.override {
       wine = inputs.nix-gaming.packages.${pkgs.system}.wine-ge;
     })
