@@ -3,8 +3,8 @@
   makeDesktopItem,
   symlinkJoin,
   writeShellScriptBin,
-  gamemode,
   mangohud,
+  gamescope,
   winetricks,
   wine,
   wineFlags ? "",
@@ -82,7 +82,7 @@
 
     ${preCommands}
 
-    ${gamemode}/bin/gamemoderun ${mangohud}/bin/mangohud wine ${wineFlags} "$GAME_BIN" "$@"
+    ${gamescope}/bin/gamescope -w 2560 -h 1440 -- ${mangohud}/bin/mangohud wine ${wineFlags} "$GAME_BIN" "$@"
     wineserver -w
 
     ${postCommands}
