@@ -25,5 +25,13 @@
         wine "$WINEPREFIX/drive_c/Program Files/Cities Skylines II/Cities2.exe"
       '';
     })
+    (writeShellApplication {
+      name = "stray";
+      runtimeInputs = [inputs.nix-gaming.packages.${pkgs.system}.wine-ge];
+      text = ''
+        export WINEPREFIX=/media/TeraData/Games/stray
+        wine "$WINEPREFIX/drive_c/Stray/Hk_project/Binaries/Win64/Stray-Win64-Shipping.exe"
+      '';
+    })
   ];
 }
