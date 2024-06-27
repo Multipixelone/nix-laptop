@@ -57,8 +57,8 @@
 
     PATH=${lib.makeBinPath [wine winetricks]}:$PATH
     USER="$(whoami)"
-    GAME_PATH="$WINEPREFIX/windows/syswow64/wineconsole.exe"
-    GAME_BIN="c:\\sh2ee_menu.bat"
+    GAME_PATH="$WINEPREFIX/drive_c/Program Files (x86)/Konami/Silent Hill 2 - Directors Cut"
+    GAME_BIN="$GAME_PATH/sh2pc.exe"
 
     if [ ! -d "$WINEPREFIX" ]; then
       # install tricks
