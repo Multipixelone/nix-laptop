@@ -32,5 +32,9 @@ in {
       inherit wine mangohud;
       location = "/media/BigData/Games/silent-hill-2-directors-cut";
     })
+    (callPackage ../../../pkgs/games/legends-of-runeterra {
+      inherit wine mangohud;
+      location = "/media/BigData/Games/legends-of-runeterra";
+    })
   ];
 }
