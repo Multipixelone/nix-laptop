@@ -128,11 +128,9 @@ in {
     };
   };
   hardware = {
-    opengl.driSupport = true; # This is already enabled by default
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
     i2c.enable = true;
-    opengl.driSupport32Bit = true;
   };
   # TODO re-enable mesa-git eventually
   chaotic.mesa-git.enable = true;
