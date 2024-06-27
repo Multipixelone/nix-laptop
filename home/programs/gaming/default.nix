@@ -19,7 +19,7 @@ in {
     steamtinkerlaunch
     prismlauncher
     cemu
-    (callPackage ../../../pkgs/games/stray/default.nix {
+    (callPackage ../../../pkgs/games/stray {
       inherit wine mangohud;
       location = "/media/TeraData/Games/stray";
     })
