@@ -15,9 +15,9 @@
     steamtinkerlaunch
     prismlauncher
     cemu
-    # TODO make these something better than jank shell scripts
-    # WINE SHELL RUNNERS! :)
   ];
+  # TODO make these into proper wine packages copying from nix-gaming
+  # WINE SHELL RUNNERS! :)
   xdg.desktopEntries = {
     cities-skylines-2 = {
       name = "Cities Skylines II";
