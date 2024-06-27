@@ -129,7 +129,6 @@ in {
   };
   hardware = {
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
     i2c.enable = true;
   };
   # TODO re-enable mesa-git eventually
