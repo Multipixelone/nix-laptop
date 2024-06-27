@@ -39,7 +39,7 @@
     export WINEPREFIX="${location}"
     export WINEDLLOVERRIDES="${lib.strings.concatStringsSep "," wineDllOverrides}"
     # ID for umu, not used for now
-    export GAMEID="umu-stray"
+    export GAMEID="umu-cities-skylines-ii"
     export STORE="none"
     # Anti-cheat
     export EOS_USE_ANTICHEATCLIENTNULL=1
