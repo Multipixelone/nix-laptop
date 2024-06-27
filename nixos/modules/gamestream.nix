@@ -107,16 +107,6 @@ in {
             hash = "sha256-jGDBJeCH7Ch5UGmYxEqypbWtg+qIT+DjEfE0HaVoDcU=";
           };
         }
-        # {
-        #   name = "Firefox";
-        #   cmd = "${hypr-dispatch} \"firefox\"";
-        #   prep-cmd = [prep];
-        # }
-        # {
-        #   name = "Terminal";
-        #   cmd = "${hypr-dispatch} \"foot\"";
-        #   prep-cmd = [prep];
-        # }
         {
           name = "MoonDeckStream";
           cmd = "${moondeck}/bin/MoonDeckStream";
