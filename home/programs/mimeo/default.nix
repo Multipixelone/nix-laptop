@@ -7,5 +7,8 @@
     '';
   });
 in {
-  home.packages = [pkgs.mimeo xdg-mimeo];
+  home.packages = [
+    pkgs.mimeo
+    xdg-mimeo
+  ];
 }
