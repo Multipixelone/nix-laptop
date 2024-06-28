@@ -131,6 +131,9 @@
     "x-scheme-handler/unknown" = "firefox-beta.desktop";
 
     "application/pdf" = "org.pwmt.zathura.desktop";
+
+    "audio/flac" = "vlc.desktop";
+    "audio/x-flac" = "vlc.desktop";
   };
   # Audio + Music
   musnix.enable = true;
