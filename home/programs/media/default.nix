@@ -34,13 +34,21 @@
   ];
   services.mopidy = {
     enable = true;
-    extensionPackages = with pkgs; [mopidy-mpd mopidy-iris mopidy-mpris mopidy-scrobbler mopidy-local (callPackage ../../../pkgs/mopidy/spotify.nix {})];
-    extraConfigFiles = ["${config.age.secrets."scrobblehome".path}" "${config.age.secrets."spotify".path}"];
+    extensionPackages = with pkgs; [
+      mopidy-mpd
+      mopidy-iris
+      mopidy-mpris
+      mopidy-scrobbler
+      mopidy-local
+      (callPackage ../../../pkgs/mopidy/spotify.nix {})
+    ];
+    extraConfigFiles = [
+      "${config.age.secrets."scrobblehome".path}"
+      "${config.age.secrets."spotify".path}"
+    ];
     settings = {
       local = {
-        media_dir = [
-          "/media/Data/Music"
-        ];
+        media_dir = ["/media/Data/Music"];
         scan_timeout = 5000;
       };
       mpd = {
