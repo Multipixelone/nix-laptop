@@ -20,10 +20,6 @@ in {
     prismlauncher
     cemu
     # Custom umu game runners
-    (callPackage ../../../pkgs/games/stray {
-      inherit umu mangohud;
-      location = "/media/TeraData/Games/stray";
-    })
     (callPackage ../../../pkgs/games/cities-skylines-2 {
       inherit umu mangohud;
       location = "/media/TeraData/Games/cities-skylines-ii";
