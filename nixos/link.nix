@@ -135,7 +135,7 @@ in {
   chaotic.mesa-git.enable = true;
   environment.systemPackages = [
     (import ./modules/scripts/sleep.nix {inherit pkgs;})
-    inputs.nix-gaming.packages.${pkgs.system}.wine-ge
+    inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
   ];
   boot = {
     initrd = {

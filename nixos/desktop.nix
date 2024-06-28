@@ -31,7 +31,7 @@
     (libsForQt5.callPackage ../pkgs/qtscrob/default.nix {})
     (callPackage ../pkgs/spotify2musicbrainz/default.nix {})
     (yabridge.override {
-      wine = inputs.nix-gaming.packages.${pkgs.system}.wine-ge;
+      wine = inputs.nix-gaming.packages.${pkgs.system}.wine-tkg;
     })
     yabridgectl
     pulseaudioFull
