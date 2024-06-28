@@ -134,6 +134,9 @@
 
     "audio/flac" = "vlc.desktop";
     "audio/x-flac" = "vlc.desktop";
+
+    "audio/wav" = "izotope-rx-10.desktop";
+    "audio/x-wav" = "izotope-rx-10.desktop";
   };
   # Audio + Music
   musnix.enable = true;
