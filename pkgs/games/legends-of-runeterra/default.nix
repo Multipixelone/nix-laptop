@@ -59,7 +59,7 @@
     PATH=${lib.makeBinPath [umu winetricks]}:$PATH
     USER="$(whoami)"
     GAME_PATH="$WINEPREFIX/drive_c/Riot Games/Riot Client"
-    GAME_BIN="$GAME_PATH/RiotClientServices.exe --launch-product=bacon --launch-patchline=${version}"
+    GAME_BIN="$GAME_PATH/RiotClientServices.exe -- --launch-product=bacon --launch-patchline=${version}"
 
     if [ ! -d "$WINEPREFIX" ]; then
       # install tricks
