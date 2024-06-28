@@ -10,7 +10,7 @@
   programs.zathura = {
     enable = true;
     options = {
-      recolor = true;
+      recolor = false;
       adjust-open = "best-fit";
       pages-per-row = "1";
       scroll-page-aware = "true";
