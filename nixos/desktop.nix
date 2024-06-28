@@ -121,7 +121,16 @@
     };
   };
   xdg.mime.defaultApplications = {
-    "x-scheme-handler/http" = "firefox";
+    "inode/directory" = "nemo.desktop";
+
+    "text/html" = "firefox-beta.desktop";
+    "default-web-browser" = "firefox-beta.desktop";
+    "x-scheme-handler/http" = "firefox-beta.desktop";
+    "x-scheme-handler/https" = "firefox-beta.desktop";
+    "x-scheme-handler/about" = "firefox-beta.desktop";
+    "x-scheme-handler/unknown" = "firefox-beta.desktop";
+
+    "application/pdf" = "org.pwmt.zathura.desktop";
   };
   # Audio + Music
   musnix.enable = true;
