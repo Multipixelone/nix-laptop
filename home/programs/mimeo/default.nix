@@ -10,6 +10,7 @@ in {
   home.packages = [
     pkgs.mimeo
     pkgs.cinnamon.nemo
+    pkgs.ark
     xdg-mimeo
   ];
 }

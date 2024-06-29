@@ -127,6 +127,7 @@
     "x-scheme-handler/unknown" = "firefox-beta.desktop";
 
     "application/pdf" = "org.pwmt.zathura.desktop";
+    "application/zip" = "ark.desktop";
 
     "audio/flac" = "vlc.desktop";
     "audio/x-flac" = "vlc.desktop";
