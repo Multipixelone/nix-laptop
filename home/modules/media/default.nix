@@ -6,11 +6,11 @@
   ...
 }:
 with lib; let
-  yabridge-enabled = config.tunnel.yabridge;
+  yabridge-enabled = config.tunnel.yabridge.enable;
   wine = inputs.nix-gaming.packages.${pkgs.system}.wine-tkg;
 in {
-  options.tunnel = {
-    yabridge = mkOption {
+  options.tunnel.yabridge = {
+    enable = mkOption {
       type = types.bool;
       default = false;
     };
@@ -26,7 +26,7 @@ in {
       (yabridge.override {inherit wine;})
       (callPackage ../../../pkgs/izotope {
         inherit wine;
-        location = config.tunnel.izotope-location;
+        location = config.tunnel.yabridge.izotope-location;
       })
     ];
   };

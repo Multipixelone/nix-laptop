@@ -2,5 +2,5 @@
   home.packages = with pkgs; [
     musescore
   ];
-  tunnel.yabridge = true;
+  tunnel.yabridge.enable = true;
 }
