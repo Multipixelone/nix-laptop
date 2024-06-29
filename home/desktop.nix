@@ -29,6 +29,7 @@
     inputs.agenix.homeManagerModules.default
     ./modules/theme
     ./modules/directories
+    ./modules/media
   ];
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
