@@ -1,8 +1,8 @@
 diff --git a/src/cli/cli.pro b/src/cli/cli.pro
-index 6879e0c..af15148 100755
+index 6879e0c..00d638e 100755
 --- a/src/cli/cli.pro
 +++ b/src/cli/cli.pro
-@@ -22,8 +22,6 @@ unix:mac {
+@@ -22,16 +22,8 @@ unix:mac {
  
  unix:!mac {
      INSTALLS += target \
@@ -10,4 +10,12 @@ index 6879e0c..af15148 100755
 -                man-compress
  
      target.path = $$BINDIR
+-
+-    man.files = scrobbler.1
+-    man.path = $${DATADIR}/man/man1
+-
+-    man-compress.path = $${DATADIR}/man/man1
+-    man-compress.extra = "gzip -9 -f \$(INSTALL_ROOT)/$$DATADIR/man/man1/scrobbler.1"
+ }
  
+ include (../app.pri)
