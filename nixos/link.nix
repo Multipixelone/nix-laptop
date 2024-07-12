@@ -27,18 +27,18 @@ in {
       user = "tunnel";
       configDir = "/home/tunnel/.config/syncthing";
     };
-    kmscon = {
-      enable = true;
-      fonts = [
-        {
-          name = "PragmataPro Mono Liga";
-          package = pkgs.callPackage ../pkgs/pragmata/default.nix {};
-        }
-      ];
-      extraOptions = "--term xterm-256color";
-      extraConfig = "font-size=12";
-      hwRender = true;
-    };
+    # kmscon = {
+    #   enable = true;
+    #   fonts = [
+    #     {
+    #       name = "PragmataPro Mono Liga";
+    #       package = pkgs.callPackage ../pkgs/pragmata/default.nix {};
+    #     }
+    #   ];
+    #   extraOptions = "--term xterm-256color";
+    #   extraConfig = "font-size=12";
+    #   hwRender = true;
+    # };
     udev.extraRules = ''
       # Operator Core
       SUBSYSTEM=="usb", ATTR{idVendor}=="16d0", ATTR{idProduct}=="123B", MODE="0666"
