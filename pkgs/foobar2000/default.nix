@@ -75,9 +75,9 @@
     fi
     ${preCommands}
 
-    # cp -r ${eole}/user-components $PROFILE_PATH/
-    # cp -r ${eole}/themes $PROFILE_PATH/
-    # cp -r ${eole}/plugins $PROFILE_PATH/
+    cp -r ${eole}/user-components $PROFILE_PATH/
+    cp -r ${eole}/themes $PROFILE_PATH/
+    cp -r ${eole}/plugins $PROFILE_PATH/
     wine ${wineFlags} "$GAME_BIN" "$@"
     echo ${eole}
 
