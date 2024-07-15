@@ -87,7 +87,7 @@ in {
         ];
       };
       valhalla = {
-        autoStart = true;
+        autoStart = false;
         image = "ghcr.io/gis-ops/docker-valhalla/valhalla:latest";
         ports = ["8002:8002"];
         volumes = [
