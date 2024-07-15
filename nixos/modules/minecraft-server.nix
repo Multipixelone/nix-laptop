@@ -12,11 +12,11 @@ in {
       environment = {
         EULA = "TRUE";
         # required for proxy use
-        ONLINE_MODE = "FALSE";
-        TYPE = "AUTO_CURSEFORGE";
-        CF_SLUG = "hazardousdaniels-unlimited";
-        # released jun 19th
-        CF_FILE_ID = "5444071";
+        ONLINE_MODE = "TRUE";
+        MOD_PLATFORM = "AUTO_CURSEFORGE";
+        # CF_SLUG = "hazardousdaniels-unlimited";
+        CF_PAGE_URL = "https://www.curseforge.com/minecraft/modpacks/hazardousdaniels-unlimited";
+        CF_FILENAME_MATCHER = "1.2.1";
       };
       volumes = [
         "/srv/games/mc-unlimited:/data"
