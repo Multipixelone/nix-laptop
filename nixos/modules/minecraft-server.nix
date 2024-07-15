@@ -8,7 +8,7 @@ in {
     minecraft-server = {
       autoStart = true;
       image = "itzg/minecraft-server:latest";
-      # ports = ["25565:25565"];
+      ports = ["25565:25565"];
       environment = {
         EULA = "TRUE";
         # required for proxy use
@@ -22,16 +22,16 @@ in {
         "/srv/games/mc-unlimited:/data"
       ];
     };
-    minecraft-proxy = {
-      autoStart = true;
-      image = "itzg/mc-proxy:latest";
-      ports = ["25565:25577"];
-      environment = {
-        TYPE = "VELOCITY";
-      };
-      volumes = [
-        "/srv/games/velocity:/server"
-      ];
-    };
+    # minecraft-proxy = {
+    #   autoStart = true;
+    #   image = "itzg/mc-proxy:latest";
+    #   ports = ["25565:25577"];
+    #   environment = {
+    #     TYPE = "VELOCITY";
+    #   };
+    #   volumes = [
+    #     "/srv/games/velocity:/server"
+    #   ];
+    # };
   };
 }
