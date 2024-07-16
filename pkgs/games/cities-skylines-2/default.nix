@@ -70,7 +70,7 @@
 
       # install launcher
       # Use silent install
-      umu ${src} /S
+      umu-run ${src} /S
     fi
 
     # EAC Fix
