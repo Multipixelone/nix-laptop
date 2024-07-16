@@ -70,6 +70,7 @@ in {
     openFirewall = true;
     settings = {
       channels = 1;
+      encoder = "amdvce";
     };
     applications = {
       env = {
