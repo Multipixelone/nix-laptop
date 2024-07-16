@@ -49,7 +49,10 @@
     binfmt.emulatedSystems = ["aarch64-linux"];
   };
   # Networking
-  networking.firewall.trustedInterfaces = ["tailscale0"];
+  networking.firewall.trustedInterfaces = [
+    "tailscale0"
+    "ztfp6fg5uh"
+  ];
   systemd.services.NetworkManager-wait-online.enable = false;
   networking.firewall.allowedUDPPorts = [config.services.tailscale.port];
   # System Services
