@@ -69,7 +69,7 @@ in {
     capSysAdmin = true;
     openFirewall = true;
     settings = {
-      channels = 3;
+      channels = 1;
     };
     applications = {
       env = {
