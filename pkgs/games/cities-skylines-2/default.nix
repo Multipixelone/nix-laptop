@@ -84,7 +84,7 @@
 
     ${preCommands}
 
-    ${gamemode}/bin/gamemoderun ${mangohud}/bin/mangohud umu ${wineFlags} "$GAME_BIN" "$@"
+    ${gamemode}/bin/gamemoderun ${mangohud}/bin/mangohud umu-run ${wineFlags} "$GAME_BIN" "$@"
 
     ${postCommands}
   '';

@@ -80,7 +80,7 @@
 
     ${preCommands}
 
-    ${gamescope}/bin/gamescope -w 2560 -h 1440 -- ${mangohud}/bin/mangohud umu ${wineFlags} "$GAME_BIN" "$@"
+    ${gamescope}/bin/gamescope -w 2560 -h 1440 -- ${mangohud}/bin/mangohud umu-run ${wineFlags} "$GAME_BIN" "$@"
 
     ${postCommands}
   '';
