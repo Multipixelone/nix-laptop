@@ -71,6 +71,8 @@ in {
     settings = {
       channels = 1;
       encoder = "amdvce";
+      # decrease fec percentage because I am not dropping many packets
+      fec_percentage = "10";
     };
     applications = {
       env = {
