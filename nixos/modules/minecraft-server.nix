@@ -6,7 +6,7 @@ in {
   ];
   virtualisation.oci-containers.containers = {
     minecraft-server = {
-      autoStart = true;
+      autoStart = false;
       image = "itzg/minecraft-server:latest";
       ports = ["25565:25565"];
       environment = {
