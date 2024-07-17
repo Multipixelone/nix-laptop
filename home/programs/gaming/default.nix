@@ -19,6 +19,7 @@ in {
     steamtinkerlaunch
     prismlauncher
     cemu
+    amdgpu_top
     # Custom umu game runners
     (callPackage ../../../pkgs/games/cities-skylines-2 {
       inherit umu mangohud;
