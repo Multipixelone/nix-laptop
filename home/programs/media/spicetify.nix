@@ -17,7 +17,7 @@
 
     colorScheme = "catppuccin-mocha";
 
-    enabledCustomApps = with spicePkgs.customApps; [
+    enabledCustomApps = with spicePkgs.apps; [
       lyricsPlus
       newReleases
     ];
