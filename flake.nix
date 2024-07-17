@@ -35,7 +35,10 @@
       url = "git+ssh://git@github.com/Multipixelone/nix-secrets.git";
       flake = false;
     };
-    spicetify-nix.url = "github:the-argus/spicetify-nix";
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     attic.url = "github:zhaofengli/attic";
     geospatial.url = "github:Multipixelone/geospatial-nix";
     anyrun.url = "github:Kirottu/anyrun";
