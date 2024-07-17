@@ -70,7 +70,7 @@ in {
     openFirewall = true;
     settings = {
       channels = 1;
-      encoder = "amdvce";
+      # encoder = "amdvce";
       # decrease fec percentage because I am not dropping many packets
       fec_percentage = "10";
     };
