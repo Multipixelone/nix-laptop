@@ -14,7 +14,6 @@
     enable = true;
 
     theme = spicePkgs.themes.dribbblish;
-
     colorScheme = "catppuccin-mocha";
 
     enabledCustomApps = with spicePkgs.apps; [
