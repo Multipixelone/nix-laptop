@@ -108,7 +108,7 @@ in {
       };
       slskd = {
         autoStart = true;
-        image = "slskd/slskd:latest";
+        image = "slskd/slskd:canary";
         ports = ["5030:5030" "2234:2234"];
         # user = "tunnel:users";
         # TODO find some universal way to declare these paths like my music library so that I can use a variable
