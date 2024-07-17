@@ -17,8 +17,12 @@
 
     colorScheme = "catppuccin-mocha";
 
+    enabledCustomApps = with spicePkgs.customApps; [
+      lyricsPlus
+    ];
+
     enabledExtensions = with spicePkgs.extensions; [
-      fullAppDisplay
+      fullAppDisplayMod
       history
       hidePodcasts
       shuffle
