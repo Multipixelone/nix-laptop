@@ -22,6 +22,7 @@
     ];
 
     enabledExtensions = with spicePkgs.extensions; [
+      powerBar
       fullAppDisplayMod
       history
       hidePodcasts
