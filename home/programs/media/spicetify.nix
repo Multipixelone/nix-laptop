@@ -19,6 +19,7 @@
 
     enabledCustomApps = with spicePkgs.customApps; [
       lyricsPlus
+      newReleases
     ];
 
     enabledExtensions = with spicePkgs.extensions; [
