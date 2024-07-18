@@ -38,9 +38,9 @@
       enable = lib.mkDefault true;
       efiSupport = true;
       device = "nodev";
-      #gfxmodeEfi = "3440x1440";
-      #lib.mkForce font = true;
       timeoutStyle = "hidden";
+      # gfxmodeEfi = "3440x1440";
+      # lib.mkForce font = true;
     };
     kernel.sysctl = {
       "fs.inotify.max_user_watches" = 600000;
