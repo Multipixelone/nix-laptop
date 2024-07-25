@@ -7,7 +7,7 @@
   age.secrets = {
     "tailscale" = {
       file = "${inputs.secrets}/tailscale/${config.networking.hostName}.age";
-      mode = "600";
+      mode = "400";
     };
   };
   systemd.services.tailscale-autoconnect = {

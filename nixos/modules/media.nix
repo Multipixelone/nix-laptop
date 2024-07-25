@@ -7,13 +7,13 @@
   age.secrets = {
     "plex" = {
       file = "${inputs.secrets}/media/plextoken.age";
-      mode = "770";
+      mode = "400";
       owner = "tunnel";
       group = "users";
     };
     "qtscrob" = {
       file = "${inputs.secrets}/media/qtscrob.age";
-      mode = "770";
+      mode = "400";
       owner = "tunnel";
       group = "users";
     };

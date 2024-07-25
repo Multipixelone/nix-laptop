@@ -48,7 +48,7 @@ in {
   age.secrets = {
     "syncthing" = {
       file = "${inputs.secrets}/media/syncthing.age";
-      mode = "770";
+      mode = "400";
       owner = "tunnel";
       group = "users";
     };
