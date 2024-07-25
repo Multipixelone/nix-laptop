@@ -1,11 +1,11 @@
 {pkgs, ...}: let
 in {
   systemd.tmpfiles.rules = [
-    "d /srv/games/mc-unlimited 0770 tunnel users -"
     "d /srv/games/velocity 0770 tunnel users -"
+    "d /srv/games/mc-atm9 0770 tunnel users -"
   ];
   virtualisation.oci-containers.containers = {
-    minecraft-server = {
+    minecraft-atm9 = {
       autoStart = false;
       image = "itzg/minecraft-server:latest";
       ports = ["25565:25565"];
@@ -15,11 +15,11 @@ in {
         ONLINE_MODE = "TRUE";
         MOD_PLATFORM = "AUTO_CURSEFORGE";
         # CF_SLUG = "hazardousdaniels-unlimited";
-        CF_PAGE_URL = "https://www.curseforge.com/minecraft/modpacks/hazardousdaniels-unlimited";
-        CF_FILENAME_MATCHER = "1.2.1";
+        CF_PAGE_URL = "https://www.curseforge.com/minecraft/modpacks/all-the-mods-9";
+        CF_FILENAME_MATCHER = "0.3.0";
       };
       volumes = [
-        "/srv/games/mc-unlimited:/data"
+        "/srv/games/mc-atm9:/data"
       ];
     };
     # minecraft-proxy = {
