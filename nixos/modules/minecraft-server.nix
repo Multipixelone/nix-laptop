@@ -1,14 +1,27 @@
-{pkgs, ...}: let
+{
+  inputs,
+  config,
+  ...
+}: let
 in {
   systemd.tmpfiles.rules = [
     "d /srv/games/velocity 0770 tunnel users -"
     "d /srv/games/mc-atm9 0770 tunnel users -"
   ];
+  age.secrets = {
+    "curseforge" = {
+      file = "${inputs.secrets}/curseforge.age";
+      mode = "400";
+      owner = "tunnel";
+      group = "users";
+    };
+  };
   virtualisation.oci-containers.containers = {
     minecraft-atm9 = {
       autoStart = false;
       image = "itzg/minecraft-server:latest";
       ports = ["25565:25565"];
+      environmentFiles = ["${config.age.secrets."curseforge".path}"];
       environment = {
         EULA = "TRUE";
         # required for proxy use
