@@ -5,8 +5,8 @@
 }: let
 in {
   systemd.tmpfiles.rules = [
-    "d /srv/games/velocity 0770 tunnel users -"
     "d /srv/games/mc-atm9 0770 tunnel users -"
+    # "d /srv/games/velocity 0770 tunnel users -"
   ];
   age.secrets = {
     "curseforge" = {
