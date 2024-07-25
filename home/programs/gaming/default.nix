@@ -2,6 +2,7 @@
   pkgs,
   inputs,
   config,
+  lib,
   ...
 }: let
   umu = inputs.umu.packages.${pkgs.system}.umu;
@@ -11,6 +12,10 @@ in {
     ./mangohud.nix
     ./moondeck.nix
   ];
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "optifine"
+    ];
   home.packages = with pkgs; [
     gamescope
     discord
@@ -20,6 +25,7 @@ in {
     prismlauncher
     cemu
     amdgpu_top
+    optifinePackages.optifine_1_20_4
     # Custom umu game runners
     (callPackage ../../../pkgs/games/cities-skylines-2 {
       inherit umu mangohud;
