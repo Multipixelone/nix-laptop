@@ -42,11 +42,6 @@
     }
     + "/bin/gamemode-end";
 in {
-  #     powerprofilesctl set performance
-  #     powerprofilesctl set power-saver
-  # https://github.com/FeralInteractive/GameMode
-  # https://wiki.archlinux.org/title/Gamemode
-  #
   # Usage:
   #   1. For games/launchers which integrate GameMode support:
   #      https://github.com/FeralInteractive/GameMode#apps-with-gamemode-integration
@@ -75,6 +70,4 @@ in {
       };
     };
   };
-
-  # see https://github.com/fufexan/nix-gaming/#pipewire-low-latency
 }
