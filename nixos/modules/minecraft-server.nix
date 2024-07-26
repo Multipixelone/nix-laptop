@@ -26,6 +26,7 @@ in {
         EULA = "TRUE";
         ONLINE_MODE = "TRUE";
         MOD_PLATFORM = "AUTO_CURSEFORGE";
+        CF_API_KEY = "\${CF_API_KEY}";
         CF_PAGE_URL = "https://www.curseforge.com/minecraft/modpacks/all-the-mods-9";
         CF_FILENAME_MATCHER = "0.3.0";
       };
