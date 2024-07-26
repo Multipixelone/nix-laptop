@@ -21,12 +21,14 @@ in {
       autoStart = false;
       image = "itzg/minecraft-server:latest";
       ports = ["25565:25565"];
-      environmentFiles = ["${config.age.secrets."curseforge".path}"];
+      environmentFiles = [config.age.secrets."curseforge".path];
       environment = {
         EULA = "TRUE";
         ONLINE_MODE = "TRUE";
         MOD_PLATFORM = "AUTO_CURSEFORGE";
-        CF_API_KEY = "\${CF_API_KEY}";
+        # CF_API_KEY = ''
+        #   ''${CF_API_KEY}
+        # '';
         CF_PAGE_URL = "https://www.curseforge.com/minecraft/modpacks/all-the-mods-9";
         CF_FILENAME_MATCHER = "0.3.0";
       };
