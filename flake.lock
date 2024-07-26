@@ -1667,11 +1667,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1721947103,
-        "narHash": "sha256-+yzj4QQMGhuk/KhdYT51t2QB9/rwIbVMsxhHctJ+f9Y=",
+        "lastModified": 1721953658,
+        "narHash": "sha256-agAtETyaPTDOdl3GdJw0L8FZ82V81NA8neSk3hY56BM=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "c0cdc702bf33188ebd6518af5fc94d1bdab702e3",
+        "rev": "29feafba5d06bf12f22ec4748482adeba1158f70",
         "type": "github"
       },
       "original": {
@@ -1681,11 +1681,11 @@
     },
     "nurpkgs": {
       "locked": {
-        "lastModified": 1721947103,
-        "narHash": "sha256-+yzj4QQMGhuk/KhdYT51t2QB9/rwIbVMsxhHctJ+f9Y=",
+        "lastModified": 1721953658,
+        "narHash": "sha256-agAtETyaPTDOdl3GdJw0L8FZ82V81NA8neSk3hY56BM=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "c0cdc702bf33188ebd6518af5fc94d1bdab702e3",
+        "rev": "29feafba5d06bf12f22ec4748482adeba1158f70",
         "type": "github"
       },
       "original": {
@@ -1749,11 +1749,11 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1721952777,
-        "narHash": "sha256-lFIGz+flZxv1P8CCd8jpMy1lo4TYyLheFc9FsPx3JPU=",
+        "lastModified": 1721954639,
+        "narHash": "sha256-Lm3JqVu8Lhny5eOtmwQoNLIDnq0GiLGhOt3lCZull/g=",
         "ref": "refs/heads/main",
-        "rev": "3bd2937c3fdd0e7ca593180f08d3b8c300914e50",
-        "revCount": 20,
+        "rev": "989a6dd6eeaa795fe7cfd4e7ed44c22ef0bcbab8",
+        "revCount": 21,
         "type": "git",
         "url": "ssh://git@github.com/Multipixelone/nix-secrets.git"
       },
