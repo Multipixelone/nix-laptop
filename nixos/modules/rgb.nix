@@ -1,8 +1,8 @@
-{...}: {
   # TODO fix openrgb, or figure out why it causes microstutters w audio
   # environment.systemPackages = with pkgs; [
   #   openrgb
   # ];
+{pkgs, ...}: {
   programs.coolercontrol.enable = true;
   # services.udev.packages = [pkgs.openrgb];
   boot.kernelParams = ["acpi_enforce_resources=lax"];
@@ -10,5 +10,6 @@
   # hardware.openrazer.enable = true;
   services.hardware.openrgb = {
     enable = true;
+    package = pkgs.openrgb-with-all-plugins;
   };
 }
