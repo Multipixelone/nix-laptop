@@ -24,10 +24,8 @@ in {
       environmentFiles = ["${config.age.secrets."curseforge".path}"];
       environment = {
         EULA = "TRUE";
-        # required for proxy use
         ONLINE_MODE = "TRUE";
         MOD_PLATFORM = "AUTO_CURSEFORGE";
-        # CF_SLUG = "hazardousdaniels-unlimited";
         CF_PAGE_URL = "https://www.curseforge.com/minecraft/modpacks/all-the-mods-9";
         CF_FILENAME_MATCHER = "0.3.0";
       };
