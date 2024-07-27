@@ -87,6 +87,14 @@ in {
           '';
         }
         {
+          name = "Prism Launcher";
+          prep-cmd = [prep];
+          cmd = "${hypr-dispatch} \"prismlauncher\"";
+          image-path = pkgs.runCommand "prismlauncher.png" {} ''
+            ${pkgs.imagemagick}/bin/convert -density 1200 -resize 500x -background none ${pkgs.prismlauncher}/share/icons/hicolor/scalable/apps/org.prismlauncher.PrismLauncher.svg -gravity center -extent 600x800 $out
+          '';
+        }
+        {
           name = "Steam Big Picture";
           cmd = "${hypr-dispatch} \"${steam} -gamepadui\"";
           prep-cmd = [prep steam-kill];
