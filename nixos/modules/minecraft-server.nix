@@ -25,6 +25,7 @@
         CF_API_KEY = "$2a$10$sI.yRk4h4R49XYF94IIijOrO4i3W3dAFZ4ssOlNE10GYrDhc2j8K.";
         CF_PAGE_URL = "https://www.curseforge.com/minecraft/modpacks/all-the-mods-9";
         CF_FILENAME_MATCHER = "0.3.0";
+        MEMORY = "10G";
       };
       volumes = [
         "/srv/games/mc-atm9:/data"
