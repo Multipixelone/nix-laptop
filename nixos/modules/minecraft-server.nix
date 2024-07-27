@@ -21,9 +21,6 @@
         EULA = "TRUE";
         ONLINE_MODE = "TRUE";
         MOD_PLATFORM = "AUTO_CURSEFORGE";
-        # CF_API_KEY = ''
-        #   ''${CF_API_KEY}
-        # '';
         # None of my api keys were working so this is the ferium one LOL
         CF_API_KEY = "$2a$10$sI.yRk4h4R49XYF94IIijOrO4i3W3dAFZ4ssOlNE10GYrDhc2j8K.";
         CF_PAGE_URL = "https://www.curseforge.com/minecraft/modpacks/all-the-mods-9";
