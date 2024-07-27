@@ -18,8 +18,9 @@
       name = "gamemode-start";
       runtimeInputs = programs;
       text = ''
-        # export HYPRLAND_INSTANCE_SIGNATURE=$(find /tmp/hypr -print0 -name '*.log' | xargs -0 stat -c '%Y %n' - | sort -rn | head -n 1 | cut -d ' ' -f2 | awk -F '/' '{print $4}')
         SECRET=$(cat "${config.age.secrets."syncthing".path}")
+        HYPRLAND_INSTANCE_SIGNATURE=$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)
+        export HYPRLAND_INSTANCE_SIGNATURE
         # ledfx change scene (disabled temporarily)
         # curl -X 'PUT' 'http://link.bun-hexatonic.ts.net:8888/api/scenes' -H 'Content-Type: application/json' -d '{"id": "gaming-mode", "action": "activate"}'
         # send request to pause syncthing while game is playing
@@ -33,8 +34,9 @@
       name = "gamemode-end";
       runtimeInputs = programs;
       text = ''
-        # export HYPRLAND_INSTANCE_SIGNATURE=$(find /tmp/hypr -print0 -name '*.log' | xargs -0 stat -c '%Y %n' - | sort -rn | head -n 1 | cut -d ' ' -f2 | awk -F '/' '{print $4}')
         SECRET=$(cat "${config.age.secrets."syncthing".path}")
+        HYPRLAND_INSTANCE_SIGNATURE=$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)
+        export HYPRLAND_INSTANCE_SIGNATURE
         curl -X POST -H "X-API-Key: $SECRET" http://localhost:8384/rest/system/resume
         # curl -X 'PUT' 'http://link.bun-hexatonic.ts.net:8888/api/scenes' -H 'Content-Type: application/json' -d '{"id": "main-purple", "action": "activate"}'
         hyprctl reload
