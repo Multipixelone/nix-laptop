@@ -1,7 +1,3 @@
-  # TODO fix openrgb, or figure out why it causes microstutters w audio
-  # environment.systemPackages = with pkgs; [
-  #   openrgb
-  # ];
 {pkgs, ...}: {
   programs.coolercontrol.enable = true;
   boot.kernelParams = ["acpi_enforce_resources=lax"];
