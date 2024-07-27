@@ -1,10 +1,6 @@
 {pkgs, ...}: let
   swww = lib.getExe pkgs.swww;
   swww-daemon = pkgs.swww + "/bin/swww-daemon";
-  wallpaper = builtins.fetchurl {
-    url = "https://blusky.s3.us-west-2.amazonaws.com/castle.GIF";
-    sha256 = "sha256:0wbgyqp5wn4j65k5qcn5c1p5f1ppyg4yhjwqncyv6d9xxv2s72sy";
-  };
 in {
   # xdg.configFile."hypr/hyprpaper.conf".text = ''
   #   preload = ${config.theme.wallpaper}
