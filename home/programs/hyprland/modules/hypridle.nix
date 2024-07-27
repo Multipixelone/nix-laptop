@@ -8,8 +8,8 @@
   timeout = 60;
   brillo = lib.getExe pkgs.brillo;
   suspendScript = pkgs.writeShellScript "suspend-script" ''
-    ${pkgs.pipewire}/bin/pw-cli i all 2>&1 | ${pkgs.ripgrep}/bin/rg running -q
     # only suspend if audio isn't running
+    ${lib.getExe pkgs.playerctl} -a status | ${lib.getExe pkgs.ripgrep} running -q
     if [ $? == 1 ]; then
       ${pkgs.systemd}/bin/systemctl suspend
     fi
