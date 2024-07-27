@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  swww = pkgs.swww + "/bin/swww";
+  swww = lib.getExe pkgs.swww;
   swww-daemon = pkgs.swww + "/bin/swww-daemon";
   wallpaper = builtins.fetchurl {
     url = "https://blusky.s3.us-west-2.amazonaws.com/castle.GIF";
