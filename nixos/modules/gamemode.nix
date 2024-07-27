@@ -41,7 +41,7 @@
         curl -X POST -H "X-API-Key: $SECRET" http://localhost:8384/rest/system/resume
         # curl -X 'PUT' 'http://link.bun-hexatonic.ts.net:8888/api/scenes' -H 'Content-Type: application/json' -d '{"id": "main-purple", "action": "activate"}'
         systemctl --user start hypridle gammastep
-        hyprctl --batch 'keyword animations:enabled 1; keyword decoration:drop_shadow 1; keyword decoration:blur 1; keyword general:gaps_in 5; keyword general:gaps_out 5; keyword general:border_size 3; keyword decoration:rounding 6'
+        hyprctl --batch 'keyword animations:enabled 1; keyword decoration:drop_shadow 1; keyword decoration:blur:enabled 1; keyword general:gaps_in 5; keyword general:gaps_out 5; keyword general:border_size 3; keyword decoration:rounding 6'
       '';
     }
     + "/bin/gamemode-end";
