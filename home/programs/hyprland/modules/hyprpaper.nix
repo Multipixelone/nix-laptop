@@ -1,4 +1,9 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: let
   swww = lib.getExe pkgs.swww;
   swww-daemon = pkgs.swww + "/bin/swww-daemon";
 in {
