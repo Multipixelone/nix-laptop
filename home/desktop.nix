@@ -37,6 +37,7 @@
     _1password
     moonlight-qt
     zoom-us
+    piper
   ];
   services.udiskie = {
     enable = true;
