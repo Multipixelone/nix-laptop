@@ -2,15 +2,6 @@
   swww = lib.getExe pkgs.swww;
   swww-daemon = pkgs.swww + "/bin/swww-daemon";
 in {
-  # xdg.configFile."hypr/hyprpaper.conf".text = ''
-  #   preload = ${config.theme.wallpaper}
-  #   preload = ${config.theme.side-wallpaper}
-  #   wallpaper = eDP-1, ${config.theme.wallpaper}
-  #   wallpaper = DP-1,${config.theme.wallpaper}
-  #   wallpaper = DP-3,${config.theme.side-wallpaper}
-  #   splash = false
-  # '';
-  #
   wayland.windowManager.hyprland.settings = {
     exec-once = ["${swww} img ${wallpaper}"];
   };
