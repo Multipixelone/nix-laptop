@@ -7,13 +7,17 @@
 }: let
   timeout = 60;
   brillo = lib.getExe pkgs.brillo;
-  suspendScript = pkgs.writeShellScript "suspend-script" ''
-    # only suspend if audio isn't running
-    ${lib.getExe pkgs.playerctl} -a status | ${lib.getExe pkgs.ripgrep} running -q
-    if [ $? == 1 ]; then
-      ${pkgs.systemd}/bin/systemctl suspend
-    fi
-  '';
+  suspendScript = pkgs.writeShellApplication {
+    name = "suspend-script";
+    runtimeInputs = [pkgs.playerctl pkgs.ripgrep pkgs.systemd];
+    text = ''
+      # only suspend if audio isn't running
+      playerctl -a status | ripgrep running -q
+      if [ $? == 1 ]; then
+        systemctl suspend
+      fi
+    '';
+  };
 in {
   services.hypridle = {
     enable = true;
