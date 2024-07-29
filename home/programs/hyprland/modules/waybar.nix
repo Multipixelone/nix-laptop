@@ -119,7 +119,7 @@ in {
       }
 
       #network {
-        color: #${config.lib.stylix.colors.base0C};
+        color: #${config.lib.stylix.colors.base08};
         border-radius: 1rem 0px 0px 1rem;
         margin-left: 1rem;
       }
