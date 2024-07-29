@@ -164,6 +164,7 @@
   fonts = {
     fontconfig = {
       defaultFonts = {
+        # ipa gothic required for cjk support
         serif = ["PragmataPro Liga" "IPAGothic"];
         sansSerif = ["PragmataPro Liga" "IPAGothic"];
         monospace = ["PragmataPro Mono Liga" "IPAGothic"];
