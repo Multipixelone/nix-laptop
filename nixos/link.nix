@@ -103,7 +103,7 @@ in {
           build_admins = "True";
           build_time_zones = "True";
           build_tar = "True";
-          force_rebuild = "True";
+          force_rebuild = "False";
         };
       };
       slskd = {
