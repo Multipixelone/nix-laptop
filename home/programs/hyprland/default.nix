@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   osConfig,
   ...
 }: let
@@ -32,8 +33,8 @@ in {
     ssh-agent.enable = true;
     mako = {
       enable = true;
-      borderColor = pkgs.lib.mkForce "#cba6f7";
-      backgroundColor = pkgs.lib.mkForce "#1e1e2e";
+      borderColor = pkgs.lib.mkForce "#${config.lib.stylix.colors.base0E}";
+      backgroundColor = pkgs.lib.mkForce "#${config.lib.stylix.colors.base00}";
       borderRadius = 6;
       borderSize = 2;
       ignoreTimeout = true;
@@ -117,8 +118,8 @@ in {
         border_size = 3;
         gaps_in = 5;
         gaps_out = 5;
-        "col.inactive_border" = pkgs.lib.mkForce "rgb(1e1e2e)";
-        "col.active_border" = pkgs.lib.mkForce "rgb(cba6f7)";
+        "col.inactive_border" = pkgs.lib.mkForce "rgb(${config.lib.stylix.colors.base00})";
+        "col.active_border" = pkgs.lib.mkForce "rgb(${config.lib.stylix.colors.base0E})";
       };
       dwindle = {
         # keep floating dimentions while tiling

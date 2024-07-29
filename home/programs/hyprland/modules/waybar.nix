@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   osConfig,
   ...
 }: let
@@ -24,41 +25,41 @@ in {
       window#waybar {
         background: transparent;
         background-color: rgba(255,0,0,0.0);
-        color: @text;
+        color: #${config.lib.stylix.colors.base05};
         margin: 3px 3px;
       }
 
       #workspaces {
         border-radius: 1rem;
         margin: 5px;
-        background-color: @surface0;
+        background-color: #${config.lib.stylix.colors.base02};
         margin-left: 0.5rem;
         border: none;
       }
 
       #workspaces button {
-        color: @lavender;
+        color: #${config.lib.stylix.colors.base07};
         border-radius: 0;
         padding: 0.4rem;
         border: none;
       }
 
       #workspaces button.active {
-        color: @sky;
+        color: #${config.lib.stylix.colors.base0C};
         border-radius: 0;
         border: none;
         box-shadow: none;
       }
 
       #workspaces button.focused {
-        color: @sky;
+        color: #${config.lib.stylix.colors.base0C};
         border-radius: 0;
         border: none;
         box-shadow: none;
       }
 
       #workspaces button:hover {
-        color: @sapphire;
+        color: #${config.lib.stylix.colors.base0D};
         border-radius: 0;
         border: none;
       }
@@ -72,45 +73,45 @@ in {
       #custom-lock,
       #custom-power,
       #network {
-        background-color: @surface0;
+        background-color: #${config.lib.stylix.colors.base02};
         padding: 0.7rem 0.5rem;
         margin: 5px 0;
       }
       #custom-playerlabel {
         border-radius: 0px 1rem 1rem 0px;
-        background-color: @surface0;
+        background-color: #${config.lib.stylix.colors.base02};
         padding: 0px 0.5rem 0px 0px;
         margin-top: 5px;
         margin-bottom: 5px;
       }
       #image {
         border-radius: 1rem 0px 0px 1rem;
-        background-color: @surface0;
+        background-color: #${config.lib.stylix.colors.base02};
         padding: 0px 0.5rem 0px 0.5rem;
         margin-top: 5px;
         margin-bottom: 5px;
       }
       #battery {
-        color: @green;
+        color: #${config.lib.stylix.colors.base0B};
         border-radius: 0px 1rem 1rem 0px;
       }
       #pulseaudio {
-        color: @mauve
+        color: #${config.lib.stylix.colors.base0E};
       }
       #clock {
-        color: @blue;
+        color: #${config.lib.stylix.colors.base0D};
       }
 
       #battery.charging {
-        color: @green;
+        color: #${config.lib.stylix.colors.base0B};
       }
 
       #battery.warning:not(.charging) {
-        color: @red;
+        color: #${config.lib.stylix.colors.base08};
       }
 
       #backlight {
-        color: @yellow;
+        color: #${config.lib.stylix.colors.base0A};
       }
 
       #backlight, #audio {
@@ -118,19 +119,19 @@ in {
       }
 
       #network {
-        color: @maroon;
+        color: #${config.lib.stylix.colors.base0C};
         border-radius: 1rem 0px 0px 1rem;
         margin-left: 1rem;
       }
 
       #clock {
-        color: @mauve;
+        color: #${config.lib.stylix.colors.base0E};
         border-radius: 1rem;
       }
 
       #custom-lock {
           border-radius: 1rem 0px 0px 1rem;
-          color: @lavender;
+          color: #${config.lib.stylix.colors.base07};
       }
 
       #custom-power {
