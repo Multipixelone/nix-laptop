@@ -1,9 +1,13 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  config,
+  ...
+}: let
   # TODO run tuigreet inside of kmscon
   kmscon = "${pkgs.kmscon}/libexec/kmscon/kmscon";
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
-  hyprland-session = "${pkgs.hyprland}/share/wayland-sessions";
-  hyprland = "${pkgs.hyprland}/bin/Hyprland";
+  hyprland-session = "${config.programs.hyprland.package}/share/wayland-sessions";
+  hyprland = "${config.programs.hyprland.package}/bin/Hyprland";
 in {
   services.seatd.enable = true;
   services.greetd = {
