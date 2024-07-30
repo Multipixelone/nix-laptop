@@ -19,6 +19,8 @@
     runtimeInputs = [pkgs.findutils pkgs.gawk pkgs.coreutils pkgs.procps pkgs.curl config.programs.hyprland.package];
 
     text = ''
+      HYPRLAND_INSTANCE_SIGNATURE=$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)
+      export HYPRLAND_INSTANCE_SIGNATURE
       width=''${1:-3840}
       height=''${2:-2160}
       refresh_rate=''${3:-60}
@@ -36,6 +38,8 @@
     runtimeInputs = [pkgs.findutils pkgs.gawk pkgs.coreutils pkgs.curl config.programs.hyprland.package];
 
     text = ''
+      HYPRLAND_INSTANCE_SIGNATURE=$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)
+      export HYPRLAND_INSTANCE_SIGNATURE
       mon_string="DP-1,2560x1440@240,1200x0,1"
       #curl -X 'PUT' 'http://link.bun-hexatonic.ts.net:8888/api/scenes' -H 'Content-Type: application/json' -d '{"id": "main-purple", "action": "activate"}'
       systemctl --user start hypridle
