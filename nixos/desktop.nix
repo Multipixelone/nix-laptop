@@ -122,12 +122,12 @@
   xdg.mime.defaultApplications = {
     "inode/directory" = "nemo.desktop";
 
-    "text/html" = "firefox-beta.desktop";
-    "default-web-browser" = "firefox-beta.desktop";
-    "x-scheme-handler/http" = "firefox-beta.desktop";
-    "x-scheme-handler/https" = "firefox-beta.desktop";
-    "x-scheme-handler/about" = "firefox-beta.desktop";
-    "x-scheme-handler/unknown" = "firefox-beta.desktop";
+    "text/html" = "firefox.desktop";
+    "default-web-browser" = "firefox.desktop";
+    "x-scheme-handler/http" = "firefox.desktop";
+    "x-scheme-handler/https" = "firefox.desktop";
+    "x-scheme-handler/about" = "firefox.desktop";
+    "x-scheme-handler/unknown" = "firefox.desktop";
 
     "application/pdf" = "org.pwmt.zathura.desktop";
     "application/zip" = "ark.desktop";

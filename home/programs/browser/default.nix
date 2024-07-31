@@ -32,7 +32,6 @@ in {
   ];
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-beta-bin;
     profiles = {
       default = {
         inherit extensions settings;

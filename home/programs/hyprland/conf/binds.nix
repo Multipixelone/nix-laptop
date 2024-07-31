@@ -25,7 +25,7 @@ in {
       bind = [
         "ALT_SHIFT, Q, killactive"
         "$mod, RETURN, exec, ${terminal}"
-        "ALT_SHIFT, W, exec, firefox-beta"
+        "ALT_SHIFT, W, exec, firefox"
         "ALT_SHIFT, D, exec, discord"
         "ALT_SHIFT, S, exec, steam"
         "ALT_SHIFT, C, exec, code"
