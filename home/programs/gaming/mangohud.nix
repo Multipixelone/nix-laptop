@@ -2,15 +2,6 @@
   pkgs,
   lib,
   ...
-  # }: let
-  #   # prob (def) a terrible way to do this. but the media player is broken in horizontal layout otherwise...
-  #   media-mangohud = pkgs.mangohud.overrideAttrs (oldAttrs: rec {
-  #     postPatch =
-  #       oldAttrs.postPatch
-  #       ++ ''
-  #         sed -i '489d' src/overlay.cpp
-  #       '';
-  #   });
 }: {
   programs.mangohud = {
     enable = true;
