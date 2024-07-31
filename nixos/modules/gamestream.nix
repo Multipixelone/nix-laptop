@@ -4,7 +4,7 @@
   config,
   ...
 }: let
-  steam = "/run/current-system/sw/bin/steam --";
+  steam = config.programs.steam.package + "/bin/steam --";
   sh = pkgs.bash + "/bin/bash";
   moondeck = pkgs.qt6.callPackage ../../pkgs/moondeck/default.nix {};
   hypr-dispatch = config.programs.hyprland.package + "/bin/hyprctl dispatch exec";
