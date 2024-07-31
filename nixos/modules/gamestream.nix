@@ -55,7 +55,7 @@
     do = "${sh} -c \"${streammon} \${SUNSHINE_CLIENT_WIDTH} \${SUNSHINE_CLIENT_HEIGHT} \${SUNSHINE_CLIENT_FPS}\"";
     undo = "${sh} -c \"${undo-command}\"";
   };
-  # TODO I wrote this while high as fuck so i think i wrote it like actually so jank LMFAO absolutely ghoulish use of string concatenation
+  # TODO I wrote this while high as fuck so i wrote it like actually so jank LMFAO absolutely ghoulish use of string concatenation
   steam-kill = {
     do = "";
     undo = "${sh} -c \"${pkgs.writeShellApplication {
