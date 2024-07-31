@@ -28,7 +28,6 @@
         mon_string="DP-1,''${width}x''${height}@''${refresh_rate},1200x0,2"
         # Unlock PC (so I don't have to type password on Steam Deck)
         pkill -USR1 hyprlock || true
-        #curl -X 'PUT' 'http://link.bun-hexatonic.ts.net:8888/api/scenes' -H 'Content-Type: application/json' -d '{"id": "gaming-mode", "action": "activate"}'
         systemctl --user stop hypridle
         hyprctl keyword monitor "DP-3,disable"
         hyprctl keyword monitor "$mon_string"
@@ -44,7 +43,6 @@
         HYPRLAND_INSTANCE_SIGNATURE=$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)
         export HYPRLAND_INSTANCE_SIGNATURE
         mon_string="DP-1,2560x1440@240,1200x0,1"
-        #curl -X 'PUT' 'http://link.bun-hexatonic.ts.net:8888/api/scenes' -H 'Content-Type: application/json' -d '{"id": "main-purple", "action": "activate"}'
         systemctl --user start hypridle
         hyprctl keyword monitor "DP-3,1920x1200@60,0x0,1,transform,1"
         hyprctl keyword monitor "$mon_string"
