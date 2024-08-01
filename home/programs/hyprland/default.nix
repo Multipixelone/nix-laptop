@@ -119,9 +119,9 @@ in {
       };
       general = {
         border_size = 3;
-        gaps_in = 5;
-        gaps_out = 5;
         "col.inactive_border" = lib.mkForce "rgb(${config.lib.stylix.colors.base00})";
+        gaps_in = 7;
+        gaps_out = 7;
         "col.active_border" = lib.mkForce "rgb(${config.lib.stylix.colors.base0E})";
       };
       dwindle = {
