@@ -106,6 +106,7 @@ in {
         active_opacity = 1;
         inactive_opacity = 0.8;
         "col.shadow" = lib.mkForce "rgba(00000055)";
+        "col.shadow_inactive" = lib.mkForce "0x22000000";
         blur = {
           enabled = true;
           brightness = 1.1;
