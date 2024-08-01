@@ -37,6 +37,7 @@ in {
         "$mod, N, exec, systemctl suspend"
         "$mod, V, togglefloating"
         "SUPER, F, fullscreen"
+        "SUPER, Tab, workspace, previous"
         "$mod, T, exec, pypr toggle term"
         "$mod, B, exec, pypr toggle volume"
         "$mod, H, exec, pypr toggle helvum"

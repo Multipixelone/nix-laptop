@@ -148,6 +148,9 @@ in {
       xwayland = {
         force_zero_scaling = true;
       };
+      binds = {
+        allow_workspace_cycles = true;
+      };
     };
   };
   home.file = {
