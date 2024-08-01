@@ -89,10 +89,12 @@
           chaotic.nixosModules.default
           nur.nixosModules.nur
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit inputs;};
-            home-manager.users.tunnel = import ./home/zelda.nix;
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {inherit inputs;};
+              users.tunnel = import ./home/zelda.nix;
+            };
           }
         ];
       };
@@ -107,10 +109,12 @@
           # agenix.nixosModules.default
           # chaotic.nixosModules.default
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit inputs;};
-            home-manager.users.tunnel = import ./home/server.nix;
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {inherit inputs;};
+              users.tunnel = import ./home/zelda.nix;
+            };
           }
         ];
       };
@@ -123,10 +127,12 @@
           home-manager.nixosModules.home-manager
           agenix.nixosModules.default
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit inputs;};
-            home-manager.users.tunnel = import ./home/server.nix;
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {inherit inputs;};
+              users.tunnel = import ./home/zelda.nix;
+            };
           }
         ];
       };
@@ -143,10 +149,12 @@
           chaotic.nixosModules.default
           nur.nixosModules.nur
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit inputs;};
-            home-manager.users.tunnel = import ./home/link.nix;
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {inherit inputs;};
+              users.tunnel = import ./home/zelda.nix;
+            };
           }
         ];
       };
