@@ -103,6 +103,8 @@ in {
         shadow_ignore_window = true;
         shadow_range = 20;
         shadow_render_power = 3;
+        active_opacity = 1;
+        inactive_opacity = 0.8;
         "col.shadow" = lib.mkForce "rgba(00000055)";
         blur = {
           enabled = true;
