@@ -6,12 +6,18 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
 
-    musnix = {url = "github:musnix/musnix";};
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    nurpkgs.url = "github:nix-community/NUR";
+    musnix.url = "github:musnix/musnix";
+    stylix.url = "github:danth/stylix";
+    nix-gaming.url = "github:fufexan/nix-gaming";
+    nix-hardware.url = "github:NixOS/nixos-hardware/master";
+    attic.url = "github:zhaofengli/attic";
+    geospatial.url = "github:Multipixelone/geospatial-nix";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    stylix.url = "github:danth/stylix";
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,12 +25,10 @@
     Hyprspace = {
       url = "github:KZDKM/Hyprspace";
     };
-    nix-gaming.url = "github:fufexan/nix-gaming";
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-hardware.url = "github:NixOS/nixos-hardware/master";
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,14 +43,11 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    attic.url = "github:zhaofengli/attic";
-    geospatial.url = "github:Multipixelone/geospatial-nix";
     anyrun.url = "github:Kirottu/anyrun";
     anyrun.inputs.nixpkgs.follows = "nixpkgs";
     hyprgrass = {
       url = "github:horriblename/hyprgrass";
     };
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     hyprlock = {
       url = "github:hyprwm/hyprlock";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,7 +56,6 @@
       url = "github:hyprwm/hypridle";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nurpkgs.url = "github:nix-community/NUR";
     umu = {
       url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
