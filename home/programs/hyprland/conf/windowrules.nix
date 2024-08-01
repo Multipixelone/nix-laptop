@@ -29,7 +29,6 @@
       # Steam Big Picture Stay fullscreen
       "fullscreen, title:^(Steam Big Picture Mode)$"
 
-
       # opacity rules
       "opacity 0.85 0.80,class:^(Spotify)$"
       "opacity 0.85 0.80,class:^(Plexamp)$"
@@ -39,6 +38,7 @@
       "opacity 0.85 0.80,class:^(nm-applet)$"
       "opacity 0.85 0.80,class:^(org.kde.polkit-kde-authentication-agent-1)$"
       "opacity 0.85 0.80,class:^(anyrun)$"
+
       # float rules
       "float,class:^(Plexamp)$"
       "float,class:^(com.rafaelmardojai.Blanket)$"
