@@ -118,6 +118,7 @@ in {
         #"col.shadow" = "rgba(00000099)";
       };
       general = {
+        allow_tearing = true;
         border_size = 3;
         gaps_in = 7;
         gaps_out = 7;
