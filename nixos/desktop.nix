@@ -107,7 +107,10 @@
     };
     wireshark.enable = true;
     nm-applet.enable = true;
-    hyprland.enable = true;
+    hyprland = {
+      enable = true;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    };
   };
   # Wayland Stuff
   xdg = {

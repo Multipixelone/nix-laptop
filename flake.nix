@@ -14,6 +14,7 @@
     nix-hardware.url = "github:NixOS/nixos-hardware/master";
     attic.url = "github:zhaofengli/attic";
     geospatial.url = "github:Multipixelone/geospatial-nix";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     secrets = {
       url = "git+ssh://git@github.com/Multipixelone/nix-secrets.git";
       flake = false;
@@ -71,6 +72,7 @@
     agenix,
     geospatial,
     secrets,
+    hyprland,
     anyrun,
     chaotic,
     nur,
