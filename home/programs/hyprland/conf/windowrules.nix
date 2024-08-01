@@ -34,14 +34,6 @@
       "float,class:^(com.rafaelmardojai.Blanket)$"
       "float,class:^(vlc)$"
       "float,title:^(Spotify( Premium)?)$"
-      "move 23 53,class:^(Plexamp)$"
-      "size 1369 483,class:^(Plexamp)$"
-      "move 1418 53,class:^(com.rafaelmardojai.Blanket)$"
-      "size 479 1004,class:^(com.rafaelmardojai.Blanket)$"
-      "move 23 562,class:^(vlc)$"
-      "size 1369 495,class:^(vlc)$"
-      "move 253 174,title:^(Spotify( Premium)?)$"
-      "size 982 732,title:^(Spotify( Premium)?)$"
 
       # opacity rules
       "opacity 0.85 0.80,class:^(Spotify)$"
