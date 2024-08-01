@@ -29,11 +29,6 @@
       # Steam Big Picture Stay fullscreen
       "fullscreen, title:^(Steam Big Picture Mode)$"
 
-      # Music Player & Blanket
-      "float,class:^(Plexamp)$"
-      "float,class:^(com.rafaelmardojai.Blanket)$"
-      "float,class:^(vlc)$"
-      "float,title:^(Spotify( Premium)?)$"
 
       # opacity rules
       "opacity 0.85 0.80,class:^(Spotify)$"
@@ -45,6 +40,10 @@
       "opacity 0.85 0.80,class:^(org.kde.polkit-kde-authentication-agent-1)$"
       "opacity 0.85 0.80,class:^(anyrun)$"
       # float rules
+      "float,class:^(Plexamp)$"
+      "float,class:^(com.rafaelmardojai.Blanket)$"
+      "float,class:^(vlc)$"
+      "float,title:^(Spotify( Premium)?)$"
       "float,class:^(pavucontrol)$"
       "float,class:^(nm-applet)$"
 
