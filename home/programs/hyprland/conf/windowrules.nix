@@ -46,6 +46,8 @@
       "float,title:^(Spotify( Premium)?)$"
       "float,class:^(pavucontrol)$"
       "float,class:^(nm-applet)$"
+      "float,class:^(steam),title:^(Friends List)$"
+      "float,title:^(Steam Settings)$"
 
       # tearing rules
       "immediate,class:^(cs2)$"
