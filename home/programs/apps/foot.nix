@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{lib, ...}: {
   stylix.targets.foot.enable = true;
   programs.foot = {
     enable = true;
@@ -25,7 +25,7 @@
         beam-thickness = 1;
       };
       colors = {
-        alpha = pkgs.lib.mkForce "0.55";
+        alpha = lib.mkForce "0.55";
       };
     };
   };

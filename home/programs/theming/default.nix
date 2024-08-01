@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./wallpaper.nix
   ];
@@ -9,7 +13,7 @@
   };
   gtk = {
     enable = true;
-    theme = pkgs.lib.mkForce {
+    theme = lib.mkForce {
       name = "Catppuccin-Mocha-Compact-Mauve-Dark";
       package = pkgs.catppuccin-gtk.override {
         accents = ["mauve"];
@@ -18,7 +22,7 @@
         variant = "mocha";
       };
     };
-    iconTheme = pkgs.lib.mkForce {
+    iconTheme = lib.mkForce {
       package = pkgs.catppuccin-papirus-folders;
       name = "Papirus-Dark";
     };

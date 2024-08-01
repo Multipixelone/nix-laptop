@@ -33,8 +33,8 @@ in {
     ssh-agent.enable = true;
     mako = {
       enable = true;
-      borderColor = pkgs.lib.mkForce "#${config.lib.stylix.colors.base0E}";
-      backgroundColor = pkgs.lib.mkForce "#${config.lib.stylix.colors.base00}";
+      borderColor = lib.mkForce "#${config.lib.stylix.colors.base0E}";
+      backgroundColor = lib.mkForce "#${config.lib.stylix.colors.base00}";
       borderRadius = 6;
       borderSize = 2;
       ignoreTimeout = true;
@@ -103,7 +103,7 @@ in {
         shadow_ignore_window = true;
         shadow_range = 20;
         shadow_render_power = 3;
-        "col.shadow" = pkgs.lib.mkForce "rgba(00000055)";
+        "col.shadow" = lib.mkForce "rgba(00000055)";
         blur = {
           enabled = true;
           brightness = 1.1;
@@ -118,8 +118,8 @@ in {
         border_size = 3;
         gaps_in = 5;
         gaps_out = 5;
-        "col.inactive_border" = pkgs.lib.mkForce "rgb(${config.lib.stylix.colors.base00})";
-        "col.active_border" = pkgs.lib.mkForce "rgb(${config.lib.stylix.colors.base0E})";
+        "col.inactive_border" = lib.mkForce "rgb(${config.lib.stylix.colors.base00})";
+        "col.active_border" = lib.mkForce "rgb(${config.lib.stylix.colors.base0E})";
       };
       dwindle = {
         # keep floating dimentions while tiling
