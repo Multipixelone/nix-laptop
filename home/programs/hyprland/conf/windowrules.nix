@@ -49,6 +49,11 @@
       "float,class:^(steam),title:^(Friends List)$"
       "float,title:^(Steam Settings)$"
 
+      # gw2
+      "immediate,class:^(steam_app_1284210)$"
+      "tile,class:steam_app_1284210"
+      "opaque,class:steam_app_1284210"
+
       # tearing rules
       "immediate,class:^(cs2)$"
     ];
