@@ -26,9 +26,6 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    Hyprspace = {
-      url = "github:KZDKM/Hyprspace";
-    };
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,8 +42,6 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprgrass = {
-      url = "github:horriblename/hyprgrass";
     anyrun = {
       url = "github:Kirottu/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -76,8 +71,6 @@
     agenix,
     geospatial,
     secrets,
-    Hyprspace,
-    hyprgrass,
     anyrun,
     chaotic,
     nur,
