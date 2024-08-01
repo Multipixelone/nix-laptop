@@ -136,7 +136,7 @@ in {
       };
       misc = {
         disable_autoreload = true;
-        background_color = "#${config.lib.stylix.colors.base00}";
+        background_color = "rgb(${config.lib.stylix.colors.base00})";
         force_default_wallpaper = 0;
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
