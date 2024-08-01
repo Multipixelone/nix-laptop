@@ -41,6 +41,7 @@ in {
         "$mod, T, exec, pypr toggle term"
         "$mod, B, exec, pypr toggle volume"
         "$mod, H, exec, pypr toggle helvum"
+        "Control_L&Alt_L, K, exec, pypr toggle password"
         #", swipe:3:ld, exec, pypr toggle music"
         ", XF86AudioPlay, exec, ${playerctl} play-pause"
         ", XF86AudioNext, exec, ${playerctl} next"

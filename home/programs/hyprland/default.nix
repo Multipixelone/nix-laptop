@@ -190,6 +190,14 @@ in {
       size = "40% 90%"
       unfocus = "hide"
       lazy = true
+
+      [scratchpads.password]
+      animation = "fromBottom"
+      command = "1password"
+      class = "1Password"
+      size = "40% 60%"
+      max_size = "2560px 100%"
+      position = "0% 0%"
     '';
   };
 }
