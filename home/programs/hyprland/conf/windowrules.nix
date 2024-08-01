@@ -1,7 +1,7 @@
 {...}: {
   wayland.windowManager.hyprland.settings = {
     windowrulev2 = [
-      # make Firefox PiP window floating and sticky
+      # float & pin firefox pip
       "float, title:^(Picture-in-Picture)$"
       "pin, title:^(Picture-in-Picture)$"
 
@@ -9,7 +9,7 @@
       "workspace special silent, title:^(Firefox — Sharing Indicator)$"
       "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
 
-      # start Music & Obsidian in proper places
+      # workspace rules
       "workspace 5 silent, title:^(Spotify( Premium)?)$"
       "workspace 5 silent, class:^(Plexamp)$"
       "workspace 5 silent, class:^(vlc)$"
