@@ -56,6 +56,8 @@
 
       # tearing rules
       "immediate,class:^(cs2)$"
+      # mh:w
+      "immediate,class:^(steam_app_582010)$"
     ];
     layerrule = [
       #"blur,waybar"
