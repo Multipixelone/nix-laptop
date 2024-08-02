@@ -93,13 +93,14 @@ in {
       }
       #battery {
         color: #${config.lib.stylix.colors.base0B};
-        border-radius: 0px 1rem 1rem 0px;
       }
       #pulseaudio {
         color: #${config.lib.stylix.colors.base09};
+        border-radius: 0px 1rem 1rem 0px;
       }
       #clock {
         color: #${config.lib.stylix.colors.base0D};
+        margin-left: 5px;
       }
 
       #battery.charging {
@@ -156,7 +157,8 @@ in {
         modules-left = ["hyprland/workspaces" "image#album-art" "custom/playerlabel"];
         modules-center = ["clock"];
         # TODO there has to be a less jank way to do this...
-        modules-right = lib.mkIf (osConfig.networking.hostName == "zelda") ["network" "pulseaudio" "backlight" "battery" "tray"];
+        # modules-right = lib.mkIf (osConfig.networking.hostName == "zelda") ["network" "pulseaudio" "backlight" "battery" "tray"];
+        modules-right = ["network" "backlight" "battery" "pulseaudio" "clock" "tray"];
         "custom/playerlabel" = {
           format = ''<span>{}</span>'';
           return-type = "json";
