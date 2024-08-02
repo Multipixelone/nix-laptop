@@ -43,9 +43,6 @@ in {
         "$mod, H, exec, pypr toggle helvum"
         "Control_L&Alt_L, K, exec, pypr toggle password"
         #", swipe:3:ld, exec, pypr toggle music"
-        ", XF86AudioPlay, exec, ${playerctl} play-pause"
-        ", XF86AudioNext, exec, ${playerctl} next"
-        ", XF86AudioPrev, exec, ${playerctl} previous"
         "$mod, 1, workspace, 1"
         "$mod, 2, workspace, 2"
         "$mod, 3, workspace, 3"
@@ -68,6 +65,11 @@ in {
       bindm = [
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
+      ];
+      bindl = [
+        ", XF86AudioPlay, exec, ${playerctl} play-pause"
+        ", XF86AudioNext, exec, ${playerctl} next"
+        ", XF86AudioPrev, exec, ${playerctl} previous"
       ];
       binde = [
         ", XF86AudioRaiseVolume, exec, ${swayosd-client} --output-volume raise"
