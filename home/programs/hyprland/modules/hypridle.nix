@@ -5,7 +5,7 @@
   config,
   ...
 }: let
-  timeout = 60;
+  timeout = 240;
   brillo = lib.getExe pkgs.brillo;
   suspendScript = pkgs.writeShellApplication {
     name = "suspend-script";
