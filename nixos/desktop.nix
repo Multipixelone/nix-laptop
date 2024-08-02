@@ -2,7 +2,9 @@
   pkgs,
   inputs,
   ...
-}: {
+}: let
+  pkgs-hypr = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+in {
   imports = [
     ./core.nix
     ./modules/greetd.nix
@@ -85,6 +87,13 @@
       powerOnBoot = true;
     };
     brillo.enable = true;
+    # use mesa from hyprland (fix performance issues https://github.com/hyprwm/Hyprland/issues/5148)
+    graphics = {
+      package = pkgs-hypr.mesa.drivers;
+      package32 = pkgs-hypr.pkgsi686Linux.mesa.drivers;
+      # 32 bit support
+      enable32Bit = true;
+    };
   };
   services = {
     zerotierone = {
