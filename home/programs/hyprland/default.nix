@@ -206,9 +206,9 @@ in {
       animation = "fromBottom"
       command = "1password"
       class = "1Password"
-      size = "40% 60%"
+      size = "40% 30%"
       max_size = "2560px 100%"
-      position = "0% 0%"
+      position = "1% 66%"
     '';
   };
 }
