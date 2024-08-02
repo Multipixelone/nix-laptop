@@ -96,7 +96,7 @@ in {
         border-radius: 0px 1rem 1rem 0px;
       }
       #pulseaudio {
-        color: #${config.lib.stylix.colors.base0E};
+        color: #${config.lib.stylix.colors.base09};
       }
       #clock {
         color: #${config.lib.stylix.colors.base0D};
