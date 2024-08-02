@@ -7,6 +7,7 @@
 }: let
   timeout = 240;
   brillo = lib.getExe pkgs.brillo;
+  pypr = lib.getExe pkgs.pyprland;
   suspendScript = pkgs.writeShellApplication {
     name = "suspend-script";
     runtimeInputs = [pkgs.playerctl pkgs.ripgrep pkgs.systemd];
@@ -43,11 +44,11 @@ in {
           on-timeout = "loginctl lock-session";
         }
         # TODO do these on zelda, not link
-        # {
-        #   timeout = timeout + 30;
-        #   on-timeout = "hyprctl dispatch dpms off";
-        #   on-resume = "hyprctl dispatch dpms on";
-        # }
+        {
+          timeout = timeout + 120;
+          on-timeout = "pypr toggle_dpms";
+          on-resume = "pypr toggle_dpms";
+        }
         # {
         #   timeout = timeout + 60;
         #   on-timeout = suspendScript.outPath;
