@@ -185,7 +185,8 @@ in {
           };
         };
         network = {
-          format = "{icon} {essid}";
+          format-wifi = "{icon} {essid}";
+          format-ethernet = " Wired";
           format-icons = ["󰤯" "󰤟" "󰤢" "󰤥" "󰤨"];
           format-disconnected = "󰤭";
         };
