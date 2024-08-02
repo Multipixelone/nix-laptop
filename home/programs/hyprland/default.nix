@@ -17,6 +17,10 @@
   cliphist = lib.getExe pkgs.cliphist;
   watch-clipboard = "${wl-paste} --type text --watch ${cliphist} store";
   watch-images = "${wl-paste} --type image --watch ${cliphist} store";
+  cursor-theme = pkgs.fetchzip {
+    url = "https://blusky.s3.us-west-2.amazonaws.com/Posy_Cursor_Black_h.tar.gz";
+    hash = "sha256-EC4bKLo1MAXOABcXb9FneoXlV2Fkb9wOFojewaSejZk=";
+  };
 in {
   imports = [
     ./conf/binds.nix
@@ -73,6 +77,8 @@ in {
       env = XDG_SESSION_TYPE,wayland
       env = XDG_SESSION_DESKTOP,Hyprland
       env = MOZ_ENABLE_WAYLAND,1
+      env = HYPRCURSOR_THEME,Posy_Cursor_Black_h
+      env = HYPRCURSOR_SIZE,24
       bezier = wind, 0.05, 0.9, 0.1, 1.05
       bezier = winIn, 0.1, 1.1, 0.1, 1.1
       bezier = winOut, 0.3, -0.3, 0, 1
@@ -160,6 +166,7 @@ in {
     };
   };
   home.file = {
+    ".local/share/icons/Posy_Cursor_Black_h".source = cursor-theme;
     ".config/hypr/pyprland.toml".text = ''
       [pyprland]
       plugins = ["scratchpads", "toggle_dpms"]
