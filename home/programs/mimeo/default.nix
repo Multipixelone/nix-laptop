@@ -9,7 +9,7 @@
 in {
   home.packages = [
     pkgs.mimeo
-    pkgs.cinnamon.nemo
+    pkgs.nemo
     pkgs.ark
     xdg-mimeo
   ];
