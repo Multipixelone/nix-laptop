@@ -121,7 +121,7 @@ in {
         allow_tearing = true;
         border_size = 3;
         gaps_in = 7;
-        gaps_out = 7;
+        gaps_out = 12;
         "col.inactive_border" = lib.mkForce "rgb(${config.lib.stylix.colors.base00})";
         "col.active_border" = lib.mkForce "rgb(${config.lib.stylix.colors.base0E})";
       };
