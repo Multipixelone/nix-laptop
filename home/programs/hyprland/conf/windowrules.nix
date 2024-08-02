@@ -46,7 +46,7 @@
       "float,title:^(Spotify( Premium)?)$"
       "float,class:^(pavucontrol)$"
       "float,class:^(nm-applet)$"
-      "float,class:^(steam),title:^(Friends List)$"
+      "float,title:^(Friends List)$"
       "float,title:^(Steam Settings)$"
 
       # gw2
