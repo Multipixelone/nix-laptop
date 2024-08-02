@@ -132,7 +132,7 @@ in {
     i2c.enable = true;
   };
   # TODO re-enable mesa-git eventually
-  chaotic.mesa-git.enable = true;
+  chaotic.mesa-git.enable = false;
   environment.systemPackages = [
     (import ./modules/scripts/sleep.nix {inherit pkgs;})
     inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
