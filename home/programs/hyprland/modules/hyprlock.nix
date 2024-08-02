@@ -4,7 +4,7 @@
   ...
 }: let
   media-info = ''
-    ${pkgs.playerctl}/bin/playerctl metadata --format "<span size=\"xx-large\" weight=\"bold\">{{ title }}</span><br/>{{ artist }} - {{ album }}"
+    ${pkgs.playerctl}/bin/playerctl metadata --format "{{ title }}<br/>{{ artist }} - {{ album }}"
   '';
 in {
   programs.hyprlock = {
