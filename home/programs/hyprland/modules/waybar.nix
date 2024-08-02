@@ -10,10 +10,6 @@ in {
   programs.waybar = {
     enable = true;
     style = ''
-      ${builtins.readFile (builtins.fetchurl {
-        url = "https://github.com/catppuccin/waybar/releases/download/v1.1/mocha.css";
-        sha256 = "sha256:14anxdkg8s4rgd2xz7jar9b2vgidkwn1kk5pnn84i665wkvg6ncn";
-      })}
       * {
         font-family: "PragmataPro Liga", "FiraCode Nerd Font";
         font-size: 13px;
