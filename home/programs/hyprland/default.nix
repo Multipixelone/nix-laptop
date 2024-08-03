@@ -58,7 +58,6 @@ in {
         echo "/home/tunnel/.local/share/mopidy/coverart.png"
       '';
     })
-    waypipe
   ];
   # TODO reorganize all of this and make it cleaner
   # TODO move all env def into session vars

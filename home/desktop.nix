@@ -38,6 +38,7 @@
     moonlight-qt
     zoom-us
     piper
+    waypipe
   ];
   services.udiskie = {
     enable = true;
