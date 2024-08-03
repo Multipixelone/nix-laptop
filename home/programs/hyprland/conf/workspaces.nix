@@ -8,7 +8,7 @@
       "3,monitor:DP-1"
       "4,monitor:DP-1"
       "5,monitor:DP-3"
-      "6,monitor:DP-1"
+      "6,monitor:DP-3"
     ];
   };
 }
