@@ -148,6 +148,7 @@ in {
         disable_splash_rendering = true;
         vfr = false;
         animate_manual_resizes = true;
+        no_direct_scanout = false;
       };
       input = {
         accel_profile = "flat";
