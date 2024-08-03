@@ -87,6 +87,7 @@ in {
         (lib.mkIf (osConfig.networking.hostName == "zelda") {monitor = [",highres,auto,2"];})
       ];
       exec-once = [polkit waybar swayosd-server music-term pypr foot-server watch-clipboard watch-images];
+      debug.disable_logs = false;
       decoration = {
         rounding = "6";
         shadow_offset = "0 2";
