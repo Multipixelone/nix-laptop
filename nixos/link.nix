@@ -76,7 +76,7 @@ in {
         ];
       };
       jdownloader = {
-        autoStart = true;
+        autoStart = false;
         image = "jlesage/jdownloader-2:latest";
         ports = ["5800:5800"];
         # user = "tunnel:users";
