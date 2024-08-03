@@ -45,20 +45,6 @@ in {
       defaultTimeout = 5000;
     };
   };
-  home.packages = with pkgs; [
-    # TODO move this into a module so that it always comes with lockidle and waybar
-    (writeShellApplication {
-      name = "mopidy-albumart";
-      runtimeInputs = [pkgs.playerctl pkgs.imagemagick];
-      text = ''
-        art_url=$(playerctl -p mopidy metadata mpris:artUrl)
-        filename=''${art_url##*/}
-        img_file="/home/tunnel/.local/share/mopidy/local/images/$filename"
-        convert "$img_file" -resize 500x500^ -gravity Center -extent 500x500 /home/tunnel/.local/share/mopidy/coverart.png
-        echo "/home/tunnel/.local/share/mopidy/coverart.png"
-      '';
-    })
-  ];
   # TODO reorganize all of this and make it cleaner
   # TODO move all env def into session vars
   wayland.windowManager.hyprland = {

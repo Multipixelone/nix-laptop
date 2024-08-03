@@ -1,4 +1,27 @@
-{...}: {
+{pkgs, ...}: let
+  song-change =
+    pkgs.writeShellApplication {
+      name = "song-change";
+      runtimeInputs = [pkgs.procps pkgs.libnotify pkgs.playerctl pkgs.imagemagick pkgs.mpc-cli];
+      text = ''
+        # i don't need to be making a playerctl and a mpc call, but then I have to write code to parse the output and I am Lazy
+        art_url=$(playerctl -p mopidy metadata mpris:artUrl)
+        filename=''${art_url##*/}
+        img_file="/home/tunnel/.local/share/mopidy/local/images/$filename"
+
+        magick convert "$img_file" -resize 500x500^ -gravity Center -extent 500x500 /home/tunnel/.local/share/mopidy/coverart.png
+
+        # send album art to notification
+        notify-send -r 27072 "$(mpc --format '%title% \n%artist% - %album%' current)" -i /home/tunnel/.local/share/mopidy/coverart.png
+
+        # update waybar
+        pkill -RTMIN+5 waybar
+        # update hyprlock
+        pkill -USR2 hyprlock
+      '';
+    }
+    + "/bin/song-change &> /dev/null";
+in {
   programs.ncmpcpp = {
     enable = true;
     settings = {
@@ -8,8 +31,7 @@
       visualizer_type = "ellipse";
       visualizer_look = "+|";
       playlist_display_mode = "columns";
-      # send signal 5 to waybar & SIGUSR2 to hyprlock to update music
-      execute_on_song_change = "pkill -RTMIN+5 waybar && pkill -USR2 hyprlock";
+      execute_on_song_change = song-change;
       message_delay_time = 1;
       autocenter_mode = "yes";
       centered_cursor = "yes";
