@@ -209,6 +209,7 @@ in {
       size = "40% 30%"
       max_size = "2560px 100%"
       position = "1% 66%"
+      lazy = true
     '';
   };
 }
