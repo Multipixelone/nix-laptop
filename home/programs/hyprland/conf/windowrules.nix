@@ -26,7 +26,7 @@
       "idleinhibit always, title:^(Steam Big Picture Mode)$"
       "idleinhibit fullscreen, class:^(firefox)$"
 
-      # Steam Big Picture Stay fullscreen
+      # Steam Big Picture stay fullscreen
       "fullscreen, title:^(Steam Big Picture Mode)$"
 
       # opacity rules
