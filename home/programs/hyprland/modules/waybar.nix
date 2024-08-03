@@ -162,7 +162,7 @@ in {
           exec = "${mediaplayer}/bin/mediaplayer.py";
         };
         "image#album-art" = {
-          exec = "mopidy-albumart";
+          exec = "echo /home/tunnel/.local/share/mopidy/coverart.png";
           size = 30;
           interval = 30;
           # recieve signal from ncmpcpp to change song

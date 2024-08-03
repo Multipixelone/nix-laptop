@@ -101,7 +101,7 @@ in {
       size = 350
       rounding = 2
       reload_time = 0
-      reload_cmd = mopidy-albumart
+      reload_cmd = echo "/home/tunnel/.local/share/mopidy/coverart.png"
       position = 30, -20
 
       shadow_passes = 4
@@ -130,7 +130,7 @@ in {
       size = 350
       rounding = 2
       reload_time = 0
-      reload_cmd = mopidy-albumart
+      reload_cmd = echo "/home/tunnel/.local/share/mopidy/coverart.png"
       position = 30, 20
 
       shadow_passes = 4
