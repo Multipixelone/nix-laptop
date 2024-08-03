@@ -29,6 +29,10 @@
       # Steam Big Picture stay fullscreen
       "fullscreen, title:^(Steam Big Picture Mode)$"
 
+      # music player default location
+      "move 62 1428, class:^(mpd)"
+      "size 754 422, class:^(mpd)"
+
       # opacity rules
       "opacity 0.85 0.80,class:^(Spotify)$"
       "opacity 0.85 0.80,class:^(Plexamp)$"
@@ -43,6 +47,7 @@
       "float,class:^(Plexamp)$"
       "float,class:^(com.rafaelmardojai.Blanket)$"
       "float,class:^(vlc)$"
+      "float,class:^(mpd)"
       "float,title:^(Spotify( Premium)?)$"
       "float,class:^(pavucontrol)$"
       "float,class:^(nm-applet)$"
