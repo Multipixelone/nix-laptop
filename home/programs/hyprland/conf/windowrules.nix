@@ -59,6 +59,8 @@
       "immediate,class:^(dota2)$"
       # mh:w
       "immediate,class:^(steam_app_582010)$"
+      # overwatch 2
+      "immediate,class:^(steam_app_2357570)$"
     ];
     layerrule = [
       #"blur,waybar"
