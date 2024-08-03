@@ -69,7 +69,7 @@ in {
     containers = {
       grocy = {
         image = "lscr.io/linuxserver/grocy:latest";
-        autoStart = true;
+        autoStart = false;
         ports = ["9283:80"];
         volumes = [
           "/srv/grocy:/app"
