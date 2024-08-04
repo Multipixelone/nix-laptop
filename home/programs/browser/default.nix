@@ -42,6 +42,23 @@ in {
       default = {
         inherit extensions settings;
         id = 0;
+        userChrome = ''
+          #TabsToolbar {
+          visibility: collapse;
+          }
+
+          #titlebar {
+              margin-bottom: !important;
+          }
+
+          #titlebar-buttonbox {
+              height: 32px !important;
+          }
+
+          #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+            display: none;
+          }
+        '';
         extraConfig = builtins.concatStringsSep "\n" [
           (builtins.readFile "${better-fox}/Fastfox.js")
         ];
