@@ -18,6 +18,7 @@
       group = "users";
     };
   };
+  services.playerctld.enable = true;
   systemd.timers."playlist-downloader" = {
     wantedBy = ["timers.target"];
     timerConfig = {
