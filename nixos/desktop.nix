@@ -15,6 +15,9 @@ in {
     inputs.nix-gaming.nixosModules.platformOptimizations
   ];
   environment.systemPackages = with pkgs; [
+    yubikey-personalization
+    yubikey-manager
+    age-plugin-yubikey
     virt-manager
     qemu_kvm
     qemu
@@ -109,6 +112,10 @@ in {
     psd.enable = true;
     printing.enable = true;
     blueman.enable = true;
+    udev.packages = with pkgs; [
+      yubikey-personalization
+      libu2f-host
+    ];
   };
   programs = {
     steam = {
