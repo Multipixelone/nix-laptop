@@ -79,7 +79,12 @@ in {
     plymouth.enable = false;
     consoleLogLevel = 3;
     initrd.verbose = false;
-    kernelParams = ["rd.udev.log_level=3" "udev.log_priority=3" "boot.shell_on_fail" "SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE=1"];
+    kernelParams = [
+      "rd.udev.log_level=3"
+      "udev.log_priority=3"
+      "boot.shell_on_fail"
+      "SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE=1"
+    ];
     # xanmod or zen
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     # kernelPackages = pkgs.linuxPackages_cachyos;
