@@ -44,11 +44,11 @@ in {
           on-timeout = "loginctl lock-session";
         }
         # TODO do these on zelda, not link
-        {
-          timeout = timeout + 120;
-          on-timeout = "pypr toggle_dpms";
-          on-resume = "pypr toggle_dpms";
-        }
+        # {
+        #   timeout = timeout + 120;
+        #   on-timeout = "pypr toggle_dpms";
+        #   on-resume = "pypr toggle_dpms";
+        # }
         # {
         #   timeout = timeout + 60;
         #   on-timeout = suspendScript.outPath;
