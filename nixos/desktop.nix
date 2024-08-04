@@ -85,6 +85,7 @@ in {
       "boot.shell_on_fail"
       "SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE=1" # remove when i'm not booting w legacy c groups... idk why its happening and I can't be bothered to track back what package is setting it
       "nowatchdog"
+      "hpet=disable"
       "transparent_hugepages=always"
       "vm.compaction_proactiveness=0"
     ];
