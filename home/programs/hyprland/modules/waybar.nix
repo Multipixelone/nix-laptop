@@ -13,11 +13,8 @@ in {
       * {
         font-family: "PragmataPro Liga", "FiraCode Nerd Font";
         font-size: 13px;
-        min-height: 0;
-        box-shadow: none;
-        background: transparent;
-        background-color: rgba(255,0,0,0.0);
       }
+
       window#waybar {
         background: transparent;
         background-color: rgba(255,0,0,0.0);
@@ -28,36 +25,41 @@ in {
       #workspaces {
         border-radius: 1rem;
         margin: 5px;
-        background-color: #${config.lib.stylix.colors.base02};
+        background-color: transparent;
         margin-left: 0.5rem;
         border: none;
       }
-
       #workspaces button {
-        color: #${config.lib.stylix.colors.base07};
-        border-radius: 0;
-        padding: 0.4rem;
-        border: none;
+        box-shadow: rgba(0, 0, 0, 0.116) 2 2 5 2px;
+        background-color: #11111b ;
+        border-radius: 15px;
+        margin-right: 10px;
+        padding: 10px;
+        padding-top: 4px;
+        padding-bottom: 2px;
+        color: 	#89b4fa ;
+        transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.68);
+      }
+      #workspaces button.active{
+        padding-right: 20px;
+        box-shadow: rgba(0, 0, 0, 0.288) 2 2 5 2px;
+        padding-left: 20px;
+        padding-bottom: 3px;
+        background: rgb(203,166,247);
+        background: radial-gradient(circle, rgba(203,166,247,1) 0%, rgba(193,168,247,1) 12%, rgba(249,226,175,1) 19%, rgba(189,169,247,1) 20%, rgba(182,171,247,1) 24%, rgba(198,255,194,1) 36%, rgba(177,172,247,1) 37%, rgba(170,173,248,1) 48%, rgba(255,255,255,1) 52%, rgba(166,174,248,1) 52%, rgba(160,175,248,1) 59%, rgba(148,226,213,1) 66%, rgba(155,176,248,1) 67%, rgba(152,177,248,1) 68%, rgba(205,214,244,1) 77%, rgba(148,178,249,1) 78%, rgba(144,179,250,1) 82%, rgba(180,190,254,1) 83%, rgba(141,179,250,1) 90%, rgba(137,180,250,1) 100%);
+        background-size: 400% 400%;
+        animation: gradient_f 20s ease-in-out infinite;
+        transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
       }
 
-      #workspaces button.active {
-        color: #${config.lib.stylix.colors.base0C};
-        border-radius: 0;
-        border: none;
-        box-shadow: none;
+      #workspaces button label{
+        color: 	#89b4fa ;
+        font-weight: bolder;
       }
 
-      #workspaces button.focused {
-        color: #${config.lib.stylix.colors.base0C};
-        border-radius: 0;
-        border: none;
-        box-shadow: none;
-      }
-
-      #workspaces button:hover {
-        color: #${config.lib.stylix.colors.base0D};
-        border-radius: 0;
-        border: none;
+      #workspaces button.active label{
+        color: #11111b;
+        font-weight: bolder;
       }
 
       #custom-music,
@@ -142,6 +144,46 @@ in {
         border-radius: 1rem;
         margin: 5px;
         padding: 0.7rem 0.5rem;
+      }
+      #tray > .passive {
+        -gtk-icon-effect: dim;
+      }
+      #tray > .needs-attention {
+          -gtk-icon-effect: highlight;
+          background-color: #eb4d4b;
+      }
+
+      @keyframes gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 30%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      @keyframes gradient_f {
+        0% {
+          background-position: 0% 200%;
+        }
+          50% {
+              background-position: 200% 0%;
+          }
+        100% {
+          background-position: 400% 200%;
+        }
+      }
+
+      @keyframes gradient_f_nh {
+        0% {
+          background-position: 0% 200%;
+        }
+        100% {
+          background-position: 200% 200%;
+        }
       }
     '';
     settings = [
