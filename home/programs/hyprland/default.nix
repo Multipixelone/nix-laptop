@@ -89,7 +89,7 @@ in {
       exec-once = [polkit waybar swayosd-server music-term pypr foot-server watch-clipboard watch-images];
       debug.disable_logs = false;
       decoration = {
-        rounding = "6";
+        rounding = "10";
         shadow_offset = "0 2";
         drop_shadow = true;
         shadow_ignore_window = true;
