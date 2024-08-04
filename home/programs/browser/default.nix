@@ -30,6 +30,34 @@
   settings = {
     "app.update.channel" = "default";
     "browser.link.open_newwindow" = true;
+    "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+    "media.av1.enabled" = true;
+    "media.ffmpeg.vaapi.enabled" = true;
+    "widget.dmabuf.force-enabled" = true;
+    "browser.toolbars.bookmarks.visibility" = "never";
+    "browser.startup.page" = 3;
+    "privacy.clearOnShutdown.history" = false;
+    # privacy
+    "privacy.donottrackheader.enabled" = true;
+    "privacy.trackingprotection.enabled" = true;
+    "privacy.trackingprotection.socialtracking.enabled" = true;
+    "privacy.userContext.enabled" = true;
+    "privacy.userContext.ui.enabled" = true;
+    "app.normandy.enabled" = false;
+    "app.shield.optoutstudies.enabled" = false;
+    "toolkit.telemetry.archive.enabled" = false;
+    "toolkit.telemetry.enabled" = false;
+    "toolkit.telemetry.server" = "";
+    "toolkit.telemetry.unified" = false;
+    "extensions.webcompat-reporter.enabled" = false;
+    "datareporting.policy.dataSubmissionEnabled" = false;
+    "datareporting.healthreport.uploadEnabled" = false;
+    "browser.ping-centre.telemetry" = false;
+    "browser.urlbar.eventTelemetry.enabled" = false; # (default)
+    "browser.contentblocking.report.lockwise.enabled" = false;
+    "browser.uitour.enabled" = false;
+    "browser.newtabpage.activity-stream.showSponsored" = false;
+    "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
   };
 in {
   home.packages = with pkgs; [
