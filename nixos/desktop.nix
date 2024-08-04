@@ -88,6 +88,15 @@ in {
     bluetooth = {
       enable = true;
       powerOnBoot = true;
+      disabledPlugins = ["sap"];
+      settings = {
+        General = {
+          FastConnectable = "true";
+          JustWorksRepairing = "always";
+          MultiProfile = "multiple";
+          Enable = "Source,Sink,Media,Socket";
+        };
+      };
     };
     brillo.enable = true;
     # use mesa from hyprland (fix performance issues https://github.com/hyprwm/Hyprland/issues/5148)
