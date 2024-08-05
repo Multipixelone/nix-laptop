@@ -29,7 +29,7 @@
         # Unlock PC (so I don't have to type password on Steam Deck)
         pkill -USR1 hyprlock || true
         systemctl --user stop hypridle
-        hyprctl keyword monitor "DP-3,disable"
+        hyprctl dispatch dpms off DP-3
         hyprctl keyword monitor "$mon_string"
       '';
     }
@@ -44,7 +44,7 @@
         export HYPRLAND_INSTANCE_SIGNATURE
         mon_string="DP-1,2560x1440@240,1200x0,1"
         systemctl --user start hypridle
-        hyprctl keyword monitor "DP-3,1920x1200@60,0x0,1,transform,1"
+        hyprctl dispatch dpms on DP-3
         hyprctl keyword monitor "$mon_string"
       '';
     }
