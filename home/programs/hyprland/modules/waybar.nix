@@ -47,29 +47,45 @@ in {
         font-size: 13px;
       }
 
+      #custom-music,
+      #tray,
+      #backlight,
+      #clock,
+      #battery,
+      #pulseaudio,
+      #custom-lock,
+      #custom-power,
+      #custom-dynamic,
+      #network {
+        background-color: #${config.lib.stylix.colors.base02};
+        padding: 0 10px;
+        margin-top: 5px;
+        margin-right: 10px;
+        border-radius: 20px;
+        color: #${config.lib.stylix.colors.base05};
+        box-shadow: rgba(0, 0, 0, 0.116) 2 2 5 2px;
+      }
+
       window#waybar {
         background: transparent;
-        background-color: rgba(255,0,0,0.0);
         color: #${config.lib.stylix.colors.base05};
-        margin: 3px 3px;
       }
 
       #workspaces {
-        border-radius: 1rem;
-        margin: 5px;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 5px;
         background-color: transparent;
-        margin-left: 0.5rem;
-        border: none;
       }
       #workspaces button {
         box-shadow: rgba(0, 0, 0, 0.116) 2 2 5 2px;
-        background-color: #11111b ;
+        background-color: #${config.lib.stylix.colors.base02};
         border-radius: 15px;
         margin-right: 10px;
         padding: 10px;
         padding-top: 4px;
         padding-bottom: 2px;
-        color: 	#89b4fa ;
+        color: 	#${config.lib.stylix.colors.base0E};
         transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.68);
       }
       #workspaces button.active{
@@ -80,45 +96,78 @@ in {
         background: rgb(203,166,247);
         background: radial-gradient(circle, rgba(203,166,247,1) 0%, rgba(193,168,247,1) 12%, rgba(249,226,175,1) 19%, rgba(189,169,247,1) 20%, rgba(182,171,247,1) 24%, rgba(198,255,194,1) 36%, rgba(177,172,247,1) 37%, rgba(170,173,248,1) 48%, rgba(255,255,255,1) 52%, rgba(166,174,248,1) 52%, rgba(160,175,248,1) 59%, rgba(148,226,213,1) 66%, rgba(155,176,248,1) 67%, rgba(152,177,248,1) 68%, rgba(205,214,244,1) 77%, rgba(148,178,249,1) 78%, rgba(144,179,250,1) 82%, rgba(180,190,254,1) 83%, rgba(141,179,250,1) 90%, rgba(137,180,250,1) 100%);
         background-size: 400% 400%;
-        animation: gradient_f 20s ease-in-out infinite;
         transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
       }
 
       #workspaces button label{
-        color: 	#89b4fa ;
+        color: 	#${config.lib.stylix.colors.base0E};
         font-weight: bolder;
       }
 
       #workspaces button.active label{
-        color: #11111b;
+        color: #${config.lib.stylix.colors.base02};
         font-weight: bolder;
       }
 
-      #custom-music,
-      #tray,
-      #backlight,
-      #clock,
-      #battery,
-      #pulseaudio,
-      #custom-lock,
-      #custom-power,
-      #network {
-        background-color: #${config.lib.stylix.colors.base02};
-        padding: 0.7rem 0.5rem;
-        margin: 5px 0;
+      #custom-dynamic label {
+        color: #${config.lib.stylix.colors.base02};
+        font-weight: bold;
+      }
+
+      #custom-dynamic.paused label {
+        color: #${config.lib.stylix.colors.base0E};
+        font-weight: bolder;
+      }
+
+      #custom-dynamic.low{
+        background: rgb(148,226,213);
+        background: linear-gradient(52deg, rgba(148,226,213,1) 0%, rgba(137,220,235,1) 19%, rgba(116,199,236,1) 43%, rgba(137,180,250,1) 56%, rgba(180,190,254,1) 80%, rgba(186,187,241,1) 100%);
+        background-size: 300% 300%;
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
+        font-weight: bolder;
+        color: #fff;
+      }
+      #custom-dynamic.normal{
+        background: rgb(148,226,213);
+        background: radial-gradient(circle, rgba(148,226,213,1) 0%, rgba(156,227,191,1) 21%, rgba(249,226,175,1) 34%, rgba(158,227,186,1) 35%, rgba(163,227,169,1) 59%, rgba(148,226,213,1) 74%, rgba(164,227,167,1) 74%, rgba(166,227,161,1) 100%);
+        background-size: 400% 400%;
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
+        font-weight: bolder;
+        color: #fff;
+      }
+      #custom-dynamic.critical{
+        background: rgb(235,160,172);
+        background: linear-gradient(52deg, rgba(235,160,172,1) 0%, rgba(243,139,168,1) 30%, rgba(231,130,132,1) 48%, rgba(250,179,135,1) 77%, rgba(249,226,175,1) 100%);
+        background-size: 300% 300%;
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
+        font-weight: bolder;
+        color: #fff;
+      }
+
+      #custom-dynamic.playing{
+        background: rgb(137,180,250);
+        background: radial-gradient(circle, rgba(137,180,250,120) 0%, rgba(142,179,250,120) 6%, rgba(148,226,213,1) 14%, rgba(147,178,250,1) 14%, rgba(155,176,249,1) 18%, rgba(245,194,231,1) 28%, rgba(158,175,249,1) 28%, rgba(181,170,248,1) 58%, rgba(205,214,244,1) 69%, rgba(186,169,248,1) 69%, rgba(195,167,247,1) 72%, rgba(137,220,235,1) 73%, rgba(198,167,247,1) 78%, rgba(203,166,247,1) 100%);
+        background-size: 400% 400%;
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
+        font-weight: bold;
+        color: #${config.lib.stylix.colors.base01};
+      }
+
+      #custom-dynamic.paused{
+        background: #${config.lib.stylix.colors.base02};
+        font-weight: bolder;
+        color: #${config.lib.stylix.colors.base0E};
       }
       #custom-playerlabel {
         border-radius: 0px 1rem 1rem 0px;
         background-color: #${config.lib.stylix.colors.base02};
         padding: 0px 0.5rem 0px 0px;
-        margin-top: 5px;
         margin-bottom: 5px;
       }
       #image {
         border-radius: 1rem 0px 0px 1rem;
         background-color: #${config.lib.stylix.colors.base02};
         padding: 0px 0.5rem 0px 0.5rem;
-        margin-top: 5px;
         margin-bottom: 5px;
       }
       #battery {
@@ -126,11 +175,9 @@ in {
       }
       #pulseaudio {
         color: #${config.lib.stylix.colors.base09};
-        border-radius: 0px 1rem 1rem 0px;
       }
       #clock {
         color: #${config.lib.stylix.colors.base0D};
-        margin-left: 5px;
       }
 
       #battery.charging {
@@ -157,7 +204,6 @@ in {
 
       #clock {
         color: #${config.lib.stylix.colors.base0E};
-        border-radius: 1rem;
       }
 
       #custom-lock {
@@ -172,9 +218,7 @@ in {
       }
 
       #tray {
-        margin-right: 0.5rem;
-        border-radius: 1rem;
-        margin: 5px;
+        margin-right: 10px;
         padding: 0.7rem 0.5rem;
       }
       #tray > .passive {
