@@ -1,15 +1,24 @@
 {
   pkgs,
   lib,
+  osConfig,
   ...
 }: let
   terminal = lib.getExe pkgs.foot;
   brightness = lib.getExe pkgs.brillo;
-  screenshot = pkgs.grimblast + "/bin/grimblast";
-  screenshotarea = ''hyprctl keyword animation "fadeOut,0,0,default"; ${screenshot} --notify copysave area; hyprctl keyword animation "fadeOut,1,4,default"'';
   playerctl = lib.getExe pkgs.playerctl;
   launcher = lib.getExe pkgs.rofi-wayland + " -show drun";
   swayosd-client = lib.getExe' pkgs.swayosd "swayosd-client";
+  screenshot-area =
+    pkgs.writeShellApplication {
+      name = "screenshot-area";
+      runtimeInputs = [osConfig.programs.hyprland.package pkgs.grimblast];
+      text = ''
+        hyprctl keyword animation "fadeOut,0,0,default"
+        grimblast --notify copysave area
+        hyprctl keyword animation "fadeOut,1,4,default"'';
+    }
+    + "/bin/screenshot-area";
 in {
   wayland.windowManager.hyprland = {
     extraConfig = ''
@@ -28,8 +37,8 @@ in {
         "ALT_SHIFT, S, exec, steam"
         "ALT_SHIFT, C, exec, code"
         "ALT_SHIFT, E, exec, pypr toggle music"
-        ", Print, exec, ${screenshot} --notify --cursor copysave output"
-        "ALT , Print, exec, ${screenshotarea}"
+        ", Print, exec, ${lib.getExe pkgs.grimblast} --notify --cursor copysave output"
+        "ALT , Print, exec, ${screenshot-area}"
         "$mod, SPACE, exec, ${launcher}"
         "$mod, M, exit"
         "$mod, N, exec, systemctl suspend"
