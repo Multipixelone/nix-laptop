@@ -6,7 +6,9 @@
   osConfig,
   ...
 }: {
-  systemd.user.startServices = "sd-switch";
+  systemd.user = {
+    startServices = "sd-switch";
+  };
   home.sessionVariables = {
     XDG_SCREENSHOTS_DIR = "/home/tunnel/Pictures/Screenshots";
     RESTIC_PASSWORD_FILE = config.age.secrets."restic/passwordhome".path;
