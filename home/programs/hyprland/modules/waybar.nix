@@ -180,19 +180,28 @@ in {
         color: #${config.lib.stylix.colors.base0D};
       }
 
-      #battery.charging {
+      #battery.warning {
+        color: #${config.lib.stylix.colors.base0A};
+      }
+      #battery.critical:not(.charging) {
+        color: #${config.lib.stylix.colors.base08};
+        animation-name: blink;
+        animation-duration: 0.5s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+      #battery.charging, #battery.plugged {
         color: #${config.lib.stylix.colors.base0B};
       }
-
-      #battery.warning:not(.charging) {
-        color: #${config.lib.stylix.colors.base08};
+      @keyframes blink {
+        to {
+            color: #${config.lib.stylix.colors.base06};
+        }
       }
 
       #backlight {
-        color: #${config.lib.stylix.colors.base0A};
-      }
-
-      #backlight, #audio {
+        color: #${config.lib.stylix.colors.base0C};
       }
 
       #network {
