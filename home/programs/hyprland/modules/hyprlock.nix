@@ -3,9 +3,15 @@
   inputs,
   ...
 }: let
-  media-info = ''
-    ${pkgs.playerctl}/bin/playerctl metadata --format "{{ title }}<br/>{{ artist }} - {{ album }}"
-  '';
+  media-info =
+    pkgs.writeShellApplication {
+      name = "media-info";
+      runtimeInputs = [pkgs.playerctl];
+      text = ''
+        playerctl metadata --format "{{ title }}<br/>{{ artist }} - {{ album }}"
+      '';
+    }
+    + "/bin/media-info";
 in {
   programs.hyprlock = {
     enable = true;
