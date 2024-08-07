@@ -6,6 +6,36 @@
   ...
 }: let
   mediaplayer = pkgs.callPackage ./mediaplayer.nix {};
+  # dynamic pill totally stolen from https://github.com/flick0/dotfiles/blob/702facf3bc3bce37991efdba6efb68c7477ea770/config/hypr/scripts/tools/start_dyn
+  dynamic = pkgs.stdenv.mkDerivation {
+    name = "dynamic";
+    propagatedBuildInputs = [
+      pkgs.python3
+      pkgs.waybar-mpris
+    ];
+    dontUnpack = true;
+    installPhase = "install -Dm755 ${pkgs.fetchurl {
+      url = "https://raw.githubusercontent.com/flick0/dotfiles/aurora/config/hypr/scripts/tools/dynamic";
+      hash = "sha256-MgDKAmHEgjOH+A7HAdhxBzShYNqxS78+7+EVhYvwsLI=";
+    }} $out/bin/dynamic";
+  };
+  start-dyn =
+    pkgs.writeShellApplication {
+      name = "start-dyn";
+      runtimeInputs = [dynamic pkgs.jq];
+
+      text = ''
+        #!/usr/bin/bash
+        dynamic &
+        while true
+        do
+          out=$(cat ~/.config/hypr/store/dynamic_out.txt)
+          echo "$out"  | jq --unbuffered --compact-output
+          sleep 1
+        done
+      '';
+    }
+    + "/bin/start-dyn";
 in {
   programs.waybar = {
     enable = true;
@@ -202,6 +232,11 @@ in {
           return-type = "json";
           max-length = 80;
           exec = "${mediaplayer}/bin/mediaplayer.py";
+        };
+        "custom/dynamic" = {
+          return-type = "json";
+          format = "{}";
+          exec = start-dyn;
         };
         "image#album-art" = {
           exec = "echo /home/tunnel/.local/share/mopidy/coverart.png";
