@@ -268,10 +268,10 @@ in {
         layer = "top";
         position = "top";
         output = lib.mkIf (osConfig.networking.hostName == "link") "DP-1";
-        modules-left = ["hyprland/workspaces" "image#album-art" "custom/playerlabel"];
         # TODO there has to be a less jank way to do this...
         # modules-right = lib.mkIf (osConfig.networking.hostName == "zelda") ["network" "pulseaudio" "backlight" "battery" "tray"];
         modules-right = ["network" "backlight" "battery" "pulseaudio" "clock" "tray"];
+        modules-left = ["hyprland/workspaces"]; #"image#album-art" "custom/playerlabel"];
         modules-center = ["custom/dynamic"];
         "custom/playerlabel" = {
           format = ''<span>{}</span>'';
