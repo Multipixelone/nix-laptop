@@ -337,6 +337,10 @@ in {
           format = "󰥔  {:%A, %b %d %R}";
         };
         battery = {
+          states = {
+            warning = 20;
+            critical = 10;
+          };
           format = "{icon} {capacity}%";
           format-charging = "󰂄 {capacity}%";
           format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
