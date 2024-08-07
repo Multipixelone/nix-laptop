@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   inputs,
   config,
   osConfig,
@@ -46,7 +47,7 @@
     notify = true;
     settings = {
       program_options = {
-        file_manager = "${pkgs.mimeo}/bin/mimeo";
+        file_manager = lib.getExe pkgs.mimeo;
       };
     };
     tray = "always";

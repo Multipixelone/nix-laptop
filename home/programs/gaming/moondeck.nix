@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   moondeck = pkgs.qt6.callPackage ../../../pkgs/moondeck/default.nix {};
 in {
   systemd.user.services.moondeck = {
@@ -7,7 +11,7 @@ in {
       PartOf = ["graphical-session.target"];
     };
     Service = {
-      ExecStart = "${moondeck}/bin/MoonDeckBuddy";
+      ExecStart = lib.getExe' moondeck "MoonDeckBuddy";
       Restart = "on-failure";
     };
     Install.WantedBy = ["graphical-session.target"];

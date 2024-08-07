@@ -26,7 +26,7 @@ in {
     settings = {
       general = {
         lock_cmd = lib.getExe config.programs.hyprlock.package;
-        before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
+        before_sleep_cmd = lib.getExe' pkgs.systemd "loginctl" + " lock-session";
       };
       listener = [
         {
