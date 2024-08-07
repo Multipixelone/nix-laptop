@@ -289,7 +289,7 @@ in {
           format = ''<span>{}</span>'';
           return-type = "json";
           max-length = 80;
-          exec = "${mediaplayer}/bin/mediaplayer.py";
+          # exec = "${mediaplayer}/bin/mediaplayer.py";
         };
         "custom/dynamic" = {
           return-type = "json";
