@@ -37,6 +37,7 @@
     }
     + "/bin/start-dyn";
 in {
+  home.packages = with pkgs; [waybar-mpris];
   programs.waybar = {
     enable = true;
     style = ''
