@@ -136,6 +136,7 @@ in {
   environment.systemPackages = [
     (import ./modules/scripts/sleep.nix {inherit pkgs;})
     inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
+    (pkgs.blender.override {hipSupport = true;})
   ];
   boot = {
     initrd = {
