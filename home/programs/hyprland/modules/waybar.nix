@@ -38,6 +38,7 @@
     + "/bin/start-dyn";
 in {
   home.packages = with pkgs; [waybar-mpris];
+  wayland.windowManager.hyprland.settings.exec-once = [(dynamic + "/bin/dynamic &")];
   programs.waybar = {
     enable = true;
     style = ''
