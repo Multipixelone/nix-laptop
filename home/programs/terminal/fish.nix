@@ -3,8 +3,8 @@
   lib,
   ...
 }: let
-  cliphist = "${lib.getExe pkgs.cliphist}";
-  wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy";
+  cliphist = lib.getExe pkgs.cliphist;
+  wl-copy = lib.getExe' pkgs.wl-clipboard "wl-copy";
   fzf-config = ''
     set -x FZF_DEFAULT_OPTS "--preview='bat {} --color=always'" \n
     set -x SKIM_DEFAULT_COMMAND "rg --files || fd || find ."
@@ -47,9 +47,9 @@ in {
       ciara = "echo \"i dont know\"";
       fetch = "nix run nixpkgs#nitch";
       ff = "nix run nixpkgs#fastfetch";
-      du = "${pkgs.ncdu}/bin/ncdu --color dark -rr -x";
-      ping = "${pkgs.prettyping}/bin/prettyping";
-      xdg-open = "${pkgs.mimeo}/bin/mimeo";
+      du = lib.getExe pkgs.ncdu + " --color dark -rr -x";
+      ping = lib.getExe pkgs.prettyping;
+      xdg-open = lib.getExe pkgs.mimeo;
       clip = "${cliphist} list | fzf | ${cliphist} decode | ${wl-copy}";
       # TODO Split this into commands based on hostname
       pw-get = "pactl load-module module-null-sink media.class=Audio/Sink sink_name=music channel_map=stereo && pactl load-module module-native-protocol-tcp port=4656 listen=192.168.6.6";

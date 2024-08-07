@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./desktop.nix
     ./programs/gaming/default.nix
@@ -8,7 +12,7 @@
     Unit.Description = "ledfx light control";
     Install.WantedBy = ["graphical-session.target"];
     Service = {
-      ExecStart = "${pkgs.ledfx}/bin/ledfx";
+      ExecStart = lib.getExe pkgs.ledfx;
     };
   };
 }

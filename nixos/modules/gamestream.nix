@@ -4,12 +4,12 @@
   config,
   ...
 }: let
-  steam = config.programs.steam.package + "/bin/steam --";
-  sh = pkgs.bash + "/bin/bash";
+  sh = lib.getExe pkgs.bash;
+  hypr-dispatch = lib.getExe' config.programs.hyprland.package "hyprctl" + "dispatch exec";
   moondeck = pkgs.qt6.callPackage ../../pkgs/moondeck/default.nix {};
-  hypr-dispatch = config.programs.hyprland.package + "/bin/hyprctl dispatch exec";
   papirus = pkgs.papirus-icon-theme + /share/icons/Papirus-Dark/128x128/apps;
   wind-waker = "/media/BigData/Games/roms/wiiu/THE LEGEND OF ZELDA The Wind Waker HD [BCZE01]/code/cking.rpx";
+  steam = config.programs.steam.package + "/bin/steam --";
   mkImage = {
     url,
     hash,

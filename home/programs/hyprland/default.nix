@@ -6,15 +6,15 @@
   ...
 }: let
   # TODO move all of these into a "startup" definition
-  swayosd-server = pkgs.swayosd + "/bin/swayosd-server";
   polkit = pkgs.polkit_gnome + "/libexec/polkit-gnome-authentication-agent-1";
+  swayosd-server = lib.getExe' pkgs.swayosd "swayosd-server";
   waybar = lib.getExe pkgs.waybar;
   pypr = lib.getExe pkgs.pyprland;
   term = lib.getExe pkgs.foot;
+  wl-paste = lib.getExe' pkgs.wl-clipboard "wl-paste";
+  cliphist = lib.getExe pkgs.cliphist;
   music-term = "${term} --app-id=mpd ncmpcpp";
   foot-server = "${term} --server";
-  wl-paste = "${pkgs.wl-clipboard}/bin/wl-paste";
-  cliphist = lib.getExe pkgs.cliphist;
   watch-clipboard = "${wl-paste} --type text --watch ${cliphist} store";
   watch-images = "${wl-paste} --type image --watch ${cliphist} store";
   cursor-theme = pkgs.fetchzip {
