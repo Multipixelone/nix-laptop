@@ -138,6 +138,7 @@ in {
       };
       render = {
         direct_scanout = true;
+        explicit_sync = true;
       };
       input = {
         accel_profile = "flat";
