@@ -325,6 +325,8 @@ in {
           format = "{icon} {volume}";
           format-muted = "󰝟";
           format-icons = {
+            "alsa_output.usb-Focusrite_Scarlett_8i6_USB_F8337319501296-00.pro-output-0" = "󰋋";
+            "alsa_output.pci-0000_0e_00.4.analog-stereo" = "󰜟";
             headphones = "󰋋";
             default = ["󰕿" "󰖀" "󰕾"];
           };
