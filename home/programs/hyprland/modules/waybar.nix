@@ -268,11 +268,23 @@ in {
         layer = "top";
         position = "top";
         output = lib.mkIf (osConfig.networking.hostName == "link") "DP-1";
-        # TODO there has to be a less jank way to do this...
-        # modules-right = lib.mkIf (osConfig.networking.hostName == "zelda") ["network" "pulseaudio" "backlight" "battery" "tray"];
-        modules-right = ["network" "backlight" "battery" "pulseaudio" "clock" "tray"];
         modules-left = ["hyprland/workspaces"]; #"image#album-art" "custom/playerlabel"];
         modules-center = ["custom/dynamic"];
+        modules-right =
+          if osConfig.networking.hostName == "link"
+          then [
+            "pulseaudio"
+            "clock"
+            "tray"
+          ]
+          else [
+            "network"
+            "backlight"
+            "battery"
+            "pulseaudio"
+            "clock"
+            "tray"
+          ];
         "custom/playerlabel" = {
           format = ''<span>{}</span>'';
           return-type = "json";
