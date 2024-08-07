@@ -267,21 +267,14 @@ in {
         output = lib.mkIf (osConfig.networking.hostName == "link") "DP-1";
         modules-left = ["hyprland/workspaces"]; #"image#album-art" "custom/playerlabel"];
         modules-center = ["custom/dynamic"];
-        modules-right =
-          if osConfig.networking.hostName == "link"
-          then [
-            "pulseaudio"
-            "clock"
-            "tray"
-          ]
-          else [
-            "network"
-            "backlight"
-            "battery"
-            "pulseaudio"
-            "clock"
-            "tray"
-          ];
+        modules-right = [
+          "backlight"
+          "pulseaudio"
+          "battery"
+          "network"
+          "clock"
+          "tray"
+        ];
         "custom/playerlabel" = {
           format = ''<span>{}</span>'';
           return-type = "json";
