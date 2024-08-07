@@ -6,9 +6,9 @@
 }: let
   sh = lib.getExe pkgs.bash;
   hypr-dispatch = lib.getExe' config.programs.hyprland.package "hyprctl" + "dispatch exec";
+  steam = lib.getExe config.programs.steam.package + "/bin/steam --";
   moondeck = pkgs.qt6.callPackage ../../pkgs/moondeck/default.nix {};
   papirus = pkgs.papirus-icon-theme + /share/icons/Papirus-Dark/128x128/apps;
-  steam = lib.getExe config.programs.steam.package + "/bin/steam --";
   mkImage = {
     url,
     hash,
