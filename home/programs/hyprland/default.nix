@@ -49,6 +49,7 @@ in {
   # TODO move all env def into session vars
   wayland.windowManager.hyprland = {
     enable = true;
+    package = osConfig.programs.hyprland.package;
     systemd = {
       enable = true;
       variables = ["--all"];
