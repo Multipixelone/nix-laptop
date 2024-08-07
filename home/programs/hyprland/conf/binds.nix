@@ -3,13 +3,13 @@
   lib,
   ...
 }: let
-  terminal = pkgs.foot + "/bin/foot";
-  launcher = "${pkgs.rofi-wayland}/bin/rofi -show drun";
-  swayosd-client = pkgs.swayosd + "/bin/swayosd-client";
+  terminal = lib.getExe pkgs.foot;
   brightness = lib.getExe pkgs.brillo;
-  playerctl = pkgs.playerctl + "/bin/playerctl";
   screenshot = pkgs.grimblast + "/bin/grimblast";
   screenshotarea = ''hyprctl keyword animation "fadeOut,0,0,default"; ${screenshot} --notify copysave area; hyprctl keyword animation "fadeOut,1,4,default"'';
+  playerctl = lib.getExe pkgs.playerctl;
+  launcher = lib.getExe pkgs.rofi-wayland + " -show drun";
+  swayosd-client = lib.getExe' pkgs.swayosd "swayosd-client";
 in {
   wayland.windowManager.hyprland = {
     extraConfig = ''
