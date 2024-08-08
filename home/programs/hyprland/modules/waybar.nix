@@ -344,7 +344,8 @@ in {
             critical = 10;
           };
           format = "{icon} {capacity}%";
-          format-charging = "󰂄 {capacity}%";
+          format-charging = "󰂄 {capacity}% {time}";
+          format-time = "{H}:{M} to full";
           format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
         };
       }
