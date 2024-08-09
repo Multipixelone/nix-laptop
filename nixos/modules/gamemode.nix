@@ -50,12 +50,6 @@
     }
     + "/bin/gamemode-end";
 in {
-  # Usage:
-  #   1. For games/launchers which integrate GameMode support:
-  #      https://github.com/FeralInteractive/GameMode#apps-with-gamemode-integration
-  #      simply running the game will automatically activate GameMode.
-  #   2. For others, launching the game through gamemoderun: `gamemoderun ./game`
-  #   3. For steam: `gamemoderun steam-runtime`
   age.secrets = {
     "syncthing" = {
       file = "${inputs.secrets}/media/syncthing.age";
