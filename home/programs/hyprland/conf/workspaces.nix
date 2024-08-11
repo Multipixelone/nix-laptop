@@ -1,7 +1,7 @@
 {...}: {
   wayland.windowManager.hyprland.settings = {
     workspace = [
-      "5,gapsin:10,gapsout:20"
+      "5,gapsin:5,gapsout:3"
       "4, on-created-empty: obsidian,gapsin:0,gapsout:0,border:false,rounding:false"
       "1,monitor:DP-1,default:true"
       "2,monitor:DP-1"
