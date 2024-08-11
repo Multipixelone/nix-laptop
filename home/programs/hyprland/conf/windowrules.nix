@@ -55,12 +55,15 @@
       "float,title:^(Steam Settings)$"
 
       # gw2
-      "immediate,class:^(steam_app_1284210)$"
-      "bordersize 0,class:^(steam_app_1284210)$"
-      "opaque,class:^(steam_app_1284210)$"
-      "noblur,class:^(steam_app_1284210)$"
-      "noshadow,class:^(steam_app_1284210)$"
-      "norounding,class:^(steam_app_1284210)$"
+      "immediate,title:^(Guild Wars 2)$"
+      "bordersize 0,title:^(Guild Wars 2)$"
+      "opaque,title:^(Guild Wars 2)$"
+      "noblur,title:^(Guild Wars 2)$"
+      "noshadow,title:^(Guild Wars 2)$"
+      "norounding,title:^(Guild Wars 2)$"
+      "stayfocused,title:^(Guild Wars 2)$"
+      "allowsinput,title:^(Guild Wars 2)$"
+      "workspace 9 silent, title:$(Guild Wars 2)$"
 
       # tearing rules
       "immediate,class:^(cs2)$"
