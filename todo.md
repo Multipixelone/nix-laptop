@@ -11,11 +11,11 @@ tags: []
 - [ ] Auto git pull
 - [ ] Fix Neovim
   - https://github.com/tree-sitter-grammars/tree-sitter-hyprlang
-- [ ] Stylix all Waybar colors & Hyprland Borders
+- [x] Stylix all Waybar colors & Hyprland Borders
 - [x] Import last.fm password secret into mopidy
 - [ ] lf file manager
 - [ ] reorganize home modules
-- [ ] night shift for devices
+- [x] night shift for devices
 - [ ] ROMs backup folder to new subvol on big ass drive that I am going to install
 - [ ] Sunshine EDID extra monitor
   - Hyprland config for the monitor to be away from the other ones
