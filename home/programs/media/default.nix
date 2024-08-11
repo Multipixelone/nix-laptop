@@ -37,6 +37,55 @@
       # location = "/media/TeraData/Games/cities-skylines-ii";
     })
   ];
+  programs = {
+    fish.shellAbbrs = {
+      beet-import = "beet import /volume1/Media/ImportMusic/slskd/";
+    };
+    beets = {
+      enable = true;
+      settings = {
+        directory = "/volume1/Media/Music";
+        library = "/home/tunnel/.config/beets/library.db";
+        plugins = "play the chroma fish replaygain lastgenre fetchart embedart lastimport edit discogs duplicates scrub missing";
+        lastfm.user = "Tunnelmaker";
+        lastimport.user = "Tunnelmaker";
+        ui.color = true;
+        duplicates.checksum = false;
+        scrub.auto = true;
+        embedart.auto = true;
+        chroma.auto = true;
+        import = {
+          copy = true;
+          write = true;
+          resume = false;
+          incremental = true;
+          clutter = ["Thumbs.DB" ".DS_Store"];
+        };
+        convert = {
+          auto = false;
+          never_convert_lossy_files = true;
+          command = "${pkgs.ffmpeg} -i $source -sample_fmt s16 -ar 44100 $dest";
+        };
+        replaygain = {
+          auto = true;
+          overwrite = true;
+          albumgain = true;
+          backend = "gstreamer";
+        };
+        missing = {
+          format = "$albumartist - $album - $track $title";
+          count = true;
+        };
+        fetchart = {
+          auto = true;
+          cautious = false;
+          cover_names = "cover front art album folder";
+          maxwidth = 300;
+          sources = "coverart albumart itunes amazon google";
+        };
+      };
+    };
+  };
   services.mopidy = {
     enable = true;
     extensionPackages = with pkgs; [

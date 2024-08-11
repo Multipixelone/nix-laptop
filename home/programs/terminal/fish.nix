@@ -56,8 +56,6 @@ in {
       pw-get = "pactl load-module module-null-sink media.class=Audio/Sink sink_name=music channel_map=stereo && pactl load-module module-native-protocol-tcp port=4656 listen=192.168.6.6";
       pw-send = "pactl load-module module-tunnel-sink server=tcp:192.168.6.6:4656";
       alej = "nix run nixpkgs#alejandra .";
-      # TODO move beet into it's own home-manager module
-      beet-import = "nix run nixpkgs#beets -- import /volume1/Media/ImportMusic/slskd/";
     };
     shellInit = fish-config;
     interactiveShellInit = ''
