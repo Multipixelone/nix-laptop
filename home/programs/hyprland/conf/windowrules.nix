@@ -65,6 +65,16 @@
       "allowsinput,title:^(Guild Wars 2)$"
       "workspace 9 silent, title:$(Guild Wars 2)$"
 
+      # blish hud
+      "float, title:^(Blish HUD)$"
+      "center, title:^(Blish HUD)$"
+      "nofocus, title:^(Blish HUD)$"
+      "noinitialfocus, title:^(Blish HUD)$"
+      "noborder, title:^(Blish HUD)$"
+      "pin, title:^(Blish HUD)$"
+      "opacity 0.2 0.1, title:^(Blish HUD)$"
+      "workspace 9 silent, title:$(Blish HUD)$"
+
       # tearing rules
       "immediate,class:^(cs2)$"
       "immediate,class:^(dota2)$"
