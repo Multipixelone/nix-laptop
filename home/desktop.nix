@@ -52,6 +52,7 @@
     _1password
     moonlight-qt
     zoom-us
+    qalculate-gtk
     piper
     waypipe
   ];
