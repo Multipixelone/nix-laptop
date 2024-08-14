@@ -15,6 +15,10 @@
     attic.url = "github:zhaofengli/attic";
     geospatial.url = "github:Multipixelone/geospatial-nix";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprspace = {
+      url = "github:KZDKM/Hyprspace";
+      inputs.hyprland.follows = "hyprland";
+    };
     secrets = {
       url = "git+ssh://git@github.com/Multipixelone/nix-secrets.git";
       flake = false;

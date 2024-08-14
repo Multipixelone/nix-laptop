@@ -962,6 +962,26 @@
         "type": "github"
       }
     },
+    "hyprspace": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ]
+      },
+      "locked": {
+        "lastModified": 1722863918,
+        "narHash": "sha256-iCigW2j6FlULFYpMzY6LM/O7zB+bCa55ThB4OYf3biI=",
+        "owner": "KZDKM",
+        "repo": "Hyprspace",
+        "rev": "d7785bcfe493f0696dad11baf1a8048aeb39953e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "KZDKM",
+        "repo": "Hyprspace",
+        "type": "github"
+      }
+    },
     "hyprutils": {
       "inputs": {
         "nixpkgs": [
@@ -1552,6 +1572,7 @@
         "hypridle": "hypridle",
         "hyprland": "hyprland",
         "hyprlock": "hyprlock",
+        "hyprspace": "hyprspace",
         "musnix": "musnix",
         "nix-gaming": "nix-gaming",
         "nix-hardware": "nix-hardware",

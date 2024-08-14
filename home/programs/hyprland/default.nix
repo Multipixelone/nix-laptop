@@ -1,5 +1,6 @@
 {
   pkgs,
+  inputs,
   lib,
   config,
   osConfig,
@@ -50,6 +51,9 @@ in {
   wayland.windowManager.hyprland = {
     enable = true;
     package = osConfig.programs.hyprland.package;
+    plugins = [
+      inputs.hyprspace.packages.${pkgs.system}.Hyprspace
+    ];
     systemd = {
       enable = true;
       variables = ["--all"];
