@@ -224,7 +224,6 @@ in {
       }
 
       #tray {
-        margin-right: 10px;
         padding: 0.7rem 0.5rem;
       }
       #tray > .passive {
