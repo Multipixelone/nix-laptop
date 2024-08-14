@@ -33,6 +33,12 @@
       "move 62 1428, class:^(mpd)"
       "size 754 422, class:^(mpd)"
 
+      # reaper dropdowns
+      "move cursor,class:REAPER,floating:1"
+      "noanim,class:REAPER"
+      "nofocus,class:REAPER,title:^(menu)$"
+      "nofocus,class:REAPER,title:^$"
+
       # opacity rules
       "opacity 0.85 0.80,class:^(Spotify)$"
       "opacity 0.85 0.80,class:^(Plexamp)$"
