@@ -67,8 +67,8 @@
       "noblur,title:^(Guild Wars 2)$"
       "noshadow,title:^(Guild Wars 2)$"
       "norounding,title:^(Guild Wars 2)$"
-      "stayfocused,title:^(Guild Wars 2)$"
-      "allowsinput,title:^(Guild Wars 2)$"
+      # "stayfocused,title:^(Guild Wars 2)$"
+      # "allowsinput,title:^(Guild Wars 2)$"
       "workspace 9 silent, title:$(Guild Wars 2)$"
 
       # blish hud
