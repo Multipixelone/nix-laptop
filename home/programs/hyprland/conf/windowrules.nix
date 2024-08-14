@@ -72,6 +72,7 @@
       "workspace 9 silent, title:$(Guild Wars 2)$"
 
       # blish hud
+      "noblur,title:^(Blish HUD)$"
       "float, title:^(Blish HUD)$"
       "center, title:^(Blish HUD)$"
       "nofocus, title:^(Blish HUD)$"
