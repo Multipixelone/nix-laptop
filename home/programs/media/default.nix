@@ -58,7 +58,6 @@
           copy = true;
           write = true;
           resume = false;
-          incremental = true;
           clutter = ["Thumbs.DB" ".DS_Store"];
         };
         convert = {
