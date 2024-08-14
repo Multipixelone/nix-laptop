@@ -39,5 +39,10 @@ in {
       inherit umu mangohud;
       location = "/media/BigData/Games/legends-of-runeterra";
     })
+    (callPackage ../../../pkgs/games/gw2 {
+      inherit umu mangohud;
+      exe = "/media/BigData/Games/SteamLibrary/steamapps/common/Guild Wars 2";
+      location = "/media/BigData/Games/SteamLibrary/steamapps/compatdata/1284210/pfx";
+    })
   ];
 }
