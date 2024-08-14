@@ -79,7 +79,7 @@
       "noinitialfocus, title:^(Blish HUD)$"
       "noborder, title:^(Blish HUD)$"
       "pin, title:^(Blish HUD)$"
-      "opacity 0.2 0.1, title:^(Blish HUD)$"
+      "opacity 0.10 0.10, title:^(Blish HUD)$"
       "workspace 9 silent, title:$(Blish HUD)$"
 
       # tearing rules
