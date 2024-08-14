@@ -62,6 +62,7 @@
     PATH=${lib.makeBinPath [umu winetricks]}:$PATH
     USER="$(whoami)"
     GAME_BIN="$GAME_PATH/Gw2-64.exe"
+    BLISH="$GAME_PATH/Blish HUD.exe"
 
     # EAC Fix
     if [ -d "$WINEPREFIX/drive_c/users/$USER/AppData/Roaming/EasyAntiCheat" ]
@@ -74,7 +75,9 @@
 
     #${preCommands}
 
-    ${gamemode}/bin/gamemoderun ${mangohud}/bin/mangohud umu-run ${wineFlags} "$GAME_BIN" "$@"
+    ${gamemode}/bin/gamemoderun ${mangohud}/bin/mangohud umu-run ${wineFlags} "$GAME_BIN" "$@" &
+    sleep 30
+    umu-run ${wineFlags} "$BLISH" "$@"
 
     ${postCommands}
   '';
