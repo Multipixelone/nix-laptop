@@ -52,7 +52,7 @@ in {
     enable = true;
     package = osConfig.programs.hyprland.package;
     plugins = [
-      inputs.hyprspace.packages.${pkgs.system}.Hyprspace
+      inputs.hyprspace.packages.${pkgs.stdenv.hostPlatform.system}.Hyprspace
     ];
     systemd = {
       enable = true;
