@@ -127,7 +127,14 @@ in {
     geoclue2.enable = true;
     localtimed.enable = true;
     psd.enable = true;
-    printing.enable = true;
+    printing = {
+      enable = true;
+      drivers = [
+        # add drivers for Canon MG3222
+        pkgs.gutenprint
+        pkgs.gutenprintBin
+      ];
+    };
     blueman.enable = true;
     udev.packages = with pkgs; [
       yubikey-personalization
