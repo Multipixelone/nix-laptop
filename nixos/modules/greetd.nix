@@ -17,6 +17,12 @@ in {
     kmscon = {
       enable = true;
       extraConfig = "font-size=24";
+      fonts = [
+        {
+          name = "PragmataPro Liga";
+          package = pkgs.callPackage ../../pkgs/pragmata {};
+        }
+      ];
     };
     greetd = {
       enable = true;
