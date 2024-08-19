@@ -10,6 +10,8 @@
   hyprland = lib.getExe' config.programs.hyprland.package "Hyprland";
   hyprland-session = "${config.programs.hyprland.package}/share/wayland-sessions";
 in {
+  # required for keyring to unlock on boot
+  security.pam.services.greetd.enableGnomeKeyring = true;
   services = {
     seatd.enable = true;
     kmscon = {
