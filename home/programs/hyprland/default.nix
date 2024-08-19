@@ -184,8 +184,8 @@ in {
 
       [scratchpads.volume]
       animation = "fromRight"
-      command = "pavucontrol"
-      class = "pavucontrol"
+      command = "${lib.getExe pkgs.pwvucontrol}"
+      class = "com.saivert.pwvucontrol"
       size = "40% 90%"
       unfocus = "hide"
       lazy = true

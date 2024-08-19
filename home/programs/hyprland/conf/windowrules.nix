@@ -55,7 +55,6 @@
       "float,class:^(vlc)$"
       "float,class:^(mpd)"
       "float,title:^(Spotify( Premium)?)$"
-      "float,class:^(pavucontrol)$"
       "float,class:^(nm-applet)$"
       "float,title:^(Friends List)$"
       "float,title:^(Steam Settings)$"

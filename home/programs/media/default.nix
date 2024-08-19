@@ -29,7 +29,6 @@
       '';
     })
     blanket
-    pavucontrol
     nicotine-plus
     helvum
     (callPackage ../../../pkgs/foobar2000 {
