@@ -8,7 +8,7 @@ stdenv.mkDerivation {
   version = "1.0";
   src = fetchurl {
     url = "http://web.mta.info/developers/data/nyct/subway/google_transit.zip";
-    sha256 = "sha256-XXeIUKwoDU745fScxJD3WSdQtmc0lglqEyuL7SOBRg4=";
+    sha256 = "sha256-msUFWRPSGI8XyU/pWvYKWWcfRLjw6TZsyHUbUs1i/GU=";
   };
   sourceRoot = ".";
   nativeBuildInputs = [unzip];
