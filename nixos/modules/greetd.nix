@@ -10,17 +10,22 @@
   hyprland = lib.getExe' config.programs.hyprland.package "Hyprland";
   hyprland-session = "${config.programs.hyprland.package}/share/wayland-sessions";
 in {
-  services.seatd.enable = true;
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${tuigreet} --greeting \"hi finn :)\" --time --remember --remember-session --sessions ${hyprland-session}";
-        user = "greeter";
-      };
-      initial_session = {
-        command = "${hyprland}";
-        user = "tunnel";
+  services = {
+    seatd.enable = true;
+    kmscon = {
+      enable = true;
+    };
+    greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${tuigreet} --greeting \"hi finn :)\" --time --remember --remember-session --sessions ${hyprland-session}";
+          user = "greeter";
+        };
+        initial_session = {
+          command = "${hyprland}";
+          user = "tunnel";
+        };
       };
     };
   };
