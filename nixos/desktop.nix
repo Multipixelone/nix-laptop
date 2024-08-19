@@ -121,6 +121,7 @@ in {
     flatpak.enable = true;
     gnome.gnome-keyring.enable = true;
     gvfs.enable = true;
+    fwupd.enable = true;
     ratbagd.enable = true; # Logitech mouse daemon
     geoclue2.enable = true;
     localtimed.enable = true;
