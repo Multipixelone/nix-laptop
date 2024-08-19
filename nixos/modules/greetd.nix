@@ -24,7 +24,8 @@ in {
           command = "${tuigreet} --greeting \"hi finn :)\" --time --remember --remember-session --sessions ${hyprland-session}";
           user = "greeter";
         };
-        initial_session = {
+        # autologin on desktop: I'm gonna do a big refactor to modules soon™ 🙏
+        initial_session = lib.mkIf (config.networking.hostName == "link") {
           command = "${hyprland}";
           user = "tunnel";
         };
