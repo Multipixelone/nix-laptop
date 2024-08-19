@@ -60,6 +60,8 @@
     libsForQt5.qt5ct
     breeze-icons
     minecraftia
+    corefonts
+    vistafonts
     (nerdfonts.override {fonts = ["FiraCode"];})
     (pkgs.callPackage ../../../pkgs/pragmata/default.nix {})
     (pkgs.callPackage ../../../pkgs/apple-fonts/default.nix {})
