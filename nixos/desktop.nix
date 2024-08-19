@@ -117,10 +117,7 @@ in {
     };
   };
   services = {
-    zerotierone = {
-      enable = true;
-      joinNetworks = ["52b337794f640fc8"];
-    };
+    blueman.enable = true;
     flatpak.enable = true;
     gnome.gnome-keyring.enable = true;
     gvfs.enable = true;
@@ -136,7 +133,10 @@ in {
         pkgs.gutenprintBin
       ];
     };
-    blueman.enable = true;
+    zerotierone = {
+      enable = true;
+      joinNetworks = ["52b337794f640fc8"];
+    };
     udev.packages = with pkgs; [
       yubikey-personalization
       libu2f-host
