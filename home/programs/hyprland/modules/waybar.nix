@@ -317,7 +317,7 @@ in {
           format-wifi = "{icon} {essid}";
           format-ethernet = " Wired";
           format-icons = ["󰤯" "󰤟" "󰤢" "󰤥" "󰤨"];
-          format-disconnected = "󰤭";
+          format-disconnected = "󰤭 Disconnected";
         };
         pulseaudio = {
           format = "{icon} {volume}";
