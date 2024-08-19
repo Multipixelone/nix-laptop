@@ -16,6 +16,7 @@ in {
     seatd.enable = true;
     kmscon = {
       enable = true;
+      extraConfig = "font-size=24";
     };
     greetd = {
       enable = true;
