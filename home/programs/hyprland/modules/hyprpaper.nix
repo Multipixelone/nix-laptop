@@ -4,8 +4,6 @@
   lib,
   ...
 }: let
-  swww = lib.getExe pkgs.swww;
-  swww-daemon = lib.getExe' pkgs.swww "swww-daemon";
   wallpaper-set = pkgs.writeShellApplication {
     name = "wallpaper-set";
     runtimeInputs = [pkgs.swww];
@@ -25,7 +23,8 @@ in {
       PartOf = ["graphical-session.target"];
     };
     Service = {
-      ExecStart = swww-daemon;
+      ExecStart = lib.getExe' pkgs.swww "swww-daemon";
+      ExecStop = "${lib.getExe pkgs.swww} kill";
       Restart = "on-failure";
     };
     Install.WantedBy = ["graphical-session.target"];
