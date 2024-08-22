@@ -19,7 +19,7 @@
       font_scale_media_player = 1.0;
       # custom stuff
       hud_no_margin = true;
-      text_outline_thickness = 2;
+      text_outline_thickness = 1.5;
       horizontal = true;
       time = true;
       vram = true;
