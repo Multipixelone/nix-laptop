@@ -64,6 +64,15 @@ in {
     "d /srv/jdownloader 0770 tunnel users -"
     "d /srv/valhalla 0770 tunnel users -"
   ];
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = false;
+    platformOptimizations.enable = true;
+    localNetworkGameTransfers.openFirewall = true;
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+    ];
+  };
   virtualisation.oci-containers = {
     backend = "docker";
     containers = {
