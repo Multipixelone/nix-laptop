@@ -80,7 +80,7 @@ in {
       #workspaces button {
         box-shadow: rgba(0, 0, 0, 0.116) 2 2 5 2px;
         background-color: #${config.lib.stylix.colors.base02};
-        border-radius: 15px;
+        border-radius: 20px;
         margin-right: 10px;
         padding: 10px;
         padding-top: 4px;
@@ -91,6 +91,7 @@ in {
       #workspaces button.active{
         padding-right: 20px;
         box-shadow: rgba(0, 0, 0, 0.288) 2 2 5 2px;
+        border-radius: 20px;
         padding-left: 20px;
         padding-bottom: 3px;
         background: rgb(203,166,247);
