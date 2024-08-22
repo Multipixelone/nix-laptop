@@ -8,7 +8,6 @@
 }: let
   timeout = 240;
   brillo = lib.getExe pkgs.brillo;
-  pypr = lib.getExe pkgs.pyprland;
   suspend-script = pkgs.writeShellApplication {
     name = "suspend-script";
     runtimeInputs = [pkgs.playerctl pkgs.ripgrep pkgs.systemd];
