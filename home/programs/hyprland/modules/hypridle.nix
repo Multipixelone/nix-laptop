@@ -3,6 +3,7 @@
   inputs,
   lib,
   config,
+  osConfig,
   ...
 }: let
   timeout = 240;
@@ -43,16 +44,20 @@ in {
           inherit timeout;
           on-timeout = "loginctl lock-session";
         }
-        # TODO do these on zelda, not link
-        # {
-        #   timeout = timeout + 120;
-        #   on-timeout = "pypr toggle_dpms";
-        #   on-resume = "pypr toggle_dpms";
-        # }
-        # {
-        #   timeout = timeout + 60;
-        #   on-timeout = suspendScript.outPath;
-        # }
+        # TODO this is rlllyyy jank. please refactor a module system SO SOON PLEASE.
+        (lib.mkIf
+          (osConfig.networking.hostName == "zelda")
+          {
+            timeout = timeout + 120;
+            on-timeout = "${lib.getExe pkgs.pyprland} toggle_dpms";
+            on-resume = "${lib.getExe pkgs.pyprland} toggle_dpms";
+          })
+        (lib.mkIf
+          (osConfig.networking.hostName == "zelda")
+          {
+            timeout = timeout + 60;
+            on-timeout = lib.getExe suspend-script;
+          })
       ];
     };
   };
