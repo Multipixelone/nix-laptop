@@ -13,7 +13,7 @@
     runtimeInputs = [pkgs.playerctl pkgs.ripgrep pkgs.systemd];
     text = ''
       # only suspend if audio isn't running
-      playerctl -a status | ripgrep running -q
+      playerctl -a status | rg Playing -q
       if [ $? == 1 ]; then
         systemctl suspend
       fi
