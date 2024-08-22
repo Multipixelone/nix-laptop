@@ -1,8 +1,6 @@
 {
   stdenv,
-  lib,
   fetchFromGitHub,
-  which,
   cmake,
   pkg-config,
   ninja,
@@ -14,7 +12,6 @@
   qtwebsockets,
   qtwayland,
   procps,
-  xrandr,
   libXrandr,
 }:
 stdenv.mkDerivation rec {

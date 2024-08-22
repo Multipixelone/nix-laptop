@@ -1,6 +1,5 @@
 {
   lib,
-  stdenv,
   pkgs,
   gtk3,
   python3,

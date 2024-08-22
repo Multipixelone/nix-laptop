@@ -66,18 +66,10 @@
   };
   outputs = inputs @ {
     nixpkgs,
-    nixpkgs-stable,
     home-manager,
-    nixos-generators,
     nixos-hardware,
     stylix,
-    nixvim,
-    nix-index-database,
     agenix,
-    geospatial,
-    secrets,
-    hyprland,
-    anyrun,
     chaotic,
     nur,
     ...

@@ -5,7 +5,6 @@
   osConfig,
   ...
 }: let
-  mediaplayer = pkgs.callPackage ./mediaplayer.nix {};
   # dynamic pill totally stolen from https://github.com/flick0/dotfiles/blob/702facf3bc3bce37991efdba6efb68c7477ea770/config/hypr/scripts/tools/start_dyn
   dynamic = pkgs.stdenv.mkDerivation {
     name = "dynamic";

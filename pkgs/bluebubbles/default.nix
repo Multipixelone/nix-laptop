@@ -1,7 +1,5 @@
 {
-  lib,
   flutter,
-  makeDesktopItem,
   fetchFromGitHub,
 }: let
   pubspecLock = ./pubspec.lock.json;
