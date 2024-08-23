@@ -19,23 +19,21 @@
     dontUnpack = true;
     installPhase = "install -Dm755 ${src} $out/bin/dynamic";
   };
-  start-dyn =
-    pkgs.writeShellApplication {
-      name = "start-dyn";
-      runtimeInputs = [dynamic pkgs.jq];
+  start-dyn = pkgs.writeShellApplication {
+    name = "start-dyn";
+    runtimeInputs = [dynamic pkgs.jq];
 
-      text = ''
-        #!/usr/bin/bash
-        dynamic &
-        while true
-        do
-          out=$(cat ~/.config/hypr/store/dynamic_out.txt)
-          echo "$out"  | jq --unbuffered --compact-output
-          sleep 1
-        done
-      '';
-    }
-    + "/bin/start-dyn";
+    text = ''
+      #!/usr/bin/bash
+      dynamic &
+      while true
+      do
+        out=$(cat ~/.config/hypr/store/dynamic_out.txt)
+        echo "$out"  | jq --unbuffered --compact-output
+        sleep 1
+      done
+    '';
+  };
 in {
   home.packages = with pkgs; [waybar-mpris];
   wayland.windowManager.hyprland.settings.exec-once = [(dynamic + "/bin/dynamic &")];
@@ -293,7 +291,7 @@ in {
         "custom/dynamic" = {
           return-type = "json";
           format = "{}";
-          exec = start-dyn;
+          exec = lib.getExe start-dyn;
         };
         "image#album-art" = {
           exec = "echo /home/tunnel/.local/share/mopidy/coverart.png";
