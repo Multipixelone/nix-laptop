@@ -6,7 +6,7 @@
   osConfig,
   ...
 }: let
-  timeout = 240;
+  timeout = 60;
   brillo = lib.getExe pkgs.brillo;
   hyprctl = lib.getExe' config.programs.hyprland.package "hyprctl";
   suspend-script = pkgs.writeShellApplication {
@@ -31,12 +31,12 @@ in {
       };
       listener = [
         {
-          timeout = timeout - 20;
+          timeout = timeout - 40;
           on-timeout = "${brillo} -s dell::kbd_backlight -S 0";
           on-resume = "${brillo} -s dell::kbd_backlight -S 100";
         }
         {
-          timeout = timeout - 10;
+          timeout = timeout - 20;
           on-timeout = "${brillo} -O; ${brillo} -u 1000000 -S 10";
           on-resume = "${brillo} -I -u 500000";
         }
@@ -48,14 +48,14 @@ in {
         (lib.mkIf
           (osConfig.networking.hostName == "zelda")
           {
-            timeout = timeout + 60;
+            timeout = timeout + 30;
             on-timeout = "${hyprctl} dispatch dpms off";
             on-resume = "${hyprctl} dispatch dpms on";
           })
         (lib.mkIf
           (osConfig.networking.hostName == "zelda")
           {
-            timeout = timeout + 120;
+            timeout = timeout + 60;
             on-timeout = lib.getExe suspend-script;
           })
       ];
