@@ -147,6 +147,7 @@ in {
         gaps_in = 7;
         gaps_out = 10;
         gaps_workspaces = 50;
+        resize_on_border = true;
         "col.inactive_border" = lib.mkForce "rgb(${config.lib.stylix.colors.base00})";
         "col.active_border" = lib.mkForce "rgb(${config.lib.stylix.colors.base0E})";
       };
