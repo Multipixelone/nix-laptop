@@ -13,9 +13,10 @@
     name = "suspend-script";
     runtimeInputs = [pkgs.playerctl pkgs.ripgrep pkgs.systemd];
     text = ''
-      # only suspend if audio isn't running
-      playerctl -a status | rg Playing -q
-      if [ $? == 1 ]; then
+      # only suspend if audio isn't running & not plugged in
+      playing() { playerctl -a status | rg Playing -q; }
+      charging() { rg -q Charging /sys/class/power_supply/BAT0/status; }
+      if ! charging && ! playing; then
         systemctl suspend
       fi
     '';
