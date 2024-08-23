@@ -128,6 +128,8 @@ in {
         "col.shadow_inactive" = lib.mkForce "0x22000000";
         blur = {
           enabled = true;
+          # enable xray on desktop (costly)
+          xray = lib.mkIf (osConfig.networking.hostName == "link") true;
           brightness = 1.1;
           noise = 0.0117;
           passes = 3;
