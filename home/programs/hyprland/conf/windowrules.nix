@@ -19,6 +19,15 @@
       "workspace 6 silent, class:^(bluebubbles)$"
       "workspace 6 silent, class:^(discord)$"
 
+      # center dialogs
+      "center, title:^(Open File)(.*)$"
+      "center, title:^(Select a File)(.*)$"
+      "center, title:^(Choose wallpaper)(.*)$"
+      "center, title:^(Open Folder)(.*)$"
+      "center, title:^(Save As)(.*)$"
+      "center, title:^(Library)(.*)$"
+      "center, title:^(File Upload)(.*)$"
+
       # idle inhibit while watching videos
       "idleinhibit focus, class:^(mpv|.+exe|celluloid)$"
       "idleinhibit focus, class:^(firefox)$, title:^(.*YouTube.*)$"
