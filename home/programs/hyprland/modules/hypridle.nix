@@ -8,7 +8,7 @@
 }: let
   timeout = 60;
   brillo = lib.getExe pkgs.brillo;
-  hyprctl = lib.getExe' config.programs.hyprland.package "hyprctl";
+  hyprctl = lib.getExe' osConfig.programs.hyprland.package "hyprctl";
   suspend-script = pkgs.writeShellApplication {
     name = "suspend-script";
     runtimeInputs = [pkgs.playerctl pkgs.ripgrep pkgs.systemd];
