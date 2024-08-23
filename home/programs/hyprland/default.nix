@@ -131,9 +131,10 @@ in {
           # enable xray on desktop (costly)
           xray = lib.mkIf (osConfig.networking.hostName == "link") true;
           brightness = 1.1;
-          noise = 0.0117;
-          passes = 3;
-          size = 16;
+          noise = 0.02;
+          contrast = 1;
+          passes = 4;
+          size = 7;
           ignore_opacity = true;
         };
         #"col.shadow" = "rgba(00000099)";
