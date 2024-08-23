@@ -120,11 +120,11 @@ in {
         shadow_offset = "0 2";
         drop_shadow = true;
         shadow_ignore_window = true;
-        shadow_range = 20;
-        shadow_render_power = 3;
+        shadow_range = 30;
+        shadow_render_power = 4;
         active_opacity = 1;
         inactive_opacity = 0.85;
-        "col.shadow" = lib.mkForce "rgba(00000055)";
+        "col.shadow" = lib.mkForce "rgba(01010166)";
         "col.shadow_inactive" = lib.mkForce "0x22000000";
         blur = {
           enabled = true;
