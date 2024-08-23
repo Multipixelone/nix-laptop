@@ -6,17 +6,18 @@
   ...
 }: let
   # dynamic pill totally stolen from https://github.com/flick0/dotfiles/blob/702facf3bc3bce37991efdba6efb68c7477ea770/config/hypr/scripts/tools/start_dyn
-  dynamic = pkgs.stdenv.mkDerivation {
+  dynamic = pkgs.stdenv.mkDerivation rec {
     name = "dynamic";
     propagatedBuildInputs = [
       pkgs.python3
       pkgs.waybar-mpris
     ];
-    dontUnpack = true;
-    installPhase = "install -Dm755 ${pkgs.fetchurl {
+    src = pkgs.fetchurl {
       url = "https://raw.githubusercontent.com/flick0/dotfiles/aurora/config/hypr/scripts/tools/dynamic";
       hash = "sha256-MgDKAmHEgjOH+A7HAdhxBzShYNqxS78+7+EVhYvwsLI=";
-    }} $out/bin/dynamic";
+    };
+    dontUnpack = true;
+    installPhase = "install -Dm755 ${src} $out/bin/dynamic";
   };
   start-dyn =
     pkgs.writeShellApplication {
