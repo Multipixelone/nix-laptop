@@ -160,6 +160,7 @@ in {
         workspace_swipe = true;
         workspace_swipe_forever = true;
         workspace_swipe_cancel_ratio = 0.15;
+        workspace_swipe_create_new = true;
       };
       misc = {
         disable_autoreload = true;
