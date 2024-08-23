@@ -8,6 +8,7 @@
 }: let
   timeout = 240;
   brillo = lib.getExe pkgs.brillo;
+  hyprctl = lib.getExe' config.programs.hyprland.package "hyprctl";
   suspend-script = pkgs.writeShellApplication {
     name = "suspend-script";
     runtimeInputs = [pkgs.playerctl pkgs.ripgrep pkgs.systemd];
@@ -47,9 +48,9 @@ in {
         (lib.mkIf
           (osConfig.networking.hostName == "zelda")
           {
-            on-timeout = "${lib.getExe pkgs.pyprland} toggle_dpms";
-            on-resume = "${lib.getExe pkgs.pyprland} toggle_dpms";
             timeout = timeout + 60;
+            on-timeout = "${hyprctl} dispatch dpms off";
+            on-resume = "${hyprctl} dispatch dpms on";
           })
         (lib.mkIf
           (osConfig.networking.hostName == "zelda")
