@@ -47,14 +47,14 @@ in {
         (lib.mkIf
           (osConfig.networking.hostName == "zelda")
           {
-            timeout = timeout + 120;
             on-timeout = "${lib.getExe pkgs.pyprland} toggle_dpms";
             on-resume = "${lib.getExe pkgs.pyprland} toggle_dpms";
+            timeout = timeout + 60;
           })
         (lib.mkIf
           (osConfig.networking.hostName == "zelda")
           {
-            timeout = timeout + 60;
+            timeout = timeout + 120;
             on-timeout = lib.getExe suspend-script;
           })
       ];
