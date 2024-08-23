@@ -136,6 +136,8 @@ in {
           passes = 4;
           size = 7;
           ignore_opacity = true;
+          popups = true;
+          popups_ignorealpha = 0.6;
         };
         #"col.shadow" = "rgba(00000099)";
       };
