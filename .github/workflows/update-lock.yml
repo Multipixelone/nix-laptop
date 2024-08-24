@@ -13,11 +13,11 @@ jobs:
         with:
           extra_nix_config: |
             auto-optimise-store = true
-            access-tokens = github.com=${{ secrets.GH_TOKEN_FOR_UPDATES }}
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
       - name: Update flake.lock
         uses: DeterminateSystems/update-flake-lock@v23
         with:
-          token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: ⚙️ bump flake.lock
