@@ -14,6 +14,10 @@ jobs:
           extra_nix_config: |
             auto-optimise-store = true
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+      - name: Install SSH Key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Update flake.lock
         uses: DeterminateSystems/update-flake-lock@v23
         with:
