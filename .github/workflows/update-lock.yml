@@ -23,6 +23,7 @@ jobs:
         uses: DeterminateSystems/update-flake-lock@v23
         with:
           pr-title: '⚙️ update flake.lock'
+          commit-msg: '⚙️ bump flake.lock'
           pr-asignees: Multipixelone
           pr-labels: automated
           token: ${{ secrets.GITHUB_TOKEN }}
