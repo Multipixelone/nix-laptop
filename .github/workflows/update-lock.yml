@@ -1,9 +1,8 @@
-name: Update Lock
+name: Update flake inputs
 on:
   workflow_dispatch: # only manual triggering for now
 jobs:
-  update:
-    name: Update flake lock
+  update-flake-lock:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

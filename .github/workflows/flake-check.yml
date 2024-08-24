@@ -1,8 +1,8 @@
-name: Flake Check
+name: Check expressions
 on: [push, pull_request, workflow_dispatch]
 jobs:
   check:
-    name: Check flake
+    name: nix flake check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -17,5 +17,5 @@ jobs:
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - name: Check nix flake
+      - name: Run flake check
         run: nix flake check
