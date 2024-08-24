@@ -22,6 +22,8 @@ jobs:
       - name: Update flake.lock
         uses: DeterminateSystems/update-flake-lock@v23
         with:
+          pr-title: '⚙️ update flake.lock'
+          pr-labels: automated
           token: ${{ secrets.GITHUB_TOKEN }}
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
