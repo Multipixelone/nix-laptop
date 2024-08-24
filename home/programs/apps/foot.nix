@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   stylix.targets.foot.enable = true;
   programs.foot = {
     enable = true;
@@ -6,9 +10,9 @@
       main = {
         box-drawings-uses-font-glyphs = "yes";
         pad = "0x0 center";
-        notify = "notify-send -a \${app-id} -i \${app-id} \${title} \${body}";
         selection-target = "clipboard";
       };
+      desktop-notifications.command = "${lib.getExe pkgs.libnotify} -a \${app-id} -i \${app-id} \${title} \${body}";
       scrollback = {
         lines = 10000;
         multiplier = 3;
