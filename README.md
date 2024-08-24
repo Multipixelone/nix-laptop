@@ -1,4 +1,4 @@
-# nix-laptop
+<h1 align="center">finns ❄️ dots</h1>
 
 # About
 
