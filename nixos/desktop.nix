@@ -108,10 +108,10 @@ in {
       };
     };
     brillo.enable = true;
-    # use mesa from hyprland (fix performance issues https://github.com/hyprwm/Hyprland/issues/5148)
+    # use mesa from hyprland (probably doing nothing)
     graphics = {
-      package = pkgs-hypr.mesa.drivers;
-      package32 = pkgs-hypr.pkgsi686Linux.mesa.drivers;
+      # package = pkgs-hypr.mesa.drivers;
+      # package32 = pkgs-hypr.pkgsi686Linux.mesa.drivers;
       # 32 bit support
       enable32Bit = true;
     };
