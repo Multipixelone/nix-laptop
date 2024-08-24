@@ -4,6 +4,9 @@ jobs:
   check:
     name: nix flake check
     runs-on: ubuntu-latest
+    permissions:
+      id-token: 'write'
+      contents: 'read'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -17,5 +20,6 @@ jobs:
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - uses: DeterminateSystems/magic-nix-cache-action@v7
       - name: Run flake check
         run: nix flake check
