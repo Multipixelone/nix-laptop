@@ -9,7 +9,7 @@
     settings = {
       main = {
         box-drawings-uses-font-glyphs = "yes";
-        pad = "0x0 center";
+        pad = "4x4 center";
         selection-target = "clipboard";
       };
       desktop-notifications.command = "${lib.getExe pkgs.libnotify} -a \${app-id} -i \${app-id} \${title} \${body}";
