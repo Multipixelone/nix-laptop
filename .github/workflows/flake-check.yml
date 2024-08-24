@@ -8,7 +8,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@main
-      - name: Run Nix flake check
+        uses: cachix/install-nix-action@v27
+        with:
+          extra_nix_config: |
+            auto-optimise-store = true
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
       - name: Check nix flake
         run: nix flake check
