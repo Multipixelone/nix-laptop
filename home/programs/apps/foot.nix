@@ -16,6 +16,8 @@
       scrollback = {
         lines = 10000;
         multiplier = 3;
+        indicator-position = "relative";
+        indicator-format = "line";
       };
       url = {
         launch = "xdg-open \${url}";
