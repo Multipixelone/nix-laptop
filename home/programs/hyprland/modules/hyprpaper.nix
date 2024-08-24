@@ -8,7 +8,8 @@
     name = "wallpaper-set";
     runtimeInputs = [pkgs.swww];
     text = ''
-      swww img -o eDP-1 --transition-fps 60 --transition-type wave --transition-angle 60 --transition-step 30 ${config.theme.wallpaper}
+      # broken on zelda for some reason. swww freezes after the first frame
+      # swww img -o eDP-1 --transition-fps 60 --transition-type wave --transition-angle 60 --transition-step 30 ${config.theme.wallpaper}
       swww img -o DP-1 --transition-fps 240 --transition-type wave --transition-angle 60 --transition-step 30 ${config.theme.wallpaper}
       swww img -o DP-3 --transition-fps 60 --transition-type wave --transition-angle 120 --transition-step 30 ${config.theme.side-wallpaper}
     '';
