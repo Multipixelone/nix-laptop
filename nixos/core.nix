@@ -13,8 +13,8 @@
     experimental-features = ["nix-command" "flakes"];
     substituters = [
       # high prio
-      "http://link.bun-hexatonic.ts.net:8080/tunnel?priority=10"
-      "https://cache.nixos.org?priority=5"
+      "http://link.bun-hexatonic.ts.net:8080/tunnel?priority=50"
+      "https://cache.nixos.org"
 
       "https://hyprland.cachix.org"
       "https://nix-community.cachix.org"
