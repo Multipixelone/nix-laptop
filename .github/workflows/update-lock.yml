@@ -1,6 +1,8 @@
 name: Update flake inputs
 on:
-  workflow_dispatch: # only manual triggering for now
+  workflow_dispatch: # allow manual triggering
+  schedule:
+    - cron: '0 0 * * 0' # runs weekly on Sunday at 00:00
 jobs:
   update-flake-lock:
     runs-on: ubuntu-latest
