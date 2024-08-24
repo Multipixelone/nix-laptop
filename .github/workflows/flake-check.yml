@@ -1,7 +1,8 @@
 name: Flake Check
 on: [push, pull_request, workflow_dispatch]
 jobs:
-  flake-check:
+  check:
+    name: Check flake
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -9,4 +10,5 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
       - name: Run Nix flake check
+      - name: Check nix flake
         run: nix flake check
