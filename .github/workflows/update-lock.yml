@@ -1,0 +1,31 @@
+name: Update Lock
+on:
+  workflow_dispatch: # only manual triggering for now
+jobs:
+  check:
+    name: Update flake lock
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install Nix
+        uses: cachix/install-nix-action@v27
+        with:
+          extra_nix_config: |
+            auto-optimise-store = true
+            access-tokens = github.com=${{ secrets.GH_TOKEN_FOR_UPDATES }}
+      - name: Update flake.lock
+        uses: DeterminateSystems/update-flake-lock@v23
+        with:
+          token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: ⚙️ bump flake.lock
+          branch: main
+          commit_options: '--no-verify --signoff'
+          file_pattern: flake.lock
+          commit_user_name: Flake Bot # defaults to "GitHub Actions"
+          #commit_user_email: my-github-actions-bot@example.org # defaults to "actions@github.com"
+          commit_author: Flake Bot <actions@github.com> # defaults to author of the commit that triggered the run
+          skip_dirty_check: false
+          skip_fetch: true
