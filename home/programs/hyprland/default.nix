@@ -117,7 +117,7 @@ in {
       debug.disable_logs = false;
       decoration = {
         rounding = "10";
-        shadow_offset = "0 2";
+        shadow_offset = "1 3";
         drop_shadow = true;
         shadow_ignore_window = true;
         shadow_range = 30;
