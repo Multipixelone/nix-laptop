@@ -40,16 +40,6 @@
       "nofocus,class:REAPER,title:^(menu)$"
       "nofocus,class:REAPER,title:^$"
 
-      # opacity rules
-      "opacity 0.85 0.80,class:^(Spotify)$"
-      "opacity 0.85 0.80,class:^(Plexamp)$"
-      "opacity 0.85 0.80,class:^(vlc)$"
-      "opacity 0.85 0.80,class:^(com.rafaelmardojai.Blanket)$"
-      "opacity 0.85 0.80,class:^(pavucontrol)$"
-      "opacity 0.85 0.80,class:^(nm-applet)$"
-      "opacity 0.85 0.80,class:^(org.kde.polkit-kde-authentication-agent-1)$"
-      "opacity 0.85 0.80,class:^(anyrun)$"
-
       # float rules
       "float,class:^(Plexamp)$"
       "float,class:^(com.rafaelmardojai.Blanket)$"
