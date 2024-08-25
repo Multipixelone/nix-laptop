@@ -65,6 +65,7 @@
       "float,title:^(Friends List)$"
       "float,title:^(Steam Settings)$"
 
+      ## gaming rules
       # gw2
       "immediate,title:^(Guild Wars 2)$"
       "bordersize 0,title:^(Guild Wars 2)$"
