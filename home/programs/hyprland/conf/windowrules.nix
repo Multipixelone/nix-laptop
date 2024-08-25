@@ -66,6 +66,12 @@
       "idleinhibit always, title:^(Steam Big Picture Mode)$"
       "idleinhibit fullscreen, class:^(steam_app_.*)$"
 
+      # tearing rules
+      "immediate,class:^(cs2)$"
+      "immediate,class:^(dota2)$"
+      "immediate,class:^(steam_app_582010)$" # mh:w
+      "immediate,class:^(steam_app_2357570)$" # overwatch 2
+
       # gw2
       "immediate,title:^(Guild Wars 2)$"
       "bordersize 0,title:^(Guild Wars 2)$"
@@ -87,12 +93,6 @@
       "pin, title:^(Blish HUD)$"
       "opacity 0.10 0.10, title:^(Blish HUD)$"
       "workspace 9 silent, title:$(Blish HUD)$"
-
-      # tearing rules
-      "immediate,class:^(cs2)$"
-      "immediate,class:^(dota2)$"
-      "immediate,class:^(steam_app_582010)$" # mh:w
-      "immediate,class:^(steam_app_2357570)$" # overwatch 2
     ];
     layerrule = [
       #"blur,waybar"
