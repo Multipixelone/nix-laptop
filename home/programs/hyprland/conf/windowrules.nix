@@ -58,6 +58,7 @@
       "float,class:^(steam)$,title:^(Steam Settings)$"
 
       # steam game rules
+      "workspace 7 silent,class:^(steam_app_.*)$"
       "immediate,class:^(steam_app_.*)$" # tear all games (not seeing any bugs)
       "immediate,class:^(cs2)$"
       "immediate,class:^(dota2)$"
