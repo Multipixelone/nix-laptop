@@ -90,10 +90,8 @@
       # tearing rules
       "immediate,class:^(cs2)$"
       "immediate,class:^(dota2)$"
-      # mh:w
-      "immediate,class:^(steam_app_582010)$"
-      # overwatch 2
-      "immediate,class:^(steam_app_2357570)$"
+      "immediate,class:^(steam_app_582010)$" # mh:w
+      "immediate,class:^(steam_app_2357570)$" # overwatch 2
     ];
     layerrule = [
       #"blur,waybar"
