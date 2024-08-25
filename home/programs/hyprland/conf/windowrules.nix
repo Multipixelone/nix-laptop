@@ -63,8 +63,8 @@
       "fullscreen, title:^(Steam Big Picture Mode)$" # fix keep steam big picture fullscreen
       "idleinhibit always, title:^(Steam Big Picture Mode)$"
       "idleinhibit fullscreen, class:^(steam_app_.*)$"
-      "float,title:^(Friends List)$"
-      "float,title:^(Steam Settings)$"
+      "float,class:^(steam)$,title:^(Friends List)$"
+      "float,class:^(steam)$,title:^(Steam Settings)$"
 
       # tearing rules
       "immediate,class:^(cs2)$"
