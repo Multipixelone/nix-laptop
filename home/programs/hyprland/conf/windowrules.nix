@@ -49,7 +49,7 @@
       "move 100%-40% 10%, class:^(qalculate-gtk)$"
 
       ## gaming rules
-      # steam game rules
+      # steam rules
       "fullscreen, title:^(Steam Big Picture Mode)$" # fix keep steam big picture fullscreen
       "idleinhibit always, title:^(Steam Big Picture Mode)$"
       "idleinhibit fullscreen, class:^(steam_app_.*)$"
