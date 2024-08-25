@@ -43,6 +43,10 @@
       # firefox pin pip
       "float, title:^(Picture-in-Picture)$"
       "pin, title:^(Picture-in-Picture)$"
+      # qalculate
+      "float, class:^(qalculate-gtk)$"
+      "pin, class:^(qalculate-gtk)$"
+      "move 100%-40% 10%, class:^(qalculate-gtk)$"
 
       ## gaming rules
       # steam game rules
