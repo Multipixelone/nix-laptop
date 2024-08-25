@@ -57,14 +57,14 @@
       "float,class:^(mpd)"
       "float,title:^(Spotify( Premium)?)$"
       "float,class:^(nm-applet)$"
-      "float,title:^(Friends List)$"
-      "float,title:^(Steam Settings)$"
 
       ## gaming rules
       # steam game rules
       "fullscreen, title:^(Steam Big Picture Mode)$" # fix keep steam big picture fullscreen
       "idleinhibit always, title:^(Steam Big Picture Mode)$"
       "idleinhibit fullscreen, class:^(steam_app_.*)$"
+      "float,title:^(Friends List)$"
+      "float,title:^(Steam Settings)$"
 
       # tearing rules
       "immediate,class:^(cs2)$"
