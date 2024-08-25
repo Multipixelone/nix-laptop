@@ -69,7 +69,7 @@ in {
       env = MOZ_ENABLE_WAYLAND,1
       env = HYPRCURSOR_THEME,Posy_Cursor_Black_h
       env = HYPRCURSOR_SIZE,24
-      
+
       # ripped from https://github.com/end-4/dots-hyprland/blob/b69f7cebe302dfcb2cdd1c83d87ab27f2c457c09/.config/hypr/hyprland/general.conf
       animations {
           enabled = true
