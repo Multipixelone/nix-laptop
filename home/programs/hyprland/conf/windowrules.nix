@@ -53,16 +53,16 @@
       "workspace 7 silent,class:^(steam)$"
       "fullscreen, title:^(Steam Big Picture Mode)$" # fix keep steam big picture fullscreen
       "idleinhibit always, title:^(Steam Big Picture Mode)$"
-      "idleinhibit fullscreen, class:^(steam_app_.*)$"
       "float,class:^(steam)$,title:^(Friends List)$"
       "size 500 1225,class:^(steam)$,title:^(Friends List)$"
       "float,class:^(steam)$,title:^(Steam Settings)$"
 
-      # tearing rules
+      # steam game rules
       "immediate,class:^(cs2)$"
       "immediate,class:^(dota2)$"
       "immediate,class:^(steam_app_582010)$" # mh:w
       "immediate,class:^(steam_app_2357570)$" # overwatch 2
+      "idleinhibit fullscreen, class:^(steam_app_.*)$"
 
       # gw2
       "immediate,title:^(Guild Wars 2)$"
