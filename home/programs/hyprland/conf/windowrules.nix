@@ -1,14 +1,6 @@
 {...}: {
   wayland.windowManager.hyprland.settings = {
     windowrulev2 = [
-      # float & pin firefox pip
-      "float, title:^(Picture-in-Picture)$"
-      "pin, title:^(Picture-in-Picture)$"
-
-      # throw sharing indicators away
-      "workspace special silent, title:^(Firefox — Sharing Indicator)$"
-      "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
-
       # workspace rules
       "workspace 5 silent, title:^(Spotify( Premium)?)$"
       "workspace 5 silent, class:^(Plexamp)$"
@@ -34,12 +26,6 @@
       "idleinhibit always, title:^(Zoom Meeting)$"
       "idleinhibit fullscreen, class:^(firefox)$"
 
-      # reaper dropdowns
-      "move cursor,class:REAPER,floating:1"
-      "noanim,class:REAPER"
-      "nofocus,class:REAPER,title:^(menu)$"
-      "nofocus,class:REAPER,title:^$"
-
       # float rules
       "float,class:^(Plexamp)$"
       "float,class:^(com.rafaelmardojai.Blanket)$"
@@ -47,6 +33,16 @@
       "float,class:^(mpd)"
       "float,title:^(Spotify( Premium)?)$"
       "float,class:^(nm-applet)$"
+
+      ## app specific rules
+      # reaper dropdowns
+      "move cursor,class:REAPER,floating:1"
+      "noanim,class:REAPER"
+      "nofocus,class:REAPER,title:^(menu)$"
+      "nofocus,class:REAPER,title:^$"
+      # firefox pin pip
+      "float, title:^(Picture-in-Picture)$"
+      "pin, title:^(Picture-in-Picture)$"
 
       ## gaming rules
       # steam game rules
