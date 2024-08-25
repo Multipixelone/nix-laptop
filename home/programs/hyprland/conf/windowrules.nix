@@ -32,11 +32,11 @@
       "idleinhibit focus, class:^(mpv|.+exe|celluloid)$"
       "idleinhibit focus, class:^(firefox)$, title:^(.*YouTube.*)$"
       "idleinhibit always, title:^(Zoom Meeting)$"
-      "idleinhibit always, title:^(Steam Big Picture Mode)$"
       "idleinhibit fullscreen, class:^(firefox)$"
 
-      # Steam Big Picture stay fullscreen
-      "fullscreen, title:^(Steam Big Picture Mode)$"
+      # steam game rules
+      "fullscreen, title:^(Steam Big Picture Mode)$" # fix keep steam big picture fullscreen
+      "idleinhibit always, title:^(Steam Big Picture Mode)$"
 
       # reaper dropdowns
       "move cursor,class:REAPER,floating:1"
