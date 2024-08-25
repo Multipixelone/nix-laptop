@@ -37,6 +37,7 @@
       # steam game rules
       "fullscreen, title:^(Steam Big Picture Mode)$" # fix keep steam big picture fullscreen
       "idleinhibit always, title:^(Steam Big Picture Mode)$"
+      "idleinhibit fullscreen, class:^(steam_app_.*)$"
 
       # reaper dropdowns
       "move cursor,class:REAPER,floating:1"
