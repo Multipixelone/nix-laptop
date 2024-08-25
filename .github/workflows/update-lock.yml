@@ -26,4 +26,4 @@ jobs:
           commit-msg: '⚙️ bump flake.lock'
           pr-asignees: Multipixelone
           pr-labels: automated
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
