@@ -50,6 +50,7 @@
 
       ## gaming rules
       # steam rules
+      "workspace 7 silent,class:^(steam)$"
       "fullscreen, title:^(Steam Big Picture Mode)$" # fix keep steam big picture fullscreen
       "idleinhibit always, title:^(Steam Big Picture Mode)$"
       "idleinhibit fullscreen, class:^(steam_app_.*)$"
@@ -72,7 +73,6 @@
       "norounding,title:^(Guild Wars 2)$"
       # "stayfocused,title:^(Guild Wars 2)$"
       # "allowsinput,title:^(Guild Wars 2)$"
-      "workspace 9 silent, title:$(Guild Wars 2)$"
 
       # blish hud
       "noblur,title:^(Blish HUD)$"
@@ -83,7 +83,6 @@
       "noborder, title:^(Blish HUD)$"
       "pin, title:^(Blish HUD)$"
       "opacity 0.10 0.10, title:^(Blish HUD)$"
-      "workspace 9 silent, title:$(Blish HUD)$"
     ];
     layerrule = [
       #"blur,waybar"

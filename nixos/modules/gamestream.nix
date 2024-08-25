@@ -30,6 +30,7 @@
         systemctl --user stop hypridle
         hyprctl dispatch dpms off DP-3
         hyprctl keyword monitor "$mon_string"
+        hyprctl dispatch workspace 7
       '';
     }
     + "/bin/streammon";
