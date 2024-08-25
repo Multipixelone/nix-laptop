@@ -41,7 +41,7 @@ in {
     enable = true;
     style = ''
       * {
-        font-family: "PragmataPro Liga", "FiraCode Nerd Font";
+        font-family: "PragmataPro Liga", "Iosevka Nerd Font";
         font-size: 13px;
       }
 
