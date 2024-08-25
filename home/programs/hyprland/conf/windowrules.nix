@@ -34,11 +34,6 @@
       "idleinhibit always, title:^(Zoom Meeting)$"
       "idleinhibit fullscreen, class:^(firefox)$"
 
-      # steam game rules
-      "fullscreen, title:^(Steam Big Picture Mode)$" # fix keep steam big picture fullscreen
-      "idleinhibit always, title:^(Steam Big Picture Mode)$"
-      "idleinhibit fullscreen, class:^(steam_app_.*)$"
-
       # reaper dropdowns
       "move cursor,class:REAPER,floating:1"
       "noanim,class:REAPER"
@@ -66,6 +61,11 @@
       "float,title:^(Steam Settings)$"
 
       ## gaming rules
+      # steam game rules
+      "fullscreen, title:^(Steam Big Picture Mode)$" # fix keep steam big picture fullscreen
+      "idleinhibit always, title:^(Steam Big Picture Mode)$"
+      "idleinhibit fullscreen, class:^(steam_app_.*)$"
+
       # gw2
       "immediate,title:^(Guild Wars 2)$"
       "bordersize 0,title:^(Guild Wars 2)$"
