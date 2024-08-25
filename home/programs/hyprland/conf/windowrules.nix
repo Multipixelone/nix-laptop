@@ -38,10 +38,6 @@
       # Steam Big Picture stay fullscreen
       "fullscreen, title:^(Steam Big Picture Mode)$"
 
-      # music player default location
-      "move 62 1428, class:^(mpd)"
-      "size 754 422, class:^(mpd)"
-
       # reaper dropdowns
       "move cursor,class:REAPER,floating:1"
       "noanim,class:REAPER"
