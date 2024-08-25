@@ -62,7 +62,7 @@
       "immediate,class:^(steam_app_.*)$" # tear all games (not seeing any bugs)
       "immediate,class:^(cs2)$"
       "immediate,class:^(dota2)$"
-      "idleinhibit fullscreen, class:^(steam_app_.*)$"
+      "idleinhibit always, class:^(steam_app_.*)$"
 
       # gw2
       "bordersize 0,title:^(Guild Wars 2)$"
