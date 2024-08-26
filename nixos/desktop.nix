@@ -134,6 +134,7 @@ in {
         pkgs.gutenprintBin
       ];
     };
+    btrfs.autoScrub.enable = true;
     zerotierone = {
       enable = true;
       joinNetworks = ["52b337794f640fc8"];
