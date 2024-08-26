@@ -126,15 +126,8 @@ in {
     geoclue2.enable = true;
     localtimed.enable = true;
     psd.enable = true;
-    printing = {
-      enable = true;
-      drivers = [
-        # add drivers for Canon MG3222
-        pkgs.gutenprint
-        pkgs.gutenprintBin
-      ];
-    };
     btrfs.autoScrub.enable = true;
+    printing.enable = true;
     zerotierone = {
       enable = true;
       joinNetworks = ["52b337794f640fc8"];

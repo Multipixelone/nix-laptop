@@ -27,6 +27,26 @@ in {
       user = "tunnel";
       configDir = "/home/tunnel/.config/syncthing";
     };
+    printing = {
+      drivers = [
+        # add drivers for Canon MG3222
+        pkgs.gutenprint
+        pkgs.gutenprintBin
+      ];
+      browsing = true;
+      defaultShared = true;
+      listenAddresses = ["*:631"];
+      allowFrom = ["all"];
+    };
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+      publish = {
+        enable = true;
+        userServices = true;
+      };
+    };
     udev.extraRules = ''
       # Operator Core
       SUBSYSTEM=="usb", ATTR{idVendor}=="16d0", ATTR{idProduct}=="123B", MODE="0666"
@@ -127,6 +147,18 @@ in {
   hardware = {
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     i2c.enable = true;
+    printers = {
+      ensurePrinters = [
+        {
+          name = "Canon_MG3222";
+          location = "Office";
+          deviceUri = "usb://Canon/MG3200%20series?serial=3131AC&interface=1";
+          model = "gutenprint.${lib.versions.majorMinor (lib.getVersion pkgs.gutenprint)}://bjc-PIXMA-MG3222/expert";
+          description = "Office Printer";
+        }
+      ];
+      ensureDefaultPrinter = "Canon_MG3222";
+    };
   };
   # TODO re-enable mesa-git eventually
   chaotic.mesa-git.enable = false;
@@ -156,8 +188,8 @@ in {
   networking = {
     useDHCP = lib.mkDefault false;
     hostName = "link";
-    firewall.allowedTCPPorts = [6680 8080 22 5900 6600 8384 4656 22000 47984 47989 48010 59999];
-    firewall.allowedUDPPorts = [22000 21027 47998 47999 48000 48002 48010];
+    firewall.allowedTCPPorts = [631 5353 6680 8080 22 5900 6600 8384 4656 22000 47984 47989 48010 59999];
+    firewall.allowedUDPPorts = [631 5353 22000 21027 47998 47999 48000 48002 48010];
     interfaces.enp6s0.ipv4.addresses = [
       {
         address = "192.168.6.6";
