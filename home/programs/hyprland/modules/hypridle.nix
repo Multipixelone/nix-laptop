@@ -15,7 +15,7 @@
     text = ''
       # only suspend if audio isn't running & not plugged in
       playing() { playerctl -a status | rg Playing -q; }
-      charging() { rg -q Charging /sys/class/power_supply/BAT0/status; }
+      charging() { rg -q 1 /sys/class/power_supply/AC/online; }
       if ! charging && ! playing; then
         systemctl suspend
       fi
