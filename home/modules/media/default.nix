@@ -15,7 +15,7 @@ in {
       default = false;
     };
     izotope-location = mkOption {
-      type = types.string;
+      type = types.str;
       default = "/home/tunnel/.izotope";
     };
   };
