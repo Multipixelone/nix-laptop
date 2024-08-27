@@ -9,16 +9,14 @@
   playerctl = lib.getExe pkgs.playerctl;
   launcher = lib.getExe pkgs.rofi-wayland + " -show drun";
   swayosd-client = lib.getExe' pkgs.swayosd "swayosd-client";
-  screenshot-area =
-    pkgs.writeShellApplication {
-      name = "screenshot-area";
-      runtimeInputs = [osConfig.programs.hyprland.package pkgs.grimblast];
-      text = ''
-        hyprctl keyword animation "fadeOut,0,0,default"
-        grimblast --notify copysave area
-        hyprctl keyword animation "fadeOut,1,4,default"'';
-    }
-    + "/bin/screenshot-area";
+  screenshot-area = pkgs.writeShellApplication {
+    name = "screenshot-area";
+    runtimeInputs = [osConfig.programs.hyprland.package pkgs.grimblast];
+    text = ''
+      hyprctl keyword animation "fadeOut,0,0,default"
+      grimblast --notify copysave area
+      hyprctl keyword animation "fadeOut,1,4,default"'';
+  };
 in {
   wayland.windowManager.hyprland = {
     extraConfig = ''
@@ -44,7 +42,7 @@ in {
           "$mod, T, exec, pypr toggle term"
           "$mod, B, exec, pypr toggle volume"
           ", Print, exec, ${lib.getExe pkgs.grimblast} --notify --cursor copysave output"
-          "ALT , Print, exec, ${screenshot-area}"
+          "ALT , Print, exec, ${lib.getExe screenshot-area}"
           "$mod, SPACE, exec, ${launcher}"
           "$mod, M, exit"
           "$mod, N, exec, systemctl suspend"
