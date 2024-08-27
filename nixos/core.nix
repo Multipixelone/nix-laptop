@@ -71,7 +71,21 @@
   networking.firewall.allowedUDPPorts = [config.services.tailscale.port];
   # System Services
   security = {
-    polkit.enable = true;
+    polkit = {
+      enable = true;
+      extraConfig = ''
+        polkit.addRule(function(action, subject) {
+            if (action.id == "org.freedesktop.systemd1.manage-units") {
+                if (action.lookup("unit") == "docker-slskd.service") {
+                    var verb = action.lookup("verb");
+                    if (verb == "start" || verb == "stop") {
+                        return polkit.Result.YES;
+                    }
+                }
+            }
+        });
+      '';
+    };
     # bee sudo lecture
     sudo.configFile = ''
       Defaults lecture=always
