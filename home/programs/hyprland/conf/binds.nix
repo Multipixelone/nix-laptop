@@ -49,6 +49,8 @@ in {
           "Alt_Super, j, resizeactive, 0 80"
           "Alt_Super, k, resizeactive, 0 -80"
           "Alt_Super, l, resizeactive, 80 0"
+          "$mod, p, pseudo"
+          "$mod, s, togglesplit"
           # pypr scratchpads
           "Control_L&Alt_L, K, exec, pypr toggle password"
           "ALT_SHIFT, E, exec, pypr toggle music"
