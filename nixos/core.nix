@@ -48,7 +48,6 @@
   # Theme
   # Boot
   boot = {
-    loader.systemd-boot.enable = false;
     loader.grub = {
       enable = lib.mkDefault true;
       efiSupport = true;
