@@ -32,6 +32,7 @@ in {
       bind =
         [
           "ALT_SHIFT, Q, killactive"
+          # app keybinds
           "$mod, RETURN, exec, ${terminal}"
           "ALT_SHIFT, W, exec, firefox"
           "ALT_SHIFT, D, exec, discord"
