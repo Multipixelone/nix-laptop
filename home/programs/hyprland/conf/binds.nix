@@ -37,7 +37,11 @@ in {
           "ALT_SHIFT, D, exec, discord"
           "ALT_SHIFT, S, exec, steam"
           "ALT_SHIFT, C, exec, code"
+          # pypr scratchpads
+          "Control_L&Alt_L, K, exec, pypr toggle password"
           "ALT_SHIFT, E, exec, pypr toggle music"
+          "$mod, T, exec, pypr toggle term"
+          "$mod, B, exec, pypr toggle volume"
           ", Print, exec, ${lib.getExe pkgs.grimblast} --notify --cursor copysave output"
           "ALT , Print, exec, ${screenshot-area}"
           "$mod, SPACE, exec, ${launcher}"
@@ -46,10 +50,7 @@ in {
           "$mod, V, togglefloating"
           "SUPER, F, fullscreen"
           "ALT, Tab, workspace, previous"
-          "$mod, T, exec, pypr toggle term"
-          "$mod, B, exec, pypr toggle volume"
           # "$mod, H, exec, pypr toggle helvum"
-          "Control_L&Alt_L, K, exec, pypr toggle password"
           #", swipe:3:ld, exec, pypr toggle music"
         ]
         ++ (
