@@ -1,5 +1,6 @@
 {
   pkgs,
+  inputs,
   lib,
   config,
   osConfig,
@@ -51,7 +52,7 @@ in {
     package = osConfig.programs.hyprland.package;
     plugins = [
       # FIX this is erroring during build. ninja: error: loading 'build.ninja': No such file or directory
-      # inputs.hyprspace.packages.${pkgs.stdenv.hostPlatform.system}.Hyprspace
+      inputs.hyprspace.packages.${pkgs.stdenv.hostPlatform.system}.Hyprspace
     ];
     systemd = {
       enable = true;
