@@ -22,9 +22,13 @@
     };
     kernelModules = ["kvm-intel"];
     extraModulePackages = [];
-    loader.efi = {
-      efiSysMountPoint = "/boot";
-      canTouchEfiVariables = true;
+    loader = {
+      systemd-boot.enable = true;
+      grub.enable = false;
+      efi = {
+        efiSysMountPoint = "/boot";
+        canTouchEfiVariables = true;
+      };
     };
   };
   # Syncthing
