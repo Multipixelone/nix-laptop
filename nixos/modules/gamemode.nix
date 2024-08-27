@@ -9,6 +9,7 @@
   programs = [
     config.programs.hyprland.package
     pkgs.findutils
+    pkgs.systemd
     pkgs.gawk
     pkgs.coreutils
     pkgs.curl
@@ -22,6 +23,7 @@
       text = ''
         SECRET=$(cat "${config.age.secrets."syncthing".path}")
         HYPRLAND_INSTANCE_SIGNATURE=$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)
+        systemctl stop docker-slskd
         export HYPRLAND_INSTANCE_SIGNATURE
         # ledfx change scene (disabled temporarily)
         # curl -X 'PUT' 'http://link.bun-hexatonic.ts.net:8888/api/scenes' -H 'Content-Type: application/json' -d '{"id": "gaming-mode", "action": "activate"}'
@@ -41,6 +43,7 @@
         SECRET=$(cat "${config.age.secrets."syncthing".path}")
         HYPRLAND_INSTANCE_SIGNATURE=$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)
         export HYPRLAND_INSTANCE_SIGNATURE
+        systemctl start docker-slskd
         curl -X POST -H "X-API-Key: $SECRET" http://localhost:8384/rest/system/resume
         # curl -X 'PUT' 'http://link.bun-hexatonic.ts.net:8888/api/scenes' -H 'Content-Type: application/json' -d '{"id": "main-purple", "action": "activate"}'
         hyprctl --batch 'keyword animations:enabled 1; keyword decoration:drop_shadow 1; keyword general:gaps_in 5; keyword general:gaps_out 5; keyword general:border_size 3; keyword decoration:rounding 6'
