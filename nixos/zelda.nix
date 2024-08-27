@@ -13,6 +13,13 @@
       imports = [
         inputs.nixos-hardware.nixosModules.dell-xps-15-9560-nvidia
       ];
+      hardware.nvidia.prime = {
+        sync.enable = lib.mkForce true;
+        offload = {
+          enable = lib.mkForce false;
+          enableOffloadCmd = lib.mkForce false;
+        };
+      };
     };
   };
   boot = {
