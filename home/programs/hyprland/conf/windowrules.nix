@@ -40,6 +40,7 @@
       "noanim,class:REAPER"
       "nofocus,class:REAPER,title:^(menu)$"
       "nofocus,class:REAPER,title:^$"
+      "idleinhibit always, class:REAPER"
       # firefox pin pip
       "float, title:^(Picture-in-Picture)$"
       "pin, title:^(Picture-in-Picture)$"
