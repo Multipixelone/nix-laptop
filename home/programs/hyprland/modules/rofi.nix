@@ -1,4 +1,4 @@
-{ ...}: {
+{...}: {
   programs.rofi = {
     enable = true;
   };
