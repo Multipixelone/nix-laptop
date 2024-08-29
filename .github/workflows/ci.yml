@@ -8,6 +8,7 @@ on:
 jobs:
   format:
     name: nix alejandra format
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     permissions:
       contents: 'write'
