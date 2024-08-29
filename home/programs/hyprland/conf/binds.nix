@@ -33,6 +33,14 @@ in {
         mvfocus = binding "ALT" "movefocus";
         resizeactive = binding "Alt_Super" "resizeactive";
         mvwindow = binding "Alt_Shift" "movewindow";
+        yt-mpv = pkgs.writeShellApplication {
+          name = "yt";
+          runtimeInputs = [pkgs.mpv pkgs.wl-clipboard pkgs.libnotify];
+          text = ''
+            URL=$(wl-paste)
+            notify-send "Opening video" "$URL"
+            mpv "$URL"
+          '';
         };
       in
         [
@@ -43,6 +51,7 @@ in {
           "ALT_SHIFT, D, exec, discord"
           "ALT_SHIFT, S, exec, steam"
           "ALT_SHIFT, C, exec, code"
+          "ALT_SHIFT, Y, exec, ${lib.getExe yt-mpv}"
           # focus keybinds
           (mvfocus "h" "l")
           (mvfocus "j" "d")
