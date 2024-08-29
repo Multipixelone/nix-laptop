@@ -27,7 +27,14 @@ in {
     '';
     settings = {
       "$mod" = "ALT";
-      bind =
+      bind = let
+        # this cool setup stolen from Aylur (https://github.com/Aylur/dotfiles/blob/7c4d6a708d426cb1a35a0f1776c4edc52ae1841c/home-manager/hyprland.nix)
+        binding = mod: cmd: key: arg: "${mod}, ${key}, ${cmd}, ${arg}";
+        mvfocus = binding "ALT" "movefocus";
+        resizeactive = binding "Alt_Super" "resizeactive";
+        mvwindow = binding "Alt_Shift" "movewindow";
+        };
+      in
         [
           "ALT_SHIFT, Q, killactive"
           # app keybinds
@@ -37,18 +44,18 @@ in {
           "ALT_SHIFT, S, exec, steam"
           "ALT_SHIFT, C, exec, code"
           # focus keybinds
-          "$mod, h, movefocus, l"
-          "$mod, j, movefocus, d"
-          "$mod, k, movefocus, u"
-          "$mod, l, movefocus, r"
-          "Alt_Shift, h, movewindow, l"
-          "Alt_Shift, j, movewindow, d"
-          "Alt_Shift, k, movewindow, u"
-          "Alt_Shift, l, movewindow, r"
-          "Alt_Super, h, resizeactive, -80 0"
-          "Alt_Super, j, resizeactive, 0 80"
-          "Alt_Super, k, resizeactive, 0 -80"
-          "Alt_Super, l, resizeactive, 80 0"
+          (mvfocus "h" "l")
+          (mvfocus "j" "d")
+          (mvfocus "k" "u")
+          (mvfocus "l" "r")
+          (mvwindow "h" "l")
+          (mvwindow "j" "d")
+          (mvwindow "k" "u")
+          (mvwindow "l" "r")
+          (resizeactive "h" "-80 0")
+          (resizeactive "j" "0 80")
+          (resizeactive "k" "0 -80")
+          (resizeactive "l" "80 0")
           "$mod, p, pseudo"
           "$mod, s, togglesplit"
           # pypr scratchpads
