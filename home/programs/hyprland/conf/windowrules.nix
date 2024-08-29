@@ -54,6 +54,7 @@
       "workspace 7 silent,class:^(steam)$"
       "fullscreen, title:^(Steam Big Picture Mode)$" # fix keep steam big picture fullscreen
       "idleinhibit always, title:^(Steam Big Picture Mode)$"
+      "idleinhibit focus, class:^(steam)$"
       "float,class:^(steam)$,title:^(Friends List)$"
       "size 500 1225,class:^(steam)$,title:^(Friends List)$"
       "float,class:^(steam)$,title:^(Steam Settings)$"
