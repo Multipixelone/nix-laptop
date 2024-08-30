@@ -1,5 +1,5 @@
 {...}: {
-  programs.rofi = {
+  programs.anyrun = {
     enable = true;
   };
 }

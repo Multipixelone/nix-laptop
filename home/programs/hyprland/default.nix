@@ -30,7 +30,7 @@ in {
     ./modules/hypridle.nix
     ./modules/hyprpaper.nix
     ./modules/waybar.nix
-    ./modules/rofi.nix
+    ./modules/anyrun.nix
     ./modules/gammastep.nix
   ];
   services = {
