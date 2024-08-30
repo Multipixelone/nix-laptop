@@ -7,7 +7,6 @@
   terminal = lib.getExe pkgs.foot;
   brightness = lib.getExe pkgs.brillo;
   playerctl = lib.getExe pkgs.playerctl;
-  launcher = lib.getExe pkgs.rofi-wayland + " -show drun";
   swayosd-client = lib.getExe' pkgs.swayosd "swayosd-client";
   screenshot-area = pkgs.writeShellApplication {
     name = "screenshot-area";
@@ -76,7 +75,7 @@ in {
           "$mod, C, exec, ${lib.getExe pkgs.hyprpicker} | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}"
           ", Print, exec, ${lib.getExe pkgs.grimblast} --notify --cursor copysave output"
           "ALT , Print, exec, ${lib.getExe screenshot-area}"
-          "$mod, SPACE, exec, ${launcher}"
+          "$mod, SPACE, exec, anyrun"
           "$mod, M, exit"
           "$mod, N, exec, systemctl suspend"
           "$mod, V, togglefloating"
