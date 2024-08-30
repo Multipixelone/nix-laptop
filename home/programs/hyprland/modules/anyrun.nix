@@ -9,6 +9,7 @@
     enable = true;
     config = {
       width = {fraction = 0.3;};
+      y = {fraction = 0.15;};
       hideIcons = false;
       plugins = with inputs.anyrun.packages.${pkgs.system}; [
         applications
