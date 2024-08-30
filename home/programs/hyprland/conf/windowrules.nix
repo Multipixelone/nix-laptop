@@ -87,7 +87,8 @@
     ];
     layerrule = [
       #"blur,waybar"
-      "ignorezero,rofi"
+      "ignorezero,anyrun"
+      "blur,anyrun"
       "blur,notifications"
       "ignorezero,notifications"
       "blur,swaync-notification-window"
