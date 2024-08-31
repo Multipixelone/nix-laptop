@@ -65,7 +65,7 @@ in {
         package = pkgs.callPackage ../pkgs/pragmata/default.nix {};
       };
       emoji = {
-        name = "AppleColorEmoji";
+        name = "Apple Color Emoji";
         package = pkgs.callPackage ../pkgs/apple-fonts/default.nix {};
       };
     };
