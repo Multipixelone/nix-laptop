@@ -29,6 +29,9 @@
           select = "underline";
         };
       };
+      keys.normal = {
+        C-s = ":write";
+      };
     };
     languages = {
       language = [
