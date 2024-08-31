@@ -59,7 +59,7 @@
     extraConfigFiles = {
       "dictionary.ron".text = ''
         Config(
-          prefix: "d",
+          prefix: "d"
         )
       '';
     };
