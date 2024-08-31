@@ -143,12 +143,8 @@ in {
     hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-      # for some reason this triggers a build of the whole qt stack?? lmafo
       portalPackage =
         inputs.hyprportal.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
-      #   {
-      #     inherit (pkgs) mesa;
-      #   };
     };
   };
   # Wayland Stuff
