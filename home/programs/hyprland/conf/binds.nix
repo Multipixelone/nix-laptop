@@ -79,7 +79,6 @@ in {
           ", Print, exec, ${lib.getExe pkgs.grimblast} --notify --cursor copysave output"
           "ALT , Print, exec, ${lib.getExe screenshot-area}"
           "$mod, SPACE, exec, anyrun"
-          "$mod, N, exec, systemctl suspend"
           "$mod, ESCAPE, exec, ${lib.getExe pkgs.wlogout}"
           "$mod, V, togglefloating"
           "SUPER, F, fullscreen"
