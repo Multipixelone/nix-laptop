@@ -11,6 +11,7 @@
       width = {fraction = 0.3;};
       y = {fraction = 0.15;};
       hideIcons = false;
+      hidePluginInfo = true;
       plugins = with inputs.anyrun.packages.${pkgs.system}; [
         applications
         dictionary
