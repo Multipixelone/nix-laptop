@@ -75,7 +75,7 @@ in {
           "$mod, B, exec, pypr toggle volume"
           # screenshot & picker
           "$mod, C, exec, ${lib.getExe pkgs.hyprpicker} | ${wl-copy}"
-          "$mod, X, exec, ${lib.getExe pkgs.cliphist} list | anyrun --plugins ${inputs.anyrun.packages.${pkgs.system.stdin}}/lib/libstdin.so | ${lib.getExe pkgs.cliphist} decode | ${wl-copy}"
+          "$mod, X, exec, ${lib.getExe pkgs.cliphist} list | anyrun --show-results-immediately true --plugins ${inputs.anyrun.packages.${pkgs.system}.stdin}/lib/libstdin.so | ${lib.getExe pkgs.cliphist} decode | ${wl-copy}"
           ", Print, exec, ${lib.getExe pkgs.grimblast} --notify --cursor copysave output"
           "ALT , Print, exec, ${lib.getExe screenshot-area}"
           "$mod, SPACE, exec, anyrun"
