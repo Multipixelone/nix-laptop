@@ -13,11 +13,14 @@
       imports = [
         inputs.nixos-hardware.nixosModules.dell-xps-15-9560-nvidia
       ];
-      hardware.nvidia.prime = {
-        sync.enable = lib.mkForce true;
-        offload = {
-          enable = lib.mkForce false;
-          enableOffloadCmd = lib.mkForce false;
+      hardware.nvidia = {
+        open = false;
+        prime = {
+          sync.enable = lib.mkForce true;
+          offload = {
+            enable = lib.mkForce false;
+            enableOffloadCmd = lib.mkForce false;
+          };
         };
       };
     };
@@ -139,11 +142,14 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware = {
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-    nvidia.prime = {
-      sync.enable = false;
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
+    nvidia = {
+      open = false;
+      prime = {
+        sync.enable = false;
+        offload = {
+          enable = true;
+          enableOffloadCmd = true;
+        };
       };
     };
   };
