@@ -6,7 +6,7 @@
 }:
 stdenv.mkDerivation rec {
   pname = "apple-fonts";
-  version = "1";
+  version = "1.1";
 
   pro = fetchurl {
     url = "https://devimages-cdn.apple.com/design/resources/download/SF-Pro.dmg";
@@ -69,9 +69,9 @@ stdenv.mkDerivation rec {
     mv Library/Fonts/* $out/fontfiles
     cp ${emoji} $out/fontfiles
 
-    mkdir -p $out/usr/share/fonts/OTF $out/usr/share/fonts/TTF
-    mv $out/fontfiles/*.otf $out/usr/share/fonts/OTF
-    mv $out/fontfiles/*.ttf $out/usr/share/fonts/TTF
+    mkdir -p $out/share/fonts/truetype
+    # mv $out/fontfiles/*.otf $out/share/fonts/op
+    mv $out/fontfiles/*.ttf $out/share/fonts/truetype
     rm -rf $out/fontfiles
   '';
 
