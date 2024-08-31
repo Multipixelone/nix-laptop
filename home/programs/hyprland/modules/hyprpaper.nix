@@ -26,7 +26,7 @@ in {
     Service = {
       ExecStart = lib.getExe' pkgs.swww "swww-daemon";
       ExecStop = "${lib.getExe pkgs.swww} kill";
-      Restart = "on-failure";
+      Restart = "always";
     };
     Install.WantedBy = ["graphical-session.target"];
   };
