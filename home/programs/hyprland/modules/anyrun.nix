@@ -23,7 +23,7 @@
       * {
         all: unset;
         transition: 200ms ease-out;
-        font-family: PragmataPro Liga;
+        font-family: "PragmataPro Liga", "Apple Color Emoji";
         color: #${config.lib.stylix.colors.base05};
       }
       #window,
