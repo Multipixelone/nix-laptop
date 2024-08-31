@@ -14,6 +14,7 @@
       hidePluginInfo = true;
       plugins = with inputs.anyrun.packages.${pkgs.system}; [
         applications
+        shell
         symbols
         dictionary
         websearch
@@ -60,6 +61,11 @@
       "dictionary.ron".text = ''
         Config(
           prefix: "d"
+        )
+      '';
+      "shell.ron".text = ''
+        Config()
+          prefix: ">"
         )
       '';
     };
