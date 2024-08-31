@@ -18,7 +18,6 @@ in {
     yubikey-personalization
     yubikey-manager
     age-plugin-yubikey
-    virt-manager
     qemu_kvm
     qemu
     # TODO fix latency flex
@@ -140,6 +139,7 @@ in {
   programs = {
     wireshark.enable = true;
     nm-applet.enable = true;
+    virt-manager.enable = true;
     hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
