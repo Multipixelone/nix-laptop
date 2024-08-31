@@ -1,5 +1,6 @@
 {
   pkgs,
+  inputs,
   lib,
   osConfig,
   ...
@@ -8,6 +9,7 @@
   brightness = lib.getExe pkgs.brillo;
   playerctl = lib.getExe pkgs.playerctl;
   swayosd-client = lib.getExe' pkgs.swayosd "swayosd-client";
+  wl-copy = lib.getExe' pkgs.wl-clipboard "wl-copy";
   screenshot-area = pkgs.writeShellApplication {
     name = "screenshot-area";
     runtimeInputs = [osConfig.programs.hyprland.package pkgs.grimblast];
@@ -73,6 +75,7 @@ in {
           "$mod, B, exec, pypr toggle volume"
           # screenshot & picker
           "$mod, C, exec, ${lib.getExe pkgs.hyprpicker} | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}"
+          "$mod, X, exec, ${lib.getExe pkgs.cliphist} list | anyrun --plugins ${inputs.anyrun.packages.${pkgs.system.stdin}}/lib/libstdin.so | ${lib.getExe pkgs.cliphist} decode | ${wl-copy}"
           ", Print, exec, ${lib.getExe pkgs.grimblast} --notify --cursor copysave output"
           "ALT , Print, exec, ${lib.getExe screenshot-area}"
           "$mod, SPACE, exec, anyrun"
