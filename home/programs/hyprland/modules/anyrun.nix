@@ -20,13 +20,14 @@
         websearch
       ];
     };
+    # thank u fufexan (https://github.com/fufexan/dotfiles/blob/41612095fbebb01a0f2fe0980ec507cf02196392/home/programs/anyrun/style-dark.css)
     extraCss = ''
       * {
         all: unset;
-        transition: 200ms ease-out;
-        font-family: "PragmataPro Liga", "Apple Color Emoji";
-        color: #${config.lib.stylix.colors.base05};
+        font-family: "Apple Color Emoji", "PragmataPro Liga";
+        font-size: 1.2rem;
       }
+
       #window,
       #match,
       #entry,
@@ -34,27 +35,41 @@
       #main {
         background: transparent;
       }
-      #main {
-        margin-top: 0.5rem;
+
+      #match.activatable {
+        border-radius: 8px;
+        margin: 4px 0;
+        padding: 4px;
+        /* transition: 100ms ease-out; */
       }
-      #match {
-        padding: 3px;
-        border-radius: 12px;
+      #match.activatable:first-child {
+        margin-top: 12px;
       }
-      #match:hover,
+      #match.activatable:last-child {
+        margin-bottom: 0;
+      }
+
+      #match:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
       #match:selected {
-        background: #${config.lib.stylix.colors.base0E};
-        padding: 0.6rem;
+        background: rgba(255, 255, 255, 0.1);
       }
-      entry#entry {
-        border-color: transparent;
-        margin-top: 0.5rem;
+
+      #entry {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 4px 8px;
       }
+
       box#main {
-        background: #${config.lib.stylix.colors.base02};
-        border: 3px solid #${config.lib.stylix.colors.base0E}
-        border-radius: 10px;
-        padding: 0.3rem;
+        background: rgba(0, 0, 0, 0.5);
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+          0 30px 30px 15px rgba(0, 0, 0, 0.5);
+        border-radius: 20px;
+        padding: 12px;
       }
     '';
     extraConfigFiles = {
