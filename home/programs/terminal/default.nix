@@ -9,6 +9,7 @@
     ./fish.nix
     ./lf.nix
     ./ncmpcpp.nix
+    ./helix.nix
   ];
 
   home.packages = with pkgs; [
