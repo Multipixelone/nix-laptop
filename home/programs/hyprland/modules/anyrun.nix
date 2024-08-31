@@ -81,12 +81,12 @@
       '';
       "dictionary.ron".text = ''
         Config(
-          prefix: "d"
+          prefix: "d",
         )
       '';
       "shell.ron".text = ''
         Config()
-          prefix: ">"
+          prefix: ">",
         )
       '';
     };
