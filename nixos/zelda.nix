@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   lib,
   inputs,
   ...
@@ -142,6 +143,10 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware = {
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    graphics.extraPackages = with pkgs; [
+      intel-media-sdk
+      vaapiIntel
+    ];
     nvidia = {
       open = false;
       prime = {
