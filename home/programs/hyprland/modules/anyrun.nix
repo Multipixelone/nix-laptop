@@ -73,6 +73,12 @@
       }
     '';
     extraConfigFiles = {
+      "applications.ron".text = ''
+        Config()
+          max_entries: 5,
+          terminal: Some("foot"),
+        )
+      '';
       "dictionary.ron".text = ''
         Config(
           prefix: "d"
