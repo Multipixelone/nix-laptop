@@ -14,6 +14,7 @@
       hidePluginInfo = true;
       plugins = with inputs.anyrun.packages.${pkgs.system}; [
         applications
+        symbols
         dictionary
         websearch
       ];
