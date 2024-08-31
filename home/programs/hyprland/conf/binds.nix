@@ -83,6 +83,7 @@ in {
           "$mod, V, togglefloating"
           "SUPER, F, fullscreen"
           "ALT, Tab, workspace, previous"
+          "Super, Tab, hyprexpo:expo,toggle"
           # "$mod, H, exec, pypr toggle helvum"
           #", swipe:3:ld, exec, pypr toggle music"
         ]
