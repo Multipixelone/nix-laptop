@@ -77,6 +77,9 @@
     "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
     "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
     "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
+    # firefox sync stuff
+    "services.sync.username" = "finn@cnwr.net";
+    "services.sync.engine.addons" = false;
   };
 in {
   home = {
