@@ -13,6 +13,7 @@
       theme = "catppuccin_mocha";
       editor = {
         line-number = "relative";
+        auto-format = true;
         completion-trigger-len = 1;
         bufferline = "multiple";
         color-modes = true;
