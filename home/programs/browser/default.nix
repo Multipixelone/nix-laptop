@@ -14,6 +14,7 @@
     tree-style-tab
     # utility
     augmented-steam
+    refined-github
     darkreader
     zotero-connector
     violentmonkey # TODO add last.fm script
