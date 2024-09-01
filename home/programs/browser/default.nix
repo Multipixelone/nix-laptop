@@ -20,6 +20,7 @@
     # website specific extensions
     augmented-steam
     refined-github
+    reddit-enhancement-suite
     (buildFirefoxXpiAddon rec {
       pname = "last.fm unscrobbler";
       version = "1.6.3";
