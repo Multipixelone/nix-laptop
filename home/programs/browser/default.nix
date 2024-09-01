@@ -22,6 +22,7 @@
     refined-github
     reddit-enhancement-suite
     betterttv
+    return-youtube-dislikes
     # custom extensions
     (buildFirefoxXpiAddon rec {
       pname = "last.fm unscrobbler";
