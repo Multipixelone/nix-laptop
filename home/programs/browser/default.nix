@@ -62,10 +62,13 @@
     "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
   };
 in {
-  home.packages = with pkgs; [
-    chromium
-    profile-sync-daemon
-  ];
+  home = {
+  sessionVariables.BROWSER = "firefox";
+    packages = with pkgs; [
+      chromium
+      profile-sync-daemon
+    ];
+  };
   programs.firefox = {
     enable = true;
     profiles = {
