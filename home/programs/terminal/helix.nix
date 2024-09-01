@@ -19,6 +19,12 @@
         cursorline = true;
         indent-guides.render = true;
         lsp.display-inlay-hints = true;
+        gutters = [
+          "diagnostics"
+          "line-numbers"
+          "spacer"
+          "diff"
+        ];
         whitespace.characters = {
           newline = "↴";
           tab = "⇥";
