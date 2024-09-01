@@ -18,6 +18,7 @@
         color-modes = true;
         cursorline = true;
         indent-guides.render = true;
+        indent-heuristic = "tree-sitter";
         lsp.display-inlay-hints = true;
         gutters = [
           "diagnostics"
