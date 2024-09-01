@@ -19,7 +19,14 @@
     zotero-connector
     violentmonkey # TODO add last.fm script
     istilldontcareaboutcookies
-    # TODO last.fm unscrobbler
+    (buildFirefoxXpiAddon rec {
+      pname = "last.fm unscrobbler";
+      version = "1.6.3";
+      addonId = "lastfm@unscrobbler.com";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4231311/last_fm_unscrobbler-${version}.xpi";
+      sha256 = "sha256-K9TrTEnuAEwHTtMRr/VBzsk+s1rnaD0ZMr9akdi6jUs=";
+      meta = { };
+    })
     # TODO readwise
   ];
   better-fox = pkgs.fetchFromGitHub {
