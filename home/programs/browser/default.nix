@@ -59,6 +59,9 @@
     "toolkit.telemetry.unified" = false;
     "extensions.webcompat-reporter.enabled" = false;
     "extensions.autoDisableScopes" = 0; # enable extensions by default
+    # don't update extensions
+    "extensions.update.autoUpdateDefault" = false;
+    "extensions.update.enabled" = false;
     "datareporting.policy.dataSubmissionEnabled" = false;
     "datareporting.healthreport.uploadEnabled" = false;
     "browser.ping-centre.telemetry" = false;
