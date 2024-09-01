@@ -73,6 +73,9 @@
           V = ["select_mode" "extend_to_line_bounds"];
           # yank to clipboard
           y = "yank_main_selection_to_clipboard";
+          space = {
+            l.g = [":new" ":insert-output ${lib.getExe pkgs.lazygit}" ":redraw" "jump_backward"];
+          };
         };
         select = {
           y = "yank_main_selection_to_clipboard";
