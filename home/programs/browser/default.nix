@@ -13,12 +13,13 @@
     # ui
     tree-style-tab
     # utility
-    augmented-steam
-    refined-github
     darkreader
     zotero-connector
     violentmonkey # TODO add last.fm script
     istilldontcareaboutcookies
+    # website specific extensions
+    augmented-steam
+    refined-github
     (buildFirefoxXpiAddon rec {
       pname = "last.fm unscrobbler";
       version = "1.6.3";
