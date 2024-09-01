@@ -6,7 +6,7 @@
   osConfig,
   ...
 }: let
-  timeout = 60;
+  timeout = 100;
   brillo = lib.getExe pkgs.brillo;
   hyprctl = lib.getExe' osConfig.programs.hyprland.package "hyprctl";
   suspend-script = pkgs.writeShellApplication {
