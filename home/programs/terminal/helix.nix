@@ -25,6 +25,25 @@
           "spacer"
           "diff"
         ];
+        statusline = {
+          left = [
+            "mode"
+            "spacer"
+            "diagnostics"
+            "version-control"
+            "file-name"
+            "file-modification-indicator"
+            "read-only-indicator"
+            "spinner"
+          ];
+          right = [
+            "register"
+            "file-encoding"
+            "file-type"
+            "selections"
+            "position"
+          ];
+        };
         whitespace.characters = {
           newline = "↴";
           tab = "⇥";
