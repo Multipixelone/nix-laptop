@@ -63,7 +63,7 @@
   };
 in {
   home = {
-  sessionVariables.BROWSER = "firefox";
+    sessionVariables.BROWSER = "firefox";
     packages = with pkgs; [
       chromium
       profile-sync-daemon
