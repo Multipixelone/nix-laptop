@@ -20,6 +20,10 @@
         cursorline = true;
         indent-guides.render = true;
         indent-heuristic = "tree-sitter";
+        soft-wrap = {
+          enable = true;
+          wrap-indicator = "↩ ";
+        };
         lsp.display-inlay-hints = true;
         gutters = [
           "diagnostics"
