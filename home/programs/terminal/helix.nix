@@ -60,6 +60,10 @@
         normal = {
           # ctrl + s to save
           C-s = ":write";
+          # clipboard commands
+          C-v = ["paste_clipboard_after" "collapse_selection"];
+          p = ["paste_clipboard_after" "collapse_selection"];
+          P = ["paste_clipboard_before" "collapse_selection"];
           # new helix commands
           C-h = "select_prev_sibling";
           C-j = "shrink_selection";
