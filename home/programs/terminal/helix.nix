@@ -73,8 +73,6 @@
           V = ["select_mode" "extend_to_line_bounds"];
           # yank to clipboard
           y = "yank_main_selection_to_clipboard";
-          # dd to delete current line (i miss vim)
-          d.d = ["extend_to_line_bounds" "yank_main_selection_to_clipboard" "delete_selection"];
         };
         select = {
           y = "yank_main_selection_to_clipboard";
