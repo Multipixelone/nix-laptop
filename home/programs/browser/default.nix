@@ -32,7 +32,14 @@
       sha256 = "sha256-K9TrTEnuAEwHTtMRr/VBzsk+s1rnaD0ZMr9akdi6jUs=";
       meta = { };
     })
-    # TODO readwise
+    (buildFirefoxXpiAddon rec {
+      pname = "readwise kindle sync";
+      version = "2.8.0";
+      addonId = "{f7619bc3-ed22-44a3-83ad-e79a78416737}";
+      url = "https://addons.mozilla.org/firefox/downloads/file/3732l56/readwise-${version}.xpi";
+      sha256 = "sha256-obuJTjrx7Q2AyAr2va/Kkw7ND7yV5AnSD3SUO3B20QY=";
+      meta = {};
+    })
   ];
   better-fox = pkgs.fetchFromGitHub {
     owner = "yokoffing";
