@@ -22,6 +22,7 @@
     refined-github
     reddit-enhancement-suite
     betterttv
+    # custom extensions
     (buildFirefoxXpiAddon rec {
       pname = "last.fm unscrobbler";
       version = "1.6.3";
