@@ -85,6 +85,7 @@ in {
       default = {
         inherit extensions settings;
         id = 0;
+        search.default = "DuckDuckGo";
         userChrome = ''
           #TabsToolbar {
           visibility: collapse;
