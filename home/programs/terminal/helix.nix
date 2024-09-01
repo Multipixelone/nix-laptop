@@ -54,8 +54,25 @@
           select = "underline";
         };
       };
-      keys.normal = {
-        C-s = ":write";
+      keys = {
+        normal = {
+          # ctrl + s to save
+          C-s = ":write";
+          # new helix commands
+          C-h = "select_prev_sibling";
+          C-j = "shrink_selection";
+          C-k = "expand_selection";
+          C-l = "select_next_sibling";
+          # selection command
+          V = ["select_mode" "extend_to_line_bounds"];
+          # yank to clipboard
+          y = "yank_main_selection_to_clipboard";
+          # dd to delete current line (i miss vim)
+          d.d = ["extend_to_line_bounds" "yank_main_selection_to_clipboard" "delete_selection"];
+        };
+        select = {
+          y = "yank_main_selection_to_clipboard";
+        };
       };
     };
     languages = {
