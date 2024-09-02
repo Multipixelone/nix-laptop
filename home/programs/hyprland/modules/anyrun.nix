@@ -1,6 +1,6 @@
 {
   inputs,
-  config,
+  osConfig,
   pkgs,
   ...
 }: {
@@ -18,6 +18,7 @@
         symbols
         dictionary
         websearch
+        inputs.anyrun-nixos-options.packages.${pkgs.system}.default
       ];
     };
     # thank u fufexan (https://github.com/fufexan/dotfiles/blob/41612095fbebb01a0f2fe0980ec507cf02196392/home/programs/anyrun/style-dark.css)
@@ -87,6 +88,21 @@
       "shell.ron".text = ''
         Config(
           prefix: ">",
+        )
+      '';
+      "nixos-options.ron".text = let
+        nixos-options = osConfig.system.build.manual.optionsJSON + "/share/doc/nixos/options.json";
+        hm-options = inputs.home-manager.packages.${pkgs.system}.docs-json + "/share/doc/home-manager/options.json";
+        options = builtins.toJSON {
+          ":nix" = [nixos-options];
+          ":hm" = [hm-options];
+          ":nall" = [nixos-options hm-options];
+        };
+      in ''
+        Config(
+          options: ${options},
+          min_score: 2,
+          max_entries: Some(5),
         )
       '';
     };
