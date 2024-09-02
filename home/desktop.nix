@@ -8,18 +8,6 @@
 }: {
   systemd.user = {
     startServices = "sd-switch";
-    # TODO figure out why xwaylandvideobridge opens a blank white window on launch
-    # services = {
-    #   xwaylandvideobridge = {
-    #     Unit.Description = "Tool to allow wayland windows to be shared from X11 applications";
-    #     Service = {
-    #       Type = "simple";
-    #       ExecStart = lib.getExe pkgs.xwaylandvideobridge;
-    #       Restart = "on-failure";
-    #     };
-    #     Install.WantedBy = ["graphical-session.target"];
-    #   };
-    # };
   };
   home.sessionVariables = {
     XDG_SCREENSHOTS_DIR = "/home/tunnel/Pictures/Screenshots";
