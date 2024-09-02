@@ -112,15 +112,6 @@ in {
             ${pkgs.imagemagick}/bin/convert -density 1200 -resize 500x -background none ${papirus}/steam.svg  -gravity center -extent 600x800 $out
           '';
         }
-        {
-          name = "Stray";
-          cmd = "${hypr-dispatch} \"stray\"";
-          prep-cmd = [prep];
-          image-path = download-image {
-            # Source: https://www.steamgriddb.com/grid/228086
-            url = "https://cdn2.steamgriddb.com/grid/5792570eae5e9fd09de1927180ff513c.png";
-            hash = "sha256-MeuQPkQp65azeFHE8FiYrahb34p3LYunqsL6ls95eWw=";
-          };
         }
         {
           name = "Cities Skylines 2";
