@@ -8,7 +8,7 @@
   hypr-dispatch = lib.getExe' config.programs.hyprland.package "hyprctl" + " dispatch exec";
   steam = lib.getExe config.programs.steam.package + " --";
   moondeck = pkgs.qt6.callPackage ../../pkgs/moondeck/default.nix {};
-  papirus = pkgs.papirus-icon-theme + /share/icons/Papirus-Dark/128x128/apps;
+  mk-icon = {icon-name}: pkgs.runCommand "${icon-name}-scaled.png" {} ''${pkgs.imagemagick}/bin/convert -density 1200 -resize 500x -background none ${pkgs.papirus-icon-theme}/share/icons/Papirus-Dark/128x128/apps/${icon-name}.svg -gravity center -extent 600x800 $out'';
   download-image = {
     url,
     hash,
@@ -83,9 +83,7 @@ in {
         {
           name = "Desktop";
           prep-cmd = [prep];
-          image-path = pkgs.runCommand "desktop.png" {} ''
-            ${pkgs.imagemagick}/bin/convert -density 1200 -resize 500x -background none ${papirus}/cinnamon-virtual-keyboard.svg  -gravity center -extent 600x800 $out
-          '';
+          image-path = mk-icon {icon-name = "cinnamon-virtual-keyboard";};
         }
         {
           name = "Prism Launcher";
@@ -99,19 +97,13 @@ in {
           name = "Steam Big Picture";
           cmd = "${hypr-dispatch} \"${steam} -gamepadui\"";
           prep-cmd = [prep steam-kill];
-          # TODO simplify this and stop repeating myself so much
-          image-path = pkgs.runCommand "steambigpicture.png" {} ''
-            ${pkgs.imagemagick}/bin/convert -density 1200 -resize 500x -background none ${papirus}/steamlink.svg  -gravity center -extent 600x800 $out
-          '';
+          image-path = mk-icon {icon-name = "steamlink";};
         }
         {
           name = "Steam (Regular UI)";
           cmd = "${hypr-dispatch} \"${steam}\"";
           prep-cmd = [prep steam-kill];
-          image-path = pkgs.runCommand "steam.png" {} ''
-            ${pkgs.imagemagick}/bin/convert -density 1200 -resize 500x -background none ${papirus}/steam.svg  -gravity center -extent 600x800 $out
-          '';
-        }
+          image-path = mk-icon {icon-name = "steam";};
         }
         {
           name = "Cities Skylines 2";
@@ -127,9 +119,7 @@ in {
           name = "MoonDeckStream";
           cmd = "${moondeck}/bin/MoonDeckStream";
           prep-cmd = [prep];
-          image-path = pkgs.runCommand "moondeck.png" {} ''
-            ${pkgs.imagemagick}/bin/convert -density 1200 -resize 500x -background none ${papirus}/moonlight.svg  -gravity center -extent 600x800 $out
-          '';
+          image-path = mk-icon {icon-name = "moonlight";};
           auto-detatch = false;
         }
       ];
