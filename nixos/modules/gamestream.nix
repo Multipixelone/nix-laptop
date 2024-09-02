@@ -13,45 +13,41 @@
     url,
     hash,
   }: let image = pkgs.fetchurl {inherit url hash;}; in pkgs.runCommand "${lib.nameFromURL url "."}.png" {} ''${pkgs.imagemagick}/bin/convert ${image} -background none -gravity center -extent 600x800 $out'';
-  do-command =
-    pkgs.writeShellApplication {
-      name = "do-command";
-      runtimeInputs = [pkgs.findutils pkgs.gawk pkgs.coreutils pkgs.procps pkgs.curl config.programs.hyprland.package];
+  do-command = pkgs.writeShellApplication {
+    name = "do-command";
+    runtimeInputs = [pkgs.findutils pkgs.gawk pkgs.coreutils pkgs.procps pkgs.curl config.programs.hyprland.package];
 
-      text = ''
-        HYPRLAND_INSTANCE_SIGNATURE=$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)
-        export HYPRLAND_INSTANCE_SIGNATURE
-        width=''${1:-3840}
-        height=''${2:-2160}
-        refresh_rate=''${3:-60}
-        mon_string="DP-1,''${width}x''${height}@''${refresh_rate},1200x0,2"
-        # Unlock PC (so I don't have to type password on Steam Deck)
-        pkill -USR1 hyprlock || true
-        systemctl --user stop hypridle
-        hyprctl dispatch dpms off DP-3
-        hyprctl keyword monitor "$mon_string"
-        hyprctl dispatch workspace 7
-      '';
-    }
-    + "/bin/streammon";
-  undo-command =
-    pkgs.writeShellApplication {
-      name = "undo-command";
-      runtimeInputs = [pkgs.findutils pkgs.gawk pkgs.coreutils pkgs.curl config.programs.hyprland.package];
+    text = ''
+      HYPRLAND_INSTANCE_SIGNATURE=$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)
+      export HYPRLAND_INSTANCE_SIGNATURE
+      width=''${1:-3840}
+      height=''${2:-2160}
+      refresh_rate=''${3:-60}
+      mon_string="DP-1,''${width}x''${height}@''${refresh_rate},1200x0,2"
+      # Unlock PC (so I don't have to type password on Steam Deck)
+      pkill -USR1 hyprlock || true
+      systemctl --user stop hypridle
+      hyprctl dispatch dpms off DP-3
+      hyprctl keyword monitor "$mon_string"
+      hyprctl dispatch workspace 7
+    '';
+  };
+  undo-command = pkgs.writeShellApplication {
+    name = "undo-command";
+    runtimeInputs = [pkgs.findutils pkgs.gawk pkgs.coreutils pkgs.curl config.programs.hyprland.package];
 
-      text = ''
-        HYPRLAND_INSTANCE_SIGNATURE=$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)
-        export HYPRLAND_INSTANCE_SIGNATURE
-        mon_string="DP-1,2560x1440@240,1200x0,1"
-        systemctl --user start hypridle
-        hyprctl dispatch dpms on DP-3
-        hyprctl keyword monitor "$mon_string"
-      '';
-    }
-    + "/bin/undo-command";
+    text = ''
+      HYPRLAND_INSTANCE_SIGNATURE=$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)
+      export HYPRLAND_INSTANCE_SIGNATURE
+      mon_string="DP-1,2560x1440@240,1200x0,1"
+      systemctl --user start hypridle
+      hyprctl dispatch dpms on DP-3
+      hyprctl keyword monitor "$mon_string"
+    '';
+  };
   prep = {
-    do = "${sh} -c \"${do-command} \${SUNSHINE_CLIENT_WIDTH} \${SUNSHINE_CLIENT_HEIGHT} \${SUNSHINE_CLIENT_FPS}\"";
-    undo = "${sh} -c \"${undo-command}\"";
+    do = "${sh} -c \"${lib.getExe do-command} \${SUNSHINE_CLIENT_WIDTH} \${SUNSHINE_CLIENT_HEIGHT} \${SUNSHINE_CLIENT_FPS}\"";
+    undo = "${sh} -c \"${lib.getExe undo-command}\"";
   };
   # TODO I wrote this while high as fuck so i wrote it like actually so jank LMFAO absolutely ghoulish use of string concatenation
   steam-kill = {
