@@ -15,6 +15,7 @@
     nix-hardware.url = "github:NixOS/nixos-hardware/master";
     attic.url = "github:zhaofengli/attic";
     geospatial.url = "github:Multipixelone/geospatial-nix";
+    helix.url = "github:helix-editor/helix";
     photogimp = {
       url = "github:Diolinux/PhotoGIMP";
       flake = false;
