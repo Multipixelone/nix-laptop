@@ -9,7 +9,7 @@
   steam = lib.getExe config.programs.steam.package + " --";
   moondeck = pkgs.qt6.callPackage ../../pkgs/moondeck/default.nix {};
   papirus = pkgs.papirus-icon-theme + /share/icons/Papirus-Dark/128x128/apps;
-  mkImage = {
+  download-image = {
     url,
     hash,
   }: let image = pkgs.fetchurl {inherit url hash;}; in pkgs.runCommand "${lib.nameFromURL url "."}.png" {} ''${pkgs.imagemagick}/bin/convert ${image} -background none -gravity center -extent 600x800 $out'';
@@ -118,7 +118,7 @@ in {
           name = "Stray";
           cmd = "${hypr-dispatch} \"stray\"";
           prep-cmd = [prep];
-          image-path = mkImage {
+          image-path = download-image {
             # Source: https://www.steamgriddb.com/grid/228086
             url = "https://cdn2.steamgriddb.com/grid/5792570eae5e9fd09de1927180ff513c.png";
             hash = "sha256-MeuQPkQp65azeFHE8FiYrahb34p3LYunqsL6ls95eWw=";
@@ -128,7 +128,7 @@ in {
           name = "Cities Skylines 2";
           cmd = "${hypr-dispatch} \"cities-skylines-ii\"";
           prep-cmd = [prep];
-          image-path = mkImage {
+          image-path = download-image {
             # Source: https://www.steamgriddb.com/grid/401805
             url = "https://cdn2.steamgriddb.com/grid/4b06c53a6d97eab539d8b8fc0be7a458.jpg";
             hash = "sha256-7z6+xKw4GvQv5IH2PTVq3TdKlp16u65pti4seN4ZEJs=";
