@@ -14,6 +14,7 @@
     nix-hardware.url = "github:NixOS/nixos-hardware/master";
     attic.url = "github:zhaofengli/attic";
     geospatial.url = "github:Multipixelone/geospatial-nix";
+    photogimp={url = "github:Diolinux/PhotoGIMP";flake=false;};
     secrets = {
       url = "git+ssh://git@github.com/Multipixelone/nix-secrets.git";
       flake = false;
