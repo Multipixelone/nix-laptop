@@ -74,7 +74,7 @@
     '';
     extraConfigFiles = {
       "applications.ron".text = ''
-        Config()
+        Config(
           max_entries: 5,
           terminal: Some("foot"),
         )
@@ -85,7 +85,7 @@
         )
       '';
       "shell.ron".text = ''
-        Config()
+        Config(
           prefix: ">",
         )
       '';
