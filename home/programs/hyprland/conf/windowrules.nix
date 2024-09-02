@@ -66,6 +66,10 @@
       "immediate,class:^(dota2)$"
       "idleinhibit always, class:^(steam_app_.*)$"
 
+      # minecraft
+      "workspace 7 silent,class:^(org.prismlauncher.*)$"
+      "workspace 7 silent,class:^(Minecraft)$"
+
       # gw2
       "bordersize 0,title:^(Guild Wars 2)$"
       "opaque,title:^(Guild Wars 2)$"
