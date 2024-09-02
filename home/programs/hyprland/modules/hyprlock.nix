@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   inputs,
   ...
 }: let
@@ -10,8 +11,7 @@
       text = ''
         playerctl metadata --format "{{ title }}<br/>{{ artist }} - {{ album }}"
       '';
-    }
-    + "/bin/media-info";
+    };
 in {
   programs.hyprlock = {
     enable = true;
@@ -90,7 +90,7 @@ in {
     # Album art & Media Info for Desktop
     label {
       monitor = DP-3
-      text = cmd[update:0:true] ${media-info}
+      text = cmd[update:0:true] ${lib.getExe media-info}
       color = rgb(245, 224, 220)
       font_size = 20
       font_family = $font
