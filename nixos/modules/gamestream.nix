@@ -52,18 +52,17 @@
     do = "${sh} -c \"${lib.getExe do-command} \${SUNSHINE_CLIENT_WIDTH} \${SUNSHINE_CLIENT_HEIGHT} \${SUNSHINE_CLIENT_FPS}\"";
     undo = "${sh} -c \"${lib.getExe undo-command}\"";
   };
-  # TODO I wrote this while high as fuck so i wrote it like actually so jank LMFAO absolutely ghoulish use of string concatenation
-  steam-kill = {
+  steam-kill = let
+    kill-script = pkgs.writeShellApplication {
+      name = "steam-kill";
+      runtimeInputs = [pkgs.procps];
+      text = ''
+        pkill steam
+      '';
+    };
+  in {
     do = "";
-    undo = "${sh} -c \"${pkgs.writeShellApplication {
-        name = "steam-kill";
-        runtimeInputs = [pkgs.procps];
-
-        text = ''
-          pkill steam
-        '';
-      }
-      + "/bin/steam-kill"}\"";
+    undo = "${sh} -c \"${lib.getExe kill-script}\"";
   };
 in {
   services.sunshine = {
