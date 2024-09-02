@@ -12,7 +12,10 @@
   download-image = {
     url,
     hash,
-  }: let image = pkgs.fetchurl {inherit url hash;}; in pkgs.runCommand "${lib.nameFromURL url "."}.png" {} ''${pkgs.imagemagick}/bin/convert ${image} -background none -gravity center -extent 600x800 $out'';
+  }: let
+    image = pkgs.fetchurl {inherit url hash;};
+  in
+    pkgs.runCommand "${lib.nameFromURL url "."}.png" {} ''${pkgs.imagemagick}/bin/convert ${image} -background none -gravity center -extent 600x800 $out'';
   do-command = pkgs.writeShellApplication {
     name = "do-command";
     runtimeInputs = [pkgs.findutils pkgs.gawk pkgs.coreutils pkgs.procps pkgs.curl config.programs.hyprland.package];
