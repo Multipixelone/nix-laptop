@@ -51,7 +51,7 @@
     # Apps
     _1password
     moonlight-qt
-    zoom-us
+    inputs.gvolpe-zoom.out.pkgs.zoom-us
     qalculate-gtk
     piper
     waypipe

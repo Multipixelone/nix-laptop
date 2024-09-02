@@ -5,6 +5,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # nixpkgs for zoom screensharing
+    gvolpe-zoom.url = "github:gvolpe/nix-config";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     nurpkgs.url = "github:nix-community/NUR";
     musnix.url = "github:musnix/musnix";
