@@ -19,6 +19,7 @@
         completion-trigger-len = 1;
         bufferline = "multiple";
         color-modes = true;
+        true-color = true; # fix colors over ssh
         cursorline = true;
         indent-guides.render = true;
         indent-heuristic = "tree-sitter";
