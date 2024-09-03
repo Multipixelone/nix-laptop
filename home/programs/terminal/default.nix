@@ -10,6 +10,7 @@
     ./lf.nix
     ./ncmpcpp.nix
     ./helix.nix
+    ./shell-script.nix
   ];
 
   home.packages = with pkgs; [
