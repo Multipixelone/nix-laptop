@@ -103,6 +103,7 @@ in {
       language = [
         {
           name = "nix";
+          language-servers = ["nil" "gpt"];
           formatter.command = "alejandra";
         }
       ];
