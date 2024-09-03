@@ -110,6 +110,7 @@ in {
           name = "nix";
           language-servers = ["nil" "gpt"];
           formatter.command = "alejandra";
+          auto-format = true;
         }
       ];
       language-server = {
