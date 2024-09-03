@@ -107,6 +107,16 @@ in {
       };
     };
     languages = {
+      language-server = {
+        gpt = {
+          command = "helix-gpt";
+          args = ["--handler" "copilot"];
+        };
+        nil = {
+          command = lib.getExe pkgs.nil;
+          config.nil.formatting.command = ["${lib.getExe pkgs.alejandra}" "-q"];
+        };
+      };
       language = [
         {
           name = "nix";
@@ -124,16 +134,6 @@ in {
           auto-format = true;
         }
       ];
-      language-server = {
-        gpt = {
-          command = "helix-gpt";
-          args = ["--handler" "copilot"];
-        };
-        nil = {
-          command = lib.getExe pkgs.nil;
-          config.nil.formatting.command = ["${lib.getExe pkgs.alejandra}" "-q"];
-        };
-      };
     };
   };
 }
