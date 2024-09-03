@@ -2,16 +2,32 @@
   pkgs,
   lib,
   inputs,
+  config,
   ...
-}: {
+}: let
+  # wrap secret into helix-gpt
+  gpt-wrapped = pkgs.writeShellScriptBin "helix-gpt" ''
+    export COPILOT_API_KEY=$(cat ${config.age.secrets."copilot".path})
+    ${lib.getExe pkgs.helix-gpt} $@
+  '';
+  packages = with pkgs; [
+    nil
+    alejandra
+    gpt-wrapped
+  ];
+in {
+  # also install packages to main environment
+  home.packages = packages;
+  age.secrets = {
+    "copilot" = {
+      file = "${inputs.secrets}/copilot.age";
+    };
+  };
   programs.helix = {
     enable = true;
     defaultEditor = true;
     package = inputs.helix.packages.${pkgs.system}.default;
-    extraPackages = with pkgs; [
-      nil
-      alejandra
-    ];
+    extraPackages = packages;
     settings = {
       theme = "catppuccin_mocha";
       editor = {
@@ -91,6 +107,10 @@
         }
       ];
       language-server = {
+        gpt = {
+          command = "helix-gpt";
+          args = ["--handler" "copilot"];
+        };
         nil = {
           command = lib.getExe pkgs.nil;
           config.nil.formatting.command = ["${lib.getExe pkgs.alejandra}" "-q"];
