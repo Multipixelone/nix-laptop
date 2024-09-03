@@ -14,6 +14,7 @@
     nil
     alejandra
     gpt-wrapped
+    marksman
   ];
 in {
   # also install packages to main environment
@@ -110,6 +111,11 @@ in {
           name = "nix";
           language-servers = ["nil" "gpt"];
           formatter.command = "alejandra";
+          auto-format = true;
+        }
+        {
+          name = "markdown";
+          language-servers = ["marksman" "gpt"];
           auto-format = true;
         }
       ];
