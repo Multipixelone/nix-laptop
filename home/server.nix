@@ -6,10 +6,6 @@
   home = {
     username = "tunnel";
     homeDirectory = "/home/tunnel";
-    sessionVariables = {
-      EDITOR = "nvim";
-      VISUAL = "nvim";
-    };
   };
   imports = [
     ./programs/terminal/default.nix

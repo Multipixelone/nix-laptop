@@ -6,6 +6,7 @@
 }: {
   programs.helix = {
     enable = true;
+    defaultEditor = true;
     package = inputs.helix.packages.${pkgs.system}.default;
     extraPackages = with pkgs; [
       nil
