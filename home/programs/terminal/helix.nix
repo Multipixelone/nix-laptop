@@ -15,6 +15,7 @@
     alejandra
     gpt-wrapped
     marksman
+    nodePackages.prettier
   ];
 in {
   # also install packages to main environment
@@ -116,6 +117,10 @@ in {
         {
           name = "markdown";
           language-servers = ["marksman" "gpt"];
+          formatter = {
+            command = "prettier";
+            args = ["--stdin-filepath" "file.md"];
+          };
           auto-format = true;
         }
       ];
