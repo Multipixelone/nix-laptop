@@ -69,6 +69,11 @@ in {
             "selections"
             "position"
           ];
+          mode = {
+            normal = "";
+            insert = "I";
+            select = "S";
+          };
         };
         whitespace.characters = {
           newline = "↴";
