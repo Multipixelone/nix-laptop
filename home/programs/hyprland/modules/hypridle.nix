@@ -38,7 +38,7 @@ in {
         }
         {
           timeout = timeout - 20;
-          on-timeout = "${brillo} -O; ${brillo} -u 1000000 -S 10";
+          on-timeout = "${brillo} -O; ${brillo} -u 1000000 -S 0.06";
           on-resume = "${brillo} -I -u 500000";
         }
         {
