@@ -46,5 +46,6 @@ in {
     #   exe = "/media/BigData/Games/SteamLibrary/steamapps/common/Guild Wars 2";
     #   location = "/media/BigData/Games/SteamLibrary/steamapps/compatdata/1284210/pfx";
     # })
+    (callPackage ../../../pkgs/games/bookworm-adventures {inherit umu mangohud;})
   ];
 }
