@@ -5,6 +5,12 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # use lix
+    lix = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # nixpkgs for zoom screensharing
     gvolpe-zoom.url = "github:gvolpe/nix-config";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
@@ -123,6 +129,7 @@
           agenix.nixosModules.default
           chaotic.nixosModules.default
           nur.nixosModules.nur
+          inputs.lix.nixosModules.default
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -143,6 +150,7 @@
           agenix.nixosModules.default
           chaotic.nixosModules.default
           nur.nixosModules.nur
+          inputs.lix.nixosModules.default
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
