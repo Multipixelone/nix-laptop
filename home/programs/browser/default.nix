@@ -17,6 +17,7 @@
     zotero-connector
     violentmonkey # TODO add last.fm script
     istilldontcareaboutcookies
+    onepassword-password-manager
     # website specific extensions
     augmented-steam
     refined-github
