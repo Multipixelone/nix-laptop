@@ -10,7 +10,7 @@
         printf "%s" "''${url}"
         # TODO negate this? I don't like having to have an else here
         if [ -z "''${WAYLAND_DISPLAY+x}" ]; then
-          continue;
+          return;
         else
           wl-copy "''${url}";
         fi

@@ -1,8 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./btop.nix
     ./bat.nix
@@ -14,10 +10,10 @@
   ];
 
   home.packages = with pkgs; [
-    (inputs.nixvim.legacyPackages."${system}".makeNixvimWithModule {
-      inherit pkgs;
-      module = ./vim;
-    })
+    # (inputs.nixvim.legacyPackages."${system}".makeNixvimWithModule {
+    #   inherit pkgs;
+    #   module = ./vim;
+    # })
     grc
     ripgrep
     nil
