@@ -10,7 +10,7 @@
   wineFlags ? "",
   pname ? "bookworm-adventures",
   location ? "$HOME/Games/bookworm-adventures",
-  tricks ? [],
+  tricks ? ["winxp"],
   wineDllOverrides ? ["powershell.exe=n"],
   preCommands ? "",
   postCommands ? "",
