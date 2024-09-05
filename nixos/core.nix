@@ -2,18 +2,22 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: {
   hardware.enableRedistributableFirmware = true;
   # Nix Stuff
+  age.secrets = {
+    "attic".file = "${inputs.secrets}/attic.age";
+  };
   nixpkgs.config.allowUnfree = true;
   nix.settings = {
     trusted-users = ["@wheel" "root" "nix-ssh"];
     auto-optimise-store = true;
     experimental-features = ["nix-command" "flakes"];
     substituters = [
-      # high prio
-      "http://link.bun-hexatonic.ts.net:8080/tunnel?priority=50"
+      # lowest priority (hit my cache last)
+      "https://attic-cache.fly.dev/system?priority=50"
       "https://cache.nixos.org"
 
       "https://helix.cachix.org"
@@ -22,9 +26,8 @@
       "https://nix-community.cachix.org"
       "https://nix-gaming.cachix.org"
     ];
-    trusted-substituters = ["http://link.bun-hexatonic.ts.net:8080/tunnel"];
     trusted-public-keys = [
-      "tunnel:iXswb4rlkeD2EdspWLUuZwykAz1e37hmW0KBrb91OrM="
+      "system:XwpCBI5UHFzt9tEmiq3v8S062HvTqWPUwBR8PoHSfSk="
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
 
       "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
@@ -33,6 +36,7 @@
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
     ];
+    netrc-file = config.age.secrets."attic".path;
   };
   # User
   users.users.tunnel = {
