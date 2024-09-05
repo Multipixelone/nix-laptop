@@ -75,7 +75,7 @@ jobs:
           sudo mkdir -p /etc/nix
           echo "machine attic-cache.fly.dev password ${{ secrets.ATTIC_KEY }}" | sudo tee /etc/nix/netrc > /dev/null
           git config --global url."https://${{ secrets.GH_TOKEN_FOR_UPDATES }}@github.com".insteadOf https://github.com
-      - name: Install Nix
+      - name: Install nix
         uses: DeterminateSystems/nix-installer-action@v13
         with:
           github-token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
@@ -85,7 +85,7 @@ jobs:
             max-substitution-jobs = 128
             substituters = https://attic-cache.fly.dev/system?priority=50 https://cache.nixos.org/
             trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= system:XwpCBI5UHFzt9tEmiq3v8S062HvTqWPUwBR8PoHSfSk=
-      - name: Install SSH Key
+      - name: Install SSH key
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
