@@ -56,3 +56,37 @@ jobs:
       - uses: DeterminateSystems/magic-nix-cache-action@v7
       - name: Run flake check
         run: nix flake check
+  build:
+    name: build machines
+    runs-on: ubuntu-latest
+    needs: [check]
+    strategy:
+      matrix:
+        machine:
+          - host: zelda
+            platform: x86-64-linux
+          - host: link
+            platform: x86-64-linux
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - run: |
+          sudo mkdir -p /etc/nix
+          echo "machine https://attic-cache.fly.dev password ${{ secrets.ATTIC_TOKEN }}" | sudo tee /etc/nix/netrc > /dev/null
+          git config --global url."https://${{ secrets.GH_TOKEN_FOR_UPDATES }}@github.com".insteadOf https://github.com
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v13
+        with:
+          github-token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
+          extra-conf: |
+            fallback = true
+            http-connections = 128
+            max-substitution-jobs = 128
+            substituters = https://attic-cache.fly.dev/system?priority=50 https://cache.nixos.org/
+            trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= system:XwpCBI5UHFzt9tEmiq3v8S062HvTqWPUwBR8PoHSfSk=
+      - uses: DeterminateSystems/magic-nix-cache-action@v7
+      - name: Build and push system
+      - run: |
+          nix build .nixosConfigurations.${{ matrix.machine.host }}.config.system.build.toplevel
+          nix run github:zhaofengli/attic#default login fly https://attic-cache.fly.dev ${{ secrets.ATTIC_KEY }}
+          nix run github:zhaofengli/attic#default push system result -j 3
