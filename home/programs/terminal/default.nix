@@ -1,4 +1,16 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
+}: let
+  # wrap secret into gh cli
+  gh-wrapped = pkgs.writeShellScriptBin "gh" ''
+    export GITHUB_TOKEN=$(cat ${config.age.secrets."gh".path})
+    ${lib.getExe pkgs.gh} $@
+  '';
+in {
   imports = [
     ./btop.nix
     ./bat.nix
@@ -8,7 +20,11 @@
     ./helix.nix
     ./shell-script.nix
   ];
-
+  age.secrets = {
+    "gh" = {
+      file = "${inputs.secrets}/github/ghcli.age";
+    };
+  };
   home.packages = with pkgs; [
     # (inputs.nixvim.legacyPackages."${system}".makeNixvimWithModule {
     #   inherit pkgs;
@@ -26,6 +42,10 @@
     fd.enable = true;
     lazygit.enable = true;
     jq.enable = true;
+    gh = {
+      enable = true;
+      package = gh-wrapped;
+    };
     zoxide = {
       enable = true;
       enableFishIntegration = true;
