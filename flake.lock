@@ -3723,11 +3723,11 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1725376061,
-        "narHash": "sha256-Tav4cgGcWV7CVk3De9z5tEchWWVuJFqHG2G5rBw0x9I=",
+        "lastModified": 1725544164,
+        "narHash": "sha256-nRLPGMDSbi0eAgvOFo/OMwyHYHX2d3rMcfyFe1GvJWI=",
         "ref": "refs/heads/main",
-        "rev": "4e00b1cfd0d0b9d5a59a555817d3d57be55a0868",
-        "revCount": 23,
+        "rev": "3d8046b03387fbe4b711ad2151a0c31fb824cd20",
+        "revCount": 24,
         "type": "git",
         "url": "ssh://git@github.com/Multipixelone/nix-secrets.git"
       },

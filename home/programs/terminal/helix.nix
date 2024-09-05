@@ -22,7 +22,7 @@ in {
   home.packages = packages;
   age.secrets = {
     "copilot" = {
-      file = "${inputs.secrets}/copilot.age";
+      file = "${inputs.secrets}/github/copilot.age";
     };
   };
   programs.helix = {
