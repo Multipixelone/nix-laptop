@@ -86,7 +86,7 @@ jobs:
             trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= system:XwpCBI5UHFzt9tEmiq3v8S062HvTqWPUwBR8PoHSfSk=
       - uses: DeterminateSystems/magic-nix-cache-action@v7
       - name: Build and push system
-      - run: |
+        run: |
           nix build .nixosConfigurations.${{ matrix.machine.host }}.config.system.build.toplevel
           nix run github:zhaofengli/attic#default login fly https://attic-cache.fly.dev ${{ secrets.ATTIC_KEY }}
           nix run github:zhaofengli/attic#default push system result -j 3
