@@ -3,7 +3,6 @@
   makeDesktopItem,
   symlinkJoin,
   writeShellScriptBin,
-  mangohud,
   winetricks,
   umu,
   proton ? "GE-Proton",
@@ -14,8 +13,6 @@
   wineDllOverrides ? ["powershell.exe=n"],
   preCommands ? "",
   postCommands ? "",
-  enableGlCache ? true,
-  glCacheSize ? 1073741824,
   pkgs,
 }: let
   src = pkgs.fetchzip {
@@ -39,19 +36,6 @@
     # ID for umu, not used for now
     export GAMEID="umu-3470"
     export STORE="none"
-    # Anti-cheat
-    export EOS_USE_ANTICHEATCLIENTNULL=1
-    # Nvidia tweaks
-    export WINE_HIDE_NVIDIA_GPU=1
-    export __GL_SHADER_DISK_CACHE=${
-      if enableGlCache
-      then "1"
-      else "0"
-    }
-    export __GL_SHADER_DISK_CACHE_SIZE=${toString glCacheSize}
-    export WINE_HIDE_NVIDIA_GPU=1
-    # AMD
-    export dual_color_blend_by_location=1
 
     PATH=${lib.makeBinPath [umu winetricks]}:$PATH
     USER="$(whoami)"
@@ -72,7 +56,7 @@
 
     ${preCommands}
 
-    ${mangohud}/bin/mangohud umu-run ${wineFlags} "$GAME_BIN" "$@"
+    umu-run ${wineFlags} "$GAME_BIN" "$@"
 
     ${postCommands}
   '';
