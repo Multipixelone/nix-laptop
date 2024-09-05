@@ -7,7 +7,7 @@
     "attic".file = "${inputs.secrets}/attic.age";
   };
   services.atticd = {
-    enable = true;
+    enable = false;
 
     # Replace with absolute path to your credentials file
     credentialsFile = "${config.age.secrets."attic".path}";
