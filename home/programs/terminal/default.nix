@@ -37,6 +37,7 @@ in {
     restic
     attic-client
     kubectl
+    flyctl
   ];
   programs = {
     fd.enable = true;
