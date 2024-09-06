@@ -39,7 +39,7 @@
 
     PATH=${lib.makeBinPath [umu winetricks]}:$PATH
     USER="$(whoami)"
-    GAME_PATH="$WINEPREFIX/drive_c/Games/Bookworm Adventures Deluxe"
+    GAME_PATH="$WINEPREFIX/drive_c/Program Files (x86)/Bookworm Adventures Deluxe"
     GAME_BIN="$GAME_PATH/BookwormAdventures.exe"
 
     if [ ! -d "$WINEPREFIX" ]; then
@@ -49,7 +49,7 @@
 
       # install launcher
       # Copy source folder into drive_c/Games
-      cp -r "${src}/Bookworm Adventures Deluxe" "$WINEPREFIX/drive_c/Games/"
+      cp -r "${src}/Bookworm Adventures Deluxe" "$WINEPREFIX/drive_c/Program Files (x86)/"
     fi
 
     cd $WINEPREFIX
