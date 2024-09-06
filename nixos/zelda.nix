@@ -7,12 +7,12 @@
 }: {
   imports = [
     ./desktop.nix
-    inputs.nixos-hardware.nixosModules.dell-xps-15-9560
+    inputs.nix-hardware.nixosModules.dell-xps-15-9560
   ];
   specialisation = {
     nvidia-sync.configuration = {
       imports = [
-        inputs.nixos-hardware.nixosModules.dell-xps-15-9560-nvidia
+        inputs.nix-hardware.nixosModules.dell-xps-15-9560-nvidia
       ];
       hardware.nvidia = {
         open = false;
