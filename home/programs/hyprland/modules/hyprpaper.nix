@@ -55,7 +55,10 @@
 in {
   wayland.windowManager.hyprland.settings = {
     # this is so jank i want to explode
-    exec-once = [(lib.getExe wallpaper-set-zelda) (lib.getExe wallpaper-set-link)];
+    monitor-scripts = lib.mkMerge [
+      (lib.mkIf (osConfig.networking.hostName == "link") {exec-once = lib.getExe wallpaper-set-link;})
+      (lib.mkIf (osConfig.networking.hostName == "zelda") {exec-once = lib.getExe wallpaper-set-zelda;})
+    ];
   };
   systemd.user.services.swww = lib.mkIf (osConfig.networking.hostName == "link") {
     Unit = {
