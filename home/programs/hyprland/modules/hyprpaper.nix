@@ -25,7 +25,7 @@ in {
   wayland.windowManager.hyprland.settings = {
     exec-once = [(lib.getExe wallpaper-set-link) (lib.getExe wallpaper-set-zelda)];
   };
-  systemd.user.services.swww = {
+  systemd.user.services.swww = lib.mkIf (osConfig.networking.hostName == "link") {
     Unit = {
       Description = "swww wallpaper daemon";
       PartOf = ["graphical-session.target"];
