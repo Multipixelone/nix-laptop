@@ -13,7 +13,6 @@
   pname ? "gw2",
   location ? "$HOME/Games/cities-skylines-ii",
   exe,
-  tricks ? [],
   wineDllOverrides ? ["powershell.exe=n"],
   preCommands ? "",
   postCommands ? "",
@@ -21,18 +20,8 @@
   glCacheSize ? 1073741824,
   pkgs,
 }: let
-  version = "1.6.10";
-  src = pkgs.fetchurl {
-    url = "https://install.robertsspaceindustries.com/star-citizen/RSI-Setup-${version}.exe";
-    name = "RSI-Setup-${version}.exe";
-    hash = "sha256-axttJvw3MFmhLC4e+aqtf4qx0Z0x4vz78LElyGkMAbs=";
-  };
 
   # concat winetricks args
-  tricksFmt = with builtins;
-    if (length tricks) > 0
-    then concatStringsSep " " tricks
-    else "-V";
 
   script = writeShellScriptBin pname ''
     export WINEARCH="win64"

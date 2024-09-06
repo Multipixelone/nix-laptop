@@ -110,7 +110,6 @@
   outputs = inputs @ {
     nixpkgs,
     home-manager,
-    nixos-hardware,
     stylix,
     agenix,
     chaotic,

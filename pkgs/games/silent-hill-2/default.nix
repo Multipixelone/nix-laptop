@@ -8,7 +8,6 @@
   winetricks,
   umu,
   proton ? "GE-Proton",
-  dxvk,
   wineFlags ? "",
   pname ? "silent-hill-2",
   location ? "$HOME/Games/silent-hill-2",
