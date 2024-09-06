@@ -75,7 +75,7 @@ jobs:
         run: nix flake check
   build:
     name: build machines
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: [check]
     strategy:
       fail-fast: false
