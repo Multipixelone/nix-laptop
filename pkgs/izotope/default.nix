@@ -15,9 +15,7 @@
   glCacheSize ? 1073741824,
   pkgs,
 }: let
-
   # concat winetricks args
-
   script = writeShellScriptBin pname ''
     export WINEARCH="win64"
     export WINEFSYNC=1
