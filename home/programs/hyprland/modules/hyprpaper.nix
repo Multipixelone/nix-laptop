@@ -23,7 +23,8 @@
   };
 in {
   wayland.windowManager.hyprland.settings = {
-    exec-once = [(lib.getExe wallpaper-set-link) (lib.getExe wallpaper-set-zelda)];
+    # this is so jank i want to explode
+    exec-once = [(lib.getExe wallpaper-set-zelda) (lib.getExe wallpaper-set-link)];
   };
   systemd.user.services.swww = lib.mkIf (osConfig.networking.hostName == "link") {
     Unit = {
