@@ -98,7 +98,7 @@ jobs:
           nix run github:zhaofengli/attic#default login fly https://attic-cache.fly.dev ${{ secrets.ATTIC_KEY }}
       - name: Build system
         run: |
-          nix build .#nixosConfigurations.${{ matrix.machine.host }}.config.system.build.toplevel
+          nix run github:Mic92/nix-fast-build -- --max-jobs 1 --no-nom --retries 3 --skip-cached --eval-max-memory-size 1024 --eval-workers 1 --flake .#nixosConfigurations.${{ matrix.machine.host }}.config.system.build.toplevel
       - name: Push system
         run: |
           nix run github:zhaofengli/attic#default push system result -j 3
