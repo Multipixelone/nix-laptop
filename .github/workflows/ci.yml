@@ -77,8 +77,8 @@ jobs:
     name: build machines
     runs-on: ubuntu-latest
     needs: [check]
-    fail-fast: true
     strategy:
+      fail-fast: false
       matrix:
         machine:
           - host: zelda
