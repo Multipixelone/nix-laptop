@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 jobs:
   format:
-    name: nix alejandra format
+    name: format code
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     permissions:
@@ -52,7 +52,7 @@ jobs:
           nix run \
             'nixpkgs#deadnix' -- -_ -f .
   check:
-    name: nix flake check
+    name: evaluate flake
     runs-on: ubuntu-latest
     permissions:
       id-token: 'write'
