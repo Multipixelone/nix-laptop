@@ -83,6 +83,9 @@ jobs:
             fallback = true
             http-connections = 128
             max-substitution-jobs = 128
+            connect-timeout = 15
+            stalled-download-timeout = 15
+            download-attempts = 100
             substituters = https://attic-cache.fly.dev/system?priority=50 https://cache.nixos.org/
             trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= system:XwpCBI5UHFzt9tEmiq3v8S062HvTqWPUwBR8PoHSfSk=
       - name: Install SSH key
