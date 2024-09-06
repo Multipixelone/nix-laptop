@@ -77,7 +77,7 @@ jobs:
     name: build machines
     runs-on: ubuntu-latest
     timeout-minutes: 45
-    needs: [check, deadnix]
+    needs: [check]
     strategy:
       matrix:
         machine:
