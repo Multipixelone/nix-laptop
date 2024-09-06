@@ -34,6 +34,23 @@ jobs:
           commit_message: '⚙️ style: format ${{ steps.rev.outputs.rev }}'
           branch: main
           commit_options: '--no-verify --signoff'
+  deadnix:
+    name: check for unused code
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install Nix
+        uses: cachix/install-nix-action@v27
+        with:
+          extra_nix_config: |
+            auto-optimise-store = true
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+      - name: Check for unused code
+        run: |
+          nix run \
+            'nixpkgs#deadnix' -- -_ -f .
   check:
     name: nix flake check
     runs-on: ubuntu-latest
