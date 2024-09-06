@@ -16,9 +16,9 @@
   };
   wallpaper-set-zelda = pkgs.writeShellApplication {
     name = "wallpaper-set";
-    runtimeInputs = [pkgs.swww osConfig.programs.hyprland.package];
+    runtimeInputs = [pkgs.wbg];
     text = ''
-      swww img -o eDP-1 --transition-type random --transition-pos "$(hyprctl cursorpos)" --transition-duration 3 ${config.theme.wallpaper}
+      wbg ${config.theme.wallpaper}
     '';
   };
 in {
