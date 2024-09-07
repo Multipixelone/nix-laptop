@@ -145,7 +145,7 @@ in {
       };
       general = {
         allow_tearing = true;
-        border_size = 3;
+        border_size = 0;
         gaps_in = 4;
         gaps_out = 6;
         gaps_workspaces = 20;
