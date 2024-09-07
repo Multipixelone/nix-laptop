@@ -38,6 +38,7 @@ in {
     attic-client
     kubectl
     flyctl
+    unzip
   ];
   programs = {
     fd.enable = true;
