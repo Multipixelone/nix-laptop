@@ -39,6 +39,7 @@ in {
     kubectl
     flyctl
     unzip
+    p7zip
   ];
   programs = {
     fd.enable = true;
