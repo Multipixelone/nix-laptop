@@ -43,6 +43,7 @@
     qalculate-gtk
     piper
     waypipe
+    filezilla
   ];
   services.udiskie = {
     enable = true;
