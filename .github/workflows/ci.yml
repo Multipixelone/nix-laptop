@@ -139,7 +139,7 @@ jobs:
       - uses: DeterminateSystems/magic-nix-cache-action@v7
       - name: Login to attic
         run: |
-          nix run github:zhaofengli/attic#default login fly https://attic-cache.fly.dev ${{ secrets.ATTIC_KEY }}
+          nix run nixpkgs#attic-client login fly https://attic-cache.fly.dev ${{ secrets.ATTIC_KEY }}
       - name: Build system
         run: |
           # doesn't create a result folder if nothing built? maybe? I'm confused why this is failing
@@ -147,4 +147,4 @@ jobs:
           nix build .#nixosConfigurations.${{ matrix.machine.host }}.config.system.build.toplevel      
       - name: Push system
         run: |
-          nix run github:zhaofengli/attic#default push system result -j 3
+          nix run nixpkgs#attic-client push system result -j 3
