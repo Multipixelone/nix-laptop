@@ -16,6 +16,7 @@
   wl-paste = lib.getExe' pkgs.wl-clipboard "wl-paste";
   cliphist = lib.getExe pkgs.cliphist;
   foot-server = "${term} --server";
+  hyprdim = lib.getExe pkgs.hyprdim + " -d 400 -f 35";
   watch-clipboard = "${wl-paste} --type text --watch ${cliphist} store";
   watch-images = "${wl-paste} --type image --watch ${cliphist} store";
   cursor-theme = pkgs.fetchzip {
@@ -114,7 +115,7 @@ in {
         (lib.mkIf (osConfig.networking.hostName == "link") {monitor = ["DP-1,2560x1440@240,1200x0,1" "DP-3,1920x1200@60,0x0,1,transform,1"];})
         (lib.mkIf (osConfig.networking.hostName == "zelda") {monitor = [",highres,auto,2"];})
       ];
-      exec-once = [polkit waybar swayosd-server pypr foot-server watch-clipboard watch-images gs-indicator];
+      exec-once = [polkit waybar swayosd-server pypr foot-server watch-clipboard watch-images gs-indicator hyprdim];
       debug.disable_logs = false;
       decoration = {
         rounding = "10";
