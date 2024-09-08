@@ -16,7 +16,6 @@
     ];
 
   home.packages = with pkgs; [
-    vscode
     obsidian
     anki
     gimp
