@@ -3,7 +3,7 @@
 in {
   services.gammastep = {
     enable = true;
-    tray = false;
+    tray = true;
     temperature = {
       day = 6500;
       night = 4000;
