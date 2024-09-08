@@ -23,6 +23,7 @@
     attic.url = "github:zhaofengli/attic";
     geospatial.url = "github:Multipixelone/geospatial-nix";
     helix.url = "github:helix-editor/helix";
+    nixcord.url = "github:kaylorben/nixcord";
     photogimp = {
       url = "github:Diolinux/PhotoGIMP";
       flake = false;

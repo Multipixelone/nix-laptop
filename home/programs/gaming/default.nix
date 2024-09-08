@@ -18,7 +18,6 @@ in {
     ];
   home.packages = with pkgs; [
     gamescope
-    discord
     lutris
     gamemode
     steamtinkerlaunch

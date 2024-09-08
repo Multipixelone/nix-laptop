@@ -2551,6 +2551,21 @@
         "type": "github"
       }
     },
+    "nixcord": {
+      "locked": {
+        "lastModified": 1724998008,
+        "narHash": "sha256-smYddeVMcAIS3RcNV3R1Eiw5BTAfVL/g/DRQ0efeogU=",
+        "owner": "kaylorben",
+        "repo": "nixcord",
+        "rev": "a95d069c908ab9a5d1ddc8ad99da39f2997d39a6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kaylorben",
+        "repo": "nixcord",
+        "type": "github"
+      }
+    },
     "nixd": {
       "inputs": {
         "flake-parts": "flake-parts_6",
@@ -3594,6 +3609,7 @@
         "nix-gaming": "nix-gaming",
         "nix-hardware": "nix-hardware",
         "nix-index-database": "nix-index-database",
+        "nixcord": "nixcord",
         "nixos-generators": "nixos-generators",
         "nixpkgs": "nixpkgs_11",
         "nixpkgs-unstable": "nixpkgs-unstable",

@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./foot.nix
+    ./discord.nix
   ];
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
