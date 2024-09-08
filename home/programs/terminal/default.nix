@@ -31,7 +31,6 @@ in {
     #   module = ./vim;
     # })
     grc
-    ripgrep
     nil
     nom
     restic
@@ -48,6 +47,7 @@ in {
     yt-dlp.enable = true;
     navi.enable = true;
     aria2.enable = true;
+    ripgrep.enable = true;
     gh = {
       enable = true;
       package = gh-wrapped;
