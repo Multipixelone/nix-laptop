@@ -18,6 +18,7 @@
     strawberry
     plexamp
     imv
+    ffmpeg
     # FIX qt doesn't honor QT_QPA_PLATFORM if DISPLAY is set??
     (pkgs.symlinkJoin {
       name = "vlc";
