@@ -175,6 +175,9 @@ in {
         direct_scanout = true;
         explicit_sync = true;
       };
+      cursor = {
+        inactive_timeout = "7";
+      };
       input = {
         accel_profile = "flat";
         touchpad = {
