@@ -1,11 +1,18 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
 }: {
   imports = [
     ./wallpaper.nix
+    inputs.catppuccin.homeManagerModules.catppuccin
   ];
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+    accent = "mauve";
+  };
   stylix.targets = {
     waybar.enable = false;
     kde.enable = false;
@@ -13,14 +20,8 @@
   };
   gtk = {
     enable = true;
-    theme = lib.mkForce {
-      name = "Catppuccin-Mocha-Compact-Mauve-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = ["mauve"];
-        tweaks = ["rimless"];
-        size = "compact";
-        variant = "mocha";
-      };
+    catppuccin = {
+      enable = true;
     };
     iconTheme = lib.mkForce {
       package = pkgs.catppuccin-papirus-folders;
@@ -44,13 +45,10 @@
   };
   qt = {
     enable = true;
-    platformTheme.name = "qt5ct";
+    platformTheme.name = "kvantum";
     style = {
-      name = "Catppuccin-Mocha-Dark";
-      package = pkgs.catppuccin-kde.override {
-        flavour = ["mocha"];
-        accents = ["mauve"];
-      };
+      name = "kvantum";
+      catppuccin.enable = true;
     };
   };
   home.packages = with pkgs; [

@@ -17,6 +17,7 @@
     nurpkgs.url = "github:nix-community/NUR";
     musnix.url = "github:musnix/musnix";
     stylix.url = "github:danth/stylix";
+    catppuccin.url = "github:catppuccin/nix";
     nix-gaming.url = "github:fufexan/nix-gaming";
     nix-hardware.url = "github:NixOS/nixos-hardware/master";
     attic.url = "github:zhaofengli/attic";

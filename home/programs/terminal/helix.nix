@@ -31,7 +31,6 @@ in {
     package = inputs.helix.packages.${pkgs.system}.default;
     extraPackages = packages;
     settings = {
-      theme = "catppuccin_mocha";
       editor = {
         line-number = "relative";
         auto-format = true;

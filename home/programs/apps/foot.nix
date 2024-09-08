@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  stylix.targets.foot.enable = true;
+  stylix.targets.foot.enable = false;
   programs.foot = {
     enable = true;
     server.enable = true;
@@ -12,6 +12,7 @@
         box-drawings-uses-font-glyphs = "yes";
         pad = "4x4 center";
         selection-target = "clipboard";
+        font = "PragmataPro Mono Liga:size=11";
       };
       desktop-notifications.command = "${lib.getExe pkgs.libnotify} -a \${app-id} -i \${app-id} \${title} \${body}";
       scrollback = {

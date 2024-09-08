@@ -253,6 +253,21 @@
       }
     },
     "catppuccin": {
+      "locked": {
+        "lastModified": 1725509983,
+        "narHash": "sha256-NHCgHVqumPraFJnLrkanoLDuhOoUHUvRhvp/RIHJR+A=",
+        "owner": "catppuccin",
+        "repo": "nix",
+        "rev": "45745fe5960acaefef2b60f3455bcac6a0ca6bc9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "nix",
+        "type": "github"
+      }
+    },
+    "catppuccin_2": {
       "flake": false,
       "locked": {
         "lastModified": 1715167632,
@@ -2222,7 +2237,7 @@
     "neovim-flake": {
       "inputs": {
         "bufdelete-nvim": "bufdelete-nvim",
-        "catppuccin": "catppuccin",
+        "catppuccin": "catppuccin_2",
         "cellular-automaton": "cellular-automaton",
         "cmp-buffer": "cmp-buffer",
         "cmp-nvim-lsp": "cmp-nvim-lsp",
@@ -3563,6 +3578,7 @@
         "anyrun": "anyrun",
         "anyrun-nixos-options": "anyrun-nixos-options",
         "attic": "attic",
+        "catppuccin": "catppuccin",
         "chaotic": "chaotic",
         "geospatial": "geospatial",
         "gvolpe-zoom": "gvolpe-zoom",
