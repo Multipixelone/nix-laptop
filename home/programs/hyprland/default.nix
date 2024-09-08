@@ -177,6 +177,7 @@ in {
       };
       cursor = {
         inactive_timeout = "7";
+        persistent_warps = true;
       };
       input = {
         accel_profile = "flat";
