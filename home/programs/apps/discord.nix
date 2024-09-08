@@ -9,6 +9,7 @@
   programs.nixcord = {
     enable = true;
     config = {
+      frameless = true;
       themeLinks = [
         "https://catppuccin.github.io/discord/dist/catppuccin-${config.catppuccin.flavor}-${config.catppuccin.accent}.theme.css"
       ];
