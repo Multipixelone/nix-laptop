@@ -55,6 +55,6 @@
         file_manager = lib.getExe pkgs.mimeo;
       };
     };
-    tray = "always";
+    tray = "auto";
   };
 }
