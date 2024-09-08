@@ -50,6 +50,7 @@ in {
     QT_QPA_PLATFORM = "wayland";
     SDL_VIDEODRIVER = "wayland";
     XDG_SESSION_TYPE = "wayland";
+    QT_AUTO_SCREEN_SCALE_FACTOR = 1;
   };
   wayland.windowManager.hyprland = {
     enable = true;
