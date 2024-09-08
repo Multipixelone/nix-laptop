@@ -51,6 +51,9 @@
     enable = true;
     powertop.enable = true;
   };
+  services = {
+    thermald.enable = true;
+  };
   # Syncthing
   services.syncthing = {
     enable = true;
