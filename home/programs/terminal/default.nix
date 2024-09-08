@@ -45,6 +45,7 @@ in {
     fd.enable = true;
     lazygit.enable = true;
     jq.enable = true;
+    yt-dlp.enable = true;
     gh = {
       enable = true;
       package = gh-wrapped;
