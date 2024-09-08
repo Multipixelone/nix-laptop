@@ -81,6 +81,9 @@
     };
     consoleLogLevel = 3;
     initrd.verbose = false;
+    kernel.sysctl = {
+      "kernel.nmi_watchdog" = 0;
+    };
     kernelParams = [
       "quiet"
       "splash"
