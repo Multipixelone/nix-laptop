@@ -93,7 +93,6 @@ in {
   home = {
     sessionVariables.BROWSER = "firefox";
     packages = with pkgs; [
-      chromium
       profile-sync-daemon
     ];
   };
@@ -106,6 +105,9 @@ in {
       "x-scheme-handler/about" = ["firefox.desktop"];
       "x-scheme-handler/unknown" = ["firefox.desktop"];
     };
+  };
+  programs.chromium = {
+    enable = true;
   };
   programs.firefox = {
     enable = true;
