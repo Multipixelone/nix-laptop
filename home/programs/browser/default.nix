@@ -108,6 +108,7 @@ in {
   };
   programs.chromium = {
     enable = true;
+    package = pkgs.ungoogled-chromium;
   };
   programs.firefox = {
     enable = true;
