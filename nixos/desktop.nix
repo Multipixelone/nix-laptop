@@ -11,6 +11,7 @@
     ./modules/media.nix
     inputs.nix-gaming.nixosModules.pipewireLowLatency
     inputs.nix-gaming.nixosModules.platformOptimizations
+    inputs.catppuccin.nixosModules.catppuccin
   ];
   environment.systemPackages = with pkgs; [
     yubikey-personalization
@@ -74,10 +75,15 @@
   #   # scheduler = "scx_rustland";
   # };
   boot = {
-    plymouth.enable = false;
+    plymouth = {
+      enable = true;
+      catppuccin.enable = true;
+    };
     consoleLogLevel = 3;
     initrd.verbose = false;
     kernelParams = [
+      "quiet"
+      "splash"
       "rd.udev.log_level=3"
       "udev.log_priority=3"
       "boot.shell_on_fail"
