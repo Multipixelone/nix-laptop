@@ -67,7 +67,12 @@ in {
     };
     eza = {
       enable = true;
+      git = true;
+      icons = true;
       enableFishIntegration = true;
+      extraOptions = [
+        "--color=auto"
+      ];
     };
     fzf = {
       enable = true;
