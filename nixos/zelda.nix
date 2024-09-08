@@ -46,6 +46,11 @@
       };
     };
   };
+  # power management stuff
+  powerManagement = {
+    enable = true;
+    powertop.enable = true;
+  };
   # Syncthing
   services.syncthing = {
     enable = true;
