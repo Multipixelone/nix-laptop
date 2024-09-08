@@ -63,15 +63,6 @@ in {
       variables = ["--all"];
     };
     extraConfig = ''
-      env = XDG_SCREENSHOTS_DIR,/home/tunnel/Pictures/Screenshots
-      env = QT_QPA_PLATFORMTHEME,qt5ct
-      env = XCURSOR_SIZE,32
-      env = XDG_CURRENT_DESKTOP,Hyprland
-      env = XDG_SESSION_DESKTOP,Hyprland
-      env = MOZ_ENABLE_WAYLAND,1
-      env = HYPRCURSOR_THEME,Posy_Cursor_Black_h
-      env = HYPRCURSOR_SIZE,24
-
       # ripped from https://github.com/end-4/dots-hyprland/blob/b69f7cebe302dfcb2cdd1c83d87ab27f2c457c09/.config/hypr/hyprland/general.conf
       animations {
           enabled = true
@@ -117,6 +108,16 @@ in {
       ];
       exec-once = [polkit waybar swayosd-server pypr watch-clipboard watch-images hyprdim];
       debug.disable_logs = false;
+      env = [
+        "XDG_SCREENSHOTS_DIR,/home/tunnel/Pictures/Screenshots"
+        "QT_QPA_PLATFORMTHEME,qt5ct"
+        "XCURSOR_SIZE,32"
+        "XDG_CURRENT_DESKTOP,Hyprland"
+        "XDG_SESSION_DESKTOP,Hyprland"
+        "MOZ_ENABLE_WAYLAND,1"
+        "HYPRCURSOR_THEME,Posy_Cursor_Black_h"
+        "HYPRCURSOR_SIZE,24"
+      ];
       decoration = {
         rounding = "10";
         shadow_offset = "1 3";
