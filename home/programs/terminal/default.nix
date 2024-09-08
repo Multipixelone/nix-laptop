@@ -47,6 +47,7 @@ in {
     jq.enable = true;
     yt-dlp.enable = true;
     navi.enable = true;
+    aria2.enable = true;
     gh = {
       enable = true;
       package = gh-wrapped;
