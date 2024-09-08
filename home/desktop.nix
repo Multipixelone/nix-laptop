@@ -28,6 +28,7 @@
     ./programs/latex/default.nix
     ./programs/browser/default.nix
     ./programs/theming/default.nix
+    ./programs/email/default.nix
     ./programs/mimeo
     inputs.agenix.homeManagerModules.default
     ./modules/theme
