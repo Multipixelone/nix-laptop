@@ -46,6 +46,7 @@ in {
     lazygit.enable = true;
     jq.enable = true;
     yt-dlp.enable = true;
+    navi.enable = true;
     gh = {
       enable = true;
       package = gh-wrapped;
