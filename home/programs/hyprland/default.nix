@@ -46,6 +46,11 @@ in {
   };
   # TODO reorganize all of this and make it cleaner
   # TODO move all env def into session vars
+  home.sessionVariables = {
+    QT_QPA_PLATFORM = "wayland";
+    SDL_VIDEODRIVER = "wayland";
+    XDG_SESSION_TYPE = "wayland";
+  };
   wayland.windowManager.hyprland = {
     enable = true;
     package = osConfig.programs.hyprland.package;
@@ -59,11 +64,9 @@ in {
     };
     extraConfig = ''
       env = XDG_SCREENSHOTS_DIR,/home/tunnel/Pictures/Screenshots
-      env = QT_QPA_PLATFORM,wayland
       env = QT_QPA_PLATFORMTHEME,qt5ct
       env = XCURSOR_SIZE,32
       env = XDG_CURRENT_DESKTOP,Hyprland
-      env = XDG_SESSION_TYPE,wayland
       env = XDG_SESSION_DESKTOP,Hyprland
       env = MOZ_ENABLE_WAYLAND,1
       env = HYPRCURSOR_THEME,Posy_Cursor_Black_h
