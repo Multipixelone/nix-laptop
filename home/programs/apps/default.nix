@@ -19,6 +19,5 @@
     obsidian
     anki
     gimp
-    _1password-gui
   ];
 }

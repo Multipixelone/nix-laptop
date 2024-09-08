@@ -38,7 +38,6 @@
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
     # Apps
-    _1password
     moonlight-qt
     inputs.gvolpe-zoom.out.pkgs.zoom-us
     qalculate-gtk

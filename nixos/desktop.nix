@@ -143,6 +143,7 @@
     wireshark.enable = true;
     nm-applet.enable = true;
     virt-manager.enable = true;
+    _1password-gui.enable = true;
     hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
