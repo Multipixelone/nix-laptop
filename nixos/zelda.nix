@@ -32,6 +32,9 @@
       kernelModules = [];
     };
     kernelModules = ["kvm-intel"];
+    extraModprobeConfig = ''
+      options snd_hda_intel power_save=5
+    '';
     extraModulePackages = [];
     loader = {
       systemd-boot.enable = true;
