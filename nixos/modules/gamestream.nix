@@ -19,9 +19,17 @@
     pkgs.runCommand "${lib.nameFromURL url "."}.png" {} ''${pkgs.imagemagick}/bin/convert ${image} -background none -gravity center -extent 600x800 $out'';
   # monitor prep command
   prep = let
+    packages = [
+      pkgs.findutils
+      pkgs.gawk
+      pkgs.coreutils
+      pkgs.procps
+      pkgs.curl
+      config.programs.hyprland.package
+    ];
     do-command = pkgs.writeShellApplication {
       name = "do-command";
-      runtimeInputs = [pkgs.findutils pkgs.gawk pkgs.coreutils pkgs.procps pkgs.curl config.programs.hyprland.package];
+      runtimeInputs = packages;
 
       text = ''
         HYPRLAND_INSTANCE_SIGNATURE=$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)
@@ -40,7 +48,7 @@
     };
     undo-command = pkgs.writeShellApplication {
       name = "undo-command";
-      runtimeInputs = [pkgs.findutils pkgs.gawk pkgs.coreutils pkgs.curl config.programs.hyprland.package];
+      runtimeInputs = packages;
 
       text = ''
         HYPRLAND_INSTANCE_SIGNATURE=$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)
