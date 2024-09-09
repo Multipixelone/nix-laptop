@@ -4,7 +4,7 @@
   symlinkJoin,
   writeShellScriptBin,
   winetricks,
-  umu,
+  wine,
   proton ? "GE-Proton",
   wineFlags ? "",
   pname ? "bookworm-adventures",
@@ -37,9 +37,9 @@
     export GAMEID="umu-3470"
     export STORE="none"
 
-    PATH=${lib.makeBinPath [umu winetricks]}:$PATH
+    PATH=${lib.makeBinPath [wine winetricks]}:$PATH
     USER="$(whoami)"
-    GAME_PATH="$WINEPREFIX/drive_c/Program Files (x86)/Bookworm Adventures Deluxe"
+    GAME_PATH="$WINEPREFIX/drive_c/Program Files/Bookworm Adventures Deluxe"
     GAME_BIN="$GAME_PATH/BookwormAdventures.exe"
 
     if [ ! -d "$WINEPREFIX" ]; then
@@ -49,14 +49,15 @@
 
       # install launcher
       # Copy source folder into drive_c/Games
-      cp -r "${src}/Bookworm Adventures Deluxe" "$WINEPREFIX/drive_c/Program Files (x86)/"
+      cp -r "${src}/Bookworm Adventures Deluxe" "$WINEPREFIX/drive_c/Program Files"
     fi
 
     cd $WINEPREFIX
 
     ${preCommands}
 
-    umu-run ${wineFlags} "$GAME_BIN" "$@"
+    cd $GAME_PATH
+    wine ${wineFlags} "$GAME_BIN" "$@"
 
     ${postCommands}
   '';
