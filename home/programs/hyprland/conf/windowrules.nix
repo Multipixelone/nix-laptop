@@ -25,6 +25,9 @@
       "idleinhibit focus, class:^(firefox)$, title:^(.*YouTube.*)$"
       "idleinhibit always, title:^(Zoom Meeting)$"
       "idleinhibit fullscreen, class:^(firefox)$"
+      # idle inhibit while pdf reader open
+      "idleinhibit always, class:^(org.kde.okular)$"
+      "idleinhibit always, class:^(org.pwmt.zathura)$"
 
       # float rules
       "float,class:^(Plexamp)$"
