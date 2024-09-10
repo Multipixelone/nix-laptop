@@ -31,7 +31,7 @@
 
       extraConfig = {
         core = {
-          editor = "nvim";
+          editor = "hx";
           whitespace = "fix,-indent-with-non-tab,trailing-space,cr-at-eol";
         };
         pull = {
