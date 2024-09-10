@@ -1,4 +1,5 @@
 <h1 align="center">finns ❄️ dots</h1>
+
 [![CI](https://github.com/Multipixelone/nix-laptop/actions/workflows/ci.yml/badge.svg)](https://github.com/Multipixelone/nix-laptop/actions/workflows/ci.yml)
 
 # About
