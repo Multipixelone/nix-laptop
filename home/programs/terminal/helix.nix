@@ -19,8 +19,6 @@
     wl-clipboard
     texlab
     latexrun
-    # prob don't need to pass whole tex env to this... biber fails when I add it though
-    texliveFull
   ];
 in {
   # also install packages to main environment
@@ -132,7 +130,8 @@ in {
             forwardSearchAfter = true;
             executable = "latexrun";
             args = [
-              "--bibtex-cmd biber"
+              "--bibtex-cmd"
+              "${pkgs.texliveFull}/bin/biber"
               "--latex-args=-synctex=1"
               "%f"
             ];
