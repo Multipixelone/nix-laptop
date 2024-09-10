@@ -18,7 +18,6 @@
     nodePackages.prettier
     wl-clipboard
     texlab
-    latexrun
   ];
 in {
   # also install packages to main environment
@@ -128,7 +127,7 @@ in {
           build = {
             onSave = true;
             forwardSearchAfter = true;
-            executable = "latexrun";
+            executable = lib.getExe pkgs.latexrun;
             args = [
               "--bibtex-cmd"
               "${pkgs.texliveFull}/bin/biber"
