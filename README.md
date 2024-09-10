@@ -11,3 +11,10 @@ this used to be my temporary flake just for setting up my laptop but my old flak
 this repo is absolutely **screaming** for a refactor and for a lot of the code to be reorganized and probably an addition of `flake-parts`. a lot of the machine detecting logic was poorly written and written before I realized how to be cognizant and write my own modules. Theres a lot of hardcoded `lib.mkIf` statements that check `config.networking.hostname` or `osConfig`
 
 once I get around to this, it will be a glorious day indeed.
+
+## Things I Think Are Cool
+
+- secrets are managed in a private repo and decrypted at runtime by `agenix`
+- restic backups to **OneDrive**
+- packages are built in a Github Action and pushed to an attic server running on **fly.io**
+- music syncing between computers and a script to download my playlists on a timer
