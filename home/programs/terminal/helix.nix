@@ -60,15 +60,15 @@ in {
           separator = "";
           left = [
             "mode"
-            "diagnostics"
-            "version-control"
             "separator"
             "file-name"
+            "diagnostics"
             "file-modification-indicator"
             "read-only-indicator"
             "spinner"
           ];
           right = [
+            "version-control"
             "register"
             "file-encoding"
             "file-type"
