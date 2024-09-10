@@ -57,11 +57,12 @@ in {
           "diff"
         ];
         statusline = {
+          separator = "";
           left = [
             "mode"
-            "spacer"
             "diagnostics"
             "version-control"
+            "separator"
             "file-name"
             "file-modification-indicator"
             "read-only-indicator"
