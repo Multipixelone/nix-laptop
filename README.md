@@ -1,6 +1,7 @@
 <h1 align="center">finns ❄️ dots</h1>
 
 [![CI](https://github.com/Multipixelone/nix-laptop/actions/workflows/ci.yml/badge.svg)](https://github.com/Multipixelone/nix-laptop/actions/workflows/ci.yml)
+[![License](https://img.shields.io/github/license/Multipixelone/nix-laptop)](https://github.com/Multipixelone/nix-laptop/blob/master/LICENSE)
 
 # About
 
