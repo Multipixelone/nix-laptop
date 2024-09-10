@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/github/license/Multipixelone/nix-laptop)](https://github.com/Multipixelone/nix-laptop/blob/master/LICENSE)
 [![GitHub Language](https://img.shields.io/github/languages/top/Multipixelone/nix-laptop?color=c6a0f6)]
 
-# About
+## About
 
 this used to be my temporary flake just for setting up my laptop but my old flake had such poor code quality that this became my default one.
 
