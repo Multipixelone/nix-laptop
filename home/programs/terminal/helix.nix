@@ -16,6 +16,7 @@
     gpt-wrapped
     marksman
     nodePackages.prettier
+    wl-clipboard
     texlab
     latexrun
     # prob don't need to pass whole tex env to this... biber fails when I add it though
