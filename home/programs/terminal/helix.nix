@@ -16,6 +16,10 @@
     gpt-wrapped
     marksman
     nodePackages.prettier
+    texlab
+    latexrun
+    # prob don't need to pass whole tex env to this... biber fails when I add it though
+    texliveFull
   ];
 in {
   # also install packages to main environment
@@ -115,6 +119,31 @@ in {
           command = lib.getExe pkgs.nil;
           config.nil.formatting.command = ["${lib.getExe pkgs.alejandra}" "-q"];
         };
+        texlab.config.texlab = {
+          command = "texlab";
+          chktex = {
+            onOpenAndSave = true;
+            onEdit = true;
+          };
+          build = {
+            onSave = true;
+            forwardSearchAfter = true;
+            executable = "latexrun";
+            args = [
+              "--bibtex-cmd biber"
+              "--latex-args=-synctex=1"
+              "%f"
+            ];
+          };
+          forwardSearch = {
+            executable = "zathura";
+            args = [
+              "%p"
+              "--synctex-forward"
+              "%l:1:%f"
+            ];
+          };
+        };
       };
       language = [
         {
@@ -131,6 +160,11 @@ in {
             args = ["--stdin-filepath" "file.md"];
           };
           auto-format = true;
+        }
+        {
+          name = "latex";
+          file-types = ["tex"];
+          language-servers = ["texlab"];
         }
       ];
     };
