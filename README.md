@@ -4,7 +4,7 @@
 ![GitHub Language](https://img.shields.io/github/languages/top/Multipixelone/nix-laptop?color=c6a0f6)
 ![GitHub Code Size](https://img.shields.io/github/languages/code-size/Multipixelone/nix-laptop?color=fab387)
 [![CI](https://github.com/Multipixelone/nix-laptop/actions/workflows/ci.yml/badge.svg)](https://github.com/Multipixelone/nix-laptop/actions/workflows/ci.yml)
-[![License](https://img.shields.io/github/license/Multipixelone/nix-laptop)](https://github.com/Multipixelone/nix-laptop/blob/master/LICENSE)
+[![License](#a6e3a1https://img.shields.io/github/license/Multipixelone/nix-laptop?color=a6e3a1)](https://github.com/Multipixelone/nix-laptop/blob/master/LICENSE)
 
 ## About
 
