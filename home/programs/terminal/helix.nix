@@ -169,6 +169,7 @@ in {
           name = "latex";
           file-types = ["tex"];
           language-servers = ["texlab"];
+          text-width = 120;
         }
       ];
     };
