@@ -10,10 +10,17 @@
     export COPILOT_API_KEY=$(cat ${config.age.secrets."copilot".path})
     ${lib.getExe pkgs.helix-gpt} $@
   '';
+  # latexrun wrapped w/ args & copy synctex into root
+  latexrun-wrapped = pkgs.writeShellScriptBin "latexrun" ''
+    ${lib.getExe pkgs.latexrun} --bibtex-cmd "${pkgs.texliveFull}/bin/biber" --latex-args=-synctex=1 "$1"
+    SYNCTEX_FILE=$(find latex.out/ -name "*.synctex.gz")
+    cp $SYNCTEX_FILE .
+  '';
   packages = with pkgs; [
     nil
     alejandra
     gpt-wrapped
+    latexrun-wrapped
     marksman
     nodePackages.prettier
     wl-clipboard
@@ -127,17 +134,8 @@ in {
           build = {
             onSave = true;
             forwardSearchAfter = true;
-            executable = lib.getExe pkgs.latexrun;
-            args = [
-              # output files into root directory
-              # TODO: wrap latexrun into function to copy the synctex out of latex.out/
-              "-O"
-              "."
-              "--bibtex-cmd"
-              "${pkgs.texliveFull}/bin/biber"
-              "--latex-args=-synctex=1"
-              "%f"
-            ];
+            executable = lib.getExe latexrun-wrapped;
+            args = ["%f"];
           };
           forwardSearch = {
             executable = "zathura";
