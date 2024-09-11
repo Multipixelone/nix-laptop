@@ -1,9 +1,9 @@
 <h1 align="center">finns ❄️ dots</h1>
 
 [![built with nix](https://img.shields.io/static/v1?logo=nixos&logoColor=white&label=&message=Built%20with%20Nix&color=41439a)](https://builtwithnix.org)
+[![CI](https://github.com/Multipixelone/nix-laptop/actions/workflows/ci.yml/badge.svg)](https://github.com/Multipixelone/nix-laptop/actions/workflows/ci.yml)
 ![GitHub Language](https://img.shields.io/github/languages/top/Multipixelone/nix-laptop?color=c6a0f6)
 ![GitHub Code Size](https://img.shields.io/github/languages/code-size/Multipixelone/nix-laptop?color=fab387)
-[![CI](https://github.com/Multipixelone/nix-laptop/actions/workflows/ci.yml/badge.svg)](https://github.com/Multipixelone/nix-laptop/actions/workflows/ci.yml)
 [![License](https://img.shields.io/github/license/Multipixelone/nix-laptop?color=a6e3a1)](https://github.com/Multipixelone/nix-laptop/blob/master/LICENSE)
 
 ## About
