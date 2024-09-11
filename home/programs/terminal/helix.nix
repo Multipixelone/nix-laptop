@@ -129,6 +129,10 @@ in {
             forwardSearchAfter = true;
             executable = lib.getExe pkgs.latexrun;
             args = [
+              # output files into root directory
+              # TODO: wrap latexrun into function to copy the synctex out of latex.out/
+              "-O"
+              "."
               "--bibtex-cmd"
               "${pkgs.texliveFull}/bin/biber"
               "--latex-args=-synctex=1"
