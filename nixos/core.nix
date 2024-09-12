@@ -126,6 +126,7 @@
     fish.enable = true;
     mosh.enable = true;
     nix-ld.enable = true;
+    appimage.binfmt = true;
     nh = {
       enable = true;
       clean.enable = true;

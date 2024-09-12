@@ -22,7 +22,6 @@
     # TODO fix latency flex
     # inputs.chaotic.packages.${pkgs.system}.latencyflex-vulkan
     xdg-utils
-    appimage-run
     pyprland
     libsmbios
     papirus-icon-theme
