@@ -95,11 +95,11 @@
       mopidy-mpris
       mopidy-scrobbler
       mopidy-local
-      (callPackage ../../../pkgs/mopidy/spotify.nix {})
+      # (callPackage ../../../pkgs/mopidy/spotify.nix {})
     ];
     extraConfigFiles = [
       "${config.age.secrets."scrobblehome".path}"
-      "${config.age.secrets."spotify".path}"
+      # "${config.age.secrets."spotify".path}"
     ];
     settings = {
       local = {
