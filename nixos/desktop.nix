@@ -9,6 +9,7 @@
     ./modules/backup.nix
     ./modules/security.nix
     ./modules/media.nix
+    ./modules/nix-ld.nix
     inputs.nix-gaming.nixosModules.pipewireLowLatency
     inputs.nix-gaming.nixosModules.platformOptimizations
     inputs.catppuccin.nixosModules.catppuccin
