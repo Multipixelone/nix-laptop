@@ -24,6 +24,9 @@ in {
     "gh" = {
       file = "${inputs.secrets}/github/ghcli.age";
     };
+    "openai" = {
+      file = "${inputs.secrets}/openai.age";
+    };
   };
   home.packages = with pkgs; [
     # (inputs.nixvim.legacyPackages."${system}".makeNixvimWithModule {
