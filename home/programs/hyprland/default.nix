@@ -219,6 +219,7 @@ in {
       class = "foot-music"
       size = "40% 90%"
       unfocus = "hide"
+      lazy = false
       lazy = true
 
       [scratchpads.volume]
