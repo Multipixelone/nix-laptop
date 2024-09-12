@@ -56,13 +56,13 @@
   };
   services = {
     thermald.enable = true;
-    # testing undervolting
-    undervolt = {
-      enable = true;
-      # analogioOffset = -10;
-      coreOffset = -10;
-      # gpuOffset = -10;
-    };
+    # # testing undervolting
+    # undervolt = {
+    #   enable = true;
+    #   # analogioOffset = -10;
+    #   coreOffset = -10;
+    #   # gpuOffset = -10;
+    # };
     tlp = {
       enable = true;
       settings = {
