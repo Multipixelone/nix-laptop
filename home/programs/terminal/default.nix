@@ -13,7 +13,7 @@
   # wrap secret into tgpt
   tgpt-wrapped = pkgs.writeShellScriptBin "tgpt" ''
     export AI_PROVIDER="openai"
-    export OPENAI_MODEL="gpt-4o" # use 4o TODO: use bash variable expansion to set this value if unset. Also, 4o-mini seems to not work
+    export OPENAI_MODEL="gpt-4o-mini" # use 4o-mini TODO: use bash variable expansion to set this value if unset.
     export OPENAI_API_KEY=$(cat ${config.age.secrets."openai".path})
     ${lib.getExe pkgs.tgpt} $@
   '';
