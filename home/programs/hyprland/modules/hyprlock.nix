@@ -18,7 +18,6 @@ in {
     package = inputs.hyprlock.packages.${pkgs.system}.hyprlock;
     settings = {
       general = {
-        no_fade_in = true;
         hide_cursor = false;
         disable_loading_bar = true;
       };
