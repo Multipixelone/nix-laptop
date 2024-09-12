@@ -71,6 +71,7 @@ in {
           # pypr scratchpads
           "Control_L&Alt_L, K, exec, pypr toggle password"
           "ALT_SHIFT, E, exec, pypr toggle music"
+          "ALT_SHIFT, G, exec, pypr toggle gpt"
           "ALT_SHIFT, B, exec, pypr toggle bluetooth"
           "$mod, T, exec, pypr toggle term"
           "$mod, B, exec, pypr toggle volume"

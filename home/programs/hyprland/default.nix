@@ -221,6 +221,13 @@ in {
       size = "40% 90%"
       unfocus = "hide"
       lazy = false
+
+      [scratchpads.gpt]
+      animation = "fromLeft"
+      command = "foot -a foot-gpt tgpt -m"
+      class = "foot-gpt"
+      size = "40% 90%"
+      unfocus = "hide"
       lazy = true
 
       [scratchpads.volume]
