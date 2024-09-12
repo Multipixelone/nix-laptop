@@ -22,7 +22,7 @@ in {
     ./btop.nix
     ./bat.nix
     ./fish.nix
-    ./lf.nix
+    ./yazi.nix
     ./ncmpcpp.nix
     ./helix.nix
     ./shell-script.nix
