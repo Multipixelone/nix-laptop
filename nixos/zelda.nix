@@ -30,6 +30,11 @@
     "w /sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference - - - - balance_power"
   ];
   boot = {
+    # use ram for /tmp
+    tmp = {
+      useTmpfs = true;
+      tmpfsSize = "30%";
+    };
     initrd = {
       availableKernelModules = ["xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc"];
       kernelModules = [];
