@@ -231,6 +231,14 @@ in {
       unfocus = "hide"
       lazy = true
 
+      [scratchpads.bluetooth]
+      animation = "fromRight"
+      command = "${lib.getExe' pkgs.blueman "blueman-manager"}"
+      class = ".blueman-manager-wrapped"
+      size = "40% 90%"
+      unfocus = "hide"
+      lazy = true
+
       [scratchpads.helvum]
       animation = "fromRight"
       command = "helvum"
