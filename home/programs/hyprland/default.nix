@@ -215,7 +215,7 @@ in {
 
       [scratchpads.music]
       animation = "fromLeft"
-      command = "foot -a foot-music ncmpcpp -h link"
+      command = "foot -a foot-music ncmpcpp"
       class = "foot-music"
       size = "40% 90%"
       unfocus = "hide"
