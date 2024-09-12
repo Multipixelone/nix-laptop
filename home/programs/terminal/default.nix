@@ -10,6 +10,13 @@
     export GITHUB_TOKEN=$(cat ${config.age.secrets."gh".path})
     ${lib.getExe pkgs.gh} $@
   '';
+  # wrap secret into tgpt
+  tgpt-wrapped = pkgs.writeShellScriptBin "tgpt" ''
+    export AI_PROVIDER="openai"
+    export OPENAI_MODEL="gpt-4o" # use 4o TODO: use bash variable expansion to set this value if unset. Also, 4o-mini seems to not work
+    export OPENAI_API_KEY=$(cat ${config.age.secrets."openai".path})
+    ${lib.getExe pkgs.tgpt} $@
+  '';
 in {
   imports = [
     ./btop.nix
@@ -42,6 +49,7 @@ in {
     flyctl
     unzip
     p7zip
+    tgpt-wrapped
   ];
   programs = {
     fd.enable = true;
