@@ -9,7 +9,7 @@ deploy:
 
 zeldab:
   nix build .#nixosConfigurations.zelda.config.system.build.toplevel
-  attic push tunnel result
+  attic push system result
   unlink result
 
 debug:
