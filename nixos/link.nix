@@ -12,7 +12,6 @@ in {
     ./modules/gamemode.nix
     ./modules/rgb.nix
     ./modules/gamestream.nix
-    ./modules/attic.nix
     ./modules/minecraft-server.nix
   ];
   console = {

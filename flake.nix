@@ -20,7 +20,6 @@
     catppuccin.url = "github:catppuccin/nix";
     nix-gaming.url = "github:fufexan/nix-gaming";
     nix-hardware.url = "github:NixOS/nixos-hardware/master";
-    attic.url = "github:zhaofengli/attic";
     geospatial.url = "github:Multipixelone/geospatial-nix";
     helix.url = "github:helix-editor/helix";
     nixcord.url = "github:kaylorben/nixcord";
@@ -147,7 +146,6 @@
           inputs.musnix.nixosModules.musnix
           inputs.stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
-          inputs.attic.nixosModules.atticd
           agenix.nixosModules.default
           chaotic.nixosModules.default
           nur.nixosModules.nur
