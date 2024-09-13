@@ -1,13 +1,15 @@
 diff --git a/src/cli/cli.pro b/src/cli/cli.pro
-index 6879e0c..00d638e 100755
+index 6879e0c..e80f5a9 100755
 --- a/src/cli/cli.pro
 +++ b/src/cli/cli.pro
-@@ -22,16 +22,8 @@ unix:mac {
+@@ -21,17 +21,9 @@ unix:mac {
+ }
  
  unix:!mac {
-     INSTALLS += target \
+-    INSTALLS += target \
 -                man \
 -                man-compress
++    INSTALLS += target
  
      target.path = $$BINDIR
 -
@@ -19,3 +21,28 @@ index 6879e0c..00d638e 100755
  }
  
  include (../app.pri)
+diff --git a/src/qt/qt.pro b/src/qt/qt.pro
+index 0879bd2..9ee6064 100755
+--- a/src/qt/qt.pro
++++ b/src/qt/qt.pro
+@@ -15,19 +15,11 @@ unix:!mac {
+     icon64.path = $${DATADIR}/icons/hicolor/64x64/apps
+     icon64.files = resources/icons/64x64/qtscrob.png
+ 
+-    man.files = qtscrob.1
+-    man.path = $${DATADIR}/man/man1
+-    
+-    man-compress.path = $${DATADIR}/man/man1
+-    man-compress.extra = "gzip -9 -f \$(INSTALL_ROOT)/$$DATADIR/man/man1/qtscrob.1"
+-
+     INSTALLS = target \
+         desktop \
+         icon16 \
+         icon32 \
+-        icon64 \
+-        man \
+-        man-compress
++        icon64
+ }
+ 
+ TEMPLATE = app
