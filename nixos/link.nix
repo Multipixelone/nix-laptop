@@ -177,7 +177,6 @@ in {
       "video=DP-3:1920x1200@60"
     ];
     loader = {
-      grub.useOSProber = true;
       efi = {
         efiSysMountPoint = "/boot/efi";
         canTouchEfiVariables = true;
