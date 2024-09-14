@@ -83,7 +83,7 @@
         nixos-bgrt-plymouth
       ];
     };
-    consoleLogLevel = 3;
+    consoleLogLevel = 0;
     initrd.verbose = false;
     kernel.sysctl = {
       "kernel.nmi_watchdog" = 0;
