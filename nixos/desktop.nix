@@ -78,6 +78,10 @@
     plymouth = {
       enable = true;
       catppuccin.enable = false;
+      theme = "nixos-bgrt";
+      themePackages = with pkgs; [
+        nixos-bgrt-plymouth
+      ];
     };
     consoleLogLevel = 3;
     initrd.verbose = false;
