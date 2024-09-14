@@ -77,7 +77,7 @@
   boot = {
     plymouth = {
       enable = true;
-      catppuccin.enable = true;
+      catppuccin.enable = false;
     };
     consoleLogLevel = 3;
     initrd.verbose = false;
