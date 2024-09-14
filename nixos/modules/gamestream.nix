@@ -81,7 +81,7 @@ in {
     capSysAdmin = true;
     openFirewall = true;
     settings = {
-      channels = 1;
+      channels = 2;
       # encoder = "amdvce";
       # decrease fec percentage because I am not dropping many packets
       fec_percentage = "7";
