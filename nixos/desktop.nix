@@ -85,6 +85,8 @@
     };
     consoleLogLevel = 0;
     initrd.verbose = false;
+    # hide os choice
+    loader.timeout = 0;
     kernel.sysctl = {
       "kernel.nmi_watchdog" = 0;
     };
