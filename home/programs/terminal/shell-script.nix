@@ -1,7 +1,12 @@
 {pkgs, ...}: let
   upload-script = pkgs.writeShellApplication {
     name = "0x0";
-    runtimeInputs = with pkgs; [curl coreutils wl-clipboard];
+    runtimeInputs = with pkgs; [
+      curl
+      coreutils
+      wl-clipboard
+      libnotify
+    ];
     text = ''
       file_upload() {
         local file="$1"
@@ -13,6 +18,7 @@
           return;
         else
           wl-copy "''${url}";
+          notify-send "''${file} uploaded" "''${url}"
         fi
         # TODO rewrite this to not fail shellcheck. see: https://www.shellcheck.net/wiki/SC2059
         # shellcheck disable=SC2059
