@@ -78,6 +78,7 @@ in {
       enableFishIntegration = true; # launches on every open of shell
       settings = {
         pane_frames = false;
+        default_layout = "compact";
       };
     };
     dircolors = {
