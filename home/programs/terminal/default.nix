@@ -63,6 +63,8 @@ in {
         embed-metadata = true;
         embed-chapters = true;
         embed-subtitles = true;
+        sponsorblock-mark = "all";
+        sponsorblock-remove = "sponsor";
         downloader = "aria2c";
         downloader-args = "aria2c:'-c -x8 -s8 -k1M'";
       };
