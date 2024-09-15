@@ -60,6 +60,8 @@ in {
       enable = true;
       settings = {
         embed-thumbnail = true;
+        downloader = "aria2c";
+        downloader-args = "aria2c:'-c -x8 -s8 -k1M'";
       };
     };
     navi.enable = true;
