@@ -30,7 +30,8 @@
     runtimeInputs = screenshot-pkgs;
     text = ''
       hyprctl keyword animation "fadeOut,0,0,default"
-      grimblast --notify save - area | tesseract - | wl-copy
+      TEXT=$(grimblast save area - | tesseract -l eng - -)
+      wl-copy "$TEXT"
       hyprctl keyword animation "fadeOut,1,4,default"'';
   };
 in {
