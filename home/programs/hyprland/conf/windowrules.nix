@@ -51,6 +51,8 @@
       "float, class:^(qalculate-gtk)$"
       "pin, class:^(qalculate-gtk)$"
       "move 100%-40% 10%, class:^(qalculate-gtk)$"
+      # pin ripdrag
+      "pin, class:^(it.catboy.ripdrag)$"
 
       ## gaming rules
       # steam rules
