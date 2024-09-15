@@ -16,7 +16,7 @@
     SYNCTEX_FILE=$(find latex.out/ -name "*.synctex.gz")
     cp $SYNCTEX_FILE .
   '';
-  zellij-args = ":sh zellij run -f -x 10% -y 10% --width 80% --height 80% --";
+  zellij-args = ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% --";
   packages = with pkgs; [
     nil
     alejandra
