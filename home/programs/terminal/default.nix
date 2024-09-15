@@ -56,7 +56,12 @@ in {
     fd.enable = true;
     lazygit.enable = true;
     jq.enable = true;
-    yt-dlp.enable = true;
+    yt-dlp = {
+      enable = true;
+      settings = {
+        embed-thumbnail = true;
+      };
+    };
     navi.enable = true;
     aria2.enable = true;
     ripgrep.enable = true;
