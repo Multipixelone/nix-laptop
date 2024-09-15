@@ -10,9 +10,16 @@
   playerctl = lib.getExe pkgs.playerctl;
   swayosd-client = lib.getExe' pkgs.swayosd "swayosd-client";
   wl-copy = lib.getExe' pkgs.wl-clipboard "wl-copy";
+  screenshot-pkgs = [
+    osConfig.programs.hyprland.package
+    pkgs.grimblast
+    pkgs.tesseract
+    pkgs.wl-clipboard
+    pkgs.libnotify
+  ];
   screenshot-area = pkgs.writeShellApplication {
     name = "screenshot-area";
-    runtimeInputs = [osConfig.programs.hyprland.package pkgs.grimblast];
+    runtimeInputs = screenshot-pkgs;
     text = ''
       hyprctl keyword animation "fadeOut,0,0,default"
       grimblast --notify copysave area
@@ -20,7 +27,7 @@
   };
   screenshot-area-ocr = pkgs.writeShellApplication {
     name = "screenshot-area-ocr";
-    runtimeInputs = [osConfig.programs.hyprland.package pkgs.grimblast pkgs.tesseract pkgs.wl-clipboard];
+    runtimeInputs = screenshot-pkgs;
     text = ''
       hyprctl keyword animation "fadeOut,0,0,default"
       grimblast --notify save - area | tesseract - | wl-copy
