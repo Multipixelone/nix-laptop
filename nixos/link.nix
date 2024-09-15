@@ -2,7 +2,6 @@
   config,
   pkgs,
   lib,
-  inputs,
   ...
 }: let
   gtfs-subway = pkgs.callPackage ../pkgs/aequilibrae/gtfs-subway.nix {};
