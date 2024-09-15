@@ -34,22 +34,17 @@ in {
       # TODO fix idle inhibit command
       # ii = "systemd-inhibit --what=idle --who=Caffeine --why=Caffeine --mode=block sleep inf";
       mx = "chmod +x";
-      vim = "nvim";
-      top = "btop";
       lg = "lazygit";
       nixlg = "cd ~/Documents/Git/nix-laptop && lazygit";
-      ciara = "echo \"i dont know\"";
       fetch = "nix run nixpkgs#nitch";
       ff = "nix run nixpkgs#fastfetch";
       du = lib.getExe pkgs.ncdu + " --color dark -rr -x";
       ping = lib.getExe pkgs.prettyping;
-      xdg-open = lib.getExe pkgs.mimeo;
       clip = "${cliphist} list | fzf | ${cliphist} decode | ${wl-copy}";
       hypr-log = "tail -f /run/user/1000/hypr/$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)/hyprland.log";
       # TODO Split this into commands based on hostname
       pw-get = "pactl load-module module-null-sink media.class=Audio/Sink sink_name=music channel_map=stereo && pactl load-module module-native-protocol-tcp port=4656 listen=192.168.6.6";
       pw-send = "pactl load-module module-tunnel-sink server=tcp:192.168.6.6:4656";
-      alej = "nix run nixpkgs#alejandra .";
     };
     shellInit = fish-config;
     interactiveShellInit = ''
