@@ -62,7 +62,7 @@ in {
         embed-thumbnail = true;
         embed-metadata = true;
         embed-chapters = true;
-        embed-subtitles = true;
+        embed-subs = true;
         sponsorblock-mark = "all";
         sponsorblock-remove = "sponsor";
         downloader = "aria2c";
