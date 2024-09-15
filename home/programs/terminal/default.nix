@@ -49,6 +49,7 @@ in {
     flyctl
     unzip
     p7zip
+    ouch
     tgpt-wrapped
   ];
   programs = {
