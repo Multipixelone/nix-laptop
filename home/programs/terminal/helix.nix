@@ -16,6 +16,7 @@
     SYNCTEX_FILE=$(find latex.out/ -name "*.synctex.gz")
     cp $SYNCTEX_FILE .
   '';
+  zellij-args = ":sh zellij run -f -x 10% -y 10% --width 80% --height 80% -- bash";
   packages = with pkgs; [
     nil
     alejandra
@@ -110,7 +111,7 @@ in {
           # selection command
           V = ["select_mode" "extend_to_line_bounds"];
           space = {
-            l.g = [":new" ":insert-output ${lib.getExe pkgs.lazygit}" ":redraw" "jump_backward"];
+            l.g = "${zellij-args} ${lib.getExe pkgs.lazygit}";
           };
         };
       };
