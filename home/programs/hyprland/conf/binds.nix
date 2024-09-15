@@ -32,6 +32,7 @@
       hyprctl keyword animation "fadeOut,0,0,default"
       TEXT=$(grimblast save area - | tesseract -l eng - -)
       wl-copy "$TEXT"
+      notify-send "Text Copied" "$TEXT"
       hyprctl keyword animation "fadeOut,1,4,default"'';
   };
 in {
