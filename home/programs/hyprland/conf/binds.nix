@@ -18,6 +18,14 @@
       grimblast --notify copysave area
       hyprctl keyword animation "fadeOut,1,4,default"'';
   };
+  screenshot-area-ocr = pkgs.writeShellApplication {
+    name = "screenshot-area-ocr";
+    runtimeInputs = [osConfig.programs.hyprland.package pkgs.grimblast pkgs.tesseract pkgs.wl-clipboard];
+    text = ''
+      hyprctl keyword animation "fadeOut,0,0,default"
+      grimblast --notify save - area | tesseract - | wl-copy
+      hyprctl keyword animation "fadeOut,1,4,default"'';
+  };
 in {
   wayland.windowManager.hyprland = {
     extraConfig = ''
@@ -80,6 +88,7 @@ in {
           "$mod, X, exec, ${lib.getExe pkgs.cliphist} list | anyrun --show-results-immediately true --plugins ${inputs.anyrun.packages.${pkgs.system}.stdin}/lib/libstdin.so | ${lib.getExe pkgs.cliphist} decode | ${wl-copy}"
           ", Print, exec, ${lib.getExe pkgs.grimblast} --notify --cursor copysave output"
           "ALT , Print, exec, ${lib.getExe screenshot-area}"
+          "SHIFT , Print, exec, ${lib.getExe screenshot-area-ocr}"
           "$mod, SPACE, exec, anyrun"
           "$mod, ESCAPE, exec, ${lib.getExe pkgs.wlogout}"
           "$mod, V, togglefloating"
