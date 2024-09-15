@@ -75,7 +75,7 @@ in {
     };
     zellij = {
       enable = true;
-      enableFishIntegration = false; # launches on every open of shell
+      enableFishIntegration = true; # launches on every open of shell
       settings = {
         pane_frames = false;
       };
