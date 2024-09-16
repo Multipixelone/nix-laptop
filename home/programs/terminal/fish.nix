@@ -83,7 +83,7 @@ in {
         # If you run the command with comma, running the same command
         # will not prompt for confirmation for the rest of the session
         if contains $argv[1] $__command_not_found_confirmed_commands
-          or ${lib.getExe pkgs.gum} confirm --selected.background=2 "Run using comma?"
+          or ${lib.getExe pkgs.gum} confirm --no-show-help --selected.background=2 "Run using comma?"
 
           # Not bothering with capturing the status of the command, just run it again
           if not contains $argv[1] $__command_not_found_confirmed_commands
