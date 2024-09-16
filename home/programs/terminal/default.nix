@@ -26,6 +26,7 @@ in {
     ./ncmpcpp.nix
     ./helix.nix
     ./shell-script.nix
+    ./zellij.nix
   ];
   age.secrets = {
     "gh" = {
@@ -84,17 +85,6 @@ in {
       enable = true;
       enableFishIntegration = true;
       options = [];
-    };
-    zellij = {
-      enable = true;
-      enableFishIntegration = true; # launches on every open of shell
-      settings = {
-        pane_frames = false;
-        default_layout = "compact";
-        keybinds = {
-          unbind = "Ctrl s";
-        };
-      };
     };
     dircolors = {
       enable = true;
