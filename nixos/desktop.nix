@@ -107,11 +107,11 @@
     kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_latest.override {
       argsOverride = rec {
         src = pkgs.fetchurl {
-          url = "https://git.kernel.org/torvalds/t/linux-${version}.tar.gz";
-          sha256 = "sha256-SvvAUnVhM3fa6RSPUm8p7TUiM8mBm8tZhcLjmO9WKCo=";
+          url = "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${version}.tar.xz";
+          sha256 = "sha256-VdLGwCXrwngQx0jWYyXdW8YB6NMvhYHZ53ZzUpvayy4=";
         };
-        version = "6.11-rc7";
-        modDirVersion = "6.11.0-rc7";
+        version = "6.11";
+        modDirVersion = "6.11.0";
       };
     });
   };
