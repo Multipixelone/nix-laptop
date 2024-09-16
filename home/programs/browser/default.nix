@@ -116,10 +116,10 @@ in {
       default = {
         inherit extensions settings;
         id = 0;
-        search = {
-          default = "DuckDuckGo";
-          force = true;
-        };
+        # search = {
+        #   default = "DuckDuckGo";
+        #   force = true;
+        # };
         userChrome = ''
           #TabsToolbar {
           visibility: collapse;
