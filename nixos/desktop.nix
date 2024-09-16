@@ -215,7 +215,12 @@
       "electron-25.9.0"
       "electron-28.2.10"
     ];
-    overlays = [inputs.nur.overlay];
+    overlays = [
+      inputs.nur.overlay
+      (final: prev: {
+        zjstatus = inputs.zjstatus.packages.${prev.system}.default;
+      })
+    ];
   };
   # Fonts
   fonts.packages = with pkgs; [
