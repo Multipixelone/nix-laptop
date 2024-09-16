@@ -79,6 +79,23 @@ in {
     '';
     functions = {
       nvimrg = "nvim -q (rg --vimgrep $argv | psub)";
+      fish_command_not_found = ''
+        # If you run the command with comma, running the same command
+        # will not prompt for confirmation for the rest of the session
+        if contains $argv[1] $__command_not_found_confirmed_commands
+          or ${lib.getExe pkgs.gum} confirm --selected.background=2 "Run using comma?"
+
+          # Not bothering with capturing the status of the command, just run it again
+          if not contains $argv[1] $__command_not_found_confirmed_commands
+            set -ga __command_not_found_confirmed_commands $argv[1]
+          end
+
+          ${lib.getExe pkgs.comma} -- $argv
+          return 0
+        else
+          __fish_default_command_not_found_handler $argv
+        end
+      '';
     };
     plugins = [
       {
