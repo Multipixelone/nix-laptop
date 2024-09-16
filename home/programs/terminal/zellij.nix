@@ -1,9 +1,20 @@
-{inputs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: let
+  inherit (config.lib.stylix) colors;
+in {
   programs.zellij = {
     enable = true;
     enableFishIntegration = true; # launches on every open of shell
   };
   xdg.configFile = {
+    "zellij/config.kdl".text = ''
+      theme "catppuccin-mocha"
+      simplified_ui true
+      pane_frames false
+    '';
     "zellij/layouts/default.kdl".text = ''
       layout {
           default_tab_template {
