@@ -20,7 +20,6 @@
     catppuccin.url = "github:catppuccin/nix";
     nix-gaming.url = "github:fufexan/nix-gaming";
     nix-hardware.url = "github:NixOS/nixos-hardware/master";
-    geospatial.url = "github:Multipixelone/geospatial-nix";
     helix.url = "github:helix-editor/helix";
     nixcord.url = "github:kaylorben/nixcord";
     photogimp = {
