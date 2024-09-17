@@ -10,6 +10,7 @@
     link-cleaner
     clearurls
     fastforwardteam
+    facebook-container
     # ui
     tree-style-tab
     # utility
