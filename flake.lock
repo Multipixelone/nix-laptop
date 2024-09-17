@@ -99,6 +99,26 @@
         "type": "github"
       }
     },
+    "auto-cpufreq": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1726162350,
+        "narHash": "sha256-SI2pDWGKqRJh48wGLovsVT4xPXTZZjM2zaOP3HpUPTE=",
+        "owner": "AdnanHodzic",
+        "repo": "auto-cpufreq",
+        "rev": "7b03630a5e094fc2ef58492d6be35bf64c387815",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AdnanHodzic",
+        "repo": "auto-cpufreq",
+        "type": "github"
+      }
+    },
     "base16": {
       "inputs": {
         "fromYaml": "fromYaml"
@@ -3432,6 +3452,7 @@
         "agenix": "agenix",
         "anyrun": "anyrun",
         "anyrun-nixos-options": "anyrun-nixos-options",
+        "auto-cpufreq": "auto-cpufreq",
         "catppuccin": "catppuccin",
         "chaotic": "chaotic",
         "gvolpe-zoom": "gvolpe-zoom",

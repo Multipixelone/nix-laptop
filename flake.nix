@@ -31,6 +31,10 @@
       url = "git+ssh://git@github.com/Multipixelone/nix-secrets.git";
       flake = false;
     };
+    auto-cpufreq = {
+      url = "github:AdnanHodzic/auto-cpufreq";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
