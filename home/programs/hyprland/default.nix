@@ -172,7 +172,6 @@ in {
         force_default_wallpaper = 0;
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
-        vfr = false;
         animate_manual_resizes = true;
         new_window_takes_over_fullscreen = 2;
       };
