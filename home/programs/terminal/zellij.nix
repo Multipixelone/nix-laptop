@@ -14,6 +14,7 @@ in {
       theme "catppuccin-mocha"
       simplified_ui true
       pane_frames false
+      keybinds clear-defaults=true
     '';
     "zellij/layouts/default.kdl".text = ''
       layout {
