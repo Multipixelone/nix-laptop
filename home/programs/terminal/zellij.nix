@@ -21,7 +21,7 @@ in {
               pane size=2 borderless=true {
                   plugin location="file://${pkgs.zjstatus}/bin/zjstatus.wasm" {
                       format_left   "{mode}#[bg=#${colors.base00}] {tabs}"
-                      format_center ""
+                      format_center "{notifications}"
                       format_right  "#[bg=#${colors.base00},fg=#${colors.base0D}]#[bg=#${colors.base0D},fg=#${colors.base01},bold] #[bg=#${colors.base02},fg=#${colors.base05},bold] {session} #[bg=#${colors.base03},fg=#${colors.base05},bold]"
                       format_space  ""
                       format_hide_on_overlength "true"
