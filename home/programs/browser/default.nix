@@ -43,6 +43,14 @@
       sha256 = "sha256-obuJTjrx7Q2AyAr2va/Kkw7ND7yV5AnSD3SUO3B20QY=";
       meta = {};
     })
+    (buildFirefoxXpiAddon rec {
+      pname = "youtube-popout-player";
+      version = "4.4.1";
+      addonId = "{85b42b8f-49cd-4935-aeca-a6b32dd6ac9f}";
+      url = "https://addons.mozilla.org/firefox/downloads/file/4128380/youtube_popout_player-${version}.xpi";
+      sha256 = "sha256-H9r4BgOweFlVsJltm/iZiQ0Sz2o+5x2zSQN3fdORSoA=";
+      meta = {};
+    })
   ];
   better-fox = pkgs.fetchFromGitHub {
     owner = "yokoffing";
