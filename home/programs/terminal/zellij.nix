@@ -11,7 +11,6 @@ in {
   };
   xdg.configFile = {
     "zellij/config.kdl".text = ''
-      theme "catppuccin-mocha"
       simplified_ui true
       pane_frames false
       keybinds clear-defaults=true
