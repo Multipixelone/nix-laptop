@@ -21,6 +21,7 @@
     onepassword-password-manager
     # website specific extensions
     augmented-steam
+    steam-database
     refined-github
     reddit-enhancement-suite
     betterttv
