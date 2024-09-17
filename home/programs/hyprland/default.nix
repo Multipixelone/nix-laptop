@@ -122,7 +122,8 @@ in {
       decoration = {
         rounding = "10";
         shadow_offset = "1 3";
-        drop_shadow = true;
+        # only enable drop shadow on link
+        drop_shadow = lib.mkIf (osConfig.networking.hostName == "link") true;
         shadow_ignore_window = true;
         shadow_range = 30;
         shadow_render_power = 4;
@@ -130,10 +131,10 @@ in {
         inactive_opacity = 1;
         "col.shadow" = lib.mkForce "rgba(01010166)";
         "col.shadow_inactive" = lib.mkForce "0x22000000";
-        blur = {
+        # enable blur on desktop (costly)
+        blur = lib.mkIf (osConfig.networking.hostName == "link") {
           enabled = true;
-          # enable xray on desktop (costly)
-          xray = lib.mkIf (osConfig.networking.hostName == "link") true;
+          xray = true;
           brightness = 1.1;
           noise = 0.02;
           contrast = 1;
