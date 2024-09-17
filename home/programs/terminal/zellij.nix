@@ -13,7 +13,10 @@ in {
     "zellij/config.kdl".text = ''
       simplified_ui true
       pane_frames false
-      keybinds clear-defaults=true
+      keybinds {
+        normal clear-defaults=true {
+        }
+      }
     '';
     "zellij/layouts/default.kdl".text = ''
       layout {
