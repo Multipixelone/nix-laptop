@@ -28,7 +28,7 @@
     return-youtube-dislikes
     # custom extensions
     (buildFirefoxXpiAddon rec {
-      pname = "last.fm unscrobbler";
+      pname = "lastfm-unscrobbler";
       version = "1.6.3";
       addonId = "lastfm@unscrobbler.com";
       url = "https://addons.mozilla.org/firefox/downloads/file/4231311/last_fm_unscrobbler-${version}.xpi";
@@ -36,7 +36,7 @@
       meta = {};
     })
     (buildFirefoxXpiAddon rec {
-      pname = "readwise kindle sync";
+      pname = "readwise-kindle-sync";
       version = "2.8.0";
       addonId = "{f7619bc3-ed22-44a3-83ad-e79a78416737}";
       url = "https://addons.mozilla.org/firefox/downloads/file/3732256/readwise-${version}.xpi";
