@@ -9,6 +9,7 @@
   # Nix Stuff
   age.secrets = {
     "attic".file = "${inputs.secrets}/attic.age";
+    "wireguard".file = "${inputs.secrets}/wireguard/priv.age";
   };
   nixpkgs.config.allowUnfree = true;
   nix.settings = {
@@ -76,7 +77,7 @@
     "ztfp6fg5uh"
   ];
   systemd.services.NetworkManager-wait-online.enable = false;
-  networking.firewall.allowedUDPPorts = [config.services.tailscale.port];
+  networking.firewall.allowedUDPPorts = [config.services.tailscale.port 51628];
   # System Services
   security = {
     polkit = {

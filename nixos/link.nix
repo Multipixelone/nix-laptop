@@ -196,6 +196,30 @@ in {
     defaultGateway = "192.168.6.1";
     #nameservers = ["192.168.6.111" "192.168.6.112"];
     nameservers = ["8.8.8.8" "4.4.4.4"];
+    nat = {
+      enable = true;
+      externalInterface = "enp6s0";
+      internalInterfaces = ["wg0"];
+    };
+    wireguard.interfaces = {
+      wg0 = {
+        ips = ["10.100.0.1/24"];
+        listenPort = 51628;
+        postSetup = ''
+          ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o enp6s0 -j MASQUERADE
+        '';
+        postShutdown = ''
+          ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o enp6s0 -j MASQUERADE
+        '';
+        privateKeyFile = config.age.secrets."wireguard".path;
+        peers = [
+          {
+            publicKey = "i2nI/xG1Jh3WVyOk79Lz/jH6B9SbmnocjbZv+fLoJwE=";
+            allowedIPs = ["10.100.0.2/32"];
+          }
+        ];
+      };
+    };
   };
   nixpkgs = {
     hostPlatform = lib.mkDefault "x86_64-linux";

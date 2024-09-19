@@ -161,6 +161,19 @@
     };
     useDHCP = lib.mkDefault true;
     hostName = "zelda";
+    wireguard.interfaces = {
+      ips = ["10.100.0.2/24"];
+      listenPort = 51628;
+      privateKeyFile = config.age.secrets."wireguard".path;
+      peers = [
+        {
+          publicKey = "i2nI/xG1Jh3WVyOk79Lz/jH6B9SbmnocjbZv+fLoJwE=";
+          allowedIPs = ["0.0.0.0/0"];
+          endpoint = "";
+          persistentKeepalive = 25;
+        }
+      ];
+    };
   };
   fileSystems = {
     "/" = {
