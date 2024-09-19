@@ -159,7 +159,14 @@ in {
     };
   };
   # TODO re-enable mesa-git eventually
-  chaotic.mesa-git.enable = false;
+  chaotic = {
+    mesa-git.enable = false;
+    duckdns = {
+      enable = true;
+      domain = "frwgq.duckdns.org";
+      environmentFile = config.age.secrets."duckdns".path;
+    };
+  };
   environment.systemPackages = [
     (import ./modules/scripts/sleep.nix {inherit pkgs;})
     (pkgs.blender.override {hipSupport = true;})
