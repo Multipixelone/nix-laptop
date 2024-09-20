@@ -9,7 +9,7 @@
   # Nix Stuff
   age.secrets = {
     "attic".file = "${inputs.secrets}/attic.age";
-    "wireguard".file = "${inputs.secrets}/wireguard/priv.age";
+    "wireguard".file = "${inputs.secrets}/wireguard/${config.networking.hostName}.age";
     "duckdns".file = "${inputs.secrets}/wireguard/duckdns.age";
   };
   nixpkgs.config.allowUnfree = true;
