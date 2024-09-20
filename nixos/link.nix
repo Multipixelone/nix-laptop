@@ -221,6 +221,7 @@ in {
         privateKeyFile = config.age.secrets."wireguard".path;
         peers = [
           {
+            # zelda
             publicKey = "8mNNHB03ytgnnZMPv0AZOpgZVumEvy3tr+E7h3WBCUI=";
             allowedIPs = ["10.100.0.2/32"];
           }
