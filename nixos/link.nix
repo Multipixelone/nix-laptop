@@ -225,6 +225,11 @@ in {
             publicKey = "8mNNHB03ytgnnZMPv0AZOpgZVumEvy3tr+E7h3WBCUI=";
             allowedIPs = ["10.100.0.2/32"];
           }
+          {
+            # nougat
+            publicKey = "CgAqN+0T70Exkduy1j0IyOHThHSSIPUmFPzdupLXUUk=";
+            allowedIPs = ["10.100.0.50/32"];
+          }
         ];
       };
     };
