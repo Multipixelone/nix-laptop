@@ -14,7 +14,7 @@ in {
       simplified_ui true
       pane_frames false
       keybinds {
-        normal clear-defaults=true {
+        normal {
         }
       }
     '';
