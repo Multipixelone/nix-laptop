@@ -76,6 +76,7 @@
   networking.firewall.trustedInterfaces = [
     "tailscale0"
     "ztfp6fg5uh"
+    "wg0"
   ];
   systemd.services.NetworkManager-wait-online.enable = false;
   networking.firewall.allowedUDPPorts = [config.services.tailscale.port 51628];
