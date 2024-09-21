@@ -169,7 +169,7 @@
         {
           publicKey = "i2nI/xG1Jh3WVyOk79Lz/jH6B9SbmnocjbZv+fLoJwE=";
           allowedIPs = ["0.0.0.0/0"];
-          endpoint = "";
+          endpoint = "frwgq.duckdns.org:51628";
           persistentKeepalive = 25;
         }
       ];
