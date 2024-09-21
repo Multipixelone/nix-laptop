@@ -110,7 +110,7 @@ in {
           "${gtfs-subway}:/gtfs_feeds"
         ];
         environment = {
-          tile_urls = "http://download.geofabrik.de/north-america/us/new-york-latest.osm.pbf";
+          tile_urls = "http://download.geofabrik.de/north-america/us-northeast-latest.osm.pbf";
           server_threads = "8";
           serve_tiles = "True";
           build_elevation = "True";
