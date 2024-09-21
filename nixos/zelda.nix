@@ -31,7 +31,6 @@
     "w /sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference - - - - balance_power"
   ];
   boot = {
-    kernelPackages = lib.mkForce pkgs.linuxPackages_xanmod_latest;
     # use ram for /tmp
     tmp = {
       useTmpfs = true;
