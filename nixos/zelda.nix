@@ -161,7 +161,7 @@
     };
     useDHCP = lib.mkDefault true;
     hostName = "zelda";
-    wireguard.interfaces = {
+    wireguard.interfaces.wg0 = {
       ips = ["10.100.0.2/24"];
       listenPort = 51628;
       privateKeyFile = config.age.secrets."wireguard".path;
