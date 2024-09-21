@@ -217,7 +217,7 @@
     ];
     overlays = [
       inputs.nur.overlay
-      (final: prev: {
+      (_final: prev: {
         zjstatus = inputs.zjstatus.packages.${prev.system}.default;
       })
     ];
