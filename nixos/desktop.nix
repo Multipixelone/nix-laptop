@@ -103,17 +103,7 @@
     ];
     # xanmod or zen
     # kernelPackages = pkgs.linuxPackages_xanmod_latest;
-    # kernelPackages = pkgs.linuxPackages_cachyos;
-    kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_latest.override {
-      argsOverride = rec {
-        src = pkgs.fetchurl {
-          url = "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${version}.tar.xz";
-          sha256 = "sha256-VdLGwCXrwngQx0jWYyXdW8YB6NMvhYHZ53ZzUpvayy4=";
-        };
-        version = "6.11";
-        modDirVersion = "6.11.0";
-      };
-    });
+    kernelPackages = pkgs.linuxPackages_cachyos;
   };
   hardware = {
     bluetooth = {
