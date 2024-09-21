@@ -114,7 +114,7 @@ in {
           server_threads = "8";
           serve_tiles = "True";
           build_elevation = "True";
-          build_transit = "False";
+          build_transit = "True";
           build_admins = "True";
           build_time_zones = "True";
           build_tar = "True";
