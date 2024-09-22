@@ -193,7 +193,7 @@
     "/home/tunnel/tmp" = {
       device = "none";
       fsType = "tmpfs";
-      options = ["defaults" "size=2G" "mode=755"];
+      options = ["defaults" "size=2G" "mode=755" "noatime" "nosuid" "nodev" "noexec" "mode=1777"];
     };
     "/media/Data/Music" = {
       device = "/dev/disk/by-uuid/576fdcd4-d642-4229-9073-90724eb72043";
