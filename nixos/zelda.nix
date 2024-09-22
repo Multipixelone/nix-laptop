@@ -7,26 +7,26 @@
 }: {
   imports = [
     ./desktop.nix
-    inputs.nix-hardware.nixosModules.dell-xps-15-9560
+    inputs.nix-hardware.nixosModules.dell-xps-15-9560-intel
     inputs.auto-cpufreq.nixosModules.default
   ];
-  specialisation = {
-    nvidia-sync.configuration = {
-      imports = [
-        inputs.nix-hardware.nixosModules.dell-xps-15-9560-nvidia
-      ];
-      hardware.nvidia = {
-        open = false;
-        prime = {
-          sync.enable = lib.mkForce true;
-          offload = {
-            enable = lib.mkForce false;
-            enableOffloadCmd = lib.mkForce false;
-          };
-        };
-      };
-    };
-  };
+  # specialisation = {
+  #   nvidia-sync.configuration = {
+  #     imports = [
+  #       inputs.nix-hardware.nixosModules.dell-xps-15-9560-nvidia
+  #     ];
+  #     hardware.nvidia = {
+  #       open = false;
+  #       prime = {
+  #         sync.enable = lib.mkForce true;
+  #         offload = {
+  #           enable = lib.mkForce false;
+  #           enableOffloadCmd = lib.mkForce false;
+  #         };
+  #       };
+  #     };
+  #   };
+  # };
   systemd.tmpfiles.rules = [
     "w /sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference - - - - balance_power"
   ];
@@ -221,15 +221,5 @@
       intel-media-sdk
       vaapiIntel
     ];
-    nvidia = {
-      open = false;
-      prime = {
-        sync.enable = false;
-        offload = {
-          enable = true;
-          enableOffloadCmd = true;
-        };
-      };
-    };
   };
 }
