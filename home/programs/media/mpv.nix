@@ -281,6 +281,7 @@ in {
       vo = "gpu-next";
       gpu-api = "vulkan";
       hwdec = "auto-safe";
+      gpu-context = "wayland";
 
       # Audio
       ao = "pipewire";
