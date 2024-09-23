@@ -27,9 +27,6 @@
   #     };
   #   };
   # };
-  systemd.tmpfiles.rules = [
-    "w /sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference - - - - balance_power"
-  ];
   boot = {
     # use ram for /tmp
     tmp = {
