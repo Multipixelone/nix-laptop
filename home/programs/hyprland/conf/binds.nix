@@ -86,11 +86,11 @@ in {
           "$mod, s, togglesplit"
           # pypr scratchpads
           "Control_L&Alt_L, K, exec, pypr toggle password"
-          "ALT_SHIFT, E, exec, pypr toggle music"
-          "ALT_SHIFT, G, exec, pypr toggle gpt"
-          "ALT_SHIFT, B, exec, pypr toggle bluetooth"
+          "Control_L&Alt_L, M, exec, pypr toggle music"
+          "Control_L&Alt_L, G, exec, pypr toggle gpt"
+          "Control_L&Alt_L, B, exec, pypr toggle bluetooth"
+          "Control_L&Alt_L, P, exec, pypr toggle volume"
           "$mod, T, exec, pypr toggle term"
-          "$mod, B, exec, pypr toggle volume"
           # screenshot & picker
           "$mod, C, exec, ${lib.getExe pkgs.hyprpicker} | ${wl-copy}"
           "$mod, X, exec, ${lib.getExe pkgs.cliphist} list | anyrun --show-results-immediately true --plugins ${inputs.anyrun.packages.${pkgs.system}.stdin}/lib/libstdin.so | ${lib.getExe pkgs.cliphist} decode | ${wl-copy}"
