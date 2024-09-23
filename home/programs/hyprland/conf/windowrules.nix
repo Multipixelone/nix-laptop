@@ -36,6 +36,7 @@
       "float,class:^(mpd)"
       "float,title:^(Spotify( Premium)?)$"
       "float,class:^(nm-applet)$"
+      "float,class:^(foot-files)$"
 
       ## app specific rules
       # reaper dropdowns
