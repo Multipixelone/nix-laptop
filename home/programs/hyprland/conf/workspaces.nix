@@ -10,6 +10,7 @@
       "4,monitor:DP-1"
       "5,monitor:DP-3"
       "6,monitor:DP-3"
+      "7,monitor:DP-1"
     ];
   };
 }
