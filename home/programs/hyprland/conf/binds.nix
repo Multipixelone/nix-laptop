@@ -68,7 +68,6 @@ in {
           "ALT_SHIFT, W, exec, firefox"
           "ALT_SHIFT, D, exec, discord"
           "ALT_SHIFT, S, exec, steam"
-          "ALT_SHIFT, C, exec, code"
           "ALT_SHIFT, Y, exec, ${lib.getExe yt-mpv}"
           # focus keybinds
           (mvfocus "h" "l")
