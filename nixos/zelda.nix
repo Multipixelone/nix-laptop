@@ -215,8 +215,8 @@
   hardware = {
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     graphics.extraPackages = with pkgs; [
-      vaapiIntel
       # intel-media-sdk
+      intel-media-driver
     ];
   };
 }
