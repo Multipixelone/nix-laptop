@@ -158,7 +158,7 @@ in {
         key_press_enables_dpms = true;
         mouse_move_enables_dpms = true;
       };
-      render = {
+      render = lib.mkIf (osConfig.networking.hostName == "link") {
         direct_scanout = true;
         explicit_sync = true;
       };
