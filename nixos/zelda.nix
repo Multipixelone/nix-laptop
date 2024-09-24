@@ -145,6 +145,12 @@
       ips = ["10.100.0.2/24"];
       listenPort = 51628;
       privateKeyFile = config.age.secrets."wireguard".path;
+      postSetup = ''
+        printf "nameserver 10.100.0.1" | ${pkgs.openresolv}/bin/resolvconf -a wg0 -m 0
+      '';
+      postShutdown = ''
+        ${pkgs.openresolv}/bin/resolvconf -d wg0
+      '';
       peers = [
         {
           publicKey = "i2nI/xG1Jh3WVyOk79Lz/jH6B9SbmnocjbZv+fLoJwE=";
