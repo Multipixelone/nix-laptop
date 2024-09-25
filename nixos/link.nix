@@ -206,6 +206,7 @@ in {
           {
             # zelda
             publicKey = "8mNNHB03ytgnnZMPv0AZOpgZVumEvy3tr+E7h3WBCUI=";
+            presharedKeyFile = config.age.secrets."psk".path;
             allowedIPs = ["10.100.0.2/32"];
           }
           {
