@@ -200,7 +200,7 @@ in {
     wireguard.interfaces = {
       wg0 = {
         ips = ["10.100.0.1/24"];
-        listenPort = 51628;
+        listenPort = 443;
         postSetup = ''
           ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o enp6s0 -j MASQUERADE
         '';
