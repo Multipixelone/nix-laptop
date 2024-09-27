@@ -175,7 +175,7 @@ in {
     useDHCP = lib.mkDefault false;
     hostName = "link";
     firewall.allowedTCPPorts = [53 631 5353 6680 8080 22 5900 6600 8384 4656 22000 47984 47989 48010 59999];
-    firewall.allowedUDPPorts = [631 5353 22000 21027 47998 47999 48000 48002 48010];
+    firewall.allowedUDPPorts = [443 631 5353 22000 21027 47998 47999 48000 48002 48010];
     interfaces.enp6s0.ipv4.addresses = [
       {
         address = "192.168.6.6";
