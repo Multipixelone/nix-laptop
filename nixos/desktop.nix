@@ -146,6 +146,7 @@
         listen_addresses = ["0.0.0.0:53"];
         ipv6_servers = true;
         require_dnssec = true;
+        blocked_names.blocked_names_file = "${inputs.blocklist}/hosts";
         sources.public-resolvers = {
           urls = [
             "https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md"

@@ -23,6 +23,10 @@
     zjstatus.url = "github:dj95/zjstatus";
     helix.url = "github:helix-editor/helix";
     nixcord.url = "github:kaylorben/nixcord";
+    blocklist = {
+      url = "github:StevenBlack/hosts";
+      flake = false;
+    };
     photogimp = {
       url = "github:Diolinux/PhotoGIMP";
       flake = false;
