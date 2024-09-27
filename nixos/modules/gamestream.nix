@@ -85,7 +85,7 @@ in {
       output_name = 1;
       # encoder = "amdvce";
       # decrease fec percentage because I am not dropping many packets
-      fec_percentage = "1";
+      fec_percentage = "7";
     };
     applications = {
       env = {
