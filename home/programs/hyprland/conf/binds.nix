@@ -65,7 +65,7 @@ in {
           "ALT_SHIFT, Q, killactive"
           # app keybinds
           "$mod, RETURN, exec, ${terminal}"
-          "SUPER, E, exec, foot -a foot-files yazi"
+          "SUPER, E, exec, foot -a foot-files -- fish -c yazi"
           "ALT_SHIFT, W, exec, firefox"
           "ALT_SHIFT, D, exec, discord"
           "ALT_SHIFT, S, exec, steam"
