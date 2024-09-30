@@ -151,8 +151,8 @@
           publicKey = "i2nI/xG1Jh3WVyOk79Lz/jH6B9SbmnocjbZv+fLoJwE=";
           presharedKeyFile = config.age.secrets."psk".path;
           allowedIPs = ["0.0.0.0/0"];
-          # endpoint = "frwgq.duckdns.org:51628";
-          endpoint = "68.237.124.182:51628";
+          endpoint = "frwgq.duckdns.org:443";
+          # endpoint = "68.237.124.182:51628";
           persistentKeepalive = 25;
         }
       ];
