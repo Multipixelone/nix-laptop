@@ -31,6 +31,7 @@ in {
     ./modules/waybar.nix
     ./modules/anyrun.nix
     ./modules/gammastep.nix
+    ./modules/battery.nix
   ];
   services = {
     ssh-agent.enable = true;
