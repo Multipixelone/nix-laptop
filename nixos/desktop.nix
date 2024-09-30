@@ -23,6 +23,7 @@
     # TODO fix latency flex
     # inputs.chaotic.packages.${pkgs.system}.latencyflex-vulkan
     inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
+    inputs.nix-gaming.packages.${pkgs.system}.winetricks-git
     xdg-utils
     pyprland
     libsmbios
