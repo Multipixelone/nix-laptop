@@ -78,7 +78,7 @@
   # };
   boot = {
     plymouth = {
-      enable = true;
+      enable = false;
       catppuccin.enable = false;
       theme = "nixos-bgrt";
       themePackages = with pkgs; [
@@ -93,7 +93,7 @@
       "kernel.nmi_watchdog" = 0;
     };
     kernelParams = [
-      "quiet"
+      # "quiet"
       "rd.udev.log_level=3"
       "udev.log_priority=3"
       "boot.shell_on_fail"
