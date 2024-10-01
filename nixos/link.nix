@@ -143,7 +143,7 @@ in {
   };
   # TODO re-enable mesa-git eventually
   chaotic = {
-    mesa-git.enable = true;
+    mesa-git.enable = false;
     duckdns = {
       enable = true;
       domain = "frwgq.duckdns.org";
