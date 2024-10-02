@@ -17,6 +17,11 @@
     export OPENAI_API_KEY=$(cat ${config.age.secrets."openai".path})
     ${lib.getExe pkgs.tgpt} $@
   '';
+  # wrap secret into todoist
+  todoist-wrapped = pkgs.writeShellScriptBin "td" ''
+    export TODOIST_TOKEN=$(cat ${config.age.secrets."todoist".path})
+    ${lib.getExe pkgs.todoist} $@
+  '';
 in {
   imports = [
     ./btop.nix
@@ -35,6 +40,9 @@ in {
     "openai" = {
       file = "${inputs.secrets}/openai.age";
     };
+    "todoist" = {
+      file = "${inputs.secrets}/todoist.age";
+    };
   };
   home.packages = with pkgs; [
     # (inputs.nixvim.legacyPackages."${system}".makeNixvimWithModule {
@@ -52,6 +60,7 @@ in {
     p7zip
     ouch
     tgpt-wrapped
+    todoist-wrapped
   ];
   programs = {
     fd.enable = true;
