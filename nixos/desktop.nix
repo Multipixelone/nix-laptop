@@ -215,6 +215,7 @@
   };
   # Fonts
   fonts = {
+    enableDefaultPackages = false;
     packages = with pkgs; [
       ipafont
     ];
@@ -224,6 +225,7 @@
         serif = ["PragmataPro Liga" "IPAGothic"];
         sansSerif = ["PragmataPro Liga" "IPAGothic"];
         monospace = ["PragmataPro Mono Liga" "IPAGothic"];
+        emoji = ["Apple Color Emoji"];
       };
     };
   };
