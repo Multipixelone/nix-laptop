@@ -51,24 +51,6 @@
       url = "https://drive.usercontent.google.com/download?id=1OrRpU17DU78sIh--SNOVI6sl4BxE06Zi";
       sha256 = "sha256:14nh77xn8x58693y2na5askm6612xqbll2kr6237y8pjr1jc24xp";
     };
-    fonts = {
-      serif = {
-        name = "PragmataPro Liga";
-        package = pkgs.callPackage ../pkgs/pragmata/default.nix {};
-      };
-      sansSerif = {
-        name = "PragmataPro Liga";
-        package = pkgs.callPackage ../pkgs/pragmata/default.nix {};
-      };
-      monospace = {
-        name = "PragmataPro Mono Liga";
-        package = pkgs.callPackage ../pkgs/pragmata/default.nix {};
-      };
-      emoji = {
-        name = "Apple Color Emoji";
-        package = pkgs.callPackage ../pkgs/apple-fonts/default.nix {};
-      };
-    };
   };
   # testing different schedulers
   # chaotic.scx = {
