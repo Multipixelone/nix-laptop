@@ -214,10 +214,10 @@
     ];
   };
   # Fonts
-  fonts.packages = with pkgs; [
-    ipafont
-  ];
   fonts = {
+    packages = with pkgs; [
+      ipafont
+    ];
     fontconfig = {
       defaultFonts = {
         # ipa gothic required for cjk support
