@@ -218,6 +218,12 @@
     enableDefaultPackages = false;
     packages = with pkgs; [
       ipafont
+      minecraftia
+      corefonts
+      vistafonts
+      (nerdfonts.override {fonts = ["Iosevka"];})
+      (pkgs.callPackage ../pkgs/pragmata/default.nix {})
+      (pkgs.callPackage ../pkgs/apple-fonts/default.nix {})
     ];
     fontconfig = {
       defaultFonts = {
