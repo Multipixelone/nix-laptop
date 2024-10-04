@@ -4227,11 +4227,11 @@
       },
       "locked": {
         "dir": "packaging/nix",
-        "lastModified": 1727994290,
-        "narHash": "sha256-CtT35/lxJlm/MQAO1nRVwN7E/4Q1jTsUAWGqY7X/evo=",
+        "lastModified": 1728065415,
+        "narHash": "sha256-H0fzOEI770kxY7IaIFzHnrNvEINk/MbNmpL03XOePEc=",
         "ref": "refs/heads/main",
-        "rev": "12ebba1bea5006aaa0493d4d9e5d1ba1fe434ac1",
-        "revCount": 734,
+        "rev": "e55426041f37128f99cc480698f2e99e45f0075f",
+        "revCount": 735,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging/nix"
