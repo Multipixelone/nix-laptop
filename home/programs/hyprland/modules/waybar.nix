@@ -34,6 +34,40 @@
       done
     '';
   };
+  todoist-script =
+    pkgs.writers.writePython3Bin "todoist" {
+      libraries = [
+        pkgs.python3Packages.todoist-api-python
+      ];
+    }
+    ''
+      from todoist_api_python.api import TodoistAPI
+      from pathlib import Path
+
+
+      def countTasks(items):
+          count = {1: 0, 2: 0, 3: 0, 4: 0}
+          for item in items:
+              count[item.priority] += 1
+          return count
+
+
+      key = Path("${config.age.secrets."todoist".path}").read_text()
+      key = key.replace("\n", "")
+      api = TodoistAPI(key)
+
+      try:
+          tasks = api.get_tasks(filter="today | overdue")
+          count = countTasks(tasks)
+          print("""
+          {{"text": "<span background=\\"#de4c4a\\"> {0[4]} </span>
+          <span background=\\"#f49c18\\"> {0[3]} </span>
+          <span background=\\"#4073d6\\"> {0[2]} </span>
+          <span background=\\"#444444\\"> {0[1]} </span>",
+          "class": "todoist"}}""".format(count))
+      except Exception:
+          print(' ERROR ')
+    '';
 in {
   home.packages = with pkgs; [waybar-mpris];
   wayland.windowManager.hyprland.settings.exec-once = [(dynamic + "/bin/dynamic &")];
@@ -280,6 +314,7 @@ in {
           "battery"
           "network"
           "clock"
+          "custom/todoist"
           "tray"
         ];
         "custom/playerlabel" = {
@@ -292,6 +327,14 @@ in {
           return-type = "json";
           format = "{}";
           exec = lib.getExe start-dyn;
+        };
+        "custom/todoist" = {
+          exec = lib.getExe todoist-script;
+          exec-on-even = false;
+          return-type = "json";
+          interval = 60;
+          on-click = "${lib.getExe pkgs.todoist-electron}";
+          tooltip = false;
         };
         "image#album-art" = {
           exec = "echo /home/tunnel/.local/share/mopidy/coverart.png";
