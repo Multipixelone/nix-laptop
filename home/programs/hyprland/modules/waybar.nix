@@ -59,12 +59,17 @@
       try:
           tasks = api.get_tasks(filter="today | overdue")
           count = countTasks(tasks)
-          print("""
-          {{"text": "<span background=\\"#de4c4a\\"> {0[4]} </span>
-          <span background=\\"#f49c18\\"> {0[3]} </span>
-          <span background=\\"#4073d6\\"> {0[2]} </span>
-          <span background=\\"#444444\\"> {0[1]} </span>",
-          "class": "todoist"}}""".format(count))
+          task_count = ""
+          if count[4] != 0:
+              task_count += f'<span color=\\"#${config.lib.stylix.colors.base08}\\">󰰁 {count[4]} </span>'
+          if count[3] != 0:
+              task_count += f'<span color=\\"#${config.lib.stylix.colors.base09}\\">󰰐 {count[3]} </span>'
+          if count[2] != 0:
+              task_count += f'<span color=\\"#${config.lib.stylix.colors.base0A}\\">󰰍 {count[2]} </span>'
+          if count[1] != 0:
+              task_count += f'<span color=\\"#${config.lib.stylix.colors.base0E}\\"> {count[1]} </span>'
+
+          print('{{"text": "<span>{0}</span>","class": "todoist"}}'.format(task_count))  # noqa: E501
       except Exception:
           print(' ERROR ')
     '';
