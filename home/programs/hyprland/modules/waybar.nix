@@ -219,6 +219,12 @@ in {
       }
       #clock {
         color: #${config.lib.stylix.colors.base0D};
+        margin-right: 0px;
+        border-radius: 20px 0px 0px 20px;
+      }
+      #custom-todoist {
+        border-radius: 0px 20px 20px 0px;
+        padding-left: 0px;
       }
 
       #battery.warning {
