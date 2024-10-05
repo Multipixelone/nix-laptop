@@ -67,7 +67,7 @@
           if count[2] != 0:
               task_count += f'<span color=\\"#${config.lib.stylix.colors.base0A}\\">󰰍 {count[2]} </span>'
           if count[1] != 0:
-              task_count += f'<span color=\\"#${config.lib.stylix.colors.base0E}\\"> {count[1]} </span>'
+              task_count += f'<span color=\\"#${config.lib.stylix.colors.base0E}\\"> {count[1]}</span>'
 
           print('{{"text": "<span>{0}</span>","class": "todoist"}}'.format(task_count))  # noqa: E501
       except Exception:
