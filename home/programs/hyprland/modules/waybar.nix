@@ -93,6 +93,7 @@ in {
       #custom-lock,
       #custom-power,
       #custom-dynamic,
+      #custom-todoist,
       #network {
         background-color: #${config.lib.stylix.colors.base02};
         padding: 0 10px;
