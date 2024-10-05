@@ -98,7 +98,7 @@ in {
         background-color: #${config.lib.stylix.colors.base02};
         padding: 0 10px;
         margin-top: 5px;
-        margin-right: 10px;
+        margin-right: 8px;
         border-radius: 20px;
         color: #${config.lib.stylix.colors.base05};
         box-shadow: rgba(0, 0, 0, 0.116) 2 2 5 2px;
