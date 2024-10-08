@@ -22,6 +22,13 @@
     export TODOIST_TOKEN=$(cat ${config.age.secrets."todoist".path})
     ${lib.getExe pkgs.todoist} $@
   '';
+  # wrap client id and secret into gcalcli
+  gcalcli-wrapped = pkgs.writeShellScriptBin "gcalcli" ''
+    ${lib.getExe pkgs.gcalcli} \
+    --client-id=$(cat ${config.age.secrets."gcalclient".path}) \
+    --client-secret=$(cat ${config.age.secrets."gcalsecret".path}) \
+    $@
+  '';
 in {
   imports = [
     ./btop.nix
@@ -43,6 +50,12 @@ in {
     "todoist" = {
       file = "${inputs.secrets}/todoist.age";
     };
+    "gcalclient" = {
+      file = "${inputs.secrets}/gcal/client.age";
+    };
+    "gcalsecret" = {
+      file = "${inputs.secrets}/gcal/secret.age";
+    };
   };
   home.packages = with pkgs; [
     # (inputs.nixvim.legacyPackages."${system}".makeNixvimWithModule {
@@ -61,6 +74,7 @@ in {
     ouch
     tgpt-wrapped
     todoist-wrapped
+    gcalcli-wrapped
   ];
   programs = {
     fd.enable = true;
