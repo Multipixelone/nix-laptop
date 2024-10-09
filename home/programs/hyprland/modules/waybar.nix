@@ -361,6 +361,7 @@ in {
         };
         "custom/cal" = {
           exec = lib.getExe inputs.nextmeeting.packages.${pkgs.system}.default + " --skip-all-day-meeting --waybar --gcalcli-cmdline \"gcalcli --nocolor agenda today --nodeclined --details=end --details=url --tsv\"";
+          format = " {}";
           return-type = "json";
           interval = 59;
           tooltip = true;
