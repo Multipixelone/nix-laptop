@@ -14,6 +14,7 @@
     # nixpkgs for zoom screensharing
     gvolpe-zoom.url = "github:gvolpe/nix-config";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
     nurpkgs.url = "github:nix-community/NUR";
     musnix.url = "github:musnix/musnix";
     stylix.url = "github:danth/stylix";
