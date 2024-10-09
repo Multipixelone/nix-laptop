@@ -2378,17 +2378,17 @@
       },
       "locked": {
         "dir": "packaging",
-        "lastModified": 1728479846,
-        "narHash": "sha256-oF/qqTzaoFYq/HVNi2T+ipNid1QVadWWFYfx/cLl+OI=",
+        "lastModified": 1728492963,
+        "narHash": "sha256-FfMkLj9rCO6c9qt3HNKLU5qW1ACJQ9m33igYrJO/KqM=",
         "owner": "Multipixelone",
         "repo": "nextmeeting",
-        "rev": "7adcc544e71bf7dd014ae21ed682f00dc46a15d1",
+        "rev": "d231f43f52bc092a387b0095d3386e63ec0b06a3",
         "type": "github"
       },
       "original": {
         "dir": "packaging",
         "owner": "Multipixelone",
-        "ref": "nix-build",
+        "ref": "reformat",
         "repo": "nextmeeting",
         "type": "github"
       }
