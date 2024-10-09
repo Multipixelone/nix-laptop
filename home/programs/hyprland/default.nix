@@ -188,14 +188,6 @@ in {
     ".config/hypr/pyprland.toml".text = ''
       [pyprland]
       plugins = ["scratchpads", "toggle_dpms"]
-      [scratchpads.term]
-      animation = "fromTop"
-      command = "foot -a foot-dropterm"
-      class = "foot-dropterm"
-      size = "75% 60%"
-      max_size = "2560px 100%"
-      margin = 50
-      lazy = true
 
       [scratchpads.music]
       animation = "fromLeft"

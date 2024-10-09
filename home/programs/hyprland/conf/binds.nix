@@ -91,7 +91,6 @@ in {
           "Control_L&Alt_L, G, exec, pypr toggle gpt"
           "Control_L&Alt_L, B, exec, pypr toggle bluetooth"
           "Control_L&Alt_L, P, exec, pypr toggle volume"
-          "$mod, T, exec, pypr toggle term"
           # screenshot & picker
           "$mod, C, exec, ${lib.getExe pkgs.hyprpicker} | ${wl-copy}"
           "$mod, X, exec, ${lib.getExe pkgs.cliphist} list | anyrun --show-results-immediately true --plugins ${inputs.anyrun.packages.${pkgs.system}.stdin}/lib/libstdin.so | ${lib.getExe pkgs.cliphist} decode | ${wl-copy}"
