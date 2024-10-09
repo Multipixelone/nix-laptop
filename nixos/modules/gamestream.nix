@@ -37,12 +37,13 @@
         width=''${1:-3840}
         height=''${2:-2160}
         refresh_rate=''${3:-60}
-        mon_string="DP-1,''${width}x''${height}@''${refresh_rate},1200x0,2"
+        mon_string="HDMI-A-1,''${width}x''${height}@''${refresh_rate},2740x0,1"
         # Unlock PC (so I don't have to type password on Steam Deck)
         pkill -USR1 hyprlock || true
         systemctl --user stop hypridle
-        hyprctl dispatch dpms off DP-3
+        hyprctl dispatch dpms on HDMI-A-1
         hyprctl keyword monitor "$mon_string"
+        hyprctl dispatch moveworkspacetomonitor 7 HDMI-A-1
         hyprctl dispatch workspace 7
       '';
     };
@@ -53,10 +54,9 @@
       text = ''
         HYPRLAND_INSTANCE_SIGNATURE=$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)
         export HYPRLAND_INSTANCE_SIGNATURE
-        mon_string="DP-1,2560x1440@240,1200x0,1"
         systemctl --user start hypridle
-        hyprctl dispatch dpms on DP-3
-        hyprctl keyword monitor "$mon_string"
+        hyprctl dispatch moveworkspacetomonitor 7 DP-3
+        hyprctl dispatch dpms off HDMI-A-1
       '';
     };
   in {
@@ -82,7 +82,7 @@ in {
     openFirewall = true;
     settings = {
       channels = 2;
-      output_name = 1;
+      output_name = 0;
       # encoder = "amdvce";
       # decrease fec percentage because I am not dropping many packets
       fec_percentage = "7";
