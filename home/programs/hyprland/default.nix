@@ -85,7 +85,7 @@ in {
     settings = {
       # FIX Kinda jank mkMerge
       monitorSettings = lib.mkMerge [
-        (lib.mkIf (osConfig.networking.hostName == "link") {monitor = ["DP-1,2560x1440@240,1200x0,1" "DP-3,1920x1200@60,0x0,1,transform,1" "HDMI-A-1,1280x720@60,2740x0,1"];})
+        (lib.mkIf (osConfig.networking.hostName == "link") {monitor = ["DP-1,2560x1440@240,1200x0,1" "DP-3,1920x1200@60,0x0,1,transform,1"];})
         (lib.mkIf (osConfig.networking.hostName == "zelda") {monitor = [",highres,auto,2"];})
       ];
       exec-once = [polkit waybar swayosd-server pypr watch-clipboard watch-images];
