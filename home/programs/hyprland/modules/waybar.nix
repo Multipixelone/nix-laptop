@@ -229,6 +229,7 @@ in {
         padding-left: 0px;
       }
       #custom-cal {
+        color: #${config.lib.stylix.colors.base0D};
         border-radius: 0px;
         margin-right: 0px;
         padding-left: 0px;
