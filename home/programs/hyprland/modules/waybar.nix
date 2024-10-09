@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  inputs,
   osConfig,
   ...
 }: let
@@ -96,6 +97,7 @@ in {
       #custom-power,
       #custom-dynamic,
       #custom-todoist,
+      #custom-cal,
       #network {
         background-color: #${config.lib.stylix.colors.base02};
         padding: 0 10px;
@@ -226,6 +228,11 @@ in {
         border-radius: 0px 20px 20px 0px;
         padding-left: 0px;
       }
+      #custom-cal {
+        border-radius: 0px;
+        margin-right: 0px;
+        padding-left: 0px;
+      }
 
       #battery.warning {
         color: #${config.lib.stylix.colors.base0A};
@@ -328,6 +335,7 @@ in {
           "battery"
           "network"
           "clock"
+          "custom/cal"
           "custom/todoist"
           "tray"
         ];
@@ -349,6 +357,12 @@ in {
           interval = 60;
           on-click = "${lib.getExe pkgs.todoist-electron}";
           tooltip = false;
+        };
+        "custom/cal" = {
+          exec = lib.getExe inputs.nextmeeting.packages.${pkgs.system}.default + " --waybar --gcalcli-cmdline \"gcalcli --nocolor agenda today --nodeclined --details=end --details=url --tsv\"";
+          return-type = "json";
+          interval = 59;
+          tooltip = true;
         };
         "image#album-art" = {
           exec = "echo /home/tunnel/.local/share/mopidy/coverart.png";

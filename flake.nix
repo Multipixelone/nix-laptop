@@ -23,6 +23,8 @@
     zjstatus.url = "github:dj95/zjstatus";
     helix.url = "github:helix-editor/helix";
     nixcord.url = "github:kaylorben/nixcord";
+    # TODO change url to upstream once the PR gets merged
+    nextmeeting.url = "github:Multipixelone/nextmeeting/nix-build?dir=packaging";
     blocklist = {
       url = "github:StevenBlack/hosts";
       flake = false;
