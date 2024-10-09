@@ -408,7 +408,7 @@ in {
           format-icons = ["󰃚" "󰃛" "󰃜" "󰃝" "󰃞" "󰃟" "󰃠"];
         };
         clock = {
-          format = "󰥔  {:%A, %b %d %R}";
+          format = "󰥔 {:%A, %b %d %R}";
         };
         battery = {
           states = {
