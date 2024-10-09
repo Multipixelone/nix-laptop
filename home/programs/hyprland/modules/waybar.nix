@@ -78,7 +78,7 @@
     '';
 in {
   home.packages = with pkgs; [waybar-mpris];
-  wayland.windowManager.hyprland.settings.exec-once = [(dynamic + "/bin/dynamic &")];
+  # wayland.windowManager.hyprland.settings.exec-once = [(dynamic + "/bin/dynamic &")];
   programs.waybar = {
     enable = true;
     style = ''
@@ -93,6 +93,7 @@ in {
       #clock,
       #battery,
       #pulseaudio,
+      #mpris,
       #custom-lock,
       #custom-power,
       #custom-dynamic,
@@ -114,7 +115,7 @@ in {
       }
 
       #workspaces {
-        margin-right: 10px;
+        margin-right: 0px;
         margin-left: 10px;
         margin-top: 5px;
         background-color: transparent;
@@ -328,8 +329,8 @@ in {
         layer = "top";
         position = "top";
         output = lib.mkIf (osConfig.networking.hostName == "link") "DP-1";
-        modules-left = ["hyprland/workspaces"]; #"image#album-art" "custom/playerlabel"];
-        modules-center = ["custom/dynamic"];
+        modules-left = ["hyprland/workspaces" "mpris"]; #"image#album-art" "custom/playerlabel"];
+        # modules-center = ["custom/dynamic"];
         modules-right = [
           "backlight"
           "pulseaudio"
@@ -346,11 +347,11 @@ in {
           max-length = 80;
           # exec = "${mediaplayer}/bin/mediaplayer.py";
         };
-        "custom/dynamic" = {
-          return-type = "json";
-          format = "{}";
-          exec = lib.getExe start-dyn;
-        };
+        # "custom/dynamic" = {
+        #   return-type = "json";
+        #   format = "{}";
+        #   exec = lib.getExe start-dyn;
+        # };
         "custom/todoist" = {
           exec = lib.getExe todoist-script;
           exec-on-even = false;
@@ -365,6 +366,15 @@ in {
           return-type = "json";
           interval = 59;
           tooltip = true;
+        };
+        "mpris" = {
+          format = "{player_icon} {title} by {artist}";
+          format-paused = "<b>{player_icon} {title} by {artist}</b>";
+          player-icons = {
+            "Plexamp" = "󰚺";
+            "Spotify" = "";
+            "firefox" = "󰈹";
+          };
         };
         "image#album-art" = {
           exec = "echo /home/tunnel/.local/share/mopidy/coverart.png";
