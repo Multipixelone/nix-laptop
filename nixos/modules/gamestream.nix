@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }: let
   sh = lib.getExe pkgs.bash;
@@ -76,6 +77,12 @@
     undo = "${sh} -c \"${lib.getExe kill-script}\"";
   };
 in {
+  # imports = [
+  #   inputs.jovian.nixosModules.default
+  # ];
+  environment.systemPackages = [
+    inputs.jovian.legacyPackages.${pkgs.system}.gamescope-session
+  ];
   services.sunshine = {
     enable = true;
     capSysAdmin = true;
