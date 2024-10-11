@@ -76,10 +76,18 @@ in {
       };
     };
   };
-  security.wrappers.gamemode = {
-    owner = "root";
-    group = "root";
-    source = "${lib.getExe' pkgs.gamemode "gamemoderun"}";
-    capabilities = "cap_sys_ptrace,cap_sys_nice+pie";
+  security.wrappers = {
+    gamemode = {
+      owner = "root";
+      group = "root";
+      source = "${lib.getExe' pkgs.gamemode "gamemoderun"}";
+      capabilities = "cap_sys_ptrace,cap_sys_nice+pie";
+    };
+    gamescope = {
+      owner = "root";
+      group = "root";
+      source = lib.getExe pkgs.gamescope;
+      capabilities = "cap_sys_nice+pie";
+    };
   };
 }
