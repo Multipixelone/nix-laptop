@@ -26,6 +26,7 @@
     nodePackages.prettier
     wl-clipboard
     texlab
+    markdown-oxide
   ];
 in {
   # also install packages to main environment
@@ -157,7 +158,7 @@ in {
         }
         {
           name = "markdown";
-          language-servers = ["marksman" "gpt"];
+          language-servers = ["marksman" "markdown-oxide" "gpt"];
           formatter = {
             command = "prettier";
             args = ["--stdin-filepath" "file.md"];
