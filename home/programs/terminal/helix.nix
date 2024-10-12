@@ -162,7 +162,7 @@ in {
         }
         {
           name = "markdown";
-          language-servers = ["marksman" "markdown-oxide" "gpt"];
+          language-servers = ["marksman" "markdown-oxide"];
           formatter = {
             command = "prettier";
             args = ["--stdin-filepath" "file.md"];
