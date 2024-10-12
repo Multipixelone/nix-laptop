@@ -128,6 +128,9 @@ in {
           command = lib.getExe pkgs.nil;
           config.nil.formatting.command = ["${lib.getExe pkgs.alejandra}" "-q"];
         };
+        basedpyright = {
+          command = lib.getExe pkgs.basedpyright;
+        };
         texlab.config.texlab = {
           command = "texlab";
           chktex = {
@@ -165,6 +168,14 @@ in {
             args = ["--stdin-filepath" "file.md"];
           };
           auto-format = true;
+        }
+        {
+          name = "python";
+          language-servers = ["basedpyright"];
+          formatter = {
+            command = lib.getExe pkgs.black;
+            args = ["-" "--quiet" "--line-length 100"];
+          };
         }
         {
           name = "latex";
