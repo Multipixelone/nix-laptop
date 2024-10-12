@@ -46,6 +46,7 @@ in {
         line-number = "relative";
         auto-format = true;
         completion-trigger-len = 1;
+        completion-replace = true;
         bufferline = "multiple";
         color-modes = true;
         true-color = true; # fix colors over ssh
