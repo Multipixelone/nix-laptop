@@ -88,6 +88,10 @@
         systems.follows = "hyprland/systems";
       };
     };
+    hypr-binds = {
+      url = "github:hyprland-community/hypr-binds";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hyprspace = {
       url = "github:KZDKM/Hyprspace";
       inputs.hyprland.follows = "hyprland";

@@ -22,6 +22,7 @@
   };
 in {
   imports = [
+    inputs.hypr-binds.homeManagerModules.${pkgs.system}.default
     ./conf/binds.nix
     ./conf/windowrules.nix
     ./conf/workspaces.nix
@@ -53,6 +54,8 @@ in {
     XDG_SESSION_TYPE = "wayland";
     QT_AUTO_SCREEN_SCALE_FACTOR = 1;
   };
+  # enable hypr-bind
+  programs.hypr-binds.enable = true;
   wayland.windowManager.hyprland = {
     enable = true;
     package = osConfig.programs.hyprland.package;
