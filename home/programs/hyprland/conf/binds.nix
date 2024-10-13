@@ -10,9 +10,10 @@
   playerctl = lib.getExe pkgs.playerctl;
   swayosd-client = lib.getExe' pkgs.swayosd "swayosd-client";
   wl-copy = lib.getExe' pkgs.wl-clipboard "wl-copy";
+  grimblast = pkgs.grimblast.override {hyprland = osConfig.programs.hyprland.package;};
   screenshot-pkgs = [
     osConfig.programs.hyprland.package
-    pkgs.grimblast
+    grimblast
     pkgs.tesseract
     pkgs.wl-clipboard
     pkgs.libnotify
@@ -94,7 +95,7 @@ in {
           # screenshot & picker
           "$mod, C, exec, ${lib.getExe pkgs.hyprpicker} | ${wl-copy}"
           "$mod, X, exec, ${lib.getExe pkgs.cliphist} list | anyrun --show-results-immediately true --plugins ${inputs.anyrun.packages.${pkgs.system}.stdin}/lib/libstdin.so | ${lib.getExe pkgs.cliphist} decode | ${wl-copy}"
-          ", Print, exec, ${lib.getExe pkgs.grimblast} --notify --cursor copysave output"
+          ", Print, exec, ${lib.getExe grimblast} --notify --cursor copysave output"
           "ALT , Print, exec, ${lib.getExe screenshot-area}"
           "SHIFT , Print, exec, ${lib.getExe screenshot-area-ocr}"
           "$mod, SPACE, exec, anyrun"
