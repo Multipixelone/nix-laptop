@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  osConfig,
   ...
 }: {
   stylix.targets.foot.enable = false;
@@ -33,7 +34,7 @@
         beam-thickness = 1;
       };
       colors = {
-        alpha = lib.mkForce "1";
+        alpha = lib.mkIf (osConfig.networking.hostName == "link") "0.85";
       };
     };
   };
