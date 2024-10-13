@@ -6,35 +6,6 @@
   osConfig,
   ...
 }: let
-  # dynamic pill totally stolen from https://github.com/flick0/dotfiles/blob/702facf3bc3bce37991efdba6efb68c7477ea770/config/hypr/scripts/tools/start_dyn
-  dynamic = pkgs.stdenv.mkDerivation rec {
-    name = "dynamic";
-    propagatedBuildInputs = [
-      pkgs.python3
-      pkgs.waybar-mpris
-    ];
-    src = pkgs.fetchurl {
-      url = "https://raw.githubusercontent.com/flick0/dotfiles/aurora/config/hypr/scripts/tools/dynamic";
-      hash = "sha256-MgDKAmHEgjOH+A7HAdhxBzShYNqxS78+7+EVhYvwsLI=";
-    };
-    dontUnpack = true;
-    installPhase = "install -Dm755 ${src} $out/bin/dynamic";
-  };
-  start-dyn = pkgs.writeShellApplication {
-    name = "start-dyn";
-    runtimeInputs = [dynamic pkgs.jq];
-
-    text = ''
-      #!/usr/bin/bash
-      dynamic &
-      while true
-      do
-        out=$(cat ~/.config/hypr/store/dynamic_out.txt)
-        echo "$out"  | jq --unbuffered --compact-output
-        sleep 1
-      done
-    '';
-  };
   todoist-script =
     pkgs.writers.writePython3Bin "todoist" {
       libraries = [
