@@ -3,33 +3,17 @@
   config,
   inputs,
   ...
-}: {
-  age.secrets = {
-    "plex" = {
-      file = "${inputs.secrets}/media/plextoken.age";
-      mode = "400";
-      owner = "tunnel";
-      group = "users";
-    };
-    "qtscrob" = {
-      file = "${inputs.secrets}/media/qtscrob.age";
-      mode = "400";
-      owner = "tunnel";
-      group = "users";
-    };
-  };
-  services.playerctld.enable = true;
-  systemd.timers."playlist-downloader" = {
-    wantedBy = ["timers.target"];
-    timerConfig = {
-      OnCalendar = "daily";
-      Persistent = true;
-      RandomizedDelaySec = "20m";
-    };
-  };
-  systemd.services."playlist-downloader" = {
-    path = [pkgs.rsync pkgs.curl pkgs.xmlstarlet pkgs.jq pkgs.gawk];
-    script = ''
+}: let
+  playlist-download = pkgs.writeShellApplication {
+    name = "playlist-download";
+    runtimeInputs = [
+      pkgs.rsync
+      pkgs.curl
+      pkgs.xmlstarlet
+      pkgs.jq
+      pkgs.gawk
+    ];
+    text = ''
       urlencode() {
         local string="''${1}"
         local encoded=""
@@ -79,12 +63,40 @@
       done
       echo "all playlists downloaded & saved to $OUTPUT_PLAYLIST_DIR, $MOPIDY_PLAYLISTS_DIR, and $IPOD_PLAYLISTS_DIR"
     '';
+  };
+in {
+  age.secrets = {
+    "plex" = {
+      file = "${inputs.secrets}/media/plextoken.age";
+      mode = "400";
+      owner = "tunnel";
+      group = "users";
+    };
+    "qtscrob" = {
+      file = "${inputs.secrets}/media/qtscrob.age";
+      mode = "400";
+      owner = "tunnel";
+      group = "users";
+    };
+  };
+  services.playerctld.enable = true;
+  systemd.timers."playlist-downloader" = {
+    wantedBy = ["timers.target"];
+    timerConfig = {
+      OnCalendar = "daily";
+      Persistent = true;
+      RandomizedDelaySec = "20m";
+    };
+  };
+  systemd.services."playlist-downloader" = {
     serviceConfig = {
       Type = "oneshot";
+      ExecStart = playlist-download;
       User = "tunnel";
     };
   };
   environment.systemPackages = [
+    playlist-download
     (pkgs.writeShellApplication {
       name = "ipod-sync";
       runtimeInputs = [pkgs.rsync];
