@@ -25,8 +25,6 @@
     helix.url = "github:helix-editor/helix";
     nixcord.url = "github:kaylorben/nixcord";
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
-    # TODO change url to upstream once the PR gets merged
-    nextmeeting.url = "github:Multipixelone/nextmeeting/reformat?dir=packaging";
     blocklist = {
       url = "github:StevenBlack/hosts";
       flake = false;
@@ -38,6 +36,14 @@
     secrets = {
       url = "git+ssh://git@github.com/Multipixelone/nix-secrets.git";
       flake = false;
+    };
+    nextmeeting = {
+      url = "github:Multipixelone/nextmeeting/reformat?dir=packaging";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    waybar-mediaplayer = {
+      url = "github:Multipixelone/waybar-mediaplayer/nix-build";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     auto-cpufreq = {
       url = "github:AdnanHodzic/auto-cpufreq";
