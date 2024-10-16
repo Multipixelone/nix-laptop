@@ -2449,11 +2449,11 @@
       },
       "locked": {
         "dir": "packaging",
-        "lastModified": 1728492963,
-        "narHash": "sha256-FfMkLj9rCO6c9qt3HNKLU5qW1ACJQ9m33igYrJO/KqM=",
+        "lastModified": 1729103772,
+        "narHash": "sha256-paszvhpHA9pF2BxmHjyJMeI1h91eL14VpK2anhNYl3E=",
         "owner": "Multipixelone",
         "repo": "nextmeeting",
-        "rev": "d231f43f52bc092a387b0095d3386e63ec0b06a3",
+        "rev": "0e512f66a8936110085d31d49856bb017dc36f13",
         "type": "github"
       },
       "original": {
