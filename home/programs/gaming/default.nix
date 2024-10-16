@@ -10,7 +10,7 @@
 in {
   imports = [
     ./mangohud.nix
-    ./moondeck.nix
+    # ./moondeck.nix
   ];
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
