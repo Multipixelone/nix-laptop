@@ -7,6 +7,7 @@
   ...
 }: let
   nextmeeting = inputs.nextmeeting.packages.${pkgs.system}.default;
+  waybar-mediaplayer = inputs.waybar-mediaplayer.packages.${pkgs.system}.default;
   todoist-script =
     pkgs.writers.writePython3Bin "todoist" {
       libraries = [
@@ -49,7 +50,7 @@
           print(' ERROR ')
     '';
 in {
-  home.packages = with pkgs; [waybar-mpris];
+  home.packages = [pkgs.waybar-mpris waybar-mediaplayer];
   # wayland.windowManager.hyprland.settings.exec-once = [(dynamic + "/bin/dynamic &")];
   programs.waybar = {
     enable = true;
