@@ -117,7 +117,6 @@
     fwupd.enable = true;
     ratbagd.enable = true; # Logitech mouse daemon
     geoclue2.enable = true;
-    localtimed.enable = true;
     psd.enable = true;
     btrfs.autoScrub.enable = true;
     printing.enable = true;
