@@ -24,6 +24,7 @@
     zjstatus.url = "github:dj95/zjstatus";
     helix.url = "github:helix-editor/helix";
     nixcord.url = "github:kaylorben/nixcord";
+    apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
     # TODO change url to upstream once the PR gets merged
     nextmeeting.url = "github:Multipixelone/nextmeeting/reformat?dir=packaging";
     blocklist = {

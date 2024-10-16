@@ -220,6 +220,10 @@
       minecraftia
       corefonts
       vistafonts
+      inputs.apple-fonts.packages.${pkgs.system}.ny
+      inputs.apple-fonts.packages.${pkgs.system}.sf-pro
+      inputs.apple-fonts.packages.${pkgs.system}.sf-compact
+      inputs.apple-fonts.packages.${pkgs.system}.sf-mono
       (nerdfonts.override {fonts = ["Iosevka"];})
       (pkgs.callPackage ../pkgs/pragmata/default.nix {})
       (pkgs.callPackage ../pkgs/apple-fonts/default.nix {})
