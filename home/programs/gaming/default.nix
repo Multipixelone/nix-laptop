@@ -27,7 +27,7 @@ in {
     inputs.nix-gaming.packages.${pkgs.system}.mo2installer
     optifinePackages.optifine_1_20_4
     # custom pablomk7 citra (https://github.com/Pengiie/nix-flake/blob/ba643e26cefd99a5934c5b96da789820a1e90e5d/users/modules/citra/default.nix)
-    (callPackage ../../../pkgs/games/citra {})
+    # (callPackage ../../../pkgs/games/citra {})
     # Custom umu game runners
     # (callPackage ../../../pkgs/games/cities-skylines-2 {
     #   inherit umu mangohud;
