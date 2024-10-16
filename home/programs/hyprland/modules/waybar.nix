@@ -6,6 +6,7 @@
   osConfig,
   ...
 }: let
+  nextmeeting = inputs.nextmeeting.packages.${pkgs.system}.default;
   todoist-script =
     pkgs.writers.writePython3Bin "todoist" {
       libraries = [
@@ -332,7 +333,7 @@ in {
           tooltip = false;
         };
         "custom/cal" = {
-          exec = lib.getExe inputs.nextmeeting.packages.${pkgs.system}.default + " --skip-all-day-meeting --waybar --gcalcli-cmdline \"gcalcli --nocolor agenda today --nodeclined --details=end --details=url --tsv\"";
+          exec = lib.getExe nextmeeting + " --skip-all-day-meeting --waybar --gcalcli-cmdline \"gcalcli --nocolor agenda today --nodeclined --details=end --details=url --tsv\"";
           format = "󰃶 {}";
           return-type = "json";
           interval = 59;
