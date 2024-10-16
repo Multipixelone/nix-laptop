@@ -6,6 +6,8 @@
   osConfig,
   ...
 }: let
+  nextmeeting = inputs.nextmeeting.packages.${pkgs.system}.default;
+  waybar-mediaplayer = inputs.waybar-mediaplayer.packages.${pkgs.system}.default;
   todoist-script =
     pkgs.writers.writePython3Bin "todoist" {
       libraries = [
@@ -48,7 +50,7 @@
           print(' ERROR ')
     '';
 in {
-  home.packages = with pkgs; [waybar-mpris];
+  home.packages = [waybar-mediaplayer];
   # wayland.windowManager.hyprland.settings.exec-once = [(dynamic + "/bin/dynamic &")];
   programs.waybar = {
     enable = true;
@@ -332,7 +334,7 @@ in {
           tooltip = false;
         };
         "custom/cal" = {
-          exec = lib.getExe inputs.nextmeeting.packages.${pkgs.system}.default + " --skip-all-day-meeting --waybar --gcalcli-cmdline \"gcalcli --nocolor agenda today --nodeclined --details=end --details=url --tsv\"";
+          exec = lib.getExe nextmeeting + " --skip-all-day-meeting --waybar --gcalcli-cmdline \"gcalcli --nocolor agenda today --nodeclined --details=end --details=url --tsv\"";
           format = "󰃶 {}";
           return-type = "json";
           interval = 59;
