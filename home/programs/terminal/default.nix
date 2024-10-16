@@ -116,7 +116,7 @@ in {
     eza = {
       enable = true;
       git = true;
-      icons = true;
+      icons = "auto";
       enableFishIntegration = true;
       extraOptions = [
         "--color=auto"

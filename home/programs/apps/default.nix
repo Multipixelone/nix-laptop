@@ -18,7 +18,8 @@
 
   home.packages = with pkgs; [
     obsidian
-    anki
+    # TODO (https://github.com/NixOS/nixpkgs/pull/348697)
+    # anki
     gimp
   ];
 }

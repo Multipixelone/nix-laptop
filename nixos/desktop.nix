@@ -117,7 +117,6 @@
     fwupd.enable = true;
     ratbagd.enable = true; # Logitech mouse daemon
     geoclue2.enable = true;
-    localtimed.enable = true;
     psd.enable = true;
     btrfs.autoScrub.enable = true;
     printing.enable = true;
@@ -211,6 +210,18 @@
       (_final: prev: {
         zjstatus = inputs.zjstatus.packages.${prev.system}.default;
       })
+      # TODO remove this once cliphist hits unstable (see https://github.com/NixOS/nixpkgs/pull/348887)
+      (final: prev: {
+        cliphist = prev.cliphist.overrideAttrs (_old: {
+          src = final.fetchFromGitHub {
+            owner = "sentriz";
+            repo = "cliphist";
+            rev = "c49dcd26168f704324d90d23b9381f39c30572bd";
+            sha256 = "sha256-2mn55DeF8Yxq5jwQAjAcvZAwAg+pZ4BkEitP6S2N0HY=";
+          };
+          vendorHash = "sha256-M5n7/QWQ5POWE4hSCMa0+GOVhEDCOILYqkSYIGoy/l0=";
+        });
+      })
     ];
   };
   # Fonts
@@ -221,6 +232,10 @@
       minecraftia
       corefonts
       vistafonts
+      inputs.apple-fonts.packages.${pkgs.system}.ny
+      inputs.apple-fonts.packages.${pkgs.system}.sf-pro
+      inputs.apple-fonts.packages.${pkgs.system}.sf-compact
+      inputs.apple-fonts.packages.${pkgs.system}.sf-mono
       (nerdfonts.override {fonts = ["Iosevka"];})
       (pkgs.callPackage ../pkgs/pragmata/default.nix {})
       (pkgs.callPackage ../pkgs/apple-fonts/default.nix {})
