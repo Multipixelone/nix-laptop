@@ -6,8 +6,8 @@
   osConfig,
   ...
 }: let
-  nextmeeting = inputs.nextmeeting.packages.${pkgs.system}.default;
-  waybar-mediaplayer = inputs.waybar-mediaplayer.packages.${pkgs.system}.default;
+  nextmeeting = lib.getExe inputs.nextmeeting.packages.${pkgs.system}.default;
+  waybar-mediaplayer = lib.getExe inputs.waybar-mediaplayer.packages.${pkgs.system}.default;
   todoist-script =
     pkgs.writers.writePython3Bin "todoist" {
       libraries = [
@@ -50,7 +50,6 @@
           print(' ERROR ')
     '';
 in {
-  home.packages = [waybar-mediaplayer];
   home.file.".config/waybar-mediaplayer.json".text = ''
     {
       "refresh_interval": 500,
@@ -356,11 +355,11 @@ in {
           exec-on-even = false;
           return-type = "json";
           interval = 60;
-          on-click = "${lib.getExe pkgs.todoist-electron}";
+          on-click = lib.getExe pkgs.todoist-electron;
           tooltip = false;
         };
         "custom/cal" = {
-          exec = lib.getExe nextmeeting + " --skip-all-day-meeting --waybar --gcalcli-cmdline \"gcalcli --nocolor agenda today --nodeclined --details=end --details=url --tsv\"";
+          exec = nextmeeting + " --skip-all-day-meeting --waybar --gcalcli-cmdline \"gcalcli --nocolor agenda today --nodeclined --details=end --details=url --tsv\"";
           format = "󰃶 {}";
           return-type = "json";
           interval = 59;
