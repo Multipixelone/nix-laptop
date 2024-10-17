@@ -55,7 +55,7 @@ in {
       "refresh_interval": 500,
       "is_notification": false,
       "notification_min_interval": 2,
-      "widget_length": 20,
+      "widget_length": 45,
       "sepchar": "",
       "surface_color": "gray",
       "overlay_color": "cyan",
@@ -85,7 +85,7 @@ in {
         font-size: 13px;
       }
 
-      #custom-music,
+      #custom-playerlabel,
       #tray,
       #backlight,
       #clock,
@@ -97,6 +97,7 @@ in {
       #custom-dynamic,
       #custom-todoist,
       #custom-cal,
+      #image,
       #network {
         background-color: #${config.lib.stylix.colors.base02};
         padding: 0 10px;
@@ -201,16 +202,14 @@ in {
         color: #${config.lib.stylix.colors.base0E};
       }
       #custom-playerlabel {
-        border-radius: 0px 1rem 1rem 0px;
+        border-radius: 0px 20px 20px 0px;
         background-color: #${config.lib.stylix.colors.base02};
-        padding: 0px 0.5rem 0px 0px;
-        margin-bottom: 5px;
+        padding-left: 0px;
       }
       #image {
-        border-radius: 1rem 0px 0px 1rem;
+        border-radius: 20px 0px 0px 20px;
+        margin-right: 0px;
         background-color: #${config.lib.stylix.colors.base02};
-        padding: 0px 0.5rem 0px 0.5rem;
-        margin-bottom: 5px;
       }
       #battery {
         color: #${config.lib.stylix.colors.base0B};
@@ -327,7 +326,7 @@ in {
         layer = "top";
         position = "top";
         output = lib.mkIf (osConfig.networking.hostName == "link") "DP-1";
-        modules-left = ["hyprland/workspaces" "mpris"]; #"image#album-art" "custom/playerlabel"];
+        modules-left = ["hyprland/workspaces" "image#album-art" "custom/playerlabel"];
         # modules-center = ["custom/dynamic"];
         modules-right = [
           "backlight"
@@ -340,10 +339,12 @@ in {
           "tray"
         ];
         "custom/playerlabel" = {
-          format = ''<span>{}</span>'';
+          format = ''{}'';
           return-type = "json";
-          max-length = 80;
-          # exec = "${mediaplayer}/bin/mediaplayer.py";
+          max-length = 45;
+          min-length = 45;
+          exec = waybar-mediaplayer + " monitor";
+          on-click = waybar-mediaplayer + " play-pause";
         };
         # "custom/dynamic" = {
         #   return-type = "json";
@@ -375,11 +376,10 @@ in {
           };
         };
         "image#album-art" = {
-          exec = "echo /home/tunnel/.local/share/mopidy/coverart.png";
+          path = "/tmp/waybar-mediaplayer-art";
           size = 30;
-          interval = 30;
           # recieve signal from ncmpcpp to change song
-          signal = 5;
+          signal = 4;
         };
         "hyprland/workspaces" = {
           on-click = "activate";
