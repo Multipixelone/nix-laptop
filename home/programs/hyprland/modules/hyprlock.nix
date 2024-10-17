@@ -75,11 +75,11 @@ in {
         {
           # album art
           monitor = "eDP-1";
-          path = "/home/tunnel/.local/share/mopidy/coverart.png";
+          path = "/tmp/waybar-mediaplayer-art";
           size = 450;
           rounding = 2;
           reload_time = 0;
-          reload_cmd = ''echo "/home/tunnel/.local/share/mopidy/coverart.png"'';
+          reload_cmd = ''echo "/tmp/waybar-mediaplayer-art"'';
           position = "30, -20";
           shadow_passes = 4;
           shadow_size = 4;

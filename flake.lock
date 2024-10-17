@@ -4830,11 +4830,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1729183321,
-        "narHash": "sha256-zG+XJ4HaM1RIkhWbg+5GFbpKxYYxhKZ+EKjRKiOW9Cc=",
+        "lastModified": 1729184186,
+        "narHash": "sha256-YBDfiR+xiooKS8CWsabRSB9ekW/stYdtKapJxv6d/oo=",
         "owner": "Multipixelone",
         "repo": "waybar-mediaplayer",
-        "rev": "09318e34f078540ab07ed500321d833482a0f3fe",
+        "rev": "05af2fb036f18c502bd61b28554311fe79af6b57",
         "type": "github"
       },
       "original": {
