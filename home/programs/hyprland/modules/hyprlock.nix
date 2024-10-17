@@ -5,11 +5,18 @@
   ...
 }: let
   font_family = "PragmataPro Liga";
-  media-info = pkgs.writeShellApplication {
-    name = "media-info";
+  song-title = pkgs.writeShellApplication {
+    name = "song-title";
     runtimeInputs = [pkgs.playerctl];
     text = ''
-      playerctl metadata --format "{{ title }}<br/>{{ artist }} - {{ album }}"
+      playerctl metadata --format "{{ title }}"
+    '';
+  };
+  song-info = pkgs.writeShellApplication {
+    name = "song-info";
+    runtimeInputs = [pkgs.playerctl];
+    text = ''
+      playerctl metadata --format "{{ artist }} - {{ album }}"
     '';
   };
 in {
@@ -59,12 +66,27 @@ in {
         {
           monitor = "eDP-1";
           text = ''
-            cmd[update:0:true] ${lib.getExe media-info}
+            cmd[update:0:true] ${lib.getExe song-title}
           '';
           color = "rgb(245, 224, 220)";
           font_size = 50;
           inherit font_family;
-          position = "520, -26";
+          position = "530, -26";
+          shadow_passes = 18;
+          shadow_size = 5;
+          halign = "left";
+          valign = "top";
+        }
+        # artist + album
+        {
+          monitor = "eDP-1";
+          text = ''
+            cmd[update:0:true] ${lib.getExe song-info}
+          '';
+          color = "rgb(245, 224, 220)";
+          font_size = 36;
+          inherit font_family;
+          position = "530, -95";
           shadow_passes = 18;
           shadow_size = 5;
           halign = "left";
