@@ -42,7 +42,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     waybar-mediaplayer = {
-      url = "github:Multipixelone/waybar-mediaplayer/nix-build";
+      url = "github:Multipixelone/waybar-mediaplayer/artist";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     auto-cpufreq = {

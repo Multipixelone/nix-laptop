@@ -55,7 +55,7 @@ in {
       "refresh_interval": 500,
       "is_notification": false,
       "notification_min_interval": 2,
-      "widget_length": 45,
+      "widget_length": 37,
       "sepchar": "",
       "surface_color": "gray",
       "overlay_color": "cyan",
@@ -341,8 +341,8 @@ in {
         "custom/playerlabel" = {
           format = ''{}'';
           return-type = "json";
-          max-length = 45;
-          min-length = 45;
+          max-length = 37;
+          min-length = 37;
           exec = waybar-mediaplayer + " monitor";
           on-click = waybar-mediaplayer + " play-pause";
         };

@@ -4830,16 +4830,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1729117786,
-        "narHash": "sha256-uZEjkQN0LmQspOwEPct2KS48V3VYgQnBj6qh7VJAXQE=",
+        "lastModified": 1729183321,
+        "narHash": "sha256-zG+XJ4HaM1RIkhWbg+5GFbpKxYYxhKZ+EKjRKiOW9Cc=",
         "owner": "Multipixelone",
         "repo": "waybar-mediaplayer",
-        "rev": "1882d88534a0edae2b75292b430d7d4a1d83b5e2",
+        "rev": "09318e34f078540ab07ed500321d833482a0f3fe",
         "type": "github"
       },
       "original": {
         "owner": "Multipixelone",
-        "ref": "nix-build",
+        "ref": "artist",
         "repo": "waybar-mediaplayer",
         "type": "github"
       }
