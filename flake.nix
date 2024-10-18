@@ -45,6 +45,11 @@
       url = "github:Multipixelone/waybar-mediaplayer/artist";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # TODO switch to upstream if PR accepted (https://github.com/obskyr/khinsider/pull/98)
+    khinsider = {
+      url = "github:Multipixelone/khinsider/nix-build";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     auto-cpufreq = {
       url = "github:AdnanHodzic/auto-cpufreq";
       inputs.nixpkgs.follows = "nixpkgs";

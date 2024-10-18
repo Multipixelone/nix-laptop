@@ -35,7 +35,7 @@
     inputs.agenix.packages.${pkgs.system}.default
     (libsForQt5.callPackage ../pkgs/qtscrob/default.nix {})
     (callPackage ../pkgs/spotify2musicbrainz/default.nix {})
-    (callPackage ../pkgs/khinsider/default.nix {})
+    inputs.khinsider.packages.${pkgs.system}.default
     pulseaudioFull
     # (inputs.geospatial.packages.${pkgs.system}.qgis.override {
     #   extraPythonPackages = ps: [ps.pandas ps.numpy ps.scipy ps.pandas ps.charset-normalizer ps.click-plugins ps.click ps.certifi ps.cligj ps.colorama ps.fiona ps.pyproj ps.pytz ps.requests ps.rtree ps.setuptools ps.shapely ps.six ps.tzdata ps.zipp ps.attrs ps.dateutil ps.python-dateutil ps.idna ps.importlib-metadata ps.pyaml ps.urllib3 ps.packaging ps.cython ps.ortools ps.numexpr ps.py-cpuinfo ps.tables ps.fastparquet];
