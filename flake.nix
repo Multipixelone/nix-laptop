@@ -24,6 +24,7 @@
     zjstatus.url = "github:dj95/zjstatus";
     helix.url = "github:helix-editor/helix";
     nixcord.url = "github:kaylorben/nixcord";
+    geospatial.url = "github:imincik/geospatial-nix";
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
     blocklist = {
       url = "github:StevenBlack/hosts";
