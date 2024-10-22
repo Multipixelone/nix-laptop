@@ -4,6 +4,22 @@
   inputs,
   ...
 }: let
+  playlist-download-python =
+    pkgs.writers.writePython3Bin "playlist-download" {
+      libraries = with pkgs.python3Packages; [
+      ];
+    } ''
+      PLAYLISTS = {"monthly playlist": 24562,
+        "forgotten faves": 48614,
+        "good listening and learning": 20340,
+        "slipped through": 26220,
+        "vgm study": 53423,
+        "amtrak": 26224,
+        "mackin mabel": 61577,
+        "summer jams": 61792,
+      }
+
+    '';
   playlist-download = pkgs.writeShellApplication {
     name = "playlist-download";
     runtimeInputs = [
