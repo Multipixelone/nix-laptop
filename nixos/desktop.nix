@@ -219,6 +219,8 @@
       (_final: prev: {
         zjstatus = inputs.zjstatus.packages.${prev.system}.default;
       })
+      # TODO remove this once (https://github.com/nix-community/home-manager/issues/5991)
+      (self: super: {utillinux = super.util-linux;})
       # TODO remove this once cliphist hits unstable (see https://github.com/NixOS/nixpkgs/pull/348887)
       (final: prev: {
         cliphist = prev.cliphist.overrideAttrs (_old: {
