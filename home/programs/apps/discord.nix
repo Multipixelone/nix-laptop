@@ -7,7 +7,7 @@
     inputs.nixcord.homeManagerModules.nixcord
   ];
   programs.nixcord = {
-    enable = true;
+    enable = false;
     config = {
       frameless = true;
       themeLinks = [
