@@ -29,6 +29,10 @@
       userName = "Multipixelone";
       userEmail = "finn@cnwr.net";
 
+      ignores = [
+        "result/"
+      ];
+
       extraConfig = {
         core = {
           editor = "hx";
