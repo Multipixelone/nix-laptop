@@ -14,7 +14,7 @@
     "duckdns".file = "${inputs.secrets}/wireguard/duckdns.age";
     "nix" = {
       file = "${inputs.secrets}/github/nix.age";
-      mode = "400";
+      mode = "440";
       owner = "tunnel";
       group = "users";
     };
