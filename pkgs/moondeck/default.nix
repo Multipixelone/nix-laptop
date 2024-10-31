@@ -2,17 +2,13 @@
   stdenv,
   fetchFromGitHub,
   cmake,
-  pkg-config,
   ninja,
-  qtbase,
   wrapQtAppsHook,
-  qttools,
-  qtconnectivity,
-  qthttpserver,
-  qtwebsockets,
-  qtwayland,
+  qt6,
   procps,
   libXrandr,
+  xcb-util-cursor,
+  fuse,
   steam,
   lib,
 }:
@@ -31,24 +27,26 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     ninja
     cmake
-    pkg-config
     wrapQtAppsHook
-    qtconnectivity
-    qthttpserver
-    procps
-    libXrandr
-    qtwebsockets
   ];
+
   buildInputs = [
-    qtbase
-    qtwayland
-    qttools
-    qtconnectivity
+    qt6.qtbase
+    qt6.qtwayland
+    qt6.qtwebsockets
+    qt6.qthttpserver
+    fuse
+    xcb-util-cursor
+    libXrandr
+    procps
+    steam
   ];
+
   postPatch = ''
     substituteInPlace src/lib/os/linux/steamregistryobserver.cpp \
         --replace-fail /usr/bin/steam ${lib.getExe steam};
   '';
+
   cmakeFlags = [
     "-DCMAKE_BUILD_TYPE:STRING=Release"
     "-G Ninja"
