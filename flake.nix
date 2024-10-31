@@ -144,13 +144,10 @@
     ...
   }: {
     nixosConfigurations = {
-      zelda = nixpkgs.lib.nixosSystem rec {
+      zelda = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs;
-          pkgs-stable = import nixpkgs-stable {
-            inherit system;
-          };
         };
         modules = [
           ./nixos/zelda.nix
@@ -166,21 +163,15 @@
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {
               inherit inputs;
-              pkgs-stable = import nixpkgs-stable {
-                inherit system;
-              };
             };
             home-manager.users.tunnel = import ./home/zelda.nix;
           }
         ];
       };
-      link = nixpkgs.lib.nixosSystem rec {
+      link = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs;
-          pkgs-stable = import nixpkgs-stable {
-            inherit system;
-          };
         };
         modules = [
           ./nixos/link.nix
@@ -196,9 +187,6 @@
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {
               inherit inputs;
-              pkgs-stable = import nixpkgs-stable {
-                inherit system;
-              };
             };
             home-manager.users.tunnel = import ./home/link.nix;
           }
