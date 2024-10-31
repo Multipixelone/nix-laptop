@@ -44,8 +44,7 @@
     #font = (pkgs.callPackage ../pkgs/pragmata/default.nix {});
   };
   qt = {
-    # TODO enable when (https://github.com/catppuccin/nix/pull/358/files) gets merged
-    enable = false;
+    enable = true;
     platformTheme.name = "kvantum";
     style = {
       name = "kvantum";
