@@ -13,6 +13,8 @@
   qtwayland,
   procps,
   libXrandr,
+  steam,
+  lib,
 }:
 stdenv.mkDerivation rec {
   pname = "moondeck-buddy";
@@ -43,6 +45,10 @@ stdenv.mkDerivation rec {
     qttools
     qtconnectivity
   ];
+  postPatch = ''
+    substituteInPlace src/lib/os/linux/steamregistryobserver.cpp \
+        --replace-fail /usr/bin/steam ${lib.getExe steam};
+  '';
   cmakeFlags = [
     "-DCMAKE_BUILD_TYPE:STRING=Release"
     "-G Ninja"
