@@ -5,7 +5,7 @@
   ...
 }: let
   playlist-download-python =
-    pkgs.writers.writePython3Bin "playlist-download" {
+    pkgs.writers.writePython3Bin "playlist-download-python" {
       libraries = with pkgs.python3Packages; [
       ];
     } ''
@@ -18,7 +18,6 @@
         "mackin mabel": 61577,
         "summer jams": 61792,
       }
-
     '';
   playlist-download = pkgs.writeShellApplication {
     name = "playlist-download";
@@ -113,6 +112,7 @@ in {
   };
   environment.systemPackages = [
     playlist-download
+    playlist-download-python
     (pkgs.writeShellApplication {
       name = "ipod-sync";
       runtimeInputs = [pkgs.rsync];
