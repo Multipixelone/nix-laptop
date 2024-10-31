@@ -8,7 +8,7 @@
   sh = lib.getExe pkgs.bash;
   hypr-dispatch = lib.getExe' config.programs.hyprland.package "hyprctl" + " dispatch exec";
   steam = lib.getExe config.programs.steam.package + " --";
-  # moondeck = pkgs.qt6.callPackage ../../pkgs/moondeck/default.nix {};
+  moondeck = pkgs.qt6.callPackage ../../pkgs/moondeck/default.nix {};
   # icon download and crop functions
   mk-icon = {icon-name}: pkgs.runCommand "${icon-name}-scaled.png" {} ''${pkgs.imagemagick}/bin/convert -density 1200 -resize 500x -background none ${pkgs.papirus-icon-theme}/share/icons/Papirus-Dark/128x128/apps/${icon-name}.svg -gravity center -extent 600x800 $out'';
   download-image = {
@@ -135,13 +135,13 @@ in {
             hash = "sha256-7z6+xKw4GvQv5IH2PTVq3TdKlp16u65pti4seN4ZEJs=";
           };
         }
-        # {
-        #   name = "MoonDeckStream";
-        #   cmd = "${moondeck}/bin/MoonDeckStream";
-        #   prep-cmd = [prep];
-        #   image-path = mk-icon {icon-name = "moonlight";};
-        #   auto-detatch = false;
-        # }
+        {
+          name = "MoonDeckStream";
+          cmd = "${moondeck}/bin/MoonDeckStream";
+          prep-cmd = [prep];
+          image-path = mk-icon {icon-name = "moonlight";};
+          auto-detatch = false;
+        }
       ];
     };
   };
