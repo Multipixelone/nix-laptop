@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
     # use lix (failing build only on one computer?)
     # lix = {
@@ -134,6 +135,7 @@
   };
   outputs = inputs @ {
     nixpkgs,
+    nixpkgs-stable,
     home-manager,
     stylix,
     agenix,
@@ -142,9 +144,14 @@
     ...
   }: {
     nixosConfigurations = {
-      zelda = nixpkgs.lib.nixosSystem {
+      zelda = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
-        specialArgs = {inherit inputs;};
+        specialArgs = {
+          inherit inputs;
+          pkgs-stable = import nixpkgs-stable {
+            inherit system;
+          };
+        };
         modules = [
           ./nixos/zelda.nix
           inputs.musnix.nixosModules.musnix
@@ -157,14 +164,24 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit inputs;};
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              pkgs-stable = import nixpkgs-stable {
+                inherit system;
+              };
+            };
             home-manager.users.tunnel = import ./home/zelda.nix;
           }
         ];
       };
-      link = nixpkgs.lib.nixosSystem {
+      link = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
-        specialArgs = {inherit inputs;};
+        specialArgs = {
+          inherit inputs;
+          pkgs-stable = import nixpkgs-stable {
+            inherit system;
+          };
+        };
         modules = [
           ./nixos/link.nix
           inputs.musnix.nixosModules.musnix
@@ -177,7 +194,12 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit inputs;};
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              pkgs-stable = import nixpkgs-stable {
+                inherit system;
+              };
+            };
             home-manager.users.tunnel = import ./home/link.nix;
           }
         ];
