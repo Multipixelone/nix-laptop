@@ -1,9 +1,10 @@
 {
   pkgs,
+  pkgs-stable,
   lib,
   ...
 }: let
-  moondeck = pkgs.qt6.callPackage ../../../pkgs/moondeck/default.nix {};
+  moondeck = pkgs.qt6.callPackage ../../../pkgs/moondeck/default.nix {qt6 = pkgs-stable.qt6;};
 in {
   systemd.user.services.moondeck = {
     Unit = {
