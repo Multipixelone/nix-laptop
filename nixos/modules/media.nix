@@ -9,6 +9,11 @@
       libraries = with pkgs.python3Packages; [
       ];
     } ''
+      PLAYLIST_DIR = "/home/tunnel/Music/Playlists"
+      MOPIDY_DIR = "/home/tunnel/.local/share/mopidy/m3u"
+      IPOD_DIR = "/home/tunnel/Music/.ipod"
+      MUSIC_DIR = "/media/Data/Music"
+      SECRET_FILE = "${config.age.secrets."plex".path}"
       PLAYLISTS = {"monthly playlist": 24562,
         "forgotten faves": 48614,
         "good listening and learning": 20340,
