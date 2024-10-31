@@ -26,8 +26,23 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs = [ninja cmake pkg-config wrapQtAppsHook qtconnectivity qthttpserver procps libXrandr qtwebsockets];
-  buildInputs = [qtbase qtwayland qttools qtconnectivity];
+  nativeBuildInputs = [
+    ninja
+    cmake
+    pkg-config
+    wrapQtAppsHook
+    qtconnectivity
+    qthttpserver
+    procps
+    libXrandr
+    qtwebsockets
+  ];
+  buildInputs = [
+    qtbase
+    qtwayland
+    qttools
+    qtconnectivity
+  ];
   cmakeFlags = [
     "-DCMAKE_BUILD_TYPE:STRING=Release"
     "-G Ninja"
