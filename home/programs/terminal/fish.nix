@@ -41,6 +41,7 @@ in {
       pw-send = "pactl load-module module-tunnel-sink server=tcp:192.168.6.6:4656";
       nsp = "nix-shell -p";
       bi = "beet import";
+      kh = "khinsider";
     };
     shellAliases = {
       ls = "eza";
