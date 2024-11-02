@@ -40,6 +40,7 @@ in {
       pw-get = "pactl load-module module-null-sink media.class=Audio/Sink sink_name=music channel_map=stereo && pactl load-module module-native-protocol-tcp port=4656 listen=192.168.6.6";
       pw-send = "pactl load-module module-tunnel-sink server=tcp:192.168.6.6:4656";
       nsp = "nix-shell -p";
+      bi = "beet import";
     };
     shellAliases = {
       ls = "eza";
