@@ -135,7 +135,6 @@
   };
   outputs = inputs @ {
     nixpkgs,
-    nixpkgs-stable,
     home-manager,
     stylix,
     agenix,
