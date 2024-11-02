@@ -19,7 +19,6 @@ in {
   home.packages = with pkgs; [
     gamescope
     gamemode
-    steamtinkerlaunch
     prismlauncher
     cemu
     amdgpu_top
