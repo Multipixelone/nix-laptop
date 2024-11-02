@@ -18,7 +18,6 @@ in {
     ];
   home.packages = with pkgs; [
     gamescope
-    lutris
     gamemode
     steamtinkerlaunch
     prismlauncher
