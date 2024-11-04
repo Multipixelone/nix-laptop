@@ -10,7 +10,6 @@
     startServices = "sd-switch";
   };
   home.sessionVariables = {
-    XDG_SCREENSHOTS_DIR = "/home/tunnel/Pictures/Screenshots";
     RESTIC_PASSWORD_FILE = config.age.secrets."restic/passwordhome".path;
     RCLONE_CONFIG = config.age.secrets."restic/rclone".path;
     RESTIC_REPOSITORY = "rclone:onedrive:Backups/${osConfig.networking.hostName}";

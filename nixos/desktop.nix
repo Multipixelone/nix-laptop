@@ -177,25 +177,6 @@
       ];
     };
   };
-  xdg.mime.defaultApplications = {
-    "inode/directory" = "nemo.desktop";
-
-    "text/html" = "firefox.desktop";
-    "default-web-browser" = "firefox.desktop";
-    "x-scheme-handler/http" = "firefox.desktop";
-    "x-scheme-handler/https" = "firefox.desktop";
-    "x-scheme-handler/about" = "firefox.desktop";
-    "x-scheme-handler/unknown" = "firefox.desktop";
-
-    "application/pdf" = "org.pwmt.zathura.desktop";
-    "application/zip" = "ark.desktop";
-
-    "audio/flac" = "vlc.desktop";
-    "audio/x-flac" = "vlc.desktop";
-
-    "audio/wav" = "izotope-rx-10.desktop";
-    "audio/x-wav" = "izotope-rx-10.desktop";
-  };
   # Audio + Music
   musnix.enable = true;
   security.rtkit.enable = true;
