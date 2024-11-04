@@ -1,11 +1,13 @@
 {
   pkgs,
+  inputs,
   lib,
   ...
 }: {
   programs.yazi = {
     enable = true;
     enableFishIntegration = true;
+    package = inputs.yazi.packages.${pkgs.system}.default;
     settings = {
       manager = {
         linemode = "size";
