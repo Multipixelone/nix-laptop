@@ -19,6 +19,9 @@
       "center, title:^(Save As)(.*)$"
       "center, title:^(Library)(.*)$"
       "center, title:^(File Upload)(.*)$"
+      "dimaround, class:^(gcr-prompter)$"
+      "dimaround, class:^(xdg-desktop-portal-gtk)$"
+      "dimaround, class:^(polkit-gnome-authentication-agent-1)$"
 
       # idle inhibit while watching videos
       "idleinhibit focus, class:^(mpv|.+exe|celluloid)$"
