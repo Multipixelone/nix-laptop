@@ -21,6 +21,7 @@
   };
   nixpkgs.config.allowUnfree = true;
   nix = {
+    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
     extraOptions = ''
       !include ${config.age.secrets.nix.path}
     '';

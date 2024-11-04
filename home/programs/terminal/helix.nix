@@ -18,7 +18,6 @@
   '';
   zellij-args = ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% --";
   packages = with pkgs; [
-    nil
     alejandra
     gpt-wrapped
     latexrun-wrapped
@@ -124,9 +123,17 @@ in {
           command = "helix-gpt";
           args = ["--handler" "copilot"];
         };
-        nil = {
-          command = lib.getExe pkgs.nil;
-          config.nil.formatting.command = ["${lib.getExe pkgs.alejandra}" "-q"];
+        nixd = {
+          command = lib.getExe pkgs.nixd;
+          args = ["--inlay-hints=true"];
+          config = {
+            formatting.command = [(lib.getExe pkgs.alejandra)];
+            nixpkgs.expr = "import <nixpkgs> {}";
+            options = {
+              nixos.expr = "(builtins.getFlake \"/etc/nixos\").nixosConfigurations.default.options";
+              home-manager.expr = "(builtins.getFlake \"/etc/nixos\").homeConfigurations.default.options";
+            };
+          };
         };
         basedpyright = {
           command = lib.getExe pkgs.basedpyright;
@@ -156,7 +163,15 @@ in {
       language = [
         {
           name = "nix";
-          language-servers = ["nil" "gpt"];
+          scope = "source.nix";
+          file-types = ["nix"];
+          comment-token = "#";
+          indent = {
+            tab-width = 2;
+            unit = "  ";
+          };
+          injection-regex = "nix";
+          language-servers = ["nixd" "gpt"];
           formatter.command = "alejandra";
           auto-format = true;
         }
