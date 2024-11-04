@@ -30,7 +30,7 @@
       userEmail = "finn@cnwr.net";
 
       ignores = [
-        "result/"
+        "*result*"
         ".direnv"
       ];
 
