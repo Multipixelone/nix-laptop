@@ -2,7 +2,7 @@
   description = "Multipixelone (Finn)'s nix + HomeManager config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
@@ -20,10 +20,10 @@
     musnix.url = "github:musnix/musnix";
     stylix.url = "github:danth/stylix";
     catppuccin.url = "github:catppuccin/nix";
-    nix-gaming.url = "github:fufexan/nix-gaming";
     nix-hardware.url = "github:NixOS/nixos-hardware/master";
     zjstatus.url = "github:dj95/zjstatus";
     helix.url = "github:helix-editor/helix";
+    yazi.url = "github:sxyazi/yazi";
     nixcord.url = "github:kaylorben/nixcord";
     geospatial.url = "github:imincik/geospatial-nix";
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
@@ -52,8 +52,16 @@
       url = "github:Multipixelone/khinsider/nix-build";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    qtscrob = {
+      url = "github:Multipixelone/QtScrobbler/nix-build";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     auto-cpufreq = {
       url = "github:AdnanHodzic/auto-cpufreq";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-gaming = {
+      url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
@@ -62,7 +70,10 @@
     };
     agenix = {
       url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
     };
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
@@ -93,14 +104,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # hyprland wm
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprland.url = "github:hyprwm/hyprland";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
-      inputs = {
-        hyprland.follows = "hyprland";
-        nixpkgs.follows = "hyprland/nixpkgs";
-        systems.follows = "hyprland/systems";
-      };
+      inputs.hyprland.follows = "hyprland";
     };
     hypr-binds = {
       url = "github:hyprland-community/hypr-binds";
@@ -120,14 +127,6 @@
       inputs = {
         hyprlang.follows = "hyprland/hyprlang";
         hyprutils.follows = "hyprland/hyprutils";
-        nixpkgs.follows = "hyprland/nixpkgs";
-        systems.follows = "hyprland/systems";
-      };
-    };
-    hyprportal = {
-      url = "github:hyprwm/xdg-desktop-portal-hyprland";
-      inputs = {
-        hyprlang.follows = "hyprland/hyprlang";
         nixpkgs.follows = "hyprland/nixpkgs";
         systems.follows = "hyprland/systems";
       };

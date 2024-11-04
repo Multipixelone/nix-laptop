@@ -20,7 +20,6 @@ in {
     gamescope
     gamemode
     prismlauncher
-    cemu
     amdgpu_top
     vulkan-tools
     vulkan-loader
