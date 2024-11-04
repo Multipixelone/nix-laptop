@@ -31,6 +31,7 @@
 
       ignores = [
         "result/"
+        ".direnv"
       ];
 
       extraConfig = {
