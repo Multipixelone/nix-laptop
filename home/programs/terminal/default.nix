@@ -96,10 +96,6 @@ in {
     navi.enable = true;
     aria2.enable = true;
     ripgrep.enable = true;
-    taskwarrior = {
-      enable = true;
-      package = pkgs.taskwarrior3;
-    };
     gh = {
       enable = true;
       package = gh-wrapped;
