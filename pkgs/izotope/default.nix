@@ -38,6 +38,7 @@
     USER="$(whoami)"
     GAME_PATH="$WINEPREFIX/drive_c/Program Files/iZotope/RX Pro Audio Editor/win64"
     GAME_BIN="$GAME_PATH/iZotope RX 10 Audio Editor.exe"
+    FILE=$1
 
     # EAC Fix
     if [ -d "$WINEPREFIX/drive_c/users/$USER/AppData/Roaming/EasyAntiCheat" ]
@@ -46,6 +47,12 @@
     fi
 
     ${preCommands}
+
+    # TODO need to extract the file path and pass just it to wine after cd to directory
+    if [ -f $FILE ]; then
+      echo "$FILE"
+      cd "$(dirname $FILE)"
+    fi
 
     wine ${wineFlags} "$GAME_BIN" "$@"
 
