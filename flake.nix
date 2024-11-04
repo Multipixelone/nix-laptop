@@ -52,6 +52,10 @@
       url = "github:Multipixelone/khinsider/nix-build";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    qtscrob = {
+      url = "github:Multipixelone/QtScrobbler/nix-build";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     auto-cpufreq = {
       url = "github:AdnanHodzic/auto-cpufreq";
       inputs.nixpkgs.follows = "nixpkgs";

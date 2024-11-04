@@ -33,7 +33,7 @@
     libsForQt5.kio
     libsForQt5.kio-extras
     inputs.agenix.packages.${pkgs.system}.default
-    (libsForQt5.callPackage ../pkgs/qtscrob/default.nix {})
+    inputs.qtscrob.packages.${pkgs.system}.default
     (callPackage ../pkgs/spotify2musicbrainz/default.nix {})
     inputs.khinsider.packages.${pkgs.system}.default
     pulseaudioFull
