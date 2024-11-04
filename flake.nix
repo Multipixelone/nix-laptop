@@ -120,14 +120,6 @@
         systems.follows = "hyprland/systems";
       };
     };
-    hyprportal = {
-      url = "github:hyprwm/xdg-desktop-portal-hyprland";
-      inputs = {
-        hyprlang.follows = "hyprland/hyprlang";
-        nixpkgs.follows = "hyprland/nixpkgs";
-        systems.follows = "hyprland/systems";
-      };
-    };
   };
   outputs = inputs @ {
     nixpkgs,
