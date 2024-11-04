@@ -32,6 +32,8 @@
     arc-theme
     libsForQt5.kio
     libsForQt5.kio-extras
+    libimobiledevice
+  ifuse
     inputs.agenix.packages.${pkgs.system}.default
     inputs.qtscrob.packages.${pkgs.system}.default
     (callPackage ../pkgs/spotify2musicbrainz/default.nix {})
@@ -129,6 +131,10 @@
     psd.enable = true;
     btrfs.autoScrub.enable = true;
     printing.enable = true;
+    usbmuxd = {
+  enable = true;
+  package = pkgs.usbmuxd2;
+};
     dnscrypt-proxy2 = {
       enable = true;
       settings = {
