@@ -46,7 +46,7 @@ in {
     shellAliases = {
       ls = "eza";
       la = "eza -lah";
-      mkdir = "mkdir -pv"; 
+      mkdir = "mkdir -pv";
       tree = "eza -s type -a -T -I '.git|node_modules|.next'";
       du = lib.getExe pkgs.ncdu + " --color dark -rr -x";
       clip = "${cliphist} list | fzf | ${cliphist} decode | ${wl-copy}";
