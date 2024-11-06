@@ -13,6 +13,7 @@
     # };
 
     # nixpkgs for zoom screensharing
+    flake-utils.url = "github:numtide/flake-utils";
     gvolpe-zoom.url = "github:gvolpe/nix-config";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
@@ -42,23 +43,28 @@
     nextmeeting = {
       url = "github:Multipixelone/nextmeeting/reformat?dir=packaging";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
     };
     waybar-mediaplayer = {
       url = "github:Multipixelone/waybar-mediaplayer/artist";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
     };
     # TODO switch to upstream if PR accepted (https://github.com/obskyr/khinsider/pull/98)
     khinsider = {
       url = "github:Multipixelone/khinsider/nix-build";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
     };
     humble-key = {
       url = "github:Multipixelone/humble-steam-key-redeemer/nix-build";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
     };
     qtscrob = {
       url = "github:Multipixelone/QtScrobbler/nix-build";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
     };
     auto-cpufreq = {
       url = "github:AdnanHodzic/auto-cpufreq";
