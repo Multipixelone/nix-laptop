@@ -52,6 +52,10 @@
       url = "github:Multipixelone/khinsider/nix-build";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    humble-key = {
+      url = "github:Multipixelone/humble-steam-key-redeemer/nix-build";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     qtscrob = {
       url = "github:Multipixelone/QtScrobbler/nix-build";
       inputs.nixpkgs.follows = "nixpkgs";
