@@ -1,4 +1,9 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  inputs,
+  ...
+}: let
+  better-fox = inputs.better-fox;
   extensions = with pkgs.nur.repos.rycee.firefox-addons; [
     # blockers
     sponsorblock
@@ -52,12 +57,6 @@
       meta = {};
     })
   ];
-  better-fox = pkgs.fetchFromGitHub {
-    owner = "yokoffing";
-    repo = "Betterfox";
-    rev = "128.0";
-    hash = "sha256-Xbe9gHO8Kf9C+QnWhZr21kl42rXUQzqSDIn99thO1kE=";
-  };
   settings = {
     "app.update.channel" = "default";
     "browser.link.open_newwindow" = true;

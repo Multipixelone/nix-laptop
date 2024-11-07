@@ -36,6 +36,10 @@
       url = "github:Diolinux/PhotoGIMP";
       flake = false;
     };
+    better-fox = {
+      url = "github:yokoffing/Betterfox";
+      flake = false;
+    };
     secrets = {
       url = "git+ssh://git@github.com/Multipixelone/nix-secrets.git";
       flake = false;

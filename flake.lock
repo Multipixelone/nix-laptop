@@ -211,6 +211,22 @@
         "type": "github"
       }
     },
+    "better-fox": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1730498568,
+        "narHash": "sha256-nw+vgGJK6DiMiXpjeiWXUOPRbyOnk3XlXiVkUiLqqaE=",
+        "owner": "yokoffing",
+        "repo": "Betterfox",
+        "rev": "80261756cae1886cc780af01a55c2977e3f1366f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yokoffing",
+        "repo": "Betterfox",
+        "type": "github"
+      }
+    },
     "blocklist": {
       "flake": false,
       "locked": {
@@ -3929,6 +3945,7 @@
         "anyrun-nixos-options": "anyrun-nixos-options",
         "apple-fonts": "apple-fonts",
         "auto-cpufreq": "auto-cpufreq",
+        "better-fox": "better-fox",
         "blocklist": "blocklist",
         "catppuccin": "catppuccin",
         "chaotic": "chaotic",
