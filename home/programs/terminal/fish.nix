@@ -33,6 +33,9 @@ in {
       c = "clear";
       # TODO fix idle inhibit command
       # ii = "systemd-inhibit --what=idle --who=Caffeine --why=Caffeine --mode=block sleep inf";
+      # fish
+      h = bat-args "history" "-l fish";
+      lsabbrs = bat-args "abbr" "-l fish";
       mx = "chmod +x";
       lg = "lazygit";
       nixlg = "cd ~/Documents/Git/nix-laptop && lazygit";
