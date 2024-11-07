@@ -57,6 +57,7 @@ in {
       mkdir = "mkdir -pv";
       tree = "eza -s type -a -T -I '.git|node_modules|.next'";
       du = lib.getExe pkgs.ncdu + " --color dark -rr -x";
+      df = lib.getExe pkgs.duf;
       clip = "${cliphist} list | fzf | ${cliphist} decode | ${wl-copy}";
       ping = lib.getExe pkgs.prettyping;
     };
