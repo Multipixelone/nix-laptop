@@ -26,7 +26,10 @@
 in {
   programs.fish = {
     enable = true;
-    shellAbbrs = {
+    shellAbbrs = let
+      bat = command: command + " | bat";
+      bat-args = command: args: command + (" | bat " + args);
+    in {
       c = "clear";
       # TODO fix idle inhibit command
       # ii = "systemd-inhibit --what=idle --who=Caffeine --why=Caffeine --mode=block sleep inf";
