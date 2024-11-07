@@ -149,6 +149,7 @@ in {
         '';
         extraConfig = builtins.concatStringsSep "\n" [
           (builtins.readFile "${better-fox}/Fastfox.js")
+          (builtins.readFile "${better-fox}/Peskyfox.js")
           ''
             user_pref("apz.overscroll.enabled", true); // DEFAULT NON-LINUX
             user_pref("general.smoothScroll", true); // DEFAULT
