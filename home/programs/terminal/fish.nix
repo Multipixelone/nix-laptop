@@ -95,6 +95,18 @@ in {
     '';
     functions = {
       nvimrg = "nvim -q (rg --vimgrep $argv | psub)";
+      __onefetch_on_pwd_change = {
+        body = "__onefetch_on_pwd_change --on-variable PWD";
+        onEvent = ''
+          if test -d ./.git
+            if test -e ./logo.png
+              ${lib.getExe pkgs.onefetch} --image logo.png
+            else
+              ${lib.getExe pkgs.onefetch}
+            end
+          end
+        '';
+      };
       fish_command_not_found = ''
         # If you run the command with comma, running the same command
         # will not prompt for confirmation for the rest of the session
