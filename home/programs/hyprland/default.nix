@@ -101,16 +101,18 @@ in {
       ];
       decoration = {
         rounding = "10";
-        shadow_offset = "1 3";
-        # only enable drop shadow on link
-        drop_shadow = lib.mkIf (osConfig.networking.hostName == "link") true;
-        shadow_ignore_window = true;
-        shadow_range = 30;
-        shadow_render_power = 4;
+        shadow = {
+          offset = "1 3";
+          # only enable drop shadow on link
+          enabled = lib.mkIf (osConfig.networking.hostName == "link") true;
+          ignore_window = true;
+          range = 30;
+          render_power = 4;
+          color = lib.mkForce "rgba(01010166)";
+          color_inactive = lib.mkForce "0x22000000";
+        };
         active_opacity = 1;
         inactive_opacity = 1;
-        "col.shadow" = lib.mkForce "rgba(01010166)";
-        "col.shadow_inactive" = lib.mkForce "0x22000000";
         # enable blur on desktop (costly)
         blur = lib.mkIf (osConfig.networking.hostName == "link") {
           enabled = true;
