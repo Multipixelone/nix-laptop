@@ -128,6 +128,7 @@ in {
   hardware = {
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     i2c.enable = true;
+    steam-hardware.enable = true;
     printers = {
       ensurePrinters = [
         {

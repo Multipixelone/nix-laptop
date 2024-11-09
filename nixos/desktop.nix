@@ -195,6 +195,24 @@
     jack.enable = true;
     lowLatency.enable = true;
     wireplumber.enable = true;
+    wireplumber.extraConfig = {
+      "dualsense" = {
+        "monitor.alsa.rules" = [
+          {
+            matches = [
+              {
+                "node.name" = "*Sony_Interactive_Entertainment_Wireless_Controller*";
+              }
+            ];
+            actions = {
+              update-props = {
+                "node.description" = "Wireless Controller";
+              };
+            };
+          }
+        ];
+      };
+    };
   };
   # Required for Obsidian
   nixpkgs = {
