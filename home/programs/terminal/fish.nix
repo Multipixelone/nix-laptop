@@ -21,8 +21,8 @@
     ''
       set fish_greeting # Disable greeting
     ''
-    + fzf-config
-    + pure-config;
+    + fzf-config;
+  # + pure-config;
 in {
   programs.fish = {
     enable = true;
@@ -152,10 +152,10 @@ in {
         name = "grc";
         src = pkgs.fishPlugins.grc.src;
       }
-      {
-        name = "pure";
-        src = pkgs.fishPlugins.pure.src;
-      }
+      # {
+      #   name = "pure";
+      #   src = pkgs.fishPlugins.pure.src;
+      # }
     ];
   };
 }
