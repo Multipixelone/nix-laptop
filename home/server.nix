@@ -19,8 +19,14 @@
     ethtool
     pciutils # lspci
     usbutils # lsusb
+    devenv
   ];
   programs = {
+    direnv = {
+      enable = true;
+      enableFishIntegration = true; # see note on other shells below
+      nix-direnv.enable = true;
+    };
     git = {
       enable = true;
       lfs.enable = true;
