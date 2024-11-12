@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: let
   gtfs-subway = pkgs.callPackage ../pkgs/aequilibrae/gtfs-subway.nix {};
@@ -12,6 +13,7 @@ in {
     ./modules/rgb.nix
     ./modules/gamestream.nix
     ./modules/minecraft-server.nix
+    inputs.ucodenix.nixosModules.default
   ];
   console = {
     earlySetup = true;
@@ -20,6 +22,10 @@ in {
     keyMap = "us";
   };
   services = {
+    ucodenix = {
+      enable = true;
+      cpuModelId = "00A20F10";
+    };
     syncthing = {
       enable = true;
       user = "tunnel";

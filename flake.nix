@@ -28,6 +28,7 @@
     nixcord.url = "github:kaylorben/nixcord";
     geospatial.url = "github:imincik/geospatial-nix";
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
+    ucodenix.url = "github:e-tho/ucodenix";
     blocklist = {
       url = "github:StevenBlack/hosts";
       flake = false;
