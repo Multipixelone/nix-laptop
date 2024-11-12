@@ -39,6 +39,7 @@ in {
     ./helix.nix
     ./shell-script.nix
     ./zellij.nix
+    ./starship.nix
   ];
   age.secrets = {
     "gh" = {
