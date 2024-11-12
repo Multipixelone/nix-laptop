@@ -27,7 +27,6 @@ in {
   programs.fish = {
     enable = true;
     shellAbbrs = let
-      bat = command: command + " | bat";
       bat-args = command: args: command + (" | bat " + args);
     in {
       c = "clear";
