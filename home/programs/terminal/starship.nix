@@ -18,7 +18,7 @@
       };
       git_status = {
         style = "bold italic bright-blue";
-        format = "([⎪$ahead_behind$staged$modified$untracked$renamed$deleted$conflicted$stashed⎥]($style))";
+        format = "([$ahead_behind$staged$modified$untracked$renamed$deleted$conflicted$stashed]($style))";
         conflicted = "[◪◦](italic bright-magenta)";
         ahead = ''
           [▴│[''${count}](bold white)│](italic green)'';
@@ -34,13 +34,13 @@
       };
       directory = {
         home_symbol = "⌂ ";
-        truncation_length = 2;
+        truncation_length = 10;
         truncation_symbol = "□ ";
         read_only = " ◈";
         use_os_path_sep = true;
         format = "[$path]($style)[$read_only]($read_only_style)";
         repo_root_style = "bold blue";
-        repo_root_format = "[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) [△](bold bright-blue)";
+        repo_root_format = "[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) [ ](bold bright-blue)";
       };
       format = lib.concatStrings [
         # "($nix_shell$container$git_metrics)$cmd_duration"
