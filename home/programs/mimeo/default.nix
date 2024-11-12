@@ -51,6 +51,7 @@
       "audio/x-wav" = ["izotope-rx-10.desktop"];
       "x-scheme-handler/chrome" = ["chromium-browser"];
       "inode/directory" = ["yazi"];
+      "x-scheme-handler/nxm" = ["modorganizer2-nxm-handler.desktop"];
     }
     // image
     // video
