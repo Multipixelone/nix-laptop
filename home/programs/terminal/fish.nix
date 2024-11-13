@@ -9,14 +9,14 @@
     set -x FZF_DEFAULT_OPTS "--preview='bat {} --color=always'" \n
     set -x SKIM_DEFAULT_COMMAND "rg --files || fd || find ."
   '';
-  pure-config = ''
-    set pure_enable_single_line_prompt true
-    set pure_enable_nixdevshell true
-    set pure_color_mute cyan
-    set pure_check_for_new_release false
-    set pure_color_primary white
-    set pure_color_info blue
-  '';
+  # pure-config = ''
+  #   set pure_enable_single_line_prompt true
+  #   set pure_enable_nixdevshell true
+  #   set pure_color_mute cyan
+  #   set pure_check_for_new_release false
+  #   set pure_color_primary white
+  #   set pure_color_info blue
+  # '';
   fish-config =
     ''
       set fish_greeting # Disable greeting
