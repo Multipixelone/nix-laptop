@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   config,
   inputs,
   ...
@@ -65,7 +66,7 @@
         convert = {
           auto = false;
           never_convert_lossy_files = true;
-          command = "${pkgs.ffmpeg} -i $source -sample_fmt s16 -ar 44100 $dest";
+          command = "${lib.getExe pkgs.ffmpeg} -i $source -sample_fmt s16 -ar 44100 $dest";
         };
         replaygain = {
           auto = true;
