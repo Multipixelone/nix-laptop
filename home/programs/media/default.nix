@@ -60,7 +60,7 @@
           move = true;
           write = true;
           resume = false;
-          clutter = ["Thumbs.DB" ".DS_Store"];
+          clutter = ["Thumbs.DB" ".DS_Store" "*.m3u" "*.sfv" "*.nfo" "*.jpg" "*.png"];
         };
         convert = {
           auto = false;
