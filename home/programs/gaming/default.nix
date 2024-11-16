@@ -24,6 +24,8 @@ in {
     vulkan-tools
     vulkan-loader
     inputs.nix-gaming.packages.${pkgs.system}.mo2installer
+    protontricks
+    zenity
     optifinePackages.optifine_1_20_4
     (retroarch.override {
       cores = with libretro; [
