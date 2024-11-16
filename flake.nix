@@ -68,8 +68,6 @@
     };
     qtscrob = {
       url = "github:Multipixelone/QtScrobbler/nix-build";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
     };
     auto-cpufreq = {
       url = "github:AdnanHodzic/auto-cpufreq";
