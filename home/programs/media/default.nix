@@ -57,7 +57,7 @@
         embedart.auto = true;
         chroma.auto = true;
         import = {
-          copy = true;
+          move = true;
           write = true;
           resume = false;
           clutter = ["Thumbs.DB" ".DS_Store"];
