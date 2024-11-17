@@ -61,18 +61,24 @@ in {
       group = "users";
     };
   };
-  programs.gamemode = {
-    enable = true;
-    enableRenice = true;
-    settings = {
-      general = {
-        softrealtime = "auto";
-        renice = 15;
-        inhibit_screensaver = 0;
-      };
-      custom = {
-        start = startscript;
-        end = endscript;
+  programs = {
+    gamescope = {
+      enable = true;
+      capSysNice = true;
+    };
+    gamemode = {
+      enable = true;
+      enableRenice = true;
+      settings = {
+        general = {
+          softrealtime = "auto";
+          renice = 15;
+          inhibit_screensaver = 0;
+        };
+        custom = {
+          start = startscript;
+          end = endscript;
+        };
       };
     };
   };
@@ -82,12 +88,6 @@ in {
       group = "root";
       source = "${lib.getExe' pkgs.gamemode "gamemoderun"}";
       capabilities = "cap_sys_ptrace,cap_sys_nice+pie";
-    };
-    gamescope = {
-      owner = "root";
-      group = "root";
-      source = lib.getExe pkgs.gamescope;
-      capabilities = "cap_sys_nice+pie";
     };
   };
 }
