@@ -5,9 +5,9 @@
   ...
 }: let
   # TODO run tuigreet inside of kmscon
-  kmscon = "${pkgs.kmscon}/libexec/kmscon/kmscon";
+  # kmscon = "${pkgs.kmscon}/libexec/kmscon/kmscon";
   tuigreet = lib.getExe' pkgs.greetd.tuigreet "tuigreet";
-  hyprland = lib.getExe' config.programs.hyprland.package "Hyprland";
+  # hyprland = lib.getExe' config.programs.hyprland.package "Hyprland";
   hyprland-session = "${config.programs.hyprland.package}/share/wayland-sessions";
 in {
   # required for keyring to unlock on boot
@@ -33,13 +33,20 @@ in {
         };
         # autologin on desktop: I'm gonna do a big refactor to modules soon™ 🙏
         initial_session = lib.mkIf (config.networking.hostName == "link") {
-          command = "${hyprland}";
+          command = "${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop";
           user = "tunnel";
         };
       };
     };
   };
-
+  programs.uwsm = {
+    enable = true;
+    waylandCompositors.hyprland = {
+      binPath = "/run/current-system/sw/bin/Hyprland";
+      prettyName = "Hyprland";
+      comment = "Hyprland managed by UWSM";
+    };
+  };
   # this is a life saver.
   # literally no documentation about this anywhere.
   # might be good to write about this...
