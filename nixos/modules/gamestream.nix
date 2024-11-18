@@ -130,6 +130,30 @@ in {
           image-path = mk-icon {icon-name = "steam";};
         }
         {
+          name = "Steam (Gamescope)";
+          cmd = let
+            steam-gamescope = pkgs.writeShellApplication {
+              name = "steam-gamescope";
+              runtimeInputs = [
+                inputs.jovian.legacyPackages.${pkgs.system}.gamescope
+                config.programs.steam.package
+              ];
+              text = ''
+                gamescope \
+                -w 3840 \
+                -h 2160 \
+                --xwayland-count 2 \
+                --backend wayland \
+                -f \
+                -e -- \
+                steam -gamepadui
+              '';
+            };
+          in "${hypr-dispatch} \"${lib.getExe steam-gamescope}\"";
+          prep-cmd = [prep steam-kill];
+          image-path = mk-icon {icon-name = "steamvr";};
+        }
+        {
           name = "Cities Skylines 2";
           cmd = "${hypr-dispatch} \"cities-skylines-ii\"";
           prep-cmd = [prep];
