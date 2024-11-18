@@ -88,7 +88,7 @@ in {
         (lib.mkIf (osConfig.networking.hostName == "zelda") {monitor = [",highres,auto,2"];})
       ];
       exec-once = [polkit waybar swayosd-server pypr watch-clipboard watch-images];
-      debug.disable_logs = false;
+      debug.disable_logs = true;
       env = [
         "XDG_SCREENSHOTS_DIR,/home/tunnel/Pictures/Screenshots"
         "QT_QPA_PLATFORMTHEME,qt5ct"
