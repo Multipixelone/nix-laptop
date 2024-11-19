@@ -36,7 +36,7 @@
         symbol = "";
         truncation_symbol = "⋯";
         truncation_length = 11;
-        format = "[$symbol $branch(:$remote_branch)]";
+        format = "$symbol $branch";
         ignore_branches = [
           "main"
           "master"
