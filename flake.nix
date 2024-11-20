@@ -19,7 +19,6 @@
     jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
     nurpkgs.url = "github:nix-community/NUR";
     musnix.url = "github:musnix/musnix";
-    stylix.url = "github:danth/stylix";
     catppuccin.url = "github:catppuccin/nix";
     nix-hardware.url = "github:NixOS/nixos-hardware/master";
     zjstatus.url = "github:dj95/zjstatus";
@@ -29,6 +28,7 @@
     geospatial.url = "github:imincik/geospatial-nix";
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
     ucodenix.url = "github:e-tho/ucodenix";
+    base16.url = "github:SenchoPens/base16.nix";
     blocklist = {
       url = "github:StevenBlack/hosts";
       flake = false;
@@ -70,6 +70,10 @@
       url = "github:Multipixelone/QtScrobbler/nix-build";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
+    };
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.base16.follows = "base16";
     };
     auto-cpufreq = {
       url = "github:AdnanHodzic/auto-cpufreq";
