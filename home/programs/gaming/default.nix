@@ -17,8 +17,6 @@ in {
       "optifine"
     ];
   home.packages = with pkgs; [
-    gamescope
-    gamemode
     prismlauncher
     amdgpu_top
     vulkan-tools
