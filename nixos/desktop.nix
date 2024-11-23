@@ -243,9 +243,9 @@
             ];
         });
       in {
-        nix = prev.nix.override (old: {
+        nix = prev.nix.override {
           curl = patched-curl;
-        });
+        };
       })
     ];
   };
