@@ -131,6 +131,8 @@ in {
       };
     };
   };
+  # hint epp to use maximum cpu performance
+  powerManagement.cpuFreqGovernor = "performance";
   hardware = {
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     i2c.enable = true;
