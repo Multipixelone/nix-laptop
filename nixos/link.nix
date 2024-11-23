@@ -23,7 +23,7 @@ in {
   };
   services = {
     ucodenix = {
-      enable = true;
+      enable = config.hardware.enableRedistributableFirmware;
       cpuModelId = "00A20F10";
     };
     syncthing = {
