@@ -53,23 +53,27 @@ in {
     };
   };
   # TODO make this list a definition, and then make some code to turn it into the tmp file rules (can be reused in restic backup)
-  systemd.tmpfiles.rules = let
-    # create env for rocm override
-    rocmEnv = pkgs.symlinkJoin {
-      name = "rocm-combined";
-      paths = with pkgs.rocmPackages; [
-        rocblas
-        hipblas
-        clr
-      ];
-    };
-  in [
-    "d /srv/slskd 0770 tunnel users -"
-    "d /srv/grocy 0770 tunnel users -"
-    "d /srv/jdownloader 0770 tunnel users -"
-    "d /srv/valhalla 0770 tunnel users -"
-    "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
-  ];
+  systemd = {
+    packages = with pkgs; [lact];
+    services.lactd.wantedBy = ["multi-user.target"];
+    tmpfiles.rules = let
+      # create env for rocm override
+      rocmEnv = pkgs.symlinkJoin {
+        name = "rocm-combined";
+        paths = with pkgs.rocmPackages; [
+          rocblas
+          hipblas
+          clr
+        ];
+      };
+    in [
+      "d /srv/slskd 0770 tunnel users -"
+      "d /srv/grocy 0770 tunnel users -"
+      "d /srv/jdownloader 0770 tunnel users -"
+      "d /srv/valhalla 0770 tunnel users -"
+      "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
+    ];
+  };
   programs.steam = {
     enable = true;
     gamescopeSession.enable = false;
@@ -171,6 +175,7 @@ in {
     };
   };
   environment.systemPackages = [
+    pkgs.lact
     (import ./modules/scripts/sleep.nix {inherit pkgs;})
     (pkgs.blender.override {hipSupport = true;})
   ];
