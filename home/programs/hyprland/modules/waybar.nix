@@ -79,6 +79,7 @@ in {
   # wayland.windowManager.hyprland.settings.exec-once = [(dynamic + "/bin/dynamic &")];
   programs.waybar = {
     enable = true;
+    package = pkgs.waybar.override {hyprland = osConfig.programs.hyprland.package;};
     style = ''
       * {
         font-family: "PragmataPro Liga", "Iosevka Nerd Font";
