@@ -54,6 +54,7 @@ in {
     XDG_SESSION_TYPE = "wayland";
     QT_AUTO_SCREEN_SCALE_FACTOR = 1;
   };
+  systemd.user.targets.tray.Unit.Requires = lib.mkForce ["graphical-session.target"];
   wayland.windowManager.hyprland = {
     enable = true;
     package = osConfig.programs.hyprland.package;

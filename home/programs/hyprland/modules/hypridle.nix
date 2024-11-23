@@ -22,6 +22,7 @@
     '';
   };
 in {
+  systemd.user.services.hypridle.Unit.After = lib.mkForce "graphical-session.target";
   services.hypridle = {
     enable = true;
     package = inputs.hypridle.packages.${pkgs.system}.hypridle;

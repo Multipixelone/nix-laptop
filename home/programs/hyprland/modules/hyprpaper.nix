@@ -63,7 +63,7 @@ in {
   systemd.user.services.swww = lib.mkIf (osConfig.networking.hostName == "link") {
     Unit = {
       Description = "swww wallpaper daemon";
-      PartOf = ["graphical-session.target"];
+      After = lib.mkForce "graphical-session.target";
     };
     Service = {
       ExecStart = lib.getExe' pkgs.swww "swww-daemon";
