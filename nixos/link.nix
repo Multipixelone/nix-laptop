@@ -170,6 +170,7 @@ in {
     kernelParams = [
       "video=DP-1:2560x1440@240"
       "video=DP-3:1920x1200@60"
+      "amd_pstate=active"
     ];
     loader = {
       efi = {
