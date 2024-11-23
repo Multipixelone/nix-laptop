@@ -64,6 +64,7 @@ in {
   programs = {
     gamescope = {
       enable = true;
+      package = inputs.jovian.legacyPackages.${pkgs.system}.gamescope;
       capSysNice = true;
     };
     gamemode = {
