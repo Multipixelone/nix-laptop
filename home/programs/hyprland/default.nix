@@ -58,7 +58,7 @@ in {
     enable = true;
     package = osConfig.programs.hyprland.package;
     plugins = [
-      # inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
     ];
     systemd = {
       enable = false;
