@@ -10,8 +10,8 @@
   proton ? "GE-Proton",
   dxvk,
   wineFlags ? "",
-  pname ? "cities-skylines-ii",
-  location ? "$HOME/Games/cities-skylines-ii",
+  pname ? "until-dawn",
+  location ? "/media/TeraData/Games/until-dawn",
   tricks ? [],
   wineDllOverrides ? ["powershell.exe=n"],
   preCommands ? "",
@@ -21,11 +21,6 @@
   pkgs,
 }: let
   version = "1.6.10";
-  src = pkgs.fetchurl {
-    url = "https://install.robertsspaceindustries.com/star-citizen/RSI-Setup-${version}.exe";
-    name = "RSI-Setup-${version}.exe";
-    hash = "sha256-axttJvw3MFmhLC4e+aqtf4qx0Z0x4vz78LElyGkMAbs=";
-  };
 
   # concat winetricks args
   tricksFmt = with builtins;
@@ -41,7 +36,7 @@
     export PROTONPATH="${proton}"
     export WINEDLLOVERRIDES="${lib.strings.concatStringsSep "," wineDllOverrides}"
     # ID for umu, not used for now
-    export GAMEID="umu-cities-skylines-ii"
+    export GAMEID="umu-2172010"
     export STORE="none"
     # Anti-cheat
     export EOS_USE_ANTICHEATCLIENTNULL=1
@@ -59,19 +54,8 @@
 
     PATH=${lib.makeBinPath [umu winetricks]}:$PATH
     USER="$(whoami)"
-    GAME_PATH="$WINEPREFIX/drive_c/Program Files/Cities Skylines II"
-    GAME_BIN="$GAME_PATH/Cities2.exe"
-
-    if [ ! -d "$WINEPREFIX" ]; then
-      # install tricks
-      winetricks -q -f ${tricksFmt}
-
-      mkdir -p "$GAME_PATH"
-
-      # install launcher
-      # Use silent install
-      umu-run ${src} /S
-    fi
+    GAME_PATH="$WINEPREFIX/drive_c/Until Dawn/Windows"
+    GAME_BIN="$GAME_PATH/Bates.exe"
 
     # EAC Fix
     if [ -d "$WINEPREFIX/drive_c/users/$USER/AppData/Roaming/EasyAntiCheat" ]
@@ -99,7 +83,7 @@
     name = pname;
     exec = "${script}/bin/${pname} %U";
     inherit icon;
-    desktopName = "Cities Skylines II";
+    desktopName = "Until Dawn";
     categories = ["Game"];
     # mimeTypes = ["application/x-star-citizen-launcher"];
   };

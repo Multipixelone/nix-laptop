@@ -22,6 +22,7 @@ in {
     vulkan-tools
     vulkan-loader
     inputs.nix-gaming.packages.${pkgs.system}.mo2installer
+    umu
     protontricks
     zenity
     optifinePackages.optifine_1_20_4
@@ -41,10 +42,10 @@ in {
     # custom pablomk7 citra (https://github.com/Pengiie/nix-flake/blob/ba643e26cefd99a5934c5b96da789820a1e90e5d/users/modules/citra/default.nix)
     # (callPackage ../../../pkgs/games/citra {})
     # Custom umu game runners
-    # (callPackage ../../../pkgs/games/cities-skylines-2 {
-    #   inherit umu mangohud;
-    #   location = "/media/TeraData/Games/cities-skylines-ii";
-    # })
+    (callPackage ../../../pkgs/games/until-dawn {
+      inherit umu mangohud;
+      location = "/media/TeraData/Games/until-dawn";
+    })
     # (callPackage ../../../pkgs/games/silent-hill-2 {
     #   inherit umu mangohud;
     #   location = "/media/BigData/Games/silent-hill-2-directors-cut";

@@ -154,13 +154,13 @@ in {
           image-path = mk-icon {icon-name = "steamvr";};
         }
         {
-          name = "Cities Skylines 2";
-          cmd = "${hypr-dispatch} \"cities-skylines-ii\"";
+          name = "Until Dawn";
+          cmd = "${hypr-dispatch} \"until-dawn\"";
           prep-cmd = [prep];
           image-path = download-image {
-            # Source: https://www.steamgriddb.com/grid/401805
-            url = "https://cdn2.steamgriddb.com/grid/4b06c53a6d97eab539d8b8fc0be7a458.jpg";
-            hash = "sha256-7z6+xKw4GvQv5IH2PTVq3TdKlp16u65pti4seN4ZEJs=";
+            # Source: https://www.steamgriddb.com/grid/115256
+            url = "https://cdn2.steamgriddb.com/grid/f28c89145bc5c930ba927088d63b196d.png";
+            hash = "sha256-DPDqZlgVbo/Wig4AlXGqZoHxI9QGPrmhZzteWke6JMc=";
           };
         }
         {
