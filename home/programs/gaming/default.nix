@@ -7,6 +7,20 @@
 }: let
   umu = inputs.umu.packages.${pkgs.system}.umu;
   mangohud = config.programs.mangohud.package;
+  retroarch-cores = pkgs.retroarch.withCores (
+    cores:
+      with cores; [
+        gambatte
+        gpsp
+        melonds
+        mupen64plus
+        pcsx-rearmed
+        pcsx2
+        ppsspp
+        snes9x
+        bsnes
+      ]
+  );
 in {
   imports = [
     ./mangohud.nix
@@ -26,19 +40,7 @@ in {
     protontricks
     zenity
     optifinePackages.optifine_1_20_4
-    (retroarch.override {
-      cores = with libretro; [
-        gambatte
-        gpsp
-        melonds
-        mupen64plus
-        pcsx-rearmed
-        pcsx2
-        ppsspp
-        snes9x
-        bsnes
-      ];
-    })
+    retroarch-cores
     # custom pablomk7 citra (https://github.com/Pengiie/nix-flake/blob/ba643e26cefd99a5934c5b96da789820a1e90e5d/users/modules/citra/default.nix)
     # (callPackage ../../../pkgs/games/citra {})
     # Custom umu game runners
