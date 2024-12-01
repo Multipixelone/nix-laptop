@@ -16,6 +16,7 @@
       fontconfig
       freetype
       fuse3
+      fuse
       gdk-pixbuf
       glib
       gtk3
@@ -31,6 +32,7 @@
       libuuid
       libxkbcommon
       libxml2
+      e2fsprogs
       mesa
       nspr
       nss
