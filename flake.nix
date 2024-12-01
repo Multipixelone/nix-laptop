@@ -119,7 +119,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     umu = {
-      url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
+      url = "git+https://github.com/LovingMelody/umu-launcher/?dir=packaging\/nix&submodules=1&ref=update-nix-package";
+      # url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # hyprland wm
