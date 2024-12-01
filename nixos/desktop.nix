@@ -261,7 +261,7 @@
       inputs.apple-fonts.packages.${pkgs.system}.sf-pro
       inputs.apple-fonts.packages.${pkgs.system}.sf-compact
       inputs.apple-fonts.packages.${pkgs.system}.sf-mono
-      (nerdfonts.override {fonts = ["Iosevka"];})
+      nerd-fonts.iosevka
       (pkgs.callPackage ../pkgs/pragmata/default.nix {})
       (pkgs.callPackage ../pkgs/apple-fonts/default.nix {})
     ];
