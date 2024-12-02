@@ -317,10 +317,10 @@ in {
       fsType = "btrfs";
       options = ["subvol=/" "compress=zstd:3" "noatime" "space_cache=v2" "autodefrag"];
     };
-    "/media/Windows" = {
-      device = "/dev/disk/by-label/Windows";
-      fsType = "ntfs";
-      options = ["nosuid" "nodev" "relatime" "blksize=4096"];
-    };
+    # "/media/Windows" = {
+    #   device = "/dev/disk/by-label/Windows";
+    #   fsType = "ntfs";
+    #   options = ["nosuid" "nodev" "relatime" "blksize=4096"];
+    # };
   };
 }
