@@ -39,6 +39,7 @@ in {
       lg = "lazygit";
       nixlg = "cd ~/Documents/Git/nix-laptop && lazygit";
       fetch = "nix run nixpkgs#nitch";
+      upset = "nix run github:Multipixelone/upset";
       ff = "nix run nixpkgs#fastfetch";
       hypr-log = "tail -f /run/user/1000/hypr/$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)/hyprland.log";
       # TODO Split this into commands based on hostname
