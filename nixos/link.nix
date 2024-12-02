@@ -177,7 +177,7 @@ in {
   environment.systemPackages = [
     pkgs.lact
     (import ./modules/scripts/sleep.nix {inherit pkgs;})
-    (pkgs.blender.override {hipSupport = true;})
+    # (pkgs.blender.override {hipSupport = true;})
   ];
   boot = {
     initrd = {
