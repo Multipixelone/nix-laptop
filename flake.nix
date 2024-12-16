@@ -174,7 +174,7 @@
           home-manager.nixosModules.home-manager
           agenix.nixosModules.default
           chaotic.nixosModules.default
-          nur.nixosModules.nur
+          nur.modules.nixos.default
           # inputs.lix.nixosModules.default
           {
             home-manager.useGlobalPkgs = true;
@@ -198,7 +198,7 @@
           home-manager.nixosModules.home-manager
           agenix.nixosModules.default
           chaotic.nixosModules.default
-          nur.nixosModules.nur
+          nur.modules.nixos.default
           # inputs.lix.nixosModules.default
           {
             home-manager.useGlobalPkgs = true;
