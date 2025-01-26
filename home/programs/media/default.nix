@@ -49,7 +49,7 @@
       settings = {
         directory = "/volume1/Media/Music";
         library = "/home/tunnel/.config/beets/library.db";
-        plugins = "fromfilename play the chroma fish replaygain lastgenre fetchart embedart lastimport edit discogs duplicates scrub missing";
+        plugins = "convert fromfilename play the chroma fish replaygain lastgenre fetchart embedart lastimport edit discogs duplicates scrub missing";
         lastfm.user = "Tunnelmaker";
         lastimport.user = "Tunnelmaker";
         ui.color = true;
