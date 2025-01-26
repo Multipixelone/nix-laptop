@@ -66,7 +66,12 @@
         convert = {
           auto = false;
           never_convert_lossy_files = true;
-          command = "${lib.getExe pkgs.ffmpeg} -i $source -sample_fmt s16 -ar 44100 $dest";
+          format = "mp3";
+          formats = {
+            mp3.command = "${lib.getExe pkgs.ffmpeg} -i $source -ab 320k -ac 2 -ar 44100 -joint_stereo 0 $dest";
+            mp3.extension = "mp3";
+            wav.command = "${lib.getExe pkgs.ffmpeg} -i $source -sample_fmt s16 -ar 44100 $dest";
+          };
         };
         replaygain = {
           auto = true;
