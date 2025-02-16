@@ -5,7 +5,7 @@
   lib,
   ...
 }: let
-  umu = inputs.umu.packages.${pkgs.system}.umu;
+  umu = pkgs.umu-launcher;
   mangohud = config.programs.mangohud.package;
   retroarch-cores = pkgs.retroarch.withCores (
     cores:

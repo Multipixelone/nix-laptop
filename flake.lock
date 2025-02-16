@@ -4537,7 +4537,6 @@
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "ucodenix": "ucodenix",
-        "umu": "umu",
         "waybar-mediaplayer": "waybar-mediaplayer",
         "yazi": "yazi",
         "zjstatus": "zjstatus"
@@ -5590,31 +5589,6 @@
         "owner": "e-tho",
         "repo": "ucodenix",
         "type": "github"
-      }
-    },
-    "umu": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "dir": "packaging/nix",
-        "lastModified": 1737345310,
-        "narHash": "sha256-DG6trkopsJf7qy7mLNw3AahjKPtnqHquCsS9iRF/b5o=",
-        "ref": "update-nix-package",
-        "rev": "16f6b7374e440f8d464522796217cd202f10b355",
-        "revCount": 905,
-        "submodules": true,
-        "type": "git",
-        "url": "https://github.com/LovingMelody/umu-launcher/?dir=packaging/nix"
-      },
-      "original": {
-        "dir": "packaging/nix",
-        "ref": "update-nix-package",
-        "submodules": true,
-        "type": "git",
-        "url": "https://github.com/LovingMelody/umu-launcher/?dir=packaging/nix"
       }
     },
     "vhs": {
