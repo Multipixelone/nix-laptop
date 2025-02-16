@@ -58,20 +58,20 @@ in {
     services.lactd.wantedBy = ["multi-user.target"];
     tmpfiles.rules = let
       # create env for rocm override
-      rocmEnv = pkgs.symlinkJoin {
-        name = "rocm-combined";
-        paths = with pkgs.rocmPackages; [
-          rocblas
-          hipblas
-          clr
-        ];
-      };
+      # rocmEnv = pkgs.symlinkJoin {
+      #   name = "rocm-combined";
+      #   paths = with pkgs.rocmPackages; [
+      #     rocblas
+      #     hipblas
+      #     clr
+      #   ];
+      # };
     in [
       "d /srv/slskd 0770 tunnel users -"
       "d /srv/grocy 0770 tunnel users -"
       "d /srv/jdownloader 0770 tunnel users -"
       "d /srv/valhalla 0770 tunnel users -"
-      "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
+      # "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
     ];
   };
   programs.steam = {
