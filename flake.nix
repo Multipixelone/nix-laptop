@@ -15,6 +15,7 @@
     # nixpkgs for zoom screensharing
     flake-utils.url = "github:numtide/flake-utils";
     gvolpe-zoom.url = "github:gvolpe/nix-config";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
     nurpkgs.url = "github:nix-community/NUR";
@@ -152,7 +153,8 @@
       };
     };
   };
-  outputs = inputs @ {
+  outputs = {
+    self,
     nixpkgs,
     home-manager,
     stylix,
@@ -160,8 +162,44 @@
     chaotic,
     nur,
     ...
-  }: {
+  } @ inputs: let
+    inherit (self) outputs;
+    # Supported systems for your flake packages, shell, etc.
+    systems = [
+      "aarch64-linux"
+      "i686-linux"
+      "x86_64-linux"
+      "aarch64-darwin"
+      "x86_64-darwin"
+    ];
+    # This is a function that generates an attribute by calling a function you
+    # pass to it, with each system as an argument
+    forAllSystems = nixpkgs.lib.genAttrs systems;
+  in {
+    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
     nixosConfigurations = {
+      minish = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./nixos/minish.nix
+          home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          agenix.nixosModules.default
+          chaotic.nixosModules.default
+          nur.modules.nixos.default
+          inputs.nixos-wsl.nixosModules.default
+          {
+            system.stateVersion = "24.05";
+            wsl.enable = true;
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+            };
+            home-manager.users.tunnel = import ./home/zelda.nix;
+          }
+        ];
+      };
       zelda = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {

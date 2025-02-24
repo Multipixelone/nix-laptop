@@ -133,7 +133,7 @@ in {
           owner = "gazorby";
           repo = "fish-exa";
           rev = "92e5bcb762f7c08cc4484a2a09d6c176814ef35d";
-          sha256 = "sha256-Dc/zdxfzAUM5NX8PxzfljRbYvO9f9syuLO8yBr+R3qg=";
+          sha256 = "sha256-kw4XrchvF4SNNoX/6HRw2WPvCxKamwuTVWdHg82Pqac=";
         };
       }
       {

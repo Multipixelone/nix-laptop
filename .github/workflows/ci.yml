@@ -103,7 +103,7 @@ jobs:
       fail-fast: false
       matrix:
         machine:
-          - host: zelda
+          - host: minish
             platform: x86-64-linux
           - host: link
             platform: x86-64-linux

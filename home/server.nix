@@ -1,11 +1,12 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }: {
   home = {
     username = "tunnel";
-    homeDirectory = "/home/tunnel";
+    homeDirectory = lib.mkForce "/home/tunnel";
   };
   imports = [
     ./programs/terminal/default.nix
