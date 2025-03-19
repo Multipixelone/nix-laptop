@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   config,
   inputs,
   ...
@@ -111,7 +112,7 @@ in {
   systemd.services."playlist-downloader" = {
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = playlist-download;
+      ExecStart = lib.getExe playlist-download;
       User = "tunnel";
     };
   };
