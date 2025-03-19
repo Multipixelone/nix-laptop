@@ -1,6 +1,6 @@
 {
-  # pkgs,
-  # lib,
+  pkgs,
+  lib,
   ...
 }: {
   imports = [
@@ -19,11 +19,11 @@
         -W $SCREEN_WIDTH -H $SCREEN_HEIGHT -O $CONNECTOR"
     fi
   '';
-  # systemd.user.services.ledfx = {
-  #   Unit.Description = "ledfx light control";
-  #   Install.WantedBy = ["graphical-session.target"];
-  #   Service = {
-  #     ExecStart = lib.getExe pkgs.ledfx;
-  #   };
-  # };
+  systemd.user.services.ledfx = {
+    Unit.Description = "ledfx light control";
+    Install.WantedBy = ["graphical-session.target"];
+    Service = {
+      ExecStart = lib.getExe pkgs.ledfx;
+    };
+  };
 }
