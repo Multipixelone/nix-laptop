@@ -6,9 +6,9 @@
   programs.mangohud = {
     enable = true;
     enableSessionWide = true;
-    package = pkgs.mangohud_git.overrideAttrs (_finalAttrs: previousAttrs: {
-      patches = previousAttrs.patches ++ [../../../pkgs/mangohud/media-player-fix.patch];
-    });
+    package = pkgs.mangohud_git; #.overrideAttrs (_finalAttrs: previousAttrs: {
+    #   patches = previousAttrs.patches ++ [../../../pkgs/mangohud/media-player-fix.patch];
+    # });
     settings = {
       # fix some weird stylix defaults
       background_alpha = lib.mkForce 0.0; # Background in horizontal for some reason stretches the whole screen?
