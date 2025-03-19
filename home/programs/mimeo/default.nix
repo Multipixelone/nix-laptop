@@ -77,8 +77,8 @@ in {
   home.packages = [
     pkgs.mimeo
     pkgs.nemo
-    pkgs.ark
     pkgs.loupe
+    pkgs.kdePackages.ark
     xdg-mimeo
   ];
 }
