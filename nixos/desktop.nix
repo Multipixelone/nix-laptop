@@ -35,7 +35,7 @@
     libimobiledevice
     ifuse
     inputs.agenix.packages.${pkgs.system}.default
-    inputs.qtscrob.packages.${pkgs.system}.default
+    # inputs.qtscrob.packages.${pkgs.system}.default
     (callPackage ../pkgs/spotify2musicbrainz/default.nix {})
     inputs.khinsider.packages.${pkgs.system}.default
     inputs.humble-key.packages.${pkgs.system}.default
