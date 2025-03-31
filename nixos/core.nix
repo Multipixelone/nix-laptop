@@ -12,6 +12,7 @@
     "wireguard".file = "${inputs.secrets}/wireguard/${config.networking.hostName}.age";
     "psk".file = "${inputs.secrets}/wireguard/psk.age";
     "duckdns".file = "${inputs.secrets}/wireguard/duckdns.age";
+    "cf".file = "${inputs.secrets}/cloudflare/link.age";
     "nix" = {
       file = "${inputs.secrets}/github/nix.age";
       mode = "440";
