@@ -21,6 +21,11 @@ in {
     packages = with pkgs; [terminus_font];
     keyMap = "us";
   };
+  users.users.cloudflared = {
+    group = "cloudflared";
+    isSystemUser = true;
+  };
+  users.groups.cloudflared = {};
   services = {
     ucodenix = {
       enable = config.hardware.enableRedistributableFirmware;
@@ -56,6 +61,18 @@ in {
   systemd = {
     packages = with pkgs; [lact];
     services.lactd.wantedBy = ["multi-user.target"];
+    services.cf-tunnel = {
+      wantedBy = ["multi-user.target"];
+      after = ["network-online.target" "dnscrypt-proxy2.service"];
+      serviceConfig = {
+        # this is gross
+        ExecStart = ''
+          ${lib.getExe pkgs.bash} -c "${lib.getExe pkgs.cloudflared} tunnel --no-autoupdate run --token $(${lib.getExe' pkgs.coreutils "cat"} ${config.age.secrets."cf".path})"'';
+        Restart = "always";
+        User = "cloudflared";
+        Group = "cloudflared";
+      };
+    };
     tmpfiles.rules = let
       # create env for rocm override
       # rocmEnv = pkgs.symlinkJoin {
