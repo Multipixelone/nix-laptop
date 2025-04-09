@@ -174,6 +174,7 @@
     fish.enable = true;
     mosh.enable = true;
     appimage.binfmt = true;
+    dconf.enable = true;
     nh = {
       enable = true;
       clean.enable = true;
