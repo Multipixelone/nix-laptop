@@ -357,7 +357,7 @@ in {
           exec-on-even = false;
           return-type = "json";
           interval = 60;
-          on-click = lib.getExe pkgs.todoist-electron;
+          # on-click = lib.getExe pkgs.todoist-electron;
           tooltip = false;
         };
         "custom/cal" = {
