@@ -6,6 +6,9 @@
   ...
 }: {
   hardware.enableRedistributableFirmware = true;
+  imports = [
+    ./modules/nix-ld.nix
+  ];
   # Nix Stuff
   age.secrets = {
     "attic".file = "${inputs.secrets}/attic.age";
