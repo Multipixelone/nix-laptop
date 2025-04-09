@@ -67,7 +67,7 @@ in {
       serviceConfig = {
         # this is gross
         ExecStart = ''
-          ${lib.getExe pkgs.bash} -c "${lib.getExe pkgs.cloudflared} tunnel --no-autoupdate run --token $(${lib.getExe' pkgs.coreutils "cat"} ${config.age.secrets."cf".path})"'';
+          ${lib.getExe pkgs.bash} -c "${lib.getExe inputs.nixpkgs-cloudflared.legacyPackages.${pkgs.system}.cloudflared} tunnel --no-autoupdate run --token $(${lib.getExe' pkgs.coreutils "cat"} ${config.age.secrets."cf".path})"'';
         Restart = "always";
         User = "cloudflared";
         Group = "cloudflared";
