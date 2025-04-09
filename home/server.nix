@@ -10,6 +10,7 @@
   };
   imports = [
     ./programs/terminal/default.nix
+    ./secrets.nix
     inputs.nix-index-database.hmModules.nix-index
   ];
   home.packages = with pkgs; [
