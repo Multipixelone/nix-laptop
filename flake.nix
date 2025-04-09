@@ -182,7 +182,7 @@
     nixosConfigurations = {
       minish = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-                specialArgs = {
+        specialArgs = {
           inherit inputs;
         };
 
@@ -196,9 +196,11 @@
           inputs.nixos-wsl.nixosModules.default
           {
             # home-manager.useGlobalPkgs = true;
-            wsl = {enable = true;
-            defaultUser = "tunnel";
-interop.register = true;};
+            wsl = {
+              enable = true;
+              defaultUser = "tunnel";
+              interop.register = true;
+            };
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {
               inherit inputs;
