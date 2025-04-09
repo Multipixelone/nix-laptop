@@ -15,7 +15,9 @@
     # nixpkgs for zoom screensharing
     flake-utils.url = "github:numtide/flake-utils";
     gvolpe-zoom.url = "github:gvolpe/nix-config";
+    nixpkgs-cloudflared.url = "github:wrbbz/nixpkgs/cloudflared-2025.4.0";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    yabridge-wine.url = "git+https://github.com/nixos/nixpkgs?rev=0e82ab234249d8eee3e8c91437802b32c74bb3fd";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
     nurpkgs.url = "github:nix-community/NUR";
@@ -191,7 +193,7 @@
           {
             system.stateVersion = "24.05";
             wsl.enable = true;
-            home-manager.useGlobalPkgs = true;
+            # home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {
               inherit inputs;
@@ -215,7 +217,7 @@
           nur.modules.nixos.default
           # inputs.lix.nixosModules.default
           {
-            home-manager.useGlobalPkgs = true;
+            # home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {
               inherit inputs;
@@ -239,7 +241,7 @@
           nur.modules.nixos.default
           # inputs.lix.nixosModules.default
           {
-            home-manager.useGlobalPkgs = true;
+            # home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {
               inherit inputs;

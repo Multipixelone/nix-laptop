@@ -30,6 +30,7 @@
     ./programs/email/default.nix
     ./programs/mimeo
     inputs.agenix.homeManagerModules.default
+    inputs.chaotic.homeManagerModules.default
     ./modules/theme
     ./modules/directories
     ./modules/media
@@ -38,7 +39,6 @@
   home.packages = with pkgs; [
     # Apps
     moonlight-qt
-    todoist-electron
     # inputs.gvolpe-zoom.out.pkgs.zoom-us
     zoom-us
     qalculate-gtk
