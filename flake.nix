@@ -16,6 +16,7 @@
     flake-utils.url = "github:numtide/flake-utils";
     gvolpe-zoom.url = "github:gvolpe/nix-config";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    yabridge-wine.url = "git+https://github.com/nixos/nixpkgs?rev=0e82ab234249d8eee3e8c91437802b32c74bb3fd";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
     nurpkgs.url = "github:nix-community/NUR";
