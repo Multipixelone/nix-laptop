@@ -31,6 +31,12 @@ in {
       enable = config.hardware.enableRedistributableFirmware;
       cpuModelId = "00A20F10";
     };
+    code-server = {
+      enable = true;
+      host = "0.0.0.0";
+      user = "tunnel";
+      group = "users";
+    };
     syncthing = {
       enable = true;
       user = "tunnel";
