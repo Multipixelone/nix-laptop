@@ -3182,6 +3182,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-cloudflared": {
+      "locked": {
+        "lastModified": 1743673149,
+        "narHash": "sha256-jGucaQTPNN+j901QEALk1lRs73zAFuSCPnZJMY3YfXs=",
+        "owner": "wrbbz",
+        "repo": "nixpkgs",
+        "rev": "cf1af042a660fe1311403eddf5ed01e50037f44f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "wrbbz",
+        "ref": "cloudflared-2025.4.0",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-hyprland": {
       "locked": {
         "lastModified": 1737847078,
@@ -4337,6 +4353,7 @@
         "nixos-generators": "nixos-generators",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_15",
+        "nixpkgs-cloudflared": "nixpkgs-cloudflared",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixvim": "nixvim",
@@ -4349,6 +4366,7 @@
         "stylix": "stylix",
         "ucodenix": "ucodenix",
         "waybar-mediaplayer": "waybar-mediaplayer",
+        "yabridge-wine": "yabridge-wine",
         "yazi": "yazi",
         "zjstatus": "zjstatus"
       }
@@ -5632,6 +5650,22 @@
         "owner": "hyprwm",
         "repo": "xdg-desktop-portal-hyprland",
         "type": "github"
+      }
+    },
+    "yabridge-wine": {
+      "locked": {
+        "lastModified": 1735554305,
+        "narHash": "sha256-zExSA1i/b+1NMRhGGLtNfFGXgLtgo+dcuzHzaWA6w3Q=",
+        "ref": "refs/heads/master",
+        "rev": "0e82ab234249d8eee3e8c91437802b32c74bb3fd",
+        "revCount": 730187,
+        "type": "git",
+        "url": "https://github.com/nixos/nixpkgs"
+      },
+      "original": {
+        "rev": "0e82ab234249d8eee3e8c91437802b32c74bb3fd",
+        "type": "git",
+        "url": "https://github.com/nixos/nixpkgs"
       }
     },
     "yazi": {
