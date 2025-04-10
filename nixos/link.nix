@@ -84,20 +84,10 @@ in {
       #   ];
       # };
     in [
-      "d /srv/slskd 0770 tunnel users -"
       "d /srv/grocy 0770 tunnel users -"
       "d /srv/jdownloader 0770 tunnel users -"
       "d /srv/valhalla 0770 tunnel users -"
       # "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
-    ];
-  };
-  programs.steam = {
-    enable = true;
-    gamescopeSession.enable = false;
-    platformOptimizations.enable = true;
-    localNetworkGameTransfers.openFirewall = true;
-    extraCompatPackages = with pkgs; [
-      proton-ge-bin
     ];
   };
   virtualisation.oci-containers = {
@@ -140,25 +130,6 @@ in {
           build_time_zones = "True";
           build_tar = "True";
           force_rebuild = "False";
-        };
-      };
-      slskd = {
-        autoStart = true;
-        image = "slskd/slskd:canary";
-        ports = ["5030:5030" "2234:2234"];
-        user = "1000:100";
-        # TODO find some universal way to declare these paths like my music library so that I can use a variable
-        volumes = [
-          "/srv/slskd:/app"
-          "/media/Data/Music/:/music"
-          "/media/Data/ImportMusic/slskd/:/downloads"
-        ];
-        environment = {
-          # TODO add soulseek password as agenix secret
-          SLSKD_REMOTE_CONFIGURATION = "true";
-          SLSKD_SHARED_DIR = "/music";
-          SLSKD_DOWNLOAD_DIR = "/downloads";
-          SLSKD_SLSK_LISTEN_PORT = "2234";
         };
       };
     };

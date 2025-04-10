@@ -64,8 +64,11 @@ in {
   programs = {
     gamescope = {
       enable = true;
-      package = inputs.jovian.legacyPackages.${pkgs.system}.gamescope;
       capSysNice = true;
+      args = [
+        "--rt"
+        "--expose-wayland"
+      ];
     };
     gamemode = {
       enable = true;
