@@ -26,6 +26,8 @@
           "${mod}/programs/gamemode.nix"
           "${mod}/programs/gamestream.nix"
           "${mod}/programs/games.nix"
+          "${mod}/programs/home-manager.nix"
+
 
           {
             home-manager = {
@@ -37,7 +39,7 @@
           inputs.musnix.nixosModules.musnix
           inputs.agenix.nixosModules.default
           inputs.chaotic.nixosModules.default
-          #inputs.nur.modules.nixos.default
+          inputs.nur.modules.nixos.default
         ];
     };
 
@@ -51,11 +53,12 @@
         "${mod}/programs/home-manager.nix"
         {
           home-manager = {
-            users.tunnel.imports = homeImports.server;
+            users.tunnel.imports = homeImports."tunnel@minish";
             extraSpecialArgs = specialArgs;
             backupFileExtension = ".hm-backup";
           };
         }
+                  inputs.agenix.nixosModules.default
       ];
     };
   };

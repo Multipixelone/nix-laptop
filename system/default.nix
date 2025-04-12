@@ -12,6 +12,7 @@ let
     ++ [
       ./programs
       ./programs/hyprland
+      ./programs/theme.nix
 
       ./services/greetd.nix
       ./services/pipewire.nix

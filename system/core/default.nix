@@ -1,4 +1,4 @@
-{lib, ...}:
+{inputs, lib, ...}:
 # default configuration shared by all hosts
 {
   imports = [

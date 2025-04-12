@@ -5,7 +5,9 @@
 }: {
   imports = [
     ./programs/terminal
-    inputs.nix-index-db.hmModules.nix-index
+    inputs.nix-index-database.hmModules.nix-index
+    inputs.agenix.homeManagerModules.default
+    inputs.chaotic.homeManagerModules.default
   ];
 
   home = {

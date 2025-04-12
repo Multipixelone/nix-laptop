@@ -6,7 +6,6 @@
 }: {
   imports = [
     ./secrets.nix
-    inputs.nix-index-database.hmModules.nix-index
   ];
   home.packages = with pkgs; [
     sysstat
@@ -18,5 +17,4 @@
     usbutils # lsusb
     devenv
   ];
-  home.stateVersion = "23.11";
 }

@@ -540,7 +540,7 @@
     "flake-parts_5": {
       "inputs": {
         "nixpkgs-lib": [
-          "nurpkgs",
+          "nur",
           "nixpkgs"
         ]
       },
@@ -1904,11 +1904,11 @@
     },
     "nixpkgs_10": {
       "locked": {
-        "lastModified": 1743827369,
-        "narHash": "sha256-rpqepOZ8Eo1zg+KJeWoq1HAOgoMCDloqv5r2EAa9TSA=",
+        "lastModified": 1744232761,
+        "narHash": "sha256-gbl9hE39nQRpZaLjhWKmEu5ejtQsgI5TWYrIVVJn30U=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "42a1c966be226125b48c384171c44c651c236c22",
+        "rev": "f675531bc7e6657c10a18b565cfebd8aa9e24c14",
         "type": "github"
       },
       "original": {
@@ -2118,6 +2118,26 @@
     },
     "nur": {
       "inputs": {
+        "flake-parts": "flake-parts_5",
+        "nixpkgs": "nixpkgs_10",
+        "treefmt-nix": "treefmt-nix_3"
+      },
+      "locked": {
+        "lastModified": 1744474042,
+        "narHash": "sha256-CDLAzJ5lqgPbp6gc/+x3m5ojmBust/wxLGM5XD9W818=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "96bc1373445beb864dd3564e09f0ca0b9d623a5a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
+    "nur_2": {
+      "inputs": {
         "flake-parts": "flake-parts_6",
         "nixpkgs": [
           "stylix",
@@ -2131,26 +2151,6 @@
         "owner": "nix-community",
         "repo": "NUR",
         "rev": "fde90f5f52e13eed110a0e53a2818a2b09e4d37c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "NUR",
-        "type": "github"
-      }
-    },
-    "nurpkgs": {
-      "inputs": {
-        "flake-parts": "flake-parts_5",
-        "nixpkgs": "nixpkgs_10",
-        "treefmt-nix": "treefmt-nix_3"
-      },
-      "locked": {
-        "lastModified": 1743983100,
-        "narHash": "sha256-kqpU9g57elV2aDq5BRzuhthb+ob9RyEBQBVfOxNqB2g=",
-        "owner": "nix-community",
-        "repo": "NUR",
-        "rev": "e3cc0198f8b8e521b99554d7a44c9fef77f2e729",
         "type": "github"
       },
       "original": {
@@ -2347,7 +2347,7 @@
         "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixvim": "nixvim",
-        "nurpkgs": "nurpkgs",
+        "nur": "nur",
         "photogimp": "photogimp",
         "pre-commit-hooks": "pre-commit-hooks_2",
         "qtscrob": "qtscrob",
@@ -2578,7 +2578,7 @@
         "gnome-shell": "gnome-shell",
         "home-manager": "home-manager_3",
         "nixpkgs": "nixpkgs_11",
-        "nur": "nur",
+        "nur": "nur_2",
         "systems": "systems_10",
         "tinted-foot": "tinted-foot",
         "tinted-kitty": "tinted-kitty",
@@ -2921,7 +2921,7 @@
     "treefmt-nix_3": {
       "inputs": {
         "nixpkgs": [
-          "nurpkgs",
+          "nur",
           "nixpkgs"
         ]
       },

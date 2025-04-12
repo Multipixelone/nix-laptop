@@ -28,8 +28,6 @@
     ./programs/theming/default.nix
     ./programs/email/default.nix
     ./programs/mimeo
-    inputs.agenix.homeManagerModules.default
-    inputs.chaotic.homeManagerModules.default
     ./modules/theme
     ./modules/directories
     ./modules/media

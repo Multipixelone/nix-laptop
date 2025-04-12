@@ -74,12 +74,6 @@
       "electron-25.9.0"
       "electron-28.2.10"
     ];
-    overlays = [
-      inputs.nur.overlay
-      (_final: prev: {
-        zjstatus = inputs.zjstatus.packages.${prev.system}.default;
-      })
-    ];
   };
   # Fonts
   # Virt

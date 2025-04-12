@@ -4,7 +4,7 @@
   ...
 }: let
   better-fox = inputs.better-fox;
-  extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+  extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
     # blockers
     sponsorblock
     ublock-origin
@@ -99,12 +99,6 @@
     "services.sync.engine.addons" = false;
   };
 in {
-  nixpkgs.overlays = [
-    inputs.nur.overlay
-    (_final: prev: {
-      zjstatus = inputs.zjstatus.packages.${prev.system}.default;
-    })
-  ];
   home = {
     sessionVariables.BROWSER = "firefox";
     packages = with pkgs; [
@@ -129,7 +123,7 @@ in {
     enable = true;
     profiles = {
       default = {
-        inherit extensions settings;
+        inherit extensions.packages settings;
         id = 0;
         # search = {
         #   default = "DuckDuckGo";

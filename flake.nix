@@ -69,7 +69,7 @@
       };
     };
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-    nurpkgs.url = "github:nix-community/NUR";
+    nur.url = "github:nix-community/NUR";
     musnix.url = "github:musnix/musnix";
     catppuccin.url = "github:catppuccin/nix";
     nix-hardware.url = "github:NixOS/nixos-hardware/master";
