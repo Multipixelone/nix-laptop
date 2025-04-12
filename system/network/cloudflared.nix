@@ -5,12 +5,10 @@
   ...
 }:
 # FIXME https://github.com/NixOS/nixpkgs/issues/370185
-
 let
-_ = lib.getExe;
-nix-cf = "inputs.nixpkgs-cloudflared.legacyPackages.${pkgs.system}";
-in
- {
+  _ = lib.getExe;
+  nix-cf = "inputs.nixpkgs-cloudflared.legacyPackages.${pkgs.system}";
+in {
   users.users.cloudflared = {
     group = "cloudflared";
     isSystemUser = true;

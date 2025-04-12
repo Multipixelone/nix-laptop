@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   virtualisation = {
+    oci-containers.backend = "docker";
     libvirtd = {
       enable = true;
       qemu = {

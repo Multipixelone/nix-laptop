@@ -86,7 +86,7 @@ in {
   #   inputs.jovian.nixosModules.default
   # ];
   environment.systemPackages = [
-    inputs.jovian.legacyPackages.${pkgs.system}.gamescope-session
+    pkgs.gamescope-session
   ];
   services.sunshine = {
     enable = true;
@@ -135,7 +135,7 @@ in {
             steam-gamescope = pkgs.writeShellApplication {
               name = "steam-gamescope";
               runtimeInputs = [
-                inputs.jovian.legacyPackages.${pkgs.system}.gamescope
+                pkgs.gamescope
                 config.programs.steam.package
               ];
               text = ''
