@@ -1,21 +1,26 @@
 let
-  desktop = [
+  server = [
     ./core
     ./core/boot.nix
 
-    ./hardware/fwupd.nix
-    ./hardware/graphics.nix
-
     ./network
-    ./network/avahi.nix
     ./network/tailscale.nix
 
-    ./programs
-
     ./services
-    ./services/greetd.nix
-    ./services/pipewire.nix
   ];
+
+  desktop =
+    server
+    ++ [
+      ./programs
+      ./services/greetd.nix
+      ./services/pipewire.nix
+
+      ./network/networkman.nix
+      ./network/zerotier.nix
+
+      ./hardware/g502.nix
+    ];
 
   laptop =
     desktop
@@ -23,8 +28,7 @@ let
       ./hardware/bluetooth.nix
 
       ./services/backlight.nix
-      ./services/power.nix
     ];
 in {
-  inherit desktop laptop;
+  inherit server desktop laptop;
 }

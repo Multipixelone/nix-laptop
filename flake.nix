@@ -1,13 +1,43 @@
 {
   description = "Multipixelone (Finn)'s nix + HomeManager config";
 
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux"];
+
+      imports = [
+        ./hosts
+        ./pkgs
+        ./pre-commit-hooks.nix
+      ];
+
+      perSystem = {
+        config,
+        pkgs,
+        ...
+      }: {
+        devShells.default = pkgs.mkShell {
+          packages = [
+            pkgs.alejandra
+            pkgs.git
+          ];
+          name = "dots";
+          DIRENV_LOG_FORMAT = "";
+          shellHook = ''
+            ${config.pre-commit.installationScript}
+          '';
+        };
+
+        formatter = pkgs.alejandra;
+      };
+    };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
-        nixpkgs-cloudflared.url = "github:wrbbz/nixpkgs/cloudflared-2025.4.0";
+    nixpkgs-cloudflared.url = "github:wrbbz/nixpkgs/cloudflared-2025.4.0";
     yabridge-wine.url = "git+https://github.com/nixos/nixpkgs?rev=0e82ab234249d8eee3e8c91437802b32c74bb3fd";
-
 
     # nixpkgs for zoom screensharing
     systems.url = "github:nix-systems/default-linux";
@@ -24,7 +54,20 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL/main";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "flake-compat";
+      };
+    };
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "flake-compat";
+      };
+    };
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     nurpkgs.url = "github:nix-community/NUR";
     musnix.url = "github:musnix/musnix";
@@ -90,7 +133,10 @@
     };
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
     };
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -159,110 +205,6 @@
         hyprutils.follows = "hyprland/hyprutils";
         nixpkgs.follows = "hyprland/nixpkgs";
         systems.follows = "hyprland/systems";
-      };
-    };
-  };
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    stylix,
-    agenix,
-    chaotic,
-    nur,
-    ...
-  } @ inputs: let
-    inherit (self) outputs;
-    # Supported systems for your flake packages, shell, etc.
-    systems = [
-      "aarch64-linux"
-      "i686-linux"
-      "x86_64-linux"
-      "aarch64-darwin"
-      "x86_64-darwin"
-    ];
-    # This is a function that generates an attribute by calling a function you
-    # pass to it, with each system as an argument
-    forAllSystems = nixpkgs.lib.genAttrs systems;
-  in {
-    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-    nixosConfigurations = {
-      minish = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-        };
-
-        modules = [
-          ./nixos/minish.nix
-          home-manager.nixosModules.home-manager
-          inputs.stylix.nixosModules.stylix
-          agenix.nixosModules.default
-          chaotic.nixosModules.default
-          nur.modules.nixos.default
-          inputs.nixos-wsl.nixosModules.default
-          {
-            # home-manager.useGlobalPkgs = true;
-            wsl = {
-              enable = true;
-              defaultUser = "tunnel";
-              interop.register = true;
-            };
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {
-              inherit inputs;
-            };
-            home-manager.users.tunnel = import ./home/zelda.nix;
-          }
-        ];
-      };
-      zelda = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-        };
-        modules = [
-          ./nixos/zelda.nix
-          inputs.musnix.nixosModules.musnix
-          inputs.stylix.nixosModules.stylix
-          home-manager.nixosModules.home-manager
-          agenix.nixosModules.default
-          chaotic.nixosModules.default
-          nur.modules.nixos.default
-          # inputs.lix.nixosModules.default
-          {
-            # home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {
-              inherit inputs;
-            };
-            home-manager.users.tunnel = import ./home/zelda.nix;
-          }
-        ];
-      };
-      link = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-        };
-        modules = [
-          ./nixos/link.nix
-          inputs.musnix.nixosModules.musnix
-          inputs.stylix.nixosModules.stylix
-          home-manager.nixosModules.home-manager
-          agenix.nixosModules.default
-          chaotic.nixosModules.default
-          nur.modules.nixos.default
-          # inputs.lix.nixosModules.default
-          {
-            # home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {
-              inherit inputs;
-            };
-            home-manager.users.tunnel = import ./home/link.nix;
-          }
-        ];
       };
     };
   };
