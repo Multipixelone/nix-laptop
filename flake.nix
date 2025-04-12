@@ -5,21 +5,27 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+        nixpkgs-cloudflared.url = "github:wrbbz/nixpkgs/cloudflared-2025.4.0";
+    yabridge-wine.url = "git+https://github.com/nixos/nixpkgs?rev=0e82ab234249d8eee3e8c91437802b32c74bb3fd";
 
-    # use lix (failing build only on one computer?)
-    # lix = {
-    #   url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
 
     # nixpkgs for zoom screensharing
-    flake-utils.url = "github:numtide/flake-utils";
-    gvolpe-zoom.url = "github:gvolpe/nix-config";
-    nixpkgs-cloudflared.url = "github:wrbbz/nixpkgs/cloudflared-2025.4.0";
+    systems.url = "github:nix-systems/default-linux";
+
+    flake-compat.url = "github:edolstra/flake-compat";
+
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
+    };
+
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
-    yabridge-wine.url = "git+https://github.com/nixos/nixpkgs?rev=0e82ab234249d8eee3e8c91437802b32c74bb3fd";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-    jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
     nurpkgs.url = "github:nix-community/NUR";
     musnix.url = "github:musnix/musnix";
     catppuccin.url = "github:catppuccin/nix";
@@ -95,6 +101,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
+        systems.follows = "systems";
       };
     };
     nixos-generators = {
