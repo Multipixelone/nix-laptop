@@ -21,58 +21,17 @@ in {
     packages = with pkgs; [terminus_font];
     keyMap = "us";
   };
-  users.users.cloudflared = {
-    group = "cloudflared";
-    isSystemUser = true;
-  };
-  users.groups.cloudflared = {};
   services = {
-    ucodenix = {
-      enable = config.hardware.enableRedistributableFirmware;
-      cpuModelId = "00A20F10";
-    };
     syncthing = {
       enable = true;
       user = "tunnel";
       configDir = "/home/tunnel/.config/syncthing";
-    };
-    printing = {
-      drivers = [
-        # add drivers for Canon MG3222
-        pkgs.gutenprint
-        pkgs.gutenprintBin
-      ];
-      browsing = true;
-      defaultShared = true;
-      listenAddresses = ["*:631"];
-      allowFrom = ["all"];
-    };
-    avahi = {
-      enable = true;
-      nssmdns4 = true;
-      openFirewall = true;
-      publish = {
-        enable = true;
-        userServices = true;
-      };
     };
   };
   # TODO make this list a definition, and then make some code to turn it into the tmp file rules (can be reused in restic backup)
   systemd = {
     packages = with pkgs; [lact];
     services.lactd.wantedBy = ["multi-user.target"];
-    services.cf-tunnel = {
-      wantedBy = ["multi-user.target"];
-      after = ["network-online.target" "dnscrypt-proxy2.service"];
-      serviceConfig = {
-        # this is gross
-        ExecStart = ''
-          ${lib.getExe pkgs.bash} -c "${lib.getExe inputs.nixpkgs-cloudflared.legacyPackages.${pkgs.system}.cloudflared} tunnel --no-autoupdate run --token $(${lib.getExe' pkgs.coreutils "cat"} ${config.age.secrets."cf".path})"'';
-        Restart = "always";
-        User = "cloudflared";
-        Group = "cloudflared";
-      };
-    };
     tmpfiles.rules = let
       # create env for rocm override
       # rocmEnv = pkgs.symlinkJoin {
@@ -84,8 +43,6 @@ in {
       #   ];
       # };
     in [
-      "d /srv/grocy 0770 tunnel users -"
-      "d /srv/jdownloader 0770 tunnel users -"
       "d /srv/valhalla 0770 tunnel users -"
       # "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
     ];
@@ -93,25 +50,6 @@ in {
   virtualisation.oci-containers = {
     backend = "docker";
     containers = {
-      grocy = {
-        image = "lscr.io/linuxserver/grocy:latest";
-        autoStart = false;
-        ports = ["9283:80"];
-        volumes = [
-          "/srv/grocy:/app"
-        ];
-      };
-      jdownloader = {
-        autoStart = false;
-        image = "jlesage/jdownloader-2:latest";
-        ports = ["5800:5800"];
-        # user = "tunnel:users";
-        # TODO find some universal way to declare these paths like my music library so that I can use a variable
-        volumes = [
-          "/media/Data/ImportMusic/JDownloader/:/output"
-          "/srv/jdownloader/:/config"
-        ];
-      };
       valhalla = {
         autoStart = false;
         image = "ghcr.io/gis-ops/docker-valhalla/valhalla:latest";
@@ -140,18 +78,6 @@ in {
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     i2c.enable = true;
     steam-hardware.enable = true;
-    printers = {
-      ensurePrinters = [
-        {
-          name = "Canon_MG3222";
-          location = "Office";
-          deviceUri = "usb://Canon/MG3200%20series?serial=3131AC&interface=1";
-          model = "gutenprint.${lib.versions.majorMinor (lib.getVersion pkgs.gutenprint)}://bjc-PIXMA-MG3222/expert";
-          description = "Office Printer";
-        }
-      ];
-      ensureDefaultPrinter = "Canon_MG3222";
-    };
   };
   # TODO re-enable mesa-git eventually
   chaotic = {

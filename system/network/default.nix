@@ -1,8 +1,13 @@
-{
+{lib, ...}: {
   services = {
     fail2ban.enable = true;
+    mosh = {
+      enable = true;
+      openFirewall = true;
+    };
     openssh = {
       enable = true;
+      openFirewall = true;
       allowSFTP = true;
       settings = {
         AllowUsers = ["tunnel"];

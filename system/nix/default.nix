@@ -15,7 +15,15 @@
       "electron-25.9.0"
     ];
   };
-  age.secrets."attic".file = "${inputs.secrets}/attic.age";
+  age.secrets = {
+    "attic".file = "${inputs.secrets}/attic.age";
+    "nix" = {
+      file = "${inputs.secrets}/github/nix.age";
+      mode = "440";
+      owner = "tunnel";
+      group = "users";
+    };
+  };
   nix = let
     flakeInputs = lib.filterAttrs (_: v: lib.isType "flake" v) inputs;
   in {
