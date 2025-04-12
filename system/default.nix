@@ -5,14 +5,14 @@ let
 
     ./network
     ./network/tailscale.nix
-
-    ./services
   ];
 
   desktop =
     server
     ++ [
       ./programs
+      ./programs/hyprland
+
       ./services/greetd.nix
       ./services/pipewire.nix
 

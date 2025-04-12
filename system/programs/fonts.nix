@@ -1,6 +1,8 @@
 {
+  self,
   inputs,
   pkgs,
+  ...
 }: {
   fonts = {
     enableDefaultPackages = false;
@@ -20,7 +22,7 @@
 
       # my fonts
       nerd-fonts.iosevka
-      (pkgs.callPackage ../pkgs/pragmata/default.nix {})
+      self.packages.${pkgs.system}.pragmata
     ];
     fontconfig = {
       defaultFonts = {

@@ -6,7 +6,6 @@
   boot = {
     plymouth = {
       enable = false;
-      catppuccin.enable = false;
       theme = "nixos-bgrt";
       themePackages = with pkgs; [
         nixos-bgrt-plymouth

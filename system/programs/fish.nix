@@ -1,4 +1,4 @@
 {
   programs.fish.enable = true;
-  command-not-found.enable = false;
+  programs.command-not-found.enable = false;
 }

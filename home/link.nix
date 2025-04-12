@@ -4,8 +4,6 @@
   ...
 }: {
   imports = [
-    ./desktop.nix
-    ./programs/gaming/default.nix
   ];
   tunnel.yabridge.enable = true;
   home.file.".config/environment.d/gamescope-session.conf".text = ''

@@ -1,4 +1,8 @@
 {
+  config,
+  lib,
+  ...
+}: {
   boot = {
     initrd = {
       availableKernelModules = ["nvme" "xhci_pci" "usbhid" "usb_storage"];

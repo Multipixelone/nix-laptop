@@ -22,7 +22,6 @@
         desktop
         ++ [
           ./link
-          "${mod}/core/lanzaboote.nix"
 
           "${mod}/programs/gamemode.nix"
           "${mod}/programs/gamestream.nix"
@@ -38,14 +37,14 @@
           inputs.musnix.nixosModules.musnix
           inputs.agenix.nixosModules.default
           inputs.chaotic.nixosModules.default
-          inputs.nur.modules.nixos.default
+          #inputs.nur.modules.nixos.default
         ];
     };
 
     minish = nixosSystem {
       inherit specialArgs;
       modules = [
-        ./wsl
+        ./minish
         "${mod}/core/users.nix"
         "${mod}/nix"
         "${mod}/programs/fish.nix"

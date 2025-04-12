@@ -85,9 +85,6 @@ in {
   # imports = [
   #   inputs.jovian.nixosModules.default
   # ];
-  environment.systemPackages = [
-    pkgs.gamescope-session
-  ];
   services.sunshine = {
     enable = true;
     capSysAdmin = true;

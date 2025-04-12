@@ -1,8 +1,7 @@
 {
   pkgs,
   self,
-  # inputs,
-  lib,
+  inputs,
   ...
 }: {
   imports = [

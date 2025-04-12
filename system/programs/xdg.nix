@@ -1,4 +1,4 @@
-{pkg, ...}: {
+{pkgs, ...}: {
   xdg = {
     portal = {
       enable = true;

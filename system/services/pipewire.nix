@@ -1,5 +1,5 @@
-{
-  import = [
+{inputs, ...}: {
+  imports = [
     inputs.nix-gaming.nixosModules.pipewireLowLatency
     inputs.musnix.nixosModules.musnix
   ];
