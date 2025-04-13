@@ -97,7 +97,6 @@ in
     meta = {
       description = "iZotope RX audio repair toolkit";
       homepage = "https://www.izotope.com/en/products/rx.html";
-      license = lib.licenses.unfree;
       maintainers = with lib.maintainers; [Multipixelone];
       platforms = ["x86_64-linux"];
     };

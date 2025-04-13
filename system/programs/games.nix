@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  lib,
   ...
 }: {
   imports = [
@@ -22,6 +23,10 @@
     inputs.humble-key.packages.${pkgs.system}.default
   ];
   nixpkgs = {
+    config.allowUnfreePredicate = pkg:
+      builtins.elem (lib.getName pkg) [
+        "steam"
+      ];
     config.packageOverrides = pkgs: {
       steam = pkgs.steam.override {
         extraPkgs = pkgs:
