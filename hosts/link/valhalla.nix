@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  subway = self.packages.${pkgs.system}.subway;
+  # subway = self.packages.${pkgs.system}.subway;
 in {
   systemd = {
     tmpfiles.rules = let

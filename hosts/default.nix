@@ -11,7 +11,7 @@
 
     mod = "${self}/system";
     # get the basic config to build on top of
-    inherit (import mod) desktop laptop server;
+    inherit (import mod) desktop server;
 
     # get these into the module system
     specialArgs = {inherit inputs self;};

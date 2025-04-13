@@ -2,7 +2,6 @@
   pkgs,
   inputs,
   config,
-  lib,
   ...
 }: let
   umu = pkgs.umu-launcher;

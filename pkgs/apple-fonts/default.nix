@@ -1,5 +1,4 @@
 {
-  lib,
   stdenv,
   fetchurl,
   p7zip,

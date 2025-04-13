@@ -20,14 +20,6 @@
   glCacheSize ? 1073741824,
   pkgs,
 }: let
-  version = "1.6.10";
-
-  # concat winetricks args
-  tricksFmt = with builtins;
-    if (length tricks) > 0
-    then concatStringsSep " " tricks
-    else "-V";
-
   script = writeShellScriptBin pname ''
     export WINEARCH="win64"
     export WINEFSYNC=1

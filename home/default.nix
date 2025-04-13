@@ -1,8 +1,4 @@
-{
-  self,
-  inputs,
-  ...
-}: {
+{inputs, ...}: {
   imports = [
     ./programs/terminal
     inputs.nix-index-database.hmModules.nix-index
