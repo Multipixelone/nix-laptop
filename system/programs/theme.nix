@@ -7,6 +7,10 @@
     inputs.catppuccin.nixosModules.catppuccin
     inputs.stylix.nixosModules.stylix
   ];
+  programs = {
+    # make HM-managed GTK stuff work
+    dconf.enable = true;
+  };
   environment.systemPackages = with pkgs; [
     papirus-icon-theme
     papirus-folders
