@@ -2,12 +2,13 @@
   lib,
   pkgs,
   inputs,
+  config,
   ...
 }:
 # FIXME https://github.com/NixOS/nixpkgs/issues/370185
 let
   _ = lib.getExe;
-  nix-cf = "inputs.nixpkgs-cloudflared.legacyPackages.${pkgs.system}";
+  nix-cf = inputs.nixpkgs-cloudflared.legacyPackages.${pkgs.system};
 in {
   users.users.cloudflared = {
     group = "cloudflared";
@@ -20,7 +21,7 @@ in {
     serviceConfig = {
       # this is gross
       ExecStart = ''
-        ${_ pkgs.bash} -c "${_ nix-cf.cloudflared} tunnel --no-autoupdate run --token $(${_' pkgs.coreutils "cat"} ${config.age.secrets."cf".path})"'';
+        ${_ pkgs.bash} -c "${_ nix-cf.cloudflared} tunnel --no-autoupdate run --token $(${lib.getExe' pkgs.coreutils "cat"} ${config.age.secrets."cf".path})"'';
       Restart = "always";
       User = "cloudflared";
       Group = "cloudflared";

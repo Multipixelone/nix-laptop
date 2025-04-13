@@ -1,8 +1,8 @@
 {
-  tmpfiles.rules = [
+  systemd.tmpfiles.rules = [
     "d /srv/slskd 0770 tunnel users -"
   ];
-  virtualisation.oci-containers.slskd = {
+  virtualisation.oci-containers.containers.slskd = {
     autoStart = true;
     image = "slskd/slskd:canary";
     ports = ["5030:5030" "2234:2234"];
