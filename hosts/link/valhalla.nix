@@ -1,6 +1,6 @@
 {
-  self,
-  pkgs,
+  # self,
+  # pkgs,
   ...
 }: let
   # subway = self.packages.${pkgs.system}.subway;

@@ -12,7 +12,6 @@
   wineFlags ? "",
   pname ? "until-dawn",
   location ? "/media/TeraData/Games/until-dawn",
-  tricks ? [],
   wineDllOverrides ? ["powershell.exe=n"],
   preCommands ? "",
   postCommands ? "",
