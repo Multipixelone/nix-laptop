@@ -69,7 +69,6 @@ in {
     nil
     nom
     restic
-    attic-client
     kubectl
     flyctl
     unzip
