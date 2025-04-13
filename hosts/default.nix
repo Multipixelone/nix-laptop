@@ -26,6 +26,8 @@
           "${mod}/programs/gamemode.nix"
           "${mod}/programs/gamestream.nix"
           "${mod}/programs/games.nix"
+
+          "${mod}/programs/media.nix"
           "${mod}/services/jdownloader.nix"
           "${mod}/services/slskd.nix"
 
