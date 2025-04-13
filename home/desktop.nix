@@ -27,9 +27,6 @@
     ./programs/browser/default.nix
     ./programs/email/default.nix
     ./programs/mimeo
-    ./modules/theme
-    ./modules/directories
-    ./modules/media
   ];
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [

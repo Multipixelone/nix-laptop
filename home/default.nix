@@ -2,6 +2,9 @@
   imports = [
     ./programs/terminal
     ./programs/theming/default.nix
+    ./modules/theme
+    ./modules/directories
+    ./modules/media
     inputs.nix-index-database.hmModules.nix-index
     inputs.agenix.homeManagerModules.default
     inputs.chaotic.homeManagerModules.default
