@@ -25,7 +25,6 @@
     ./programs/apps/auxprod.nix
     ./programs/latex/default.nix
     ./programs/browser/default.nix
-    ./programs/theming/default.nix
     ./programs/email/default.nix
     ./programs/mimeo
     ./modules/theme
