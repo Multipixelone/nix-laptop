@@ -1,9 +1,15 @@
 {
   self,
+  lib,
   inputs,
   pkgs,
   ...
 }: {
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "apple-emoji"
+    ];
   fonts = {
     enableDefaultPackages = false;
     packages = with pkgs; [

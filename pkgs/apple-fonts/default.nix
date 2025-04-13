@@ -27,6 +27,5 @@ stdenv.mkDerivation rec {
   meta = {
     description = "Apple color emoji fonts";
     homepage = "https://developer.apple.com/fonts/";
-    license = lib.licenses.unfree;
   };
 }
