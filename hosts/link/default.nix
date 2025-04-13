@@ -50,6 +50,7 @@
       }
     ];
     interfaces.enp6s0.useDHCP = false;
+    useDHCP = false;
     defaultGateway = "192.168.6.1";
   };
 
