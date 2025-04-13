@@ -21,6 +21,7 @@ let
       ./programs/xdg.nix
       ./programs/virt.nix
       ./programs/zoom.nix
+      ./programs/psd.nix
 
       ./services/greetd.nix
       ./services/pipewire.nix
