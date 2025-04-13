@@ -1,6 +1,7 @@
 {inputs, ...}: {
   imports = [
     ./programs/terminal
+     ./programs/theming/default.nix
     inputs.nix-index-database.hmModules.nix-index
     inputs.agenix.homeManagerModules.default
     inputs.chaotic.homeManagerModules.default
