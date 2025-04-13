@@ -11,7 +11,7 @@
 
     mod = "${self}/system";
     # get the basic config to build on top of
-    inherit (import mod) desktop laptop;
+    inherit (import mod) desktop laptop server;
 
     # get these into the module system
     specialArgs = {inherit inputs self;};
@@ -27,7 +27,6 @@
           "${mod}/programs/gamestream.nix"
           "${mod}/programs/games.nix"
           "${mod}/programs/home-manager.nix"
-
 
           {
             home-manager = {
@@ -45,21 +44,26 @@
 
     minish = nixosSystem {
       inherit specialArgs;
-      modules = [
-        ./minish
-        "${mod}/core/users.nix"
-        "${mod}/nix"
-        "${mod}/programs/fish.nix"
-        "${mod}/programs/home-manager.nix"
-        {
-          home-manager = {
-            users.tunnel.imports = homeImports."tunnel@minish";
-            extraSpecialArgs = specialArgs;
-            backupFileExtension = ".hm-backup";
-          };
-        }
-                  inputs.agenix.nixosModules.default
-      ];
+      modules =
+        server
+        ++ [
+          ./minish
+          "${mod}/core/users.nix"
+          "${mod}/nix"
+          "${mod}/programs/fish.nix"
+
+          "${mod}/programs/home-manager.nix"
+
+          {
+            home-manager = {
+              users.tunnel.imports = homeImports."tunnel@minish";
+              extraSpecialArgs = specialArgs;
+              backupFileExtension = ".hm-backup";
+            };
+          }
+          inputs.agenix.nixosModules.default
+          inputs.chaotic.nixosModules.default
+        ];
     };
   };
 }

@@ -19,6 +19,7 @@
         devShells.default = pkgs.mkShell {
           packages = [
             pkgs.alejandra
+            pkgs.just
           ];
           name = "dots";
           DIRENV_LOG_FORMAT = "";

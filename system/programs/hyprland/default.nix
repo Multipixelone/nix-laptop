@@ -6,6 +6,9 @@
   imports = [
     inputs.hyprland.nixosModules.default
   ];
+  nixpkgs.overlays = [
+    inputs.nur.overlays.default
+  ];
   programs.hyprland = {
     enable = true;
     withUWSM = true;

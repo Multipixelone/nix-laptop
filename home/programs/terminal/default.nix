@@ -41,21 +41,23 @@ in {
     ./zellij.nix
     ./starship.nix
   ];
-  age.secrets = {
-    "gh" = {
-      file = "${inputs.secrets}/github/ghcli.age";
-    };
-    "openai" = {
-      file = "${inputs.secrets}/openai.age";
-    };
-    "todoist" = {
-      file = "${inputs.secrets}/todoist.age";
-    };
-    "gcalclient" = {
-      file = "${inputs.secrets}/gcal/client.age";
-    };
-    "gcalsecret" = {
-      file = "${inputs.secrets}/gcal/secret.age";
+  age = {
+    secrets = {
+      "gh" = {
+        file = "${inputs.secrets}/github/ghcli.age";
+      };
+      "openai" = {
+        file = "${inputs.secrets}/openai.age";
+      };
+      "todoist" = {
+        file = "${inputs.secrets}/todoist.age";
+      };
+      "gcalclient" = {
+        file = "${inputs.secrets}/gcal/client.age";
+      };
+      "gcalsecret" = {
+        file = "${inputs.secrets}/gcal/secret.age";
+      };
     };
   };
   home.packages = with pkgs; [

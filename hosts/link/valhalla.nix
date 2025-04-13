@@ -1,4 +1,10 @@
 {
+  self,
+  pkgs,
+  ...
+}: let
+  subway = self.packages.${pkgs.system}.subway;
+in {
   systemd = {
     tmpfiles.rules = let
       # create env for rocm override
@@ -23,7 +29,7 @@
         ports = ["8002:8002"];
         volumes = [
           "/srv/valhalla:/custom_files"
-          # "${gtfs-subway}:/gtfs_feeds"
+          #"${subway}:/gtfs_feeds"
         ];
         environment = {
           tile_urls = "http://download.geofabrik.de/north-america/us-northeast-latest.osm.pbf";

@@ -4,7 +4,7 @@
   ...
 }: let
   better-fox = inputs.better-fox;
-  extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+  extensions = with pkgs.nur.repos.rycee.firefox-addons; [
     # blockers
     sponsorblock
     ublock-origin
@@ -123,7 +123,7 @@ in {
     enable = true;
     profiles = {
       default = {
-        inherit extensions.packages settings;
+        inherit extensions settings;
         id = 0;
         # search = {
         #   default = "DuckDuckGo";

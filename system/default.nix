@@ -3,6 +3,8 @@ let
     ./core
     ./core/boot.nix
 
+    ./programs/theme.nix
+
     ./network
     ./network/tailscale.nix
   ];
@@ -12,7 +14,6 @@ let
     ++ [
       ./programs
       ./programs/hyprland
-      ./programs/theme.nix
 
       ./services/greetd.nix
       ./services/pipewire.nix

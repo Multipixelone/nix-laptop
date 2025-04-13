@@ -17,6 +17,13 @@
     extraOutputsToInstall = ["doc" "devdoc"];
   };
 
+  age = {
+    identityPaths = [
+      "/home/tunnel/.ssh/agenix"
+    ];
+    secretsDir = "/home/tunnel/.secrets";
+  };
+
   # disable manuals as nmd fails to build often
   manual = {
     html.enable = false;

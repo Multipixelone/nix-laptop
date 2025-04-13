@@ -4,10 +4,6 @@
   ...
 }: {
   age = {
-    identityPaths = [
-      "/home/tunnel/.ssh/agenix"
-    ];
-    secretsDir = "/home/tunnel/.secrets";
     secrets = {
       "scrobblehome" = {
         file = "${inputs.secrets}/media/scrobble.age";

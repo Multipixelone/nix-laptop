@@ -5,7 +5,6 @@
   ...
 }: {
   imports = [
-    ./secrets.nix
   ];
   home.packages = with pkgs; [
     sysstat
