@@ -9,6 +9,7 @@
     ./hardware-configuration.nix
     ./hyprland.nix
     ./valhalla.nix
+    ./printer.nix
   ];
 
   boot = {
