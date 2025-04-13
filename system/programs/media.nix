@@ -1,5 +1,6 @@
 {
   pkgs,
+  self,
   lib,
   config,
   inputs,
@@ -117,6 +118,9 @@ in {
     };
   };
   environment.systemPackages = [
+    inputs.khinsider.packages.${pkgs.system}.default
+    self.packages.${pkgs.system}.spotify2musicbrainz
+
     playlist-download
     playlist-download-python
     (pkgs.writeShellApplication {

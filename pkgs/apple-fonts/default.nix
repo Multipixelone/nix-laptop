@@ -5,7 +5,7 @@
   p7zip,
 }:
 stdenv.mkDerivation rec {
-  pname = "apple-fonts";
+  pname = "apple-emoji";
   version = "1.2";
 
   emoji = fetchurl {
@@ -27,6 +27,5 @@ stdenv.mkDerivation rec {
   meta = {
     description = "Apple color emoji fonts";
     homepage = "https://developer.apple.com/fonts/";
-    license = lib.licenses.unfree;
   };
 }

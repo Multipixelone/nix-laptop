@@ -18,6 +18,7 @@
   };
   imports = [
     ./server.nix
+    ./secrets.nix
     ./bluetooth.nix
     ./programs/media/default.nix
     ./programs/hyprland/default.nix
@@ -28,8 +29,6 @@
     ./programs/theming/default.nix
     ./programs/email/default.nix
     ./programs/mimeo
-    inputs.agenix.homeManagerModules.default
-    inputs.chaotic.homeManagerModules.default
     ./modules/theme
     ./modules/directories
     ./modules/media
@@ -39,7 +38,7 @@
     # Apps
     moonlight-qt
     # inputs.gvolpe-zoom.out.pkgs.zoom-us
-    zoom-us
+    # zoom-us
     qalculate-gtk
     piper
     waypipe

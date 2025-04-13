@@ -26,10 +26,6 @@ in {
     ./mangohud.nix
     ./moondeck.nix
   ];
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "optifine"
-    ];
   home.packages = with pkgs; [
     prismlauncher
     amdgpu_top

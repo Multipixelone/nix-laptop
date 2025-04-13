@@ -99,12 +99,6 @@
     "services.sync.engine.addons" = false;
   };
 in {
-  nixpkgs.overlays = [
-    inputs.nur.overlay
-    (_final: prev: {
-      zjstatus = inputs.zjstatus.packages.${prev.system}.default;
-    })
-  ];
   home = {
     sessionVariables.BROWSER = "firefox";
     packages = with pkgs; [
