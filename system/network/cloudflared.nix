@@ -17,6 +17,7 @@ in {
   users.groups.cloudflared = {};
   systemd.services.cf-tunnel = {
     wantedBy = ["multi-user.target"];
+    wants = ["network-online.target"];
     after = ["network-online.target" "dnscrypt-proxy2.service"];
     serviceConfig = {
       # this is gross
