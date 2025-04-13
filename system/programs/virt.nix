@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+  programs.virt-manager.enable = true;
   virtualisation = {
     oci-containers.backend = "docker";
     libvirtd = {

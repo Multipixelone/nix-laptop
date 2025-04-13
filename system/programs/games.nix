@@ -16,6 +16,11 @@
       enable32Bit = true;
     };
   };
+  environment.systemPackages = with pkgs; [
+    inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
+    inputs.nix-gaming.packages.${pkgs.system}.winetricks-git
+    inputs.humble-key.packages.${pkgs.system}.default
+  ];
   nixpkgs = {
     config.packageOverrides = pkgs: {
       steam = pkgs.steam.override {

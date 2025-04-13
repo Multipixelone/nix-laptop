@@ -5,7 +5,7 @@
   p7zip,
 }:
 stdenv.mkDerivation rec {
-  pname = "apple-fonts";
+  pname = "apple-emoji";
   version = "1.2";
 
   emoji = fetchurl {

@@ -1,4 +1,7 @@
 {pkgs, ...}: {
+  environment.systemPackages = [pkgs.xdg-utils];
+  services.flatpak.enable = true;
+  services.gvfs.enable = true;
   xdg = {
     portal = {
       enable = true;

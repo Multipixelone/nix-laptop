@@ -26,8 +26,17 @@
           "${mod}/programs/gamemode.nix"
           "${mod}/programs/gamestream.nix"
           "${mod}/programs/games.nix"
-          "${mod}/programs/home-manager.nix"
+          "${mod}/services/jdownloader.nix"
+          "${mod}/services/slskd.nix"
 
+          "${mod}/hardware/rgb.nix"
+          "${mod}/hardware/ucode.nix"
+
+          "${mod}/network/cloudflared.nix"
+          "${mod}/network/dnscrypt.nix"
+          "${mod}/network/duckdns.nix"
+
+          "${mod}/programs/home-manager.nix"
           {
             home-manager = {
               users.tunnel.imports = homeImports."tunnel@link";
@@ -48,12 +57,9 @@
         server
         ++ [
           ./minish
-          "${mod}/core/users.nix"
-          "${mod}/nix"
-          "${mod}/programs/fish.nix"
+          "${mod}/programs/nix-ld.nix"
 
           "${mod}/programs/home-manager.nix"
-
           {
             home-manager = {
               users.tunnel.imports = homeImports."tunnel@minish";

@@ -20,6 +20,7 @@
           packages = [
             pkgs.alejandra
             pkgs.just
+            inputs.agenix.packages.${pkgs.system}.default
           ];
           name = "dots";
           DIRENV_LOG_FORMAT = "";

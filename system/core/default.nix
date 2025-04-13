@@ -3,6 +3,7 @@
 {
   imports = [
     ./security.nix
+    ./sudo.nix
     ./users.nix
     ../nix
     ../programs/fish.nix

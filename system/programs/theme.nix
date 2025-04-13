@@ -7,6 +7,13 @@
     inputs.catppuccin.nixosModules.catppuccin
     inputs.stylix.nixosModules.stylix
   ];
+  environment.systemPackages = with pkgs; [
+    papirus-icon-theme
+    papirus-folders
+    arc-theme
+    libsForQt5.kio
+    libsForQt5.kio-extras
+  ];
   stylix = {
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     polarity = "dark";

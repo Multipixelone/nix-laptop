@@ -23,6 +23,7 @@
       # my fonts
       nerd-fonts.iosevka
       self.packages.${pkgs.system}.pragmata
+      self.packages.${pkgs.system}.apple-emoji
     ];
     fontconfig = {
       defaultFonts = {

@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   # taken from https://github.com/Mic92/dotfiles/blob/549d1cf7d985964cf141119943f90d2a85b596b7/nixos/modules/nix-ld.nix
-  services.flatpak.enable = true;
   programs = {
     appimage = {
       enable = true;

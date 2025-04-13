@@ -8,7 +8,6 @@
   imports = [
     ./desktop.nix
     inputs.nix-hardware.nixosModules.dell-xps-15-9560-intel
-    inputs.auto-cpufreq.nixosModules.default
   ];
   # specialisation = {
   #   nvidia-sync.configuration = {
@@ -53,34 +52,6 @@
     };
   };
   # power management stuff
-  powerManagement = {
-    enable = true;
-    powertop.enable = true;
-  };
-  programs.auto-cpufreq = {
-    enable = true;
-    settings = {
-      charger = {
-        governor = "performance";
-        turbo = "auto";
-      };
-      battery = {
-        governor = "powersave";
-        turbo = "auto";
-      };
-    };
-  };
-  services = {
-    thermald.enable = true;
-    tlp.enable = false;
-    # # testing undervolting
-    # undervolt = {
-    #   enable = true;
-    #   # analogioOffset = -10;
-    #   coreOffset = -10;
-    #   # gpuOffset = -10;
-    # };
-  };
   # Syncthing
   services.syncthing = {
     enable = true;

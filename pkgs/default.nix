@@ -8,6 +8,7 @@
       spotify2musicbrainz = pkgs.callPackage ./spotify2musicbrainz {};
       izotope = pkgs.callPackage ./izotope {};
       subway = pkgs.callPackage ./aequilibrae/gtfs-subway.nix {};
+      apple-emoji = pkgs.callPackage ./apple-fonts {};
     };
   };
 }
