@@ -20,6 +20,7 @@ let
       ./programs/obsidian.nix
       ./programs/xdg.nix
       ./programs/virt.nix
+      ./programs/zoom.nix
 
       ./services/greetd.nix
       ./services/pipewire.nix
