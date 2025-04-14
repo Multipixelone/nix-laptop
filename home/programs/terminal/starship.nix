@@ -9,6 +9,11 @@
         success_symbol = "[❯](purple)";
         error_symbol = "[❯](red)";
       };
+      hostname = {
+        format = "[$hostname]($style)";
+        style = "dimmed green";
+        disabled = false;
+      };
       git_metrics = {
         format = "([▴$added]($added_style))([▿$deleted]($deleted_style))";
         added_style = "italic dimmed green";
