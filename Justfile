@@ -5,7 +5,8 @@
 ############################################################################
 
 deploy:
-	nixos-rebuild switch --flake . --use-remote-sudo
+  nh os switch
+  attic push system /run/current-system -j 2
 
 zeldab:
   nix build .#nixosConfigurations.zelda.config.system.build.toplevel
