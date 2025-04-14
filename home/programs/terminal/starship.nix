@@ -64,6 +64,7 @@
         # "($nix_shell$container$git_metrics)$cmd_duration"
         "$localip"
         "$sudo"
+        "$hostname"
         "$directory"
         "$git_status"
         "$git_metrics"
