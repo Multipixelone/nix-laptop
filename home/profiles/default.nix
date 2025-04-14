@@ -4,7 +4,7 @@
     ./link
   ];
 
-  "tunnel@minish" = [
+  server = [
     ../.
     ./server
   ];

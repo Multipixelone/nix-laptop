@@ -64,7 +64,7 @@
           "${mod}/programs/home-manager.nix"
           {
             home-manager = {
-              users.tunnel.imports = homeImports."tunnel@minish";
+              users.tunnel.imports = homeImports.server;
               extraSpecialArgs = specialArgs;
               backupFileExtension = ".hm-backup";
             };
