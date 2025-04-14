@@ -10,17 +10,10 @@
     export COPILOT_API_KEY=$(cat ${config.age.secrets."copilot".path})
     ${lib.getExe pkgs.helix-gpt} $@
   '';
-  # latexrun wrapped w/ args & copy synctex into root
-  latexrun-wrapped = pkgs.writeShellScriptBin "latexrun" ''
-    ${lib.getExe pkgs.latexrun} --bibtex-cmd "${pkgs.texliveFull}/bin/biber" --latex-args=-synctex=1 "$1"
-    SYNCTEX_FILE=$(find latex.out/ -name "*.synctex.gz")
-    cp $SYNCTEX_FILE .
-  '';
   zellij-args = ":sh zellij run -c -f -x 10%% -y 10%% --width 80%% --height 80%% --";
   packages = with pkgs; [
     alejandra
     gpt-wrapped
-    latexrun-wrapped
     marksman
     nodePackages.prettier
     wl-clipboard
@@ -147,7 +140,7 @@ in {
           build = {
             onSave = true;
             forwardSearchAfter = true;
-            executable = lib.getExe latexrun-wrapped;
+            executable = "latexrun";
             args = ["%f"];
           };
           forwardSearch = {
