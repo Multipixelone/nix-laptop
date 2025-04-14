@@ -8,8 +8,8 @@ deploy:
   nh os switch
   attic push system /run/current-system -j 2
 
-zeldab:
-  nix build .#nixosConfigurations.zelda.config.system.build.toplevel
+minishb:
+  nix build .#nixosConfigurations.minish.config.system.build.toplevel
   attic push system result -j 2
   unlink result
 
