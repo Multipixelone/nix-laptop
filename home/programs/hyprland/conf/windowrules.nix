@@ -82,9 +82,9 @@
 
       # gw2
       "bordersize 0,title:^(Guild Wars 2)$"
-      "opaque,title:^(Guild Wars 2)$"
-      "noblur,title:^(Guild Wars 2)$"
-      "noshadow,title:^(Guild Wars 2)$"
+      # "opaque,title:^(Guild Wars 2)$"
+      # "noblur,title:^(Guild Wars 2)$"
+      # "noshadow,title:^(Guild Wars 2)$"
       "norounding,title:^(Guild Wars 2)$"
       # "stayfocused,title:^(Guild Wars 2)$"
       # "allowsinput,title:^(Guild Wars 2)$"
