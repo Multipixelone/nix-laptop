@@ -6,27 +6,25 @@ on:
   pull_request:
   workflow_dispatch:
 jobs:
-  # changes:
-  #   runs-on: ubuntu-latest
-  #   outputs:
-  #     nixos: ${{ steps.changes.outputs.nixos }}
-  #     home: ${{ steps.changes.outputs.home }}
-  #   steps:
-  #     - name: Checkout repository
-  #       uses: actions/checkout@v4
-  #     - name: Filter paths
-  #       uses: dorny/paths-filter@v3
-  #       id: changes
-  #       with:
-  #         filters: |
-  #           nixos:
-  #             - flake.nix
-  #             - flake.lock
-  #             - 'nixos/**'
-  #           home:
-  #             - flake.nix
-  #             - flake.lock
-  #             - 'home/**'
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      nixos: ${{ steps.changes.outputs.nixos }}
+      # home: ${{ steps.changes.outputs.home }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Filter paths
+        uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          filters: |
+            nixos:
+              - flake.nix
+              - flake.lock
+              - 'system/**'
+              - 'hosts/**'
+              - 'home/**'
   format:
     name: format code
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
@@ -98,7 +96,7 @@ jobs:
     name: build machines
     runs-on: ubuntu-24.04
     needs: [check]
-    # if: ${{ needs.changes.outputs.nixos == 'true' }}
+    if: ${{ needs.changes.outputs.nixos == 'true' }}
     strategy:
       fail-fast: false
       matrix:
