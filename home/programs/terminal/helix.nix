@@ -17,7 +17,6 @@
     marksman
     nodePackages.prettier
     wl-clipboard
-    texlab
     markdown-oxide
   ];
 in {
