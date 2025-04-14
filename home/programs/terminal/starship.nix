@@ -10,8 +10,8 @@
         error_symbol = "[❯](red)";
       };
       hostname = {
-        format = "[$hostname]($style)";
-        style = "dimmed green";
+        format = " [$hostname]($style) ";
+        style = "dimmed white";
         disabled = false;
       };
       git_metrics = {
@@ -55,7 +55,7 @@
         use_os_path_sep = true;
         format = "[$path]($style)[$read_only]($read_only_style)";
         repo_root_style = "bold blue";
-        repo_root_format = "[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) [ ](bold bright-blue)";
+        repo_root_format = "[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) [](bold bright-blue)";
       };
       nix_shell = {
         style = "dimmed blue";
@@ -69,8 +69,8 @@
         # "($nix_shell$container$git_metrics)$cmd_duration"
         "$localip"
         "$sudo"
-        "$hostname"
         "$directory"
+        "$hostname"
         "$git_status"
         "$git_metrics"
         "$git_branch"
