@@ -73,6 +73,7 @@ jobs:
   check:
     name: evaluate flake
     runs-on: ubuntu-latest
+    needs: changes
     if: ${{ needs.changes.outputs.nixos == 'true' }}
     permissions:
       id-token: 'write'
