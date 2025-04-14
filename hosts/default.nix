@@ -73,5 +73,24 @@
           inputs.chaotic.nixosModules.default
         ];
     };
+
+    marin = nixosSystem {
+      inherit specialArgs;
+      modules =
+        server
+        ++ [
+          ./marin
+          "${mod}/programs/home-manager.nix"
+          {
+            home-manager = {
+              users.tunnel.imports = homeImports.server;
+              extraSpecialArgs = specialArgs;
+              backupFileExtension = ".hm-backup";
+            };
+          }
+          inputs.agenix.nixosModules.default
+          inputs.chaotic.nixosModules.default
+        ];
+    };
   };
 }

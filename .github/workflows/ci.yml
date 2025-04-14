@@ -107,6 +107,8 @@ jobs:
             platform: x86-64-linux
           - host: link
             platform: x86-64-linux
+          - host: marin
+            platform: x86-64-linux
     steps:
       - run: |
           sudo mkdir /nix
