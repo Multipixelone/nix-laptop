@@ -34,7 +34,7 @@ let
 
       ./hardware/g502.nix
       ./hardware/fwupd.nix
-      ./hardware/ios.nix
+      # ./hardware/ios.nix
       ./hardware/yubikey.nix
     ];
 
