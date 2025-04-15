@@ -28,6 +28,7 @@
     export WINEPREFIX="${location}"
     export GAME_PATH="${exe}"
     export PROTONPATH="${proton}"
+    export PROTON_VERB="runinprefix"
     export WINEDLLOVERRIDES="${lib.strings.concatStringsSep "," wineDllOverrides}"
     # ID for umu, not used for now
     export GAMEID="umu-cities-skylines-ii"
