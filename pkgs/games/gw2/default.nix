@@ -50,7 +50,7 @@
     PATH=${lib.makeBinPath [umu winetricks]}:$PATH
     USER="$(whoami)"
     GAME_BIN="$GAME_PATH/Gw2-64.exe"
-    BLISH="$GAME_PATH/Blish HUD.exe"
+    BLISH="$GAME_PATH/Blish.HUD/Blish HUD.exe"
 
     # EAC Fix
     if [ -d "$WINEPREFIX/drive_c/users/$USER/AppData/Roaming/EasyAntiCheat" ]
