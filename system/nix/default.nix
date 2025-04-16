@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   inputs,
   lib,
   ...
@@ -26,6 +27,7 @@
   nix = let
     flakeInputs = lib.filterAttrs (_: v: lib.isType "flake" v) inputs;
   in {
+    package = pkgs.lix;
     registry = lib.mapAttrs (_: v: {flake = v;}) flakeInputs;
     nixPath = lib.mapAttrsToList (key: _: "${key}=flake:${key}") config.nix.registry;
     extraOptions = ''
