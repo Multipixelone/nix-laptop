@@ -7,9 +7,16 @@
   # nh default flake
   environment.variables.FLAKE = "/home/tunnel/nix-laptop";
 
+  boot = {
+    loader.grub.enable = false;
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+  };
+
   networking = {
     hostName = "marin";
     useDHCP = false;
+    nameservers = ["8.8.8.8" "1.1.1.1"];
     interfaces.enp3s0f0.ipv4.addresses = [
       {
         address = "192.168.7.3";
