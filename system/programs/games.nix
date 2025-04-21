@@ -19,8 +19,8 @@
     ];
     kernel.sysctl = {
       "fs.inotify.max_user_watches" = 600000;
-      "fs.file-max" = 524288;
       "kernel.nmi_watchdog" = 0;
+      "fs.file-max" = 2097152;
     };
   };
   chaotic.mesa-git.enable = true;
