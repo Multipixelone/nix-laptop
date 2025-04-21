@@ -11,6 +11,7 @@
     "fs.inotify.max_user_watches" = 600000;
     "fs.file-max" = 524288;
   };
+  chaotic.mesa-git.enable = true;
   hardware = {
     graphics = {
       # 32 bit support
