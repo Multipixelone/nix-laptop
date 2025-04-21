@@ -9,6 +9,9 @@
   ];
   boot = {
     kernelParams = [
+      "tsc=reliable"
+      "clocksource=tsc"
+      "mitigations=off"
       "nowatchdog"
       "transparent_hugepages=always"
       "vm.compaction_proactiveness=0"
