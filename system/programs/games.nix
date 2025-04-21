@@ -19,8 +19,17 @@
     ];
     kernel.sysctl = {
       "fs.inotify.max_user_watches" = 600000;
+      "vm.max_map_count" = 2147483642;
       "kernel.nmi_watchdog" = 0;
+      # https://github.com/CachyOS/CachyOS-Settings/blob/master/usr/lib/sysctl.d/99-cachyos-settings.conf
       "fs.file-max" = 2097152;
+      "kernel.split_lock_mitigate" = 0;
+      "net.core.netdev_max_backlog" = 4096;
+      "vm.dirty_background_bytes" = 67108864;
+      "vm.dirty_bytes" = 268435456;
+      "vm.dirty_writeback_centisecs" = 1500;
+      "vm.page-cluster" = 0;
+      "vm.vfs_cache_pressure" = 50;
     };
   };
   chaotic.mesa-git.enable = true;
