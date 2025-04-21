@@ -10,9 +10,9 @@
   boot = {
     kernelParams = [
       "nowatchdog"
-      "hpet=disable"
       "transparent_hugepages=always"
       "vm.compaction_proactiveness=0"
+      "gpu_sched.sched_policy=0" # https://gitlab.freedesktop.org/drm/amd/-/issues/2516#note_2119750
     ];
     kernel.sysctl = {
       "fs.inotify.max_user_watches" = 600000;
