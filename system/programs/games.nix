@@ -7,9 +7,18 @@
   imports = [
     inputs.nix-gaming.nixosModules.platformOptimizations
   ];
-  boot.kernel.sysctl = {
-    "fs.inotify.max_user_watches" = 600000;
-    "fs.file-max" = 524288;
+  boot = {
+    kernelParams = [
+      "nowatchdog"
+      "hpet=disable"
+      "transparent_hugepages=always"
+      "vm.compaction_proactiveness=0"
+    ];
+    kernel.sysctl = {
+      "fs.inotify.max_user_watches" = 600000;
+      "fs.file-max" = 524288;
+      "kernel.nmi_watchdog" = 0;
+    };
   };
   chaotic.mesa-git.enable = true;
   hardware = {
