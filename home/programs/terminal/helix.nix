@@ -180,6 +180,7 @@ in {
         }
         {
           name = "python";
+          auto-format = true;
           language-servers = [
             "basedpyright"
             "ruff"
