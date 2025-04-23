@@ -180,7 +180,10 @@ in {
         }
         {
           name = "python";
-          language-servers = ["basedpyright"];
+          language-servers = [
+            "basedpyright"
+            "ruff"
+          ];
         }
         {
           name = "latex";
