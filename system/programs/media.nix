@@ -93,7 +93,8 @@ in {
   systemd.services."playlist-downloader" = {
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = lib.getExe playlist-download;
+      # ExecStart = lib.getExe playlist-download;
+      ExecStart = lib.getExe inputs.playlist-download.packages.${pkgs.system}.default;
       User = "tunnel";
     };
   };
