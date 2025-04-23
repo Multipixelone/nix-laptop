@@ -181,10 +181,6 @@ in {
         {
           name = "python";
           language-servers = ["basedpyright"];
-          formatter = {
-            command = lib.getExe pkgs.black;
-            args = ["-" "--quiet" "--line-length 100"];
-          };
         }
         {
           name = "latex";
