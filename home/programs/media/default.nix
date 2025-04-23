@@ -9,11 +9,6 @@
     ./mpv.nix
     ./spicetify.nix
   ];
-  # TODO I don't like the way I wrote this directories module. Let's rethink this.
-  directories.music-directory = "/media/Data/Music/";
-  home.sessionVariables = {
-    MUSIC_DIR = config.directories.music-directory;
-  };
   home.packages = with pkgs; [
     ani-cli
     strawberry

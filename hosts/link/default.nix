@@ -25,6 +25,13 @@
   # nh default flake
   environment.variables.FLAKE = "/home/tunnel/Documents/Git/nix-laptop";
 
+  # media env vars
+  environment.variables = {
+    MUSIC_DIR = "/media/Data/Music";
+    PLAYLIST_DIR = "/home/tunnel/Music/Playlists";
+    IPOD_DIR = "/run/media/tunnel/FINNR_S IPO";
+  };
+
   # fan control
   systemd = {
     packages = with pkgs; [lact];
