@@ -30,10 +30,10 @@
     blanket
     nicotine-plus
     helvum
-    (callPackage ../../../pkgs/foobar2000 {
-      wine = inputs.nix-gaming.packages.${pkgs.system}.wine-tkg;
-      # location = "/media/TeraData/Games/cities-skylines-ii";
-    })
+    # (callPackage ../../../pkgs/foobar2000 {
+    #   wine = inputs.nix-gaming.packages.${pkgs.system}.wine-tkg;
+    #   # location = "/media/TeraData/Games/cities-skylines-ii";
+    # })
   ];
   programs = {
     fish.shellAbbrs = {

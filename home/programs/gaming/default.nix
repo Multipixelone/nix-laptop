@@ -39,10 +39,10 @@ in {
     # custom pablomk7 citra (https://github.com/Pengiie/nix-flake/blob/ba643e26cefd99a5934c5b96da789820a1e90e5d/users/modules/citra/default.nix)
     # (callPackage ../../../pkgs/games/citra {})
     # Custom umu game runners
-    (callPackage ../../../pkgs/games/until-dawn {
-      inherit umu mangohud;
-      location = "/media/TeraData/Games/until-dawn";
-    })
+    # (callPackage ../../../pkgs/games/until-dawn {
+    #   inherit umu mangohud;
+    #   location = "/media/TeraData/Games/until-dawn";
+    # })
     # (callPackage ../../../pkgs/games/silent-hill-2 {
     #   inherit umu mangohud;
     #   location = "/media/BigData/Games/silent-hill-2-directors-cut";
@@ -56,8 +56,8 @@ in {
       exe = "/media/BigData/Games/SteamLibrary/steamapps/common/Guild Wars 2";
       location = "/media/BigData/Games/SteamLibrary/steamapps/compatdata/1284210/pfx";
     })
-    (callPackage ../../../pkgs/games/bookworm-adventures {
-      wine = pkgs.wine;
-    })
+    # (callPackage ../../../pkgs/games/bookworm-adventures {
+    #   wine = pkgs.wine;
+    # })
   ];
 }
