@@ -127,8 +127,10 @@ in {
             };
           };
         };
-        basedpyright = {
-          command = lib.getExe pkgs.basedpyright;
+        basedpyright.command = "${pkgs.basedpyright}/bin/basedpyright-langserver";
+        ruff = {
+          command = lib.getExe pkgs.ruff;
+          args = ["server"];
         };
         texlab.config.texlab = {
           command = "texlab";
