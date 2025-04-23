@@ -104,6 +104,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+    playlist-download = {
+      url = "github:Multipixelone/playlist-downloader";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
     waybar-mediaplayer = {
       url = "github:Multipixelone/waybar-mediaplayer/artist";
       inputs.nixpkgs.follows = "nixpkgs";
