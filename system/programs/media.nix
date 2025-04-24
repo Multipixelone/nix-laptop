@@ -62,10 +62,10 @@ in {
     # TODO this was written by someone who didn't want to put any time or thought into writing something maintainable. i hate every part of it.
     (pkgs.writeShellApplication {
       name = "monthly-copy";
-      runtimeInputs = [pkgs.ffmpeg];
+      runtimeInputs = [pkgs.ffmpeg pkgs.gum];
       text = ''
-        OUTPUT_PLAYLIST_DIR="/home/tunnel/Music/Playlists"
-        PLAYLIST=''${2:-"$OUTPUT_PLAYLIST_DIR/monthly playlist.m3u8"}
+        PLAYLIST=$(gum file "$PLAYLIST_DIR")
+        # PLAYLIST=''${2:-"$OUTPUT_PLAYLIST_DIR/monthly playlist.m3u8"}
         DEST_FOLDER=''${1}
         while IFS= read -r line; do
           [[ $line == \#* ]] || [[ -z $line ]] && continue
