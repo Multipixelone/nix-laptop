@@ -65,7 +65,7 @@ in {
       name = "monthly-copy";
       runtimeInputs = [pkgs.ffmpeg pkgs.gum];
       text = ''
-        PLAYLIST=$(gum file "$PLAYLIST_DIR")
+        PLAYLIST=$(gum file "$PLAYLIST_DIR" --no-permissions --no-size)
         # PLAYLIST=''${2:-"$OUTPUT_PLAYLIST_DIR/monthly playlist.m3u8"}
         DEST_FOLDER=''${1}
         while IFS= read -r line; do
