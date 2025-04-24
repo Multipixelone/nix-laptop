@@ -95,7 +95,6 @@ in {
         end
     '';
     functions = {
-      #nvimrg = "nvim -q (rg --vimgrep $argv | psub)";
       __onefetch_on_pwd_change = {
         body = "__onefetch_on_pwd_change --on-variable PWD";
         onEvent = ''
