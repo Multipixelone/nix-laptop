@@ -70,15 +70,15 @@ in {
         DEST_FOLDER=''${1}
         while IFS= read -r line; do
           [[ $line == \#* ]] || [[ -z $line ]] && continue
-          # song_file=$(basename "$line")
-          # extension="''${song_file##*.}"
-          # if [[ "$extension" == "flac" ]] || [[ "$extension" == "alac" ]]; then
+          song_file=$(basename "$line")
+          extension="''${song_file##*.}"
+          if [[ "$extension" == "flac" ]] || [[ "$extension" == "alac" ]]; then
             # ffmpeg -nostdin -i "$line" -aq 2 "$DEST_FOLDER/''${song_file%.*}.mp3"
-            # ffmpeg -nostdin -i "$line" -ab 320k "$DEST_FOLDER/''${song_file%.*}.mp3"
-          # else
+            ffmpeg -nostdin -i "$line" -ab 320k "$DEST_FOLDER/''${song_file%.*}.mp3"
+          else
             cp "$line" "$DEST_FOLDER/" 2> /dev/null
-          #   continue
-          # fi
+            continue
+          fi
         done < "$PLAYLIST"
       '';
     })
