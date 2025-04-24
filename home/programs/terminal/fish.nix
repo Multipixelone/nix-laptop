@@ -96,14 +96,11 @@ in {
     '';
     functions = {
       __onefetch_on_pwd_change = {
-        body = "__onefetch_on_pwd_change --on-variable PWD";
-        onEvent = ''
+        # body = "__onefetch_on_pwd_change --on-variable PWD";
+        onVariable = "PWD";
+        body = ''
           if test -d ./.git
-            if test -e ./logo.png
-              ${lib.getExe pkgs.onefetch} --image logo.png
-            else
-              ${lib.getExe pkgs.onefetch}
-            end
+            ${lib.getExe pkgs.onefetch} --no-art
           end
         '';
       };
