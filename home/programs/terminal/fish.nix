@@ -65,7 +65,7 @@ in {
     };
     shellInit = fish-config;
     interactiveShellInit = ''
-      ${lib.getExe pkgs.any-nix-shell} fish --info-right | source
+      #${lib.getExe pkgs.any-nix-shell} fish --info-right | source
       if status is-interactive
             if type -q zellij
                 # Update the zellij tab name with the current process name or pwd.
@@ -96,7 +96,7 @@ in {
         end
     '';
     functions = {
-      nvimrg = "nvim -q (rg --vimgrep $argv | psub)";
+      #nvimrg = "nvim -q (rg --vimgrep $argv | psub)";
       __onefetch_on_pwd_change = {
         body = "__onefetch_on_pwd_change --on-variable PWD";
         onEvent = ''
