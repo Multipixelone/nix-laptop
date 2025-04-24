@@ -65,7 +65,6 @@ in {
     };
     shellInit = fish-config;
     interactiveShellInit = ''
-      #${lib.getExe pkgs.any-nix-shell} fish --info-right | source
       if status is-interactive
             if type -q zellij
                 # Update the zellij tab name with the current process name or pwd.
