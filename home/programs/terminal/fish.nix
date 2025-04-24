@@ -61,6 +61,7 @@ in {
       df = lib.getExe pkgs.duf;
       clip = "${cliphist} list | fzf | ${cliphist} decode | ${wl-copy}";
       ping = lib.getExe pkgs.prettyping;
+      public-ip = lib.getExe' dnsutils "dig" + " +short myip.opendns.com @resolver1.opendns.com";
     };
     shellInit = fish-config;
     interactiveShellInit = ''
