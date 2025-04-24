@@ -26,7 +26,8 @@ in {
   systemd.timers."playlist-downloader" = {
     wantedBy = ["timers.target"];
     timerConfig = {
-      OnCalendar = "daily";
+      # every three hrs
+      OnCalendar = "00/3:00";
       Persistent = true;
       RandomizedDelaySec = "20m";
     };
