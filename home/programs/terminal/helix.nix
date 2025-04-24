@@ -105,6 +105,7 @@ in {
           V = ["select_mode" "extend_to_line_bounds"];
           space = {
             l.g = ["${zellij-args} ${lib.getExe pkgs.lazygit}" ":reload"];
+            n.r = ["${zellij-args} nix run" ":reload"];
           };
         };
       };
