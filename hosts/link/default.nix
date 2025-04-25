@@ -29,6 +29,7 @@
   environment.variables = {
     MUSIC_DIR = "/media/Data/Music";
     PLAYLIST_DIR = "/home/tunnel/Music/Playlists";
+    MOPIDY_PLAYLISTS = "/home/tunnel/.local/share/mopidy/m3u";
     IPOD_DIR = "/run/media/tunnel/FINNR_S IPO";
   };
 
