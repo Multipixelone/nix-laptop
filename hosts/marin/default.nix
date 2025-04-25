@@ -5,7 +5,7 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   # nh default flake
-  environment.variables.FLAKE = "/home/tunnel/nix-laptop";
+  environment.variables.NH_FLAKE = "/home/tunnel/nix-laptop";
 
   boot = {
     loader.grub.enable = false;

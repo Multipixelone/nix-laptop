@@ -23,7 +23,7 @@
   powerManagement.cpuFreqGovernor = "performance";
 
   # nh default flake
-  environment.variables.FLAKE = "/home/tunnel/Documents/Git/nix-laptop";
+  environment.variables.NH_FLAKE = "/home/tunnel/Documents/Git/nix-laptop";
 
   # media env vars
   environment.variables = {
