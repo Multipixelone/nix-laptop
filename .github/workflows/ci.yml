@@ -91,7 +91,6 @@ jobs:
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - uses: DeterminateSystems/magic-nix-cache-action@v7
       - name: Run flake check
         run: nix flake check
   build:
@@ -159,7 +158,6 @@ jobs:
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - uses: DeterminateSystems/magic-nix-cache-action@v7
       - name: Login to attic
         run: |
           nix run nixpkgs#attic-client login fly https://attic-cache.fly.dev ${{ secrets.ATTIC_KEY }}
