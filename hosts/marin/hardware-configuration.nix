@@ -11,27 +11,31 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "sdhci_pci"];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-intel" "wl"];
-  boot.extraModulePackages = [config.boot.kernelPackages.broadcom_sta];
-
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/c2c80df4-eb6e-446f-97ba-008f494c3817";
-    fsType = "btrfs";
-    options = ["subvol=@"];
+  boot = {
+    initrd.availableKernelModules = ["xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "sdhci_pci"];
+    # initrd.kernelModules = [];
+    kernelModules = ["kvm-intel" "wl"];
+    extraModulePackages = [config.boot.kernelPackages.broadcom_sta];
   };
 
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/c2c80df4-eb6e-446f-97ba-008f494c3817";
-    fsType = "btrfs";
-    options = ["subvol=@home"];
-  };
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/c2c80df4-eb6e-446f-97ba-008f494c3817";
+      fsType = "btrfs";
+      options = ["subvol=@"];
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/7BA8-ACBD";
-    fsType = "vfat";
-    options = ["fmask=0022" "dmask=0022"];
+    "/home" = {
+      device = "/dev/disk/by-uuid/c2c80df4-eb6e-446f-97ba-008f494c3817";
+      fsType = "btrfs";
+      options = ["subvol=@home"];
+    };
+
+    "/boot" = {
+      device = "/dev/disk/by-uuid/7BA8-ACBD";
+      fsType = "vfat";
+      options = ["fmask=0022" "dmask=0022"];
+    };
   };
 
   swapDevices = [{device = "/swap/swapfile";}];

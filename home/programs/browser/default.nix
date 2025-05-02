@@ -3,7 +3,7 @@
   inputs,
   ...
 }: let
-  better-fox = inputs.better-fox;
+  inherit (inputs) better-fox;
   extensions = with pkgs.nur.repos.rycee.firefox-addons; [
     # blockers
     sponsorblock

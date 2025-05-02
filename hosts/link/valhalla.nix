@@ -1,24 +1,9 @@
+_:
+# subway = self.packages.${pkgs.system}.subway;
 {
-  # self,
-  # pkgs,
-  ...
-}: let
-  # subway = self.packages.${pkgs.system}.subway;
-in {
   systemd = {
-    tmpfiles.rules = let
-      # create env for rocm override
-      # rocmEnv = pkgs.symlinkJoin {
-      #   name = "rocm-combined";
-      #   paths = with pkgs.rocmPackages; [
-      #     rocblas
-      #     hipblas
-      #     clr
-      #   ];
-      # };
-    in [
+    tmpfiles.rules = [
       "d /srv/valhalla 0770 tunnel users -"
-      # "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
     ];
   };
   virtualisation.oci-containers = {

@@ -134,19 +134,19 @@ in {
       }
       {
         name = "fzf-fish";
-        src = pkgs.fishPlugins.fzf-fish.src;
+        inherit (pkgs.fishPlugins.fzf-fish) src;
       }
       {
         name = "done";
-        src = pkgs.fishPlugins.done.src;
+        inherit (pkgs.fishPlugins.done) src;
       }
       {
         name = "pisces";
-        src = pkgs.fishPlugins.pisces.src;
+        inherit (pkgs.fishPlugins.pisces) src;
       }
       {
         name = "grc";
-        src = pkgs.fishPlugins.grc.src;
+        inherit (pkgs.fishPlugins.grc) src;
       }
       # {
       #   name = "pure";

@@ -6,7 +6,7 @@
 }: {
   imports = [
     ./wallpaper.nix
-    inputs.catppuccin.homeManagerModules.catppuccin
+    inputs.catppuccin.homeModules.catppuccin
   ];
   catppuccin = {
     enable = true;

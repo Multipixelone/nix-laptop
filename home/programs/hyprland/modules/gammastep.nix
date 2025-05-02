@@ -1,4 +1,4 @@
-{...}: let
+_: let
   sysctluser = "systemctl --user";
 in {
   services.gammastep = {

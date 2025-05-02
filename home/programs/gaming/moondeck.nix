@@ -6,8 +6,8 @@
 }: let
   pkgs-stable = inputs.nixpkgs-stable.legacyPackages.${pkgs.system};
   moondeck = pkgs.qt6.callPackage ../../../pkgs/moondeck/default.nix {
-    qt6 = pkgs-stable.qt6;
-    procps = pkgs-stable.procps;
+    inherit (pkgs-stable) qt6;
+    inherit (pkgs-stable) procps;
   };
 in {
   systemd.user.services.moondeck = {

@@ -1,4 +1,4 @@
-{...}: {
+_: {
   theme = {
     wallpaper = let
       url = "https://drive.usercontent.google.com/download?id=1OrRpU17DU78sIh--SNOVI6sl4BxE06Zi";

@@ -8,9 +8,11 @@
   environment.variables.NH_FLAKE = "/home/tunnel/nix-laptop";
 
   boot = {
-    loader.grub.enable = false;
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
+    loader = {
+      grub.enable = false;
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
   };
 
   networking = {

@@ -1,4 +1,4 @@
-{...}: {
+_: {
   wayland.windowManager.hyprland.settings = {
     workspace = [
       "5,gapsin:5,gapsout:3"
