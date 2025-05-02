@@ -8,7 +8,7 @@
       imports = [
         ./hosts
         ./pkgs
-        ./pre-commit-hooks.nix
+        inputs.pre-commit-hooks.flakeModule
       ];
 
       perSystem = {
@@ -28,6 +28,14 @@
           shellHook = ''
             ${config.pre-commit.installationScript}
           '';
+        };
+
+        pre-commit.settings = {
+          hooks = {
+            alejandra.enable = true;
+            statix.enable = true;
+            deadnix.enable = true;
+          };
         };
 
         formatter = pkgs.alejandra;
