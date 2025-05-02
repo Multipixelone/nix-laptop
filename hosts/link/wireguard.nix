@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   firewall.allowedUDPPorts = [443];
   networking = {
     nat = {

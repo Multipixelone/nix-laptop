@@ -3,7 +3,7 @@
   fetchurl,
   python3Packages,
 }:
-python3Packages.buildPythonApplication rec {
+python3Packages.buildPythonApplication {
   pname = "spotify2musicbrainz";
   version = "0.3.2";
 

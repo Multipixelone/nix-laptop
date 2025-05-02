@@ -9,7 +9,7 @@
     hash = "sha256-J+zqtWde5NgK2QROvGewtXGRAWUTNSKHNMG6iu9m1fU=";
   };
 in
-  stdenv.mkDerivation rec {
+  stdenv.mkDerivation {
     pname = "citra-mirror";
     version = "2104";
 

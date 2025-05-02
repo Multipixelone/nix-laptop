@@ -1,4 +1,4 @@
-{
+{inputs, ...}: {
   import = [
     inputs.auto-cpufreq.nixosModules.default
   ];

@@ -34,6 +34,7 @@
           hooks = {
             alejandra.enable = true;
             statix.enable = true;
+            nil.enable = true;
             deadnix.enable = true;
           };
         };
