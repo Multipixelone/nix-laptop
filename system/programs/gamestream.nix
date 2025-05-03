@@ -93,8 +93,8 @@ in {
     openFirewall = true;
     settings = {
       channels = 2;
-      output_name = 0;
-      capture = wlr;
+      output_name = 2;
+      capture = "wlr";
       # encoder = "amdvce";
       # decrease fec percentage because I am not dropping many packets
       fec_percentage = "7";
