@@ -48,6 +48,7 @@
         systemctl --user stop hypridle
         hyprctl output create headless SUNSHINE
         hyprctl keyword monitor "$mon_string"
+        hyprctl dispatch focusmonitor 2
         #hyprctl dispatch workspace 7
       '';
     };
