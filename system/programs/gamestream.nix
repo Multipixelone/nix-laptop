@@ -87,6 +87,17 @@ in {
     enable = true;
     capSysAdmin = true;
     openFirewall = true;
+    # temporary until there's a new release that contains https://github.com/LizardByte/Sunshine/pull/3783
+    package = pkgs.sunshine.overrideAttrs rec {
+      version = "2025.501.153943";
+      src = pkgs.fetchFromGitHub {
+        owner = "LizardByte";
+        repo = "Sunshine";
+        tag = "v${version}";
+        hash = "sha256-T2rhAX68dTEGe4n79c3iS+6WQgkGwlIFTX1aLc5rF7o=";
+        fetchSubmodules = true;
+      };
+    };
     settings = {
       channels = 2;
       output_name = 2;
