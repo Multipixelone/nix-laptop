@@ -147,13 +147,12 @@ in {
               ];
               text = ''
                 gamescope \
-                -w 3840 \
-                -h 2160 \
-                --xwayland-count 2 \
                 --backend wayland \
-                -f \
-                -e -- \
-                steam -gamepadui
+                --xwayland-count 2 \
+                --display-index 2 \
+                --fullscreen \
+                --steam -- \
+                steam -gamepadui -steamos3 -pipewire-dmabuf
               '';
             };
           in "${hypr-dispatch} \"${lib.getExe steam-gamescope}\"";
