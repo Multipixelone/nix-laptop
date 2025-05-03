@@ -46,7 +46,6 @@
         # Unlock PC (so I don't have to type password on Steam Deck)
         pkill -USR1 hyprlock || true
         systemctl --user stop hypridle
-        #hyprctl keyword monitor "DP-3,disable"
         hyprctl output create headless SUNSHINE
         hyprctl keyword monitor "$mon_string"
         #hyprctl dispatch workspace 7
@@ -59,12 +58,8 @@
       text = ''
         HYPRLAND_INSTANCE_SIGNATURE=$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)
         export HYPRLAND_INSTANCE_SIGNATURE
-        mon_string="DP-1,2560x1440@240,1200x0,1"
-        second_mon="DP-3,1920x1200@60,0x0,1,transform,1"
         systemctl --user start hypridle
         hyprctl output remove SUNSHINE
-        #hyprctl keyword monitor "$second_mon"
-        #hyprctl keyword monitor "$mon_string"
       '';
     };
   in {
