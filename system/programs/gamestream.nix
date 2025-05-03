@@ -42,13 +42,14 @@
         width=''${1:-3840}
         height=''${2:-2160}
         refresh_rate=''${3:-60}
-        mon_string="DP-1,''${width}x''${height}@''${refresh_rate},1200x0,2"
+        mon_string="SUNSHINE,''${width}x''${height}@''${refresh_rate},0x1920,2"
         # Unlock PC (so I don't have to type password on Steam Deck)
         pkill -USR1 hyprlock || true
         systemctl --user stop hypridle
-        hyprctl keyword monitor "DP-3,disable"
+        #hyprctl keyword monitor "DP-3,disable"
+        hyprctl output create headless SUNSHINE
         hyprctl keyword monitor "$mon_string"
-        hyprctl dispatch workspace 7
+        #hyprctl dispatch workspace 7
       '';
     };
     undo-command = pkgs.writeShellApplication {
@@ -61,8 +62,9 @@
         mon_string="DP-1,2560x1440@240,1200x0,1"
         second_mon="DP-3,1920x1200@60,0x0,1,transform,1"
         systemctl --user start hypridle
-        hyprctl keyword monitor "$second_mon"
-        hyprctl keyword monitor "$mon_string"
+        hyprctl output remove SUNSHINE
+        #hyprctl keyword monitor "$second_mon"
+        #hyprctl keyword monitor "$mon_string"
       '';
     };
   in {
@@ -92,6 +94,7 @@ in {
     settings = {
       channels = 2;
       output_name = 0;
+      capture = wlr;
       # encoder = "amdvce";
       # decrease fec percentage because I am not dropping many packets
       fec_percentage = "7";
