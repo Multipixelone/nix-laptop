@@ -29,6 +29,13 @@
     --client-secret=$(cat ${config.age.secrets."gcalsecret".path}) \
     $@
   '';
+  # wrap cookies into spotdl
+  spotdl-wrapped = pkgs.writeShellScriptBin "spotdl" ''
+    ${lib.getExe pkgs.spotdl} \
+    --cookie-file ${config.age.secrets."yt-dlp".path} \
+    --bitrate disable \
+    $@
+  '';
 in {
   imports = [
     ./btop.nix
@@ -58,6 +65,10 @@ in {
       "gcalsecret" = {
         file = "${inputs.secrets}/gcal/secret.age";
       };
+      "yt-dlp" = {
+        file = "${inputs.secrets}/media/ytdlp.age";
+        mode = "440";
+      };
     };
   };
   home.packages = with pkgs; [
@@ -77,6 +88,7 @@ in {
     tgpt-wrapped
     todoist-wrapped
     gcalcli-wrapped
+    spotdl-wrapped
   ];
   programs = {
     fd.enable = true;
@@ -160,6 +172,7 @@ in {
         sponsorblock-remove = "sponsor";
         downloader = "aria2c";
         downloader-args = "aria2c:'-c -x8 -s8 -k1M'";
+        cookies = config.age.secrets."yt-dlp".path;
       };
     };
     navi.enable = true;
