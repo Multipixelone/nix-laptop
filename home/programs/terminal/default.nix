@@ -80,7 +80,8 @@ in {
       };
       "yt-dlp" = {
         file = "${inputs.secrets}/media/ytdlp.age";
-        mode = "440";
+        # yt-dlp needs write access to cookie file for some reason?
+        mode = "600";
       };
     };
   };
