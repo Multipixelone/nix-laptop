@@ -85,6 +85,23 @@ in {
       };
     };
   };
+  xdg.configFile = {
+    "yt-dlp/plugins/bgutil-ytdlp-pot-provider".source =
+      pkgs.fetchFromGitHub {
+        owner = "Brainicism";
+        repo = "bgutil-ytdlp-pot-provider";
+        rev = "7b3900cb908f1de922b2b98b7d4319e12df496a7";
+        hash = "sha256-E448uUDnXpUo/DvGjFGbIEHDS98ngGOufJ173hIwwaM=";
+      }
+      + "/plugin";
+    "yt-dlp/plugins/yt-dlp-get-pot".source = pkgs.fetchFromGitHub rec {
+      version = "0.3.0";
+      owner = "coletdjnz";
+      repo = "yt-dlp-get-pot";
+      tag = "v${version}";
+      hash = "sha256-MtQFXWJByo/gyftMtywCCfpf8JtldA2vQP8dnpLEl7U=";
+    };
+  };
   home.packages = with pkgs; [
     # (inputs.nixvim.legacyPackages."${system}".makeNixvimWithModule {
     #   inherit pkgs;
