@@ -8,7 +8,6 @@
     ./hardware-configuration.nix
     ./hyprland.nix
     ./valhalla.nix
-    ./bgutil-ytdlp-pot-provider.nix
     ./printer.nix
   ];
 

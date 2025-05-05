@@ -60,6 +60,7 @@
         ++ [
           ./minish
           "${mod}/programs/nix-ld.nix"
+          "${mod}/services/bgutil-ytdlp-pot-provider.nix"
 
           "${mod}/programs/home-manager.nix"
           {
