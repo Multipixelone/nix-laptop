@@ -30,12 +30,25 @@
     $@
   '';
   # wrap cookies into spotdl
-  spotdl-wrapped = pkgs.writeShellScriptBin "spotdl" ''
-    ${lib.getExe pkgs.spotdl} \
-    --cookie-file ${config.age.secrets."yt-dlp".path} \
-    --bitrate disable \
-    $@
-  '';
+  spotdl-wrapped = let
+    # use version of spotdl that accepts extractor-args for yt-dlp
+    spotdl-args = pkgs.spotdl.overrideAttrs {
+      src = pkgs.fetchFromGitHub {
+        owner = "Kyrluckechuck";
+        repo = "spotify-downloader";
+        rev = "ad48f5ca55b2cc79e3b83bc8e8aa16b16c11d485";
+        hash = "sha256-56zVTlzJnI7AFmcZ9ZNZPDx9wc5JxFnSWxmrPkr4bWI=";
+      };
+    };
+  in
+    pkgs.writeShellScriptBin "spotdl" ''
+      ${lib.getExe spotdl-args} \
+      --cookie-file ${config.age.secrets."yt-dlp".path} \
+      --yt-dlp-args "extractor-args \"youtube:player_client=web_music,default;getpot_bgutil_baseurl=http://127.0.0.1:4416\"" \
+      --format opus \
+      --bitrate disable \
+      $@
+    '';
 in {
   imports = [
     ./btop.nix
