@@ -17,7 +17,7 @@ in {
     minecraft-atm10 = {
       autoStart = false;
       image = "itzg/minecraft-server:latest";
-      ports = ["25565:25565"];
+      ports = ["25555:25555"];
       # environmentFiles = [config.age.secrets."curseforge".path];
       environment = {
         EULA = "TRUE";
