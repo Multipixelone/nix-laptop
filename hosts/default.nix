@@ -80,6 +80,8 @@
         server
         ++ [
           ./marin
+          "${mod}/services/minecraft-server.nix"
+
           "${mod}/programs/home-manager.nix"
           {
             home-manager = {
