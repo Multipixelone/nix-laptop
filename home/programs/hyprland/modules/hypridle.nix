@@ -28,7 +28,7 @@ in {
     package = inputs.hypridle.packages.${pkgs.system}.hypridle;
     settings = {
       general = {
-        lock_cmd = lib.getExe config.programs.hyprlock.package;
+        lock_cmd = "pgrep hyprlock || ${lib.getExe config.programs.hyprlock.package}";
         before_sleep_cmd = lib.getExe' pkgs.systemd "loginctl" + " lock-session";
       };
       listener = [
