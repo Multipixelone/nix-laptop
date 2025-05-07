@@ -18,6 +18,7 @@
   };
   # hint electron apps to run on wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  securiry.pam.services.hyprlock.text = "auth include login";
   environment.systemPackages = with pkgs; [
     pyprland
   ];
