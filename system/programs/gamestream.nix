@@ -48,8 +48,9 @@
         systemctl --user stop hypridle
         hyprctl output create headless SUNSHINE
         hyprctl keyword monitor "$mon_string"
+        hyprctl dispatch moveworkspacetomonitor 7 2
         hyprctl dispatch focusmonitor 2
-        #hyprctl dispatch workspace 7
+        hyprctl dispatch workspace 7
       '';
     };
     undo-command = pkgs.writeShellApplication {
@@ -60,6 +61,8 @@
         HYPRLAND_INSTANCE_SIGNATURE=$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)
         export HYPRLAND_INSTANCE_SIGNATURE
         systemctl --user start hypridle
+        hyprctl dispatch moveworkspacetomonitor 7 1
+        hyprctl workspace 7
         hyprctl output remove SUNSHINE
       '';
     };
