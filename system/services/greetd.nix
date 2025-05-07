@@ -1,5 +1,4 @@
 {
-  pkgs,
   config,
   lib,
   ...
@@ -13,17 +12,17 @@
   # required for keyring to unlock on boot
   security.pam.services.greetd.enableGnomeKeyring = true;
   services = {
-    kmscon = {
-      enable = true;
-      extraConfig = "font-size=24";
-      fonts = [
-        {
-          name = "PragmataPro Liga";
-          package = pkgs.callPackage ../../pkgs/pragmata {};
-        }
-      ];
-    };
     # seatd.enable = true;
+    # kmscon = {
+    #   enable = true;
+    #   extraConfig = "font-size=24";
+    #   fonts = [
+    #     {
+    #       name = "PragmataPro Liga";
+    #       package = pkgs.callPackage ../../pkgs/pragmata {};
+    #     }
+    #   ];
+    # };
     greetd = let
       session = {
         command = "${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop";
