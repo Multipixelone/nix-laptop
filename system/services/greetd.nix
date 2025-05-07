@@ -13,7 +13,6 @@
   # required for keyring to unlock on boot
   security.pam.services.greetd.enableGnomeKeyring = true;
   services = {
-    seatd.enable = true;
     kmscon = {
       enable = true;
       extraConfig = "font-size=24";
@@ -24,6 +23,7 @@
         }
       ];
     };
+    # seatd.enable = true;
     greetd = let
       session = {
         command = "${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop";
