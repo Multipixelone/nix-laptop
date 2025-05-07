@@ -3,13 +3,13 @@
   config,
   lib,
   ...
-}: let
   # TODO run tuigreet inside of kmscon
   # kmscon = "${pkgs.kmscon}/libexec/kmscon/kmscon";
-  tuigreet = lib.getExe' pkgs.greetd.tuigreet "tuigreet";
   # hyprland = lib.getExe' config.programs.hyprland.package "Hyprland";
-  hyprland-session = "${config.programs.hyprland.package}/share/wayland-sessions";
-in {
+}:
+# tuigreet = lib.getExe' pkgs.greetd.tuigreet "tuigreet";
+# hyprland-session = "${config.programs.hyprland.package}/share/wayland-sessions";
+{
   # required for keyring to unlock on boot
   security.pam.services.greetd.enableGnomeKeyring = true;
   services = {
@@ -24,18 +24,20 @@ in {
         }
       ];
     };
-    greetd = {
+    greetd = let
+      session = {
+        command = "${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop";
+        user = "tunnel";
+      };
+    in {
       enable = true;
       settings = {
-        default_session = {
-          command = "${tuigreet} --greeting \"hi finn :)\" --time --remember --remember-session --sessions ${hyprland-session}";
-          user = "greeter";
-        };
-        # autologin on desktop: I'm gonna do a big refactor to modules soon™ 🙏
-        initial_session = lib.mkIf (config.networking.hostName == "link") {
-          command = "${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop";
-          user = "tunnel";
-        };
+        initial_session = session;
+        default_session = session;
+        # default_session = {
+        #   command = "${tuigreet} --greeting \"hi finn :)\" --time --remember --remember-session --sessions ${hyprland-session}";
+        #   user = "greeter";
+        # };
       };
     };
   };
