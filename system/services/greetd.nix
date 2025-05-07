@@ -2,11 +2,11 @@
   config,
   lib,
   ...
-  # TODO run tuigreet inside of kmscon
-  # kmscon = "${pkgs.kmscon}/libexec/kmscon/kmscon";
-  # hyprland = lib.getExe' config.programs.hyprland.package "Hyprland";
 }:
+# TODO run tuigreet inside of kmscon
+# kmscon = "${pkgs.kmscon}/libexec/kmscon/kmscon";
 # tuigreet = lib.getExe' pkgs.greetd.tuigreet "tuigreet";
+# hyprland = lib.getExe' config.programs.hyprland.package "Hyprland";
 # hyprland-session = "${config.programs.hyprland.package}/share/wayland-sessions";
 {
   # required for keyring to unlock on boot
