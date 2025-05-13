@@ -14,9 +14,9 @@
       plugins = with inputs.anyrun.packages.${pkgs.system}; [
         applications
         shell
-        symbols
-        dictionary
-        websearch
+        # symbols
+        # dictionary
+        # websearch
         inputs.anyrun-nixos-options.packages.${pkgs.system}.default
       ];
     };
