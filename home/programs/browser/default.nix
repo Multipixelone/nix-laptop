@@ -123,7 +123,8 @@ in {
     enable = true;
     profiles = {
       default = {
-        inherit extensions settings;
+        inherit settings;
+        extensions.packages = extensions;
         id = 0;
         # search = {
         #   default = "DuckDuckGo";
