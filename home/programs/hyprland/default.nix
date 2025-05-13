@@ -37,12 +37,14 @@ in {
     ssh-agent.enable = true;
     mako = {
       enable = true;
-      borderColor = lib.mkForce "#${config.lib.stylix.colors.base0E}";
-      backgroundColor = lib.mkForce "#${config.lib.stylix.colors.base00}";
-      borderRadius = 6;
-      borderSize = 2;
-      ignoreTimeout = true;
-      defaultTimeout = 5000;
+      settings = {
+        borderColor = lib.mkForce "#${config.lib.stylix.colors.base0E}";
+        backgroundColor = lib.mkForce "#${config.lib.stylix.colors.base00}";
+        borderRadius = 6;
+        borderSize = 2;
+        ignoreTimeout = true;
+        defaultTimeout = 5000;
+      };
     };
   };
   # TODO reorganize all of this and make it cleaner
