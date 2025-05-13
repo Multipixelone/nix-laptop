@@ -92,12 +92,12 @@ in {
     openFirewall = true;
     # temporary until there's a new release that contains https://github.com/LizardByte/Sunshine/pull/3783
     package = pkgs.sunshine.overrideAttrs rec {
-      version = "2025.501.153943";
+      version = "2025.509.184504";
       src = pkgs.fetchFromGitHub {
         owner = "LizardByte";
         repo = "Sunshine";
         tag = "v${version}";
-        hash = "sha256-T2rhAX68dTEGe4n79c3iS+6WQgkGwlIFTX1aLc5rF7o=";
+        hash = "sha256-J7X/J7q7+O6Nn36xNvLr2wgAJT1pqAVO24X2etqcaDE=";
         fetchSubmodules = true;
       };
     };
