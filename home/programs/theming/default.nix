@@ -20,9 +20,6 @@
   };
   gtk = {
     enable = true;
-    catppuccin = {
-      enable = true;
-    };
     iconTheme = lib.mkForce {
       package = pkgs.catppuccin-papirus-folders;
       name = "Papirus-Dark";
@@ -48,7 +45,6 @@
     platformTheme.name = "kvantum";
     style = {
       name = "kvantum";
-      catppuccin.enable = true;
     };
   };
   home.packages = with pkgs; [

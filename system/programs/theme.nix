@@ -7,6 +7,7 @@
     inputs.catppuccin.nixosModules.catppuccin
     inputs.stylix.nixosModules.stylix
   ];
+  catppuccin.enable = true;
   programs = {
     # make HM-managed GTK stuff work
     dconf.enable = true;
