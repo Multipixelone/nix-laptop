@@ -6,7 +6,7 @@
   ...
 }: let
   sh = lib.getExe pkgs.bash;
-  hypr-dispatch = lib.getExe' config.programs.hyprland.package "hyprctl" + " dispatch exec";
+  hypr-dispatch = lib.getExe' config.programs.hyprland.package "hyprctl" + " dispatch exec [workspace 7]";
   steam = lib.getExe config.programs.steam.package + " --";
   pkgs-stable = inputs.nixpkgs-stable.legacyPackages.${pkgs.system};
   moondeck = pkgs.qt6.callPackage ../../pkgs/moondeck/default.nix {
