@@ -24,7 +24,8 @@
 in {
   systemd.user.services.hypridle.Unit.After = lib.mkForce "graphical-session.target";
   services.hypridle = {
-    enable = true;
+    # FIXME: crashing hyprlock with moonlight and I'm too lazy to troubleshoot
+    enable = false;
     package = inputs.hypridle.packages.${pkgs.system}.hypridle;
     settings = {
       general = {
