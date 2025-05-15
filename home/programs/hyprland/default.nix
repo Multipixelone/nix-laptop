@@ -143,6 +143,10 @@ in {
         "col.inactive_border" = lib.mkForce "rgb(${config.lib.stylix.colors.base00})";
         "col.active_border" = lib.mkForce "rgb(${config.lib.stylix.colors.base0E})";
       };
+      ecosystem = {
+        no_update_news = true;
+        no_donation_nag = true;
+      };
       dwindle = {
         # keep floating dimentions while tiling
         pseudotile = true;
