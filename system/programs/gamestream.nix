@@ -5,6 +5,7 @@
   inputs,
   ...
 }: let
+  sunshine_version = "2025.509.184504";
   sh = lib.getExe pkgs.bash;
   hypr-dispatch = lib.getExe' config.programs.hyprland.package "hyprctl" + " dispatch exec [workspace 7]";
   steam = lib.getExe config.programs.steam.package + " --";
@@ -88,12 +89,11 @@ in {
     capSysAdmin = true;
     openFirewall = true;
     # temporary until there's a new release that contains https://github.com/LizardByte/Sunshine/pull/3783
-    package = pkgs.sunshine.overrideAttrs rec {
-      version = "2025.509.184504";
+    package = pkgs.sunshine.overrideAttrs {
       src = pkgs.fetchFromGitHub {
         owner = "LizardByte";
         repo = "Sunshine";
-        tag = "v${version}";
+        tag = "v${sunshine_version}";
         hash = "sha256-J7X/J7q7+O6Nn36xNvLr2wgAJT1pqAVO24X2etqcaDE=";
         fetchSubmodules = true;
       };
