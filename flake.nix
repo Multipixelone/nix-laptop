@@ -215,6 +215,16 @@
         systems.follows = "hyprland/systems";
       };
     };
+    hyprpaper = {
+      url = "github:hyprwm/hyprpaper";
+      inputs = {
+        hyprgraphics.follows = "hyprland/hyprgraphics";
+        hyprlang.follows = "hyprland/hyprlang";
+        hyprutils.follows = "hyprland/hyprutils";
+        nixpkgs.follows = "hyprland/nixpkgs";
+        systems.follows = "hyprland/systems";
+      };
+    };
     hypridle = {
       url = "github:hyprwm/hypridle";
       inputs = {
