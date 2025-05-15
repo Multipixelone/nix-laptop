@@ -174,7 +174,6 @@ in {
         explicit_sync = true;
       };
       cursor = {
-        inactive_timeout = "7";
         persistent_warps = true;
       };
       input = {
