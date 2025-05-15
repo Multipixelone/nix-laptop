@@ -59,8 +59,7 @@
       text = ''
         HYPRLAND_INSTANCE_SIGNATURE=$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)
         export HYPRLAND_INSTANCE_SIGNATURE
-        hyprctl dispatch moveworkspacetomonitor 7 1
-        hyprctl workspace 7
+        hyprctl dispatch moveworkspacetomonitor 7 0
         hyprctl output remove SUNSHINE
       '';
     };
