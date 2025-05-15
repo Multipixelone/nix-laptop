@@ -15,13 +15,13 @@
   };
   # icon download and crop functions
   mk-icon = {icon-name}: pkgs.runCommand "${icon-name}-scaled.png" {} ''${pkgs.imagemagick}/bin/convert -density 1200 -resize 500x -background none ${pkgs.papirus-icon-theme}/share/icons/Papirus-Dark/128x128/apps/${icon-name}.svg -gravity center -extent 600x800 $out'';
-  download-image = {
-    url,
-    hash,
-  }: let
-    image = pkgs.fetchurl {inherit url hash;};
-  in
-    pkgs.runCommand "${lib.nameFromURL url "."}.png" {} ''${pkgs.imagemagick}/bin/convert ${image} -background none -gravity center -extent 600x800 $out'';
+  # download-image = {
+  #   url,
+  #   hash,
+  # }: let
+  #   image = pkgs.fetchurl {inherit url hash;};
+  # in
+  #   pkgs.runCommand "${lib.nameFromURL url "."}.png" {} ''${pkgs.imagemagick}/bin/convert ${image} -background none -gravity center -extent 600x800 $out'';
   # monitor prep command
   prep = let
     packages = [
@@ -159,16 +159,6 @@ in {
           in "${hypr-dispatch} \"${lib.getExe steam-gamescope}\"";
           prep-cmd = [prep steam-kill];
           image-path = mk-icon {icon-name = "steamvr";};
-        }
-        {
-          name = "Until Dawn";
-          cmd = "${hypr-dispatch} \"until-dawn\"";
-          prep-cmd = [prep];
-          image-path = download-image {
-            # Source: https://www.steamgriddb.com/grid/115256
-            url = "https://cdn2.steamgriddb.com/grid/f28c89145bc5c930ba927088d63b196d.png";
-            hash = "sha256-DPDqZlgVbo/Wig4AlXGqZoHxI9QGPrmhZzteWke6JMc=";
-          };
         }
         {
           name = "MoonDeckStream";
