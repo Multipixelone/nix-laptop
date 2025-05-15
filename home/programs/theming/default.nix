@@ -15,6 +15,7 @@
   };
   stylix.targets = {
     waybar.enable = false;
+    hyprpaper.enable = false;
     kde.enable = false;
     gtk.enable = false;
   };
