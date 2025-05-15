@@ -125,10 +125,10 @@ in {
           '';
         }
         {
-          name = "Steam Big Picture";
+          name = "Steam (Big Picture Fallback)";
           cmd = "${hypr-dispatch} \"${steam} -gamepadui\"";
           prep-cmd = [prep steam-kill];
-          image-path = mk-icon {icon-name = "steamlink";};
+          image-path = mk-icon {icon-name = "steamvr";};
         }
         {
           name = "Steam (Regular UI)";
@@ -137,7 +137,7 @@ in {
           image-path = mk-icon {icon-name = "steam";};
         }
         {
-          name = "Steam (Gamescope)";
+          name = "Steam (Big Picture)";
           cmd = let
             steam-gamescope = pkgs.writeShellApplication {
               name = "steam-gamescope";
@@ -157,7 +157,7 @@ in {
             };
           in "${hypr-dispatch} \"${lib.getExe steam-gamescope}\"";
           prep-cmd = [prep steam-kill];
-          image-path = mk-icon {icon-name = "steamvr";};
+          image-path = mk-icon {icon-name = "steamlink";};
         }
         {
           name = "MoonDeckStream";
