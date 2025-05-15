@@ -44,8 +44,7 @@
         refresh_rate=''${3:-60}
         mon_string="SUNSHINE,''${width}x''${height}@''${refresh_rate},0x1920,1"
         # Unlock PC (so I don't have to type password on Steam Deck)
-        pkill -USR1 hyprlock || true
-        systemctl --user stop hypridle
+        # pkill -USR1 hyprlock || true
         hyprctl output create headless SUNSHINE
         hyprctl keyword monitor "$mon_string"
         hyprctl dispatch moveworkspacetomonitor 7 2
@@ -60,7 +59,6 @@
       text = ''
         HYPRLAND_INSTANCE_SIGNATURE=$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)
         export HYPRLAND_INSTANCE_SIGNATURE
-        systemctl --user start hypridle
         hyprctl dispatch moveworkspacetomonitor 7 1
         hyprctl workspace 7
         hyprctl output remove SUNSHINE
