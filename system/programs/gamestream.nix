@@ -104,6 +104,8 @@ in {
       gamepad = "ds5";
       capture = "wlr";
       # encoder = "amdvce";
+      # allow guide press with back button after 2000 milliseconds
+      back_button_timeout = 2000;
       # decrease fec percentage because I am not dropping many packets
       fec_percentage = "12";
     };
