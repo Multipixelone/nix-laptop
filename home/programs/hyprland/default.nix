@@ -175,6 +175,7 @@ in {
       };
       cursor = {
         persistent_warps = true;
+        default_monitor = "DP-1";
       };
       input = {
         accel_profile = "flat";
