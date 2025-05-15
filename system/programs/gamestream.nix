@@ -101,6 +101,7 @@ in {
     settings = {
       channels = 2;
       output_name = 2;
+      gamepad = "ds5";
       capture = "wlr";
       # encoder = "amdvce";
       # decrease fec percentage because I am not dropping many packets
