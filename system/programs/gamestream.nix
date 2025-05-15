@@ -104,7 +104,7 @@ in {
       capture = "wlr";
       # encoder = "amdvce";
       # decrease fec percentage because I am not dropping many packets
-      fec_percentage = "7";
+      fec_percentage = "12";
     };
     applications = {
       env = {
