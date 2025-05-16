@@ -54,6 +54,7 @@ in {
         mvwindow = binding "Alt_Shift" "movewindow";
         # borrowed (read: stolen) from fufexan <3 (https://github.com/fufexan/dotfiles/blob/5d5631f475d892e1521c45356805bc9a2d40d6d1/system/programs/hyprland/binds.nix#L18)
         toggle = program: let prog = builtins.substring 0 14 program; in "pkill ${prog} || uwsm app -- ${program}";
+        runOnce = program: "pgrep ${program} || uwsm app -- ${program}";
         yt-mpv = pkgs.writeShellApplication {
           name = "yt";
           runtimeInputs = [pkgs.mpv pkgs.wl-clipboard pkgs.libnotify];
@@ -70,8 +71,8 @@ in {
           "$mod, RETURN, exec, ${terminal}"
           "SUPER, E, exec, foot -a foot-files -- fish -c yazi"
           "ALT_SHIFT, W, exec, firefox"
-          "ALT_SHIFT, D, exec, discord"
-          "ALT_SHIFT, S, exec, steam"
+          "ALT_SHIFT, D, exec, ${runOnce "discord"}"
+          "ALT_SHIFT, S, exec, ${runOnce "steam"}"
           "ALT_SHIFT, Y, exec, ${lib.getExe yt-mpv}"
           # focus keybinds
           (mvfocus "h" "l")
