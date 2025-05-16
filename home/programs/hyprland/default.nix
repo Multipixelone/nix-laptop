@@ -6,7 +6,6 @@
   ...
 }: let
   # TODO move all of these into a "startup" definition
-  polkit = pkgs.polkit_gnome + "/libexec/polkit-gnome-authentication-agent-1";
   swayosd-server = lib.getExe' pkgs.swayosd "swayosd-server";
   waybar = lib.getExe pkgs.waybar;
   pypr = lib.getExe pkgs.pyprland;
@@ -84,7 +83,7 @@ in {
         (lib.mkIf (osConfig.networking.hostName == "link") {monitor = ["DP-1,2560x1440@240,1200x0,1" "DP-3,1920x1200@60,0x0,1,transform,1" "HDMI-A-1,disabled"];})
         (lib.mkIf (osConfig.networking.hostName == "zelda") {monitor = [",highres,auto,2"];})
       ];
-      exec-once = [uwsm polkit waybar swayosd-server pypr watch-clipboard watch-images];
+      exec-once = [uwsm waybar swayosd-server pypr watch-clipboard watch-images];
       debug.disable_logs = true;
       env = [
         "XDG_SCREENSHOTS_DIR,/home/tunnel/Pictures/Screenshots"

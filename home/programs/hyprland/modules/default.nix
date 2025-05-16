@@ -7,5 +7,6 @@ _: {
     ./anyrun.nix
     ./gammastep.nix
     ./battery.nix
+    ./polkit.nix
   ];
 }
