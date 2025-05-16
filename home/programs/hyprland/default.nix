@@ -22,16 +22,8 @@
   };
 in {
   imports = [
-    ./conf/binds.nix
-    ./conf/windowrules.nix
-    ./conf/workspaces.nix
-    ./modules/hyprlock.nix
-    ./modules/hypridle.nix
-    ./modules/hyprpaper.nix
-    ./modules/waybar.nix
-    ./modules/anyrun.nix
-    ./modules/gammastep.nix
-    ./modules/battery.nix
+    ./conf
+    ./modules
   ];
   services = {
     ssh-agent.enable = true;
