@@ -80,9 +80,6 @@
     undo = "${sh} -c \"${lib.getExe kill-script}\"";
   };
 in {
-  # imports = [
-  #   inputs.jovian.nixosModules.default
-  # ];
   services.sunshine = {
     enable = true;
     capSysAdmin = true;
