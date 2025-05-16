@@ -7,11 +7,9 @@
 }: let
   # TODO move all of these into a "startup" definition
   swayosd-server = lib.getExe' pkgs.swayosd "swayosd-server";
-  waybar = lib.getExe pkgs.waybar;
   pypr = lib.getExe pkgs.pyprland;
   wl-paste = lib.getExe' pkgs.wl-clipboard "wl-paste";
   cliphist = lib.getExe pkgs.cliphist;
-  uwsm = "uwsm finalize";
   # hyprdim = lib.getExe pkgs.hyprdim + " -d 400 -f 35";
   watch-clipboard = "${wl-paste} --type text --watch ${cliphist} store";
   watch-images = "${wl-paste} --type image --watch ${cliphist} store";
@@ -83,7 +81,13 @@ in {
         (lib.mkIf (osConfig.networking.hostName == "link") {monitor = ["DP-1,2560x1440@240,1200x0,1" "DP-3,1920x1200@60,0x0,1,transform,1" "HDMI-A-1,disabled"];})
         (lib.mkIf (osConfig.networking.hostName == "zelda") {monitor = [",highres,auto,2"];})
       ];
-      exec-once = [uwsm waybar swayosd-server pypr watch-clipboard watch-images];
+      exec-once = [
+        "uwsm finalize"
+        swayosd-server
+        pypr
+        watch-clipboard
+        watch-images
+      ];
       debug.disable_logs = true;
       env = [
         "XDG_SCREENSHOTS_DIR,/home/tunnel/Pictures/Screenshots"
