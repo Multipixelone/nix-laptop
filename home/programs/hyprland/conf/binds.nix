@@ -68,7 +68,7 @@ in {
         [
           "ALT_SHIFT, Q, killactive"
           # app keybinds
-          "$mod, RETURN, exec, ${terminal}"
+          "$mod, RETURN, exec, uwsm app -- ${terminal}"
           "SUPER, E, exec, foot -a foot-files -- fish -c yazi"
           "ALT_SHIFT, W, exec, firefox"
           "ALT_SHIFT, D, exec, ${runOnce "discord"}"
