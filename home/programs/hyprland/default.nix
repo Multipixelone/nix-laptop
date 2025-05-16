@@ -6,11 +6,7 @@
   ...
 }: let
   # TODO move all of these into a "startup" definition
-  wl-paste = lib.getExe' pkgs.wl-clipboard "wl-paste";
-  cliphist = lib.getExe pkgs.cliphist;
   # hyprdim = lib.getExe pkgs.hyprdim + " -d 400 -f 35";
-  watch-clipboard = "${wl-paste} --type text --watch ${cliphist} store";
-  watch-images = "${wl-paste} --type image --watch ${cliphist} store";
   cursor-theme = pkgs.fetchzip {
     url = "https://blusky.s3.us-west-2.amazonaws.com/Posy_Cursor_Black_h.tar.gz";
     hash = "sha256-EC4bKLo1MAXOABcXb9FneoXlV2Fkb9wOFojewaSejZk=";
@@ -23,6 +19,10 @@ in {
   services = {
     ssh-agent.enable = true;
     swayosd.enable = true;
+    cliphist = {
+      enable = true;
+      allowImages = true;
+    };
     mako = {
       enable = true;
       settings = {
@@ -82,8 +82,6 @@ in {
       ];
       exec-once = [
         "uwsm finalize"
-        watch-clipboard
-        watch-images
       ];
       debug.disable_logs = true;
       env = [
