@@ -52,6 +52,8 @@ in {
         mvfocus = binding "ALT" "movefocus";
         resizeactive = binding "Alt_Super" "resizeactive";
         mvwindow = binding "Alt_Shift" "movewindow";
+        # borrowed (read: stolen) from fufexan <3 (https://github.com/fufexan/dotfiles/blob/5d5631f475d892e1521c45356805bc9a2d40d6d1/system/programs/hyprland/binds.nix#L18)
+        toggle = program: let prog = builtins.substring 0 14 program; in "pkill ${prog} || uwsm app -- ${program}";
         yt-mpv = pkgs.writeShellApplication {
           name = "yt";
           runtimeInputs = [pkgs.mpv pkgs.wl-clipboard pkgs.libnotify];
@@ -98,7 +100,7 @@ in {
           ", Print, exec, ${lib.getExe grimblast} --notify --cursor copysave output"
           "ALT , Print, exec, ${lib.getExe screenshot-area}"
           "SHIFT , Print, exec, ${lib.getExe screenshot-area-ocr}"
-          "$mod, SPACE, exec, anyrun"
+          "$mod, SPACE, exec, ${toggle "anyrun"}"
           "$mod, ESCAPE, exec, ${lib.getExe pkgs.wlogout}"
           "$mod, V, togglefloating"
           "SUPER, F, fullscreen"
