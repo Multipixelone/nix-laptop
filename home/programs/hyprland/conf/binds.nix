@@ -109,6 +109,9 @@ in {
           # special workspace
           "$mod SHIFT, grave, movetoworkspace, special"
           "$mod, grave, togglespecialworkspace, DP-1"
+          # move workspaces between monitors
+          "$mod SHIFT ALT, bracketleft, movecurrentworkspacetomonitor, l"
+          "$mod SHIFT ALT, bracketright, movecurrentworkspacetomonitor, r"
           # "Super, Tab, hyprexpo:expo,toggle"
           # "$mod, H, exec, pypr toggle helvum"
           #", swipe:3:ld, exec, pypr toggle music"
