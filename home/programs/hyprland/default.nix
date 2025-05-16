@@ -193,7 +193,7 @@ in {
 
       [scratchpads.music]
       animation = "fromLeft"
-      command = "foot -a foot-music ncmpcpp"
+      command = "uwsm app -- foot -a foot-music ncmpcpp"
       class = "foot-music"
       size = "40% 90%"
       unfocus = "hide"
@@ -201,7 +201,7 @@ in {
 
       [scratchpads.gpt]
       animation = "fromLeft"
-      command = "foot -a foot-gpt tgpt -m"
+      command = "uwsm app -- foot -a foot-gpt tgpt -m"
       class = "foot-gpt"
       size = "40% 90%"
       unfocus = "hide"
@@ -209,7 +209,7 @@ in {
 
       [scratchpads.volume]
       animation = "fromRight"
-      command = "${lib.getExe pkgs.pwvucontrol}"
+      command = "uwsm app -- ${lib.getExe pkgs.pwvucontrol}"
       class = "com.saivert.pwvucontrol"
       size = "40% 90%"
       unfocus = "hide"
@@ -217,7 +217,7 @@ in {
 
       [scratchpads.bluetooth]
       animation = "fromRight"
-      command = "${lib.getExe' pkgs.blueman "blueman-manager"}"
+      command = "uwsm app -- ${lib.getExe' pkgs.blueman "blueman-manager"}"
       class = ".blueman-manager-wrapped"
       size = "40% 90%"
       unfocus = "hide"
@@ -225,7 +225,7 @@ in {
 
       [scratchpads.helvum]
       animation = "fromRight"
-      command = "helvum"
+      command = "uwsm app -- helvum"
       class = "org.pipewire.Helvum"
       size = "40% 90%"
       unfocus = "hide"
@@ -233,7 +233,7 @@ in {
 
       [scratchpads.password]
       animation = "fromBottom"
-      command = "1password"
+      command = "uwsm app -- 1password"
       class = "1Password"
       size = "40% 30%"
       max_size = "2560px 100%"
