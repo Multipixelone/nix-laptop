@@ -80,6 +80,8 @@
     undo = "${sh} -c \"${lib.getExe kill-script}\"";
   };
 in {
+  # allow emulating ds5 controller
+  boot.kernelModules = ["uhid"];
   services.sunshine = {
     enable = true;
     capSysAdmin = true;
