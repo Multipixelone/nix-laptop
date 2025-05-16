@@ -48,7 +48,8 @@
         hyprctl output create headless SUNSHINE
         hyprctl keyword monitor "$mon_string"
         hyprctl dispatch moveworkspacetomonitor 7 2
-        hyprctl dispatch focusmonitor 2
+        # wait before we switch to the new workspace
+        sleep 2
         hyprctl dispatch workspace 7
       '';
     };
