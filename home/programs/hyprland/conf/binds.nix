@@ -70,7 +70,7 @@ in {
           # app keybinds
           "$mod, RETURN, exec, uwsm app -- ${terminal}"
           "SUPER, E, exec, foot -a foot-files -- fish -c yazi"
-          "ALT_SHIFT, W, exec, firefox"
+          "ALT_SHIFT, W, exec, uwsm app -- firefox"
           "ALT_SHIFT, D, exec, ${runOnce "discord"}"
           "ALT_SHIFT, S, exec, ${runOnce "steam"}"
           "ALT_SHIFT, Y, exec, ${lib.getExe yt-mpv}"
