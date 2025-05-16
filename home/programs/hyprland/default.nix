@@ -6,7 +6,6 @@
   ...
 }: let
   # TODO move all of these into a "startup" definition
-  pypr = lib.getExe pkgs.pyprland;
   wl-paste = lib.getExe' pkgs.wl-clipboard "wl-paste";
   cliphist = lib.getExe pkgs.cliphist;
   # hyprdim = lib.getExe pkgs.hyprdim + " -d 400 -f 35";
@@ -83,7 +82,6 @@ in {
       ];
       exec-once = [
         "uwsm finalize"
-        pypr
         watch-clipboard
         watch-images
       ];

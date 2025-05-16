@@ -8,5 +8,6 @@ _: {
     ./gammastep.nix
     ./battery.nix
     ./polkit.nix
+    ./pyprland.nix
   ];
 }
