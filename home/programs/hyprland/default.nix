@@ -6,7 +6,6 @@
   ...
 }: let
   # TODO move all of these into a "startup" definition
-  swayosd-server = lib.getExe' pkgs.swayosd "swayosd-server";
   pypr = lib.getExe pkgs.pyprland;
   wl-paste = lib.getExe' pkgs.wl-clipboard "wl-paste";
   cliphist = lib.getExe pkgs.cliphist;
@@ -24,6 +23,7 @@ in {
   ];
   services = {
     ssh-agent.enable = true;
+    swayosd.enable = true;
     mako = {
       enable = true;
       settings = {
@@ -83,7 +83,6 @@ in {
       ];
       exec-once = [
         "uwsm finalize"
-        swayosd-server
         pypr
         watch-clipboard
         watch-images
