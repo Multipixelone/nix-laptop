@@ -7,10 +7,43 @@
   music-dir = "/volume1/Media/Music";
   beets-dir = "/home/tunnel/.config/beets";
   beets-library = "${beets-dir}/library.db";
+  beets-config = "${beets-dir}/config.yaml";
+  detect-file = "${download-dir}/download-finished";
+  script-packages = [
+    pkgs.beets
+    pkgs.coreutils
+  ];
+  beets-import = pkgs.writeShellApplication {
+    name = "beets-import";
+    runtimeInputs = script-packages;
+    text = ''
+      beet -c ${beets-config} import -q ${download-dir}
+      rm -fq ${detect-file}
+    '';
+  };
 in {
+  systemd.user = {
+    paths.beets = {
+      Unit.Description = "Watch download directory for new music";
+      Path.PathChanged = detect-file;
+      Install.WantedBy = ["multi-user.target"];
+    };
+    services.beets = {
+      Unit.Description = "Automatically import and organize downloads using beets";
+      Service = {
+        Type = "oneshot";
+        ReadOnlyPaths = [beets-config];
+        ReadWritePaths = [
+          download-dir
+          music-dir
+          beets-dir
+        ];
+        ExecStart = lib.getExe beets-import;
+      };
+    };
+  };
   programs = {
     fish.shellAbbrs = {
-      beet-import = "beet import ${download-dir}";
       bi = "beet import";
     };
     beets = {
