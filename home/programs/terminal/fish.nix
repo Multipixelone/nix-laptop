@@ -48,7 +48,6 @@ in {
       nsp = "nix-shell -p";
       nb = "nix build";
       nr = "nix run";
-      bi = "beet import";
       kh = "khinsider";
     };
     shellAliases = {

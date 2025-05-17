@@ -9,6 +9,7 @@ in {
   programs = {
     fish.shellAbbrs = {
       beet-import = "beet import ${download-dir}";
+      bi = "beet import";
     };
     beets = {
       enable = true;
