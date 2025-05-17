@@ -5,6 +5,8 @@
 }: let
   download-dir = "/volume1/Media/ImportMusic/slskd";
   music-dir = "/volume1/Media/Music";
+  beets-dir = "/home/tunnel/.config/beets";
+  beets-library = "${beets-dir}/library.db";
 in {
   programs = {
     fish.shellAbbrs = {
@@ -15,7 +17,7 @@ in {
       enable = true;
       settings = {
         directory = music-dir;
-        library = "/home/tunnel/.config/beets/library.db";
+        library = beets-library;
         plugins = "convert fromfilename play the chroma fish replaygain lastgenre fetchart embedart lastimport edit discogs duplicates scrub missing";
         lastfm.user = "Tunnelmaker";
         lastimport.user = "Tunnelmaker";
