@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  download-dir = "/volume1/Media/ImportMusic/slskd/";
+  download-dir = "/volume1/Media/ImportMusic/slskd";
   music-dir = "/volume1/Media/Music";
 in {
   programs = {
