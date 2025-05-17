@@ -48,7 +48,6 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-cloudflared.url = "github:wrbbz/nixpkgs/cloudflared-2025.4.0";
-    yabridge-wine.url = "git+https://github.com/nixos/nixpkgs?rev=0e82ab234249d8eee3e8c91437802b32c74bb3fd";
 
     # nixpkgs for zoom screensharing
     systems.url = "github:nix-systems/default-linux";
@@ -88,16 +87,11 @@
     helix.url = "github:helix-editor/helix";
     yazi.url = "github:sxyazi/yazi";
     nixcord.url = "github:kaylorben/nixcord";
-    geospatial.url = "github:imincik/geospatial-nix";
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
     ucodenix.url = "github:e-tho/ucodenix";
     base16.url = "github:SenchoPens/base16.nix";
     blocklist = {
       url = "github:StevenBlack/hosts";
-      flake = false;
-    };
-    photogimp = {
-      url = "github:Diolinux/PhotoGIMP";
       flake = false;
     };
     better-fox = {
@@ -190,11 +184,6 @@
       url = "github:n3oney/anyrun-nixos-options";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # umu = {
-    #   url = "git+https://github.com/LovingMelody/umu-launcher/?dir=packaging\/nix&submodules=1&ref=update-nix-package";
-    #   # url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     # hyprland wm
     hyprland.url = "github:hyprwm/hyprland";
     hyprland-plugins = {
