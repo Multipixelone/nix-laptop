@@ -12,12 +12,14 @@
       "/srv/slskd:/app"
       "/media/Data/Music/:/music"
       "/media/Data/ImportMusic/slskd/:/downloads"
+      "/media/Data/ImportMusic/InProgress:/incomplete"
     ];
     environment = {
       # TODO add soulseek password as agenix secret
       SLSKD_REMOTE_CONFIGURATION = "true";
       SLSKD_SHARED_DIR = "/music";
       SLSKD_DOWNLOAD_DIR = "/downloads";
+      SLSKD_INCOMPLETE_DIR = "/incomplete";
       SLSKD_SLSK_LISTEN_PORT = "2234";
     };
   };
