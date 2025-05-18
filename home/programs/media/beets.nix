@@ -18,7 +18,7 @@
     runtimeInputs = script-packages;
     text = ''
       beet -c ${beets-config} import -q ${download-dir}
-      rm -fq ${detect-file}
+      rm -f ${detect-file}
     '';
   };
 in {
