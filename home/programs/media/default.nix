@@ -26,6 +26,8 @@
     blanket
     nicotine-plus
     helvum
+    alsa-scarlett-gui
+    scarlett2
     # (callPackage ../../../pkgs/foobar2000 {
     #   wine = inputs.nix-gaming.packages.${pkgs.system}.wine-tkg;
     #   # location = "/media/TeraData/Games/cities-skylines-ii";
