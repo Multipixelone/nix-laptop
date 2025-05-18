@@ -52,6 +52,19 @@ in {
         directory = music-dir;
         library = beets-library;
         plugins = "convert fromfilename play the chroma fish replaygain lastgenre fetchart embedart lastimport edit discogs duplicates scrub missing";
+        clutter = [
+          "Thumbs.DB"
+          ".DS_Store"
+          "*.m3u"
+          "*.lrc"
+          "*.sfv"
+          "*.txt"
+          "*.log"
+          "*.nfo"
+          "*.jpg"
+          "*.jpeg"
+          "*.png"
+        ];
         lastfm.user = "Tunnelmaker";
         lastimport.user = "Tunnelmaker";
         ui.color = true;
@@ -63,7 +76,6 @@ in {
           move = true;
           write = true;
           resume = false;
-          clutter = ["Thumbs.DB" ".DS_Store" "*.m3u" "*.sfv" "*.nfo" "*.jpg" "*.png"];
         };
         convert = {
           auto = false;
