@@ -26,7 +26,7 @@ in {
     paths.beets = {
       Unit.Description = "Watch download directory for new music";
       Path.PathChanged = detect-file;
-      Install.WantedBy = ["multi-user.target"];
+      Install.WantedBy = ["default.target"];
     };
     services.beets = {
       Unit.Description = "Automatically import and organize downloads using beets";
