@@ -52,6 +52,9 @@ in {
         mvfocus = binding "ALT" "movefocus";
         resizeactive = binding "Alt_Super" "resizeactive";
         mvwindow = binding "Alt_Shift" "movewindow";
+        # borrowed (read: stolen) from fufexan <3 (https://github.com/fufexan/dotfiles/blob/5d5631f475d892e1521c45356805bc9a2d40d6d1/system/programs/hyprland/binds.nix#L18)
+        toggle = program: let prog = builtins.substring 0 14 program; in "pkill ${prog} || uwsm app -- ${program}";
+        runOnce = program: "pgrep ${program} || uwsm app -- ${program}";
         yt-mpv = pkgs.writeShellApplication {
           name = "yt";
           runtimeInputs = [pkgs.mpv pkgs.wl-clipboard pkgs.libnotify];
@@ -65,11 +68,11 @@ in {
         [
           "ALT_SHIFT, Q, killactive"
           # app keybinds
-          "$mod, RETURN, exec, ${terminal}"
+          "$mod, RETURN, exec, uwsm app -- ${terminal}"
           "SUPER, E, exec, foot -a foot-files -- fish -c yazi"
-          "ALT_SHIFT, W, exec, firefox"
-          "ALT_SHIFT, D, exec, discord"
-          "ALT_SHIFT, S, exec, steam"
+          "ALT_SHIFT, W, exec, uwsm app -- firefox"
+          "ALT_SHIFT, D, exec, ${runOnce "discord"}"
+          "ALT_SHIFT, S, exec, ${runOnce "steam"}"
           "ALT_SHIFT, Y, exec, ${lib.getExe yt-mpv}"
           # focus keybinds
           (mvfocus "h" "l")
@@ -98,11 +101,17 @@ in {
           ", Print, exec, ${lib.getExe grimblast} --notify --cursor copysave output"
           "ALT , Print, exec, ${lib.getExe screenshot-area}"
           "SHIFT , Print, exec, ${lib.getExe screenshot-area-ocr}"
-          "$mod, SPACE, exec, anyrun"
+          "$mod, SPACE, exec, ${toggle "anyrun"}"
           "$mod, ESCAPE, exec, ${lib.getExe pkgs.wlogout}"
           "$mod, V, togglefloating"
           "SUPER, F, fullscreen"
           "ALT, Tab, workspace, previous"
+          # special workspace
+          "$mod SHIFT, grave, movetoworkspace, special"
+          "$mod, grave, togglespecialworkspace, DP-1"
+          # move workspaces between monitors
+          "$mod SHIFT ALT, bracketleft, movecurrentworkspacetomonitor, l"
+          "$mod SHIFT ALT, bracketright, movecurrentworkspacetomonitor, r"
           # "Super, Tab, hyprexpo:expo,toggle"
           # "$mod, H, exec, pypr toggle helvum"
           #", swipe:3:ld, exec, pypr toggle music"

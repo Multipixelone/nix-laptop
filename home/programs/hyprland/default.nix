@@ -6,35 +6,23 @@
   ...
 }: let
   # TODO move all of these into a "startup" definition
-  polkit = pkgs.polkit_gnome + "/libexec/polkit-gnome-authentication-agent-1";
-  swayosd-server = lib.getExe' pkgs.swayosd "swayosd-server";
-  waybar = lib.getExe pkgs.waybar;
-  pypr = lib.getExe pkgs.pyprland;
-  wl-paste = lib.getExe' pkgs.wl-clipboard "wl-paste";
-  cliphist = lib.getExe pkgs.cliphist;
-  uwsm = "uwsm finalize";
   # hyprdim = lib.getExe pkgs.hyprdim + " -d 400 -f 35";
-  watch-clipboard = "${wl-paste} --type text --watch ${cliphist} store";
-  watch-images = "${wl-paste} --type image --watch ${cliphist} store";
   cursor-theme = pkgs.fetchzip {
     url = "https://blusky.s3.us-west-2.amazonaws.com/Posy_Cursor_Black_h.tar.gz";
     hash = "sha256-EC4bKLo1MAXOABcXb9FneoXlV2Fkb9wOFojewaSejZk=";
   };
 in {
   imports = [
-    ./conf/binds.nix
-    ./conf/windowrules.nix
-    ./conf/workspaces.nix
-    ./modules/hyprlock.nix
-    ./modules/hypridle.nix
-    ./modules/hyprpaper.nix
-    ./modules/waybar.nix
-    ./modules/anyrun.nix
-    ./modules/gammastep.nix
-    ./modules/battery.nix
+    ./conf
+    ./modules
   ];
   services = {
     ssh-agent.enable = true;
+    swayosd.enable = true;
+    cliphist = {
+      enable = true;
+      allowImages = true;
+    };
     mako = {
       enable = true;
       settings = {
@@ -92,7 +80,9 @@ in {
         (lib.mkIf (osConfig.networking.hostName == "link") {monitor = ["DP-1,2560x1440@240,1200x0,1" "DP-3,1920x1200@60,0x0,1,transform,1" "HDMI-A-1,disabled"];})
         (lib.mkIf (osConfig.networking.hostName == "zelda") {monitor = [",highres,auto,2"];})
       ];
-      exec-once = [uwsm polkit waybar swayosd-server pypr watch-clipboard watch-images];
+      exec-once = [
+        "uwsm finalize"
+      ];
       debug.disable_logs = true;
       env = [
         "XDG_SCREENSHOTS_DIR,/home/tunnel/Pictures/Screenshots"
@@ -143,6 +133,10 @@ in {
         "col.inactive_border" = lib.mkForce "rgb(${config.lib.stylix.colors.base00})";
         "col.active_border" = lib.mkForce "rgb(${config.lib.stylix.colors.base0E})";
       };
+      ecosystem = {
+        no_update_news = true;
+        no_donation_nag = true;
+      };
       dwindle = {
         # keep floating dimentions while tiling
         pseudotile = true;
@@ -170,8 +164,8 @@ in {
         explicit_sync = true;
       };
       cursor = {
-        inactive_timeout = "7";
         persistent_warps = true;
+        default_monitor = "DP-1";
       };
       input = {
         accel_profile = "flat";
@@ -197,7 +191,7 @@ in {
 
       [scratchpads.music]
       animation = "fromLeft"
-      command = "foot -a foot-music ncmpcpp"
+      command = "uwsm app -- foot -a foot-music ncmpcpp"
       class = "foot-music"
       size = "40% 90%"
       unfocus = "hide"
@@ -205,7 +199,7 @@ in {
 
       [scratchpads.gpt]
       animation = "fromLeft"
-      command = "foot -a foot-gpt tgpt -m"
+      command = "uwsm app -- foot -a foot-gpt tgpt -m"
       class = "foot-gpt"
       size = "40% 90%"
       unfocus = "hide"
@@ -213,7 +207,7 @@ in {
 
       [scratchpads.volume]
       animation = "fromRight"
-      command = "${lib.getExe pkgs.pwvucontrol}"
+      command = "uwsm app -- ${lib.getExe pkgs.pwvucontrol}"
       class = "com.saivert.pwvucontrol"
       size = "40% 90%"
       unfocus = "hide"
@@ -221,7 +215,7 @@ in {
 
       [scratchpads.bluetooth]
       animation = "fromRight"
-      command = "${lib.getExe' pkgs.blueman "blueman-manager"}"
+      command = "uwsm app -- ${lib.getExe' pkgs.blueman "blueman-manager"}"
       class = ".blueman-manager-wrapped"
       size = "40% 90%"
       unfocus = "hide"
@@ -229,7 +223,7 @@ in {
 
       [scratchpads.helvum]
       animation = "fromRight"
-      command = "helvum"
+      command = "uwsm app -- helvum"
       class = "org.pipewire.Helvum"
       size = "40% 90%"
       unfocus = "hide"
@@ -237,7 +231,7 @@ in {
 
       [scratchpads.password]
       animation = "fromBottom"
-      command = "1password"
+      command = "uwsm app -- 1password"
       class = "1Password"
       size = "40% 30%"
       max_size = "2560px 100%"

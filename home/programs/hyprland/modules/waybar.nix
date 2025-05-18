@@ -79,6 +79,10 @@ in {
   # wayland.windowManager.hyprland.settings.exec-once = [(dynamic + "/bin/dynamic &")];
   programs.waybar = {
     enable = true;
+    systemd = {
+      enable = true;
+      target = "graphical-session.target";
+    };
     package = pkgs.waybar.override {hyprland = osConfig.programs.hyprland.package;};
     style = ''
       * {

@@ -18,6 +18,7 @@
 
   home.packages = with pkgs; [
     obsidian
+    bluebubbles
     anki
     gimp
   ];

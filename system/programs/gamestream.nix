@@ -5,7 +5,6 @@
   inputs,
   ...
 }: let
-  sunshine_version = "2025.509.184504";
   sh = lib.getExe pkgs.bash;
   hypr-dispatch = lib.getExe' config.programs.hyprland.package "hyprctl" + " dispatch exec [workspace 7]";
   steam = lib.getExe config.programs.steam.package + " --";
@@ -49,7 +48,8 @@
         hyprctl output create headless SUNSHINE
         hyprctl keyword monitor "$mon_string"
         hyprctl dispatch moveworkspacetomonitor 7 2
-        hyprctl dispatch focusmonitor 2
+        # wait before we switch to the new workspace
+        sleep 2
         hyprctl dispatch workspace 7
       '';
     };
@@ -81,19 +81,19 @@
     undo = "${sh} -c \"${lib.getExe kill-script}\"";
   };
 in {
-  # imports = [
-  #   inputs.jovian.nixosModules.default
-  # ];
+  # allow emulating ds5 controller
+  boot.kernelModules = ["uhid"];
   services.sunshine = {
     enable = true;
     capSysAdmin = true;
     openFirewall = true;
     # temporary until there's a new release that contains https://github.com/LizardByte/Sunshine/pull/3783
-    package = pkgs.sunshine.overrideAttrs {
+    package = pkgs.sunshine.overrideAttrs rec {
+      version = "2025.509.184504";
       src = pkgs.fetchFromGitHub {
         owner = "LizardByte";
         repo = "Sunshine";
-        tag = "v${sunshine_version}";
+        tag = "v${version}";
         hash = "sha256-J7X/J7q7+O6Nn36xNvLr2wgAJT1pqAVO24X2etqcaDE=";
         fetchSubmodules = true;
       };
