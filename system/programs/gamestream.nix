@@ -2,17 +2,16 @@
   pkgs,
   lib,
   config,
-  inputs,
   ...
 }: let
   sh = lib.getExe pkgs.bash;
   hypr-dispatch = lib.getExe' config.programs.hyprland.package "hyprctl" + " dispatch exec [workspace 7]";
   steam = lib.getExe config.programs.steam.package + " --";
-  pkgs-stable = inputs.nixpkgs-stable.legacyPackages.${pkgs.system};
-  moondeck = pkgs.qt6.callPackage ../../pkgs/moondeck/default.nix {
-    inherit (pkgs-stable) qt6;
-    inherit (pkgs-stable) procps;
-  };
+  # pkgs-stable = inputs.nixpkgs-stable.legacyPackages.${pkgs.system};
+  # moondeck = pkgs.qt6.callPackage ../../pkgs/moondeck/default.nix {
+  #   inherit (pkgs-stable) qt6;
+  #   inherit (pkgs-stable) procps;
+  # };
   # icon download and crop functions
   mk-icon = {icon-name}: pkgs.runCommand "${icon-name}-scaled.png" {} ''${pkgs.imagemagick}/bin/convert -density 1200 -resize 500x -background none ${pkgs.papirus-icon-theme}/share/icons/Papirus-Dark/128x128/apps/${icon-name}.svg -gravity center -extent 600x800 $out'';
   # download-image = {
@@ -88,13 +87,13 @@ in {
     capSysAdmin = true;
     openFirewall = true;
     # temporary until there's a new release that contains https://github.com/LizardByte/Sunshine/pull/3783
-    package = pkgs.sunshine.overrideAttrs rec {
-      version = "2025.509.184504";
+    package = pkgs.sunshine.overrideAttrs {
+      version = "2025.514.173708";
       src = pkgs.fetchFromGitHub {
         owner = "LizardByte";
         repo = "Sunshine";
-        tag = "v${version}";
-        hash = "sha256-J7X/J7q7+O6Nn36xNvLr2wgAJT1pqAVO24X2etqcaDE=";
+        rev = "9c08c75a44097a5a5c866d70ccf0c8c080257a0c";
+        hash = "sha256-tJrT+6rmng2vHMrbcQv0isa+HE8+xfXvYZuL9MZoSkU=";
         fetchSubmodules = true;
       };
     };
@@ -161,13 +160,13 @@ in {
           prep-cmd = [prep steam-kill];
           image-path = mk-icon {icon-name = "steamlink";};
         }
-        {
-          name = "MoonDeckStream";
-          cmd = "${moondeck}/bin/MoonDeckStream";
-          prep-cmd = [prep];
-          image-path = mk-icon {icon-name = "moonlight";};
-          auto-detatch = false;
-        }
+        # {
+        #   name = "MoonDeckStream";
+        #   cmd = "${moondeck}/bin/MoonDeckStream";
+        #   prep-cmd = [prep];
+        #   image-path = mk-icon {icon-name = "moonlight";};
+        #   auto-detatch = false;
+        # }
       ];
     };
   };
