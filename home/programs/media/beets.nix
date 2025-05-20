@@ -56,6 +56,7 @@ in {
           "Thumbs.DB"
           ".DS_Store"
           "*.m3u"
+          "*.cue"
           "*.lrc"
           "*.sfv"
           "*.txt"
