@@ -27,7 +27,6 @@ let
       ./services/pipewire.nix
       ./services/backup.nix
       ./services/pipewire.nix
-      ./services/bgutil-ytdlp-pot-provider.nix
 
       ./network/networkman.nix
       ./network/zerotier.nix
