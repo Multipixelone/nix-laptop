@@ -51,8 +51,6 @@ in {
       kh = "khinsider";
     };
     shellAliases = {
-      ls = "eza";
-      la = "eza -lah";
       fzf = "fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'";
       mkdir = "mkdir -pv";
       tree = "eza -s type -a -T -I '.git|node_modules|.next'";
