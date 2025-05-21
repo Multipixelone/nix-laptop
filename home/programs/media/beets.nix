@@ -54,7 +54,6 @@ in {
         plugins = [
           "chroma"
           "convert"
-          "discogs"
           "duplicates"
           "edit"
           "embedart"
