@@ -10,10 +10,6 @@
   beets-library = "${beets-dir}/library.db";
   beets-config = "${beets-dir}/config.yaml";
   detect-file = "${download-dir}/download-finished";
-  script-packages = [
-    pkgs.beets
-    pkgs.coreutils
-  ];
   ffmpeg = lib.getExe pkgs.ffmpeg-headless;
   beets-filetote = pkgs.beets.override {
     pluginOverrides = {
@@ -25,7 +21,7 @@
   };
   beets-import = pkgs.writeShellApplication {
     name = "beets-import";
-    runtimeInputs = script-packages;
+    runtimeInputs = [beets-filetote pkgs.coreutils];
     text = ''
       beet -c ${beets-config} import -q ${download-dir}
       rm -f ${detect-file}
