@@ -93,11 +93,9 @@ in {
           "Thumbs.DB"
           ".DS_Store"
           "*.m3u"
-          "*.cue"
           "*.lrc"
           "*.sfv"
           "*.txt"
-          "*.log"
           "*.nfo"
           "*.jpg"
           "*.jpeg"
@@ -142,6 +140,22 @@ in {
             mp3.command = "${ffmpeg} -i $source -ab 320k -ac 2 -ar 44100 -joint_stereo 0 $dest";
             mp3.extension = "mp3";
             wav.command = "${ffmpeg} -i $source -sample_fmt s16 -ar 44100 $dest";
+          };
+        };
+        filetote = {
+          # keep cue and log files with album
+          extensions = [
+            ".cue"
+            ".log"
+          ];
+          # move lyric files with music
+          pairing = {
+            enabled = true;
+            pairing_only = true;
+            extensions = [".lrc"];
+          };
+          paths = {
+            "ext:.log" = "$albumpath/$artist - $album";
           };
         };
         replaygain = {
