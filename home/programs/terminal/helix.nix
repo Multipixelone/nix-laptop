@@ -49,6 +49,10 @@ in {
           wrap-indicator = "↩ ";
         };
         lsp.display-inlay-hints = true;
+        end-of-line-diagnostics = "hint";
+        inline-diagnostics = {
+          cursor-line = "error";
+        };
         gutters = [
           "diagnostics"
           "line-numbers"
