@@ -13,6 +13,7 @@
     pkgs.beets
     pkgs.coreutils
   ];
+  ffmpeg = lib.getExe pkgs.ffmpeg-headless;
   beets-import = pkgs.writeShellApplication {
     name = "beets-import";
     runtimeInputs = script-packages;
@@ -110,7 +111,9 @@ in {
           auto = true;
           overwrite = true;
           albumgain = true;
-          backend = "gstreamer";
+          backend = "ffmpeg";
+          command = ffmpeg;
+          threads = 6;
         };
         missing = {
           format = "$albumartist - $album - $track $title";
