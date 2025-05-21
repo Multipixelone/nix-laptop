@@ -65,6 +65,7 @@ in {
           "fromfilename"
           "lastgenre"
           "lastimport"
+          "mbsubmit"
           "missing"
           "play"
           "replaygain"
@@ -87,6 +88,7 @@ in {
         ];
         lastfm.user = "Tunnelmaker";
         lastimport.user = "Tunnelmaker";
+        mbsubmit.picard_path = lib.getExe pkgs.picard;
         ui.color = true;
         duplicates.checksum = false;
         scrub.auto = true;
