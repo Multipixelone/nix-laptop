@@ -7,6 +7,7 @@
     inputs.nix-index-database.hmModules.nix-index
     inputs.agenix.homeManagerModules.default
     inputs.chaotic.homeManagerModules.default
+    inputs.quadlet-nix.homeManagerModules.quadlet
   ];
 
   home = {

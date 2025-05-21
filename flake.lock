@@ -2079,6 +2079,21 @@
         "type": "github"
       }
     },
+    "quadlet-nix": {
+      "locked": {
+        "lastModified": 1747780935,
+        "narHash": "sha256-QXXHXZ4mBN+CWNBdqoOhDxCJN5yVnu1hA2vZGvwyd9o=",
+        "owner": "SEIAROTg",
+        "repo": "quadlet-nix",
+        "rev": "4845c759415374401f053a7fc4bff81657761fbb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "SEIAROTg",
+        "repo": "quadlet-nix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -2119,6 +2134,7 @@
         "playlist-download": "playlist-download",
         "pre-commit-hooks": "pre-commit-hooks_2",
         "qtscrob": "qtscrob",
+        "quadlet-nix": "quadlet-nix",
         "secrets": "secrets",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",

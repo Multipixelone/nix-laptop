@@ -47,6 +47,7 @@
             };
           }
           inputs.musnix.nixosModules.musnix
+          inputs.quadlet-nix.nixosModules.quadlet
           inputs.agenix.nixosModules.default
           inputs.chaotic.nixosModules.default
           inputs.nur.modules.nixos.default
