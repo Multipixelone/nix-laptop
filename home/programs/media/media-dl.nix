@@ -32,6 +32,7 @@ in {
     mode = "600";
   };
   xdg.configFile = {
+    # plugin to connect to docker container
     "yt-dlp/plugins/bgutil-ytdlp-pot-provider".source =
       pkgs.fetchFromGitHub {
         owner = "Brainicism";
@@ -40,6 +41,7 @@ in {
         hash = "sha256-dRFGvBKHJxl4hIB5gBZGUyhwYZB/7KQ63DYTHzTAh4s=";
       }
       + "/plugin";
+    # plugin to allow yt-dlp to get pot token
     "yt-dlp/plugins/yt-dlp-get-pot".source = pkgs.fetchFromGitHub rec {
       version = "0.3.0";
       owner = "coletdjnz";
