@@ -14,6 +14,14 @@
     pkgs.coreutils
   ];
   ffmpeg = lib.getExe pkgs.ffmpeg-headless;
+  beets-filetote = pkgs.beets.override {
+    pluginOverrides = {
+      filetote = {
+        enable = true;
+        propagatedBuildInputs = [pkgs.beetsPackages.filetote];
+      };
+    };
+  };
   beets-import = pkgs.writeShellApplication {
     name = "beets-import";
     runtimeInputs = script-packages;
@@ -49,6 +57,7 @@ in {
     };
     beets = {
       enable = true;
+      package = beets-filetote;
       settings = {
         directory = music-dir;
         library = beets-library;
