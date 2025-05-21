@@ -110,6 +110,23 @@ in {
           resume = false;
           log = "${download-dir}/import.log";
         };
+        match = {
+          strong_rec_thresh = 0.1;
+          max_rec.missing_tracks = "low";
+          preferred = {
+            countries = [
+              "XW"
+              "US"
+            ];
+            media = [
+              "Digital Media|File"
+              "CD"
+            ];
+            original_year = true;
+          };
+          # don't show me anything with missing tracks
+          ignored = "missing_tracks unmatched_tracks";
+        };
         convert = {
           auto = false;
           never_convert_lossy_files = true;
