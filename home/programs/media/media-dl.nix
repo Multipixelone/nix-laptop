@@ -22,6 +22,7 @@
       ${lib.getExe spotdl-args} \
       --cookie-file ${config.age.secrets."yt-dlp".path} \
       --yt-dlp-args "extractor-args \"youtube:player_client=web_music,default;getpot_bgutil_baseurl=http://127.0.0.1:4416\"" \
+      --output "{artist} - {album}/{track-number} {title}.{output-ext}" \
       --format opus \
       --bitrate disable \
       $@
