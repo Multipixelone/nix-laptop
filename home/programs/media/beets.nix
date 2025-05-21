@@ -66,6 +66,7 @@ in {
           "lastgenre"
           "lastimport"
           "mbsubmit"
+          "mbsync"
           "missing"
           "play"
           "replaygain"
