@@ -51,6 +51,17 @@ in {
       hash = "sha256-MtQFXWJByo/gyftMtywCCfpf8JtldA2vQP8dnpLEl7U=";
     };
   };
+  virtualisation.quadlet.containers.bgutil-provider = {
+    autoStart = true;
+    serviceConfig = {
+      RestartSec = "10";
+      Restart = "always";
+    };
+    containerConfig = {
+      image = "brainicism/bgutil-ytdlp-pot-provider:${bgutil-ytdlp-pot-provider-version}";
+      publishPorts = ["127.0.0.1:4416:4416"];
+    };
+  };
   home.packages = [spotdl-wrapped];
   programs = {
     aria2.enable = true;
