@@ -52,6 +52,7 @@ in {
         directory = music-dir;
         library = beets-library;
         plugins = [
+          "badfiles"
           "chroma"
           "convert"
           "duplicates"
@@ -114,6 +115,13 @@ in {
         missing = {
           format = "$albumartist - $album - $track $title";
           count = true;
+        };
+        badfiles = {
+          check_on_import = true;
+          # TODO: add command that checks bitrate of opus files and errors when <200
+          commands = {
+            flac = "${lib.getExe pkgs.flac} --test --warnings-as-errors --silent";
+          };
         };
         fetchart = {
           auto = true;
