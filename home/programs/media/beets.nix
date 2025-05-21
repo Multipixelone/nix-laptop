@@ -99,6 +99,7 @@ in {
           move = true;
           write = true;
           resume = false;
+          log = "${download-dir}/import.log";
         };
         convert = {
           auto = false;
