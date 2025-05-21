@@ -1,4 +1,14 @@
-_: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
+  xdg.configFile."fish/completions/gh.fish".source =
+    pkgs.runCommand "gh-completion" {
+    }
+    ''
+      ${lib.getExe pkgs.gh} completion -s fish > $out
+    '';
   programs = {
     gh.enable = true;
     lazygit.enable = true;
