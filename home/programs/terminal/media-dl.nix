@@ -36,8 +36,8 @@ in {
       pkgs.fetchFromGitHub {
         owner = "Brainicism";
         repo = "bgutil-ytdlp-pot-provider";
-        rev = "7b3900cb908f1de922b2b98b7d4319e12df496a7";
-        hash = "sha256-E448uUDnXpUo/DvGjFGbIEHDS98ngGOufJ173hIwwaM=";
+        rev = "f16fd8527bb6203943a522d552c9cdc972553448";
+        hash = "sha256-dRFGvBKHJxl4hIB5gBZGUyhwYZB/7KQ63DYTHzTAh4s=";
       }
       + "/plugin";
     "yt-dlp/plugins/yt-dlp-get-pot".source = pkgs.fetchFromGitHub rec {
