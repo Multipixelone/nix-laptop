@@ -64,7 +64,6 @@
 in {
   programs.zellij = {
     enable = true;
-    enableFishIntegration = true; # launches on every open of shell
   };
   xdg.configFile = {
     "zellij/config.kdl".text = ''

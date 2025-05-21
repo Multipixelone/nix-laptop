@@ -121,6 +121,7 @@ in {
     gcalcli-wrapped
     spotdl-wrapped
   ];
+  home.shell.enableFishIntegration = true;
   programs = {
     fd.enable = true;
     lazygit.enable = true;
@@ -130,10 +131,7 @@ in {
       addKeysToAgent = "yes";
       forwardAgent = true;
     };
-    nix-index = {
-      enable = true;
-      enableFishIntegration = true;
-    };
+    nix-index.enable = true;
     direnv = {
       enable = true;
       nix-direnv.enable = true;
@@ -213,27 +211,20 @@ in {
       enable = true;
       package = gh-wrapped;
     };
-    zoxide = {
-      enable = true;
-      enableFishIntegration = true;
-      options = [];
-    };
+    zoxide.enable = true;
     dircolors = {
       enable = true;
-      enableFishIntegration = true;
     };
     eza = {
       enable = true;
       git = true;
       icons = "auto";
-      enableFishIntegration = true;
       extraOptions = [
         "--color=auto"
       ];
     };
     fzf = {
       enable = true;
-      enableFishIntegration = true;
       defaultCommand = "fd --type file --follow"; # FZF_DEFAULT_COMMAND
       defaultOptions = ["--height 20%"]; # FZF_DEFAULT_OPTS
       fileWidgetCommand = "fd --type file --follow"; # FZF_CTRL_T_COMMAND

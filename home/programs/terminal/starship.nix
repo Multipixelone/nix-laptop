@@ -1,7 +1,6 @@
 {lib, ...}: {
   programs.starship = {
     enable = true;
-    enableFishIntegration = true;
     settings = {
       directory.style = "blue";
       character = {
