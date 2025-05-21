@@ -29,19 +29,19 @@
     fd.enable = true;
     jq.enable = true;
     carapace.enable = true;
+    navi.enable = true;
+    ripgrep.enable = true;
+    zoxide.enable = true;
+    nix-index.enable = true;
     ssh = {
       enable = true;
       addKeysToAgent = "yes";
       forwardAgent = true;
     };
-    nix-index.enable = true;
     direnv = {
       enable = true;
       nix-direnv.enable = true;
     };
-    navi.enable = true;
-    ripgrep.enable = true;
-    zoxide.enable = true;
     dircolors = {
       enable = true;
     };
