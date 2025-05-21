@@ -63,6 +63,7 @@
   '';
 in {
   programs.zellij = {
+    inherit (config.home.shell) enableFishIntegration;
     enable = true;
   };
   xdg.configFile = {
