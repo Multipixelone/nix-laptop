@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   ...
@@ -51,6 +52,16 @@ in {
       };
     };
   };
+  # thanks 5225225 (https://github.com/5225225/dotfiles/blob/bf95910ad4b7929ddce1865162f3c16064e74d8e/user/beets/beets.nix#L138)
+  xdg.configFile."fish/completions/beet.fish".source =
+    pkgs.runCommand "beets-completion" {
+      config = (pkgs.formats.yaml {}).generate "beets-config" config.programs.beets.settings;
+    }
+    ''
+      export BEETSDIR="/tmp"
+
+      ${lib.getExe config.programs.beets.package} -l /tmp/db -c "$config" fish --output "$out"
+    '';
   programs = {
     fish.shellAbbrs = {
       bi = "beet import";
