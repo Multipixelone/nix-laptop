@@ -172,9 +172,34 @@ in {
         };
         badfiles = {
           check_on_import = true;
-          # TODO: add command that checks bitrate of opus files and errors when <200
-          commands = {
+          commands = let
+            opus-test = pkgs.writeShellApplication {
+              name = "opus-test";
+              runtimeInputs = [
+                pkgs.mediainfo
+                pkgs.jq
+              ];
+              text = ''
+                REQUIRED_BITRATE_KBPS=200
+                BITRATE_BPS=$((REQUIRED_BITRATE_KBPS * 1000))
+                overall_bitrate=$(mediainfo --Output=JSON "''${1}" \
+                | jq -er '.media.track[] | select(.["@type"] == "General") | .OverallBitRate')
+
+                current_bitrate_bps_int=$((overall_bitrate))
+                current_bitrate_kbps=$((current_bitrate_bps_int / 1000))
+
+                if [ "$current_bitrate_bps_int" -lt "$BITRATE_BPS" ]; then
+                  echo "Error: bitrate ''${current_bitrate_kbps} is less then required"
+                  exit 4
+                else
+                  echo "Bitrate exceeds the requirement"
+                  exit 0
+                fi
+              '';
+            };
+          in {
             flac = "${lib.getExe pkgs.flac} --test --warnings-as-errors --silent";
+            opus = lib.getExe opus-test;
           };
         };
         fetchart = {
