@@ -9,7 +9,6 @@
     ./fish.nix
     ./yazi.nix
     ./ncmpcpp.nix
-    ./media-dl.nix
     ./git.nix
     ./wrapped.nix
     ./helix.nix

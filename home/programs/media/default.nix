@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./mpv.nix
+    ./media-dl.nix
     ./spicetify.nix
     ./beets.nix
     ./mopidy.nix
