@@ -25,7 +25,6 @@
     lxd.enable = true;
     # FIX figure out why rootless podman isn't working. Replace with docker for now
     docker = {
-      storageDriver = "btrfs";
       autoPrune.enable = true;
       rootless = {
         enable = true;
