@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
     ./btop.nix
     ./bat.nix
@@ -46,6 +50,7 @@
       enable = true;
     };
     eza = {
+      inherit (config.home.shell) enableFishIntegration;
       enable = true;
       git = true;
       icons = "auto";
