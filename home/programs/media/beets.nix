@@ -51,7 +51,25 @@ in {
       settings = {
         directory = music-dir;
         library = beets-library;
-        plugins = "convert fromfilename play the chroma fish replaygain lastgenre fetchart embedart lastimport edit discogs duplicates scrub missing";
+        plugins = [
+          "chroma"
+          "convert"
+          "discogs"
+          "duplicates"
+          "edit"
+          "embedart"
+          "fetchart"
+          "filetote"
+          "fish"
+          "fromfilename"
+          "lastgenre"
+          "lastimport"
+          "missing"
+          "play"
+          "replaygain"
+          "scrub"
+          "the"
+        ];
         clutter = [
           "Thumbs.DB"
           ".DS_Store"
