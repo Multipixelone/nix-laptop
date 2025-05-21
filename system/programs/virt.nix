@@ -24,12 +24,6 @@
     waydroid.enable = true;
     lxd.enable = true;
     # FIX figure out why rootless podman isn't working. Replace with docker for now
-    podman = {
-      enable = false;
-      # dockerCompat = false;
-      # autoPrune.enable = true;
-      # defaultNetwork.settings.dns_enabled = true;
-    };
     docker = {
       storageDriver = "btrfs";
       autoPrune.enable = true;
