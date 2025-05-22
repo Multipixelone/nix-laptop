@@ -32,16 +32,42 @@ in {
 
   swapDevices = [{device = "/swap/swapfile";}];
   fileSystems = {
-    "/boot/efi" = {device = "/dev/disk/by-uuid/9433-A195";};
     "/swap" = {
       device = "/dev/disk/by-label/Linux";
       fsType = "btrfs";
       options = ["subvol=@swap"];
     };
+    # "/" = {
+    #   device = "/dev/disk/by-label/Linux";
+    #   fsType = "btrfs";
+    #   options = ["subvol=/@nixos" "compress=zstd:3" "relatime" "ssd" "discard=async" "space_cache"];
+    # };
     "/" = {
+      device = "none";
+      fsType = "tmpfs";
+      options = ["mode=755"];
+    };
+    "/boot/efi" = {device = "/dev/disk/by-uuid/9433-A195";};
+    "/nix" = {
       device = "/dev/disk/by-label/Linux";
       fsType = "btrfs";
-      options = ["subvol=/@nixos" "compress=zstd:3" "relatime" "ssd" "discard=async" "space_cache"];
+      options = ["subvol=/@nix" "noatime" default-options];
+    };
+    "/root" = {
+      device = "/dev/disk/by-label/Linux";
+      fsType = "btrfs";
+      options = ["subvol=/@root" "noatime" default-options];
+    };
+    "/var/log" = {
+      device = "/dev/disk/by-label/Linux";
+      fsType = "btrfs";
+      options = ["subvol=/@log" "noatime" default-options];
+    };
+    "/persist" = {
+      device = "/dev/disk/by-label/Linux";
+      neededForBoot = true;
+      fsType = "btrfs";
+      options = ["subvol=/@persist" "noatime" default-options];
     };
     "/home" = {
       device = "/dev/disk/by-label/Linux";
@@ -77,7 +103,7 @@ in {
     "/media/SlowData" = {
       device = "/dev/disk/by-label/SlowData";
       fsType = "btrfs";
-      options = ["subvol=/" "compress=zstd:3" "noatime" "space_cache=v2" "autodefrag"];
+      options = ["subvol=/"];
     };
   };
 }
