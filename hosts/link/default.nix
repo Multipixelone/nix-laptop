@@ -6,6 +6,7 @@
   imports = [
     inputs.ucodenix.nixosModules.default
     ./hardware-configuration.nix
+    ./preservation.nix
     ./hyprland.nix
     ./valhalla.nix
     ./printer.nix
