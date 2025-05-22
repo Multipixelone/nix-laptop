@@ -16,6 +16,12 @@
       enable = true;
       playlistDirectory = config.home.sessionVariables.PLAYLIST_DIR;
       musicDirectory = config.home.sessionVariables.MUSIC_DIR;
+      extraConfig = ''
+        audio_output {
+          type "pipewire"
+          name "PipeWire Output"
+        }
+      '';
     };
     mpdscribble = {
       enable = true;
