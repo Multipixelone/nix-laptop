@@ -77,6 +77,7 @@
         flake-compat.follows = "flake-compat";
       };
     };
+    preservation.url = "github:nix-community/preservation";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     nur.url = "github:nix-community/NUR";
     musnix.url = "github:musnix/musnix";
