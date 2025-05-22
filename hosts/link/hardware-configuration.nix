@@ -51,59 +51,59 @@ in {
     "/nix" = {
       device = "/dev/disk/by-label/Linux";
       fsType = "btrfs";
-      options = ["subvol=/@nix" "noatime" default-options];
+      options = ["subvol=/@nix" "noatime"] ++ default-options;
     };
     "/root" = {
       device = "/dev/disk/by-label/Linux";
       fsType = "btrfs";
-      options = ["subvol=/@root" "noatime" default-options];
+      options = ["subvol=/@root" "noatime"] ++ default-options;
     };
     "/var/log" = {
       device = "/dev/disk/by-label/Linux";
       fsType = "btrfs";
-      options = ["subvol=/@log" "noatime" default-options];
+      options = ["subvol=/@log" "noatime"] ++ default-options;
     };
     "/persist" = {
       device = "/dev/disk/by-label/Linux";
       neededForBoot = true;
       fsType = "btrfs";
-      options = ["subvol=/@persist" "noatime" default-options];
+      options = ["subvol=/@persist" "noatime"] ++ default-options;
     };
     "/home" = {
       device = "/dev/disk/by-label/Linux";
       fsType = "btrfs";
-      options = ["subvol=/@home" default-options];
+      options = ["subvol=/@home"] ++ default-options;
     };
     # extra drives!
     "/media/TeraData" = {
       device = "/dev/disk/by-label/TeraData";
       fsType = "btrfs";
-      options = ["subvol=/@games" default-options];
+      options = ["subvol=/@games"] ++ default-options;
     };
     "/media/Data" = {
       device = "/dev/disk/by-label/TeraData";
       fsType = "btrfs";
-      options = ["subvol=/@data" default-options];
+      options = ["subvol=/@data"] ++ default-options;
     };
     "/home/tunnel/Games/ROMs" = {
       device = "/dev/disk/by-label/TeraData";
       fsType = "btrfs";
-      options = ["subvol=/@roms" default-options];
+      options = ["subvol=/@roms"] ++ default-options;
     };
     "/volume1/Media" = {
       device = "/dev/disk/by-label/TeraData";
       fsType = "btrfs";
-      options = ["subvol=/@data" default-options];
+      options = ["subvol=/@data"] ++ default-options;
     };
     "/media/BigData" = {
       device = "/dev/disk/by-label/BigData";
       fsType = "btrfs";
-      options = ["subvol=/" default-options];
+      options = ["subvol=/"] ++ default-options;
     };
     "/media/SlowData" = {
       device = "/dev/disk/by-label/SlowData";
       fsType = "btrfs";
-      options = ["subvol=/"];
+      options = ["subvol=/" "compress=zstd" "autodefrag" "noatime" "space_cache=v2"];
     };
   };
 }
