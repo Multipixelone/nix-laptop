@@ -48,11 +48,7 @@ in {
       fsType = "btrfs";
       options = ["subvol=/@home" default-options];
     };
-    #"/media/Arch" =
-    #  { device = "/dev/disk/by-label/SlowData";
-    #    fsType = "btrfs";
-    #    options = [ "subvol=/@Arch" "compress=zstd:3" "noatime" "space_cache=v2" "autodefrag" ];
-    #  };
+    # extra drives!
     "/media/TeraData" = {
       device = "/dev/disk/by-label/TeraData";
       fsType = "btrfs";
@@ -83,10 +79,5 @@ in {
       fsType = "btrfs";
       options = ["subvol=/" "compress=zstd:3" "noatime" "space_cache=v2" "autodefrag"];
     };
-    # "/media/Windows" = {
-    #   device = "/dev/disk/by-label/Windows";
-    #   fsType = "ntfs";
-    #   options = ["nosuid" "nodev" "relatime" "blksize=4096"];
-    # };
   };
 }
