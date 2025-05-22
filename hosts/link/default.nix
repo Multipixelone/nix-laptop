@@ -25,14 +25,6 @@
   # nh default flake
   environment.variables.NH_FLAKE = "/home/tunnel/Documents/Git/nix-laptop";
 
-  # media env vars
-  environment.variables = {
-    MUSIC_DIR = "/media/Data/Music";
-    PLAYLIST_DIR = "/home/tunnel/Music/Playlists";
-    MOPIDY_PLAYLISTS = "/home/tunnel/.local/share/mopidy/m3u";
-    IPOD_DIR = "/run/media/tunnel/FINNR_S IPO";
-  };
-
   # fan control
   systemd = {
     packages = with pkgs; [lact];
