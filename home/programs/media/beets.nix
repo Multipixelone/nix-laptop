@@ -65,6 +65,7 @@ in {
     beets = {
       enable = true;
       package = beets-filetote;
+      mpdIntegration.enableUpdate = true;
       settings = {
         directory = music-dir;
         library = beets-library;
