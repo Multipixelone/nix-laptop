@@ -2,7 +2,15 @@
   config,
   lib,
   ...
-}: {
+}: let
+  default-options = [
+    "compress=zstd:3"
+    # "relatime"
+    "ssd"
+    "discard=async"
+    "space_cache"
+  ];
+in {
   boot = {
     initrd = {
       availableKernelModules = ["nvme" "xhci_pci" "usbhid" "usb_storage"];
@@ -38,7 +46,7 @@
     "/home" = {
       device = "/dev/disk/by-label/Linux";
       fsType = "btrfs";
-      options = ["subvol=/@home" "compress=zstd:3" "relatime" "ssd" "discard=async" "space_cache"];
+      options = ["subvol=/@home" default-options];
     };
     #"/media/Arch" =
     #  { device = "/dev/disk/by-label/SlowData";
@@ -48,27 +56,27 @@
     "/media/TeraData" = {
       device = "/dev/disk/by-label/TeraData";
       fsType = "btrfs";
-      options = ["subvol=/@games" "compress=zstd:3" "relatime" "ssd" "discard=async" "space_cache=v2"];
+      options = ["subvol=/@games" default-options];
     };
     "/media/Data" = {
       device = "/dev/disk/by-label/TeraData";
       fsType = "btrfs";
-      options = ["subvol=/@data" "compress=zstd:3" "relatime" "ssd" "discard=async" "space_cache=v2"];
+      options = ["subvol=/@data" default-options];
     };
     "/home/tunnel/Games/ROMs" = {
       device = "/dev/disk/by-label/TeraData";
       fsType = "btrfs";
-      options = ["subvol=/@roms" "compress=zstd:3" "relatime" "ssd" "discard=async" "space_cache=v2"];
+      options = ["subvol=/@roms" default-options];
     };
     "/volume1/Media" = {
       device = "/dev/disk/by-label/TeraData";
       fsType = "btrfs";
-      options = ["subvol=/@data" "compress=zstd:3" "relatime" "ssd" "discard=async" "space_cache=v2"];
+      options = ["subvol=/@data" default-options];
     };
     "/media/BigData" = {
       device = "/dev/disk/by-label/BigData";
       fsType = "btrfs";
-      options = ["subvol=/" "compress=zstd:3" "relatime" "ssd" "discard=async" "space_cache=v2"];
+      options = ["subvol=/" default-options];
     };
     "/media/SlowData" = {
       device = "/dev/disk/by-label/SlowData";
