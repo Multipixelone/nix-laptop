@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+  users.mutableUsers = false;
   users.users.tunnel = {
     name = "tunnel";
     isNormalUser = true;
