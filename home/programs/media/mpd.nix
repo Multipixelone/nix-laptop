@@ -5,6 +5,7 @@
 }: {
   age.secrets."scribblepw".file = "${inputs.secrets}/media/lastfmpw.age";
   services = {
+    mpd-mpris.enable = true;
     mpd = {
       enable = true;
       playlistDirectory = config.home.sessionVariables.PLAYLIST_DIR;
