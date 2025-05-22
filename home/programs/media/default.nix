@@ -4,7 +4,8 @@
     ./media-dl.nix
     ./spicetify.nix
     ./beets.nix
-    ./mopidy.nix
+    # ./mopidy.nix
+    ./mpd.nix
   ];
   home.packages = with pkgs; [
     ani-cli
