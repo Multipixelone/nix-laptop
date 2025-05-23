@@ -80,6 +80,7 @@ in {
           "filetote"
           "fish"
           "fromfilename"
+          "hook"
           "lastgenre"
           "lastimport"
           "mbsubmit"
@@ -143,6 +144,16 @@ in {
             wav.command = "${ffmpeg} -i $source -sample_fmt s16 -ar 44100 $dest";
           };
         };
+        hook.hooks = [
+          {
+            event = "album_imported";
+            command = ''${lib.getExe' pkgs.coreutils "printf"} "\033[38;5;76m √\033[m \033[1m\033[m \033[38;5;30m{album}\033[m\n"'';
+          }
+          {
+            event = "before_choose_candidate";
+            command = ''${lib.getExe pkgs.hr} ━'';
+          }
+        ];
         filetote = {
           # keep cue and log files with album
           extensions = [
