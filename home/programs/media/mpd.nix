@@ -14,7 +14,7 @@
     mpd-mpris.enable = true;
     mpd = {
       enable = true;
-      playlistDirectory = config.home.sessionVariables.PLAYLIST_DIR;
+      playlistDirectory = "${config.home.sessionVariables.PLAYLIST_DIR}/.mpd";
       musicDirectory = config.home.sessionVariables.MUSIC_DIR;
       extraConfig = ''
         audio_output {
