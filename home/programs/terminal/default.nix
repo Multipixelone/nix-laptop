@@ -8,7 +8,7 @@
     ./bat.nix
     ./fish.nix
     ./yazi.nix
-    ./ncmpcpp.nix
+    ./rmpc.nix
     ./git.nix
     ./wrapped.nix
     ./helix.nix

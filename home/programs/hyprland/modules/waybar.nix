@@ -381,7 +381,7 @@ in {
           };
         };
         "image#album-art" = {
-          path = "/tmp/waybar-mediaplayer-art";
+          path = "/tmp/waybar-mediaplayer-art.jpg";
           size = 30;
           # recieve signal from ncmpcpp to change song
           signal = 4;

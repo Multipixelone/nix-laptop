@@ -97,7 +97,7 @@ in {
         {
           # album art
           monitor = "eDP-1";
-          path = "/tmp/waybar-mediaplayer-art";
+          path = "/tmp/waybar-mediaplayer-art.jpg";
           size = 450;
           rounding = 2;
           reload_time = 0;

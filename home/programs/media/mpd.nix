@@ -4,12 +4,6 @@
   ...
 }: {
   age.secrets."scribblepw".file = "${inputs.secrets}/media/lastfmpw.age";
-  programs.rmpc = {
-    enable = true;
-    config = ''
-      address: 127.0.0.1:6600
-    '';
-  };
   services = {
     mpd-mpris.enable = true;
     mpd = {
