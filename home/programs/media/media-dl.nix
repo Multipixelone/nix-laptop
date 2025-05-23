@@ -21,7 +21,7 @@
     pkgs.writeShellScriptBin "spotdl" ''
       ${lib.getExe spotdl-args} \
       --cookie-file ${config.age.secrets."yt-dlp".path} \
-      --yt-dlp-args "extractor-args \"youtube:player_client=web_music,default;getpot_bgutil_baseurl=http://127.0.0.1:4416\"" \
+      --yt-dlp-args "extractor-args \"youtube:bypass_native_jsi;deno_no_jitless;player_client=web_music,default;getpot_bgutil_baseurl=http://127.0.0.1:4416\"" \
       --output "{artist} - {album}/{track-number} {title}.{output-ext}" \
       --format opus \
       --bitrate disable \
@@ -51,6 +51,12 @@ in {
       tag = "v${version}";
       hash = "sha256-MtQFXWJByo/gyftMtywCCfpf8JtldA2vQP8dnpLEl7U=";
     };
+    "yt-dlp/plugins/yt-dlp-deno".source = pkgs.fetchFromGitHub {
+      tag = "2024.12.06";
+      owner = "bashonly";
+      repo = "yt-dlp-YTNSigDeno";
+      hash = "sha256-sRO5GGNKkDg0qB/Yl4ZuEaCwpECFA9GtDvURJTqlr0Y=";
+    };
   };
   virtualisation.quadlet.containers.bgutil-provider = {
     autoStart = true;
@@ -63,7 +69,10 @@ in {
       publishPorts = ["127.0.0.1:4416:4416"];
     };
   };
-  home.packages = [spotdl-wrapped];
+  home.packages = [
+    spotdl-wrapped
+    pkgs.deno
+  ];
   programs = {
     aria2.enable = true;
     yt-dlp = {
@@ -78,6 +87,7 @@ in {
         downloader = lib.getExe config.programs.aria2.package;
         downloader-args = "aria2c:'-c -x8 -s8 -k1M'";
         cookies = config.age.secrets."yt-dlp".path;
+        extractor-args = "youtube:bypass_native_jsi;deno_no_jitless";
       };
     };
   };
