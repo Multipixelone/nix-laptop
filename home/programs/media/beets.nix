@@ -161,10 +161,11 @@ in {
           }
         ];
         filetote = {
-          # keep cue and log files with album
+          # keep relevant files with album
           extensions = [
             ".cue"
             ".log"
+            ".accurip"
           ];
           # move lyric files with music
           pairing = {
