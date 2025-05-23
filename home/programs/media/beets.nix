@@ -80,7 +80,9 @@ in {
           "filetote"
           "fish"
           "fromfilename"
+          "ftintitle"
           "hook"
+          "inline"
           "lastgenre"
           "lastimport"
           "mbsubmit"
@@ -111,6 +113,10 @@ in {
         scrub.auto = true;
         embedart.auto = true;
         chroma.auto = true;
+        ftintitle = {
+          format = "ft. {0}";
+          keep_in_artist = true;
+        };
         import = {
           move = true;
           write = true;
@@ -213,6 +219,35 @@ in {
             flac = "${lib.getExe pkgs.flac} --test --warnings-as-errors --silent";
             opus = lib.getExe opus-test;
           };
+        };
+        item_fields = {
+          multidisc = "1 if disctotal > 1 else 0";
+          first_artist = ''
+            # import an album to another artists directory, like:
+            # Tom Jones │1999│ Burning Down the House [Single, CD, FLAC]
+            # to The Cardigans/+singles/Tom Jones & the Cardigans │1999│ Burning Down the House [Single, CD, FLAC]
+            # https://github.com/beetbox/beets/discussions/4012#discussioncomment-1021414
+            # beet import --set myartist='The Cardigans'
+            # we must first check to see if myartist is defined, that is, given on
+            # import time, or we raise an NameError exception.
+            try:
+              myartist
+            except NameError:
+              import re
+              return re.split(r',|\s+(feat(.?|uring)|&|(Vs|Ft).)', albumartist, 1, flags=re.IGNORECASE)[0]
+            else:
+              return myartist
+          '';
+
+          first_artist_singleton = ''
+            try:
+              myartist
+            except NameError:
+              import re
+              return re.split(r',|\s+(feat(.?|uring)|&|(Vs|Ft).)', artist, 1, flags=re.IGNORECASE)[0]
+            else:
+              return myartist
+          '';
         };
         fetchart = {
           auto = true;
