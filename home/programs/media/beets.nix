@@ -1,5 +1,6 @@
 {
   config,
+  self,
   pkgs,
   lib,
   ...
@@ -13,6 +14,10 @@
   ffmpeg = lib.getExe pkgs.ffmpeg-headless;
   beets-filetote = pkgs.beets.override {
     pluginOverrides = {
+      tcp = {
+        enable = true;
+        propagatedBuildInputs = [self.packages.${pkgs.system}.beets-tcp];
+      };
       filetote = {
         enable = true;
         propagatedBuildInputs = [pkgs.beetsPackages.filetote];
@@ -91,6 +96,7 @@ in {
           "play"
           "replaygain"
           "scrub"
+          "tcp"
           "the"
         ];
         clutter = [
@@ -226,6 +232,38 @@ in {
             opus = lib.getExe opus-test;
           };
         };
+        tcp.asis = [
+          "EP"
+          "LP"
+          "feat. "
+          "PhD"
+          "DJ"
+          "TCP"
+          "SOS"
+          "DMC"
+          "A$AP"
+          "OST"
+          "PAL"
+          "NTSC"
+          "T.I"
+          "II"
+          "III"
+          "IV"
+          "VI"
+          "VII"
+          "VIII"
+          "IX"
+          "XI"
+          "XII"
+          "XIII"
+          "XIV"
+          "XV"
+          "XVI"
+          "XVII"
+          "XVIII"
+          "XIX"
+          "XX"
+        ];
         item_fields = {
           multidisc = "1 if disctotal > 1 else 0";
           first_artist = ''
