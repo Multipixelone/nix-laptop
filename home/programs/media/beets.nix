@@ -268,6 +268,55 @@ in {
           "XIX"
           "XX"
         ];
+        # these album and item fields lovingly borrowed from http://github.com/trapd00r/configs
+        album_fields = {
+          alb_type = ''
+            alb_types = ""
+            albumtypes_list = {
+              'ep': 'EP',
+              'lp': 'LP',
+              'single': 'Single',
+              'live': 'Live',
+              'remix': 'Remix',
+              'dj-mix': 'DJ-mix',
+              'mixtape/street': 'Mixtape',
+              'interview': 'Interview',
+            }
+            for key, value in albumtypes_list.items():
+              if albumtype == key:
+                alb_types += str(value)
+
+              if alb_types is not None:
+                if alb_types != ''':
+                  return alb_types + ', '
+              else:
+                return None
+          '';
+          media_type = ''
+            media_list = {
+             '12" Vinyl':     'Vinyl',
+             '10" Vinyl':     'Vinyl',
+             '7" Vinyl':      'Vinyl',
+             'Vinyl':         'Vinyl',
+             'CDr':           'CDR',
+             'CD-R':          'CDR',
+             'Cassette':      'Cassette',
+             'Digital Media': 'Web',
+             'CD':            'CD',
+             'File':          'Web',
+             'DVD':           'DVDA',
+            }
+            media_types_to_omit = ['Blu-spec CD']
+            if items[0].media in media_list:
+              return str(media_list[items[0].media]) + ', '
+            elif items[0].media in media_types_to_omit:
+              return None
+            elif items[0].media == ''':
+              return None
+            else:
+              return str(items[0].media) + ', '
+          '';
+        };
         item_fields = {
           multidisc = "1 if disctotal > 1 else 0";
           first_artist = ''
