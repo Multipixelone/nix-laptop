@@ -109,7 +109,6 @@ in {
         lastimport.user = "Tunnelmaker";
         mbsubmit.picard_path = lib.getExe pkgs.picard;
         ui.color = true;
-        duplicates.checksum = false;
         scrub.auto = true;
         embedart.auto = true;
         chroma.auto = true;
@@ -139,6 +138,12 @@ in {
           };
           # don't show me anything with missing tracks
           ignored = "missing_tracks unmatched_tracks";
+        };
+        duplicates = {
+          checksum = false;
+          tiebreak = {
+            items = ["bitrate"];
+          };
         };
         convert = {
           auto = false;
