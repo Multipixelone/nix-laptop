@@ -75,6 +75,7 @@ in {
         directory = music-dir;
         library = beets-library;
         plugins = [
+          # "albumtypes"
           "badfiles"
           "chroma"
           "convert"
@@ -161,6 +162,9 @@ in {
             wav.command = "${ffmpeg} -i $source -sample_fmt s16 -ar 44100 $dest";
           };
         };
+        # albumtypes.types = [
+        #   "ep: 'EP'"
+        # ];
         hook.hooks = [
           {
             event = "album_imported";
