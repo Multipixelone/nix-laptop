@@ -374,6 +374,12 @@ in {
             "releasegroupdisambig"
           ];
         };
+        paths = {
+          "albumtype:soundtrack" = "OST/%if{$year,$year - }$album%aunique{albumtype albumdisambig year label catalognum releasegroupdisambig} %if{$albumdisambig,($albumdisambig)} - $first_artist [%upper{$format} %if{$bitdepth,\${bitdepth}B-}$samplerate]/%if{$multidisc,$disc-}%if{$track,$track - } $artist - $title";
+          default = "%tcp{%if{$albumartist_sort,$albumartist_sort,$first_artist}}/$albumartist %if{$year,($year) }%if{$albumtype,($albumtype) }$album %if{$albumdisambig,($albumdisambig) }[$media_type$format]/%if{$multidisc,$disc-}%if{$track,$track}. $artist - $title";
+          singleton = "$albumartist/Singles/$title";
+          comp = "Various Artists/$album%aunique{}/%if{$track,$track - }$title";
+        };
         fetchart = {
           auto = true;
           cautious = false;
