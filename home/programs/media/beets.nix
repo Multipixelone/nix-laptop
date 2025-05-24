@@ -358,6 +358,22 @@ in {
               return myartist
           '';
         };
+        aunique = {
+          keys = [
+            "albumartist"
+            "albumtype"
+            "year"
+            "album"
+          ];
+          disambiguators = [
+            "format"
+            "mastering"
+            "media"
+            "label"
+            "albumdisambig"
+            "releasegroupdisambig"
+          ];
+        };
         fetchart = {
           auto = true;
           cautious = false;
