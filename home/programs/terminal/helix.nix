@@ -110,6 +110,7 @@ in {
           space = {
             l.g = ["${zellij-args} ${lib.getExe pkgs.lazygit}" ":reload"];
             n.r = ["${zellij-args} nix run" ":reload"];
+            n.s = ["${zellij-args} fish" ":reload"];
           };
         };
       };
