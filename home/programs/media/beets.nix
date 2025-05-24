@@ -126,6 +126,7 @@ in {
           "^\\s+" = "";
           "^-" = "";
         };
+        per_disc_numbering = true;
         lastfm.user = "Tunnelmaker";
         lastimport.user = "Tunnelmaker";
         mbsubmit.picard_path = lib.getExe pkgs.picard;
