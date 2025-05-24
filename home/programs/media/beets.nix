@@ -86,7 +86,6 @@ in {
           "filetote"
           "fish"
           "fromfilename"
-          "ftintitle"
           "hook"
           "info"
           "inline"
@@ -120,10 +119,6 @@ in {
         scrub.auto = true;
         embedart.auto = true;
         chroma.auto = true;
-        ftintitle = {
-          format = "ft. {0}";
-          keep_in_artist = true;
-        };
         import = {
           move = true;
           write = true;
