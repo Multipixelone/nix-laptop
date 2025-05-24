@@ -114,6 +114,18 @@ in {
           "*.jpeg"
           "*.png"
         ];
+        # get rid of reserved characters instead of replacing with underscore
+        replace = {
+          "[\\\\/]" = "";
+          "[\/]" = "";
+          "^\\." = "";
+          "[\\x00-\\x1f]" = "";
+          "[<>:\"\\?\\*\\|]" = "";
+          "\\.$" = "";
+          "\\s+$" = "";
+          "^\\s+" = "";
+          "^-" = "";
+        };
         lastfm.user = "Tunnelmaker";
         lastimport.user = "Tunnelmaker";
         mbsubmit.picard_path = lib.getExe pkgs.picard;
