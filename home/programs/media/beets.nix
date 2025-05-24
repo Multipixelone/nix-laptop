@@ -88,6 +88,7 @@ in {
           "fromfilename"
           "ftintitle"
           "hook"
+          "info"
           "inline"
           "lastgenre"
           "lastimport"
