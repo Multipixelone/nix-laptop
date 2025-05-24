@@ -108,6 +108,8 @@ in {
           "*.sfv"
           "*.txt"
           "*.nfo"
+          "*.xml"
+          "*.docx"
           "*.jpg"
           "*.jpeg"
           "*.png"
