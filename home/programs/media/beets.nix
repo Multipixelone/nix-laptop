@@ -330,6 +330,7 @@ in {
         };
         item_fields = {
           multidisc = "1 if disctotal > 1 else 0";
+          is_single = "1 if disctotal == 1 and tracktotal == 1 else 0";
           first_artist = ''
             # import an album to another artists directory, like:
             # Tom Jones │1999│ Burning Down the House [Single, CD, FLAC]
