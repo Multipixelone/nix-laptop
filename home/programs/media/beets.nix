@@ -374,9 +374,12 @@ in {
             "releasegroupdisambig"
           ];
         };
-        paths = {
+        paths = let
+          # this lovely snippet pulls the first artist from the albumartists_sort field :-)
+          first_artist = "%tcp{%ifdef{albumartists_sort,%first{$albumartists_sort,1,0,\␀},$first_artist}}";
+        in {
           "albumtype:soundtrack" = "OST/%if{$year,$year - }$album%aunique{albumtype albumdisambig year label catalognum releasegroupdisambig} %if{$albumdisambig,($albumdisambig)} - $first_artist [%upper{$format} %if{$bitdepth,\${bitdepth}B-}$samplerate]/%if{$multidisc,$disc-}%if{$track,$track - } $artist - $title";
-          default = "%tcp{%if{$albumartist_sort,$albumartist_sort,$first_artist}}/$albumartist %if{$year,($year) }%if{$albumtype,($albumtype) }$album %if{$albumdisambig,($albumdisambig) }[$media_type$format]/%if{$multidisc,$disc-}%if{$track,$track}. $artist - $title";
+          default = "${first_artist}/$albumartist %if{$year,($year) }%if{$albumtype,($albumtype) }$album %if{$albumdisambig,($albumdisambig) }[$media_type$format]/%if{$multidisc,$disc-}%if{$track,$track}. $artist - $title";
           singleton = "$albumartist/Singles/$title";
           comp = "Various Artists/$album%aunique{}/%if{$track,$track - }$title";
         };
