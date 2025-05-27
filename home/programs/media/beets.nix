@@ -282,27 +282,58 @@ in {
         ];
         # these album and item fields lovingly borrowed from http://github.com/trapd00r/configs
         album_fields = {
-          alb_type = ''
-            alb_types = ""
-            albumtypes_list = {
-              'ep': 'EP',
-              'lp': 'LP',
-              'single': 'Single',
-              'live': 'Live',
-              'remix': 'Remix',
-              'dj-mix': 'DJ-mix',
-              'mixtape/street': 'Mixtape',
-              'interview': 'Interview',
-            }
-            for key, value in albumtypes_list.items():
-              if albumtype == key:
-                alb_types += str(value)
+          disambig = ''
+            o = []
+            if year > original_year:
+              o.append(f"RE-{year}")
+            if albumdisambig:
+              o.append(albumdisambig)
 
-              if alb_types is not None:
-                if alb_types != ''':
-                  return alb_types + ', '
-              else:
-                return None
+            return ", ".join(o)
+          '';
+          # mp3_bitrate_setting = ''
+          #   o = [f for f in brm] if brm else []
+
+          #   return ", ".join(o)
+          # '';
+          # mp3_encoder = ''
+          #   brm = set([i.encoder_settings for i in items])
+          #   o = [f for f in brm] if brm else []
+
+          #   return ", ".join(o)
+          # '';
+          source = ''
+            format = set([i.format for i in items])
+            tbr = sum([i.bitrate for i in items])
+            abr = tbr / len(items) / 1000
+            # brm = set([i.bitrate_mode for i in items])
+            samplerate = set([i.samplerate for i in items])
+            bitdepth = sum([i.bitdepth for i in items]) // len(items)
+
+            # Init output
+            o = [f for f in format] if format else []
+
+            # Handle bitrate categories
+            for f in format:
+                if f == 'FLAC':
+                  for p in samplerate:
+                      o.append(str(p // 1000) + '-' + str(bitdepth))
+                # if f == 'MP3' and brm:
+                #   for p in brm:
+                #       o.append(p)
+
+            if abr < 480 and abr >= 320:
+                o.append('320')
+            elif abr < 320 and abr >= 220:
+                o.append('V0')
+            elif abr < 215 and abr >= 170 and abr != 192:
+                o.append('V2')
+            elif abr == 192:
+                o.append('192')
+            elif abr < 170:
+                o.append(str(abr))
+
+            return ", ".join(o)
           '';
           media_type = ''
             media_list = {
