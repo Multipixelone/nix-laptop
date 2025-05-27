@@ -177,6 +177,7 @@
     anyrun = {
       url = "github:anyrun-org/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
     };
     anyrun-nixos-options = {
       url = "github:n3oney/anyrun-nixos-options";
