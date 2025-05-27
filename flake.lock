@@ -218,6 +218,29 @@
         "type": "github"
       }
     },
+    "beets-plugins": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1748314113,
+        "narHash": "sha256-nWqx4LXs5am4qmoDLmpUB4D+ebIgtRDmxA99NjqFHmA=",
+        "owner": "Multipixelone",
+        "repo": "beets-plugins",
+        "rev": "de1f487b8555943d5f2e095a938b1d0f7c8ca9c1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Multipixelone",
+        "repo": "beets-plugins",
+        "type": "github"
+      }
+    },
     "better-fox": {
       "flake": false,
       "locked": {
@@ -2104,6 +2127,7 @@
         "apple-fonts": "apple-fonts",
         "auto-cpufreq": "auto-cpufreq",
         "base16": "base16",
+        "beets-plugins": "beets-plugins",
         "better-fox": "better-fox",
         "blocklist": "blocklist",
         "catppuccin": "catppuccin",

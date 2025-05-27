@@ -1,6 +1,6 @@
 {
   config,
-  self,
+  inputs,
   pkgs,
   lib,
   ...
@@ -16,7 +16,7 @@
     pluginOverrides = {
       tcp = {
         enable = true;
-        propagatedBuildInputs = [self.packages.${pkgs.system}.beets-tcp];
+        propagatedBuildInputs = [inputs.beets-plugins.packages.${pkgs.system}.tcp];
       };
       filetote = {
         enable = true;
