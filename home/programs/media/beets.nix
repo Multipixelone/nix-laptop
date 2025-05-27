@@ -152,7 +152,8 @@ in {
               "Digital Media|File"
               "CD"
             ];
-            original_year = true;
+            # we match based on the best fit and then include the $original_year in the file path
+            original_year = false;
           };
           # don't show me anything with missing tracks
           ignored = "missing_tracks unmatched_tracks";
