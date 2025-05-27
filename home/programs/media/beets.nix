@@ -14,22 +14,8 @@
   beets-config = "${beets-dir}/config.yaml";
   detect-file = "${download-dir}/download-finished";
   ffmpeg = lib.getExe pkgs.ffmpeg-headless;
-  beets-plugins = pkgs.beets.override {
-    pluginOverrides = {
-      tcp = {
-        enable = true;
-        propagatedBuildInputs = [inputs.beets-plugins.packages.${pkgs.system}.tcp];
-      };
-      filetote = {
-        enable = true;
-        propagatedBuildInputs = [pkgs.beetsPackages.filetote];
-      };
-      alternatives = {
-        enable = true;
-        propagatedBuildInputs = [pkgs.beetsPackages.alternatives];
-      };
-    };
-  };
+  # use my custom build of beets with included plugins
+  beets-plugins = inputs.beets-plugins.packages.${pkgs.system}.default;
   beets-import = pkgs.writeShellApplication {
     name = "beets-import";
     runtimeInputs = [beets-plugins pkgs.coreutils];
