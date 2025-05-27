@@ -332,6 +332,7 @@ in {
         item_fields = {
           multidisc = "1 if disctotal > 1 else 0";
           is_single = "1 if disctotal == 1 and tracktotal == 1 else 0";
+          # fallback first artist if no albumartists_sort field
           first_artist = ''
             # import an album to another artists directory, like:
             # Tom Jones │1999│ Burning Down the House [Single, CD, FLAC]
@@ -378,9 +379,15 @@ in {
         paths = let
           # this lovely snippet pulls the first artist from the albumartists_sort field :-)
           first_artist = "%tcp{%ifdef{albumartists_sort,%first{$albumartists_sort,1,0,\␀},$first_artist}}";
+          # if no month and day just display year, otherwise display all three
+          date = "%if{$original_year,($original_year%if{$original_month,.$original_month.$original_day}) ,) }";
+          # ex. 01-01. Tyler, the Creator ft. Frank Ocean - Slater.wav
+          track_path = "%if{$multidisc,$disc-}%if{$track,$track}. $artist - $title";
+          # show my custom field if there is a re-release or tagged disambiguation
+          disambig_rerelease = "%if{$disambig,($disambig) }";
         in {
           "albumtype:soundtrack" = "OST/%if{$year,$year - }$album%aunique{albumtype albumdisambig year label catalognum releasegroupdisambig} %if{$albumdisambig,($albumdisambig)} - $first_artist [%upper{$format} %if{$bitdepth,\${bitdepth}B-}$samplerate]/%if{$multidisc,$disc-}%if{$track,$track - } $artist - $title";
-          default = "${first_artist}/$albumartist %if{$year,($year) }%if{$albumtype,($albumtype) }$album %if{$albumdisambig,($albumdisambig) }[$media_type$format]/%if{$multidisc,$disc-}%if{$track,$track}. $artist - $title";
+          default = "${first_artist}/$albumartist ${date}%if{$albumtype,($albumtype) }$album ${disambig_rerelease}[$media_type$source]/${track_path}";
           singleton = "$albumartist/Singles/$title";
           comp = "Various Artists/$album%aunique{}/%if{$track,$track - }$title";
         };
