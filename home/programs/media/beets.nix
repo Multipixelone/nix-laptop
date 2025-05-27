@@ -14,7 +14,7 @@
   beets-config = "${beets-dir}/config.yaml";
   detect-file = "${download-dir}/download-finished";
   ffmpeg = lib.getExe pkgs.ffmpeg-headless;
-  beets-filetote = pkgs.beets.override {
+  beets-plugins = pkgs.beets.override {
     pluginOverrides = {
       tcp = {
         enable = true;
@@ -32,7 +32,7 @@
   };
   beets-import = pkgs.writeShellApplication {
     name = "beets-import";
-    runtimeInputs = [beets-filetote pkgs.coreutils];
+    runtimeInputs = [beets-plugins pkgs.coreutils];
     text = ''
       beet -c ${beets-config} import -q ${download-dir}
       rm -f ${detect-file}
@@ -75,7 +75,7 @@ in {
     };
     beets = {
       enable = true;
-      package = beets-filetote;
+      package = beets-plugins;
       mpdIntegration.enableUpdate = true;
       settings = {
         directory = music-dir;
