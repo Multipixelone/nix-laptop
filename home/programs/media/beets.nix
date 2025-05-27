@@ -5,8 +5,10 @@
   lib,
   ...
 }: let
-  download-dir = "/volume1/Media/ImportMusic/slskd";
-  music-dir = "/volume1/Media/Music";
+  media-drive = "/volume1/Media";
+  download-dir = "${media-drive}/ImportMusic/slskd";
+  music-dir = "${media-drive}/Music";
+  transcoded-music = "${media-drive}/TranscodedMusic";
   beets-dir = "/home/tunnel/.config/beets";
   beets-library = "${beets-dir}/library.db";
   beets-config = "${beets-dir}/config.yaml";
@@ -21,6 +23,10 @@
       filetote = {
         enable = true;
         propagatedBuildInputs = [pkgs.beetsPackages.filetote];
+      };
+      alternatives = {
+        enable = true;
+        propagatedBuildInputs = [pkgs.beetsPackages.alternatives];
       };
     };
   };
@@ -76,6 +82,7 @@ in {
         library = beets-library;
         plugins = [
           # "albumtypes"
+          "alternatives"
           "badfiles"
           "chroma"
           "convert"
@@ -164,6 +171,11 @@ in {
             items = ["bitrate"];
           };
         };
+        alternatives.ipod = {
+          directory = transcoded-music;
+          formats = "opus mp3 m4a";
+          query = "onipod:true";
+        };
         convert = {
           auto = false;
           never_convert_lossy_files = true;
@@ -172,6 +184,8 @@ in {
             mp3.command = "${ffmpeg} -i $source -ab 320k -ac 2 -ar 44100 -joint_stereo 0 $dest";
             mp3.extension = "mp3";
             wav.command = "${ffmpeg} -i $source -sample_fmt s16 -ar 44100 $dest";
+            # 128K is probably overkill LOL but I want something *close* to transparent on my ipod
+            opus.command = "${ffmpeg} -i $source -c:a libopus -b:a 128K $dest";
           };
         };
         # albumtypes.types = [
