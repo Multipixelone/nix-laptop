@@ -90,6 +90,7 @@ in {
           "mbsync"
           "missing"
           "play"
+          "plexsync"
           "replaygain"
           "scrub"
           "tcp"
@@ -213,6 +214,16 @@ in {
           backend = "ffmpeg";
           command = ffmpeg;
           threads = 6;
+        };
+        plexsync = {
+          use_llm_search = true;
+        };
+        llm = {
+          search = {
+            provider = "ollama";
+            model = "deepseek-r1:7b-qwen-distill-q4_K_M";
+            ollama_host = "http://localhost:11434";
+          };
         };
         missing = {
           format = "$albumartist - $album - $track $title";
