@@ -218,6 +218,19 @@ in {
         };
         plexsync = {
           use_llm_search = true;
+          playlists = {
+            defaults.maxtracks = 20;
+            items = [
+              {
+                id = "daily_discovery";
+                name = "80 daily discovery";
+              }
+              {
+                id = "forgotten_gems";
+                name = "90 forgotten gems";
+              }
+            ];
+          };
         };
         llm = {
           search = {
