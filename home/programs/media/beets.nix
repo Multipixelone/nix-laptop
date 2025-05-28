@@ -93,6 +93,7 @@ in {
           "plexsync"
           "replaygain"
           "scrub"
+          "smartplaylist"
           "tcp"
           "the"
         ];
@@ -293,6 +294,17 @@ in {
           "XIX"
           "XX"
         ];
+        smartplaylist = {
+          relative_to = config.programs.beets.settings.directory;
+          playlist_dir = config.home.sessionVariables.PLAYLIST_DIR;
+
+          playlists = [
+            {
+              name = "monthly_beets";
+              query = "plex_lastratedat:-2w.. plex_userrating:10";
+            }
+          ];
+        };
         # these album and item fields lovingly borrowed from http://github.com/trapd00r/configs
         album_fields = {
           disambig = ''
