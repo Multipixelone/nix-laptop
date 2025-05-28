@@ -55,6 +55,7 @@ in {
 
       ${lib.getExe config.programs.beets.package} -l /tmp/db -c "$config" fish --output "$out"
     '';
+  age.secrets."beets-plex".file = "${inputs.secrets}/media/plexbeets.age";
   programs = {
     fish.shellAbbrs = {
       bi = "beet import";
@@ -66,6 +67,7 @@ in {
       settings = {
         directory = music-dir;
         library = beets-library;
+        include = [config.age.secrets.beets-plex.path];
         plugins = [
           # "albumtypes"
           "alternatives"
