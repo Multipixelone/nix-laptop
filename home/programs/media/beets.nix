@@ -184,7 +184,7 @@ in {
         hook.hooks = [
           {
             event = "album_imported";
-            command = ''${lib.getExe' pkgs.coreutils "printf"} "\033[38;5;76m √\033[m \033[1m\033[m \033[38;5;30m{album}\033[m\n"'';
+            command = ''${lib.getExe' pkgs.coreutils "printf"} "\033[38;5;76m √\033[m \033[1m\033[m \033[38;5;30m{album.path}\033[m\n"'';
           }
           {
             event = "before_choose_candidate";
