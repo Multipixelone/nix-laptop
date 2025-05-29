@@ -455,7 +455,7 @@ in {
           # show my custom field if there is a re-release or tagged disambiguation
           disambig_rerelease = "%if{$disambig,($disambig) }";
         in {
-          "albumtype:soundtrack" = "OST/%if{$year,$year - }$album%aunique{albumtype albumdisambig year label catalognum releasegroupdisambig} %if{$albumdisambig,($albumdisambig)} - $first_artist [%upper{$format} %if{$bitdepth,\${bitdepth}B-}$samplerate]/%if{$multidisc,$disc-}%if{$track,$track - } $artist - $title";
+          "albumtype:soundtrack" = "OST/$album ${disambig_rerelease}${date}[$media_type$source]/${track_path}";
           default = "${first_artist}/$albumartist ${date}%if{$albumtype,($albumtype) }$album ${disambig_rerelease}[$media_type$source]/${track_path}";
           singleton = "$albumartist/Singles/$title";
           comp = "Various Artists/$album%aunique{}/%if{$track,$track - }$title";
