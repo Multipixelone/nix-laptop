@@ -135,7 +135,7 @@ in {
           move = true;
           write = true;
           resume = false;
-          log = "${download-dir}/import.log";
+          log = "${beets-dir}/logs/import.log";
         };
         match = {
           strong_rec_thresh = 0.1;
@@ -181,7 +181,45 @@ in {
         # albumtypes.types = [
         #   "ep: 'EP'"
         # ];
-        hook.hooks = [
+        hook.hooks = let
+          log-timestamp = pkgs.writeShellApplication {
+            name = "log-timestamp";
+            runtimeInputs = with pkgs; [
+              dateutils
+            ];
+            text = ''
+              export LOGDIR="${beets-dir}/logs"
+              export LOG="''${LOGDIR}/import_times.log"
+              DATE=$(date "+%Y/%m/%d at %H:%M:%S")
+              SECONDS=$(date +%s)
+
+              if tail -1 ''${LOG} | grep 'Import end' > /dev/null
+              then
+                # shellcheck disable=SC2059
+                printf "''${SECONDS} on ''${DATE} $*\n" >> ''${LOG}
+              else
+                if tail -1 ''${LOG} | grep '^# Import' > /dev/null
+                then
+                  # shellcheck disable=SC2059
+                  printf "''${SECONDS} on ''${DATE} $*\n" >> ''${LOG}
+                else
+                  PREVSECS=$(tail -1 ''${LOG} | awk ' { print $1 } ')
+                  if [ "''${PREVSECS}" ]
+                  then
+                    ELAPSECS=$(( SECONDS - PREVSECS ))
+                    # shellcheck disable=SC2016
+                    ELAPSED=$(eval "echo elapsed time: $(date -ud "@$ELAPSECS" +'$((%s/3600/24)) days %H hr %M min %S sec')")
+                    # shellcheck disable=SC2059
+                    printf "''${SECONDS} on ''${DATE} $* , ''${ELAPSED}\n" >> ''${LOG}
+                  else
+                    # shellcheck disable=SC2059
+                    printf "''${SECONDS} on ''${DATE} $*\n" >> ''${LOG}
+                  fi
+                fi
+              fi
+            '';
+          };
+        in [
           {
             event = "album_imported";
             command = ''${lib.getExe' pkgs.coreutils "printf"} "\033[38;5;76m √\033[m \033[1m\033[m \033[38;5;30m{album.path}\033[m\n"'';
@@ -189,6 +227,14 @@ in {
           {
             event = "before_choose_candidate";
             command = ''${lib.getExe pkgs.hr} ━'';
+          }
+          {
+            event = "import_begin";
+            command = "${lib.getExe log-timestamp} Import begin";
+          }
+          {
+            event = "import";
+            command = "${lib.getExe log-timestamp} Import end";
           }
         ];
         filetote = {
