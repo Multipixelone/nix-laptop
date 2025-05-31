@@ -44,13 +44,13 @@ in {
       }
       + "/plugin";
     # plugin to allow yt-dlp to get pot token
-    "yt-dlp/plugins/yt-dlp-get-pot".source = pkgs.fetchFromGitHub rec {
-      version = "0.3.0";
-      owner = "coletdjnz";
-      repo = "yt-dlp-get-pot";
-      tag = "v${version}";
-      hash = "sha256-MtQFXWJByo/gyftMtywCCfpf8JtldA2vQP8dnpLEl7U=";
-    };
+    # "yt-dlp/plugins/yt-dlp-get-pot".source = pkgs.fetchFromGitHub rec {
+    #   version = "0.3.0";
+    #   owner = "coletdjnz";
+    #   repo = "yt-dlp-get-pot";
+    #   tag = "v${version}";
+    #   hash = "sha256-MtQFXWJByo/gyftMtywCCfpf8JtldA2vQP8dnpLEl7U=";
+    # };
     "yt-dlp/plugins/yt-dlp-deno".source = pkgs.fetchFromGitHub {
       tag = "2024.12.06";
       owner = "bashonly";
