@@ -51,6 +51,7 @@ in {
     #   tag = "v${version}";
     #   hash = "sha256-MtQFXWJByo/gyftMtywCCfpf8JtldA2vQP8dnpLEl7U=";
     # };
+    # plugin to allow yt-dlp to solve with deno
     "yt-dlp/plugins/yt-dlp-deno".source = pkgs.fetchFromGitHub {
       tag = "2024.12.06";
       owner = "bashonly";
@@ -71,6 +72,7 @@ in {
   };
   home.packages = [
     spotdl-wrapped
+    # TODO add deno to yt-dlp override
     pkgs.deno
   ];
   programs = {
