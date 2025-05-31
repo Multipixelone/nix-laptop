@@ -5,7 +5,7 @@
   config,
   ...
 }: let
-  bgutil-ytdlp-pot-provider-version = "0.8.5";
+  bgutil-ytdlp-pot-provider-version = "1.0.0";
   # wrap cookies into spotdl
   spotdl-wrapped = let
     # use version of spotdl that accepts extractor-args for yt-dlp
@@ -21,7 +21,7 @@
     pkgs.writeShellScriptBin "spotdl" ''
       ${lib.getExe spotdl-args} \
       --cookie-file ${config.age.secrets."yt-dlp".path} \
-      --yt-dlp-args "extractor-args \"youtube:bypass_native_jsi;deno_no_jitless;player_client=web_music,default;getpot_bgutil_baseurl=http://127.0.0.1:4416\"" \
+      --yt-dlp-args "extractor-args \"youtube:bypass_native_jsi;deno_no_jitless;player_client=web_music,default\" extractor-args \"youtubepot-bgutilhttp:base_url=http://127.0.0.1:4116\"" \
       --output "{artist} - {album}/{track-number} {title}.{output-ext}" \
       --format opus \
       --bitrate disable \
@@ -40,7 +40,7 @@ in {
         owner = "Brainicism";
         repo = "bgutil-ytdlp-pot-provider";
         rev = "refs/tags/${bgutil-ytdlp-pot-provider-version}";
-        hash = "sha256-dRFGvBKHJxl4hIB5gBZGUyhwYZB/7KQ63DYTHzTAh4s=";
+        hash = "sha256-GH0tZ03cvOTOlkXIGo5W1TdlCdBPsc43P3MHsbJ3Tbo=";
       }
       + "/plugin";
     # plugin to allow yt-dlp to get pot token
