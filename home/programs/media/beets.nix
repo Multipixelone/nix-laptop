@@ -476,20 +476,16 @@ in {
           '';
         };
         aunique = {
-          keys = [
-            "albumartist"
-            "albumtype"
-            "year"
-            "album"
-          ];
-          disambiguators = [
-            "format"
-            "mastering"
-            "media"
-            "label"
-            "albumdisambig"
-            "releasegroupdisambig"
-          ];
+          keys = "albumartist
+            albumtype
+            year
+            album";
+          disambiguators = "format
+            mastering
+            media
+            label
+            albumdisambig
+            releasegroupdisambig";
         };
         paths = let
           # this lovely snippet pulls the first artist from the albumartists_sort field :-)
