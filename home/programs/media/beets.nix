@@ -512,7 +512,7 @@ in {
           "albumtype:soundtrack, genre:Soundtrack" = "OST/$album ${disambig_rerelease}${date}[$media_type$source]/${track_path}";
           default = "${first_artist}/$albumartist ${date}%if{$albumtype,($albumtype) }$album ${disambig_rerelease}[$media_type$source]/${track_path}";
           singleton = "$albumartist/Singles/$title";
-          comp = "Various Artists/$album%aunique{}/%if{$track,$track - }$title";
+          comp = "Various Artists/$album ${disambig_rerelease}${date}[$media_type$source]/${track_path}";
         };
         fetchart = {
           auto = true;
