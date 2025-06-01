@@ -153,7 +153,8 @@ in {
             original_year = false;
           };
           # don't show me anything with missing tracks
-          ignored = "missing_tracks unmatched_tracks";
+          # this makes beets not show what tracks an album is missing. ever. LOL
+          # ignored = "missing_tracks unmatched_tracks";
         };
         duplicates = {
           checksum = false;
