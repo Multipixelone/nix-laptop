@@ -43,6 +43,7 @@ in {
     inputs.khinsider.packages.${pkgs.system}.default
     playlist-download
     self.packages.${pkgs.system}.spotify2musicbrainz
+    self.packages.${pkgs.system}.bandcamp-dl
 
     (pkgs.writeShellApplication {
       name = "ipod-sync";
