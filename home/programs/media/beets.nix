@@ -488,6 +488,17 @@ in {
             albumdisambig
             releasegroupdisambig";
         };
+        ui.colors = {
+          # main UI colors
+          text_success = "green";
+          text_warning = "blue";
+          text_error = "red";
+          text_highlight = "blue";
+          text_highlight_minor = "lightgray";
+          action_default = "darkblue";
+          action = "purple";
+        };
+
         paths = let
           # this lovely snippet pulls the first artist from the albumartists_sort field :-)
           first_artist = "%tcp{%ifdef{albumartists_sort,%first{$albumartists_sort,1,0,\␀},$first_artist}}";
