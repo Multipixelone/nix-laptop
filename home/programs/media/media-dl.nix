@@ -72,13 +72,14 @@ in {
   };
   home.packages = [
     spotdl-wrapped
-    # TODO add deno to yt-dlp override
-    pkgs.deno
   ];
   programs = {
     aria2.enable = true;
     yt-dlp = {
       enable = true;
+      package = pkgs.yt-dlp.overrideAttrs (prev: {
+        propagatedBuildInputs = (prev.propagatedBuildInputs or []) ++ [pkgs.deno];
+      });
       settings = {
         embed-thumbnail = true;
         embed-metadata = true;
