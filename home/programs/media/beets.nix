@@ -448,6 +448,9 @@ in {
         item_fields = {
           multidisc = "1 if disctotal > 1 else 0";
           is_single = "1 if disctotal == 1 and tracktotal == 1 else 0";
+          disc_and_track = ''
+            f"{disc:02}-{track:02}" if disctotal > 1 else f"{track:02}"
+          '';
           # fallback first artist if no albumartists_sort field
           first_artist = ''
             # import an album to another artists directory, like:
@@ -505,7 +508,7 @@ in {
           # if no month and day just display year, otherwise display all three
           date = "%if{$original_year,($original_year%if{$original_month,.$original_month.$original_day}) ,) }";
           # ex. 01-01. Tyler, the Creator ft. Frank Ocean - Slater.wav
-          track_path = "%if{$multidisc,$disc-}%if{$track,$track}. $artist - $title";
+          track_path = "$disc_and_track. $artist - $title";
           # show my custom field if there is a re-release or tagged disambiguation
           disambig_rerelease = "%if{$disambig,($disambig) }";
         in {
