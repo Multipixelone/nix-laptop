@@ -5,7 +5,7 @@
   config,
   ...
 }: let
-  bgutil-ytdlp-pot-provider-version = "1.0.0";
+  bgutil-ytdlp-pot-provider-version = "1.1.0";
   # wrap cookies into spotdl
   spotdl-wrapped = let
     # use version of spotdl that accepts extractor-args for yt-dlp
@@ -40,7 +40,7 @@ in {
         owner = "Brainicism";
         repo = "bgutil-ytdlp-pot-provider";
         rev = "refs/tags/${bgutil-ytdlp-pot-provider-version}";
-        hash = "sha256-GH0tZ03cvOTOlkXIGo5W1TdlCdBPsc43P3MHsbJ3Tbo=";
+        hash = "sha256-gcDeLW0MF6Y4Qzaa2nn12lIeK6DB9gSBkBjqsnmdj/M=";
       }
       + "/plugin";
     # plugin to allow yt-dlp to get pot token
