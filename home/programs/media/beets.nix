@@ -520,10 +520,10 @@ in {
           text_success = "green";
           text_warning = "blue";
           text_error = "red";
-          text_highlight = "blue";
+          text_highlight = "purple";
           text_highlight_minor = "lightgray";
           action_default = "darkblue";
-          action = "purple";
+          action = "blue";
         };
 
         paths = let
