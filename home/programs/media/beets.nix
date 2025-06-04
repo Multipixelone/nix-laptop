@@ -165,6 +165,10 @@ in {
           deezer = true;
           tidal = true;
         };
+        lastgenre = {
+          force = true;
+          keep_existing = true;
+        };
         duplicates = {
           checksum = false;
           tiebreak = {
