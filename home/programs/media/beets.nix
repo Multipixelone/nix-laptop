@@ -94,6 +94,7 @@ in {
           "replaygain"
           "scrub"
           "smartplaylist"
+          "stylize"
           "tcp"
           "the"
         ];
@@ -506,6 +507,15 @@ in {
             releasegroupdisambig";
         };
         ui.colors = {
+          # Field colors for use in the item and album formats.
+          album = ["blue" "bold"];
+          albumartist = ["yellow" "bold"];
+          albumtypes = ["cyan"];
+          artist = ["yellow" "bold"];
+          id = ["faint"];
+          title = ["normal"];
+          track = ["green"];
+          year = ["magenta" "bold"];
           # main UI colors
           text_success = "green";
           text_warning = "blue";
