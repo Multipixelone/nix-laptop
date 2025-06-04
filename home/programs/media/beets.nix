@@ -345,6 +345,7 @@ in {
           "SOS"
           "DMC"
           "A$AP"
+          "MF"
           "OST"
           "PAL"
           "NTSC"
