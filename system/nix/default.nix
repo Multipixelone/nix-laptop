@@ -36,7 +36,8 @@
     settings = {
       trusted-users = ["@wheel" "root" "nix-ssh"];
       auto-optimise-store = true;
-      experimental-features = ["nix-command" "flakes"];
+      # lix < 2.93 requires repl-flake for nh
+      experimental-features = ["nix-command" "flakes" "repl-flake"];
       flake-registry = "/etc/nix/registry.json";
       netrc-file = config.age.secrets."attic".path;
     };
