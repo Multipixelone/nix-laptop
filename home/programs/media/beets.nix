@@ -554,7 +554,7 @@ in {
         format_item = "$format_item";
         paths = let
           # this lovely snippet pulls the first artist from the albumartists_sort field :-)
-          first_artist = "%tcp{%ifdef{albumartists_sort,%first{$albumartists_sort,1,0,\␀},$first_artist}}";
+          first_artist = "%the{%tcp{%ifdef{albumartists_sort,%first{$albumartists_sort,1,0,\␀},$first_artist}}}";
           # if no month and day just display year, otherwise display all three
           date = "%if{$original_year,($original_year%if{$original_month,.$original_month.$original_day}) ,) }";
           # ex. 01-01. Tyler, the Creator ft. Frank Ocean - Slater.wav
