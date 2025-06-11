@@ -14,7 +14,6 @@
     RESTIC_REPOSITORY = "rclone:onedrive:Backups/${osConfig.networking.hostName}";
     MOPIDY_PLAYLISTS = "/home/tunnel/.local/share/mopidy/m3u";
     IPOD_DIR = "/run/media/tunnel/FINNR_S IPO";
-    MUSIC_DIR = "/media/Data/Music";
     PLAYLIST_DIR = "/home/tunnel/Music/Playlists";
     WINEFSYNC = 1;
   };

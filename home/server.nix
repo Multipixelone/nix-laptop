@@ -11,4 +11,7 @@
     usbutils # lsusb
     devenv
   ];
+  home.sessionVariables = {
+    MUSIC_DIR = "/media/Data/Music";
+  };
 }
