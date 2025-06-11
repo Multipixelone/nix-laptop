@@ -1,6 +1,7 @@
 {inputs, ...}: {
   imports = [
     ./programs/terminal
+    ./programs/media
     ./programs/theming/default.nix
     ./modules/theme
     ./modules/media

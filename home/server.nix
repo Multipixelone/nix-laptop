@@ -13,5 +13,8 @@
   ];
   home.sessionVariables = {
     MUSIC_DIR = "/media/Data/Music";
+    MOPIDY_PLAYLISTS = "/home/tunnel/.local/share/mopidy/m3u";
+    IPOD_DIR = "/run/media/tunnel/FINNR_S IPO";
+    PLAYLIST_DIR = "/home/tunnel/Music/Playlists";
   };
 }
