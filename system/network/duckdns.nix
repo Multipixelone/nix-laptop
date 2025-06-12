@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  lib,
   ...
 }: {
   age.secrets = {
@@ -13,4 +14,6 @@
     # every three hrs
     onCalendar = "00/3:00";
   };
+  # don't wait for duckdns to reach graphical.target
+  systemd.services."duckdns-updater".wantedBy = lib.mkForce [];
 }
