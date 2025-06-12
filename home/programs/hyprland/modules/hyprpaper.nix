@@ -2,7 +2,7 @@
   pkgs,
   config,
   inputs,
-  lib,
+  # lib,
   ...
 }:
 # TODO I really need to write this in a better way, but my laptop hates swww for some reason...
@@ -54,7 +54,7 @@
 #     '';
 #   };
 {
-  systemd.user.services.hyprpaper.Unit.After = lib.mkForce "graphical-session.target";
+  # systemd.user.services.hyprpaper.Unit.After = lib.mkForce "graphical-session.target";
   services.hyprpaper = {
     enable = true;
     package = inputs.hyprpaper.packages.${pkgs.system}.default;
