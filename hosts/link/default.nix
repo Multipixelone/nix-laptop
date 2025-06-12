@@ -27,10 +27,9 @@
   environment.variables.NH_FLAKE = "/home/tunnel/Documents/Git/nix-laptop";
 
   # fan control
-  systemd = {
-    packages = with pkgs; [lact];
-    services.lactd.wantedBy = ["multi-user.target"];
-  };
+  hardware.amdgpu.overdrive.enable = true;
+  # FIXME service not starting for some reason?
+  # services.lact.enable = true;
 
   # console readability
   console = {
