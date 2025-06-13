@@ -24,6 +24,15 @@
     + fzf-config;
   # + pure-config;
 in {
+  # source other functions
+  xdg.configFile = {
+    "fish/functions" = {
+      source = lib.cleanSourceWith {
+        src = lib.cleanSource ./functions/.;
+      };
+      recursive = true;
+    };
+  };
   programs.fish = {
     enable = true;
     shellAbbrs = let
