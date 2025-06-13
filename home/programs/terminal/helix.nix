@@ -138,6 +138,10 @@ in {
           command = lib.getExe pkgs.ruff;
           args = ["server"];
         };
+        fish-lsp = {
+          command = lib.getExe pkgs.fish-lsp;
+          args = ["start"];
+        };
         texlab.config.texlab = {
           command = "texlab";
           chktex = {
@@ -174,6 +178,10 @@ in {
           language-servers = ["nixd" "gpt"];
           formatter.command = "alejandra";
           auto-format = true;
+        }
+        {
+          name = "fish";
+          language-servers = ["fish-lsp" "gpt"];
         }
         {
           name = "markdown";
