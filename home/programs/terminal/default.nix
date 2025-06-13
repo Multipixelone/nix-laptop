@@ -6,6 +6,7 @@
   imports = [
     ./btop.nix
     ./bat.nix
+    ./pager.nix
     ./fish
     ./yazi.nix
     ./rmpc.nix
