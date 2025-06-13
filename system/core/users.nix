@@ -4,7 +4,20 @@
     isNormalUser = true;
     home = "/home/tunnel";
     shell = pkgs.fish;
-    extraGroups = ["networkmanager" "wheel" "audio" "libvirtd" "plugdev" "dialout" "video" "kvm" "libvirt" "input" "gamemode"];
+    extraGroups = [
+      "audio"
+      "dialout"
+      "gamemode"
+      "i2c"
+      "input"
+      "kvm"
+      "libvirt"
+      "libvirtd"
+      "networkmanager"
+      "plugdev"
+      "video"
+      "wheel"
+    ];
     # required options for quadlet-nix
     linger = true; # start pods before user logs in
     autoSubUidGidRange = true;
