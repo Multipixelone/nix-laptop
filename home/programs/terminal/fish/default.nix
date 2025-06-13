@@ -119,45 +119,35 @@ in {
         end
       '';
     };
-    plugins = [
-      {
-        name = "fish-exa";
-        src = pkgs.fetchFromGitHub {
-          owner = "gazorby";
-          repo = "fish-exa";
-          rev = "92e5bcb762f7c08cc4484a2a09d6c176814ef35d";
-          sha256 = "sha256-kw4XrchvF4SNNoX/6HRw2WPvCxKamwuTVWdHg82Pqac=";
-        };
-      }
-      {
-        name = "puffer-fish";
-        src = pkgs.fetchFromGitHub {
-          owner = "nickeb96";
-          repo = "puffer-fish";
-          rev = "12d062eae0ad24f4ec20593be845ac30cd4b5923";
-          sha256 = "sha256-2niYj0NLfmVIQguuGTA7RrPIcorJEPkxhH6Dhcy+6Bk=";
-        };
-      }
-      {
-        name = "fzf-fish";
-        inherit (pkgs.fishPlugins.fzf-fish) src;
-      }
-      {
-        name = "done";
-        inherit (pkgs.fishPlugins.done) src;
-      }
-      {
-        name = "pisces";
-        inherit (pkgs.fishPlugins.pisces) src;
-      }
-      {
-        name = "grc";
-        inherit (pkgs.fishPlugins.grc) src;
-      }
-      # {
-      #   name = "pure";
-      #   src = pkgs.fishPlugins.pure.src;
-      # }
-    ];
+    plugins =
+      [
+        {
+          name = "fish-exa";
+          src = pkgs.fetchFromGitHub {
+            owner = "gazorby";
+            repo = "fish-exa";
+            rev = "92e5bcb762f7c08cc4484a2a09d6c176814ef35d";
+            sha256 = "sha256-kw4XrchvF4SNNoX/6HRw2WPvCxKamwuTVWdHg82Pqac=";
+          };
+        }
+        {
+          name = "puffer-fish";
+          src = pkgs.fetchFromGitHub {
+            owner = "nickeb96";
+            repo = "puffer-fish";
+            rev = "12d062eae0ad24f4ec20593be845ac30cd4b5923";
+            sha256 = "sha256-2niYj0NLfmVIQguuGTA7RrPIcorJEPkxhH6Dhcy+6Bk=";
+          };
+        }
+      ]
+      ++ (map (name: {
+          inherit name;
+          inherit (pkgs.fishPlugins.${name}) src;
+        }) [
+          "fzf-fish"
+          "done"
+          "pisces"
+          "grc"
+        ]);
   };
 }
