@@ -25,6 +25,7 @@
     kubectl
     flyctl
     unzip
+    zip
     p7zip
     ouch
   ];
