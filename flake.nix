@@ -187,6 +187,7 @@
     anyrun-nixos-options = {
       url = "github:n3oney/anyrun-nixos-options";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
     # hyprland wm
     hyprland.url = "github:hyprwm/hyprland";
