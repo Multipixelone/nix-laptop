@@ -83,7 +83,7 @@ in {
       enable = true;
       target = "graphical-session.target";
     };
-    package = pkgs.waybar.override {hyprland = osConfig.programs.hyprland.package;};
+    # package = pkgs.waybar.override {hyprland = osConfig.programs.hyprland.package;};
     style = ''
       * {
         font-family: "PragmataPro Liga", "Iosevka Nerd Font";
