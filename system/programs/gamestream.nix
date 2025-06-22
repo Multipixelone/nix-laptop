@@ -21,6 +21,76 @@
   #   image = pkgs.fetchurl {inherit url hash;};
   # in
   #   pkgs.runCommand "${lib.nameFromURL url "."}.png" {} ''${pkgs.imagemagick}/bin/convert ${image} -background none -gravity center -extent 600x800 $out'';
+  # implementation from https://github.com/TophC7/dot.nix/blob/724e87bb986f4e722490b0b739b8cbf57f1d5fcc/home/global/common/gaming/gamescope.nix
+  gamescope-env = ''
+    set -x CAP_SYS_NICE eip
+    # set -x DXVK_HDR 1
+    set -x ENABLE_GAMESCOPE_WSI 1
+    # set -x ENABLE_HDR_WSI 1
+    set -x AMD_VULKAN_ICD RADV
+    set -x RADV_PERFTEST aco
+    # set -x SDL_VIDEODRIVER wayland
+    set -x STEAM_FORCE_DESKTOPUI_SCALING 1
+    set -x STEAM_GAMEPADUI 1
+    set -x STEAM_GAMESCOPE_CLIENT 1
+  '';
+  gamescope-base-opts = [
+    "--fade-out-duration"
+    "200"
+    "--xwayland-count"
+    "2"
+    "-w"
+    "${toString "3840"}"
+    "-h"
+    "${toString "2160"}"
+    "-r"
+    "${toString "240"}"
+    "-f"
+    "--expose-wayland"
+    "--backend"
+    "wayland"
+    "--rt"
+    "--immediate-flips"
+  ];
+  gamescope-run = pkgs.writeScriptBin "gamescope-run" ''
+    #!${lib.getExe pkgs.fish}
+
+    # Session Environment
+    ${gamescope-env}
+
+    # Define and parse arguments using fish's built-in argparse
+    argparse -i 'x/extra-args=' -- $argv
+    if test $status -ne 0
+      exit 1
+    end
+
+    # The remaining arguments ($argv) are the command to be run
+    if test (count $argv) -eq 0
+      echo "Usage: gamescope-run [-x|--extra-args \"<options>\"] <command> [args...]"
+      echo ""
+      echo "Examples:"
+      echo "  gamescope-run heroic"
+      echo "  gamescope-run -x \"--fsr-upscaling-sharpness 5\" steam"
+      echo "  GAMESCOPE_EXTRA_OPTS=\"--fsr\" gamescope-run steam (legacy)"
+      exit 1
+    end
+
+    # Combine base args, extra args from CLI, and extra args from env (for legacy)
+    set -l final_args ${lib.escapeShellArgs gamescope-base-opts}
+
+    # Add args from -x/--extra-args flag, splitting the string into a list
+    if set -q _flag_extra_args
+      set -a final_args (string split ' ' -- $_flag_extra_args)
+    end
+
+    # For legacy support, add args from GAMESCOPE_EXTRA_OPTS if it exists
+    if set -q GAMESCOPE_EXTRA_OPTS
+      set -a final_args (string split ' ' -- $GAMESCOPE_EXTRA_OPTS)
+    end
+
+    # Execute gamescope with the final arguments and the command
+    exec ${lib.getExe pkgs.gamescope} $final_args -- $argv
+  '';
   # monitor prep command
   prep = let
     packages = [
@@ -80,6 +150,9 @@
     undo = "${sh} -c \"${lib.getExe kill-script}\"";
   };
 in {
+  environment.systemPackages = [
+    gamescope-run
+  ];
   # allow emulating ds5 controller
   boot.kernelModules = ["uhid"];
   services.sunshine = {
@@ -140,23 +213,8 @@ in {
         {
           name = "Steam (Big Picture)";
           cmd = let
-            steam-gamescope = pkgs.writeShellApplication {
-              name = "steam-gamescope";
-              runtimeInputs = [
-                pkgs.gamescope
-                config.programs.steam.package
-              ];
-              text = ''
-                gamescope \
-                --backend wayland \
-                --xwayland-count 2 \
-                --display-index 2 \
-                --fullscreen \
-                --steam -- \
-                steam -gamepadui -steamos3 -pipewire-dmabuf
-              '';
-            };
-          in "${hypr-dispatch} \"${lib.getExe steam-gamescope}\"";
+            steam-gamescope = ''${lib.getExe gamescope-run} -x "-e" ${lib.getExe pkgs.steam} -tenfoot -steamdeck -gamepadui'';
+          in ''${hypr-dispatch} "${steam-gamescope}"'';
           prep-cmd = [prep steam-kill];
           image-path = mk-icon {icon-name = "steamlink";};
         }
