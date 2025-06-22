@@ -11,6 +11,7 @@
     ./valhalla.nix
     ./ollama.nix
     ./printer.nix
+    ./snapclient.nix
   ];
 
   boot = {
