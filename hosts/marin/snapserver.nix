@@ -15,39 +15,94 @@ in {
   #     "configfile:${config.age.secrets.snapserver.path}"
   #   ];
   # };
-  services.pipewire = {
-    enable = true;
-    systemWide = true;
-    pulse.enable = true;
-  };
-  services.snapserver = {
-    enable = true;
-    openFirewall = true;
-    tcp.enable = true;
-    http = {
+  security.rtkit.enable = true;
+  services = {
+    pipewire = {
       enable = true;
-      listenAddress = "0.0.0.0";
-      docRoot = "${pkgs.snapcast}/share/snapserver/snapweb/";
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      socketActivation = false;
+      pulse.enable = true;
     };
-    streams = {
-      airplay = {
-        type = "airplay";
-        location = "${pkgs.shairport-sync}/bin/shairport-sync";
-        query = {
-          name = "AirPlay";
-          devicename = "Living Room Speakers";
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+      publish = {
+        enable = true;
+        userServices = true;
+      };
+    };
+    snapserver = {
+      enable = true;
+      openFirewall = true;
+      tcp.enable = true;
+      http = {
+        enable = true;
+        listenAddress = "0.0.0.0";
+        docRoot = pkgs.snapweb;
+      };
+      streams = {
+        airplay = {
+          type = "airplay";
+          location = "${pkgs.shairport-sync}/bin/shairport-sync";
+          query = {
+            name = "AirPlay";
+            devicename = "Living Room Speakers";
+          };
+        };
+        rain = {
+          type = "pipe";
+          location = rain-pipe;
         };
       };
-      rain = {
-        type = "pipe";
-        location = rain-pipe;
-      };
     };
+  };
+  networking.firewall = {
+    allowedUDPPorts = [
+      319
+      320
+      5353
+    ];
+    allowedUDPPortRanges = [
+      {
+        from = 32768;
+        to = 60999;
+      }
+      {
+        from = 6000;
+        to = 6009;
+      }
+    ];
+    allowedTCPPorts = [
+      3689
+      5000
+      5353
+      7000
+    ];
+    allowedTCPPortRanges = [
+      {
+        from = 32768;
+        to = 60999;
+      }
+    ];
   };
   systemd = {
     tmpfiles.rules = [
       "p+ ${rain-pipe} 666 root root - -"
     ];
+    user.services = {
+      wireplumber.wantedBy = ["default.target"];
+      snapclient = {
+        description = "SnapCast client";
+        after = ["snapserver.service" "pipewire.service"];
+        wants = ["pipewire.service"];
+        wantedBy = ["multi-user.target"];
+        serviceConfig = {
+          ExecStart = "${lib.getExe' pkgs.snapcast "snapclient"} --host 127.0.0.1 --player pulse";
+        };
+      };
+    };
     services = {
       ambience-rain = let
         rain-sound = pkgs.fetchurl {
@@ -73,21 +128,6 @@ in {
           ProtectKernelModules = true;
           RestrictAddressFamilies = "";
           RestrictNamespaces = true;
-        };
-      };
-      snapclient = {
-        description = "SnapCast client";
-        after = ["snapserver.service" "pulseaudio.service"];
-        wants = ["pulseaudio.service"];
-        wantedBy = ["multi-user.target"];
-        path = [pkgs.snapcast];
-        serviceConfig = {
-          Type = "forking";
-          ExecStart = "${lib.getExe' pkgs.snapcast "snapclient"} --host 127.0.0.1 --player pulse";
-          DynamicUser = true;
-          SupplementaryGroups = ["pipewire"];
-          RuntimeDirectory = "snapclient";
-          PIDFile = "/var/run/snapclient/pid";
         };
       };
     };
