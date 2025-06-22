@@ -29,7 +29,7 @@
       extraConfig = ''
         polkit.addRule(function(action, subject) {
             if (action.id == "org.freedesktop.systemd1.manage-units") {
-                if (action.lookup("unit") == "docker-slskd.service") {
+                if (action.lookup("unit") == "podman-slskd.service") {
                     var verb = action.lookup("verb");
                     if (verb == "start" || verb == "stop") {
                         return polkit.Result.YES;
