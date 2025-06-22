@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }: {
   imports = [
@@ -13,6 +14,7 @@
   ];
 
   boot = {
+    kernelPackages = lib.mkForce pkgs.linuxPackages_cachyos;
     initrd.kernelModules = ["amdgpu"];
     kernelModules = ["kvm-amd" "vfio-pci" "uinput"];
     kernelParams = [

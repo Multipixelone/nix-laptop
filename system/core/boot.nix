@@ -31,6 +31,6 @@
     ];
     # xanmod or zen
     # kernelPackages = pkgs.linuxPackages_xanmod_latest;
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
   };
 }
