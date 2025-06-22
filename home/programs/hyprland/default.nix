@@ -83,7 +83,10 @@ in {
       exec-once = [
         "uwsm finalize"
       ];
-      debug.disable_logs = true;
+      debug = {
+        disable_logs = true;
+        full_cm_proto = true; # needed for gamescope
+      };
       env = [
         "XDG_SCREENSHOTS_DIR,/home/tunnel/Pictures/Screenshots"
         "QT_QPA_PLATFORMTHEME,qt5ct"
