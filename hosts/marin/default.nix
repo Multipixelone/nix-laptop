@@ -17,7 +17,8 @@
 
   networking = {
     hostName = "marin";
-    useDHCP = false;
+    # useDHCP = false;
+    networkmanager.enable = true;
     nameservers = ["8.8.8.8" "1.1.1.1"];
     interfaces.enp3s0f0.ipv4.addresses = [
       {
@@ -25,6 +26,9 @@
         prefixLength = 24;
       }
     ];
-    defaultGateway = "192.168.7.1";
+    defaultGateway = {
+      address = "192.168.7.1";
+      interface = "enp3s0";
+    };
   };
 }
