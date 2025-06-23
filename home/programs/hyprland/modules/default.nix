@@ -6,7 +6,6 @@ _: {
     ./waybar.nix
     ./anyrun.nix
     ./gammastep.nix
-    ./battery.nix
     ./polkit.nix
     ./pyprland.nix
   ];
