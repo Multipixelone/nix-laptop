@@ -45,6 +45,7 @@ in {
       streams = {
         airplay = {
           type = "airplay";
+          # location = "${pkgs.shairport-sync-airplay2}/bin/shairport-sync";
           location = "${pkgs.shairport-sync}/bin/shairport-sync";
           query = {
             name = "AirPlay";
@@ -105,6 +106,16 @@ in {
       };
     };
     services = {
+      nqptp = {
+        description = "Network Precision Time Protocol for Shairport Sync";
+        wantedBy = ["multi-user.target"];
+        after = ["network.target"];
+        serviceConfig = {
+          ExecStart = "${pkgs.nqptp}/bin/nqptp";
+          Restart = "always";
+          RestartSec = "5s";
+        };
+      };
       ambience-rain = let
         rain-sound = pkgs.fetchurl {
           url = "https://media.rainymood.com/0.mp3";
