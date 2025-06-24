@@ -48,7 +48,7 @@ in {
           location = "${pkgs.shairport-sync}/bin/shairport-sync";
           query = {
             name = "AirPlay";
-            devicename = "Living Room Speakers";
+            devicename = "Speakers";
           };
         };
         rain = {
@@ -93,6 +93,7 @@ in {
     ];
     user.services = {
       wireplumber.wantedBy = ["default.target"];
+      pipewire-pulse.wantedBy = ["default.target"];
       snapclient = {
         description = "SnapCast client";
         after = ["snapserver.service" "pipewire.service"];
