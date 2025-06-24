@@ -15,6 +15,7 @@ in {
   #     "configfile:${config.age.secrets.snapserver.path}"
   #   ];
   # };
+  networking.firewall.enable = false;
   security.rtkit.enable = true;
   services = {
     pipewire = {
