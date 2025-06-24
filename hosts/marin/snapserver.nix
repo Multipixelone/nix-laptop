@@ -1,20 +1,13 @@
 {
-  # inputs,
+  inputs,
   pkgs,
   lib,
-  # config,
+  config,
   ...
 }: let
   rain-pipe = "/run/snapserver/rain";
 in {
-  # age.secrets = {
-  #   "snapserver".file = "${inputs.secrets}/media/snapserver.age";
-  # };
-  # systemd.services.snapserver.serviceConfig = {
-  #   LoadCredential = [
-  #     "configfile:${config.age.secrets.snapserver.path}"
-  #   ];
-  # };
+  age.secrets."snapserver".file = "${inputs.secrets}/media/spotify.age";
   networking.firewall.enable = false;
   security.rtkit.enable = true;
   services = {
@@ -44,6 +37,18 @@ in {
         docRoot = pkgs.snapweb;
       };
       streams = {
+        Spotify = {
+          type = "librespot";
+          location = "${pkgs.librespot}/bin/librespot";
+          query = {
+            devicename = "Speakers";
+            normalize = "true";
+            autoplay = "false";
+            cache = "/home/tunnel/.cache/librespot";
+            killall = "true";
+            params = "--cache-size-limit=4G";
+          };
+        };
         airplay = {
           type = "airplay";
           # location = "${pkgs.shairport-sync-airplay2}/bin/shairport-sync";
@@ -107,6 +112,7 @@ in {
       };
     };
     services = {
+      snapserver.serviceConfig.EnvironmentFile = [config.age.secrets.snapserver.path];
       nqptp = {
         description = "Network Precision Time Protocol for Shairport Sync";
         wantedBy = ["multi-user.target"];
