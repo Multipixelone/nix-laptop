@@ -126,10 +126,24 @@ in {
         inherit settings;
         extensions.packages = extensions;
         id = 0;
-        # search = {
-        #   default = "DuckDuckGo";
-        #   force = true;
-        # };
+        search = {
+          engines = {
+            unduck = {
+              name = "unduck";
+              urls = [
+                {
+                  template = "https://unduck.link?q={searchTerms}";
+                }
+              ];
+            };
+            bing.metaData.hidden = true;
+            amazon.metaData.hidden = true;
+            ebay.metaData.hidden = true;
+            wikipedia.metaData.hidden = true;
+          };
+          default = "unduck";
+          force = true;
+        };
         userChrome = ''
           #TabsToolbar {
           visibility: collapse;
