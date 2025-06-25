@@ -2,6 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ./snapserver.nix
+    ./plexamp.nix
   ];
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
