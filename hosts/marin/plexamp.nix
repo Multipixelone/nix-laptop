@@ -29,7 +29,8 @@
 in {
   virtualisation.oci-containers.containers.plexamp-headless = {
     autoStart = true;
-    image = plexamp-docker;
+    imageFile = plexamp-docker;
+    image = "plexamp:${tag}";
     ports = ["32400:32400/tcp"];
     volumes = [
       "/var/lib/plexamp:/config"
