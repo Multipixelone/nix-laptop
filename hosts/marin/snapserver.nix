@@ -105,7 +105,7 @@ in {
         description = "SnapCast client";
         after = ["snapserver.service" "pipewire.service" "pipewire-pulse.service"];
         wants = ["pipewire.service" "pipewire-pulse.service"];
-        wantedBy = ["multi-user.target"];
+        wantedBy = ["default.target"];
         serviceConfig = {
           ExecStart = "${lib.getExe' pkgs.snapcast "snapclient"} --host 127.0.0.1 --player pulse";
         };
