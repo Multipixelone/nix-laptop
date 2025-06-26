@@ -7,7 +7,7 @@
   kdePackages,
   procps,
   xorg,
-  steam,
+  # steam,
   lib,
   pins,
 }: let
@@ -34,13 +34,13 @@ in
       qtEnv
       xorg.libXrandr
       procps
-      steam
+      # steam
     ];
 
-    postPatch = ''
-      substituteInPlace src/lib/shared/appmetadata.cpp \
-          --replace-fail /usr/bin/steam ${lib.getExe steam};
-    '';
+    # postPatch = ''
+    #   substituteInPlace src/lib/shared/appmetadata.cpp \
+    #       --replace-fail /usr/bin/steam ${lib.getExe steam};
+    # '';
 
     # cmakeFlags = [
     #   "-DCMAKE_BUILD_TYPE:STRING=Release"
