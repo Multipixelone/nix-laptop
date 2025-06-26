@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  self,
   ...
 }: let
   sh = lib.getExe pkgs.bash;
@@ -218,13 +219,13 @@ in {
           prep-cmd = [prep steam-kill];
           image-path = mk-icon {icon-name = "steamlink";};
         }
-        # {
-        #   name = "MoonDeckStream";
-        #   cmd = "${moondeck}/bin/MoonDeckStream";
-        #   prep-cmd = [prep];
-        #   image-path = mk-icon {icon-name = "moonlight";};
-        #   auto-detatch = false;
-        # }
+        {
+          name = "MoonDeckStream";
+          cmd = "${self.packages.${pkgs.system}.moondeck}/bin/MoonDeckStream";
+          prep-cmd = [prep];
+          image-path = mk-icon {icon-name = "moonlight";};
+          auto-detatch = false;
+        }
       ];
     };
   };

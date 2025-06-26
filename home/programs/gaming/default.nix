@@ -23,7 +23,7 @@
 in {
   imports = [
     ./mangohud.nix
-    # ./moondeck.nix
+    ./moondeck.nix
   ];
   home.packages = with pkgs; [
     prismlauncher
