@@ -1,25 +1,28 @@
 {
   lib,
-  fetchFromGitHub,
   python3Packages,
+  buildPythonApplication,
+  pins,
+  unicode-slugify,
+  beautifulsoup4,
+  mutagen,
+  requests,
+  demjson3,
+  fetchPypi,
+  typing-extensions,
+  setuptools,
 }:
-python3Packages.buildPythonApplication rec {
+buildPythonApplication {
   pname = "bandcamp-dl";
-  version = "0.0.17";
+  inherit (pins.bandcamp-dl) version;
+  src = pins.bandcamp-dl;
   pyproject = true;
 
-  src = fetchFromGitHub {
-    owner = "iheanyi";
-    repo = pname;
-    tag = "v${version}";
-    hash = "sha256-PNyVEzwRMXE0AtTTg+JyWw6+FSuxobi3orXuxkG0kxw=";
-  };
-
-  propagatedBuildInputs = with python3Packages; [
+  propagatedBuildInputs = [
     # requires beautifulsoup > 4.13
     (beautifulsoup4.overrideAttrs (old: {
       version = "4.13.4";
-      src = pkgs.fetchPypi {
+      src = fetchPypi {
         version = "4.13.4";
         pname = "beautifulsoup4";
         hash = "sha256-27PE4c6uau/r2vJCMkcmDNBiQwpBDjjGbyuqUKhDcZU=";
@@ -34,7 +37,7 @@ python3Packages.buildPythonApplication rec {
   ];
 
   build-system = [
-    python3Packages.setuptools
+    setuptools
   ];
 
   nativeBuildInputs = [

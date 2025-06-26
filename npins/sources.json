@@ -1,5 +1,21 @@
 {
   "pins": {
+    "bandcamp-dl": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "iheanyi",
+        "repo": "bandcamp-dl"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v0.0.17",
+      "revision": "d7b4c4d6e7bfe365ee36514d6c608caf883e4476",
+      "url": "https://api.github.com/repos/iheanyi/bandcamp-dl/tarball/v0.0.17",
+      "hash": "074kni0wdvmmlavvi8di5cavw3jvfbi87lyl08s72c8i7h9rbp1w"
+    },
     "nixpkgs": {
       "type": "Channel",
       "name": "nixpkgs-unstable",
