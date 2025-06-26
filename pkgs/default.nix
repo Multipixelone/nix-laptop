@@ -2,9 +2,13 @@
   systems = ["x86_64-linux"];
 
   perSystem = {pkgs, ...}: {
-    packages = {
+    packages = let
+      pins = import ../npins;
+      args = {inherit pins;};
+    in {
       pragmata = pkgs.callPackage ./pragmata {};
       # moondeck = pkgs.qt6.callPackage ./moondeck {};
+      slskd-stats = pkgs.python3Packages.callPackage ./slskd-stats args;
       spotify2musicbrainz = pkgs.callPackage ./spotify2musicbrainz {};
       bandcamp-dl = pkgs.callPackage ./bandcamp-dl {};
       izotope = pkgs.callPackage ./izotope {};
