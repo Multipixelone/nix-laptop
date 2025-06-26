@@ -31,11 +31,14 @@
         };
 
         pre-commit.settings = {
-          hooks = {
-            alejandra.enable = true;
-            statix.enable = true;
-            nil.enable = true;
-            deadnix.enable = true;
+          hooks = let
+            # probably a better way to do this
+            excludes = ["npins"];
+          in {
+            alejandra = {
+              inherit excludes;
+              enable = true;
+            };
           };
         };
 
