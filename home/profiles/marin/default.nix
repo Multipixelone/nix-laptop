@@ -7,6 +7,7 @@
     };
     containerConfig = {
       image = "ghcr.io/multipixelone/plexamp:amd64";
+      pull = "newer";
       volumes = [
         "/srv/plexamp:/root/.local/share/Plexamp/Settings"
         "/run/user/1000/pipewire-0:/tmp/pipewire-0"
