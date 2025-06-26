@@ -16,6 +16,22 @@
       "url": "https://api.github.com/repos/iheanyi/bandcamp-dl/tarball/v0.0.17",
       "hash": "074kni0wdvmmlavvi8di5cavw3jvfbi87lyl08s72c8i7h9rbp1w"
     },
+    "moondeck-buddy": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "FrogTheFrog",
+        "repo": "moondeck-buddy"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": true,
+      "version": "v1.9.0",
+      "revision": "a24f86577d1804d442346d62373be33126f6ef5f",
+      "url": null,
+      "hash": "1d3cfvf6h3finvcim1mva6h2gljs41a4f24r71jjcj7v90jb875p"
+    },
     "nixpkgs": {
       "type": "Channel",
       "name": "nixpkgs-unstable",

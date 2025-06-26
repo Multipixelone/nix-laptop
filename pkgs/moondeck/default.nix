@@ -1,56 +1,57 @@
 {
   stdenv,
-  fetchFromGitHub,
   cmake,
   ninja,
   wrapQtAppsHook,
   qt6,
+  kdePackages,
   procps,
-  libXrandr,
-  xcb-util-cursor,
-  fuse,
+  xorg,
   steam,
   lib,
-}:
-stdenv.mkDerivation rec {
-  pname = "moondeck-buddy";
-  version = "1.6.2";
+  pins,
+}: let
+  inherit (kdePackages) qtbase wrapQtAppsHook;
+  qtEnv = with qt6;
+    env "qt-env-custom-${qtbase.version}" [
+      qthttpserver
+      qtwebsockets
+    ];
+in
+  stdenv.mkDerivation {
+    pname = "moondeck-buddy";
+    inherit (pins.moondeck-buddy) version;
+    src = pins.moondeck-buddy;
 
-  src = fetchFromGitHub {
-    repo = "moondeck-buddy";
-    owner = "FrogTheFrog";
-    rev = "v${version}";
-    sha256 = "sha256-evFai6gdL8doIEGEpBUQDFlAWBwg2V3Yax2ELl2KBg0=";
-    fetchSubmodules = true;
-  };
+    nativeBuildInputs = [
+      ninja
+      cmake
+      wrapQtAppsHook
+    ];
 
-  nativeBuildInputs = [
-    ninja
-    cmake
-    wrapQtAppsHook
-  ];
+    buildInputs = [
+      qtbase
+      qtEnv
+      xorg.libXrandr
+      procps
+      steam
+    ];
 
-  buildInputs = [
-    qt6.qtbase
-    qt6.qtwayland
-    qt6.qtwebsockets
-    qt6.qthttpserver
-    fuse
-    xcb-util-cursor
-    libXrandr
-    procps
-    steam
-  ];
+    postPatch = ''
+      substituteInPlace src/lib/shared/appmetadata.cpp \
+          --replace-fail /usr/bin/steam ${lib.getExe steam};
+    '';
 
-  postPatch = ''
-    substituteInPlace src/lib/os/linux/steamregistryobserver.cpp \
-        --replace-fail /usr/bin/steam ${lib.getExe steam};
-  '';
+    # cmakeFlags = [
+    #   "-DCMAKE_BUILD_TYPE:STRING=Release"
+    #   "-G Ninja"
+    # ];
 
-  cmakeFlags = [
-    "-DCMAKE_BUILD_TYPE:STRING=Release"
-    "-G Ninja"
-  ];
-
-  enableParallelBuilding = true;
-}
+    meta = {
+      mainProgram = "MoonDeckBuddy";
+      description = "Helper to work with moonlight on a steamdeck";
+      homepage = "https://github.com/FrogTheFrog/moondeck-buddy";
+      license = lib.licenses.lgpl3Only;
+      platforms = lib.platforms.linux;
+    };
+  }
