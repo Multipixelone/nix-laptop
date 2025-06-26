@@ -21,6 +21,7 @@
             pkgs.alejandra
             pkgs.just
             pkgs.attic-client
+            pkgs.npins
             inputs.agenix.packages.${pkgs.system}.default
           ];
           name = "dots";
