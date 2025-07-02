@@ -27,6 +27,7 @@
     podman = {
       enable = true;
       dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true;
     };
     # FIX figure out why rootless podman isn't working. Replace with docker for now
     # docker = {
