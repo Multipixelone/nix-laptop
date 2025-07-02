@@ -30,7 +30,7 @@ in {
   };
   age.secrets = {
     "cf" = {
-      file = "${inputs.secrets}/cloudflare/link.age";
+      file = "${inputs.secrets}/cloudflare/${config.networking.hostName}.age";
       mode = "440";
       owner = "cloudflared";
       group = "cloudflared";

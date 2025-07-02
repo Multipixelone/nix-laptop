@@ -85,6 +85,7 @@
           "${mod}/services/minecraft-server.nix"
 
           "${mod}/programs/home-manager.nix"
+          "${mod}/network/cloudflared.nix"
           {
             home-manager = {
               users.tunnel.imports = homeImports."tunnel@marin";
