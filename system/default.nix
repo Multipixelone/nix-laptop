@@ -4,6 +4,7 @@ let
     ./core/boot.nix
 
     ./programs/theme.nix
+    ./programs/virt.nix
 
     ./network
     ./network/tailscale.nix
@@ -19,7 +20,6 @@ let
       ./programs/nix-ld.nix
       ./programs/obsidian.nix
       ./programs/xdg.nix
-      ./programs/virt.nix
       ./programs/zoom.nix
       ./programs/psd.nix
 
