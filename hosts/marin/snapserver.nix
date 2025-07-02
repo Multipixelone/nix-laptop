@@ -46,7 +46,7 @@ in {
             autoplay = "false";
             cache = "/home/tunnel/.cache/librespot";
             killall = "true";
-            params = "--cache-size-limit=4G";
+            params = "--cache-size-limit=4G -b 320";
           };
         };
         airplay = {
