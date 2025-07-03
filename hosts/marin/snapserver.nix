@@ -2,12 +2,14 @@
   inputs,
   pkgs,
   lib,
-  config,
   ...
 }: let
   rain-pipe = "/run/snapserver/rain";
 in {
-  age.secrets."snapserver".file = "${inputs.secrets}/media/spotify.age";
+  age.secrets."librespot" = {
+    file = "${inputs.secrets}/media/spotify.age";
+    path = "/var/cache/snapserver/credentials.json";
+  };
   networking.firewall.enable = false;
   security.rtkit.enable = true;
   services = {
@@ -44,24 +46,25 @@ in {
             devicename = "Speakers";
             normalize = "true";
             autoplay = "false";
-            cache = "/home/tunnel/.cache/librespot";
+            # cache = "/home/tunnel/.cache/librespot";
+            cache = "/var/cache/snapserver";
             killall = "true";
-            params = "--cache-size-limit=4G -b 320";
+            params = "--cache-size-limit=4G --enable-oauth -b 320";
           };
         };
-        airplay = {
-          type = "airplay";
-          # location = "${pkgs.shairport-sync-airplay2}/bin/shairport-sync";
-          location = "${pkgs.shairport-sync}/bin/shairport-sync";
-          query = {
-            name = "AirPlay";
-            devicename = "Speakers";
-          };
-        };
-        rain = {
-          type = "pipe";
-          location = rain-pipe;
-        };
+        # airplay = {
+        #   type = "airplay";
+        #   # location = "${pkgs.shairport-sync-airplay2}/bin/shairport-sync";
+        #   location = "${pkgs.shairport-sync}/bin/shairport-sync";
+        #   query = {
+        #     name = "AirPlay";
+        #     devicename = "Speakers";
+        #   };
+        # };
+        # rain = {
+        #   type = "pipe";
+        #   location = rain-pipe;
+        # };
       };
     };
   };
@@ -120,7 +123,8 @@ in {
       };
     };
     services = {
-      snapserver.serviceConfig.EnvironmentFile = [config.age.secrets.snapserver.path];
+      # snapserver.serviceConfig.EnvironmentFile = [config.age.secrets.snapserver.path];
+      snapserver.serviceConfig.CacheDirectory = ["snapserver"];
       nqptp = {
         description = "Network Precision Time Protocol for Shairport Sync";
         wantedBy = ["multi-user.target"];
