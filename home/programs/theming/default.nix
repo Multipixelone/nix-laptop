@@ -53,9 +53,9 @@
   };
   qt = {
     enable = true;
-    platformTheme.name = "kvantum";
+    platformTheme.name = lib.mkForce "kvantum";
     style = {
-      name = "kvantum";
+      name = lib.mkForce "kvantum";
     };
   };
   home.packages = with pkgs; [
