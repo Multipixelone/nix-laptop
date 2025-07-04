@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ./snapserver.nix
@@ -11,6 +15,8 @@
   environment.variables.NH_FLAKE = "/home/tunnel/nix-laptop";
 
   boot = {
+    # use kernel <6.15 while waiting for https://github.com/NixOS/nixpkgs/pull/421163 to be merged
+    kernelPackages = pkgs.linuxPackages_xanmod;
     loader = {
       grub.enable = false;
       systemd-boot.enable = true;
