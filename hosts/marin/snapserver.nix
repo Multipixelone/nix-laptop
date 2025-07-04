@@ -5,6 +5,16 @@
   ...
 }: let
   rain-pipe = "/run/snapserver/rain";
+  librespot = pkgs.librespot.overrideAttrs rec {
+    rev = "80c27ec476666b40aba98327b3ba52d620dd6d06";
+    cargoHash = "";
+    src = pkgs.fetchFromGitHub {
+      inherit rev;
+      owner = "librespot-org";
+      repo = "librespot";
+      hash = "sha256-thA8C5+aynRq3CfF5947wmkrVZGZGctcnL718q3NYYg=";
+    };
+  };
 in {
   age.secrets."librespot" = {
     file = "${inputs.secrets}/media/spotify.age";
