@@ -41,7 +41,7 @@ in {
   };
   environment.systemPackages = [
     inputs.khinsider.packages.${pkgs.system}.default
-    inputs.qtscrob.packages.${pkgs.system}.default
+    # inputs.qtscrob.packages.${pkgs.system}.default
     playlist-download
     self.packages.${pkgs.system}.bandcamp-dl
 
