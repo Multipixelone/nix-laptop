@@ -9,9 +9,18 @@ in {
   age.secrets."librespot" = {
     file = "${inputs.secrets}/media/spotify.age";
     path = "/var/cache/snapserver/credentials.json";
+    mode = "440";
+    owner = "snapserver";
+    group = "snapserver";
   };
   networking.firewall.enable = false;
   security.rtkit.enable = true;
+  # user to run snapserver as
+  users.users.snapserver = {
+    group = "snapserver";
+    isSystemUser = true;
+  };
+  users.groups.snapserver = {};
   services = {
     pipewire = {
       enable = true;
@@ -41,7 +50,7 @@ in {
       streams = {
         Spotify = {
           type = "librespot";
-          location = "${pkgs.librespot}/bin/librespot";
+          location = "${librespot}/bin/librespot";
           query = {
             devicename = "Speakers";
             normalize = "true";
@@ -124,7 +133,12 @@ in {
     };
     services = {
       # snapserver.serviceConfig.EnvironmentFile = [config.age.secrets.snapserver.path];
-      snapserver.serviceConfig.CacheDirectory = ["snapserver"];
+      snapserver.serviceConfig = {
+        CacheDirectory = ["snapserver"];
+        DynamicUser = lib.mkForce false;
+        User = "snapserver";
+        Group = "snapserver";
+      };
       nqptp = {
         description = "Network Precision Time Protocol for Shairport Sync";
         wantedBy = ["multi-user.target"];
