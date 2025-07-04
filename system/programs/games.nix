@@ -40,7 +40,7 @@
   environment.systemPackages = [
     inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
     inputs.nix-gaming.packages.${pkgs.system}.winetricks-git
-    inputs.humble-key.packages.${pkgs.system}.default
+    # inputs.humble-key.packages.${pkgs.system}.default
   ];
   systemd.tmpfiles.rules = [
     # https://wiki.archlinux.org/title/Gaming#Make_the_changes_permanent

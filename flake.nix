@@ -131,11 +131,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
-    humble-key = {
-      url = "github:Multipixelone/humble-steam-key-redeemer/nix-build";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
+    # humble-key = {
+    #   url = "github:Multipixelone/humble-steam-key-redeemer/nix-build";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.flake-utils.follows = "flake-utils";
+    # };
     qtscrob = {
       url = "github:Multipixelone/QtScrobbler/nix-build";
       inputs.nixpkgs.follows = "nixpkgs";

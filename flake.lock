@@ -841,30 +841,6 @@
         "type": "github"
       }
     },
-    "humble-key": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1730917066,
-        "narHash": "sha256-zu2wEEDfKHWgwyU1nBehIMtc6+qUPnKIdwNzBD52LvI=",
-        "owner": "Multipixelone",
-        "repo": "humble-steam-key-redeemer",
-        "rev": "aa320776e65ff0f1144997ca30dde18aed8cf135",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Multipixelone",
-        "ref": "nix-build",
-        "repo": "humble-steam-key-redeemer",
-        "type": "github"
-      }
-    },
     "hypr-binds": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -2062,7 +2038,6 @@
         "flake-utils": "flake-utils",
         "helix": "helix",
         "home-manager": "home-manager_2",
-        "humble-key": "humble-key",
         "hypr-binds": "hypr-binds",
         "hypridle": "hypridle",
         "hyprland": "hyprland",
