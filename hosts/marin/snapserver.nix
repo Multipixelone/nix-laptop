@@ -7,7 +7,10 @@
   rain-pipe = "/run/snapserver/rain";
   librespot = pkgs.librespot.overrideAttrs rec {
     rev = "80c27ec476666b40aba98327b3ba52d620dd6d06";
-    cargoHash = "";
+    cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
+      inherit src;
+      hash = "sha256-Lujz2revTAok9B0hzdl8NVQ5XMRY9ACJzoQHIkIgKMg=";
+    };
     src = pkgs.fetchFromGitHub {
       inherit rev;
       owner = "librespot-org";
