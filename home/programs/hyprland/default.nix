@@ -26,8 +26,8 @@ in {
     mako = {
       enable = true;
       settings = {
-        border-color = lib.mkForce "#${config.lib.stylix.colors.base0E}";
-        background-color = lib.mkForce "#${config.lib.stylix.colors.base00}";
+        # border-color = lib.mkForce "#${config.lib.stylix.colors.base0E}";
+        # background-color = lib.mkForce "#${config.lib.stylix.colors.base00}";
         border-radius = 6;
         border-size = 2;
         ignore-timeout = true;

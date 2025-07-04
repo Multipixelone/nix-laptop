@@ -8,8 +8,8 @@
   mutagen,
   requests,
   demjson3,
-  fetchPypi,
-  typing-extensions,
+  # fetchPypi,
+  # typing-extensions,
   setuptools,
 }:
 buildPythonApplication {
@@ -20,16 +20,17 @@ buildPythonApplication {
 
   propagatedBuildInputs = [
     # requires beautifulsoup > 4.13
-    (beautifulsoup4.overrideAttrs (old: {
-      version = "4.13.4";
-      src = fetchPypi {
-        version = "4.13.4";
-        pname = "beautifulsoup4";
-        hash = "sha256-27PE4c6uau/r2vJCMkcmDNBiQwpBDjjGbyuqUKhDcZU=";
-      };
-      patches = [];
-      propagatedBuildInputs = old.propagatedBuildInputs ++ [typing-extensions];
-    }))
+    # (beautifulsoup4.overrideAttrs (old: {
+    #   version = "4.13.4";
+    #   src = fetchPypi {
+    #     version = "4.13.4";
+    #     pname = "beautifulsoup4";
+    #     hash = "sha256-27PE4c6uau/r2vJCMkcmDNBiQwpBDjjGbyuqUKhDcZU=";
+    #   };
+    #   patches = [];
+    #   propagatedBuildInputs = old.propagatedBuildInputs ++ [typing-extensions];
+    # }))
+    beautifulsoup4
     unicode-slugify
     mutagen
     requests
