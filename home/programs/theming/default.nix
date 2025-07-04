@@ -13,11 +13,21 @@
     flavor = "mocha";
     accent = "mauve";
   };
-  stylix.targets = {
+  stylix.targets = lib.mkForce {
     waybar.enable = false;
     hyprpaper.enable = false;
+    hyprland.enable = false;
+    hyprlock.enable = false;
     kde.enable = false;
     gtk.enable = false;
+    mako.enable = false;
+    spicetify.enable = false;
+    fzf.enable = false;
+    bat.enable = false;
+    btop.enable = false;
+    helix.enable = false;
+    starship.enable = false;
+    yazi.enable = false;
   };
   gtk = {
     enable = true;
