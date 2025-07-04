@@ -9,6 +9,9 @@
     image = "f0rc3/barcodebuddy:latest";
     ports = ["7575:80"];
     environment.Grocy__BaseUrl = "localhost";
+    volumes = [
+      "barcode-buddy:/config"
+    ];
     environmentFiles = [
       config.age.secrets."grocy".path
     ];
