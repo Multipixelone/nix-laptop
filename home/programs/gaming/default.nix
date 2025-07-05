@@ -30,16 +30,7 @@ in {
     amdgpu_top
     vulkan-tools
     vulkan-loader
-    # use Furglitch fork
-    (inputs.nix-gaming.packages.${pkgs.system}.mo2installer.overrideAttrs rec {
-      version = "5.1.5";
-      src = pkgs.fetchFromGitHub {
-        owner = "Furglitch";
-        repo = "modorganizer2-linux-installer";
-        rev = "refs/tags/${version}";
-        hash = "sha256-cU3K+3II6i2CN+15bPUnhQkkg/uCa6njg4WH8arARvE=";
-      };
-    })
+    mo2installer
     umu
     protontricks
     zenity

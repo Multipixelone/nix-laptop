@@ -29,6 +29,22 @@
       "url": "https://api.github.com/repos/iheanyi/bandcamp-dl/tarball/v0.0.17",
       "hash": "074kni0wdvmmlavvi8di5cavw3jvfbi87lyl08s72c8i7h9rbp1w"
     },
+    "modorganizer2-linux-installer": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "furglitch",
+        "repo": "modorganizer2-linux-installer"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "5.1.6",
+      "revision": "bac3b882bd5a3637de2d85af07e45c4837e289b0",
+      "url": "https://api.github.com/repos/furglitch/modorganizer2-linux-installer/tarball/5.1.6",
+      "hash": "10c7blzk5d3xmixdg00vlxym7i1llrisxg3y3mdyxdvpq77p4a7x"
+    },
     "moondeck-buddy": {
       "type": "GitRelease",
       "repository": {
