@@ -8,6 +8,7 @@
   imports = [
     ./nh.nix
     ./substituters.nix
+    ./overlays.nix
   ];
   nixpkgs.config = {
     allowUnfree = true;

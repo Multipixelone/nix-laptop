@@ -53,6 +53,22 @@
       "revision": "78479d9f41c4cc21a9d0b260c83eeb973d361334",
       "url": "https://api.github.com/repos/Arairon/slskd-stats/tarball/v0.1.0",
       "hash": "0avqxy739hjf82d7jsj6cx0vy971ja3vznggzgdj15qz50qfrpzz"
+    },
+    "sunshine": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "LizardByte",
+        "repo": "sunshine"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": true,
+      "version": "v2025.702.221443",
+      "revision": "5a401908309ba8d5d3403919e509ea8c19063ebd",
+      "url": null,
+      "hash": "0gra14h7yk7i7jg52lavl2xbsrk41lmmxxrbr0ncz2r2m2kn7n3r"
     }
   },
   "version": 5
