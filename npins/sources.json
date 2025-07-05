@@ -9,9 +9,9 @@
       },
       "branch": "master",
       "submodules": true,
-      "revision": "ce3eac9d8a8f8a2fa03bb9d93249e2a780ce42d2",
+      "revision": "c0c772b11b2aea0be1166ba1ae821735e8a655e9",
       "url": null,
-      "hash": "0q3jdmm0m4j6cg03ds2f1yp5rl9jg7lky28c3addzg9mn0n0a624"
+      "hash": "1ch9cml4rxmj2zyy73c2amv8g8q3499r131mi5wijp1njl0l6z1f"
     },
     "bandcamp-dl": {
       "type": "GitRelease",
@@ -64,8 +64,8 @@
     "nixpkgs": {
       "type": "Channel",
       "name": "nixpkgs-unstable",
-      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-25.11pre821324.61c0f5139114/nixexprs.tar.xz",
-      "hash": "0iqqnyrnrf1avr92b8v2npdd7ckm67qqqabdd825rvfhh7wcxv4g"
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-25.11pre824823.c860cf0b3a08/nixexprs.tar.xz",
+      "hash": "1aj58xqv0km9zm9ldz72pwsisifvybp2h9qb0mwx98468v2qar73"
     },
     "slskd-stats": {
       "type": "GitRelease",
