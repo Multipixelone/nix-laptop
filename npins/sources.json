@@ -1,5 +1,18 @@
 {
   "pins": {
+    "OpenRGB": {
+      "type": "Git",
+      "repository": {
+        "type": "GitLab",
+        "repo_path": "CalcProgrammer1/OpenRGB",
+        "server": "https://gitlab.com/"
+      },
+      "branch": "master",
+      "submodules": true,
+      "revision": "ce3eac9d8a8f8a2fa03bb9d93249e2a780ce42d2",
+      "url": null,
+      "hash": "0q3jdmm0m4j6cg03ds2f1yp5rl9jg7lky28c3addzg9mn0n0a624"
+    },
     "bandcamp-dl": {
       "type": "GitRelease",
       "repository": {

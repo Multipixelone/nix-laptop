@@ -3,6 +3,17 @@
     pins = import ../../npins;
   in [
     (self: super: {
+      openrgb = super.openrgb.overrideAttrs {
+        version = pins.OpenRGB.revision;
+        src = pins.OpenRGB;
+        postPatch = ''
+          patchShebangs scripts/build-udev-rules.sh
+          substituteInPlace scripts/build-udev-rules.sh \
+            --replace-fail "/usr/bin/env chmod" "${self.coreutils}/bin/chmod"
+        '';
+      };
+    })
+    (self: super: {
       # temporary until there's a new release that contains https://github.com/LizardByte/Sunshine/pull/3783
       sunshine = super.sunshine.overrideAttrs {
         inherit (pins.sunshine) version;
