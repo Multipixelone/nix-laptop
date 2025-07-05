@@ -29,6 +29,22 @@
       "url": "https://api.github.com/repos/iheanyi/bandcamp-dl/tarball/v0.0.17",
       "hash": "074kni0wdvmmlavvi8di5cavw3jvfbi87lyl08s72c8i7h9rbp1w"
     },
+    "bgutil-ytdlp-pot-provider": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "Brainicism",
+        "repo": "bgutil-ytdlp-pot-provider"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "1.1.0",
+      "revision": "3c6d642d61df2499bfbe2f4d43d7778ad1cc883c",
+      "url": "https://api.github.com/repos/Brainicism/bgutil-ytdlp-pot-provider/tarball/1.1.0",
+      "hash": "1wwgkmwv5shqj20h9xn1l0miwlnsymwxm6in8cwac5qcdlnxxh41"
+    },
     "modorganizer2-linux-installer": {
       "type": "GitRelease",
       "repository": {

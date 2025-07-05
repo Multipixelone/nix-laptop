@@ -5,7 +5,7 @@
   config,
   ...
 }: let
-  bgutil-ytdlp-pot-provider-version = "1.1.0";
+  pins = import ../../../npins;
   # wrap cookies into spotdl
   spotdl-wrapped = let
     # use version of spotdl that accepts extractor-args for yt-dlp
@@ -36,12 +36,7 @@ in {
   xdg.configFile = {
     # plugin to connect to docker container
     "yt-dlp/plugins/bgutil-ytdlp-pot-provider".source =
-      pkgs.fetchFromGitHub {
-        owner = "Brainicism";
-        repo = "bgutil-ytdlp-pot-provider";
-        rev = "refs/tags/${bgutil-ytdlp-pot-provider-version}";
-        hash = "sha256-gcDeLW0MF6Y4Qzaa2nn12lIeK6DB9gSBkBjqsnmdj/M=";
-      }
+      pins.bgutil-ytdlp-pot-provider
       + "/plugin";
     # plugin to allow yt-dlp to get pot token
     # "yt-dlp/plugins/yt-dlp-get-pot".source = pkgs.fetchFromGitHub rec {
@@ -66,7 +61,7 @@ in {
       Restart = "always";
     };
     containerConfig = {
-      image = "brainicism/bgutil-ytdlp-pot-provider:${bgutil-ytdlp-pot-provider-version}";
+      image = "brainicism/bgutil-ytdlp-pot-provider:${pins.bgutil-ytdlp-pot-provider.version}";
       publishPorts = ["127.0.0.1:4416:4416"];
     };
   };
