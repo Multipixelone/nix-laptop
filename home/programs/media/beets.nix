@@ -179,8 +179,9 @@ in {
         };
         alternatives.ipod = {
           directory = transcoded-music;
-          formats = "opus mp3 m4a";
-          query = "onipod:true";
+          formats = "opus";
+          query = "";
+          removable = false;
         };
         convert = {
           auto = false;
