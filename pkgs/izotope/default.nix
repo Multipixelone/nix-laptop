@@ -6,7 +6,7 @@
   winetricks,
   wine,
   wineFlags ? "",
-  pname ? "izotope-rx-10",
+  pname ? "izotope-rx-11",
   location ? "$HOME/.wine",
   wineDllOverrides ? ["powershell.exe=n"],
   preCommands ? "",
@@ -36,8 +36,8 @@
 
     PATH=${lib.makeBinPath [wine winetricks]}:$PATH
     USER="$(whoami)"
-    GAME_PATH="$WINEPREFIX/drive_c/Program Files/iZotope/RX Pro Audio Editor/win64"
-    GAME_BIN="$GAME_PATH/iZotope RX 10 Audio Editor.exe"
+    GAME_PATH="$WINEPREFIX/drive_c/Program Files/iZotope/RX 11 Audio Editor/win64"
+    GAME_BIN="$GAME_PATH/iZotope RX 11 Audio Editor.exe"
     FILE=$1
 
     # EAC Fix
@@ -69,7 +69,7 @@
     name = pname;
     exec = "${script}/bin/${pname} %U";
     inherit icon;
-    desktopName = "iZotope RX 10 Pro Audio Editor";
+    desktopName = "iZotope RX 11 Pro Audio Editor";
     categories = ["Audio"];
     mimeTypes = [
       "audio/basic"

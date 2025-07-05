@@ -16,7 +16,7 @@ in {
     };
     izotope-location = mkOption {
       type = types.str;
-      default = "/home/tunnel/.izotope";
+      default = "/home/tunnel/.izotope11";
     };
   };
   config = mkIf yabridge-enabled {
