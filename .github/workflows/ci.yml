@@ -148,7 +148,8 @@ jobs:
         run: |
           # doesn't create a result folder if nothing built? maybe? I'm confused why this is failing
           # nix run github:Mic92/nix-fast-build -- --max-jobs 1 --no-nom --retries 3 --skip-cached --eval-max-memory-size 1024 --eval-workers 1 --flake .#nixosConfigurations.${{ matrix.machine.host }}.config.system.build.toplevel
-          nix build .#nixosConfigurations.${{ matrix.machine.host }}.config.system.build.toplevel      
+          nix build .#nixosConfigurations.${{ matrix.machine.host }}.config.system.build.toplevel
       - name: Push system
+        continue-on-error: true
         run: |
           nix run nixpkgs#attic-client push system result -j 3
