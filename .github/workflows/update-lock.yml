@@ -41,7 +41,7 @@ jobs:
           branch: update_npins_lock_action
           commit-message: '⚙️ bump npins'
           token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
-          asignees: Multipixelone
+          assignees: Multipixelone
           labels: automated
           body: |
             ${{ steps.npins.outputs.message }}
