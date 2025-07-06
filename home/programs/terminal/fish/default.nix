@@ -135,12 +135,12 @@ in {
     plugins =
       [
         {
-          name = "fish-exa";
+          name = "fish-eza";
           src = pkgs.fetchFromGitHub {
-            owner = "gazorby";
-            repo = "fish-exa";
-            rev = "92e5bcb762f7c08cc4484a2a09d6c176814ef35d";
-            sha256 = "sha256-kw4XrchvF4SNNoX/6HRw2WPvCxKamwuTVWdHg82Pqac=";
+            owner = "plttn";
+            repo = "fish-eza";
+            rev = "36f57936ba3e921334ee313b25c3988258fb9771";
+            sha256 = "sha256-f/JmwxOnLHq/FXIxI424AfOavlmv5/Ep5D2JEm0jFPE=";
           };
         }
         {
