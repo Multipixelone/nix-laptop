@@ -131,6 +131,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+    zjstatus-hints = {
+      url = "github:Multipixelone/zjstatus-hints/nix-build";
+      # inputs.nixpkgs.follows = "zjstatus";
+      # inputs.crane.follows = "zjstatus";
+      # inputs.rust-overlay.follows = "zjstatus";
+    };
     # humble-key = {
     #   url = "github:Multipixelone/humble-steam-key-redeemer/nix-build";
     #   inputs.nixpkgs.follows = "nixpkgs";

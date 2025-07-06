@@ -5,5 +5,8 @@
     (_final: prev: {
       zjstatus = inputs.zjstatus.packages.${prev.system}.default;
     })
+    (_final: prev: {
+      zjstatus-hints = inputs.zjstatus-hints.packages.${prev.system}.default;
+    })
   ];
 }
