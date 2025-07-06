@@ -58,6 +58,7 @@ in {
       nb = "nix build";
       nr = "nix run";
       kh = "khinsider";
+      rs = "rip search qobuz album";
     };
     shellAliases = {
       fzf = "fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'";

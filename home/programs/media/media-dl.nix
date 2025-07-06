@@ -66,6 +66,7 @@ in {
     };
   };
   home.packages = [
+    pkgs.streamrip
     spotdl-wrapped
   ];
   programs = {
