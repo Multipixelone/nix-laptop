@@ -38,7 +38,7 @@ jobs:
         id: pull-request
         with:
           title: "chore: bump npins dependencies"
-          branch: auto/update-npins
+          branch: update-npins-action
           commit-msg: '⚙️ bump npins'
           token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
           asignees: Multipixelone
