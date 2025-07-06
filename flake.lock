@@ -2570,11 +2570,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1729184186,
-        "narHash": "sha256-YBDfiR+xiooKS8CWsabRSB9ekW/stYdtKapJxv6d/oo=",
+        "lastModified": 1751771842,
+        "narHash": "sha256-qpQj2LRCS4vCbFnspQwPkFtZgyY5XtuojpdNAH638s8=",
         "owner": "Multipixelone",
         "repo": "waybar-mediaplayer",
-        "rev": "05af2fb036f18c502bd61b28554311fe79af6b57",
+        "rev": "0e6655ebb2ef367f4632588cf165e43119022230",
         "type": "github"
       },
       "original": {
