@@ -38,8 +38,8 @@ jobs:
         id: pull-request
         with:
           title: "chore: bump npins dependencies"
-          branch: update-npins-action
-          commit-msg: '⚙️ bump npins'
+          branch: update_npins_lock_action
+          commit-message: '⚙️ bump npins'
           token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
           asignees: Multipixelone
           labels: automated
@@ -65,6 +65,6 @@ jobs:
         with:
           pr-title: 'chore: update flake.lock'
           commit-msg: '⚙️ bump flake.lock'
-          pr-asignees: Multipixelone
+          pr-assignees: Multipixelone
           pr-labels: automated
           token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
