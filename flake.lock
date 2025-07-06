@@ -1991,11 +1991,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1730727728,
-        "narHash": "sha256-ApiSr8kp1wnVIU66zXL0FG19Q7n7e1MXUxLKaIFzqSc=",
+        "lastModified": 1751754757,
+        "narHash": "sha256-nQVsATHHC8dLS29PWn2ud4pSlszBP+5sPAEy07LsNs8=",
         "owner": "Multipixelone",
         "repo": "QtScrobbler",
-        "rev": "3c56500fb08ca9268c318d59572c429812ca101b",
+        "rev": "3e33a2c9c8523aaed2b07c9fc1ae48e7d88544b0",
         "type": "github"
       },
       "original": {
