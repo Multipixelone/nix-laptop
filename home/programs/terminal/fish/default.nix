@@ -72,6 +72,9 @@ in {
     };
     shellInit = fish-config;
     interactiveShellInit = ''
+      if test "$TERM" != "dumb"
+        ${lib.getExe pkgs.zellij} setup --generate-completion fish | source
+      end
       if status is-interactive
             if type -q zellij
                 # Update the zellij tab name with the current process name or pwd.
