@@ -190,6 +190,8 @@ in {
           never_convert_lossy_files = false;
           threads = 10;
           format = "opus";
+          embed = false;
+          copy_album_art = true;
           formats = {
             mp3.command = "${ffmpeg} -i $source -ab 320k -ac 2 -ar 44100 -joint_stereo 0 $dest";
             mp3.extension = "mp3";
