@@ -13,7 +13,7 @@
         format_hide_on_overlength "true"
         format_precedence "lrc"
 
-        notification_format_unread           "#[fg=#89B4FA,blink]  #[fg=#89B4FA] {message} "
+        notification_format_unread           "#[fg=#89B4FA,blink,bold]!#[fg=#89B4FA] {message} "
         notification_format_no_notifications "#[fg=#494d64,dim]"
         notification_show_interval           "7"
 
