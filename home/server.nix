@@ -12,6 +12,7 @@
     devenv
   ];
   home.sessionVariables = {
+    EDITOR = "hx";
     MUSIC_DIR = "/media/Data/Music";
     MOPIDY_PLAYLISTS = "/home/tunnel/.local/share/mopidy/m3u";
     IPOD_DIR = "/run/media/tunnel/FINNR_S IPO";
