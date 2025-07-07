@@ -164,7 +164,6 @@ in {
       };
       render = lib.mkIf (osConfig.networking.hostName == "link") {
         direct_scanout = true;
-        explicit_sync = true;
       };
       cursor = {
         persistent_warps = true;
