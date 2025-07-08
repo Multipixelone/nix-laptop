@@ -23,7 +23,7 @@ jobs:
         name: npins
         run: |
           MESSAGE="
-            $(nix run nixpkgs#npins -- -d ./npins update -f 2>&1 | { grep -e '.*Changes:$\|.*url:.*' -e '.*Changes:$\|.*revision:.*' || true; })"
+            $(nix run nixpkgs#npins -- -d ./npins update -f 2>&1 | { grep -e '.*Changes:$\|.*url:.*' -e '.*Changes:$\|.*revision:.*' -e '.*Changes:$\|.*version:.*'|| true; })"
 
           if [ -n "$(git diff-files 2>&1)" ]; then
             git add -A
