@@ -125,6 +125,7 @@ in {
       default = {
         inherit settings;
         extensions.packages = extensions;
+        extensions.force = true;
         id = 0;
         search = {
           engines = {
