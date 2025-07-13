@@ -5,7 +5,7 @@
     ./programs/theming/default.nix
     ./modules/theme
     ./modules/media
-    inputs.nix-index-database.hmModules.nix-index
+    inputs.nix-index-database.homeModules.nix-index
     inputs.agenix.homeManagerModules.default
     inputs.chaotic.homeManagerModules.default
     inputs.quadlet-nix.homeManagerModules.quadlet
