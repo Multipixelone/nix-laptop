@@ -57,7 +57,7 @@
     minish = nixosSystem {
       inherit specialArgs;
       modules =
-        server
+        desktop
         ++ [
           ./minish
           "${mod}/programs/nix-ld.nix"
@@ -73,6 +73,8 @@
           inputs.agenix.nixosModules.default
           inputs.quadlet-nix.nixosModules.quadlet
           inputs.chaotic.nixosModules.default
+          inputs.musnix.nixosModules.musnix
+          inputs.nur.modules.nixos.default
         ];
     };
 
