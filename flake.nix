@@ -91,6 +91,7 @@
     yazi.url = "github:sxyazi/yazi";
     nixcord.url = "github:kaylorben/nixcord";
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
+    apple-emoji.url = "github:samuelngs/apple-emoji-linux";
     ucodenix.url = "github:e-tho/ucodenix";
     base16.url = "github:SenchoPens/base16.nix";
     blocklist = {

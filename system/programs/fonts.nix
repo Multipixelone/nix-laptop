@@ -25,11 +25,11 @@
       inputs.apple-fonts.packages.${pkgs.system}.sf-pro
       inputs.apple-fonts.packages.${pkgs.system}.sf-compact
       inputs.apple-fonts.packages.${pkgs.system}.sf-mono
+      inputs.apple-emoji.${pkgs.system}.apple-emoji-linux
 
       # my fonts
       nerd-fonts.iosevka
       self.packages.${pkgs.system}.pragmata
-      self.packages.${pkgs.system}.apple-emoji
     ];
     fontconfig = {
       defaultFonts = {

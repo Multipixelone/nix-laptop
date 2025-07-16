@@ -12,7 +12,6 @@
       bandcamp-dl = pkgs.python3Packages.callPackage ./bandcamp-dl args;
       izotope = pkgs.callPackage ./izotope {};
       subway = pkgs.callPackage ./aequilibrae/gtfs-subway.nix {};
-      apple-emoji = pkgs.callPackage ./apple-fonts {};
     };
   };
 }
