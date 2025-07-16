@@ -25,7 +25,7 @@
       inputs.apple-fonts.packages.${pkgs.system}.sf-pro
       inputs.apple-fonts.packages.${pkgs.system}.sf-compact
       inputs.apple-fonts.packages.${pkgs.system}.sf-mono
-      inputs.apple-emoji.${pkgs.system}.apple-emoji-linux
+      inputs.apple-emoji.packages.${pkgs.system}.default
 
       # my fonts
       nerd-fonts.iosevka
