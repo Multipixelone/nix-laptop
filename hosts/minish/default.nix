@@ -16,6 +16,7 @@
     enable = true;
     defaultUser = "tunnel";
     interop.register = true;
+    startMenuLaunchers = true;
   };
 
   nixpkgs.hostPlatform = "x86_64-linux";
