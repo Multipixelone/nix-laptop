@@ -26,7 +26,6 @@ in {
     ./moondeck.nix
   ];
   home.packages = with pkgs; [
-    prismlauncher
     amdgpu_top
     vulkan-tools
     vulkan-loader

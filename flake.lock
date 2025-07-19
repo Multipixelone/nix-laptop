@@ -1378,6 +1378,22 @@
         "type": "github"
       }
     },
+    "libnbtplusplus": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1744811532,
+        "narHash": "sha256-qhmjaRkt+O7A+gu6HjUkl7QzOEb4r8y8vWZMG2R/C6o=",
+        "owner": "PrismLauncher",
+        "repo": "libnbtplusplus",
+        "rev": "531449ba1c930c98e0bcf5d332b237a8566f9d78",
+        "type": "github"
+      },
+      "original": {
+        "owner": "PrismLauncher",
+        "repo": "libnbtplusplus",
+        "type": "github"
+      }
+    },
     "musnix": {
       "inputs": {
         "nixpkgs": "nixpkgs_6"
@@ -1965,6 +1981,44 @@
         "type": "github"
       }
     },
+    "prismlauncher": {
+      "inputs": {
+        "libnbtplusplus": "libnbtplusplus",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "qrcodegenerator": "qrcodegenerator"
+      },
+      "locked": {
+        "lastModified": 1752822885,
+        "narHash": "sha256-lngWxlT1i2XCriIvnIzw1LTNAd+FCYz+YzSziEOvCjc=",
+        "owner": "PrismLauncher",
+        "repo": "PrismLauncher",
+        "rev": "d63dba43d6a5da7f48485e4afb97a1cf3c6c0992",
+        "type": "github"
+      },
+      "original": {
+        "owner": "PrismLauncher",
+        "repo": "PrismLauncher",
+        "type": "github"
+      }
+    },
+    "qrcodegenerator": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1737616857,
+        "narHash": "sha256-6SugPt0lp1Gz7nV23FLmsmpfzgFItkSw7jpGftsDPWc=",
+        "owner": "nayuki",
+        "repo": "QR-Code-generator",
+        "rev": "2c9044de6b049ca25cb3cd1649ed7e27aa055138",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nayuki",
+        "repo": "QR-Code-generator",
+        "type": "github"
+      }
+    },
     "qtscrob": {
       "inputs": {
         "flake-utils": [
@@ -2044,6 +2098,7 @@
         "nur": "nur",
         "playlist-download": "playlist-download",
         "pre-commit-hooks": "pre-commit-hooks_2",
+        "prismlauncher": "prismlauncher",
         "qtscrob": "qtscrob",
         "quadlet-nix": "quadlet-nix",
         "secrets": "secrets",

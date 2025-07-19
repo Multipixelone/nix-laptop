@@ -7,6 +7,9 @@
   imports = [
     inputs.nix-gaming.nixosModules.platformOptimizations
   ];
+  nixpkgs.overlays = [
+    inputs.prismlauncher.overlays.default
+  ];
   boot = {
     kernelParams = [
       "tsc=reliable"
@@ -40,6 +43,7 @@
   environment.systemPackages = [
     inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
     inputs.nix-gaming.packages.${pkgs.system}.winetricks-git
+    pkgs.prismlauncher
     # inputs.humble-key.packages.${pkgs.system}.default
   ];
   systemd.tmpfiles.rules = [
