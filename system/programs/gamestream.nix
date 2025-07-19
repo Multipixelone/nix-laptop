@@ -89,7 +89,7 @@
     end
 
     # Execute gamescope with the final arguments and the command
-    exec ${lib.getExe pkgs.gamescope} $final_args -- $argv
+    exec ${config.security.wrappers.gamescope.program} $final_args -- $argv
   '';
   # monitor prep command
   prep = let
