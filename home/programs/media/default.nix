@@ -9,7 +9,6 @@
   ];
   home.packages = with pkgs; [
     ani-cli
-    strawberry
     plexamp
     imv
     ffmpeg
