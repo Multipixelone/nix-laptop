@@ -10,6 +10,7 @@
   ];
   catppuccin = {
     enable = true;
+    mangohud.enable = false;
     flavor = "mocha";
     accent = "mauve";
   };
@@ -28,6 +29,7 @@
     helix.enable = false;
     starship.enable = false;
     yazi.enable = false;
+    mangohud.enable = false;
   };
   gtk = {
     enable = true;
