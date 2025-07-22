@@ -16,42 +16,38 @@
     pkgs.libnotify
     pkgs.mako
   ];
-  startscript =
-    pkgs.writeShellApplication {
-      name = "gamemode-start";
-      runtimeInputs = programs;
-      text = ''
-        SECRET=$(cat "${config.age.secrets."syncthing".path}")
-        HYPRLAND_INSTANCE_SIGNATURE=$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)
-        systemctl stop podman-nicotine
-        export HYPRLAND_INSTANCE_SIGNATURE
-        # ledfx change scene (disabled temporarily)
-        # curl -X 'PUT' 'http://link.bun-hexatonic.ts.net:8888/api/scenes' -H 'Content-Type: application/json' -d '{"id": "gaming-mode", "action": "activate"}'
-        # send request to pause syncthing while game is playing
-        curl -X POST -H "X-API-Key: $SECRET" http://localhost:8384/rest/system/pause
-        hyprctl --batch 'keyword animations:enabled 0; keyword decoration:drop_shadow 0; keyword general:gaps_in 0; keyword general:gaps_out 0; keyword general:border_size 1; keyword decoration:rounding 0'
-        notify-send -a 'Gamemode' 'Optimizations activated'
-        makoctl mode -a dnd
-      '';
-    }
-    + "/bin/gamemode-start";
-  endscript =
-    pkgs.writeShellApplication {
-      name = "gamemode-end";
-      runtimeInputs = programs;
-      text = ''
-        SECRET=$(cat "${config.age.secrets."syncthing".path}")
-        HYPRLAND_INSTANCE_SIGNATURE=$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)
-        export HYPRLAND_INSTANCE_SIGNATURE
-        systemctl start podman-nicotine
-        curl -X POST -H "X-API-Key: $SECRET" http://localhost:8384/rest/system/resume
-        # curl -X 'PUT' 'http://link.bun-hexatonic.ts.net:8888/api/scenes' -H 'Content-Type: application/json' -d '{"id": "main-purple", "action": "activate"}'
-        hyprctl --batch 'keyword animations:enabled 1; keyword decoration:drop_shadow 1; keyword general:gaps_in 5; keyword general:gaps_out 5; keyword general:border_size 3; keyword decoration:rounding 6'
-        makoctl mode -r dnd
-        notify-send -a 'Gamemode' 'Optimizations deactivated'
-      '';
-    }
-    + "/bin/gamemode-end";
+  startscript = pkgs.writeShellApplication {
+    name = "gamemode-start";
+    runtimeInputs = programs;
+    text = ''
+      SECRET=$(cat "${config.age.secrets."syncthing".path}")
+      HYPRLAND_INSTANCE_SIGNATURE=$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)
+      systemctl stop podman-nicotine
+      export HYPRLAND_INSTANCE_SIGNATURE
+      # ledfx change scene (disabled temporarily)
+      # curl -X 'PUT' 'http://link.bun-hexatonic.ts.net:8888/api/scenes' -H 'Content-Type: application/json' -d '{"id": "gaming-mode", "action": "activate"}'
+      # send request to pause syncthing while game is playing
+      curl -X POST -H "X-API-Key: $SECRET" http://localhost:8384/rest/system/pause
+      hyprctl --batch 'keyword animations:enabled 0; keyword decoration:drop_shadow 0; keyword general:gaps_in 0; keyword general:gaps_out 0; keyword general:border_size 1; keyword decoration:rounding 0'
+      notify-send -a 'Gamemode' 'Optimizations activated'
+      makoctl mode -a dnd
+    '';
+  };
+  endscript = pkgs.writeShellApplication {
+    name = "gamemode-end";
+    runtimeInputs = programs;
+    text = ''
+      SECRET=$(cat "${config.age.secrets."syncthing".path}")
+      HYPRLAND_INSTANCE_SIGNATURE=$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)
+      export HYPRLAND_INSTANCE_SIGNATURE
+      systemctl start podman-nicotine
+      curl -X POST -H "X-API-Key: $SECRET" http://localhost:8384/rest/system/resume
+      # curl -X 'PUT' 'http://link.bun-hexatonic.ts.net:8888/api/scenes' -H 'Content-Type: application/json' -d '{"id": "main-purple", "action": "activate"}'
+      hyprctl --batch 'keyword animations:enabled 1; keyword decoration:drop_shadow 1; keyword general:gaps_in 5; keyword general:gaps_out 5; keyword general:border_size 3; keyword decoration:rounding 6'
+      makoctl mode -r dnd
+      notify-send -a 'Gamemode' 'Optimizations deactivated'
+    '';
+  };
 in {
   age.secrets = {
     "syncthing" = {
@@ -81,8 +77,8 @@ in {
           inhibit_screensaver = 0;
         };
         custom = {
-          start = startscript;
-          end = endscript;
+          start = lib.getExe startscript;
+          end = lib.getExe endscript;
         };
       };
     };
