@@ -1,8 +1,12 @@
 {
   pkgs,
   lib,
+  config,
   ...
-}: {
+}: let
+  inherit (config.lib.stylix) colors;
+  scale = "${colors.base05},${colors.base09},${colors.base08}";
+in {
   programs.mangohud = {
     enable = true;
     enableSessionWide = true;
@@ -23,14 +27,26 @@
       horizontal = true;
       time = true;
       vram = true;
-      ram = true;
 
       time_no_label = true;
       time_format = "%H:%M";
       frame_timing = 0;
-      fps_value = "90,144,240";
       media_player = true;
       media_player_format = "{artist} - {title}";
+
+      fps_value = "90,144,240";
+      fps_color_change = "${colors.base08},${colors.base09},${colors.base0B}";
+
+      gpu = true;
+      gpu_color = colors.base08;
+      gpu_load_color = scale;
+
+      cpu = true;
+      cpu_color = colors.base0D;
+      cpu_load_color = scale;
+
+      ram = true;
+      ram_color = "F5C2E7";
     };
   };
 }
