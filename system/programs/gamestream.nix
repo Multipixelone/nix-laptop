@@ -52,6 +52,7 @@
     "--rt"
     "--immediate-flips"
   ];
+  # exec ${config.security.wrappers.gamescope.program} $final_args -- $argv
   gamescope-run = pkgs.writeScriptBin "gamescope-run" ''
     #!${lib.getExe pkgs.fish}
 
@@ -89,7 +90,7 @@
     end
 
     # Execute gamescope with the final arguments and the command
-    exec ${config.security.wrappers.gamescope.program} $final_args -- $argv
+    exec ${lib.getExe config.programs.gamescope.package} $final_args -- $argv
   '';
   # monitor prep command
   prep = let
