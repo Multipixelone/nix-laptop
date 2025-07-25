@@ -9,9 +9,9 @@
       },
       "branch": "master",
       "submodules": true,
-      "revision": "3cbc4e5570826cb0186592c036d466fccf304804",
+      "revision": "3a508e71aaa4d0f80935f629ecdff38ee86aa0e2",
       "url": null,
-      "hash": "0lls074hx117gqz1qpvl458z6halm8y6pbvvxqrlbihdr6sqhr54"
+      "hash": "067i2rcbx46965pg4l03la7n1m1zkygjig9vb3sdw1ziaaqcib4p"
     },
     "bandcamp-dl": {
       "type": "GitRelease",
@@ -104,10 +104,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": true,
-      "version": "v2025.710.130932",
-      "revision": "feac80656d211569c3c4eef839f284d386c90093",
+      "version": "v2025.724.160624",
+      "revision": "8bfb65ee4b37e4ea6ef23739f369c6dcf4063390",
       "url": null,
-      "hash": "0ansaj5fhihwc2pdxgxlf660wakl91fhxwj1z2wmnwy3abyjmri3"
+      "hash": "18whhj5zdwwp3n2cd3v0cs4w0fhfxkkydypy5frgm13969mxp0nv"
     }
   },
   "version": 5
