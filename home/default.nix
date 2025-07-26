@@ -35,6 +35,8 @@
   programs = {
     # use nix-index insteam of cnf
     command-not-found.enable = false;
+    # install nix-index-database into comma
+    nix-index-database.comma.enable = true;
     # let HM manage itself when in standalone mode
     home-manager.enable = true;
   };
