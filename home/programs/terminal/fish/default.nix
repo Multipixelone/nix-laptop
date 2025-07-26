@@ -147,15 +147,6 @@ in {
             sha256 = "sha256-f/JmwxOnLHq/FXIxI424AfOavlmv5/Ep5D2JEm0jFPE=";
           };
         }
-        {
-          name = "puffer-fish";
-          src = pkgs.fetchFromGitHub {
-            owner = "nickeb96";
-            repo = "puffer-fish";
-            rev = "12d062eae0ad24f4ec20593be845ac30cd4b5923";
-            sha256 = "sha256-2niYj0NLfmVIQguuGTA7RrPIcorJEPkxhH6Dhcy+6Bk=";
-          };
-        }
       ]
       ++ (map (name: {
           inherit name;
@@ -164,6 +155,7 @@ in {
           "fzf-fish"
           "done"
           "pisces"
+          "puffer"
           "grc"
         ]);
   };
