@@ -158,6 +158,7 @@ in {
           "done"
           "pisces"
           "puffer"
+          "humantime-fish"
           "grc"
         ]);
   };
