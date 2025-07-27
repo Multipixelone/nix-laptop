@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  self,
   pkgs,
   lib,
   ...
@@ -179,8 +180,8 @@ in {
         };
         alternatives.ipod = {
           directory = transcoded-music;
-          formats = "opus";
           query = "";
+          formats = "musepack";
           removable = false;
         };
         convert = {
@@ -198,6 +199,7 @@ in {
             wav.command = "${ffmpeg} -i $source -sample_fmt s16 -ar 44100 $dest";
             # 128K is probably overkill LOL but I want something *close* to transparent on my ipod
             opus.command = "${ffmpeg} -i $source -c:a libopus -b:a 128K $dest";
+            musepack.command = "${lib.getExe self.packages.${pkgs.system}.mppenc} --quality 6 --ape2 $source $dest";
           };
         };
         # albumtypes.types = [
