@@ -1,0 +1,273 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b13f78c..655fea6 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -30,4 +30,3 @@ add_subdirectory(mpc2sv8)
+ add_subdirectory(mpccut)
+ add_subdirectory(mpcchap)
+ add_subdirectory(wavcmp)
+-add_subdirectory(include)
+diff --git a/configure.in b/configure.in
+index cda7d7f..4618a13 100755
+--- a/configure.in
++++ b/configure.in
+@@ -3,7 +3,7 @@ AC_CONFIG_AUX_DIR([config])
+ AC_CONFIG_MACRO_DIR([m4])
+ AC_CONFIG_SRCDIR([libmpcdec/mpc_reader.c])
+ AM_CONFIG_HEADER([include/config.h])
+-AM_INIT_AUTOMAKE
++AM_INIT_AUTOMAKE(subdir-objects)
+ 
+ AC_LANG_C
+ AC_PROG_CC
+@@ -27,10 +27,15 @@ esac
+ AC_SUBST([EXTRALIBS])
+ 
+ AC_ARG_ENABLE([mpcchap], [AS_HELP_STRING([--enable-mpcchap], [enable building mpcchap])])
+-AM_CONDITIONAL([MPC_CHAP], [test "x$enable_mpcchap" = xyes])
++if test "x$enable_mpcchap" = xyes; then
++  PKG_CHECK_MODULES(LIBCUE, libcue)
++  AC_SUBST(LIBCUE_CFLAGS)
++  AC_SUBST(LIBCUE_LIBS)
++fi
+ 
++AM_CONDITIONAL([MPC_CHAP], [test "x$enable_mpcchap" = xyes])
+ 
+-CHECK_VISIBILITY
++AM_CONDITIONAL([HAVE_VISIBILITY], [true])
+ 
+ AC_CONFIG_FILES([
+ Makefile
+diff --git a/include/CMakeLists.txt b/include/CMakeLists.txt
+index 074461d..e69de29 100755
+--- a/include/CMakeLists.txt
++++ b/include/CMakeLists.txt
+@@ -1 +0,0 @@
+-INSTALL(DIRECTORY mpc DESTINATION include)
+diff --git a/libmpcdec/CMakeLists.txt b/libmpcdec/CMakeLists.txt
+index 0bc5b62..7ce5e94 100755
+--- a/libmpcdec/CMakeLists.txt
++++ b/libmpcdec/CMakeLists.txt
+@@ -1,7 +1,26 @@
++SET(mpcdec_VERSION_MAJOR 7)
++SET(mpcdec_VERSION_MINOR 0)
++SET(mpcdec_VERSION_PATCH 1)
++
++set(mpcdec_VERSION ${mpcdec_VERSION_MAJOR}.${mpcdec_VERSION_MINOR}.${mpcdec_VERSION_PATCH})
++
++install(FILES
++	${libmpc_SOURCE_DIR}/include/mpc/mpcdec.h
++	${libmpc_SOURCE_DIR}/include/mpc/reader.h
++	${libmpc_SOURCE_DIR}/include/mpc/streaminfo.h
++	${libmpc_SOURCE_DIR}/include/mpc/mpc_types.h
++	DESTINATION include/mpc COMPONENT headers)
++
+ include_directories(${libmpc_SOURCE_DIR}/include)
+ if(SHARED)
+-  add_library(mpcdec SHARED huffman mpc_decoder mpc_reader streaminfo mpc_bits_reader mpc_demux requant synth_filter ${libmpc_SOURCE_DIR}/common/crc32)
++  add_library(mpcdec_shared SHARED huffman mpc_decoder mpc_reader streaminfo mpc_bits_reader mpc_demux requant synth_filter ${libmpc_SOURCE_DIR}/common/crc32)
++  set_target_properties(mpcdec_shared PROPERTIES OUTPUT_NAME mpcdec CLEAN_DIRECT_OUTPUT 1 VERSION ${mpcdec_VERSION} SOVERSION ${mpcdec_VERSION_MAJOR})
++  install(TARGETS mpcdec_shared LIBRARY DESTINATION "lib${LIB_SUFFIX}" ARCHIVE DESTINATION "lib${LIB_SUFFIX}" COMPONENT libraries)
++  target_link_libraries(mpcdec_shared m)
+ else(SHARED)
+   add_library(mpcdec_static STATIC huffman mpc_decoder mpc_reader streaminfo mpc_bits_reader mpc_demux requant synth_filter ${libmpc_SOURCE_DIR}/common/crc32)
++  set_target_properties(mpcdec_static PROPERTIES OUTPUT_NAME mpcdec CLEAN_DIRECT_OUTPUT 1)
++  install(TARGETS mpcdec_static LIBRARY DESTINATION "lib${LIB_SUFFIX}" ARCHIVE DESTINATION "lib${LIB_SUFFIX}" COMPONENT libraries)
++  target_link_libraries(mpcdec_static m)
+ endif(SHARED)
+ 
+diff --git a/libmpcdec/Makefile.am b/libmpcdec/Makefile.am
+index 48f3835..048217a 100755
+--- a/libmpcdec/Makefile.am
++++ b/libmpcdec/Makefile.am
+@@ -16,4 +16,5 @@ libmpcdec_la_SOURCES = huffman.c mpc_decoder.c mpc_reader.c \
+ 	mpc_bits_reader.h huffman.h decoder.h internal.h requant.h mpcdec_math.h \
+ 	$(common_sources)
+ 
++# version info shoud match the one in CMakeLists.txt
+ libmpcdec_la_LDFLAGS = -no-undefined -version-info 7:0:1
+diff --git a/libmpcdec/requant.h b/libmpcdec/requant.h
+index eb3124d..c95101f 100755
+--- a/libmpcdec/requant.h
++++ b/libmpcdec/requant.h
+@@ -47,9 +47,9 @@ extern "C" {
+ 
+ 
+ /* C O N S T A N T S */
+-const mpc_uint8_t      Res_bit [18];     ///< Bits per sample for chosen quantizer
+-const MPC_SAMPLE_FORMAT __Cc    [1 + 18]; ///< Requantization coefficients
+-const mpc_int16_t       __Dc    [1 + 18]; ///< Requantization offset
++extern const mpc_uint8_t      Res_bit [18];     ///< Bits per sample for chosen quantizer
++extern const MPC_SAMPLE_FORMAT __Cc    [1 + 18]; ///< Requantization coefficients
++extern const mpc_int16_t       __Dc    [1 + 18]; ///< Requantization offset
+ 
+ #define Cc (__Cc + 1)
+ #define Dc (__Dc + 1)
+diff --git a/libmpcpsy/ans.c b/libmpcpsy/ans.c
+index cf2e0c3..86d34ab 100755
+--- a/libmpcpsy/ans.c
++++ b/libmpcpsy/ans.c
+@@ -288,12 +288,12 @@ NS_Analyse ( PsyModel* m,
+     // for L or M, respectively
+     memset ( m->FIR_L,      0, sizeof m->FIR_L      );         // reset FIR
+     memset ( m->NS_Order_L, 0, sizeof m->NS_Order_L );         // reset Flags
+-	FindOptimalANS ( MaxBand, MSflag, ANSspec_L, ANSspec_M, m->NS_Order_L, m->SNR_comp_L, m->FIR_L, smr.L, smr.M, m->SCF_Index_L, Transient );
++	FindOptimalANS ( MaxBand, MSflag, ANSspec_L, ANSspec_M, m->NS_Order_L, m->SNR_comp_L, m->FIR_L, smr.L, smr.M, (const void*)m->SCF_Index_L, Transient );
+ 
+     // for R or S, respectively
+ 	memset ( m->FIR_R,      0, sizeof m->FIR_R      );         // reset FIR
+ 	memset ( m->NS_Order_R, 0, sizeof m->NS_Order_R );         // reset Flags
+-	FindOptimalANS ( MaxBand, MSflag, ANSspec_R, ANSspec_S, m->NS_Order_R, m->SNR_comp_R, m->FIR_R, smr.R, smr.S, m->SCF_Index_R, Transient );
++	FindOptimalANS ( MaxBand, MSflag, ANSspec_R, ANSspec_S, m->NS_Order_R, m->SNR_comp_R, m->FIR_R, smr.R, smr.S, (const void*)m->SCF_Index_R, Transient );
+ 
+     return;
+ }
+diff --git a/mpc2sv8/CMakeLists.txt b/mpc2sv8/CMakeLists.txt
+index eea0df0..a4fe93e 100755
+--- a/mpc2sv8/CMakeLists.txt
++++ b/mpc2sv8/CMakeLists.txt
+@@ -13,7 +13,7 @@ endif(MSVC)
+ add_executable(mpc2sv8 mpc2sv8.c)
+ 
+ if(SHARED)
+-  target_link_libraries(mpc2sv8 mpcdec)
++  target_link_libraries(mpc2sv8 mpcdec_shared)
+ else(SHARED)
+   target_link_libraries(mpc2sv8 mpcdec_static)
+ endif(SHARED)
+diff --git a/mpcchap/CMakeLists.txt b/mpcchap/CMakeLists.txt
+index 743d5b6..50c4ded 100755
+--- a/mpcchap/CMakeLists.txt
++++ b/mpcchap/CMakeLists.txt
+@@ -15,7 +15,7 @@ link_directories(${libmpc_BINARY_DIR}/libmpcenc)
+ add_executable(mpcchap mpcchap.c dictionary.c iniparser.c ${libmpc_SOURCE_DIR}/common/tags.c)
+ 
+ if(SHARED)
+-  target_link_libraries(mpcchap mpcdec)
++  target_link_libraries(mpcchap mpcdec_shared)
+ else(SHARED)
+   target_link_libraries(mpcchap mpcdec_static)
+ endif(SHARED)
+diff --git a/mpcchap/Makefile.am b/mpcchap/Makefile.am
+index be99c49..0697f94 100755
+--- a/mpcchap/Makefile.am
++++ b/mpcchap/Makefile.am
+@@ -4,7 +4,8 @@ bin_PROGRAMS = mpcchap
+ 
+ common_sources = ../common/tags.c ../common/crc32.c
+ 
+-AM_CPPFLAGS = -I$(top_srcdir)/include
++AM_CPPFLAGS = -I$(top_srcdir)/include \
++	$(LIBCUE_CFLAGS)
+ 
+ if HAVE_VISIBILITY
+   AM_CFLAGS = -fvisibility=hidden
+@@ -16,4 +17,4 @@ dictionary.h iniparser.h
+ 
+ mpcchap_LDADD = $(top_builddir)/libmpcdec/libmpcdec.la \
+ 	$(top_builddir)/libmpcenc/libmpcenc.a \
+-	-lm -lcuefile
++	-lm $(LIBCUE_LIBS)
+diff --git a/mpcchap/mpcchap.c b/mpcchap/mpcchap.c
+index 4f02191..ddb32b8 100755
+--- a/mpcchap/mpcchap.c
++++ b/mpcchap/mpcchap.c
+@@ -24,7 +24,7 @@
+ 
+ #include <sys/stat.h>
+ 
+-#include <cuetools/cuefile.h>
++#include <libcue/libcue.h>
+ 
+ // tags.c
+ void    Init_Tags        ( void );
+@@ -153,17 +153,25 @@ mpc_status add_chaps_ini(char * mpc_file, char * chap_file, mpc_demux * demux, m
+ mpc_status add_chaps_cue(char * mpc_file, char * chap_file, mpc_demux * demux, mpc_streaminfo * si)
+ {
+ 	Cd *cd = 0;
+-	int nchap, format = UNKNOWN;
++	int nchap;
+ 	struct stat stbuf;
+ 	FILE * in_file;
+ 	int chap_pos, end_pos, chap_size, i;
+ 	char * tmp_buff;
+ 
+-	if (0 == (cd = cf_parse(chap_file, &format))) {
++	in_file = fopen(chap_file, "r");
++	if (NULL == in_file) {
+ 		fprintf(stderr, "%s: input file error\n", chap_file);
+ 		return !MPC_STATUS_OK;
+ 	}
+ 
++	if (0 == (cd = cue_parse_file(in_file))) {
++		fclose(in_file);
++		fprintf(stderr, "%s: input file error\n", chap_file);
++		return !MPC_STATUS_OK;
++	}
++	fclose(in_file);
++
+ 	chap_pos = (demux->chap_pos >> 3) + si->header_position;
+ 	end_pos = mpc_demux_pos(demux) >> 3;
+ 	chap_size = end_pos - chap_pos;
+diff --git a/mpccut/CMakeLists.txt b/mpccut/CMakeLists.txt
+index 7d15ce2..2fbfb7a 100755
+--- a/mpccut/CMakeLists.txt
++++ b/mpccut/CMakeLists.txt
+@@ -13,7 +13,7 @@ endif(MSVC)
+ add_executable(mpccut mpccut.c)
+ 
+ if(SHARED)
+-  target_link_libraries(mpccut mpcdec)
++  target_link_libraries(mpccut mpcdec_shared)
+ else(SHARED)
+   target_link_libraries(mpccut mpcdec_static)
+ endif(SHARED)
+diff --git a/mpcdec/CMakeLists.txt b/mpcdec/CMakeLists.txt
+index da3123f..946fd70 100755
+--- a/mpcdec/CMakeLists.txt
++++ b/mpcdec/CMakeLists.txt
+@@ -19,7 +19,7 @@ endif(NOT MSVC)
+ target_link_libraries(mpcdec_cmd wavformat_static)
+ 
+ if(SHARED)
+-  target_link_libraries(mpcdec_cmd mpcdec)
++  target_link_libraries(mpcdec_cmd mpcdec_shared)
+ else(SHARED)
+   target_link_libraries(mpcdec_cmd mpcdec_static)
+ endif(SHARED)
+diff --git a/mpcenc/mpcenc.h b/mpcenc/mpcenc.h
+index 46f1ba0..9cd886a 100755
+--- a/mpcenc/mpcenc.h
++++ b/mpcenc/mpcenc.h
+@@ -254,8 +254,8 @@ extern float __invSCF [128 + 6];        // tabulated scalefactors (inverted)
+ 
+ float  ISNR_Schaetzer                  ( const float* samples, const float comp, const int res);
+ float  ISNR_Schaetzer_Trans            ( const float* samples, const float comp, const int res);
+-void   QuantizeSubband                 ( unsigned int* qu_output, const float* input, const int res, float* errors, const int maxNsOrder );
+-void   QuantizeSubbandWithNoiseShaping ( unsigned int* qu_output, const float* input, const int res, float* errors, const float* FIR );
++void   QuantizeSubband                 ( mpc_int16_t* qu_output, const float* input, const int res, float* errors, const int maxNsOrder );
++void   QuantizeSubbandWithNoiseShaping ( mpc_int16_t* qu_output, const float* input, const int res, float* errors, const float* FIR );
+ 
+ void   NoiseInjectionComp ( void );
+ 
+diff --git a/mpcgain/CMakeLists.txt b/mpcgain/CMakeLists.txt
+index 5445faf..474f3b3 100755
+--- a/mpcgain/CMakeLists.txt
++++ b/mpcgain/CMakeLists.txt
+@@ -13,14 +13,14 @@ FIND_LIBRARY(REPLAY_GAIN_LIBRARY NAMES replaygain replaygain_static PATHS
+ include_directories(${libmpc_SOURCE_DIR}/include)
+ include_directories(${REPLAY_GAIN_INCLUDE_DIR})
+ 
+-link_directories(${libmpc_BINARY_DIR}/libmpcdec)
++link_directories(${libmpc_BINARY_DIR}/libmpcdec_shared)
+ 
+ add_executable(mpcgain mpcgain.c)
+ 
+ target_link_libraries(mpcgain ${REPLAY_GAIN_LIBRARY})
+ 
+ if(SHARED)
+-  target_link_libraries(mpcgain mpcdec)
++  target_link_libraries(mpcgain mpcdec_shared)
+ else(SHARED)
+   target_link_libraries(mpcgain mpcdec_static)
+ endif(SHARED)

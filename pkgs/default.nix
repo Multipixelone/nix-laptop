@@ -11,7 +11,7 @@
       slskd-stats = pkgs.python3Packages.callPackage ./slskd-stats args;
       bandcamp-dl = pkgs.python3Packages.callPackage ./bandcamp-dl args;
       izotope = pkgs.callPackage ./izotope {};
-      mppenc = pkgs.callPackage ./musepack/mppenc.nix {};
+      musepack = pkgs.callPackage ./musepack {};
       subway = pkgs.callPackage ./aequilibrae/gtfs-subway.nix {};
     };
   };

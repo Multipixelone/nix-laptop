@@ -1,20 +1,17 @@
 {
   stdenv,
   lib,
-  fetchsvn,
+  fetchzip,
   cmake,
 }:
 stdenv.mkDerivation rec {
-  pname = "mppenc";
-  version = "495";
+  pname = "libreplaygain";
+  version = "475";
 
-  src = fetchsvn {
-    url = "http://svn.musepack.net/mppenc/trunk";
-    rev = version;
-    sha256 = "sha256-1rMnlmFs7dGdttN6QjmjBc7xH/4LzARlh9WGUIAhlHQ=";
+  src = fetchzip {
+    url = "https://files.musepack.net/source/${pname}_r${version}.tar.gz";
+    sha256 = "sha256-KVOwtVtEBsdPMTWsjRCbL0qo3tOJoERWgPLVHRA2ddg=";
   };
-
-  # sourceRoot = "${pname}_r${version}";
 
   nativeBuildInputs = [
     cmake
@@ -25,12 +22,12 @@ stdenv.mkDerivation rec {
   ];
 
   postInstall = ''
-    # install -d $out/include/replaygain
+    install -d $out/include/replaygain
+    install -m644 "${src}/include/replaygain/gain_analysis.h" "$out/include/replaygain/"
     # install -Dm644 include/replaygain/* -t $out/include/replaygain/
   '';
 
   meta = {
-    mainProgram = "mppenc";
     description = "A library for calculating ReplayGain values (built from musepack r475 source)";
     homepage = "https://musepack.net";
     license = lib.licenses.lgpl2;
