@@ -1,7 +1,7 @@
 {
   clang13Stdenv,
   lib,
-  fetchzip,
+  fetchsvn,
   cmake,
   cuetools,
   autoreconfHook,
@@ -14,13 +14,12 @@
 in
   clang13Stdenv.mkDerivation rec {
     pname = "musepack";
-    version = "475";
+    version = "495";
 
-    src = fetchzip {
-      url = "https://files.musepack.net/source/musepack_src_r${version}.tar.gz";
-      sha256 = "sha256-INs092+1YZDK5mH0o0559EB/WNxVCGuXey8mOim+8gY=";
-      # url = "https://dev.gentoo.org/~sam/distfiles/media-sound/musepack-tools/musepack-tools-${version}.tar.xz";
-      # sha256 = "sha256-EVrJPJ+OL+KfGv5fYg4fbQORmLfSbFar7Wnpj2wkKEM=";
+    src = fetchsvn {
+      url = "http://svn.musepack.net/libmpc/trunk";
+      rev = version;
+      sha256 = "sha256-b6hwqGYGuhwpSkkzqCRgsUZ6/QS6QBh+KDFDPfBLRns=";
     };
 
     # sourceRoot = "${pname}_src_r${version}";
