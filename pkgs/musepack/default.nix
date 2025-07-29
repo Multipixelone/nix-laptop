@@ -1,5 +1,5 @@
 {
-  clang13Stdenv,
+  stdenv,
   lib,
   fetchsvn,
   cmake,
@@ -12,7 +12,7 @@
   libreplaygain = callPackage ./libreplaygain.nix {};
   libcuefile = callPackage ./libcuefile.nix {};
 in
-  clang13Stdenv.mkDerivation rec {
+  stdenv.mkDerivation rec {
     pname = "musepack";
     version = "495";
 
