@@ -88,6 +88,7 @@
 
     if test -n "$album_artist_tag"; set -a mpcenc_cmd --tag "Album Artist=$album_artist_tag"; end
     if test -n "$disc_tag";   set -a mpcenc_cmd --tag "Disc=$disc_tag"; end
+
     set -a mpcenc_cmd "$file_to_encode" "$output_file"
 
     echo "Encoding with the following command:"
@@ -144,6 +145,7 @@ in {
       ${lib.getExe config.programs.beets.package} -l /tmp/db -c "$config" fish --output "$out"
     '';
   age.secrets."beets-plex".file = "${inputs.secrets}/media/plexbeets.age";
+  home.packages = [convert-mpc];
   programs = {
     fish.shellAbbrs = {
       bi = "beet import";
