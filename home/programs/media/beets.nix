@@ -46,11 +46,7 @@
         echo "Preprocessing necessary. Creating a temporary WAV file..."
         set temp_file (mktemp --suffix=.wav)
 
-        # Determine a sensible target sample rate
         set target_sample_rate 48000
-        if test -n "$sample_rate" -a "$sample_rate" -lt 48000
-            set target_sample_rate 44100
-        end
 
         echo "Converting to temporary WAV: 16-bit, $target_sample_rate Hz, stereo..."
         # Use ffmpeg to create a standard, compatible WAV file
