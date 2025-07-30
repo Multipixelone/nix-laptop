@@ -1,16 +1,22 @@
 {
   stdenv,
   lib,
-  fetchzip,
+  fetchsvn,
   cmake,
 }:
 stdenv.mkDerivation rec {
   pname = "libreplaygain";
-  version = "475";
+  version = "495";
 
-  src = fetchzip {
-    url = "https://files.musepack.net/source/${pname}_r${version}.tar.gz";
-    sha256 = "sha256-KVOwtVtEBsdPMTWsjRCbL0qo3tOJoERWgPLVHRA2ddg=";
+  # src = fetchzip {
+  #   url = "https://files.musepack.net/source/${pname}_r${version}.tar.gz";
+  #   sha256 = "sha256-KVOwtVtEBsdPMTWsjRCbL0qo3tOJoERWgPLVHRA2ddg=";
+  # };
+
+  src = fetchsvn {
+    url = "http://svn.musepack.net/${pname}";
+    rev = version;
+    sha256 = "sha256-5yhP/2kMZN7rziXvAtvJ1xCr1A9R4zOwzX2R0zYdt+g=";
   };
 
   nativeBuildInputs = [
