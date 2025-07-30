@@ -25,7 +25,7 @@
       rm -f ${detect-file}
     '';
   };
-  convert-mpc = pkgs.writeShellBin "convert_mpc" ''
+  convert-mpc = pkgs.writeScriptBin "convert_mpc" ''
     #!${lib.getExe pkgs.fish}
 
     # Check for correct number of arguments
