@@ -125,7 +125,7 @@
     };
     beets-plugins = {
       url = "github:Multipixelone/beets-plugins";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
     waybar-mediaplayer = {
