@@ -61,14 +61,17 @@
     end
 
     set -l artist_tag (${lib.getExe' pkgs.ffmpeg-headless "ffprobe"} -v error -show_entries format_tags=artist -of default=noprint_wrappers=1:nokey=1 "$input_file")
+    set -l album_artist_tag (${lib.getExe' pkgs.ffmpeg-headless "ffprobe"} -v error -show_entries format_tags=album_artist -of default=noprint_wrappers=1:nokey=1 "$input_file")
     set -l title_tag  (${lib.getExe' pkgs.ffmpeg-headless "ffprobe"} -v error -show_entries format_tags=title -of default=noprint_wrappers=1:nokey=1 "$input_file")
     set -l album_tag  (${lib.getExe' pkgs.ffmpeg-headless "ffprobe"} -v error -show_entries format_tags=album -of default=noprint_wrappers=1:nokey=1 "$input_file")
     set -l genre_tag  (${lib.getExe' pkgs.ffmpeg-headless "ffprobe"} -v error -show_entries format_tags=genre -of default=noprint_wrappers=1:nokey=1 "$input_file")
     set -l date_tag   (${lib.getExe' pkgs.ffmpeg-headless "ffprobe"} -v error -show_entries format_tags=date -of default=noprint_wrappers=1:nokey=1 "$input_file")
     set -l raw_track_tag (${lib.getExe' pkgs.ffmpeg-headless "ffprobe"} -v error -show_entries format_tags=track -of default=noprint_wrappers=1:nokey=1 "$input_file")
+    set -l raw_disc_tag (${lib.getExe' pkgs.ffmpeg-headless "ffprobe"} -v error -show_entries format_tags=disc -of default=noprint_wrappers=1:nokey=1 "$input_file")
 
     set -l year_tag  (string sub -l 4 "$date_tag") # Take first 4 chars of date for year
     set -l track_tag (string split -m 1 '/' -- $raw_track_tag)[1] # Take first part of "15/16"
+    set -l disc_tag (string split -m 1 '/' -- $raw_disc_tag)[1] # Also parse disc number
 
     # --- Build and Execute Final Command ---
     echo "Building mpcenc command..."
@@ -83,6 +86,8 @@
     if test -n "$track_tag";  set -a mpcenc_cmd --track "$track_tag"; end
     if test -n "$genre_tag";  set -a mpcenc_cmd --genre "$genre_tag"; end
 
+    if test -n "$album_artist_tag"; set -a mpcenc_cmd --tag "Album Artist=$album_artist_tag"; end
+    if test -n "$disc_tag";   set -a mpcenc_cmd --tag "Disc=$disc_tag"; end
     set -a mpcenc_cmd "$file_to_encode" "$output_file"
 
     echo "Encoding with the following command:"
