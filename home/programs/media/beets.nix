@@ -124,8 +124,37 @@
         echo "Input file is already compatible with mpcenc."
     end
 
+    set -l artist_tag (${lib.getExe' pkgs.ffmpeg-headless "ffprobe"} -v error -show_entries format_tags=artist -of default=noprint_wrappers=1:nokey=1 "$input_file")
+    set -l title_tag  (${lib.getExe' pkgs.ffmpeg-headless "ffprobe"} -v error -show_entries format_tags=title -of default=noprint_wrappers=1:nokey=1 "$input_file")
+    set -l album_tag  (${lib.getExe' pkgs.ffmpeg-headless "ffprobe"} -v error -show_entries format_tags=album -of default=noprint_wrappers=1:nokey=1 "$input_file")
+    set -l genre_tag  (${lib.getExe' pkgs.ffmpeg-headless "ffprobe"} -v error -show_entries format_tags=genre -of default=noprint_wrappers=1:nokey=1 "$input_file")
+    set -l date_tag   (${lib.getExe' pkgs.ffmpeg-headless "ffprobe"} -v error -show_entries format_tags=date -of default=noprint_wrappers=1:nokey=1 "$input_file")
+    set -l raw_track_tag (${lib.getExe' pkgs.ffmpeg-headless "ffprobe"} -v error -show_entries format_tags=track -of default=noprint_wrappers=1:nokey=1 "$input_file")
+
+    set -l year_tag  (string sub -l 4 "$date_tag") # Take first 4 chars of date for year
+    set -l track_tag (string split -m 1 '/' -- $raw_track_tag)[1] # Take first part of "15/16"
+
+    # --- Build and Execute Final Command ---
+    echo "Building mpcenc command..."
+
+    # Start with the base command and options
+    set -l mpcenc_cmd ${lib.getExe' self.packages.${pkgs.system}.musepack "mpcenc"} --quality 6 --ape2
+
+    if test -n "$artist_tag"; set -a mpcenc_cmd --artist "$artist_tag"; end
+    if test -n "$title_tag";  set -a mpcenc_cmd --title "$title_tag"; end
+    if test -n "$album_tag";  set -a mpcenc_cmd --album "$album_tag"; end
+    if test -n "$year_tag";   set -a mpcenc_cmd --year "$year_tag"; end
+    if test -n "$track_tag";  set -a mpcenc_cmd --track "$track_tag"; end
+    if test -n "$genre_tag";  set -a mpcenc_cmd --genre "$genre_tag"; end
+
+    set -a mpcenc_cmd "$file_to_encode" "$output_file"
+
+    echo "Encoding with the following command:"
+    echo "  $mpcenc_cmd"
+
     echo "Encoding $file_to_encode to Musepack..."
-    if ${lib.getExe' self.packages.${pkgs.system}.musepack "mpcenc"} --quality 6 --ape2 "$file_to_encode" "$output_file"
+    # if ${lib.getExe' self.packages.${pkgs.system}.musepack "mpcenc"} --quality 6 --ape2 "$file_to_encode" "$output_file"
+    if $mpcenc_cmd
         echo "Successfully created '$output_file'"
     else
         echo "Error: mpcenc failed to encode the file." >&2
