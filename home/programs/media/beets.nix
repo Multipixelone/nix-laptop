@@ -25,6 +25,124 @@
       rm -f ${detect-file}
     '';
   };
+  convert-mpc = pkgs.writeShellBin "convert_mpc" ''
+    #!${lib.getExe pkgs.fish}
+
+    # Check for correct number of arguments
+    if test (count $argv) -ne 2
+        echo "Usage: convert_to_mpc <input_file> <output_file.mpc>" >&2
+        return 1
+    end
+
+    set input_file $argv[1]
+    set output_file $argv[2]
+
+    # --- Check for Incompatible File Format ---
+    set needs_conversion 0
+    set extension (path extension "$input_file")
+
+    # mpcenc primarily supports wav and flac. Force conversion for anything else.
+    if test "$extension" != ".wav" -a "$extension" != ".flac"
+        echo "Input is not a WAV or FLAC file. Pre-conversion to WAV is required."
+        set needs_conversion 1
+    end
+
+    # Check if input file exists
+    if not test -f "$input_file"
+        echo "Error: Input file not found at '$input_file'" >&2
+        return 1
+    end
+
+    set -l audio_fields (${lib.getExe' pkgs.ffmpeg-headless "ffprobe"} -v error -select_streams a:0 -show_entries stream=channels,sample_rate,bits_per_raw_sample -of csv=p=0 "$input_file" 2>/dev/null | string split ',')
+
+    set channels "N/A"; set sample_rate "N/A"; set bit_depth "N/A"
+
+    if test (count $audio_fields) -lt 2
+        echo "Warning: Could not read audio properties with ffprobe. Forcing conversion as a fallback."
+        set needs_conversion 1
+    else
+
+        set channels $audio_fields[2]
+        set sample_rate $audio_fields[1]
+        if test (count $audio_fields) -ge 3
+            set bit_depth $audio_fields[3]
+        end
+
+        # Fallback for formats where bit depth isn't explicit (like M4A/AAC)
+        if test -z "$bit_depth"
+            set bit_depth (${lib.getExe' pkgs.ffmpeg-headless "ffprobe"} -v error -select_streams a:0 -show_entries stream=bits_per_sample -of csv=p=0 "$input_file" 2>/dev/null)
+        end
+        if test -z "$bit_depth"; set bit_depth "N/A"; end
+
+        echo "Input file properties:"
+        echo "  Channels: $channels"
+        echo "  Bit Depth: $bit_depth"
+        echo "  Sample Rate: $sample_rate"
+
+        # Check for properties incompatible with mpcenc
+        if test $channels -gt 8
+            echo "Input has more than 8 channels."
+            set needs_conversion 1
+        end
+
+        if test $bit_depth -gt 32
+            echo "Input bit depth ($bit_depth) is greater than 32."
+            set needs_conversion 1
+        end
+
+        set -l valid_sample_rates 32000 44100 48000
+        if not contains $sample_rate in $valid_sample_rates
+            echo "Input sample rate ($sample_rate Hz) is not directly supported. Resampling required."
+            set needs_conversion 1
+        end
+    end
+
+    # --- Processing and Encoding ---
+    set temp_file ""
+    set file_to_encode "$input_file"
+
+    if test $needs_conversion -eq 1
+        echo "Preprocessing necessary. Creating a temporary WAV file..."
+        set temp_file (mktemp --suffix=.wav)
+
+        # Determine a sensible target sample rate
+        set target_sample_rate 48000
+        if test -n "$sample_rate" -a "$sample_rate" -lt 48000
+            set target_sample_rate 44100
+        end
+
+        echo "Converting to temporary WAV: 16-bit, $target_sample_rate Hz, stereo..."
+        # Use ffmpeg to create a standard, compatible WAV file
+        if ${ffmpeg} -i "$input_file" -ac 2 -ar $target_sample_rate -c:a pcm_s16le -map_metadata 0 -movflags use_metadata_tags -y "$temp_file" >/dev/null 2>&1
+            set file_to_encode "$temp_file"
+        else
+            echo "Error: Failed to convert the audio file with ffmpeg." >&2
+            rm -f "$temp_file"
+            return 1
+        end
+    else
+        echo "Input file is already compatible with mpcenc."
+    end
+
+    echo "Encoding $file_to_encode to Musepack..."
+    if ${lib.getExe' self.packages.${pkgs.system}.musepack "mpcenc"} --quality 5 --ape2 "$file_to_encode" "$output_file"
+        echo "Successfully created '$output_file'"
+    else
+        echo "Error: mpcenc failed to encode the file." >&2
+        if test -n "$temp_file"
+            rm -f "$temp_file"
+        end
+        return 1
+    end
+
+    # Cleanup temporary file
+    if test -n "$temp_file"
+        rm -f "$temp_file"
+        echo "Removed temporary file."
+    end
+
+    return 0
+  '';
 in {
   systemd.user = {
     paths.beets = {
@@ -199,7 +317,8 @@ in {
             wav.command = "${ffmpeg} -i $source -sample_fmt s16 -ar 44100 $dest";
             # 128K is probably overkill LOL but I want something *close* to transparent on my ipod
             opus.command = "${ffmpeg} -i $source -c:a libopus -b:a 128K $dest";
-            musepack.command = "${lib.getExe self.packages.${pkgs.system}.mppenc} --quality 6 --ape2 $source $dest";
+            musepack.command = "${lib.getExe convert-mpc} $source $dest";
+            musepack.extension = "mpc";
           };
         };
         # albumtypes.types = [
