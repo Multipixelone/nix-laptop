@@ -97,6 +97,8 @@
     echo "Encoding $file_to_encode to Musepack..."
     if $mpcenc_cmd
         echo "Successfully created '$output_file'"
+        echo "Adding replaygain information"
+        ${lib.getExe' self.packages.${pkgs.system}.musepack "mpcgain"} $output_file
     else
         echo "Error: mpcenc failed to encode the file." >&2
         if test -n "$temp_file"
