@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<title>musepack-tools-495-fixup-link-depends.patch « files « musepack-tools « media-sound - repo/gentoo.git - Official Gentoo ebuild repository</title>
+<meta name='generator' content='cgit v1.2.3-65-gdbad'/>
+<meta name='robots' content='noindex,nofollow'/>
+<link rel='stylesheet' type='text/css' href='/cgit.css'/>
+<script type='text/javascript' src='/cgit.js'></script>
+<link rel='shortcut icon' href='//www.gentoo.org/favicon.ico'/>
+<link rel='alternate' title='Atom feed' href='https://gitweb.gentoo.org/repo/gentoo.git/atom/media-sound/musepack-tools/files/musepack-tools-495-fixup-link-depends.patch?h=master' type='application/atom+xml'/>
+<link rel='vcs-git' href='https://anongit.gentoo.org/git/repo/gentoo.git' title='repo/gentoo.git Git repository'/>
+<link rel='vcs-git' href='git+ssh://git@git.gentoo.org/repo/gentoo.git' title='repo/gentoo.git Git repository'/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#54487a">
+<meta name="description" content="Browse the Gentoo Git repositories">
+<link href="https://assets.gentoo.org/tyrian/v2/tyrian.min.css" rel="stylesheet" media="screen">
+</head>
+<body>
+<header>
+  <div class="site-title">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="logo">
+          <a href="/" title="Back to the homepage" class="site-logo">
+            <img src="https://assets.gentoo.org/tyrian/v2/site-logo.png" alt="Gentoo" srcset="https://assets.gentoo.org/tyrian/v2/site-logo.svg">
+          </a>
+          <span class="site-label">GitWeb</span>
+        </div>
+        <div class="site-title-buttons">
+          <div class="btn-group btn-group-sm">
+            <a href="https://get.gentoo.org/" role="button" class="btn get-gentoo"><span class="fa fa-fw fa-download"></span>
+              <strong>Get Gentoo!</strong></a>
+            <div class="btn-group btn-group-sm">
+              <a class="btn gentoo-org-sites dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+                <span class="fa fa-fw fa-map-o"></span> <span class="d-none d-sm-inline">gentoo.org sites</span>
+                <span class="caret"></span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="https://www.gentoo.org/" title="Main Gentoo website"><span class="fa fa-home fa-fw"></span>
+                  gentoo.org</a>
+                <a class="dropdown-item" href="https://wiki.gentoo.org/" title="Find and contribute documentation"><span class="fa fa-file-text-o fa-fw"></span>
+                  Wiki</a>
+                <a class="dropdown-item" href="https://bugs.gentoo.org/" title="Report issues and find common issues"><span class="fa fa-bug fa-fw"></span>
+                  Bugs</a>
+                <a class="dropdown-item" href="https://forums.gentoo.org/" title="Discuss with the community"><span class="fa fa-comments-o fa-fw"></span>
+                  Forums</a>
+                <a class="dropdown-item" href="https://packages.gentoo.org/" title="Find software for your Gentoo"><span class="fa fa-hdd-o fa-fw"></span>
+                  Packages</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="https://planet.gentoo.org/" title="Find out what's going on in the developer community"><span class="fa fa-rss fa-fw"></span>
+                  Planet</a>
+                <a class="dropdown-item" href="https://archives.gentoo.org/" title="Read up on past discussions"><span class="fa fa-archive fa-fw"></span>
+                  Archives</a>
+                <a class="dropdown-item" href="https://sources.gentoo.org/" title="Browse our source code"><span class="fa fa-code fa-fw"></span>
+                  Sources</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="https://infra-status.gentoo.org/" title="Get updates on the services provided by Gentoo"><span class="fa fa-server fa-fw"></span>
+                  Infra Status</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="tyrian-navbar navbar navbar-dark navbar-expand-lg bg-primary" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main-collapse" aria-controls="navbar-main-collapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse navbar-main-collapse" id="navbar-main-collapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/repo/gentoo.git">Gentoo Repository</a></li>
+          <li class="nav-item"><a class="nav-link" href="/repo/">Repositories</a></li>
+          <li class="nav-item"><a class="nav-link" href="/proj/">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="/dev/">Developer Overlays</a></li>
+          <li class="nav-item"><a class="nav-link" href="/user/">User Overlays</a></li>
+          <li class="nav-item"><a class="nav-link" href="/data/">Data</a></li>
+          <li class="nav-item"><a class="nav-link" href="/sites/">Websites</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="container pb-5">
+  <div class="row">
+  <div class="col-md-12">
+<div id='cgit'><table id='header'>
+<tr>
+<td class='logo' rowspan='2'><a href='/'><img src='/cgit.png' alt='cgit logo'/></a></td>
+<td class='main'><a href='/'>index</a> : <a href='/repo/gentoo.git/'>repo/gentoo.git</a></td><td class='form'><form method='get'>
+<select name='h' onchange='this.form.submit();'>
+<option value='master' selected='selected'>master</option>
+</select> <input type='submit' value='switch'/></form></td></tr>
+<tr><td class='sub'>Official Gentoo ebuild repository</td><td class='sub right'>Infrastructure team &lt;infrastructure@gentoo.org&gt;</td></tr></table>
+<table class='tabs'><tr><td>
+<a href='/repo/gentoo.git/'>summary</a><a href='/repo/gentoo.git/refs/'>refs</a><a href='/repo/gentoo.git/log/media-sound/musepack-tools/files/musepack-tools-495-fixup-link-depends.patch'>log</a><a class='active' href='/repo/gentoo.git/tree/media-sound/musepack-tools/files/musepack-tools-495-fixup-link-depends.patch'>tree</a><a href='/repo/gentoo.git/commit/media-sound/musepack-tools/files/musepack-tools-495-fixup-link-depends.patch'>commit</a><a href='/repo/gentoo.git/diff/media-sound/musepack-tools/files/musepack-tools-495-fixup-link-depends.patch'>diff</a></td><td class='form'><form class='right' method='get' action='/repo/gentoo.git/log/media-sound/musepack-tools/files/musepack-tools-495-fixup-link-depends.patch'>
+<select name='qt'>
+<option value='grep'>log msg</option>
+<option value='author'>author</option>
+<option value='committer'>committer</option>
+<option value='range'>range</option>
+</select>
+<input class='txt' type='search' size='10' name='q' value=''/>
+<input type='submit' value='search'/>
+</form>
+</td></tr></table>
+<div class='path'>path: <a href='/repo/gentoo.git/tree/'>root</a>/<a href='/repo/gentoo.git/tree/media-sound'>media-sound</a>/<a href='/repo/gentoo.git/tree/media-sound/musepack-tools'>musepack-tools</a>/<a href='/repo/gentoo.git/tree/media-sound/musepack-tools/files'>files</a>/<a href='/repo/gentoo.git/tree/media-sound/musepack-tools/files/musepack-tools-495-fixup-link-depends.patch'>musepack-tools-495-fixup-link-depends.patch</a></div><div class='content'>blob: 7dfb38cd73bd6d8b6eb39f281c92946fba7b6c01 (<a href='/repo/gentoo.git/plain/media-sound/musepack-tools/files/musepack-tools-495-fixup-link-depends.patch'>plain</a>)
+<table summary='blob content' class='blob'>
+<tr><td class='linenumbers'><pre><a id='n1' href='#n1'>1</a>
+<a id='n2' href='#n2'>2</a>
+<a id='n3' href='#n3'>3</a>
+<a id='n4' href='#n4'>4</a>
+<a id='n5' href='#n5'>5</a>
+<a id='n6' href='#n6'>6</a>
+<a id='n7' href='#n7'>7</a>
+<a id='n8' href='#n8'>8</a>
+<a id='n9' href='#n9'>9</a>
+<a id='n10' href='#n10'>10</a>
+<a id='n11' href='#n11'>11</a>
+<a id='n12' href='#n12'>12</a>
+<a id='n13' href='#n13'>13</a>
+<a id='n14' href='#n14'>14</a>
+<a id='n15' href='#n15'>15</a>
+<a id='n16' href='#n16'>16</a>
+<a id='n17' href='#n17'>17</a>
+<a id='n18' href='#n18'>18</a>
+<a id='n19' href='#n19'>19</a>
+<a id='n20' href='#n20'>20</a>
+<a id='n21' href='#n21'>21</a>
+<a id='n22' href='#n22'>22</a>
+<a id='n23' href='#n23'>23</a>
+<a id='n24' href='#n24'>24</a>
+<a id='n25' href='#n25'>25</a>
+<a id='n26' href='#n26'>26</a>
+<a id='n27' href='#n27'>27</a>
+<a id='n28' href='#n28'>28</a>
+<a id='n29' href='#n29'>29</a>
+<a id='n30' href='#n30'>30</a>
+<a id='n31' href='#n31'>31</a>
+<a id='n32' href='#n32'>32</a>
+<a id='n33' href='#n33'>33</a>
+<a id='n34' href='#n34'>34</a>
+<a id='n35' href='#n35'>35</a>
+<a id='n36' href='#n36'>36</a>
+<a id='n37' href='#n37'>37</a>
+<a id='n38' href='#n38'>38</a>
+<a id='n39' href='#n39'>39</a>
+<a id='n40' href='#n40'>40</a>
+<a id='n41' href='#n41'>41</a>
+<a id='n42' href='#n42'>42</a>
+<a id='n43' href='#n43'>43</a>
+<a id='n44' href='#n44'>44</a>
+<a id='n45' href='#n45'>45</a>
+<a id='n46' href='#n46'>46</a>
+<a id='n47' href='#n47'>47</a>
+<a id='n48' href='#n48'>48</a>
+<a id='n49' href='#n49'>49</a>
+<a id='n50' href='#n50'>50</a>
+<a id='n51' href='#n51'>51</a>
+<a id='n52' href='#n52'>52</a>
+<a id='n53' href='#n53'>53</a>
+<a id='n54' href='#n54'>54</a>
+<a id='n55' href='#n55'>55</a>
+<a id='n56' href='#n56'>56</a>
+<a id='n57' href='#n57'>57</a>
+<a id='n58' href='#n58'>58</a>
+<a id='n59' href='#n59'>59</a>
+<a id='n60' href='#n60'>60</a>
+<a id='n61' href='#n61'>61</a>
+<a id='n62' href='#n62'>62</a>
+<a id='n63' href='#n63'>63</a>
+<a id='n64' href='#n64'>64</a>
+<a id='n65' href='#n65'>65</a>
+<a id='n66' href='#n66'>66</a>
+<a id='n67' href='#n67'>67</a>
+<a id='n68' href='#n68'>68</a>
+<a id='n69' href='#n69'>69</a>
+<a id='n70' href='#n70'>70</a>
+<a id='n71' href='#n71'>71</a>
+<a id='n72' href='#n72'>72</a>
+<a id='n73' href='#n73'>73</a>
+<a id='n74' href='#n74'>74</a>
+<a id='n75' href='#n75'>75</a>
+<a id='n76' href='#n76'>76</a>
+<a id='n77' href='#n77'>77</a>
+</pre></td>
+<td class='lines'><pre><code>From a71b6e2f189e90b272094b8b9cd88752ff96e785 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz &lt;eschwartz93@gmail.com&gt;
+Date: Wed, 13 Mar 2024 00:34:22 -0400
+Subject: [PATCH] Fix regression causing executables to not depend on libmpcdec
+
+In revision r491 a "Gentoo patch" was merged, entitled
+
+"Fixup installation of shared mpcdec library."
+
+It inherently clashed with revision r467, which *also* renamed the
+target in question.
+--- a/mpc2sv8/CMakeLists.txt
++++ b/mpc2sv8/CMakeLists.txt
+@@ -13,7 +13,7 @@ endif(MSVC)
+ add_executable(mpc2sv8 mpc2sv8.c)
+ 
+ if(SHARED)
+-  target_link_libraries(mpc2sv8 mpcdec)
++  target_link_libraries(mpc2sv8 mpcdec_shared)
+ else(SHARED)
+   target_link_libraries(mpc2sv8 mpcdec_static)
+ endif(SHARED)
+--- a/mpcchap/CMakeLists.txt
++++ b/mpcchap/CMakeLists.txt
+@@ -15,7 +15,7 @@ link_directories(${libmpc_BINARY_DIR}/libmpcenc)
+ add_executable(mpcchap mpcchap.c dictionary.c iniparser.c ${libmpc_SOURCE_DIR}/common/tags.c)
+ 
+ if(SHARED)
+-  target_link_libraries(mpcchap mpcdec)
++  target_link_libraries(mpcchap mpcdec_shared)
+ else(SHARED)
+   target_link_libraries(mpcchap mpcdec_static)
+ endif(SHARED)
+--- a/mpccut/CMakeLists.txt
++++ b/mpccut/CMakeLists.txt
+@@ -13,7 +13,7 @@ endif(MSVC)
+ add_executable(mpccut mpccut.c)
+ 
+ if(SHARED)
+-  target_link_libraries(mpccut mpcdec)
++  target_link_libraries(mpccut mpcdec_shared)
+ else(SHARED)
+   target_link_libraries(mpccut mpcdec_static)
+ endif(SHARED)
+--- a/mpcdec/CMakeLists.txt
++++ b/mpcdec/CMakeLists.txt
+@@ -15,7 +15,7 @@ add_executable(mpcdec_cmd mpcdec.c)
+ target_link_libraries(mpcdec_cmd wavformat_static)
+ 
+ if(SHARED)
+-  target_link_libraries(mpcdec_cmd mpcdec)
++  target_link_libraries(mpcdec_cmd mpcdec_shared)
+ else(SHARED)
+   target_link_libraries(mpcdec_cmd mpcdec_static)
+ endif(SHARED)
+--- a/mpcgain/CMakeLists.txt
++++ b/mpcgain/CMakeLists.txt
+@@ -13,14 +13,14 @@ FIND_LIBRARY(REPLAY_GAIN_LIBRARY NAMES replaygain replaygain_static PATHS
+ include_directories(${libmpc_SOURCE_DIR}/include)
+ include_directories(${REPLAY_GAIN_INCLUDE_DIR})
+ 
+-link_directories(${libmpc_BINARY_DIR}/libmpcdec)
++link_directories(${libmpc_BINARY_DIR}/libmpcdec_shared)
+ 
+ add_executable(mpcgain mpcgain.c)
+ 
+ target_link_libraries(mpcgain ${REPLAY_GAIN_LIBRARY})
+ 
+ if(SHARED)
+-  target_link_libraries(mpcgain mpcdec)
++  target_link_libraries(mpcgain mpcdec_shared)
+ else(SHARED)
+   target_link_libraries(mpcgain mpcdec_static)
+ endif(SHARED)
+-- 
+2.43.2
+
+</code></pre></td></tr></table>
+</div> <!-- class=content -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 offset-md-2 col-md-7">
+            &nbsp;
+          </div>
+          <div class="col-12 col-md-3">
+            <h3 class="footerhead">Questions or comments?</h3>
+            Please feel free to <a href="https://www.gentoo.org/inside-gentoo/contact/">contact us</a>.
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2 col-sm-3 col-md-2">
+            <ul class="footerlinks three-icons">
+              <li><a href="https://twitter.com/gentoo" title="@Gentoo on Twitter"><span class="fa fa-twitter fa-fw"></span></a></li>
+              <li><a href="https://www.facebook.com/gentoo.org" title="Gentoo on Facebook"><span class="fa fa-facebook fa-fw"></span></a></li>
+              <li></li>
+            </ul>
+          </div>
+          <div class="col-10 col-sm-9 col-md-10">
+            <strong>&copy; 2001&ndash;2024 Gentoo Authors</strong><br>
+            <small>
+              Gentoo is a trademark of the Gentoo Foundation, Inc. and of Förderverein Gentoo e.V.
+              The contents of this document, unless otherwise expressly stated, are licensed under the
+              <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC-BY-SA-4.0</a> license.
+              The <a href="https://www.gentoo.org/inside-gentoo/foundation/name-logo-guidelines.html">Gentoo Name and Logo Usage Guidelines</a> apply.
+            </small>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://assets.gentoo.org/tyrian/v2/jquery-3.3.slim.js"></script>
+    <script src="https://assets.gentoo.org/tyrian/v2/popper.min.js"></script>
+    <script src="https://assets.gentoo.org/tyrian/v2/bootstrap.min.js"></script>
+</div> <!-- id=cgit -->
+</body>
+</html>

@@ -3,14 +3,16 @@
   lib,
   fetchsvn,
   cmake,
+  ninja,
+  flac,
   cuetools,
   autoreconfHook,
-  fetchpatch,
   libcue,
   callPackage,
 }: let
   libreplaygain = callPackage ./libreplaygain.nix {};
   libcuefile = callPackage ./libcuefile.nix {};
+  libmpcdec = callPackage ./libmpcdec.nix {};
 in
   stdenv.mkDerivation rec {
     pname = "musepack";
@@ -25,9 +27,12 @@ in
     # sourceRoot = "${pname}_src_r${version}";
     # sourceRoot = ".";
 
+    hardeningDisable = ["all"];
+
     nativeBuildInputs = [
-      # autoreconfHook
+      autoreconfHook
       cmake
+      ninja
     ];
 
     buildInputs = [
@@ -35,56 +40,17 @@ in
       libcue
       libcuefile
       libreplaygain
+      libmpcdec
+      flac
     ];
 
     patches = [
       ./mpcchap.patch
-      # ./05_visibility.patch
-      # ./add_subdir-objects.patch
 
-      # ./r482.patch
-      # ./r479.patch
-      # ./r491.patch
-      # ./musepack-tools-495-fixup-link-depends.patch
-      # ./musepack-tools-495-incompatible-pointers.patch
-
-      # (fetchpatch {
-      #   url = "https://raw.githubusercontent.com/Homebrew/formula-patches/743dc747e291fd5b1c6ebedfef2778f1f7cde77d/musepack/r479.patch";
-      #   sha256 = "sha256-s7DMyDO7BsD6UFtSNFuPRKmsRScB/kRsSGAdMZ4KaJg=";
-      #   stripLen = 0;
-      # })
-      # (fetchpatch {
-      #   url = "https://raw.githubusercontent.com/Homebrew/formula-patches/743dc747e291fd5b1c6ebedfef2778f1f7cde77d/musepack/r482.patch";
-      #   sha256 = "sha256-udCNxGiGeWMC0T2uNT0askggFVSA4sKhFU1VyXHPU74=";
-      #   stripLen = 0;
-      # })
-      # (fetchpatch {
-      #   url = "https://raw.githubusercontent.com/Homebrew/formula-patches/743dc747e291fd5b1c6ebedfef2778f1f7cde77d/musepack/r491.patch";
-      #   sha256 = "sha256-IZzUXGpSSck/6QK1NU5E+TLvg6qk9kUdcKWYoqajJF8=";
-      #   stripLen = 0;
-      # })
-      # (fetchpatch {
-      #   url = "https://raw.githubusercontent.com/gentoo/gentoo/f5d4d4995d45baf77c176224b62e424dca037aef/media-sound/musepack-tools/files/musepack-tools-495-fixup-link-depends.patch";
-      #   sha256 = "sha256-KFdh3Hju+ncNgjGM2K9ZpLuZ9oLSLKnqZVbSM9O9SWk=";
-      #   stripLen = 1;
-      # })
-      # (fetchpatch {
-      #   url = "https://raw.githubusercontent.com/gentoo/gentoo/f5d4d4995d45baf77c176224b62e424dca037aef/media-sound/musepack-tools/files/musepack-tools-495-incompatible-pointers.patch";
-      #   sha256 = "sha256-XK/LyH48VQDUMSHIXNlCwRLRJly4JjsaBvMFEX6SnD0=";
-      #   stripLen = 1;
-      # })
-      # ./01_am-maintainer-mode.patch
-      # ./02_link-libm.patch
-      # ./04_link-order.patch
-      # ./1001_missing_extern_kw.patch
-      # ./musepack-tools-495-fix-compiler-warnings.patch
-      #
-      # ./mpcchap.patch
-      # ./add_subdir-objects.patch
-      # ./05_visibility.patch
-      # ./musepack-tools-495-incompatible-pointers.patch
-      # ./musepack-tools-495-fixup-link-depends.patch
-      # ./musepack-tools-495-respect-cflags.patch
+      ./musepack-tools-495-fixup-link-depends.patch
+      ./musepack-tools-495-incompatible-pointers.patch
+      ./musepack-tools-495-respect-cflags.patch
+      ./05_visibility.patch
     ];
 
     postPatch = ''
@@ -125,7 +91,7 @@ in
       "-DCUEFILE_LIBRARY=${libcuefile}/lib/libcue.so"
     ];
 
-    # NIX_CFLAGS_COMPILE = "-Wno-error=restrict";
+    NIX_CFLAGS_COMPILE_APPEND = "-fvisibility=hidden";
 
     # outputs = ["out" "lib" "dev"];
 
