@@ -307,7 +307,7 @@ in {
           # never_convert_lossy_files = true;
           # FIXME think of some way to keep mp3 files but also fix the playlist names?
           never_convert_lossy_files = false;
-          threads = 25;
+          threads = 14;
           format = "opus";
           embed = false;
           copy_album_art = true;
