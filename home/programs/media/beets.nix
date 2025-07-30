@@ -9,7 +9,7 @@
   media-drive = "/volume1/Media";
   download-dir = "${media-drive}/ImportMusic/slskd";
   music-dir = "${media-drive}/Music";
-  transcoded-music = "${media-drive}/Transcodedmp";
+  transcoded-music = "${media-drive}/TranscodedMusic";
   beets-dir = "/home/tunnel/.config/beets";
   beets-library = "${beets-dir}/library.db";
   beets-config = "${beets-dir}/config.yaml";
