@@ -125,7 +125,7 @@
     end
 
     echo "Encoding $file_to_encode to Musepack..."
-    if ${lib.getExe' self.packages.${pkgs.system}.musepack "mpcenc"} --quality 5 --ape2 "$file_to_encode" "$output_file"
+    if ${lib.getExe' self.packages.${pkgs.system}.musepack "mpcenc"} --quality 6 --ape2 "$file_to_encode" "$output_file"
         echo "Successfully created '$output_file'"
     else
         echo "Error: mpcenc failed to encode the file." >&2
