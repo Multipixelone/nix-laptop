@@ -25,6 +25,7 @@
       rm -f ${detect-file}
     '';
   };
+  hr = ''${lib.getExe pkgs.hr} ━'';
   convert-mpc = pkgs.writeScriptBin "convert_mpc" ''
     #!${lib.getExe pkgs.fish}
 
@@ -342,7 +343,7 @@ in {
           }
           {
             event = "before_choose_candidate";
-            command = ''${lib.getExe pkgs.hr} ━'';
+            command = hr;
           }
           {
             event = "import_begin";
