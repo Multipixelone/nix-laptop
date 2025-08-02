@@ -251,11 +251,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1751858248,
-        "narHash": "sha256-w/+5cdSsvJIXbOGkwNGBSjoghbpl5MuuN9MEgYt/gP8=",
+        "lastModified": 1754104782,
+        "narHash": "sha256-jOJTcF9wpYRM5O68ECdxAVJlm0ObXaPhgYq/Pyn2tlw=",
         "owner": "Multipixelone",
         "repo": "beets-plugins",
-        "rev": "8250f62c688ad8495db2415c182a0ecc310521a1",
+        "rev": "61d0105f7da29bf6807799f8a2230ddf38d689df",
         "type": "github"
       },
       "original": {
