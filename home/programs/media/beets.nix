@@ -375,7 +375,7 @@ in {
           tidal = true;
         };
         lastgenre = {
-          force = true;
+          force = false;
           keep_existing = true;
         };
         duplicates = {
