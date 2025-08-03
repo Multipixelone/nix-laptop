@@ -188,6 +188,42 @@
 
     return 0
   '';
+  # This needs to be composed separately & included so the order can be maintained
+  paths = let
+    # this lovely snippet pulls the first artist from the albumartists_sort field :-)
+    first_artist = "%the{%tcp{%ifdef{albumartists_sort,%first{$albumartists_sort,1,0,\␀},$first_artist}}}";
+    # if no month and day just display year, otherwise display all three
+    date = "%if{$original_year,($original_year%if{$original_month,.$original_month.$original_day}) ,) }";
+    # ex. 01-01. Tyler, the Creator ft. Frank Ocean - Slater.wav
+    track_path = "$disc_and_track. $artist - $title";
+    # show my custom field if there is a re-release or tagged disambiguation
+    disambig_rerelease = "%if{$disambig,($disambig) }";
+  in [
+    {
+      category = "genre:mt, genre:broadway, genre:Musical";
+      path = "0. Musicals/%the{$album} ${disambig_rerelease}${date}[$media_type$source]/$disc_and_track. $title";
+    }
+    {
+      category = "albumtype:soundtrack, genre:Soundtrack";
+      path = "OST/$album ${disambig_rerelease}${date}[$media_type$source]/${track_path}";
+    }
+    {
+      category = "default";
+      path = "${first_artist}/$albumartist ${date}%if{$albumtype,($albumtype) }$album ${disambig_rerelease}[$media_type$source]/${track_path}";
+    }
+    {
+      category = "comp";
+      path = "Various Artists/$album ${disambig_rerelease}${date}[$media_type$source]/${track_path}";
+    }
+  ];
+  formatPath = path: "  ${path.category}: ${builtins.toJSON path.path}";
+  pathsConfig = pkgs.writeTextFile {
+    name = "beets-path.yaml";
+    text = pkgs.lib.strings.concatStringsSep "\n" ([
+        "paths:"
+      ]
+      ++ (map formatPath paths));
+  };
 in {
   systemd.user = {
     paths.beets = {
@@ -235,7 +271,10 @@ in {
       settings = {
         directory = music-dir;
         library = beets-library;
-        include = [config.age.secrets.beets-plex.path];
+        include = [
+          config.age.secrets.beets-plex.path
+          pathsConfig
+        ];
         plugins = [
           # "albumtypes"
           "alternatives"
@@ -732,22 +771,6 @@ in {
         };
         format_album = "$format_album";
         format_item = "$format_item";
-        paths = let
-          # this lovely snippet pulls the first artist from the albumartists_sort field :-)
-          first_artist = "%the{%tcp{%ifdef{albumartists_sort,%first{$albumartists_sort,1,0,\␀},$first_artist}}}";
-          # if no month and day just display year, otherwise display all three
-          date = "%if{$original_year,($original_year%if{$original_month,.$original_month.$original_day}) ,) }";
-          # ex. 01-01. Tyler, the Creator ft. Frank Ocean - Slater.wav
-          track_path = "$disc_and_track. $artist - $title";
-          # show my custom field if there is a re-release or tagged disambiguation
-          disambig_rerelease = "%if{$disambig,($disambig) }";
-        in {
-          "albumtype:soundtrack, genre:Soundtrack" = "OST/$album ${disambig_rerelease}${date}[$media_type$source]/${track_path}";
-          default = "${first_artist}/$albumartist ${date}%if{$albumtype,($albumtype) }$album ${disambig_rerelease}[$media_type$source]/${track_path}";
-          # "genre:musical, genre:broadway" = "Musicals/$album ${disambig_rerelease}${date}[$media_type$source]/${track_path}";
-          # singleton = "$albumartist/Singles/$title";
-          comp = "Various Artists/$album ${disambig_rerelease}${date}[$media_type$source]/${track_path}";
-        };
         fetchart = {
           auto = true;
           cautious = false;
