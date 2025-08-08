@@ -9,9 +9,9 @@
       },
       "branch": "master",
       "submodules": true,
-      "revision": "3cbc4e5570826cb0186592c036d466fccf304804",
+      "revision": "cba7c016d39311a32beab67268a57e367cee12a6",
       "url": null,
-      "hash": "0lls074hx117gqz1qpvl458z6halm8y6pbvvxqrlbihdr6sqhr54"
+      "hash": "1ihhjvlhyf0g9lp5ba6yf4rfydah9z61pgpl8sgg0z1r0a1nk0kk"
     },
     "bandcamp-dl": {
       "type": "GitRelease",
@@ -40,10 +40,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": false,
-      "version": "1.1.0",
-      "revision": "3c6d642d61df2499bfbe2f4d43d7778ad1cc883c",
-      "url": "https://api.github.com/repos/Brainicism/bgutil-ytdlp-pot-provider/tarball/1.1.0",
-      "hash": "1wwgkmwv5shqj20h9xn1l0miwlnsymwxm6in8cwac5qcdlnxxh41"
+      "version": "1.2.1",
+      "revision": "765c0cbc9bb05456eb47fdd3f16cf43800f3181a",
+      "url": "https://api.github.com/repos/Brainicism/bgutil-ytdlp-pot-provider/tarball/1.2.1",
+      "hash": "1b0mvq8arcd0c4kzh4wc8vc1ndjilyfj17jdj9k0hx7087nwf7dg"
     },
     "modorganizer2-linux-installer": {
       "type": "GitRelease",
@@ -56,10 +56,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": false,
-      "version": "5.1.6",
-      "revision": "bac3b882bd5a3637de2d85af07e45c4837e289b0",
-      "url": "https://api.github.com/repos/furglitch/modorganizer2-linux-installer/tarball/5.1.6",
-      "hash": "10c7blzk5d3xmixdg00vlxym7i1llrisxg3y3mdyxdvpq77p4a7x"
+      "version": "5.2.6",
+      "revision": "1b13d19f0c05134160ef1ee6eec4847310115e2b",
+      "url": "https://api.github.com/repos/furglitch/modorganizer2-linux-installer/tarball/5.2.6",
+      "hash": "0fy4m0idyjd41yvyg7x5lqih61yk9dirqlp1yf9wv9mp0q5avxai"
     },
     "moondeck-buddy": {
       "type": "GitRelease",
@@ -73,9 +73,9 @@
       "release_prefix": null,
       "submodules": true,
       "version": "v1.9.0",
-      "revision": "a24f86577d1804d442346d62373be33126f6ef5f",
+      "revision": "6b4916082c43270a4f70093462161d8446d85cc6",
       "url": null,
-      "hash": "1d3cfvf6h3finvcim1mva6h2gljs41a4f24r71jjcj7v90jb875p"
+      "hash": "0c7pgdsy159q8p49z93vz82kf3ss462mj5wjrx1pnwwyay79r3ry"
     },
     "slskd-stats": {
       "type": "GitRelease",
@@ -104,10 +104,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": true,
-      "version": "v2025.710.130932",
-      "revision": "feac80656d211569c3c4eef839f284d386c90093",
+      "version": "v2025.806.175625",
+      "revision": "4503fea7fbc5cc5ae5aa1de10716f54de948af0e",
       "url": null,
-      "hash": "0ansaj5fhihwc2pdxgxlf660wakl91fhxwj1z2wmnwy3abyjmri3"
+      "hash": "0011bhgk1ag7py1fjx3s9619kma9fi1wybypmgvsrja8gci9bp0b"
     }
   },
   "version": 5
