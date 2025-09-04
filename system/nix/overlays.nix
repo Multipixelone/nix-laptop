@@ -2,13 +2,13 @@
   nixpkgs.overlays = let
     pins = import ../../npins;
   in [
-    (self: super: {
-      # use Furglitch fork
-      mo2installer = inputs.nix-gaming.packages.${super.system}.mo2installer.overrideAttrs {
-        version = pins.modorganizer2-linux-installer.version;
-        src = pins.modorganizer2-linux-installer;
-      };
-    })
+    # (self: super: {
+    #   # use Furglitch fork
+    #   mo2installer = inputs.nix-gaming.packages.${super.system}.mo2installer.overrideAttrs {
+    #     version = pins.modorganizer2-linux-installer.version;
+    #     src = pins.modorganizer2-linux-installer;
+    #   };
+    # })
     (self: super: {
       openrgb = super.openrgb.overrideAttrs {
         version = pins.OpenRGB.revision;

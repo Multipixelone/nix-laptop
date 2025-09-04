@@ -29,7 +29,7 @@ in {
     amdgpu_top
     vulkan-tools
     vulkan-loader
-    mo2installer
+    # mo2installer
     umu
     protontricks
     zenity
