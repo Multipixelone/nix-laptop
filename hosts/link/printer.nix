@@ -17,6 +17,7 @@
   };
   services = {
     printing = {
+      enable = true;
       drivers = [
         # add drivers for Canon MG3222
         pkgs.gutenprint
