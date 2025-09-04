@@ -14,6 +14,7 @@
     allowUnfree = true;
     config.permittedInsecurePackages = [
       "electron-25.9.0"
+      "qtwebengine-5.15.19"
     ];
   };
   age.secrets = {
