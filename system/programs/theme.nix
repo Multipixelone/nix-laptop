@@ -17,7 +17,6 @@
     papirus-folders
     arc-theme
     libsForQt5.kio
-    libsForQt5.kio-extras
   ];
   stylix = {
     enable = true;

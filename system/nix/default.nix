@@ -14,6 +14,7 @@
     allowUnfree = true;
     config.permittedInsecurePackages = [
       "electron-25.9.0"
+      "qtwebengine-5.15.19"
     ];
   };
   age.secrets = {
@@ -37,8 +38,7 @@
     settings = {
       trusted-users = ["@wheel" "root" "nix-ssh"];
       auto-optimise-store = true;
-      # lix < 2.93 requires repl-flake for nh
-      experimental-features = ["nix-command" "flakes" "repl-flake"];
+      experimental-features = ["nix-command" "flakes"];
       flake-registry = "/etc/nix/registry.json";
       netrc-file = config.age.secrets."attic".path;
     };
