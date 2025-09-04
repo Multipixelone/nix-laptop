@@ -24,6 +24,7 @@
       ];
       browsing = true;
       defaultShared = true;
+      openFirewall = true;
       listenAddresses = ["*:631"];
       allowFrom = ["all"];
     };
