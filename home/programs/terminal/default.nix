@@ -40,8 +40,9 @@
     nix-index.enable = true;
     ssh = {
       enable = true;
-      addKeysToAgent = "yes";
-      forwardAgent = true;
+      # FIXME: home-manager weird matchBlocks thing?
+      # addKeysToAgent = "yes";
+      # forwardAgent = true;
     };
     direnv = {
       enable = true;
