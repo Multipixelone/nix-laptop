@@ -30,6 +30,7 @@
           "${mod}/programs/media.nix"
           "${mod}/services/jdownloader.nix"
           "${mod}/services/slskd.nix"
+          "${mod}/services/asf.nix"
 
           "${mod}/hardware/rgb.nix"
           "${mod}/hardware/ucode.nix"
