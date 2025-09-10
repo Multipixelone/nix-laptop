@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   inputs,
   ...
@@ -25,6 +26,15 @@
         CustomGamePlayedWhileFarming = "your mom";
         OnlineFlags = 1024;
         SteamTokenDumperPluginEnabled = true;
+        EnableFreePackages = true; # TODO install FreePackages declaratively
+        FreePackagesFilters = [
+          {NoCostOnly = true;}
+          {Categories = [29];}
+          {
+            Types = ["DLC"];
+            IgnoredTypes = ["Game" "Application"];
+          }
+        ];
         SteamUserPermissions = {
           "76561198051516276" = 1;
           "76561198036181617" = 1;
