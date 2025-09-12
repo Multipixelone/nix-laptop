@@ -18,6 +18,11 @@ in {
         controlPath = "~/.ssh/master-%r@%n:%p";
         controlPersist = "no";
       };
+      "git" = {
+        host = "github.com gitlab.com";
+        identitiesOnly = true;
+        identityFile = ["~/.ssh/nixgit"];
+      };
     };
   };
 }
