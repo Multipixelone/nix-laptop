@@ -31,7 +31,7 @@
     reddit-enhancement-suite
     betterttv
     return-youtube-dislikes
-    # custom extensions
+    # custom extensions TODO figure out some way to auto pull these
     (buildFirefoxXpiAddon rec {
       pname = "lastfm-unscrobbler";
       version = "1.6.3";
