@@ -4,7 +4,7 @@
   config,
   ...
 }: let
-  # FIXME probably not using this, but i'm leaving it here for posterity cause I'm gonna forget how to wrap a shell script in the future LMAO
+  # NOTE probably not using this, but i'm leaving it here for posterity cause I'm gonna forget how to wrap a shell script in the future LMAO
   # kunst = pkgs.stdenv.mkDerivation rec {
   #   name = "kunst";
   #   nativeBuildInputs = [pkgs.makeWrapper];
