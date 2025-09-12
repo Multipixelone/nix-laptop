@@ -14,6 +14,7 @@
     ./wrapped.nix
     ./helix.nix
     ./shell-script.nix
+    ./ssh.nix
     ./zellij.nix
     ./starship.nix
   ];
@@ -38,12 +39,6 @@
     ripgrep.enable = true;
     zoxide.enable = true;
     nix-index.enable = true;
-    ssh = {
-      enable = true;
-      # FIXME: home-manager weird matchBlocks thing?
-      # addKeysToAgent = "yes";
-      # forwardAgent = true;
-    };
     direnv = {
       enable = true;
       nix-direnv.enable = true;
