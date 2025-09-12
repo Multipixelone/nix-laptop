@@ -56,9 +56,7 @@
   qt = {
     enable = true;
     platformTheme.name = lib.mkForce "kvantum";
-    style = {
-      name = lib.mkForce "kvantum";
-    };
+    style.name = lib.mkForce "kvantum";
   };
   home.packages = with pkgs; [
     qt5.qttools
