@@ -213,10 +213,6 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-    hypr-binds = {
-      url = "github:hyprland-community/hypr-binds";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     hyprlock = {
       url = "github:hyprwm/hyprlock";
       inputs = {
