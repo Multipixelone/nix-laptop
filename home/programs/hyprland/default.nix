@@ -5,8 +5,6 @@
   osConfig,
   ...
 }: let
-  # TODO move all of these into a "startup" definition
-  # hyprdim = lib.getExe pkgs.hyprdim + " -d 400 -f 35";
   cursor-theme = pkgs.fetchzip {
     url = "https://blusky.s3.us-west-2.amazonaws.com/Posy_Cursor_Black_h.tar.gz";
     hash = "sha256-EC4bKLo1MAXOABcXb9FneoXlV2Fkb9wOFojewaSejZk=";
