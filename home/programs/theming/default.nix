@@ -30,6 +30,7 @@
     starship.enable = false;
     yazi.enable = false;
     mangohud.enable = false;
+    qt.enable = false;
   };
   gtk = {
     enable = true;
