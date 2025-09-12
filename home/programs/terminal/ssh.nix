@@ -21,7 +21,7 @@ in {
       "git" = {
         host = "github.com gitlab.com";
         identitiesOnly = true;
-        identityFile = ["~/.ssh/nixgit"];
+        identityFile = ["~/.ssh/id_ed25519"];
       };
     };
   };
