@@ -7,8 +7,8 @@ in {
     enableDefaultConfig = false;
     matchBlocks = {
       "*" = {
-        forwardAgent = false;
-        addKeysToAgent = "no";
+        forwardAgent = true;
+        addKeysToAgent = "yes";
         compression = false;
         serverAliveInterval = 0;
         serverAliveCountMax = 3;
