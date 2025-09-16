@@ -5,19 +5,19 @@
   ...
 }: let
   rain-pipe = "/run/snapserver/rain";
-  librespot = pkgs.librespot.overrideAttrs rec {
-    rev = "80c27ec476666b40aba98327b3ba52d620dd6d06";
-    cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
-      inherit src;
-      hash = "sha256-Lujz2revTAok9B0hzdl8NVQ5XMRY9ACJzoQHIkIgKMg=";
-    };
-    src = pkgs.fetchFromGitHub {
-      inherit rev;
-      owner = "librespot-org";
-      repo = "librespot";
-      hash = "sha256-thA8C5+aynRq3CfF5947wmkrVZGZGctcnL718q3NYYg=";
-    };
-  };
+  # librespot = pkgs.librespot.overrideAttrs rec {
+  #   rev = "80c27ec476666b40aba98327b3ba52d620dd6d06";
+  #   cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
+  #     inherit src;
+  #     hash = "sha256-Lujz2revTAok9B0hzdl8NVQ5XMRY9ACJzoQHIkIgKMg=";
+  #   };
+  #   src = pkgs.fetchFromGitHub {
+  #     inherit rev;
+  #     owner = "librespot-org";
+  #     repo = "librespot";
+  #     hash = "sha256-thA8C5+aynRq3CfF5947wmkrVZGZGctcnL718q3NYYg=";
+  #   };
+  # };
 in {
   # age.secrets."librespot" = {
   #   file = "${inputs.secrets}/media/spotify.age";
@@ -63,7 +63,7 @@ in {
       streams = {
         Spotify = {
           type = "librespot";
-          location = "${librespot}/bin/librespot";
+          location = lib.getExe pkgs.librespot;
           query = {
             devicename = "Speakers";
             normalize = "true";
