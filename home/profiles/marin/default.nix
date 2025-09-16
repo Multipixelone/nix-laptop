@@ -1,6 +1,6 @@
 {
   virtualisation.quadlet.containers.plexamp-headless = {
-    autoStart = true;
+    autoStart = false;
     serviceConfig = {
       RestartSec = "10";
       Restart = "always";
