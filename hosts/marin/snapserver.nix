@@ -19,13 +19,13 @@
     };
   };
 in {
-  age.secrets."librespot" = {
-    file = "${inputs.secrets}/media/spotify.age";
-    path = "/var/cache/snapserver/credentials.json";
-    mode = "440";
-    owner = "snapserver";
-    group = "snapserver";
-  };
+  # age.secrets."librespot" = {
+  #   file = "${inputs.secrets}/media/spotify.age";
+  #   path = "/var/cache/snapserver/credentials.json";
+  #   mode = "440";
+  #   owner = "snapserver";
+  #   group = "snapserver";
+  # };
   networking.firewall.enable = false;
   security.rtkit.enable = true;
   # user to run snapserver as
@@ -69,9 +69,10 @@ in {
             normalize = "true";
             autoplay = "false";
             # cache = "/home/tunnel/.cache/librespot";
-            cache = "/var/cache/snapserver";
+            # cache = "/var/cache/snapserver";
             killall = "true";
-            params = "--cache-size-limit=4G --enable-oauth -b 320";
+            params = "--cache-size-limit=4G --cache /var/cache/snapserver";
+            # params = "-b 320";
           };
         };
         # airplay = {
