@@ -18,6 +18,10 @@
     extraModulePackages = [config.boot.kernelPackages.broadcom_sta];
   };
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "broadcom-sta-6.30.223.271-57-6.12.45"
+  ];
+
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-uuid/c2c80df4-eb6e-446f-97ba-008f494c3817";
