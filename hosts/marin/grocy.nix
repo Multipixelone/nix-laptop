@@ -17,7 +17,7 @@
     ];
   };
   services.grocy = {
-    enable = true;
+    enable = false;
     hostName = "192.168.5.21";
     nginx.enableSSL = false;
   };
