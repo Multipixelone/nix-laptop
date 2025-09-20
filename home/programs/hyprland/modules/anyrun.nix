@@ -76,7 +76,10 @@
       "applications.ron".text = ''
         Config(
           max_entries: 5,
-          terminal: Some("foot"),
+          terminal: Some(Terminal(
+            command: "foot",
+            args: "{}",
+          )),
         )
       '';
       "dictionary.ron".text = ''
