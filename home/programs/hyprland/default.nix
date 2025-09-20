@@ -143,12 +143,12 @@ in {
         pseudotile = true;
         preserve_split = true;
       };
-      gestures = {
-        workspace_swipe = true;
-        workspace_swipe_forever = true;
-        workspace_swipe_cancel_ratio = 0.15;
-        workspace_swipe_create_new = true;
-      };
+      # gestures = {
+      #   workspace_swipe = true;
+      #   workspace_swipe_forever = true;
+      #   workspace_swipe_cancel_ratio = 0.15;
+      #   workspace_swipe_create_new = true;
+      # };
       misc = {
         disable_autoreload = true;
         background_color = "rgb(${config.lib.stylix.colors.base00})";
