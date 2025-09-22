@@ -150,7 +150,7 @@
     echo "Building mpcenc command..."
 
     # Start with the base command and options
-    set -l mpcenc_cmd ${lib.getExe' self.packages.${pkgs.system}.musepack "mpcenc"} --overwrite --quality 6 --ape2
+    set -l mpcenc_cmd ${lib.getExe' self.packages.${pkgs.system}.musepack "mpcenc"} --overwrite --quality 5 --ape2
 
     if test -n "$artist_tag"; set -a mpcenc_cmd --artist "$artist_tag"; end
     if test -n "$title_tag";  set -a mpcenc_cmd --title "$title_tag"; end
