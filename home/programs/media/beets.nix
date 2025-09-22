@@ -406,7 +406,7 @@ in {
           # FIXME think of some way to keep mp3 files but also fix the playlist names?
           never_convert_lossy_files = false;
           threads = 14;
-          format = "opus";
+          format = "musepack";
           embed = false;
           copy_album_art = true;
           formats = {
