@@ -122,7 +122,7 @@
 
         echo "Converting to temporary WAV: 16-bit, $target_sample_rate Hz, stereo..."
         # Use ffmpeg to create a standard, compatible WAV file
-        if ${ffmpeg} -i "$input_file" -ac 2 -ar $target_sample_rate -c:a pcm_s16le  -y "$temp_file" >/dev/null 2>&1
+        if ${ffmpeg} -i "$input_file" -ac 2 -ar $target_sample_rate -c:a pcm_s16le -map_metadata -1 -y "$temp_file" >/dev/null 2>&1
             set file_to_encode "$temp_file"
         else
             echo "Error: Failed to convert the audio file with ffmpeg." >&2
