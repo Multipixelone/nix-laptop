@@ -296,6 +296,27 @@ in {
         ExecStart = lib.getExe beets-import;
       };
     };
+    timers.transcode-music = {
+      Install.WantedBy = ["timers.target"];
+      Timer = {
+        # midnight every night
+        OnCalendar = "*-*-* 00:00:00";
+        Persistent = true;
+        RandomizedDelaySec = "20m";
+      };
+    };
+    services.transcode-music = {
+      Unit.Description = "Automatically transcode music for my iPod";
+      Service = {
+        Type = "oneshot";
+        # ReadOnlyPaths = [configFile];
+        ReadWritePaths = [
+          music-dir
+          transcoded-music
+        ];
+        ExecStart = "${lib.getExe euphony-wrapped} transcode --bare-terminal";
+      };
+    };
   };
   # thanks 5225225 (https://github.com/5225225/dotfiles/blob/bf95910ad4b7929ddce1865162f3c16064e74d8e/user/beets/beets.nix#L138)
   xdg.configFile = {
