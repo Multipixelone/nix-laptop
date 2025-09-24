@@ -348,7 +348,8 @@ in {
           "edit"
           "embedart"
           "fetchart"
-          "filetote"
+          # TODO re-enable when plugin builds again
+          # "filetote"
           "fish"
           "fromfilename"
           "hook"
