@@ -139,6 +139,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+    euphony = {
+      url = "github:Multipixelone/euphony/nix-build";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     zjstatus-hints = {
       url = "github:Multipixelone/zjstatus-hints/nix-build";
       # inputs.nixpkgs.follows = "zjstatus";

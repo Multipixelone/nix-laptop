@@ -98,6 +98,7 @@
 
     rockbox_art_converter $argv
   '';
+  # TODO break out this script into a global thing!
   convert-mpc = pkgs.writeScriptBin "convert_mpc" ''
     #!${lib.getExe pkgs.fish}
 
@@ -224,6 +225,57 @@
       ]
       ++ (map formatPath paths));
   };
+  # TODO separate this out into a different file (need to globalize scripts somehow)
+  configFile = pkgs.writeText "euphony.toml" ''
+    [paths]
+    base_library_path = "${music-dir}"
+    base_tools_path = "/home/tunnel/.bin"
+    [logging]
+    default_log_output_path = "{LIBRARY_BASE}/euphony.log"
+
+    [ui]
+    [ui.transcoding]
+    show_logs_tab_on_exit = false
+
+    [validation]
+    extensions_considered_audio_files = [
+        "mp3", "opus", "flac", "wav", "pcm", "m4a",
+        "ogg", "aac", "aiff", "wma", "alac",
+    ]
+
+    [tools]
+    [tools.ffmpeg]
+    binary = "${lib.getExe convert-mpc}"
+    audio_transcoding_args = ["{INPUT_FILE}", "{OUTPUT_FILE}"]
+    audio_transcoding_output_extension = "mpc"
+
+    [libraries]
+    [libraries.lossless]
+    name = "Lossless"
+    path = "{LIBRARY_BASE}"
+    ignored_directories_in_base_directory = []
+
+    [libraries.lossless.validation]
+    allowed_audio_file_extensions = [
+        "mp3", "opus", "flac", "wav", "pcm", "m4a",
+        "ogg", "aac", "aiff", "wma", "alac"
+    ]
+    allowed_other_file_extensions = ["png", "jpg", "jpeg", "txt", "md", "log", "cue", "m3u8"]
+    allowed_other_files_by_name = ["desktop.ini"]
+    [libraries.lossless.transcoding]
+    audio_file_extensions = ["flac"]
+    # other_file_extensions = ["png", "jpg", "jpeg", "txt", "md", "log", "cue", "m3u8"]
+    other_file_extensions = []
+
+    [aggregated_library]
+    path = "${transcoded-music}"
+    transcode_threads = 6
+    failure_max_retries = 2
+    failure_delay_seconds = 2
+  '';
+  euphony-wrapped = pkgs.writeShellScriptBin "euphony" ''
+    ${lib.getExe inputs.euphony.packages.${pkgs.system}.default} -c ${configFile} $@
+  '';
 in {
   systemd.user = {
     paths.beets = {
@@ -269,6 +321,7 @@ in {
   home.packages = [
     convert-mpc
     rb-albumart
+    euphony-wrapped
   ];
   programs = {
     fish.shellAbbrs = {
