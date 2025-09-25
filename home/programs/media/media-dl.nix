@@ -76,7 +76,7 @@ in {
         downloader = lib.getExe config.programs.aria2.package;
         downloader-args = "aria2c:'-c -x8 -s8 -k1M'";
         cookies = config.age.secrets."yt-dlp".path;
-        extractor-args = "youtube:bypass_native_jsi;deno_no_jitless";
+        extractor-args = "youtube:deno_no_jitless";
       };
     };
   };
