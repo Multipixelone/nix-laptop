@@ -23,7 +23,6 @@
       };
     };
     waydroid.enable = true;
-    lxd.enable = true;
     quadlet.enable = true;
     podman = {
       enable = true;
