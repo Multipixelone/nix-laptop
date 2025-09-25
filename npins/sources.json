@@ -108,6 +108,22 @@
       "revision": "feac80656d211569c3c4eef839f284d386c90093",
       "url": null,
       "hash": "0ansaj5fhihwc2pdxgxlf660wakl91fhxwj1z2wmnwy3abyjmri3"
+    },
+    "yt-dlp-YTNSigDeno": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "bashonly",
+        "repo": "yt-dlp-YTNSigDeno"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "2025.07.05",
+      "revision": "4e02b2e1c8d7c738297bc690fb8aa85cb911338a",
+      "url": "https://api.github.com/repos/bashonly/yt-dlp-YTNSigDeno/tarball/2025.07.05",
+      "hash": "0r77m2cdnsr32qxyw0n97n740dgc0smfb7wy5jbbnyvargwap8vg"
     }
   },
   "version": 5

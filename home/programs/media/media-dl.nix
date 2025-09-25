@@ -47,12 +47,7 @@ in {
     #   hash = "sha256-MtQFXWJByo/gyftMtywCCfpf8JtldA2vQP8dnpLEl7U=";
     # };
     # plugin to allow yt-dlp to solve with deno
-    "yt-dlp/plugins/yt-dlp-deno".source = pkgs.fetchFromGitHub {
-      tag = "2024.12.06";
-      owner = "bashonly";
-      repo = "yt-dlp-YTNSigDeno";
-      hash = "sha256-sRO5GGNKkDg0qB/Yl4ZuEaCwpECFA9GtDvURJTqlr0Y=";
-    };
+    "yt-dlp/plugins/yt-dlp-deno".source = pins.yt-dlp-YTNSigDeno;
   };
   virtualisation.quadlet.containers.bgutil-provider = {
     autoStart = true;
