@@ -93,6 +93,19 @@
       "url": "https://api.github.com/repos/Arairon/slskd-stats/tarball/v0.1.0",
       "hash": "0avqxy739hjf82d7jsj6cx0vy971ja3vznggzgdj15qz50qfrpzz"
     },
+    "spotify-downloader": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "spotDL",
+        "repo": "spotify-downloader"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "e5c6f4567ae6f9fcaf083816363b0768c91e56e2",
+      "url": "https://github.com/spotDL/spotify-downloader/archive/e5c6f4567ae6f9fcaf083816363b0768c91e56e2.tar.gz",
+      "hash": "0pvm5kz4i77w19pm72jrrj9yz5x9r8bc2s45605q0swwyf8lcs3j"
+    },
     "sunshine": {
       "type": "GitRelease",
       "repository": {

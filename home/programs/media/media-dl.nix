@@ -10,12 +10,7 @@
   spotdl-wrapped = let
     # use version of spotdl that accepts extractor-args for yt-dlp
     spotdl-args = pkgs.spotdl.overrideAttrs {
-      src = pkgs.fetchFromGitHub {
-        owner = "Kyrluckechuck";
-        repo = "spotify-downloader";
-        rev = "ad48f5ca55b2cc79e3b83bc8e8aa16b16c11d485";
-        hash = "sha256-56zVTlzJnI7AFmcZ9ZNZPDx9wc5JxFnSWxmrPkr4bWI=";
-      };
+      src = pins.spotify-downloader;
     };
   in
     pkgs.writeShellScriptBin "spotdl" ''
@@ -62,7 +57,7 @@ in {
   };
   home.packages = [
     pkgs.streamrip
-    spotdl-wrapped
+    # spotdl-wrapped
   ];
   programs = {
     aria2.enable = true;
