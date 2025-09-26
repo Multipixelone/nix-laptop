@@ -478,11 +478,11 @@ in {
           removable = false;
         };
         convert = {
-          auto = false;
-          embed = false;
+          auto = true;
           never_convert_lossy_files = true;
           threads = 6;
           format = "flac";
+          embed = true;
           copy_album_art = true;
           formats = {
             mp3.command = "${ffmpeg} -i $source -ab 320k -ac 2 -ar 44100 -joint_stereo 0 $dest";
