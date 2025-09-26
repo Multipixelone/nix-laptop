@@ -488,7 +488,6 @@ in {
           copy_album_art = true;
           formats = {
             mp3.command = "${ffmpeg} -i $source -ab 320k -ac 2 -ar 44100 -joint_stereo 0 $dest";
-            mp3.extension = "mp3";
             wav.command = "${ffmpeg} -i $source -sample_fmt s16 -ar 44100 $dest";
             # 128K is probably overkill LOL but I want something *close* to transparent on my ipod
             opus.command = "${ffmpeg} -i $source -c:a libopus -b:a 128K $dest";
