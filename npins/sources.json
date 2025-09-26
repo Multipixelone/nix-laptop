@@ -72,10 +72,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": true,
-      "version": "v1.9.0",
-      "revision": "a24f86577d1804d442346d62373be33126f6ef5f",
+      "version": "v1.9.1",
+      "revision": "7c616b5df1f17d1e8a2aad96bf5682cd5a62677f",
       "url": null,
-      "hash": "1d3cfvf6h3finvcim1mva6h2gljs41a4f24r71jjcj7v90jb875p"
+      "hash": "10gi3r547325112mk3w1m0r2jbbbdv4wlv2fn7sfrk0b27588ah1"
     },
     "slskd-stats": {
       "type": "GitRelease",
