@@ -490,8 +490,10 @@ in {
             mp3.command = "${ffmpeg} -i $source -ab 320k -ac 2 -ar 44100 -joint_stereo 0 $dest";
             wav.command = "${ffmpeg} -i $source -sample_fmt s16 -ar 44100 $dest";
             opus.command = "${ffmpeg} -i $source -c:a libopus -b:a 128K $dest";
-            musepack.command = "${lib.getExe convert-mpc} $source $dest";
-            musepack.extension = "mpc";
+            musepack = {
+              command = "${lib.getExe convert-mpc} $source $dest";
+              extension = "mpc";
+            };
           };
         };
         # albumtypes.types = [
