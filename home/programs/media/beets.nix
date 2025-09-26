@@ -479,12 +479,10 @@ in {
         };
         convert = {
           auto = false;
-          # never_convert_lossy_files = true;
-          # FIXME think of some way to keep mp3 files but also fix the playlist names?
-          never_convert_lossy_files = false;
           threads = 14;
           format = "musepack";
           embed = false;
+          never_convert_lossy_files = true;
           copy_album_art = true;
           formats = {
             mp3.command = "${ffmpeg} -i $source -ab 320k -ac 2 -ar 44100 -joint_stereo 0 $dest";
