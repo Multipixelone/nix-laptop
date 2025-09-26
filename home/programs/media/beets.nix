@@ -480,9 +480,9 @@ in {
         convert = {
           auto = false;
           threads = 14;
-          format = "musepack";
           embed = false;
           never_convert_lossy_files = true;
+          format = "flac";
           copy_album_art = true;
           formats = {
             mp3.command = "${ffmpeg} -i $source -ab 320k -ac 2 -ar 44100 -joint_stereo 0 $dest";
