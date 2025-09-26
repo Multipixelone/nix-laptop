@@ -479,9 +479,9 @@ in {
         };
         convert = {
           auto = false;
-          threads = 14;
           embed = false;
           never_convert_lossy_files = true;
+          threads = 6;
           format = "flac";
           copy_album_art = true;
           formats = {
