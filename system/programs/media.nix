@@ -41,6 +41,7 @@ in {
   };
   environment.systemPackages = [
     inputs.khinsider.packages.${pkgs.system}.default
+    # TODO fix qtwebengine-5.15.19 insecure
     # inputs.qtscrob.packages.${pkgs.system}.default
     playlist-download
     # self.packages.${pkgs.system}.bandcamp-dl
@@ -49,9 +50,9 @@ in {
       name = "ipod-sync";
       runtimeInputs = [pkgs.rsync];
       text = ''
-        SCROB_CONFIG_FILE=${config.age.secrets."qtscrob".path}
+        # SCROB_CONFIG_FILE=${config.age.secrets."qtscrob".path}
         if [ -d "$IPOD_DIR" ]; then
-          scrobbler -c "$SCROB_CONFIG_FILE" -f -l "$IPOD_DIR"
+          # scrobbler -c "$SCROB_CONFIG_FILE" -f -l "$IPOD_DIR"
           rsync -vh --modify-window=1 --exclude="*.csv" --update --recursive --times --info=progress2 --no-inc-recursive "/volume1/Media/RockboxCover/" "''${IPOD_DIR}/.rockbox/albumart/" || true
           echo "Syncing playlists..."
           rsync -vh --modify-window=1 --exclude="*.csv" --update --recursive --times --info=progress2 --no-inc-recursive "''${PLAYLIST_DIR}/.ipod/" "''${IPOD_DIR}/Playlists/" || true
