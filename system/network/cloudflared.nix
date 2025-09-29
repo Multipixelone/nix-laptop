@@ -18,7 +18,7 @@ in {
   systemd.services.cf-tunnel = {
     wantedBy = ["multi-user.target"];
     wants = ["network-online.target"];
-    after = ["network-online.target" "dnscrypt-proxy2.service"];
+    after = ["network-online.target" "dnscrypt-proxy.service"];
     serviceConfig = {
       # this is gross
       ExecStart = ''
