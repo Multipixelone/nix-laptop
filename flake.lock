@@ -2016,11 +2016,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1755745155,
-        "narHash": "sha256-ho8UZyAzfr3GHITeBl+rhl3BNmdu/KVdYVVFPr2IWho=",
+        "lastModified": 1759115888,
+        "narHash": "sha256-Sj9IiNySNjte/QxUM678DrqcwfT8v16UbjWAw7ajOmE=",
         "owner": "Multipixelone",
         "repo": "playlist-downloader",
-        "rev": "d3161af40e696266e66ef7b2c2cc9b37298fcb4c",
+        "rev": "5232be5951671d1da8d837cb0b30e357b867b7bb",
         "type": "github"
       },
       "original": {
