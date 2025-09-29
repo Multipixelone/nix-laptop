@@ -240,7 +240,7 @@
     [validation]
     extensions_considered_audio_files = [
         "mp3", "opus", "flac", "wav", "pcm", "m4a",
-        "ogg", "aac", "aiff", "wma", "alac",
+        "ogg", "aac", "aiff", "wma", "alac", "wv", "aif"
     ]
 
     [tools]
@@ -258,12 +258,16 @@
     [libraries.lossless.validation]
     allowed_audio_file_extensions = [
         "mp3", "opus", "flac", "wav", "pcm", "m4a",
-        "ogg", "aac", "aiff", "wma", "alac"
+        "ogg", "aac", "aiff", "wma", "alac", "wv", "aif"
     ]
-    allowed_other_file_extensions = ["png", "jpg", "jpeg", "txt", "md", "log", "cue", "m3u8"]
+    allowed_other_file_extensions = ["png", "jpg", "jpeg", "txt", "md", "log", "cue", "m3u8", "bmp", "m3u", "toc", "lrc"]
     allowed_other_files_by_name = ["desktop.ini"]
     [libraries.lossless.transcoding]
-    audio_file_extensions = ["flac"]
+    # audio_file_extensions = ["flac"]
+    audio_file_extensions = [
+        "mp3", "opus", "flac", "wav", "pcm", "m4a",
+        "ogg", "aac", "aiff", "wma", "alac", "wv", "aif"
+    ]
     # other_file_extensions = ["png", "jpg", "jpeg", "txt", "md", "log", "cue", "m3u8"]
     other_file_extensions = []
 
