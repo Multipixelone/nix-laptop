@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  config,
   lib,
   ...
 }: let
@@ -19,13 +20,13 @@
   #   };
   # };
 in {
-  # age.secrets."librespot" = {
-  #   file = "${inputs.secrets}/media/spotify.age";
-  #   path = "/var/cache/snapserver/credentials.json";
-  #   mode = "440";
-  #   owner = "snapserver";
-  #   group = "snapserver";
-  # };
+  age.secrets."librespot" = {
+    file = "${inputs.secrets}/media/spotify.age";
+    path = "/var/cache/snapserver/credentials.json";
+    mode = "440";
+    owner = "snapserver";
+    group = "snapserver";
+  };
   networking.firewall.enable = false;
   security.rtkit.enable = true;
   # user to run snapserver as
@@ -54,41 +55,46 @@ in {
     snapserver = {
       enable = true;
       openFirewall = true;
-      tcp.enable = true;
-      http = {
-        enable = true;
-        listenAddress = "0.0.0.0";
-        docRoot = pkgs.snapweb;
-      };
-      streams = {
-        Spotify = {
-          type = "librespot";
-          location = lib.getExe pkgs.librespot;
-          query = {
-            devicename = "Speakers";
-            normalize = "true";
-            autoplay = "false";
-            # cache = "/home/tunnel/.cache/librespot";
-            # cache = "/var/cache/snapserver";
-            killall = "true";
-            params = "--cache-size-limit=4G --cache /var/cache/snapserver";
-            # params = "-b 320";
-          };
+      settings = {
+        tcp.enabled = true;
+        http = {
+          enabled = true;
+          bind_to_address = "0.0.0.0";
+          doc_root = pkgs.snapweb;
         };
-        # airplay = {
-        #   type = "airplay";
-        #   # location = "${pkgs.shairport-sync-airplay2}/bin/shairport-sync";
-        #   location = "${pkgs.shairport-sync}/bin/shairport-sync";
-        #   query = {
-        #     name = "AirPlay";
-        #     devicename = "Speakers";
-        #   };
-        # };
-        # rain = {
-        #   type = "pipe";
-        #   location = rain-pipe;
-        # };
+        stream = {
+          # source = "librespot:///${lib.getExe pkgs.librespot}?name=Spotify&devicename=Speakers";
+          source = "airplay:///${pkgs.shairport-sync}/bin/shairport-sync";
+        };
       };
+      # stream.source = {
+      #   Spotify = {
+      #     type = "librespot";
+      #     location = lib.getExe pkgs.librespot;
+      #     query = {
+      #       devicename = "Speakers";
+      #       normalize = "true";
+      #       autoplay = "false";
+      #       # cache = "/home/tunnel/.cache/librespot";
+      #       # cache = "/var/cache/snapserver";
+      #       killall = "true";
+      #       params = "--cache-size-limit=4G --cache /var/cache/snapserver";
+      #       # params = "-b 320";
+      #     };
+      #   };
+      # airplay = {
+      #   type = "airplay";
+      #   # location = "${pkgs.shairport-sync-airplay2}/bin/shairport-sync";
+      #   location = "${pkgs.shairport-sync}/bin/shairport-sync";
+      #   query = {
+      #     name = "AirPlay";
+      #     devicename = "Speakers";
+      #   };
+      # };
+      # rain = {
+      #   type = "pipe";
+      #   location = rain-pipe;
+      # };
     };
   };
   networking.firewall = {
