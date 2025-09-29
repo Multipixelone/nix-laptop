@@ -278,7 +278,7 @@
     failure_delay_seconds = 2
   '';
   euphony-wrapped = pkgs.writeShellScriptBin "euphony" ''
-    ${lib.getExe inputs.euphony.packages.${pkgs.system}.default} -c ${configFile} $@
+    ${lib.getExe' inputs.euphony.packages.${pkgs.system}.default "euphony"} -c ${configFile} $@
   '';
 in {
   systemd.user = {
@@ -318,7 +318,7 @@ in {
           music-dir
           transcoded-music
         ];
-        ExecStart = "${lib.getExe euphony-wrapped} transcode --bare-terminal";
+        ExecStart = "${lib.getExe' euphony-wrapped "euphony"} transcode --bare-terminal";
       };
     };
   };
