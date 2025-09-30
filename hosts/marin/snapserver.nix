@@ -65,7 +65,7 @@ in
         };
         stream = {
           # source = "librespot:///${lib.getExe pkgs.librespot}?name=Spotify&devicename=Speakers";
-          source = "airplay://${pkgs.shairport-sync}/bin/shairport-sync?name=Speakers";
+          source = "airplay://${pkgs.shairport-sync}/bin/shairport-sync?name=Airplay&devicename=Speakers";
         };
       };
       # stream.source = {
