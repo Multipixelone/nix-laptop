@@ -149,6 +149,12 @@
       # inputs.crane.follows = "zjstatus";
       # inputs.rust-overlay.follows = "zjstatus";
     };
+    monocle = {
+      url = "github:Multipixelone/monocle/nix-build";
+      # inputs.nixpkgs.follows = "zjstatus";
+      # inputs.crane.follows = "zjstatus";
+      # inputs.rust-overlay.follows = "zjstatus";
+    };
     # humble-key = {
     #   url = "github:Multipixelone/humble-steam-key-redeemer/nix-build";
     #   inputs.nixpkgs.follows = "nixpkgs";

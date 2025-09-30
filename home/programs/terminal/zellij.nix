@@ -88,6 +88,17 @@ in {
       load_plugins {
         zjstatus-hints
       }
+      keybinds {
+        shared_except "locked" {
+          bind "Alt m" {
+            LaunchPlugin "file://${pkgs.monocle}/bin/monocle.wasm" {
+              in_place true
+              kiosk true
+            };
+            SwitchToMode "Normal"
+          }
+        }
+      }
     '';
     "zellij/layouts/default.kdl".text = ''
       layout {
