@@ -5,7 +5,7 @@
     openFirewall = true;
   };
   services = {
-    fail2ban.enable = true;
+    fail2ban.enable = false;
     openssh = {
       enable = true;
       openFirewall = true;
