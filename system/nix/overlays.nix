@@ -28,18 +28,18 @@
           '';
         };
       })
-      (self: super: {
-        snapcast = super.snapcast.overrideAttrs {
-          version = pins.snapcast.revision;
-          src = pins.snapcast;
-          buildInputs = super.snapcast.buildInputs ++ [
-            pkgs.pipewire
-          ];
-          cmakeFlags = [
-            (lib.cmakeBool "BUILD_WITH_PIPEWIRE" true)
-          ];
-        };
-      })
+      # (self: super: {
+      #   snapcast = super.snapcast.overrideAttrs {
+      #     version = pins.snapcast.revision;
+      #     src = pins.snapcast;
+      #     buildInputs = super.snapcast.buildInputs ++ [
+      #       pkgs.pipewire
+      #     ];
+      #     cmakeFlags = [
+      #       (lib.cmakeBool "BUILD_WITH_PIPEWIRE" true)
+      #     ];
+      #   };
+      # })
       # (self: super: {
       #   # temporary until there's a new release that contains https://github.com/LizardByte/Sunshine/pull/3783
       #   sunshine = super.sunshine.overrideAttrs {
