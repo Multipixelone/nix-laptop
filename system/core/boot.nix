@@ -2,7 +2,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   boot = {
     plymouth = {
       enable = false;

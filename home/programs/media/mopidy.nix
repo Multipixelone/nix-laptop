@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   services.mopidy = {
     enable = true;
     extensionPackages = with pkgs; [
@@ -19,7 +20,7 @@
     ];
     settings = {
       local = {
-        media_dir = ["/media/Data/Music"];
+        media_dir = [ "/media/Data/Music" ];
         scan_timeout = 5000;
       };
       mpd = {

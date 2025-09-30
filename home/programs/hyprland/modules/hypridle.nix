@@ -5,13 +5,18 @@
   config,
   osConfig,
   ...
-}: let
+}:
+let
   timeout = 100;
   brillo = lib.getExe pkgs.brillo;
   hyprctl = lib.getExe' osConfig.programs.hyprland.package "hyprctl";
   suspend-script = pkgs.writeShellApplication {
     name = "suspend-script";
-    runtimeInputs = [pkgs.playerctl pkgs.ripgrep pkgs.systemd];
+    runtimeInputs = [
+      pkgs.playerctl
+      pkgs.ripgrep
+      pkgs.systemd
+    ];
     text = ''
       # only suspend if audio isn't running & not plugged in
       playing() { playerctl -a status | rg Playing -q; }
@@ -21,7 +26,8 @@
       fi
     '';
   };
-in {
+in
+{
   systemd.user.services.hypridle.Unit.After = lib.mkForce "graphical-session.target";
   services.hypridle = {
     # FIXME: crashing hyprlock with moonlight and I'm too lazy to troubleshoot
@@ -48,19 +54,15 @@ in {
           on-timeout = "loginctl lock-session";
         }
         # TODO this is rlllyyy jank. please refactor a module system SO SOON PLEASE.
-        (lib.mkIf
-          (osConfig.networking.hostName == "zelda")
-          {
-            timeout = timeout + 30;
-            on-timeout = "${hyprctl} dispatch dpms off";
-            on-resume = "${hyprctl} dispatch dpms on";
-          })
-        (lib.mkIf
-          (osConfig.networking.hostName == "zelda")
-          {
-            timeout = timeout + 60;
-            on-timeout = lib.getExe suspend-script;
-          })
+        (lib.mkIf (osConfig.networking.hostName == "zelda") {
+          timeout = timeout + 30;
+          on-timeout = "${hyprctl} dispatch dpms off";
+          on-resume = "${hyprctl} dispatch dpms on";
+        })
+        (lib.mkIf (osConfig.networking.hostName == "zelda") {
+          timeout = timeout + 60;
+          on-timeout = lib.getExe suspend-script;
+        })
       ];
     };
   };

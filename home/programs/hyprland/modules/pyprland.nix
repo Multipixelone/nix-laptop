@@ -2,14 +2,15 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   systemd.user.services.pyprland = {
     Unit.Description = "pyprland plugin for hyprland";
 
     Install = {
-      WantedBy = ["graphical-session.target"];
-      Wants = ["graphical-session.target"];
-      After = ["graphical-session.target"];
+      WantedBy = [ "graphical-session.target" ];
+      Wants = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
     };
 
     Service = {

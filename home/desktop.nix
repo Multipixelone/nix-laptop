@@ -4,7 +4,8 @@
   config,
   osConfig,
   ...
-}: {
+}:
+{
   systemd.user = {
     startServices = "sd-switch";
   };

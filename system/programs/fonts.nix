@@ -4,9 +4,11 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowUnfreePredicate = pkg:
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
     builtins.elem (lib.getName pkg) [
       "apple-emoji"
     ];
@@ -34,10 +36,19 @@
     fontconfig = {
       defaultFonts = {
         # ipa gothic required for cjk support
-        serif = ["PragmataPro Liga" "IPAGothic"];
-        sansSerif = ["PragmataPro Liga" "IPAGothic"];
-        monospace = ["PragmataPro Mono Liga" "IPAGothic"];
-        emoji = ["Apple Color Emoji"];
+        serif = [
+          "PragmataPro Liga"
+          "IPAGothic"
+        ];
+        sansSerif = [
+          "PragmataPro Liga"
+          "IPAGothic"
+        ];
+        monospace = [
+          "PragmataPro Mono Liga"
+          "IPAGothic"
+        ];
+        emoji = [ "Apple Color Emoji" ];
       };
     };
   };

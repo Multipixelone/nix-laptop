@@ -1,4 +1,5 @@
-{lib, ...}: {
+{ lib, ... }:
+{
   options.directories = {
     music-directory = lib.mkOption {
       description = ''

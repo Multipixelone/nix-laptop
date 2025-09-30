@@ -2,14 +2,16 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   # latexrun wrapped w/ args & copy synctex into root
   latexrun-wrapped = pkgs.writeShellScriptBin "latexrun" ''
     ${lib.getExe pkgs.latexrun} --bibtex-cmd "${pkgs.texliveFull}/bin/biber" --latex-args=-synctex=1 "$1"
     SYNCTEX_FILE=$(find latex.out/ -name "*.synctex.gz")
     cp $SYNCTEX_FILE .
   '';
-in {
+in
+{
   home.packages = with pkgs; [
     zotero
     texliveFull

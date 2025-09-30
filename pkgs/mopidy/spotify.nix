@@ -25,14 +25,14 @@ python3Packages.buildPythonApplication rec {
     python3Packages.pytestCheckHook
   ];
 
-  pythonImportsCheck = ["mopidy_spotify"];
+  pythonImportsCheck = [ "mopidy_spotify" ];
 
-  passthru.updateScript = unstableGitUpdater {};
+  passthru.updateScript = unstableGitUpdater { };
 
   meta = with lib; {
     homepage = "https://github.com/mopidy/mopidy-spotify";
     description = "Mopidy extension for playing music from Spotify";
     license = licenses.asl20;
-    maintainers = with maintainers; [lilyinstarlight];
+    maintainers = with maintainers; [ lilyinstarlight ];
   };
 }

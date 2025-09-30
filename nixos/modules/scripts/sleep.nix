@@ -1,8 +1,13 @@
-{pkgs}:
+{ pkgs }:
 pkgs.writeShellApplication {
   name = "sleep-screens";
 
-  runtimeInputs = [pkgs.findutils pkgs.gawk pkgs.coreutils pkgs.curl];
+  runtimeInputs = [
+    pkgs.findutils
+    pkgs.gawk
+    pkgs.coreutils
+    pkgs.curl
+  ];
 
   text = ''
     HYPRLAND_INSTANCE_SIGNATURE=$(find /tmp/hypr -print0 -name '*.log' | xargs -0 stat -c '%Y %n' - | sort -rn | head -n 1 | cut -d ' ' -f2 | awk -F '/' '{print $4}')
@@ -24,4 +29,3 @@ pkgs.writeShellApplication {
 #'';
 #}
 #}
-

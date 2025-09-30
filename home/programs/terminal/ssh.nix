@@ -1,7 +1,9 @@
-{config, ...}: let
+{ config, ... }:
+let
   # uid = config.users.users.tunnel.uid;
   # fixedSshAgentSocket = "/run/user/${builtins.toString uid}/sshagent";
-in {
+in
+{
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
@@ -21,7 +23,7 @@ in {
       "git" = {
         host = "github.com gitlab.com";
         identitiesOnly = true;
-        identityFile = ["~/.ssh/id_ed25519"];
+        identityFile = [ "~/.ssh/id_ed25519" ];
       };
     };
   };

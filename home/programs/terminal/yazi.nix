@@ -3,7 +3,8 @@
   inputs,
   lib,
   ...
-}: {
+}:
+{
   programs.yazi = {
     enable = true;
     package = inputs.yazi.packages.${pkgs.system}.default;
@@ -17,20 +18,20 @@
     keymap = {
       manager.prepend_keymap = [
         {
-          on = ["<C-n>"];
+          on = [ "<C-n>" ];
           run = ''
             shell '${lib.getExe pkgs.ripdrag} "$@" -x -n 2>/dev/null &' --confirm
           '';
           desc = "Drag and drop item";
         }
         {
-          on = ["<C-u>"];
+          on = [ "<C-u>" ];
           run = ''
             shell '0x0 "$0"' --confirm
           '';
         }
         {
-          on = ["y"];
+          on = [ "y" ];
           run = [
             "yank"
             ''
@@ -39,7 +40,7 @@
           ];
         }
         {
-          on = ["<C-s>"];
+          on = [ "<C-s>" ];
           run = "shell '$SHELL' --block --confirm";
           desc = "Open shell here";
         }

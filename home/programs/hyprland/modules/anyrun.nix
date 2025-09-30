@@ -3,12 +3,17 @@
   osConfig,
   pkgs,
   ...
-}: {
+}:
+{
   programs.anyrun = {
     enable = true;
     config = {
-      width = {fraction = 0.3;};
-      y = {fraction = 0.15;};
+      width = {
+        fraction = 0.3;
+      };
+      y = {
+        fraction = 0.15;
+      };
       hideIcons = false;
       hidePluginInfo = true;
       plugins = with inputs.anyrun.packages.${pkgs.system}; [
@@ -93,21 +98,27 @@
           prefix: ">",
         )
       '';
-      "nixos-options.ron".text = let
-        nixos-options = osConfig.system.build.manual.optionsJSON + "/share/doc/nixos/options.json";
-        hm-options = inputs.home-manager.packages.${pkgs.system}.docs-json + "/share/doc/home-manager/options.json";
-        options = builtins.toJSON {
-          ":nix" = [nixos-options];
-          ":hm" = [hm-options];
-          ":nall" = [nixos-options hm-options];
-        };
-      in ''
-        Config(
-          options: ${options},
-          min_score: 2,
-          max_entries: Some(5),
-        )
-      '';
+      "nixos-options.ron".text =
+        let
+          nixos-options = osConfig.system.build.manual.optionsJSON + "/share/doc/nixos/options.json";
+          hm-options =
+            inputs.home-manager.packages.${pkgs.system}.docs-json + "/share/doc/home-manager/options.json";
+          options = builtins.toJSON {
+            ":nix" = [ nixos-options ];
+            ":hm" = [ hm-options ];
+            ":nall" = [
+              nixos-options
+              hm-options
+            ];
+          };
+        in
+        ''
+          Config(
+            options: ${options},
+            min_score: 2,
+            max_entries: Some(5),
+          )
+        '';
     };
   };
 }

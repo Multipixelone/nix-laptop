@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   imports = [
     ./wallpaper.nix
   ];

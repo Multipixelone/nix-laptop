@@ -4,11 +4,13 @@
   lib,
   ...
 }:
-with lib; let
+with lib;
+let
   yabridge-enabled = config.tunnel.yabridge.enable;
   # wine = inputs.nix-gaming.packages.${pkgs.system}.wine-tkg;
   wine = pkgs.wineWowPackages.yabridge;
-in {
+in
+{
   options.tunnel.yabridge = {
     enable = mkOption {
       type = types.bool;
@@ -23,7 +25,7 @@ in {
     home.packages = with pkgs; [
       reaper
       yabridgectl
-      (yabridge.override {inherit wine;})
+      (yabridge.override { inherit wine; })
       (callPackage ../../../pkgs/izotope {
         inherit wine;
         location = config.tunnel.yabridge.izotope-location;

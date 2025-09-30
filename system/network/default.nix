@@ -1,4 +1,5 @@
-{lib, ...}: {
+{ lib, ... }:
+{
   programs.mosh = {
     enable = true;
     openFirewall = true;
@@ -10,7 +11,7 @@
       openFirewall = true;
       allowSFTP = true;
       settings = {
-        AllowUsers = ["tunnel"];
+        AllowUsers = [ "tunnel" ];
         PasswordAuthentication = false;
         PermitRootLogin = lib.mkForce "no";
         PubkeyAuthentication = "yes";

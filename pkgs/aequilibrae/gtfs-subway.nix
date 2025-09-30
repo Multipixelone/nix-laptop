@@ -11,7 +11,7 @@ stdenv.mkDerivation {
     sha256 = "sha256-msUFWRPSGI8XyU/pWvYKWWcfRLjw6TZsyHUbUs1i/GU=";
   };
   sourceRoot = ".";
-  nativeBuildInputs = [unzip];
+  nativeBuildInputs = [ unzip ];
   unpackCmd = ''${unzip}/bin/unzip "$src"'';
   installPhase = ''
     mkdir -p $out/new_york

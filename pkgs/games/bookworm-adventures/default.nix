@@ -9,22 +9,20 @@
   wineFlags ? "",
   pname ? "bookworm-adventures",
   location ? "$HOME/Games/bookworm-adventures",
-  tricks ? ["winxp"],
-  wineDllOverrides ? ["powershell.exe=n"],
+  tricks ? [ "winxp" ],
+  wineDllOverrides ? [ "powershell.exe=n" ],
   preCommands ? "",
   postCommands ? "",
   pkgs,
-}: let
+}:
+let
   src = pkgs.fetchzip {
     url = "https://archive.org/download/bookworm_adventures_deluxe/Bookworm%20Adventures%20Deluxe.zip";
     hash = "sha256-WZKM1NpQ33V/7rBzq5DfLmIs+BSIMUJTylbjzMneYDU=";
   };
 
   # concat winetricks args
-  tricksFmt = with builtins;
-    if (length tricks) > 0
-    then concatStringsSep " " tricks
-    else "-V";
+  tricksFmt = with builtins; if (length tricks) > 0 then concatStringsSep " " tricks else "-V";
 
   script = writeShellScriptBin pname ''
     export WINEARCH="win32"
@@ -37,7 +35,12 @@
     export GAMEID="umu-3470"
     export STORE="none"
 
-    PATH=${lib.makeBinPath [wine winetricks]}:$PATH
+    PATH=${
+      lib.makeBinPath [
+        wine
+        winetricks
+      ]
+    }:$PATH
     USER="$(whoami)"
     GAME_PATH="$WINEPREFIX/drive_c/Program Files/Bookworm Adventures Deluxe"
     GAME_BIN="$GAME_PATH/BookwormAdventures.exe"
@@ -73,21 +76,21 @@
     exec = "${script}/bin/${pname} %U";
     inherit icon;
     desktopName = "Bookworm Adventures Deluxe";
-    categories = ["Game"];
+    categories = [ "Game" ];
   };
 in
-  symlinkJoin {
-    name = pname;
-    paths = [
-      desktopItems
-      script
-    ];
+symlinkJoin {
+  name = pname;
+  paths = [
+    desktopItems
+    script
+  ];
 
-    meta = {
-      description = "Bookworm Adventures Deluxe is a word-forming puzzle video game, the follow-up to Bookworm from PopCap Games.";
-      homepage = "https://archive.org/details/bookworm_adventures_deluxe";
-      license = lib.licenses.unfree;
-      maintainers = with lib.maintainers; [Multipixelone];
-      platforms = ["x86_64-linux"];
-    };
-  }
+  meta = {
+    description = "Bookworm Adventures Deluxe is a word-forming puzzle video game, the follow-up to Bookworm from PopCap Games.";
+    homepage = "https://archive.org/details/bookworm_adventures_deluxe";
+    license = lib.licenses.unfree;
+    maintainers = with lib.maintainers; [ Multipixelone ];
+    platforms = [ "x86_64-linux" ];
+  };
+}

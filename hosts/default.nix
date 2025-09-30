@@ -2,25 +2,26 @@
   self,
   inputs,
   ...
-}: {
-  flake.nixosConfigurations = let
-    # shorten paths
-    inherit (inputs.nixpkgs.lib) nixosSystem;
+}:
+{
+  flake.nixosConfigurations =
+    let
+      # shorten paths
+      inherit (inputs.nixpkgs.lib) nixosSystem;
 
-    homeImports = import "${self}/home/profiles";
+      homeImports = import "${self}/home/profiles";
 
-    mod = "${self}/system";
-    # get the basic config to build on top of
-    inherit (import mod) desktop server;
+      mod = "${self}/system";
+      # get the basic config to build on top of
+      inherit (import mod) desktop server;
 
-    # get these into the module system
-    specialArgs = {inherit inputs self;};
-  in {
-    link = nixosSystem {
-      inherit specialArgs;
-      modules =
-        desktop
-        ++ [
+      # get these into the module system
+      specialArgs = { inherit inputs self; };
+    in
+    {
+      link = nixosSystem {
+        inherit specialArgs;
+        modules = desktop ++ [
           ./link
 
           "${mod}/programs/gamemode.nix"
@@ -53,13 +54,11 @@
           inputs.chaotic.nixosModules.default
           inputs.nur.modules.nixos.default
         ];
-    };
+      };
 
-    minish = nixosSystem {
-      inherit specialArgs;
-      modules =
-        desktop
-        ++ [
+      minish = nixosSystem {
+        inherit specialArgs;
+        modules = desktop ++ [
           ./minish
           "${mod}/programs/nix-ld.nix"
 
@@ -77,13 +76,11 @@
           inputs.musnix.nixosModules.musnix
           inputs.nur.modules.nixos.default
         ];
-    };
+      };
 
-    marin = nixosSystem {
-      inherit specialArgs;
-      modules =
-        server
-        ++ [
+      marin = nixosSystem {
+        inherit specialArgs;
+        modules = server ++ [
           ./marin
           "${mod}/services/minecraft-server.nix"
 
@@ -99,6 +96,6 @@
           inputs.quadlet-nix.nixosModules.quadlet
           inputs.chaotic.nixosModules.default
         ];
+      };
     };
-  };
 }

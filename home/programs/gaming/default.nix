@@ -3,24 +3,25 @@
   inputs,
   config,
   ...
-}: let
+}:
+let
   umu = pkgs.umu-launcher;
   mangohud = config.programs.mangohud.package;
   retroarch-cores = pkgs.retroarch.withCores (
-    cores:
-      with cores; [
-        gambatte
-        gpsp
-        melonds
-        mupen64plus
-        pcsx-rearmed
-        pcsx2
-        ppsspp
-        snes9x
-        bsnes
-      ]
+    cores: with cores; [
+      gambatte
+      gpsp
+      melonds
+      mupen64plus
+      pcsx-rearmed
+      pcsx2
+      ppsspp
+      snes9x
+      bsnes
+    ]
   );
-in {
+in
+{
   imports = [
     ./mangohud.nix
     ./moondeck.nix

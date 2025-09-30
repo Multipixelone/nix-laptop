@@ -13,13 +13,14 @@
   pname ? "gw2",
   location ? "$HOME/Games/cities-skylines-ii",
   exe,
-  wineDllOverrides ? ["powershell.exe=n"],
+  wineDllOverrides ? [ "powershell.exe=n" ],
   preCommands ? "",
   postCommands ? "",
   enableGlCache ? true,
   glCacheSize ? 1073741824,
   pkgs,
-}: let
+}:
+let
   # concat winetricks args
   script = writeShellScriptBin pname ''
     export WINEARCH="win64"
@@ -37,17 +38,18 @@
     export EOS_USE_ANTICHEATCLIENTNULL=1
     # Nvidia tweaks
     export WINE_HIDE_NVIDIA_GPU=1
-    export __GL_SHADER_DISK_CACHE=${
-      if enableGlCache
-      then "1"
-      else "0"
-    }
+    export __GL_SHADER_DISK_CACHE=${if enableGlCache then "1" else "0"}
     export __GL_SHADER_DISK_CACHE_SIZE=${toString glCacheSize}
     export WINE_HIDE_NVIDIA_GPU=1
     # AMD
     export dual_color_blend_by_location=1
 
-    PATH=${lib.makeBinPath [umu winetricks]}:$PATH
+    PATH=${
+      lib.makeBinPath [
+        umu
+        winetricks
+      ]
+    }:$PATH
     USER="$(whoami)"
     GAME_BIN="$GAME_PATH/Gw2-64.exe"
     BLISH="$GAME_PATH/Blish.HUD/Blish HUD.exe"
@@ -81,22 +83,22 @@
     exec = "${script}/bin/${pname} %U";
     inherit icon;
     desktopName = "Guild Wars II";
-    categories = ["Game"];
+    categories = [ "Game" ];
     # mimeTypes = ["application/x-star-citizen-launcher"];
   };
 in
-  symlinkJoin {
-    name = pname;
-    paths = [
-      desktopItems
-      script
-    ];
+symlinkJoin {
+  name = pname;
+  paths = [
+    desktopItems
+    script
+  ];
 
-    meta = {
-      description = "Cities Skylines II game wine launcher";
-      homepage = "https://www.paradoxinteractive.com/games/cities-skylines-ii/about";
-      license = lib.licenses.unfree;
-      maintainers = with lib.maintainers; [Multipixelone];
-      platforms = ["x86_64-linux"];
-    };
-  }
+  meta = {
+    description = "Cities Skylines II game wine launcher";
+    homepage = "https://www.paradoxinteractive.com/games/cities-skylines-ii/about";
+    license = lib.licenses.unfree;
+    maintainers = with lib.maintainers; [ Multipixelone ];
+    platforms = [ "x86_64-linux" ];
+  };
+}

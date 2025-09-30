@@ -4,7 +4,8 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   # wrap secret into gh cli
   gh-wrapped = pkgs.writeShellScriptBin "gh" ''
     export GITHUB_TOKEN=$(cat ${config.age.secrets."gh".path})
@@ -29,7 +30,8 @@
     --client-secret=$(cat ${config.age.secrets."gcalsecret".path}) \
     $@
   '';
-in {
+in
+{
   age = {
     secrets = {
       "gh" = {

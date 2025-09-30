@@ -3,7 +3,8 @@
   lib,
   inputs,
   ...
-}: let
+}:
+let
   default-restic-options = {
     initialize = true;
     repository = "rclone:onedrive:Backups/${config.networking.hostName}";
@@ -11,7 +12,7 @@
     rcloneConfigFile = config.age.secrets."restic/rclone".path;
     passwordFile = config.age.secrets."restic/password".path;
 
-    extraBackupArgs = ["--one-file-system"];
+    extraBackupArgs = [ "--one-file-system" ];
 
     pruneOpts = [
       "--keep-daily 14"
@@ -59,7 +60,8 @@
       "/srv/slskd"
     ];
   };
-in {
+in
+{
   age.secrets = {
     #"restic/env".file = "${inputs.secrets}/restic/env.age";
     #"restic/repo".file = "${inputs.secrets}/restic/repo.age";
@@ -67,7 +69,13 @@ in {
     "restic/rclone".file = "${inputs.secrets}/restic/${config.networking.hostName}rclone.age";
   };
   services.restic.backups = {
-    home = lib.mkMerge [default-restic-options home-folders];
-    srv = lib.mkMerge [default-restic-options srv-folders];
+    home = lib.mkMerge [
+      default-restic-options
+      home-folders
+    ];
+    srv = lib.mkMerge [
+      default-restic-options
+      srv-folders
+    ];
   };
 }

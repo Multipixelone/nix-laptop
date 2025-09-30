@@ -1,6 +1,8 @@
-_: let
+_:
+let
   atm-folder = "/srv/games/mc-atm10";
-in {
+in
+{
   systemd.tmpfiles.rules = [
     "d ${atm-folder} 0770 tunnel users -"
     # "d /srv/games/velocity 0770 tunnel users -"
@@ -17,7 +19,7 @@ in {
     minecraft-atm10 = {
       autoStart = false;
       image = "itzg/minecraft-server:latest";
-      ports = ["25555:25555"];
+      ports = [ "25555:25555" ];
       # environmentFiles = [config.age.secrets."curseforge".path];
       environment = {
         EULA = "TRUE";

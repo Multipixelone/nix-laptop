@@ -8,14 +8,15 @@
   wineFlags ? "",
   pname ? "foobar2000",
   location ? "$HOME/.local/share/foobar2000",
-  tricks ? [],
-  wineDllOverrides ? ["powershell.exe=n"],
+  tricks ? [ ],
+  wineDllOverrides ? [ "powershell.exe=n" ],
   preCommands ? "",
   postCommands ? "",
   enableGlCache ? true,
   glCacheSize ? 1073741824,
   pkgs,
-}: let
+}:
+let
   version = "2.1.5";
   src = pkgs.fetchurl {
     url = "https://www.foobar2000.org/files/foobar2000_v${version}.exe";
@@ -29,10 +30,7 @@
     hash = "sha256-tjBK8NBnxmg4Ej+c/6SezA7OkVS7dT84c4vzZf11yJY=";
   };
   # concat winetricks args
-  tricksFmt = with builtins;
-    if (length tricks) > 0
-    then concatStringsSep " " tricks
-    else "-V";
+  tricksFmt = with builtins; if (length tricks) > 0 then concatStringsSep " " tricks else "-V";
 
   script = writeShellScriptBin pname ''
     export WINEARCH="win32"
@@ -42,17 +40,18 @@
     export WINEDLLOVERRIDES="${lib.strings.concatStringsSep "," wineDllOverrides}"
     # Nvidia tweaks
     export WINE_HIDE_NVIDIA_GPU=1
-    export __GL_SHADER_DISK_CACHE=${
-      if enableGlCache
-      then "1"
-      else "0"
-    }
+    export __GL_SHADER_DISK_CACHE=${if enableGlCache then "1" else "0"}
     export __GL_SHADER_DISK_CACHE_SIZE=${toString glCacheSize}
     export WINE_HIDE_NVIDIA_GPU=1
     # AMD
     export dual_color_blend_by_location=1
 
-    PATH=${lib.makeBinPath [wine winetricks]}:$PATH
+    PATH=${
+      lib.makeBinPath [
+        wine
+        winetricks
+      ]
+    }:$PATH
     USER="$(whoami)"
     GAME_PATH="$WINEPREFIX/drive_c/Program Files/foobar2000"
     GAME_BIN="$GAME_PATH/foobar2000.exe"
@@ -97,18 +96,18 @@
     desktopName = "foobar2000";
   };
 in
-  symlinkJoin {
-    name = pname;
-    paths = [
-      desktopItems
-      script
-    ];
+symlinkJoin {
+  name = pname;
+  paths = [
+    desktopItems
+    script
+  ];
 
-    meta = {
-      description = "iZotope RX audio repair toolkit";
-      homepage = "https://www.izotope.com/en/products/rx.html";
-      license = lib.licenses.unfree;
-      maintainers = with lib.maintainers; [Multipixelone];
-      platforms = ["x86_64-linux"];
-    };
-  }
+  meta = {
+    description = "iZotope RX audio repair toolkit";
+    homepage = "https://www.izotope.com/en/products/rx.html";
+    license = lib.licenses.unfree;
+    maintainers = with lib.maintainers; [ Multipixelone ];
+    platforms = [ "x86_64-linux" ];
+  };
+}

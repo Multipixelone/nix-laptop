@@ -11,7 +11,7 @@ _:
       valhalla = {
         autoStart = false;
         image = "ghcr.io/gis-ops/docker-valhalla/valhalla:latest";
-        ports = ["8002:8002"];
+        ports = [ "8002:8002" ];
         volumes = [
           "/srv/valhalla:/custom_files"
           #"${subway}:/gtfs_feeds"

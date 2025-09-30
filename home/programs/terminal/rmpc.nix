@@ -3,7 +3,8 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   # NOTE probably not using this, but i'm leaving it here for posterity cause I'm gonna forget how to wrap a shell script in the future LMAO
   # kunst = pkgs.stdenv.mkDerivation rec {
   #   name = "kunst";
@@ -65,9 +66,10 @@
       pkill -USR2 hyprlock || true
     '';
   };
-in {
+in
+{
   programs.rmpc.enable = true;
-  home.packages = [song-change];
+  home.packages = [ song-change ];
   xdg.configFile."rmpc/config.ron".text = ''
     #![enable(implicit_some)]
     #![enable(unwrap_newtypes)]

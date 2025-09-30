@@ -3,7 +3,8 @@
   inputs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     inputs.ucodenix.nixosModules.default
     ./hardware-configuration.nix
@@ -16,8 +17,12 @@
 
   boot = {
     kernelPackages = lib.mkForce pkgs.linuxPackages_cachyos;
-    initrd.kernelModules = ["amdgpu"];
-    kernelModules = ["kvm-amd" "vfio-pci" "uinput"];
+    initrd.kernelModules = [ "amdgpu" ];
+    kernelModules = [
+      "kvm-amd"
+      "vfio-pci"
+      "uinput"
+    ];
     kernelParams = [
       "amd_pstate=active"
     ];
@@ -38,7 +43,7 @@
   console = {
     earlySetup = true;
     font = "${pkgs.terminus_font}/share/consolefonts/ter-132n.psf.gz";
-    packages = with pkgs; [terminus_font];
+    packages = with pkgs; [ terminus_font ];
     keyMap = "us";
   };
 

@@ -3,7 +3,8 @@
   inputs,
   lib,
   ...
-}: {
+}:
+{
   age.secrets = {
     "duckdns".file = "${inputs.secrets}/wireguard/duckdns.age";
   };
@@ -15,5 +16,5 @@
     onCalendar = "00/3:00";
   };
   # don't wait for duckdns to reach graphical.target
-  systemd.services."duckdns-updater".wantedBy = lib.mkForce [];
+  systemd.services."duckdns-updater".wantedBy = lib.mkForce [ ];
 }

@@ -3,7 +3,7 @@
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
-    disabledPlugins = ["sap"];
+    disabledPlugins = [ "sap" ];
     settings = {
       General = {
         FastConnectable = "true";

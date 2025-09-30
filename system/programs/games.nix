@@ -3,7 +3,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     inputs.nix-gaming.nixosModules.platformOptimizations
   ];
@@ -63,14 +64,15 @@
     "w /sys/kernel/debug/sched/nr_migrate - - - - 8"
   ];
   nixpkgs = {
-    config.allowUnfreePredicate = pkg:
+    config.allowUnfreePredicate =
+      pkg:
       builtins.elem (lib.getName pkg) [
         "steam"
       ];
     config.packageOverrides = pkgs: {
       steam = pkgs.steam.override {
-        extraPkgs = pkgs:
-          with pkgs; [
+        extraPkgs =
+          pkgs: with pkgs; [
             xorg.libXcursor
             xorg.libXi
             xorg.libXinerama

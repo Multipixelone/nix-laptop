@@ -3,7 +3,8 @@
   pkgs,
   osConfig,
   ...
-}: {
+}:
+{
   stylix.targets.foot.enable = false;
   programs.foot = {
     enable = true;

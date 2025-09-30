@@ -2,12 +2,13 @@
   config,
   inputs,
   ...
-}: {
+}:
+{
   age.secrets."grocy".file = "${inputs.secrets}/grocy.age";
   virtualisation.oci-containers.containers.barcode-buddy = {
     autoStart = false;
     image = "f0rc3/barcodebuddy:latest";
-    ports = ["7575:80"];
+    ports = [ "7575:80" ];
     environment.Grocy__BaseUrl = "localhost";
     volumes = [
       "barcode-buddy:/config"

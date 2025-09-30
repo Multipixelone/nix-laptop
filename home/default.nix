@@ -1,4 +1,5 @@
-{inputs, ...}: {
+{ inputs, ... }:
+{
   imports = [
     ./programs/terminal
     ./programs/media
@@ -15,7 +16,10 @@
     username = "tunnel";
     homeDirectory = "/home/tunnel";
     stateVersion = "23.11";
-    extraOutputsToInstall = ["doc" "devdoc"];
+    extraOutputsToInstall = [
+      "doc"
+      "devdoc"
+    ];
   };
 
   age = {

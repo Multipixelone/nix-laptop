@@ -5,9 +5,11 @@
   config,
   inputs,
   ...
-}: let
+}:
+let
   playlist-download = inputs.playlist-download.packages.${pkgs.system}.default;
-in {
+in
+{
   age.secrets = {
     "plex" = {
       file = "${inputs.secrets}/media/plextoken.age";
@@ -24,7 +26,7 @@ in {
   };
   services.playerctld.enable = true;
   systemd.timers."playlist-downloader" = {
-    wantedBy = ["timers.target"];
+    wantedBy = [ "timers.target" ];
     timerConfig = {
       # every three hrs
       OnCalendar = "00/3:00";
@@ -48,7 +50,7 @@ in {
 
     (pkgs.writeShellApplication {
       name = "ipod-sync";
-      runtimeInputs = [pkgs.rsync];
+      runtimeInputs = [ pkgs.rsync ];
       text = ''
         # SCROB_CONFIG_FILE=${config.age.secrets."qtscrob".path}
         if [ -d "$IPOD_DIR" ]; then
@@ -64,7 +66,10 @@ in {
     # TODO this was written by someone who didn't want to put any time or thought into writing something maintainable. i hate every part of it.
     (pkgs.writeShellApplication {
       name = "monthly-copy";
-      runtimeInputs = [pkgs.ffmpeg pkgs.gum];
+      runtimeInputs = [
+        pkgs.ffmpeg
+        pkgs.gum
+      ];
       text = ''
         PLAYLIST=$(gum file "$PLAYLIST_DIR" --no-permissions --no-size)
         # PLAYLIST=''${2:-"$OUTPUT_PLAYLIST_DIR/monthly playlist.m3u8"}

@@ -2,9 +2,11 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   ovCommand = lib.getExe pkgs.ov;
-in {
+in
+{
   programs = {
     fish.functions.__fish_anypager = "echo ${ovCommand}";
   };

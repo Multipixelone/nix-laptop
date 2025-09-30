@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
   ];
   tunnel.yabridge.enable = true;
@@ -19,7 +20,7 @@
   '';
   systemd.user.services.ledfx = {
     Unit.Description = "ledfx light control";
-    Install.WantedBy = ["graphical-session.target"];
+    Install.WantedBy = [ "graphical-session.target" ];
     Service = {
       ExecStart = lib.getExe pkgs.ledfx;
     };

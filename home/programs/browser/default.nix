@@ -2,7 +2,8 @@
   pkgs,
   inputs,
   ...
-}: let
+}:
+let
   inherit (inputs) better-fox;
   extensions = with pkgs.nur.repos.rycee.firefox-addons; [
     # blockers
@@ -38,7 +39,7 @@
       addonId = "lastfm@unscrobbler.com";
       url = "https://addons.mozilla.org/firefox/downloads/file/4231311/last_fm_unscrobbler-${version}.xpi";
       sha256 = "sha256-K9TrTEnuAEwHTtMRr/VBzsk+s1rnaD0ZMr9akdi6jUs=";
-      meta = {};
+      meta = { };
     })
     (buildFirefoxXpiAddon rec {
       pname = "readwise-kindle-sync";
@@ -46,7 +47,7 @@
       addonId = "{f7619bc3-ed22-44a3-83ad-e79a78416737}";
       url = "https://addons.mozilla.org/firefox/downloads/file/3732256/readwise-${version}.xpi";
       sha256 = "sha256-obuJTjrx7Q2AyAr2va/Kkw7ND7yV5AnSD3SUO3B20QY=";
-      meta = {};
+      meta = { };
     })
     (buildFirefoxXpiAddon rec {
       pname = "youtube-popout-player";
@@ -54,7 +55,7 @@
       addonId = "{85b42b8f-49cd-4935-aeca-a6b32dd6ac9f}";
       url = "https://addons.mozilla.org/firefox/downloads/file/4128380/youtube_popout_player-${version}.xpi";
       sha256 = "sha256-H9r4BgOweFlVsJltm/iZiQ0Sz2o+5x2zSQN3fdORSoA=";
-      meta = {};
+      meta = { };
     })
   ];
   settings = {
@@ -98,7 +99,8 @@
     "services.sync.username" = "finn@cnwr.net";
     "services.sync.engine.addons" = false;
   };
-in {
+in
+{
   home = {
     sessionVariables.BROWSER = "firefox";
     packages = with pkgs; [
@@ -108,18 +110,18 @@ in {
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "text/html" = ["firefox.desktop"];
-      "x-scheme-handler/http" = ["firefox.desktop"];
-      "x-scheme-handler/https" = ["firefox.desktop"];
-      "x-scheme-handler/about" = ["firefox.desktop"];
-      "x-scheme-handler/unknown" = ["firefox.desktop"];
+      "text/html" = [ "firefox.desktop" ];
+      "x-scheme-handler/http" = [ "firefox.desktop" ];
+      "x-scheme-handler/https" = [ "firefox.desktop" ];
+      "x-scheme-handler/about" = [ "firefox.desktop" ];
+      "x-scheme-handler/unknown" = [ "firefox.desktop" ];
     };
   };
   programs.chromium = {
     enable = true;
     package = pkgs.ungoogled-chromium;
   };
-  stylix.targets.firefox.profileNames = ["default"];
+  stylix.targets.firefox.profileNames = [ "default" ];
   programs.firefox = {
     enable = true;
     profiles = {

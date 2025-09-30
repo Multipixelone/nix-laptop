@@ -1,6 +1,8 @@
-_: let
+_:
+let
   sysctluser = "systemctl --user";
-in {
+in
+{
   services.gammastep = {
     enable = true;
     tray = true;

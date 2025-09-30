@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   upload-script = pkgs.writeShellApplication {
     name = "0x0";
     runtimeInputs = with pkgs; [
@@ -27,7 +28,8 @@
       file_upload "''${@}"
     '';
   };
-in {
+in
+{
   home.packages = [
     upload-script
   ];

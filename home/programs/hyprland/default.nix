@@ -4,12 +4,14 @@
   config,
   osConfig,
   ...
-}: let
+}:
+let
   cursor-theme = pkgs.fetchzip {
     url = "https://blusky.s3.us-west-2.amazonaws.com/Posy_Cursor_Black_h.tar.gz";
     hash = "sha256-EC4bKLo1MAXOABcXb9FneoXlV2Fkb9wOFojewaSejZk=";
   };
-in {
+in
+{
   imports = [
     ./conf
     ./modules
@@ -41,7 +43,7 @@ in {
     XDG_SESSION_TYPE = "wayland";
     QT_AUTO_SCREEN_SCALE_FACTOR = 1;
   };
-  systemd.user.targets.tray.Unit.Requires = lib.mkForce ["graphical-session.target"];
+  systemd.user.targets.tray.Unit.Requires = lib.mkForce [ "graphical-session.target" ];
   wayland.windowManager.hyprland = {
     enable = true;
     # use package definitions from NixOS
@@ -52,7 +54,7 @@ in {
     ];
     systemd = {
       enable = false;
-      variables = ["--all"];
+      variables = [ "--all" ];
     };
     extraConfig = ''
       animations {
@@ -75,8 +77,14 @@ in {
     settings = {
       # FIX Kinda jank mkMerge
       monitorSettings = lib.mkMerge [
-        (lib.mkIf (osConfig.networking.hostName == "link") {monitor = ["DP-1,2560x1440@240,1200x0,1" "DP-3,1920x1200@60,0x0,1,transform,1" "HDMI-A-1,disabled"];})
-        (lib.mkIf (osConfig.networking.hostName == "zelda") {monitor = [",highres,auto,2"];})
+        (lib.mkIf (osConfig.networking.hostName == "link") {
+          monitor = [
+            "DP-1,2560x1440@240,1200x0,1"
+            "DP-3,1920x1200@60,0x0,1,transform,1"
+            "HDMI-A-1,disabled"
+          ];
+        })
+        (lib.mkIf (osConfig.networking.hostName == "zelda") { monitor = [ ",highres,auto,2" ]; })
       ];
       exec-once = [
         "uwsm finalize"

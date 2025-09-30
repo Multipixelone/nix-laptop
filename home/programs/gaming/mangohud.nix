@@ -3,14 +3,16 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   inherit (config.lib.stylix) colors;
   scale = "${colors.base05},${colors.base09},${colors.base08}";
-in {
+in
+{
   programs.mangohud = {
     enable = true;
     enableSessionWide = true;
-    package = pkgs.mangohud_git; #.overrideAttrs (_finalAttrs: previousAttrs: {
+    package = pkgs.mangohud_git; # .overrideAttrs (_finalAttrs: previousAttrs: {
     #   patches = previousAttrs.patches ++ [../../../pkgs/mangohud/media-player-fix.patch];
     # });
     settings = {

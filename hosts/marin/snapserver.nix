@@ -4,7 +4,8 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   rain-pipe = "/run/snapserver/rain";
   # librespot = pkgs.librespot.overrideAttrs rec {
   #   rev = "80c27ec476666b40aba98327b3ba52d620dd6d06";
@@ -19,7 +20,8 @@
   #     hash = "sha256-thA8C5+aynRq3CfF5947wmkrVZGZGctcnL718q3NYYg=";
   #   };
   # };
-in {
+in
+{
   age.secrets."librespot" = {
     file = "${inputs.secrets}/media/spotify.age";
     path = "/var/cache/snapserver/credentials.json";
@@ -34,7 +36,7 @@ in {
     group = "snapserver";
     isSystemUser = true;
   };
-  users.groups.snapserver = {};
+  users.groups.snapserver = { };
   services = {
     pipewire = {
       enable = true;
@@ -131,8 +133,8 @@ in {
       "p+ ${rain-pipe} 666 root root - -"
     ];
     user.services = {
-      wireplumber.wantedBy = ["default.target"];
-      pipewire-pulse.wantedBy = ["default.target"];
+      wireplumber.wantedBy = [ "default.target" ];
+      pipewire-pulse.wantedBy = [ "default.target" ];
       snapclient = {
         description = "SnapCast client";
         after = [
@@ -145,7 +147,7 @@ in {
           "pipewire.service"
           "pipewire-pulse.service"
         ];
-        wantedBy = ["default.target"];
+        wantedBy = [ "default.target" ];
         serviceConfig = {
           ExecStart = "${lib.getExe' pkgs.snapcast "snapclient"} --host 127.0.0.1 --player pipewire";
         };
@@ -154,15 +156,15 @@ in {
     services = {
       # snapserver.serviceConfig.EnvironmentFile = [config.age.secrets.snapserver.path];
       snapserver.serviceConfig = {
-        CacheDirectory = ["snapserver"];
+        CacheDirectory = [ "snapserver" ];
         DynamicUser = lib.mkForce false;
         User = "snapserver";
         Group = "snapserver";
       };
       nqptp = {
         description = "Network Precision Time Protocol for Shairport Sync";
-        wantedBy = ["multi-user.target"];
-        after = ["network.target"];
+        wantedBy = [ "multi-user.target" ];
+        after = [ "network.target" ];
         serviceConfig = {
           ExecStart = "${pkgs.nqptp}/bin/nqptp";
           Restart = "always";

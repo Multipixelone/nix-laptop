@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   hardware.printers = {
     ensurePrinters = [
       {
@@ -26,8 +27,8 @@
       browsing = true;
       defaultShared = true;
       openFirewall = true;
-      listenAddresses = ["*:631"];
-      allowFrom = ["all"];
+      listenAddresses = [ "*:631" ];
+      allowFrom = [ "all" ];
     };
     avahi = {
       enable = true;

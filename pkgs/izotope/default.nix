@@ -8,13 +8,14 @@
   wineFlags ? "",
   pname ? "izotope-rx-11",
   location ? "$HOME/.wine",
-  wineDllOverrides ? ["powershell.exe=n"],
+  wineDllOverrides ? [ "powershell.exe=n" ],
   preCommands ? "",
   postCommands ? "",
   enableGlCache ? true,
   glCacheSize ? 1073741824,
   pkgs,
-}: let
+}:
+let
   # concat winetricks args
   script = writeShellScriptBin pname ''
     export WINEARCH="win64"
@@ -24,17 +25,18 @@
     export WINEDLLOVERRIDES="${lib.strings.concatStringsSep "," wineDllOverrides}"
     # Nvidia tweaks
     export WINE_HIDE_NVIDIA_GPU=1
-    export __GL_SHADER_DISK_CACHE=${
-      if enableGlCache
-      then "1"
-      else "0"
-    }
+    export __GL_SHADER_DISK_CACHE=${if enableGlCache then "1" else "0"}
     export __GL_SHADER_DISK_CACHE_SIZE=${toString glCacheSize}
     export WINE_HIDE_NVIDIA_GPU=1
     # AMD
     export dual_color_blend_by_location=1
 
-    PATH=${lib.makeBinPath [wine winetricks]}:$PATH
+    PATH=${
+      lib.makeBinPath [
+        wine
+        winetricks
+      ]
+    }:$PATH
     USER="$(whoami)"
     GAME_PATH="$WINEPREFIX/drive_c/Program Files/iZotope/RX 11 Audio Editor/win64"
     GAME_BIN="$GAME_PATH/iZotope RX 11 Audio Editor.exe"
@@ -70,7 +72,7 @@
     exec = "${script}/bin/${pname} %U";
     inherit icon;
     desktopName = "iZotope RX 11 Pro Audio Editor";
-    categories = ["Audio"];
+    categories = [ "Audio" ];
     mimeTypes = [
       "audio/basic"
       "audio/x-aiff"
@@ -87,17 +89,17 @@
     ];
   };
 in
-  symlinkJoin {
-    name = pname;
-    paths = [
-      desktopItems
-      script
-    ];
+symlinkJoin {
+  name = pname;
+  paths = [
+    desktopItems
+    script
+  ];
 
-    meta = {
-      description = "iZotope RX audio repair toolkit";
-      homepage = "https://www.izotope.com/en/products/rx.html";
-      maintainers = with lib.maintainers; [Multipixelone];
-      platforms = ["x86_64-linux"];
-    };
-  }
+  meta = {
+    description = "iZotope RX audio repair toolkit";
+    homepage = "https://www.izotope.com/en/products/rx.html";
+    maintainers = with lib.maintainers; [ Multipixelone ];
+    platforms = [ "x86_64-linux" ];
+  };
+}

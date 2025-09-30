@@ -31,8 +31,8 @@ python3Packages.buildPythonApplication rec {
     python3Packages.geopandas
     python3Packages.pyarrow
     python3Packages.pyqt5
-    (callPackage ./openmatrix.nix {})
-    (callPackage ./spatialite.nix {inherit inputs;})
+    (callPackage ./openmatrix.nix { })
+    (callPackage ./spatialite.nix { inherit inputs; })
     inputs.geospatial.packages.x86_64-linux.libspatialite
     sqlite
   ];

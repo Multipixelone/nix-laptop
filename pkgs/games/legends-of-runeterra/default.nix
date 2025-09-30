@@ -11,14 +11,15 @@
   wineFlags ? "",
   pname ? "legends-of-runeterra",
   location ? "$HOME/Games/legends-of-runeterra",
-  tricks ? [],
-  wineDllOverrides ? ["powershell.exe=n"],
+  tricks ? [ ],
+  wineDllOverrides ? [ "powershell.exe=n" ],
   preCommands ? "",
   postCommands ? "",
   enableGlCache ? true,
   glCacheSize ? 1073741824,
   pkgs,
-}: let
+}:
+let
   version = "live";
   src = pkgs.fetchurl {
     url = "https://bacon.secure.dyn.riotcdn.net/channels/public/x/installer/current/${version}.${version}.americas.exe";
@@ -27,10 +28,7 @@
   };
 
   # concat winetricks args
-  tricksFmt = with builtins;
-    if (length tricks) > 0
-    then concatStringsSep " " tricks
-    else "-V";
+  tricksFmt = with builtins; if (length tricks) > 0 then concatStringsSep " " tricks else "-V";
 
   script = writeShellScriptBin pname ''
     export WINEARCH="win64"
@@ -46,17 +44,18 @@
     export EOS_USE_ANTICHEATCLIENTNULL=1
     # Nvidia tweaks
     export WINE_HIDE_NVIDIA_GPU=1
-    export __GL_SHADER_DISK_CACHE=${
-      if enableGlCache
-      then "1"
-      else "0"
-    }
+    export __GL_SHADER_DISK_CACHE=${if enableGlCache then "1" else "0"}
     export __GL_SHADER_DISK_CACHE_SIZE=${toString glCacheSize}
     export WINE_HIDE_NVIDIA_GPU=1
     # AMD
     export dual_color_blend_by_location=1
 
-    PATH=${lib.makeBinPath [umu winetricks]}:$PATH
+    PATH=${
+      lib.makeBinPath [
+        umu
+        winetricks
+      ]
+    }:$PATH
     USER="$(whoami)"
     GAME_PATH="$WINEPREFIX/drive_c/Riot Games/Riot Client"
     GAME_BIN="$GAME_PATH/RiotClientServices.exe -- --launch-product=bacon --launch-patchline=${version}"
@@ -96,22 +95,22 @@
     exec = "${script}/bin/${pname} %U";
     inherit icon;
     desktopName = "Legends of Runeterra";
-    categories = ["Game"];
+    categories = [ "Game" ];
     # mimeTypes = ["application/x-star-citizen-launcher"];
   };
 in
-  symlinkJoin {
-    name = pname;
-    paths = [
-      desktopItems
-      script
-    ];
+symlinkJoin {
+  name = pname;
+  paths = [
+    desktopItems
+    script
+  ];
 
-    meta = {
-      description = "Legends of Runeterra game wine launcher";
-      homepage = "https://playruneterra.com/en-us/";
-      license = lib.licenses.unfree;
-      maintainers = with lib.maintainers; [Multipixelone];
-      platforms = ["x86_64-linux"];
-    };
-  }
+  meta = {
+    description = "Legends of Runeterra game wine launcher";
+    homepage = "https://playruneterra.com/en-us/";
+    license = lib.licenses.unfree;
+    maintainers = with lib.maintainers; [ Multipixelone ];
+    platforms = [ "x86_64-linux" ];
+  };
+}

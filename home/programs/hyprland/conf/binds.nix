@@ -4,13 +4,14 @@
   lib,
   osConfig,
   ...
-}: let
+}:
+let
   terminal = lib.getExe pkgs.foot;
   brightness = lib.getExe pkgs.brillo;
   playerctl = lib.getExe pkgs.playerctl;
   swayosd-client = lib.getExe' pkgs.swayosd "swayosd-client";
   wl-copy = lib.getExe' pkgs.wl-clipboard "wl-copy";
-  grimblast = pkgs.grimblast.override {hyprland = osConfig.programs.hyprland.package;};
+  grimblast = pkgs.grimblast.override { hyprland = osConfig.programs.hyprland.package; };
   screenshot-pkgs = [
     osConfig.programs.hyprland.package
     grimblast
@@ -36,7 +37,8 @@
       notify-send "Text Copied" "$TEXT"
       hyprctl keyword animation "fadeOut,1,4,default"'';
   };
-in {
+in
+{
   wayland.windowManager.hyprland = {
     extraConfig = ''
       bind=ALT_SHIFT, P, submap, passthrough
@@ -46,25 +48,37 @@ in {
     '';
     settings = {
       "$mod" = "ALT";
-      bind = let
-        # this cool setup stolen from Aylur (https://github.com/Aylur/dotfiles/blob/7c4d6a708d426cb1a35a0f1776c4edc52ae1841c/home-manager/hyprland.nix)
-        binding = mod: cmd: key: arg: "${mod}, ${key}, ${cmd}, ${arg}";
-        mvfocus = binding "ALT" "movefocus";
-        resizeactive = binding "Alt_Super" "resizeactive";
-        mvwindow = binding "Alt_Shift" "movewindow";
-        # borrowed (read: stolen) from fufexan <3 (https://github.com/fufexan/dotfiles/blob/5d5631f475d892e1521c45356805bc9a2d40d6d1/system/programs/hyprland/binds.nix#L18)
-        toggle = program: let prog = builtins.substring 0 14 program; in "pkill ${prog} || uwsm app -- ${program}";
-        runOnce = program: "pgrep ${program} || uwsm app -- ${program}";
-        yt-mpv = pkgs.writeShellApplication {
-          name = "yt";
-          runtimeInputs = [pkgs.mpv pkgs.wl-clipboard pkgs.libnotify];
-          text = ''
-            URL=$(wl-paste)
-            notify-send "Opening video" "$URL"
-            mpv "$URL"
-          '';
-        };
-      in
+      bind =
+        let
+          # this cool setup stolen from Aylur (https://github.com/Aylur/dotfiles/blob/7c4d6a708d426cb1a35a0f1776c4edc52ae1841c/home-manager/hyprland.nix)
+          binding =
+            mod: cmd: key: arg:
+            "${mod}, ${key}, ${cmd}, ${arg}";
+          mvfocus = binding "ALT" "movefocus";
+          resizeactive = binding "Alt_Super" "resizeactive";
+          mvwindow = binding "Alt_Shift" "movewindow";
+          # borrowed (read: stolen) from fufexan <3 (https://github.com/fufexan/dotfiles/blob/5d5631f475d892e1521c45356805bc9a2d40d6d1/system/programs/hyprland/binds.nix#L18)
+          toggle =
+            program:
+            let
+              prog = builtins.substring 0 14 program;
+            in
+            "pkill ${prog} || uwsm app -- ${program}";
+          runOnce = program: "pgrep ${program} || uwsm app -- ${program}";
+          yt-mpv = pkgs.writeShellApplication {
+            name = "yt";
+            runtimeInputs = [
+              pkgs.mpv
+              pkgs.wl-clipboard
+              pkgs.libnotify
+            ];
+            text = ''
+              URL=$(wl-paste)
+              notify-send "Opening video" "$URL"
+              mpv "$URL"
+            '';
+          };
+        in
         [
           "ALT_SHIFT, Q, killactive"
           # app keybinds
@@ -97,7 +111,9 @@ in {
           "Control_L&Alt_L, P, exec, pypr toggle volume"
           # screenshot & picker
           "$mod, C, exec, ${lib.getExe pkgs.hyprpicker} | ${wl-copy}"
-          "$mod, X, exec, ${lib.getExe pkgs.cliphist} list | anyrun --show-results-immediately true --plugins ${inputs.anyrun.packages.${pkgs.system}.stdin}/lib/libstdin.so | ${lib.getExe pkgs.cliphist} decode | ${wl-copy}"
+          "$mod, X, exec, ${lib.getExe pkgs.cliphist} list | anyrun --show-results-immediately true --plugins ${
+            inputs.anyrun.packages.${pkgs.system}.stdin
+          }/lib/libstdin.so | ${lib.getExe pkgs.cliphist} decode | ${wl-copy}"
           ", Print, exec, ${lib.getExe grimblast} --notify --cursor copysave output"
           "ALT , Print, exec, ${lib.getExe screenshot-area}"
           "SHIFT , Print, exec, ${lib.getExe screenshot-area-ocr}"
@@ -119,18 +135,22 @@ in {
         ++ (
           # workspaces
           # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
-          builtins.concatLists (builtins.genList (
-              x: let
-                ws = let
-                  c = (x + 1) / 10;
-                in
+          builtins.concatLists (
+            builtins.genList (
+              x:
+              let
+                ws =
+                  let
+                    c = (x + 1) / 10;
+                  in
                   builtins.toString (x + 1 - (c * 10));
-              in [
+              in
+              [
                 "$mod, ${ws}, workspace, ${toString (x + 1)}"
                 "$mod SHIFT, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
               ]
-            )
-            10)
+            ) 10
+          )
         );
       bindm = [
         "$mod, mouse:272, movewindow"

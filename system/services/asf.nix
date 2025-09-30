@@ -3,7 +3,8 @@
   config,
   inputs,
   ...
-}: {
+}:
+{
   age.secrets = {
     "steam" = {
       file = "${inputs.secrets}/asf/steam.age";
@@ -28,11 +29,14 @@
         SteamTokenDumperPluginEnabled = true;
         EnableFreePackages = true; # TODO install FreePackages declaratively
         FreePackagesFilters = [
-          {NoCostOnly = true;}
-          {Categories = [29];}
+          { NoCostOnly = true; }
+          { Categories = [ 29 ]; }
           {
-            Types = ["DLC"];
-            IgnoredTypes = ["Game" "Application"];
+            Types = [ "DLC" ];
+            IgnoredTypes = [
+              "Game"
+              "Application"
+            ];
           }
         ];
         SteamUserPermissions = {

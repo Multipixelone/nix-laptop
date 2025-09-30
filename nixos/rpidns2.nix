@@ -1,4 +1,5 @@
-{lib, ...}: {
+{ lib, ... }:
+{
   imports = [
     ./core.nix
     ./modules/tailscale.nix
@@ -14,8 +15,11 @@
     interfaces.eth0.useDHCP = false;
     defaultGateway = "192.168.6.1";
     #nameservers = ["192.168.6.111" "192.168.6.112"];
-    nameservers = ["8.8.8.8" "4.4.4.4"];
+    nameservers = [
+      "8.8.8.8"
+      "4.4.4.4"
+    ];
   };
-  swapDevices = [];
+  swapDevices = [ ];
   networking.useDHCP = lib.mkDefault false;
 }

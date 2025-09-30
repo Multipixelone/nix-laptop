@@ -2,7 +2,8 @@
   inputs,
   osConfig,
   ...
-}: {
+}:
+{
   age = {
     secrets = {
       "scrobblehome" = {

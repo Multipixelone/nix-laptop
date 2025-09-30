@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./mpv.nix
     ./media-dl.nix
@@ -17,8 +18,8 @@
     # FIX qt doesn't honor QT_QPA_PLATFORM if DISPLAY is set??
     (pkgs.symlinkJoin {
       name = "vlc";
-      paths = [pkgs.vlc];
-      buildInputs = [pkgs.makeWrapper];
+      paths = [ pkgs.vlc ];
+      buildInputs = [ pkgs.makeWrapper ];
       postBuild = ''
         wrapProgram $out/bin/vlc \
           --unset DISPLAY

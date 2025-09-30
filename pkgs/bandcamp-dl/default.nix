@@ -51,6 +51,6 @@ buildPythonApplication {
     homepage = "https://github.com/iheanyi/bandcamp-dl";
     description = "Simple python script to download Bandcamp albums";
     license = licenses.unlicense;
-    maintainers = with maintainers; [Multipixelone];
+    maintainers = with maintainers; [ Multipixelone ];
   };
 }

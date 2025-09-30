@@ -23,22 +23,24 @@
     #     }
     #   ];
     # };
-    greetd = let
-      session = {
-        command = "${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop";
-        user = "tunnel";
+    greetd =
+      let
+        session = {
+          command = "${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop";
+          user = "tunnel";
+        };
+      in
+      {
+        enable = true;
+        settings = {
+          initial_session = session;
+          default_session = session;
+          # default_session = {
+          #   command = "${tuigreet} --greeting \"hi finn :)\" --time --remember --remember-session --sessions ${hyprland-session}";
+          #   user = "greeter";
+          # };
+        };
       };
-    in {
-      enable = true;
-      settings = {
-        initial_session = session;
-        default_session = session;
-        # default_session = {
-        #   command = "${tuigreet} --greeting \"hi finn :)\" --time --remember --remember-session --sessions ${hyprland-session}";
-        #   user = "greeter";
-        # };
-      };
-    };
   };
   # this is a life saver.
   # literally no documentation about this anywhere.

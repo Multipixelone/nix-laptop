@@ -5,7 +5,8 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   media-drive = "/volume1/Media";
   download-dir = "${media-drive}/ImportMusic/slskd";
   music-dir = "${media-drive}/Music";
@@ -19,7 +20,10 @@
   beets-plugins = inputs.beets-plugins.packages.${pkgs.system}.default;
   beets-import = pkgs.writeShellApplication {
     name = "beets-import";
-    runtimeInputs = [beets-plugins pkgs.coreutils];
+    runtimeInputs = [
+      beets-plugins
+      pkgs.coreutils
+    ];
     text = ''
       beet -c ${beets-config} import -q ${download-dir}
       rm -f ${detect-file}
@@ -151,7 +155,9 @@
     echo "Building mpcenc command..."
 
     # Start with the base command and options
-    set -l mpcenc_cmd ${lib.getExe' self.packages.${pkgs.system}.musepack "mpcenc"} --overwrite --quality 5 --ape2
+    set -l mpcenc_cmd ${
+      lib.getExe' self.packages.${pkgs.system}.musepack "mpcenc"
+    } --overwrite --quality 5 --ape2
 
     if test -n "$artist_tag"; set -a mpcenc_cmd --artist "$artist_tag"; end
     if test -n "$title_tag";  set -a mpcenc_cmd --title "$title_tag"; end
@@ -190,40 +196,44 @@
     return 0
   '';
   # This needs to be composed separately & included so the order can be maintained
-  paths = let
-    # this lovely snippet pulls the first artist from the albumartists_sort field :-)
-    first_artist = "%the{%tcp{%ifdef{albumartists_sort,%first{$albumartists_sort,1,0,\␀},$first_artist}}}";
-    # if no month and day just display year, otherwise display all three
-    date = "%if{$original_year,($original_year%if{$original_month,.$original_month.$original_day}) ,) }";
-    # ex. 01-01. Tyler, the Creator ft. Frank Ocean - Slater.wav
-    track_path = "$disc_and_track. $artist - $title";
-    # show my custom field if there is a re-release or tagged disambiguation
-    disambig_rerelease = "%if{$disambig,($disambig) }";
-  in [
-    {
-      category = "genre:mt, genre:broadway, genre:Musical";
-      path = "0. Musicals/%the{$album} ${disambig_rerelease}${date}[$media_type$source]/$disc_and_track. $title";
-    }
-    {
-      category = "albumtype:soundtrack, genre:Soundtrack";
-      path = "OST/$album ${disambig_rerelease}${date}[$media_type$source]/${track_path}";
-    }
-    {
-      category = "default";
-      path = "${first_artist}/$albumartist ${date}%if{$albumtype,($albumtype) }$album ${disambig_rerelease}[$media_type$source]/${track_path}";
-    }
-    {
-      category = "comp";
-      path = "Various Artists/$album ${disambig_rerelease}${date}[$media_type$source]/${track_path}";
-    }
-  ];
+  paths =
+    let
+      # this lovely snippet pulls the first artist from the albumartists_sort field :-)
+      first_artist = "%the{%tcp{%ifdef{albumartists_sort,%first{$albumartists_sort,1,0,\␀},$first_artist}}}";
+      # if no month and day just display year, otherwise display all three
+      date = "%if{$original_year,($original_year%if{$original_month,.$original_month.$original_day}) ,) }";
+      # ex. 01-01. Tyler, the Creator ft. Frank Ocean - Slater.wav
+      track_path = "$disc_and_track. $artist - $title";
+      # show my custom field if there is a re-release or tagged disambiguation
+      disambig_rerelease = "%if{$disambig,($disambig) }";
+    in
+    [
+      {
+        category = "genre:mt, genre:broadway, genre:Musical";
+        path = "0. Musicals/%the{$album} ${disambig_rerelease}${date}[$media_type$source]/$disc_and_track. $title";
+      }
+      {
+        category = "albumtype:soundtrack, genre:Soundtrack";
+        path = "OST/$album ${disambig_rerelease}${date}[$media_type$source]/${track_path}";
+      }
+      {
+        category = "default";
+        path = "${first_artist}/$albumartist ${date}%if{$albumtype,($albumtype) }$album ${disambig_rerelease}[$media_type$source]/${track_path}";
+      }
+      {
+        category = "comp";
+        path = "Various Artists/$album ${disambig_rerelease}${date}[$media_type$source]/${track_path}";
+      }
+    ];
   formatPath = path: "  ${path.category}: ${builtins.toJSON path.path}";
   pathsConfig = pkgs.writeTextFile {
     name = "beets-path.yaml";
-    text = pkgs.lib.strings.concatStringsSep "\n" ([
+    text = pkgs.lib.strings.concatStringsSep "\n" (
+      [
         "paths:"
       ]
-      ++ (map formatPath paths));
+      ++ (map formatPath paths)
+    );
   };
   # TODO separate this out into a different file (need to globalize scripts somehow)
   configFile = pkgs.writeText "euphony.toml" ''
@@ -280,18 +290,19 @@
   euphony-wrapped = pkgs.writeShellScriptBin "euphony" ''
     ${lib.getExe' inputs.euphony.packages.${pkgs.system}.default "euphony"} -c ${configFile} $@
   '';
-in {
+in
+{
   systemd.user = {
     paths.beets = {
       Unit.Description = "Watch download directory for new music";
       Path.PathChanged = detect-file;
-      Install.WantedBy = ["default.target"];
+      Install.WantedBy = [ "default.target" ];
     };
     services.beets = {
       Unit.Description = "Automatically import and organize downloads using beets";
       Service = {
         Type = "oneshot";
-        ReadOnlyPaths = [beets-config];
+        ReadOnlyPaths = [ beets-config ];
         ReadWritePaths = [
           download-dir
           music-dir
@@ -301,7 +312,7 @@ in {
       };
     };
     timers.transcode-music = {
-      Install.WantedBy = ["timers.target"];
+      Install.WantedBy = [ "timers.target" ];
       Timer = {
         # midnight every night
         OnCalendar = "*-*-* 00:00:00";
@@ -325,14 +336,15 @@ in {
   # thanks 5225225 (https://github.com/5225225/dotfiles/blob/bf95910ad4b7929ddce1865162f3c16064e74d8e/user/beets/beets.nix#L138)
   xdg.configFile = {
     "fish/completions/beet.fish".source =
-      pkgs.runCommand "beets-completion" {
-        config = (pkgs.formats.yaml {}).generate "beets-config" config.programs.beets.settings;
-      }
-      ''
-        export BEETSDIR="/tmp"
+      pkgs.runCommand "beets-completion"
+        {
+          config = (pkgs.formats.yaml { }).generate "beets-config" config.programs.beets.settings;
+        }
+        ''
+          export BEETSDIR="/tmp"
 
-        ${lib.getExe config.programs.beets.package} -l /tmp/db -c "$config" fish --output "$out"
-      '';
+          ${lib.getExe config.programs.beets.package} -l /tmp/db -c "$config" fish --output "$out"
+        '';
     "whipper/whipper.conf".text = ''
       [drive:HL-DT-ST%3ADVDRAM%20GP65NB60%20%3ARF01]
       vendor = HL-DT-ST
@@ -472,7 +484,7 @@ in {
         duplicates = {
           checksum = false;
           tiebreak = {
-            items = ["bitrate"];
+            items = [ "bitrate" ];
           };
         };
         alternatives.ipod = {
@@ -502,66 +514,68 @@ in {
         # albumtypes.types = [
         #   "ep: 'EP'"
         # ];
-        hook.hooks = let
-          log-timestamp = pkgs.writeShellApplication {
-            name = "log-timestamp";
-            runtimeInputs = with pkgs; [
-              dateutils
-            ];
-            text = ''
-              export LOGDIR="${beets-dir}/logs"
-              export LOG="''${LOGDIR}/import_times.log"
-              DATE=$(date "+%Y/%m/%d at %H:%M:%S")
-              SECONDS=$(date +%s)
+        hook.hooks =
+          let
+            log-timestamp = pkgs.writeShellApplication {
+              name = "log-timestamp";
+              runtimeInputs = with pkgs; [
+                dateutils
+              ];
+              text = ''
+                export LOGDIR="${beets-dir}/logs"
+                export LOG="''${LOGDIR}/import_times.log"
+                DATE=$(date "+%Y/%m/%d at %H:%M:%S")
+                SECONDS=$(date +%s)
 
-              if tail -1 ''${LOG} | grep 'Import end' > /dev/null
-              then
-                # shellcheck disable=SC2059
-                printf "''${SECONDS} on ''${DATE} $*\n" >> ''${LOG}
-              else
-                if tail -1 ''${LOG} | grep '^# Import' > /dev/null
+                if tail -1 ''${LOG} | grep 'Import end' > /dev/null
                 then
                   # shellcheck disable=SC2059
                   printf "''${SECONDS} on ''${DATE} $*\n" >> ''${LOG}
                 else
-                  PREVSECS=$(tail -1 ''${LOG} | awk ' { print $1 } ')
-                  if [ "''${PREVSECS}" ]
+                  if tail -1 ''${LOG} | grep '^# Import' > /dev/null
                   then
-                    ELAPSECS=$(( SECONDS - PREVSECS ))
-                    # shellcheck disable=SC2016
-                    ELAPSED=$(eval "echo elapsed time: $(date -ud "@$ELAPSECS" +'$((%s/3600/24)) days %H hr %M min %S sec')")
-                    # shellcheck disable=SC2059
-                    printf "''${SECONDS} on ''${DATE} $* , ''${ELAPSED}\n" >> ''${LOG}
-                  else
                     # shellcheck disable=SC2059
                     printf "''${SECONDS} on ''${DATE} $*\n" >> ''${LOG}
+                  else
+                    PREVSECS=$(tail -1 ''${LOG} | awk ' { print $1 } ')
+                    if [ "''${PREVSECS}" ]
+                    then
+                      ELAPSECS=$(( SECONDS - PREVSECS ))
+                      # shellcheck disable=SC2016
+                      ELAPSED=$(eval "echo elapsed time: $(date -ud "@$ELAPSECS" +'$((%s/3600/24)) days %H hr %M min %S sec')")
+                      # shellcheck disable=SC2059
+                      printf "''${SECONDS} on ''${DATE} $* , ''${ELAPSED}\n" >> ''${LOG}
+                    else
+                      # shellcheck disable=SC2059
+                      printf "''${SECONDS} on ''${DATE} $*\n" >> ''${LOG}
+                    fi
                   fi
                 fi
-              fi
-            '';
-          };
-        in [
-          {
-            event = "album_imported";
-            command = ''${lib.getExe' pkgs.coreutils "printf"} "\033[38;5;76m √\033[m \033[1m\033[m \033[38;5;30m{album.path}\033[m\n"'';
-          }
-          {
-            event = "album_imported";
-            command = ''${lib.getExe rb-albumart} {album.path}'';
-          }
-          {
-            event = "before_choose_candidate";
-            command = hr;
-          }
-          {
-            event = "import_begin";
-            command = "${lib.getExe log-timestamp} Import begin";
-          }
-          {
-            event = "import";
-            command = "${lib.getExe log-timestamp} Import end";
-          }
-        ];
+              '';
+            };
+          in
+          [
+            {
+              event = "album_imported";
+              command = ''${lib.getExe' pkgs.coreutils "printf"} "\033[38;5;76m √\033[m \033[1m\033[m \033[38;5;30m{album.path}\033[m\n"'';
+            }
+            {
+              event = "album_imported";
+              command = ''${lib.getExe rb-albumart} {album.path}'';
+            }
+            {
+              event = "before_choose_candidate";
+              command = hr;
+            }
+            {
+              event = "import_begin";
+              command = "${lib.getExe log-timestamp} Import begin";
+            }
+            {
+              event = "import";
+              command = "${lib.getExe log-timestamp} Import end";
+            }
+          ];
         filetote = {
           # keep relevant files with album
           extensions = [
@@ -573,7 +587,7 @@ in {
           pairing = {
             enabled = true;
             pairing_only = true;
-            extensions = [".lrc"];
+            extensions = [ ".lrc" ];
           };
           paths = {
             "ext:.log" = "$albumpath/$artist - $album";
@@ -616,35 +630,37 @@ in {
         };
         badfiles = {
           check_on_import = true;
-          commands = let
-            opus-test = pkgs.writeShellApplication {
-              name = "opus-test";
-              runtimeInputs = [
-                pkgs.mediainfo
-                pkgs.jq
-              ];
-              text = ''
-                REQUIRED_BITRATE_KBPS=200
-                BITRATE_BPS=$((REQUIRED_BITRATE_KBPS * 1000))
-                overall_bitrate=$(mediainfo --Output=JSON "''${1}" \
-                | jq -er '.media.track[] | select(.["@type"] == "General") | .OverallBitRate')
+          commands =
+            let
+              opus-test = pkgs.writeShellApplication {
+                name = "opus-test";
+                runtimeInputs = [
+                  pkgs.mediainfo
+                  pkgs.jq
+                ];
+                text = ''
+                  REQUIRED_BITRATE_KBPS=200
+                  BITRATE_BPS=$((REQUIRED_BITRATE_KBPS * 1000))
+                  overall_bitrate=$(mediainfo --Output=JSON "''${1}" \
+                  | jq -er '.media.track[] | select(.["@type"] == "General") | .OverallBitRate')
 
-                current_bitrate_bps_int=$((overall_bitrate))
-                current_bitrate_kbps=$((current_bitrate_bps_int / 1000))
+                  current_bitrate_bps_int=$((overall_bitrate))
+                  current_bitrate_kbps=$((current_bitrate_bps_int / 1000))
 
-                if [ "$current_bitrate_bps_int" -lt "$BITRATE_BPS" ]; then
-                  echo "Error: bitrate ''${current_bitrate_kbps} is less then required"
-                  exit 4
-                else
-                  echo "Bitrate exceeds the requirement"
-                  exit 0
-                fi
-              '';
+                  if [ "$current_bitrate_bps_int" -lt "$BITRATE_BPS" ]; then
+                    echo "Error: bitrate ''${current_bitrate_kbps} is less then required"
+                    exit 4
+                  else
+                    echo "Bitrate exceeds the requirement"
+                    exit 0
+                  fi
+                '';
+              };
+            in
+            {
+              flac = "${lib.getExe pkgs.flac} --test --warnings-as-errors --silent";
+              opus = lib.getExe opus-test;
             };
-          in {
-            flac = "${lib.getExe pkgs.flac} --test --warnings-as-errors --silent";
-            opus = lib.getExe opus-test;
-          };
         };
         tcp.asis = [
           "EP"
@@ -818,14 +834,26 @@ in {
         };
         ui.colors = {
           # Field colors for use in the item and album formats.
-          album = ["blue" "bold"];
-          albumartist = ["yellow" "bold"];
-          albumtypes = ["cyan"];
-          artist = ["yellow" "bold"];
-          id = ["faint"];
-          title = ["normal"];
-          track = ["green"];
-          year = ["magenta" "bold"];
+          album = [
+            "blue"
+            "bold"
+          ];
+          albumartist = [
+            "yellow"
+            "bold"
+          ];
+          albumtypes = [ "cyan" ];
+          artist = [
+            "yellow"
+            "bold"
+          ];
+          id = [ "faint" ];
+          title = [ "normal" ];
+          track = [ "green" ];
+          year = [
+            "magenta"
+            "bold"
+          ];
           # main UI colors
           text_success = "green";
           text_warning = "blue";

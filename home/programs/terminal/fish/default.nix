@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   cliphist = lib.getExe pkgs.cliphist;
   wl-copy = lib.getExe' pkgs.wl-clipboard "wl-copy";
   fzf-config = ''
@@ -21,13 +22,13 @@
   #   set pure_color_primary white
   #   set pure_color_info blue
   # '';
-  fish-config =
-    ''
-      set fish_greeting # Disable greeting
-    ''
-    + fzf-config;
+  fish-config = ''
+    set fish_greeting # Disable greeting
+  ''
+  + fzf-config;
   # + pure-config;
-in {
+in
+{
   # source other functions
   xdg.configFile = {
     "fish/functions" = {
@@ -41,31 +42,33 @@ in {
   programs.bash.enable = true;
   programs.fish = {
     enable = true;
-    shellAbbrs = let
-      bat-args = command: args: command + (" | bat " + args);
-    in {
-      c = "clear";
-      # TODO fix idle inhibit command
-      # ii = "systemd-inhibit --what=idle --who=Caffeine --why=Caffeine --mode=block sleep inf";
-      # fish
-      h = bat-args "history" "-l fish";
-      lsabbrs = bat-args "abbr" "-l fish";
-      mx = "chmod +x";
-      lg = "lazygit";
-      nixlg = "cd ~/Documents/Git/nix-laptop && lazygit";
-      fetch = "nix run nixpkgs#nitch";
-      upset = "nix run github:Multipixelone/upset";
-      ff = "nix run nixpkgs#fastfetch";
-      hypr-log = "tail -f /run/user/1000/hypr/$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)/hyprland.log";
-      # TODO Split this into commands based on hostname
-      pw-get = "pactl load-module module-null-sink media.class=Audio/Sink sink_name=music channel_map=stereo && pactl load-module module-native-protocol-tcp port=4656 listen=192.168.6.6";
-      pw-send = "pactl load-module module-tunnel-sink server=tcp:192.168.6.6:4656";
-      nsp = "nix-shell -p";
-      nb = "nix build";
-      nr = "nix run";
-      kh = "khinsider";
-      rs = "rip search qobuz album";
-    };
+    shellAbbrs =
+      let
+        bat-args = command: args: command + (" | bat " + args);
+      in
+      {
+        c = "clear";
+        # TODO fix idle inhibit command
+        # ii = "systemd-inhibit --what=idle --who=Caffeine --why=Caffeine --mode=block sleep inf";
+        # fish
+        h = bat-args "history" "-l fish";
+        lsabbrs = bat-args "abbr" "-l fish";
+        mx = "chmod +x";
+        lg = "lazygit";
+        nixlg = "cd ~/Documents/Git/nix-laptop && lazygit";
+        fetch = "nix run nixpkgs#nitch";
+        upset = "nix run github:Multipixelone/upset";
+        ff = "nix run nixpkgs#fastfetch";
+        hypr-log = "tail -f /run/user/1000/hypr/$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)/hyprland.log";
+        # TODO Split this into commands based on hostname
+        pw-get = "pactl load-module module-null-sink media.class=Audio/Sink sink_name=music channel_map=stereo && pactl load-module module-native-protocol-tcp port=4656 listen=192.168.6.6";
+        pw-send = "pactl load-module module-tunnel-sink server=tcp:192.168.6.6:4656";
+        nsp = "nix-shell -p";
+        nb = "nix build";
+        nr = "nix run";
+        kh = "khinsider";
+        rs = "rip search qobuz album";
+      };
     shellAliases = {
       fzf = "fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'";
       mkdir = "mkdir -pv";
@@ -138,28 +141,30 @@ in {
         end
       '';
     };
-    plugins =
+    plugins = [
+      {
+        name = "fish-eza";
+        src = pkgs.fetchFromGitHub {
+          owner = "plttn";
+          repo = "fish-eza";
+          rev = "36f57936ba3e921334ee313b25c3988258fb9771";
+          sha256 = "sha256-f/JmwxOnLHq/FXIxI424AfOavlmv5/Ep5D2JEm0jFPE=";
+        };
+      }
+    ]
+    ++ (map
+      (name: {
+        inherit name;
+        inherit (pkgs.fishPlugins.${name}) src;
+      })
       [
-        {
-          name = "fish-eza";
-          src = pkgs.fetchFromGitHub {
-            owner = "plttn";
-            repo = "fish-eza";
-            rev = "36f57936ba3e921334ee313b25c3988258fb9771";
-            sha256 = "sha256-f/JmwxOnLHq/FXIxI424AfOavlmv5/Ep5D2JEm0jFPE=";
-          };
-        }
+        "fzf-fish"
+        "done"
+        "pisces"
+        "puffer"
+        "humantime-fish"
+        "grc"
       ]
-      ++ (map (name: {
-          inherit name;
-          inherit (pkgs.fishPlugins.${name}) src;
-        }) [
-          "fzf-fish"
-          "done"
-          "pisces"
-          "puffer"
-          "humantime-fish"
-          "grc"
-        ]);
+    );
   };
 }

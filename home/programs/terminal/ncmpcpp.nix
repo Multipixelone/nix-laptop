@@ -1,8 +1,15 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   song-change =
     pkgs.writeShellApplication {
       name = "song-change";
-      runtimeInputs = [pkgs.procps pkgs.libnotify pkgs.playerctl pkgs.imagemagick pkgs.mpc-cli];
+      runtimeInputs = [
+        pkgs.procps
+        pkgs.libnotify
+        pkgs.playerctl
+        pkgs.imagemagick
+        pkgs.mpc-cli
+      ];
       text = ''
         # i don't need to be making a playerctl and a mpc call, but then I have to write code to parse the output and I am Lazy
         art_url=$(playerctl -p mopidy metadata mpris:artUrl)
@@ -21,7 +28,8 @@
       '';
     }
     + "/bin/song-change &> /dev/null";
-in {
+in
+{
   programs.ncmpcpp = {
     enable = true;
     settings = {

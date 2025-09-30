@@ -1,6 +1,7 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.virt-manager.enable = true;
-  environment.systemPackages = [pkgs.distrobox];
+  environment.systemPackages = [ pkgs.distrobox ];
   virtualisation = {
     # oci-containers.backend = "docker";
     libvirtd = {

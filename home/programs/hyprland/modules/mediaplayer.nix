@@ -29,10 +29,9 @@ python3.pkgs.buildPythonApplication rec {
   ];
   propagatedBuildInputs = [
     pkgs.playerctl
-    (pkgs.python3.withPackages
-      (p: [
-        p.pygobject3
-      ]))
+    (pkgs.python3.withPackages (p: [
+      p.pygobject3
+    ]))
   ];
   preBuild = ''
         cat > setup.py << EOF
@@ -54,9 +53,11 @@ python3.pkgs.buildPythonApplication rec {
   strictDeps = false;
   installPhase = "install -Dm755 resources/custom_modules/mediaplayer.py $out/bin/mediaplayer.py";
   preFixup = ''
-    makeWrapperArgs+=(--prefix PATH : ${lib.makeBinPath [
-      # Hard requirements
-      pkgs.playerctl
-    ]})
+    makeWrapperArgs+=(--prefix PATH : ${
+      lib.makeBinPath [
+        # Hard requirements
+        pkgs.playerctl
+      ]
+    })
   '';
 }

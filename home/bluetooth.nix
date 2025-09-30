@@ -1,8 +1,10 @@
-_: let
+_:
+let
   headphones = "BC:87:FA:27:F5:4C";
   bc = "bluetoothctl connect ${headphones}";
   bd = "bluetoothctl disconnect ${headphones}";
-in {
+in
+{
   programs.fish.shellAbbrs = {
     hpc = "${bc}";
     hpd = "${bd}";

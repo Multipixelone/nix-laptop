@@ -5,7 +5,8 @@
   lib,
   inputs,
   ...
-}: let
+}:
+let
   programs = [
     config.programs.hyprland.package
     pkgs.findutils
@@ -48,7 +49,8 @@
       notify-send -a 'Gamemode' 'Optimizations deactivated'
     '';
   };
-in {
+in
+{
   age.secrets = {
     "syncthing" = {
       file = "${inputs.secrets}/media/syncthing.age";

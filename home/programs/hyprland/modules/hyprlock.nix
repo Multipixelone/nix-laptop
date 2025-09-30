@@ -3,23 +3,25 @@
   lib,
   inputs,
   ...
-}: let
+}:
+let
   font_family = "PragmataPro Liga";
   song-title = pkgs.writeShellApplication {
     name = "song-title";
-    runtimeInputs = [pkgs.playerctl];
+    runtimeInputs = [ pkgs.playerctl ];
     text = ''
       playerctl metadata --format "{{ title }}"
     '';
   };
   song-info = pkgs.writeShellApplication {
     name = "song-info";
-    runtimeInputs = [pkgs.playerctl];
+    runtimeInputs = [ pkgs.playerctl ];
     text = ''
       playerctl metadata --format "{{ artist }} - {{ album }}"
     '';
   };
-in {
+in
+{
   programs.hyprlock = {
     enable = true;
     package = inputs.hyprlock.packages.${pkgs.system}.hyprlock;
@@ -40,8 +42,7 @@ in {
         # time
         {
           monitor = "eDP-1";
-          text = ''
-            cmd[update:30000] echo "$(date +"%R")"'';
+          text = ''cmd[update:30000] echo "$(date +"%R")"'';
           color = "rgb(245, 224, 220)";
           font_size = 100;
           inherit font_family;

@@ -3,7 +3,8 @@
   lib,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     ./wallpaper.nix
     inputs.catppuccin.homeModules.catppuccin

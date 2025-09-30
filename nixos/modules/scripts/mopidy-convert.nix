@@ -1,7 +1,7 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 pkgs.writeShellApplication {
   name = "mopidy-convert";
-  runtimeInputs = [pkgs.jq];
+  runtimeInputs = [ pkgs.jq ];
 
   text = ''
     #!/usr/bin/env bash

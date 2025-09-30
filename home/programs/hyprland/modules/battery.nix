@@ -3,7 +3,8 @@
   lib,
   osConfig,
   ...
-}: let
+}:
+let
   script = pkgs.writeShellApplication {
     name = "watch-battery";
     runtimeInputs = with pkgs; [
@@ -50,11 +51,12 @@
       done
     '';
   };
-in {
+in
+{
   systemd.user.services.power-monitor = {
     Unit = {
       Description = "Hypr Power Monitor";
-      After = ["greetd.service"];
+      After = [ "greetd.service" ];
     };
 
     Service = {
@@ -63,6 +65,6 @@ in {
       Restart = "on-failure";
     };
 
-    Install.WantedBy = ["default.target"];
+    Install.WantedBy = [ "default.target" ];
   };
 }

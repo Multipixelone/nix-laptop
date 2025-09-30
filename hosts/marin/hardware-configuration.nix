@@ -6,19 +6,31 @@
   lib,
   modulesPath,
   ...
-}: {
+}:
+{
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
   boot = {
-    initrd.availableKernelModules = ["xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "sdhci_pci"];
+    initrd.availableKernelModules = [
+      "xhci_pci"
+      "ahci"
+      "usbhid"
+      "usb_storage"
+      "sd_mod"
+      "sdhci_pci"
+    ];
     # initrd.kernelModules = [];
-    kernelModules = ["kvm-intel" "wl"];
-    extraModulePackages = [config.boot.kernelPackages.broadcom_sta];
+    kernelModules = [
+      "kvm-intel"
+      "wl"
+    ];
+    extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
   };
 
-  nixpkgs.config.allowInsecurePredicate = pkg:
+  nixpkgs.config.allowInsecurePredicate =
+    pkg:
     builtins.elem (lib.getName pkg) [
       "broadcom-sta" # aka “wl”
     ];
@@ -27,23 +39,26 @@
     "/" = {
       device = "/dev/disk/by-uuid/c2c80df4-eb6e-446f-97ba-008f494c3817";
       fsType = "btrfs";
-      options = ["subvol=@"];
+      options = [ "subvol=@" ];
     };
 
     "/home" = {
       device = "/dev/disk/by-uuid/c2c80df4-eb6e-446f-97ba-008f494c3817";
       fsType = "btrfs";
-      options = ["subvol=@home"];
+      options = [ "subvol=@home" ];
     };
 
     "/boot" = {
       device = "/dev/disk/by-uuid/7BA8-ACBD";
       fsType = "vfat";
-      options = ["fmask=0022" "dmask=0022"];
+      options = [
+        "fmask=0022"
+        "dmask=0022"
+      ];
     };
   };
 
-  swapDevices = [{device = "/swap/swapfile";}];
+  swapDevices = [ { device = "/swap/swapfile"; } ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   inherit (config.lib.stylix) colors;
   zjstatus-conf = ''
     plugin location="zjstatus" {
@@ -67,7 +68,8 @@
         datetime_timezone "America/New_York"
       }
   '';
-in {
+in
+{
   programs.zellij = {
     inherit (config.home.shell) enableFishIntegration;
     enable = true;

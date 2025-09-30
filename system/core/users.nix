@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   users.users.tunnel = {
     name = "tunnel";
     isNormalUser = true;
