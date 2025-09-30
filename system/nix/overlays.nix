@@ -1,4 +1,9 @@
-{inputs, ...}: {
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}: {
   nixpkgs.overlays = let
     pins = import ../../npins;
   in [
@@ -18,6 +23,20 @@
           substituteInPlace scripts/build-udev-rules.sh \
             --replace-fail "/usr/bin/env chmod" "${self.coreutils}/bin/chmod"
         '';
+      };
+    })
+    (self: super: {
+      snapcast = super.snapcast.overrideAttrs {
+        version = pins.snapcast.revision;
+        src = pins.snapcast;
+        buildInputs =
+          super.snapcast.buildInputs
+          ++ [
+            pkgs.pipewire
+          ];
+        cmakeFlags = [
+          (lib.cmakeBool "BUILD_WITH_PIPEWIRE" true)
+        ];
       };
     })
     # (self: super: {

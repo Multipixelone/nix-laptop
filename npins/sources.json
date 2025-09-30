@@ -93,6 +93,22 @@
       "url": "https://api.github.com/repos/Arairon/slskd-stats/tarball/v0.1.0",
       "hash": "0avqxy739hjf82d7jsj6cx0vy971ja3vznggzgdj15qz50qfrpzz"
     },
+    "snapcast": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "badaix",
+        "repo": "snapcast"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v0.33.0",
+      "revision": "cc5f455c9878122ca880fd705ded8c01e5741082",
+      "url": "https://api.github.com/repos/badaix/snapcast/tarball/v0.33.0",
+      "hash": "0gd5lg14j55jw13mlymwcnih6jq07my9sicm8j8ii8cbsdii3730"
+    },
     "spotify-downloader": {
       "type": "Git",
       "repository": {
