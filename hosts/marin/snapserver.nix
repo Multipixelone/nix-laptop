@@ -160,16 +160,16 @@ in
         User = "snapserver";
         Group = "snapserver";
       };
-      nqptp = {
-        description = "Network Precision Time Protocol for Shairport Sync";
-        wantedBy = [ "multi-user.target" ];
-        after = [ "network.target" ];
-        serviceConfig = {
-          ExecStart = "${pkgs.nqptp}/bin/nqptp";
-          Restart = "always";
-          RestartSec = "5s";
-        };
-      };
+      # nqptp = {
+      #   description = "Network Precision Time Protocol for Shairport Sync";
+      #   wantedBy = [ "multi-user.target" ];
+      #   after = [ "network.target" ];
+      #   serviceConfig = {
+      #     ExecStart = "${pkgs.nqptp}/bin/nqptp";
+      #     Restart = "always";
+      #     RestartSec = "5s";
+      #   };
+      # };
       # ambience-rain = let
       #   rain-sound = pkgs.fetchurl {
       #     url = "https://media.rainymood.com/0.mp3";
