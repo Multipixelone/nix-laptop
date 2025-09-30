@@ -1765,22 +1765,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-unstable": {
-      "locked": {
-        "lastModified": 1758690382,
-        "narHash": "sha256-NY3kSorgqE5LMm1LqNwGne3ZLMF2/ILgLpFr1fS4X3o=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "e643668fd71b949c53f8626614b21ff71a07379d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs_10": {
       "locked": {
         "lastModified": 1754028485,
@@ -1799,16 +1783,16 @@
     },
     "nixpkgs_11": {
       "locked": {
-        "lastModified": 1758690382,
-        "narHash": "sha256-NY3kSorgqE5LMm1LqNwGne3ZLMF2/ILgLpFr1fS4X3o=",
+        "lastModified": 1759240490,
+        "narHash": "sha256-RPoiXImMd8sEYqOFd71pis08RheOgrd859E+5CIp6Sw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "e643668fd71b949c53f8626614b21ff71a07379d",
+        "rev": "b6f6c613838dd776620c34e8f15fe4d8a9cdf9c0",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-unstable",
+        "ref": "nixos-unstable-small",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -2261,7 +2245,6 @@
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_11",
         "nixpkgs-cloudflared": "nixpkgs-cloudflared",
-        "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
         "playlist-download": "playlist-download",
         "pre-commit-hooks": "pre-commit-hooks_2",
