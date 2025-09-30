@@ -4,7 +4,8 @@
   inputs,
   config,
   ...
-}: let
+}:
+let
   # wrap secret into helix-gpt
   gpt-wrapped = pkgs.writeShellScriptBin "helix-gpt" ''
     export COPILOT_API_KEY=$(cat ${config.age.secrets."copilot".path})
@@ -12,14 +13,15 @@
   '';
   zellij-args = ":sh zellij run -c -f -x 10%% -y 10%% --width 80%% --height 80%% --";
   packages = with pkgs; [
-    alejandra
+    nixfmt
     gpt-wrapped
     marksman
     nodePackages.prettier
     wl-clipboard
     markdown-oxide
   ];
-in {
+in
+{
   # also install packages to main environment
   home.packages = packages;
   age.secrets = {
@@ -99,18 +101,33 @@ in {
           # ctrl + s to save
           C-s = ":write";
           # clipboard commands
-          C-v = ["paste_clipboard_after" "collapse_selection"];
+          C-v = [
+            "paste_clipboard_after"
+            "collapse_selection"
+          ];
           # new helix commands
           C-h = "select_prev_sibling";
           C-j = "shrink_selection";
           C-k = "expand_selection";
           C-l = "select_next_sibling";
           # selection command
-          V = ["select_mode" "extend_to_line_bounds"];
+          V = [
+            "select_mode"
+            "extend_to_line_bounds"
+          ];
           space = {
-            l.g = ["${zellij-args} ${lib.getExe pkgs.lazygit}" ":reload"];
-            n.r = ["${zellij-args} nix run" ":reload"];
-            n.s = ["${zellij-args} fish" ":reload"];
+            l.g = [
+              "${zellij-args} ${lib.getExe pkgs.lazygit}"
+              ":reload"
+            ];
+            n.r = [
+              "${zellij-args} nix run"
+              ":reload"
+            ];
+            n.s = [
+              "${zellij-args} fish"
+              ":reload"
+            ];
           };
         };
       };
@@ -119,13 +136,16 @@ in {
       language-server = {
         gpt = {
           command = "helix-gpt";
-          args = ["--handler" "copilot"];
+          args = [
+            "--handler"
+            "copilot"
+          ];
         };
         nixd = {
           command = lib.getExe pkgs.nixd;
-          args = ["--inlay-hints=true"];
+          args = [ "--inlay-hints=true" ];
           config = {
-            formatting.command = [(lib.getExe pkgs.alejandra)];
+            formatting.command = [ (lib.getExe pkgs.nixfmt) ];
             nixpkgs.expr = "import <nixpkgs> {}";
             options = {
               nixos.expr = "(builtins.getFlake \"/etc/nixos\").nixosConfigurations.default.options";
@@ -136,11 +156,11 @@ in {
         basedpyright.command = "${pkgs.basedpyright}/bin/basedpyright-langserver";
         ruff = {
           command = lib.getExe pkgs.ruff;
-          args = ["server"];
+          args = [ "server" ];
         };
         fish-lsp = {
           command = lib.getExe pkgs.fish-lsp;
-          args = ["start"];
+          args = [ "start" ];
         };
         texlab.config.texlab = {
           command = "texlab";
@@ -152,7 +172,7 @@ in {
             onSave = true;
             forwardSearchAfter = true;
             executable = "latexrun";
-            args = ["%f"];
+            args = [ "%f" ];
           };
           forwardSearch = {
             executable = "zathura";
@@ -168,27 +188,39 @@ in {
         {
           name = "nix";
           scope = "source.nix";
-          file-types = ["nix"];
+          file-types = [ "nix" ];
           comment-token = "#";
           indent = {
             tab-width = 2;
             unit = "  ";
           };
           injection-regex = "nix";
-          language-servers = ["nixd" "gpt"];
-          formatter.command = "alejandra";
+          language-servers = [
+            "nixd"
+            "gpt"
+          ];
+          formatter.command = "nixfmt";
           auto-format = true;
         }
         {
           name = "fish";
-          language-servers = ["fish-lsp" "gpt"];
+          language-servers = [
+            "fish-lsp"
+            "gpt"
+          ];
         }
         {
           name = "markdown";
-          language-servers = ["marksman" "markdown-oxide"];
+          language-servers = [
+            "marksman"
+            "markdown-oxide"
+          ];
           formatter = {
             command = "prettier";
-            args = ["--stdin-filepath" "file.md"];
+            args = [
+              "--stdin-filepath"
+              "file.md"
+            ];
           };
           auto-format = true;
         }
@@ -202,8 +234,8 @@ in {
         }
         {
           name = "latex";
-          file-types = ["tex"];
-          language-servers = ["texlab"];
+          file-types = [ "tex" ];
+          language-servers = [ "texlab" ];
           text-width = 120;
         }
       ];

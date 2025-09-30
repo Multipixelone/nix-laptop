@@ -1,9 +1,10 @@
 {
   description = "Multipixelone (Finn)'s nix + HomeManager config";
 
-  outputs = inputs:
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = ["x86_64-linux"];
+  outputs =
+    inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" ];
 
       imports = [
         ./hosts
@@ -11,40 +12,44 @@
         inputs.pre-commit-hooks.flakeModule
       ];
 
-      perSystem = {
-        config,
-        pkgs,
-        ...
-      }: {
-        devShells.default = pkgs.mkShell {
-          packages = [
-            pkgs.alejandra
-            pkgs.just
-            pkgs.attic-client
-            pkgs.npins
-            inputs.agenix.packages.${pkgs.system}.default
-          ];
-          name = "dots";
-          DIRENV_LOG_FORMAT = "";
-          shellHook = ''
-            ${config.pre-commit.installationScript}
-          '';
-        };
-
-        pre-commit.settings = {
-          hooks = let
-            # probably a better way to do this
-            excludes = ["npins"];
-          in {
-            alejandra = {
-              inherit excludes;
-              enable = true;
-            };
+      perSystem =
+        {
+          config,
+          pkgs,
+          ...
+        }:
+        {
+          devShells.default = pkgs.mkShell {
+            packages = [
+              pkgs.nixfmt
+              pkgs.just
+              pkgs.attic-client
+              pkgs.npins
+              inputs.agenix.packages.${pkgs.system}.default
+            ];
+            name = "dots";
+            DIRENV_LOG_FORMAT = "";
+            shellHook = ''
+              ${config.pre-commit.installationScript}
+            '';
           };
-        };
 
-        formatter = pkgs.alejandra;
-      };
+          pre-commit.settings = {
+            hooks =
+              let
+                # probably a better way to do this
+                excludes = [ "npins" ];
+              in
+              {
+                nixfmt-rfc-style = {
+                  inherit excludes;
+                  enable = true;
+                };
+              };
+          };
+
+          formatter = pkgs.nixfmt;
+        };
     };
 
   inputs = {

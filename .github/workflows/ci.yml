@@ -46,7 +46,7 @@ jobs:
       - name: Format code
         run: |
           nix run \
-            'nixpkgs#alejandra' -- .
+            'nixpkgs#nixfmt-tree' -- .
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
