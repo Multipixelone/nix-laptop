@@ -42,7 +42,7 @@
     };
   };
   environment.systemPackages = [
-    inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
+    # inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
     inputs.nix-gaming.packages.${pkgs.system}.winetricks-git
     pkgs.prismlauncher
     # inputs.humble-key.packages.${pkgs.system}.default
