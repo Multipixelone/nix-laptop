@@ -23,8 +23,11 @@
           src = pins.OpenRGB;
           postPatch = ''
             patchShebangs scripts/build-udev-rules.sh
+            substituteInPlace OpenRGB.pro \
+              --replace-fail "/etc/systemd/system" "$out/etc/systemd/system"
             substituteInPlace scripts/build-udev-rules.sh \
-              --replace-fail "/usr/bin/env chmod" "${self.coreutils}/bin/chmod"
+              --replace-fail "/usr/bin/env" "${lib.getExe' pkgs.coreutils "env"}" \
+              --replace-fail chmod "${lib.getExe' pkgs.coreutils "chmod"}"
           '';
         };
       })
