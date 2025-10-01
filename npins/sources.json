@@ -9,9 +9,9 @@
       },
       "branch": "master",
       "submodules": true,
-      "revision": "3cbc4e5570826cb0186592c036d466fccf304804",
+      "revision": "93dd7f21226f93a7b5ddd49c1eed89ed9d535e54",
       "url": null,
-      "hash": "0lls074hx117gqz1qpvl458z6halm8y6pbvvxqrlbihdr6sqhr54"
+      "hash": "0r2nw3xlkd6ghfrfs4impvsqq5709a09a9z19c400fyj2dw97wjz"
     },
     "bandcamp-dl": {
       "type": "GitRelease",
@@ -40,10 +40,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": false,
-      "version": "1.1.0",
-      "revision": "3c6d642d61df2499bfbe2f4d43d7778ad1cc883c",
-      "url": "https://api.github.com/repos/Brainicism/bgutil-ytdlp-pot-provider/tarball/1.1.0",
-      "hash": "1wwgkmwv5shqj20h9xn1l0miwlnsymwxm6in8cwac5qcdlnxxh41"
+      "version": "1.2.2",
+      "revision": "9c3cc1a21d10606e0a55ec3aa9d6d861ec9100ec",
+      "url": "https://api.github.com/repos/Brainicism/bgutil-ytdlp-pot-provider/tarball/1.2.2",
+      "hash": "19jfhjnkylwq65ah84z0ry88xay14yzzq900vd62k32624djd8i8"
     },
     "modorganizer2-linux-installer": {
       "type": "GitRelease",
@@ -56,10 +56,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": false,
-      "version": "5.1.6",
-      "revision": "bac3b882bd5a3637de2d85af07e45c4837e289b0",
-      "url": "https://api.github.com/repos/furglitch/modorganizer2-linux-installer/tarball/5.1.6",
-      "hash": "10c7blzk5d3xmixdg00vlxym7i1llrisxg3y3mdyxdvpq77p4a7x"
+      "version": "5.2.8",
+      "revision": "dd9accf79d9763a71a5bdbe37b5bda769047be49",
+      "url": "https://api.github.com/repos/furglitch/modorganizer2-linux-installer/tarball/5.2.8",
+      "hash": "1j2s3asxlw3mlpdkcv14bazji6xjpsgcsx57vm8sfam94axh9h38"
     },
     "moondeck-buddy": {
       "type": "GitRelease",
@@ -121,22 +121,6 @@
       "revision": "e5c6f4567ae6f9fcaf083816363b0768c91e56e2",
       "url": "https://github.com/spotDL/spotify-downloader/archive/e5c6f4567ae6f9fcaf083816363b0768c91e56e2.tar.gz",
       "hash": "0pvm5kz4i77w19pm72jrrj9yz5x9r8bc2s45605q0swwyf8lcs3j"
-    },
-    "sunshine": {
-      "type": "GitRelease",
-      "repository": {
-        "type": "GitHub",
-        "owner": "LizardByte",
-        "repo": "sunshine"
-      },
-      "pre_releases": false,
-      "version_upper_bound": null,
-      "release_prefix": null,
-      "submodules": true,
-      "version": "v2025.710.130932",
-      "revision": "feac80656d211569c3c4eef839f284d386c90093",
-      "url": null,
-      "hash": "0ansaj5fhihwc2pdxgxlf660wakl91fhxwj1z2wmnwy3abyjmri3"
     },
     "yt-dlp-YTNSigDeno": {
       "type": "GitRelease",
