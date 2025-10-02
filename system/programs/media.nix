@@ -39,6 +39,7 @@ in
         # SCROB_CONFIG_FILE=${config.age.secrets."qtscrob".path}
         if [ -d "$IPOD_DIR" ]; then
           # scrobbler -c "$SCROB_CONFIG_FILE" -f -l "$IPOD_DIR"
+          systemctl --user start transcode-music playlist-downloader
           rsync -vh --modify-window=1 --exclude="*.csv" --update --recursive --times --info=progress2 --no-inc-recursive "/volume1/Media/RockboxCover/" "''${IPOD_DIR}/.rockbox/albumart/" || true
           echo "Syncing playlists..."
           rsync -vh --modify-window=1 --exclude="*.csv" --update --recursive --times --info=progress2 --no-inc-recursive "''${PLAYLIST_DIR}/.ipod/" "''${IPOD_DIR}/Playlists/" || true
