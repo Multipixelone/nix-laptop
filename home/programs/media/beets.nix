@@ -311,25 +311,48 @@ in
         ExecStart = lib.getExe beets-import;
       };
     };
-    timers.transcode-music = {
-      Install.WantedBy = [ "timers.target" ];
-      Timer = {
-        # midnight every night
-        OnCalendar = "*-*-* 00:00:00";
-        Persistent = true;
-        RandomizedDelaySec = "20m";
+    timers = {
+      transcode-music = {
+        Install.WantedBy = [ "timers.target" ];
+        Timer = {
+          # midnight every night
+          OnCalendar = "*-*-* 00:00:00";
+          Persistent = true;
+          RandomizedDelaySec = "20m";
+        };
+      };
+      playlist-downloader = {
+        Install.WantedBy = [ "timers.target" ];
+        Timer = {
+          # every three hrs
+          OnCalendar = "00/3:00";
+          Persistent = true;
+          RandomizedDelaySec = "20m";
+        };
       };
     };
-    services.transcode-music = {
-      Unit.Description = "Automatically transcode music for my iPod";
-      Service = {
-        Type = "oneshot";
-        # ReadOnlyPaths = [configFile];
-        ReadWritePaths = [
-          music-dir
-          transcoded-music
-        ];
-        ExecStart = "${lib.getExe' euphony-wrapped "euphony"} transcode --bare-terminal";
+    services = {
+      transcode-music = {
+        Unit.Description = "Automatically transcode music for my iPod";
+        Service = {
+          Type = "oneshot";
+          ReadWritePaths = [
+            music-dir
+            transcoded-music
+          ];
+          ExecStart = "${lib.getExe' euphony-wrapped "euphony"} transcode --bare-terminal";
+        };
+      };
+      playlist-downloader = {
+        Unit.Description = "Download playlists from Plex";
+        Service = {
+          Type = "oneshot";
+          ReadWritePaths = [
+            music-dir
+            transcoded-music
+          ];
+          ExecStart = lib.getExe inputs.playlist-download.packages.${pkgs.system}.default;
+        };
       };
     };
   };

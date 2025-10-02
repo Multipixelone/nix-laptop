@@ -25,22 +25,6 @@ in
     };
   };
   services.playerctld.enable = true;
-  systemd.timers."playlist-downloader" = {
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      # every three hrs
-      OnCalendar = "00/3:00";
-      Persistent = true;
-      RandomizedDelaySec = "20m";
-    };
-  };
-  systemd.services."playlist-downloader" = {
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = lib.getExe playlist-download;
-      User = "tunnel";
-    };
-  };
   environment.systemPackages = [
     inputs.khinsider.packages.${pkgs.system}.default
     # TODO fix qtwebengine-5.15.19 insecure
