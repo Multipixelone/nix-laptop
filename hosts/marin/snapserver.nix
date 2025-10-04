@@ -87,15 +87,6 @@ in
       #       # params = "-b 320";
       #     };
       #   };
-      # airplay = {
-      #   type = "airplay";
-      #   # location = "${pkgs.shairport-sync-airplay2}/bin/shairport-sync";
-      #   location = "${pkgs.shairport-sync}/bin/shairport-sync";
-      #   query = {
-      #     name = "AirPlay";
-      #     devicename = "Speakers";
-      #   };
-      # };
     };
   };
   networking.firewall = {
