@@ -64,10 +64,10 @@ in
           doc_root = pkgs.snapweb;
         };
         stream = {
-          # source = "librespot:///${lib.getExe pkgs.librespot}?name=Spotify&devicename=Speakers";
           source = [
             "airplay://${pkgs.shairport-sync}/bin/shairport-sync?name=Airplay&devicename=Speakers"
             "pipe://${rain-pipe}?name=Rain"
+            "librespot://${lib.getExe pkgs.librespot}?name=Spotify&devicename=Speakers"
           ];
         };
       };
