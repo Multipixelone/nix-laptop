@@ -132,18 +132,15 @@ in
     ];
     user.services = {
       wireplumber.wantedBy = [ "default.target" ];
-      pipewire-pulse.wantedBy = [ "default.target" ];
       snapclient = {
         description = "SnapCast client";
         after = [
           "snapserver.service"
           "pipewire.service"
-          "pipewire-pulse.service"
         ];
         wants = [
           "snapserver.service"
           "pipewire.service"
-          "pipewire-pulse.service"
         ];
         wantedBy = [ "default.target" ];
         serviceConfig = {
