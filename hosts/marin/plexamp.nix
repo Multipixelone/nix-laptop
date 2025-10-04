@@ -34,8 +34,7 @@ _:
   virtualisation.oci-containers.containers.plexamp-headless = {
     # this was moved to quadlet because running as a user didn't work
     autoStart = false;
-    # custom image with pipewire installed
-    image = "ghcr.io/multipixelone/plexamp:amd64";
+    image = "ghcr.io/anatosun/plexamp:latest";
     # allow client discovery
     ports = [
       "32400:32400"
