@@ -65,7 +65,10 @@ in
         };
         stream = {
           # source = "librespot:///${lib.getExe pkgs.librespot}?name=Spotify&devicename=Speakers";
-          source = "airplay://${pkgs.shairport-sync}/bin/shairport-sync?name=Airplay&devicename=Speakers";
+          source = [
+            "airplay://${pkgs.shairport-sync}/bin/shairport-sync?name=Airplay&devicename=Speakers"
+            "pipe://${rain-pipe}?name=Rain"
+          ];
         };
       };
       # stream.source = {
@@ -91,10 +94,6 @@ in
       #     name = "AirPlay";
       #     devicename = "Speakers";
       #   };
-      # };
-      # rain = {
-      #   type = "pipe";
-      #   location = rain-pipe;
       # };
     };
   };
@@ -170,32 +169,34 @@ in
       #     RestartSec = "5s";
       #   };
       # };
-      # ambience-rain = let
-      #   rain-sound = pkgs.fetchurl {
-      #     url = "https://media.rainymood.com/0.mp3";
-      #     hash = "sha256-++BUqQf/qiiD062q/fXCd/sZNzbYA+/zTOsIE4LkKFc=";
-      #   };
-      # in {
-      #   enable = true;
-      #   description = "Play ambient rain on loop";
-      #   wants = ["sound.target"];
-      #   after = ["sound.target"];
-      #   wantedBy = ["multi-user.target"];
-      #   partOf = ["snapserver.service"];
-      #   serviceConfig = {
-      #     DynamicUser = true;
-      #     Group = "audio";
+      ambience-rain =
+        let
+          rain-sound = pkgs.fetchurl {
+            url = "https://media.rainymood.com/0.mp3";
+            hash = "sha256-++BUqQf/qiiD062q/fXCd/sZNzbYA+/zTOsIE4LkKFc=";
+          };
+        in
+        {
+          enable = true;
+          description = "Play ambient rain on loop";
+          wants = [ "sound.target" ];
+          after = [ "sound.target" ];
+          wantedBy = [ "multi-user.target" ];
+          partOf = [ "snapserver.service" ];
+          serviceConfig = {
+            DynamicUser = true;
+            Group = "audio";
 
-      #     ExecStart = "${pkgs.mpv}/bin/mpv --audio-display=no --audio-channels=stereo --audio-samplerate=48000 --audio-format=s16 --ao=pcm --ao-pcm-file=${rain-pipe} --loop=inf ${rain-sound}";
-      #     NoNewPrivileges = true;
-      #     ProtectHome = true;
-      #     ProtectKernelTunables = true;
-      #     ProtectControlGroups = true;
-      #     ProtectKernelModules = true;
-      #     RestrictAddressFamilies = "";
-      #     RestrictNamespaces = true;
-      #   };
-      # };
+            ExecStart = "${pkgs.mpv}/bin/mpv --audio-display=no --audio-channels=stereo --audio-samplerate=48000 --audio-format=s16 --ao=pcm --ao-pcm-file=${rain-pipe} --loop=inf ${rain-sound}";
+            NoNewPrivileges = true;
+            ProtectHome = true;
+            ProtectKernelTunables = true;
+            ProtectControlGroups = true;
+            ProtectKernelModules = true;
+            RestrictAddressFamilies = "";
+            RestrictNamespaces = true;
+          };
+        };
     };
   };
 }
