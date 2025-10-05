@@ -68,7 +68,7 @@ in
             "airplay://${pkgs.shairport-sync}/bin/shairport-sync?name=Airplay&devicename=Speakers"
             "pipe://${rain-pipe}?name=Rain"
             "librespot://${lib.getExe pkgs.librespot}?name=Spotify&devicename=Speakers"
-            "meta:///airplay/librespot?name=Combined"
+            "meta:///Airplay/Spotify?name=Combined"
           ];
         };
       };
