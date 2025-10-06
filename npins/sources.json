@@ -9,9 +9,9 @@
       },
       "branch": "master",
       "submodules": true,
-      "revision": "93dd7f21226f93a7b5ddd49c1eed89ed9d535e54",
+      "revision": "4ea6ccc17ba04e8eee3555020e07bf0eb7394f38",
       "url": null,
-      "hash": "0r2nw3xlkd6ghfrfs4impvsqq5709a09a9z19c400fyj2dw97wjz"
+      "hash": "0cb74bvvlcjcr2a7if5bsq7rgi8vain4nxly8nk7fcwirbg762qg"
     },
     "bandcamp-dl": {
       "type": "GitRelease",
@@ -56,10 +56,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": false,
-      "version": "5.2.8",
-      "revision": "dd9accf79d9763a71a5bdbe37b5bda769047be49",
-      "url": "https://api.github.com/repos/furglitch/modorganizer2-linux-installer/tarball/5.2.8",
-      "hash": "1j2s3asxlw3mlpdkcv14bazji6xjpsgcsx57vm8sfam94axh9h38"
+      "version": "5.2.10",
+      "revision": "938a02cc3e4211e648a7252fca3a286a6bfd81d3",
+      "url": "https://api.github.com/repos/furglitch/modorganizer2-linux-installer/tarball/5.2.10",
+      "hash": "0fz8gvslqnfvayxch4mhfsipz7n49ar9l265vxaxgif7xcvwdrmy"
     },
     "moondeck-buddy": {
       "type": "GitRelease",
@@ -104,10 +104,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": false,
-      "version": "v0.33.0",
-      "revision": "cc5f455c9878122ca880fd705ded8c01e5741082",
-      "url": "https://api.github.com/repos/badaix/snapcast/tarball/v0.33.0",
-      "hash": "0gd5lg14j55jw13mlymwcnih6jq07my9sicm8j8ii8cbsdii3730"
+      "version": "v0.34.0",
+      "revision": "bfb812101a383d6cc01b40ea51992c86e5026f91",
+      "url": "https://api.github.com/repos/badaix/snapcast/tarball/v0.34.0",
+      "hash": "0jqzzjw1njixapj89yvgbhk7yrfc14xsfd94pf6z6lfna8c01yq4"
     },
     "spotify-downloader": {
       "type": "Git",
@@ -121,6 +121,22 @@
       "revision": "e5c6f4567ae6f9fcaf083816363b0768c91e56e2",
       "url": "https://github.com/spotDL/spotify-downloader/archive/e5c6f4567ae6f9fcaf083816363b0768c91e56e2.tar.gz",
       "hash": "0pvm5kz4i77w19pm72jrrj9yz5x9r8bc2s45605q0swwyf8lcs3j"
+    },
+    "sunshine": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "LizardByte",
+        "repo": "sunshine"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": true,
+      "version": "v2025.1005.140530",
+      "revision": "8372c37046b8d80eed80c0bffcffb74b2782dd55",
+      "url": null,
+      "hash": "1almfi0yc532kcg0nj1ddxxlm92fqqbxmkrglnfq9di2cfsj8khw"
     },
     "yt-dlp-YTNSigDeno": {
       "type": "GitRelease",
