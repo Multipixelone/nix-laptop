@@ -133,10 +133,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": true,
-      "version": "v2025.1005.140530",
-      "revision": "8372c37046b8d80eed80c0bffcffb74b2782dd55",
+      "version": "v2025.1007.152916",
+      "revision": "f52891d6fc7063efd96849134ca60837878085b0",
       "url": null,
-      "hash": "1almfi0yc532kcg0nj1ddxxlm92fqqbxmkrglnfq9di2cfsj8khw"
+      "hash": "1cb9iqx3n7ym65r615gamzvnnv54paymqa4shbcd0mr1y3643i3i"
     },
     "yt-dlp-YTNSigDeno": {
       "type": "GitRelease",
