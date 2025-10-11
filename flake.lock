@@ -2256,6 +2256,7 @@
         "stylix": "stylix",
         "systems": "systems_7",
         "ucodenix": "ucodenix",
+        "uwu-colors": "uwu-colors",
         "waybar-mediaplayer": "waybar-mediaplayer",
         "yazi": "yazi",
         "zjstatus": "zjstatus",
@@ -2845,6 +2846,29 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "uwu-colors": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "utils": [
+          "flake-utils"
+        ]
+      },
+      "locked": {
+        "lastModified": 1750698731,
+        "narHash": "sha256-d+QCHXuZwSK+MzmKiYvR2ts1P0wd3i0eWoPxt4fVpaA=",
+        "owner": "q60",
+        "repo": "uwu_colors",
+        "rev": "af85b3a7c7f9ec6af8dad5a12d730a2b38d5ff1c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "q60",
+        "repo": "uwu_colors",
         "type": "github"
       }
     },

@@ -153,6 +153,13 @@
       # inputs.crane.follows = "zjstatus";
       # inputs.rust-overlay.follows = "zjstatus";
     };
+    uwu-colors = {
+      url = "github:q60/uwu_colors";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        utils.follows = "flake-utils";
+      };
+    };
     monocle = {
       url = "github:Multipixelone/monocle/nix-build";
       # inputs.nixpkgs.follows = "zjstatus";
