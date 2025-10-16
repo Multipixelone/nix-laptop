@@ -34,6 +34,11 @@
             '';
           };
 
+          # TODO fix build with cmake 4
+          packages = {
+            musepack = inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.callPackage ./pkgs/musepack { };
+          };
+
           pre-commit.settings = {
             hooks =
               let
@@ -54,6 +59,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-cloudflared.url = "github:wrbbz/nixpkgs/cloudflared-2025.4.0";
 
     # nixpkgs for zoom screensharing
