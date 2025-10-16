@@ -9,9 +9,9 @@
       },
       "branch": "master",
       "submodules": true,
-      "revision": "4ea6ccc17ba04e8eee3555020e07bf0eb7394f38",
+      "revision": "da9a96e3f26e65efb7d48d86be96d72520edf40b",
       "url": null,
-      "hash": "0cb74bvvlcjcr2a7if5bsq7rgi8vain4nxly8nk7fcwirbg762qg"
+      "hash": "18gpz9qkrwd8c6fr1xw6m5g3cc71a165ycfx0z25cyzpvg4l4yfw"
     },
     "bandcamp-dl": {
       "type": "GitRelease",
@@ -56,10 +56,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": false,
-      "version": "5.2.10",
-      "revision": "938a02cc3e4211e648a7252fca3a286a6bfd81d3",
-      "url": "https://api.github.com/repos/furglitch/modorganizer2-linux-installer/tarball/5.2.10",
-      "hash": "0fz8gvslqnfvayxch4mhfsipz7n49ar9l265vxaxgif7xcvwdrmy"
+      "version": "6.0.1",
+      "revision": "325d6e1c6a81d3a110397f1e2b418ae082db3617",
+      "url": "https://api.github.com/repos/furglitch/modorganizer2-linux-installer/tarball/6.0.1",
+      "hash": "1q40g5anvi8idknfaf2l3h9qmiw0imi8y730kxwiqfs369f70sky"
     },
     "moondeck-buddy": {
       "type": "GitRelease",
@@ -118,9 +118,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "e5c6f4567ae6f9fcaf083816363b0768c91e56e2",
-      "url": "https://github.com/spotDL/spotify-downloader/archive/e5c6f4567ae6f9fcaf083816363b0768c91e56e2.tar.gz",
-      "hash": "0pvm5kz4i77w19pm72jrrj9yz5x9r8bc2s45605q0swwyf8lcs3j"
+      "revision": "0b5158067982c8f840db9e7573991242a427c9ed",
+      "url": "https://github.com/spotDL/spotify-downloader/archive/0b5158067982c8f840db9e7573991242a427c9ed.tar.gz",
+      "hash": "0sh5qf4lc8gw1xqys48x5j95zq6v7y3yr43bldpfqizci1qxp5m2"
     },
     "sunshine": {
       "type": "GitRelease",
@@ -133,10 +133,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": true,
-      "version": "v2025.1007.152916",
-      "revision": "f52891d6fc7063efd96849134ca60837878085b0",
+      "version": "v2025.1014.193231",
+      "revision": "179c01a2eaf80f8562454b1b5fdccedfff603876",
       "url": null,
-      "hash": "1cb9iqx3n7ym65r615gamzvnnv54paymqa4shbcd0mr1y3643i3i"
+      "hash": "14wljsswrdy25qpybnzjv74wqvzk2jxlgmlkf4q1znq2182gq7s7"
     },
     "yt-dlp-YTNSigDeno": {
       "type": "GitRelease",
