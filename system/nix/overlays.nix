@@ -21,6 +21,7 @@
         openrgb = super.openrgb.overrideAttrs {
           version = pins.OpenRGB.revision;
           src = pins.OpenRGB;
+          patches = [ ];
           postPatch = ''
             patchShebangs scripts/build-udev-rules.sh
             substituteInPlace OpenRGB.pro \
