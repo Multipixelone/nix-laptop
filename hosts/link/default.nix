@@ -10,7 +10,7 @@
     ./hardware-configuration.nix
     ./hyprland.nix
     ./valhalla.nix
-    ./ollama.nix
+    # ./ollama.nix
     ./printer.nix
     ./snapclient.nix
   ];
