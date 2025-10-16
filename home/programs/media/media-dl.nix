@@ -68,7 +68,7 @@ in
         propagatedBuildInputs = (prev.propagatedBuildInputs or [ ]) ++ [ pkgs.deno ];
       });
       settings = {
-        embed-thumbnail = true;
+        embed-thumbnail = false;
         embed-metadata = true;
         embed-chapters = true;
         embed-subs = true;
