@@ -76,7 +76,7 @@ in
         sponsorblock-remove = "sponsor";
         downloader = lib.getExe config.programs.aria2.package;
         downloader-args = "aria2c:'-c -x8 -s8 -k1M'";
-        cookies = config.age.secrets."yt-dlp".path;
+        # cookies = config.age.secrets."yt-dlp".path;
         extractor-args = "youtube:deno_no_jitless";
       };
     };
