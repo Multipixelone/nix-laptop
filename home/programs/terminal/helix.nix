@@ -97,6 +97,7 @@ in
             "spinner"
           ];
           right = [
+            "diagnostics"
             "version-control"
             "register"
             "file-encoding"
