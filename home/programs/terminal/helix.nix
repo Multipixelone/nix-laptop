@@ -29,6 +29,29 @@ in
       file = "${inputs.secrets}/github/copilot.age";
     };
   };
+  home.file.".dprint.json".source = builtins.toFile "dprint.json" (
+    builtins.toJSON {
+      lineWidth = 80;
+
+      # This applies to both JavaScript & TypeScript
+      typescript = {
+        quoteStyle = "preferSingle";
+        binaryExpression.operatorPosition = "sameLine";
+      };
+
+      json.indentWidth = 2;
+
+      excludes = [
+        "**/*-lock.json"
+      ];
+
+      plugins = [
+        "https://plugins.dprint.dev/typescript-0.93.0.wasm"
+        "https://plugins.dprint.dev/json-0.19.3.wasm"
+        "https://plugins.dprint.dev/markdown-0.17.8.wasm"
+      ];
+    }
+  );
   programs.helix = {
     enable = true;
     defaultEditor = true;
@@ -163,6 +186,47 @@ in
           command = lib.getExe pkgs.fish-lsp;
           args = [ "start" ];
         };
+        dprint = {
+          command = lib.getExe pkgs.dprint;
+          args = [ "lsp" ];
+        };
+        astro-ls = {
+          command = "${pkgs.astro-language-server}/bin/astro-ls";
+          args = [ "--stdio" ];
+        };
+        typescript-language-server = {
+          command = lib.getExe pkgs.nodePackages.typescript-language-server;
+          args = [ "--stdio" ];
+          config = {
+            typescript-language-server.source = {
+              addMissingImports.ts = true;
+              fixAll.ts = true;
+              organizeImports.ts = true;
+              removeUnusedImports.ts = true;
+              sortImports.ts = true;
+            };
+            plugins = [
+              {
+                name = "@vue/typescript-plugin";
+                location = "${pkgs.vue-language-server}/lib/node_modules/@vue/language-server";
+                languages = [ "vue" ];
+              }
+            ];
+          };
+        };
+        uwu-colors = {
+          command = "${inputs.uwu-colors.packages.${pkgs.system}.default}/bin/uwu_colors";
+        };
+
+        vscode-css-language-server = {
+          command = "${pkgs.nodePackages.vscode-langservers-extracted}/bin/vscode-css-language-server";
+          args = [ "--stdio" ];
+          config = {
+            provideFormatter = true;
+            css.validate.enable = true;
+            scss.validate.enable = true;
+          };
+        };
         texlab.config.texlab = {
           command = "texlab";
           chktex = {
@@ -185,61 +249,116 @@ in
           };
         };
       };
-      language = [
-        {
-          name = "nix";
-          scope = "source.nix";
-          file-types = [ "nix" ];
-          comment-token = "#";
-          indent = {
-            tab-width = 2;
-            unit = "  ";
-          };
-          injection-regex = "nix";
-          language-servers = [
-            "nixd"
-            "gpt"
-          ];
-          formatter.command = "nixfmt";
-          auto-format = true;
-        }
-        {
-          name = "fish";
-          language-servers = [
-            "fish-lsp"
-            "gpt"
-          ];
-        }
-        {
-          name = "markdown";
-          language-servers = [
-            "marksman"
-            "markdown-oxide"
-          ];
-          formatter = {
-            command = "prettier";
+      language =
+        let
+          prettier = lang: {
+            command = lib.getExe pkgs.nodePackages.prettier;
             args = [
-              "--stdin-filepath"
-              "file.md"
+              "--parser"
+              lang
             ];
           };
-          auto-format = true;
-        }
-        {
-          name = "python";
-          auto-format = true;
-          language-servers = [
-            "basedpyright"
-            "ruff"
-          ];
-        }
-        {
-          name = "latex";
-          file-types = [ "tex" ];
-          language-servers = [ "texlab" ];
-          text-width = 120;
-        }
-      ];
+        in
+        [
+          {
+            name = "nix";
+            scope = "source.nix";
+            file-types = [ "nix" ];
+            comment-token = "#";
+            indent = {
+              tab-width = 2;
+              unit = "  ";
+            };
+            injection-regex = "nix";
+            language-servers = [
+              "nixd"
+              "gpt"
+            ];
+            formatter.command = "nixfmt";
+            auto-format = true;
+          }
+          {
+            name = "fish";
+            language-servers = [
+              "fish-lsp"
+              "gpt"
+            ];
+          }
+          {
+            name = "markdown";
+            language-servers = [
+              "marksman"
+              "markdown-oxide"
+            ];
+            formatter = {
+              command = "prettier";
+              args = [
+                "--stdin-filepath"
+                "file.md"
+              ];
+            };
+            auto-format = true;
+          }
+          {
+            name = "python";
+            auto-format = true;
+            language-servers = [
+              "basedpyright"
+              "ruff"
+            ];
+          }
+          {
+            name = "latex";
+            file-types = [ "tex" ];
+            language-servers = [ "texlab" ];
+            text-width = 120;
+          }
+          {
+            name = "css";
+            formatter = prettier "css";
+            auto-format = true;
+            language-servers = [
+              "vscode-css-language-server"
+              "uwu-colors"
+            ];
+          }
+          {
+            name = "html";
+            formatter = prettier "html";
+            language-servers = [
+              "vscode-html-language-server"
+            ];
+          }
+          {
+            name = "javascript";
+            auto-format = true;
+            file-types = [
+              "js"
+              "jsx"
+              "mjs"
+            ];
+            language-servers = [
+              "dprint"
+              "typescript-language-server"
+            ];
+            formatter = {
+              command = "${pkgs.dprint}/bin/dprint";
+              args = [
+                "fmt"
+                "--config"
+                "${config.xdg.configHome}/dprint/dprint.json"
+                "--stdin"
+                "javascript"
+              ];
+            };
+          }
+          {
+            name = "astro";
+            auto-format = true;
+            formatter = prettier "astro";
+            language-servers = [ "astro-ls" ];
+          }
+        ];
     };
   };
 }
