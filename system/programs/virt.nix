@@ -10,17 +10,6 @@
         package = pkgs.qemu_kvm;
         runAsRoot = true;
         swtpm.enable = true;
-        ovmf = {
-          enable = true;
-          # re-enable if tpm or secure boot is needed
-          # packages = [
-          #   (pkgs.OVMF.override {
-          #     secureBoot = true;
-          #     tpmSupport = true;
-          #   })
-          #   .fd
-          # ];
-        };
       };
     };
     waydroid.enable = true;
