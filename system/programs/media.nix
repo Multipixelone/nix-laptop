@@ -7,6 +7,12 @@
 }:
 let
   playlist-download = inputs.playlist-download.packages.${pkgs.system};
+  # wrap secret into lastfm scrobbler
+  lastfm-wrapped = pkgs.writeShellScriptBin "rb-scrobbler" ''
+    set -o allexport
+    source ${config.age.secrets."lastfm".path}
+    ${lib.getExe inputs.rb-scrobbler.packages.${pkgs.system}.default} $@
+  '';
 in
 {
   age.secrets = {
@@ -28,6 +34,7 @@ in
     inputs.khinsider.packages.${pkgs.system}.default
     playlist-download.default
     playlist-download.rb-scrob
+    lastfm-wrapped
     # self.packages.${pkgs.system}.bandcamp-dl
 
     (pkgs.writeShellApplication {
