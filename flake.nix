@@ -133,6 +133,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+    rb-scrobbler = {
+      url = "github:Multipixelone/rb-scrobbler/nix-build";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     beets-plugins = {
       url = "github:Multipixelone/beets-plugins";
       # inputs.nixpkgs.follows = "nixpkgs";

@@ -2225,6 +2225,27 @@
         "type": "github"
       }
     },
+    "rb-scrobbler": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1760972846,
+        "narHash": "sha256-TDKf/PsPZr7/FkEXPX0sJ8TBFORiG9FMoshUw9zT9q8=",
+        "owner": "Multipixelone",
+        "repo": "rb-scrobbler",
+        "rev": "3351e85188cf30a997a181dcfb1441c8f05a773f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Multipixelone",
+        "ref": "nix-build",
+        "repo": "rb-scrobbler",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -2269,6 +2290,7 @@
         "prismlauncher": "prismlauncher",
         "qtscrob": "qtscrob",
         "quadlet-nix": "quadlet-nix",
+        "rb-scrobbler": "rb-scrobbler",
         "secrets": "secrets",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
