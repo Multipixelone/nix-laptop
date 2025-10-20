@@ -2088,11 +2088,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1759379433,
-        "narHash": "sha256-YglZ4vewsQNfaIXhxqDr1miYxNai0c5kpVOWdUORtYg=",
+        "lastModified": 1760933942,
+        "narHash": "sha256-oZPUXTRpC6vfQFWeOxRpDOrMAIZ5qUCd5UCpkzMI1CE=",
         "owner": "Multipixelone",
         "repo": "playlist-downloader",
-        "rev": "a783d72586d093a4f2b2e8e6b151dff159a0631b",
+        "rev": "5f1a983a2d4a130bed2f33c4971a95c037bd36eb",
         "type": "github"
       },
       "original": {
