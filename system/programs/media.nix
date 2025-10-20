@@ -1,6 +1,5 @@
 {
   pkgs,
-  self,
   lib,
   config,
   inputs,
@@ -17,7 +16,7 @@ in
       owner = "tunnel";
       group = "users";
     };
-    "qtscrob" = {
+    "lastfm" = {
       file = "${inputs.secrets}/media/qtscrob.age";
       mode = "400";
       owner = "tunnel";
@@ -27,8 +26,6 @@ in
   services.playerctld.enable = true;
   environment.systemPackages = [
     inputs.khinsider.packages.${pkgs.system}.default
-    # TODO fix qtwebengine-5.15.19 insecure
-    # inputs.qtscrob.packages.${pkgs.system}.default
     playlist-download.default
     playlist-download.rb-scrob
     # self.packages.${pkgs.system}.bandcamp-dl
@@ -37,9 +34,7 @@ in
       name = "ipod-sync";
       runtimeInputs = [ pkgs.rsync ];
       text = ''
-        # SCROB_CONFIG_FILE=${config.age.secrets."qtscrob".path}
         if [ -d "$IPOD_DIR" ]; then
-          # scrobbler -c "$SCROB_CONFIG_FILE" -f -l "$IPOD_DIR"
           systemctl --user start transcode-music playlist-downloader
           rsync -vh --modify-window=1 --exclude="*.csv" --update --recursive --times --info=progress2 --no-inc-recursive "/volume1/Media/RockboxCover/" "''${IPOD_DIR}/.rockbox/albumart/" || true
           echo "Syncing playlists..."
