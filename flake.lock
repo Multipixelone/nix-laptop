@@ -2088,11 +2088,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760933942,
-        "narHash": "sha256-oZPUXTRpC6vfQFWeOxRpDOrMAIZ5qUCd5UCpkzMI1CE=",
+        "lastModified": 1760973207,
+        "narHash": "sha256-TVWVrkrgcBkTEOjYBO9AhWCUjAtxNRPuK7fQQizIJvg=",
         "owner": "Multipixelone",
         "repo": "playlist-downloader",
-        "rev": "5f1a983a2d4a130bed2f33c4971a95c037bd36eb",
+        "rev": "d27cf710aa190ff94458ba80ddc47cfa3ebd0779",
         "type": "github"
       },
       "original": {
@@ -2232,11 +2232,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760972846,
-        "narHash": "sha256-TDKf/PsPZr7/FkEXPX0sJ8TBFORiG9FMoshUw9zT9q8=",
+        "lastModified": 1760973057,
+        "narHash": "sha256-uhIi96T3ZYUxjSH5IXgOyjzMn1hVVvDMQrRzuBPYnog=",
         "owner": "Multipixelone",
         "repo": "rb-scrobbler",
-        "rev": "3351e85188cf30a997a181dcfb1441c8f05a773f",
+        "rev": "0cb9d9efba34a08cb02c67223d492e21eb9ca8f5",
         "type": "github"
       },
       "original": {
