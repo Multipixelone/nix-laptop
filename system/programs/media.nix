@@ -7,7 +7,7 @@
   ...
 }:
 let
-  playlist-download = inputs.playlist-download.packages.${pkgs.system}.default;
+  playlist-download = inputs.playlist-download.packages.${pkgs.system};
 in
 {
   age.secrets = {
@@ -29,7 +29,8 @@ in
     inputs.khinsider.packages.${pkgs.system}.default
     # TODO fix qtwebengine-5.15.19 insecure
     # inputs.qtscrob.packages.${pkgs.system}.default
-    playlist-download
+    playlist-download.default
+    playlist-download.rb-scrob
     # self.packages.${pkgs.system}.bandcamp-dl
 
     (pkgs.writeShellApplication {
