@@ -70,8 +70,8 @@ _: {
 
       # steam game rules
       "workspace 7 silent,class:^(steam_app_.*)$"
-      "immediate, initialclass:^(steam_app_)(.*)$" # tear all games (not seeing any bugs)
-      "fullscreen, initialclass:^(steam_app_)(.*)$"
+      "immediate, class:^(steam_app_)(.*)$"
+      "fullscreen, class:^(steam_app_)(.*)$"
       "immediate,class:^(cs2)$"
       "immediate,class:^(dota2)$"
       "idleinhibit always, class:^(steam_app_.*)$"
