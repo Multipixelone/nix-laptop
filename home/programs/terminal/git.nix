@@ -14,20 +14,19 @@
   programs = {
     gh.enable = true;
     lazygit.enable = true;
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
+    };
     git = {
       enable = true;
       lfs.enable = true;
-      delta.enable = true;
-
-      userName = "Multipixelone";
-      userEmail = "finn@cnwr.net";
 
       ignores = [
         "*result*"
         ".direnv"
       ];
-
-      extraConfig = {
+      settings = {
         core = {
           editor = "hx";
           whitespace = "fix,-indent-with-non-tab,trailing-space,cr-at-eol";
