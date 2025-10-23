@@ -11,7 +11,7 @@ let
   lastfm-wrapped = pkgs.writeShellScriptBin "rb-scrobbler" ''
     set -o allexport
     source ${config.age.secrets."lastfm".path}
-    ${lib.getExe inputs.rb-scrobbler.packages.${pkgs.system}.default} $@
+    ${lib.getExe inputs.rb-scrobbler.packages.${pkgs.system}.default} -n "keep" -o -4 $@
   '';
 in
 {
