@@ -13,15 +13,11 @@
   ];
   nixpkgs.config = {
     allowUnfree = true;
-    config.allowInsecurePredicate =
+    allowInsecurePredicate =
       pkg:
       builtins.elem (lib.getName pkg) [
         "mbedtls"
       ];
-    config.permittedInsecurePackages = [
-      "electron-25.9.0"
-      "qtwebengine-5.15.19"
-    ];
   };
   age.secrets = {
     "attic".file = "${inputs.secrets}/attic.age";
