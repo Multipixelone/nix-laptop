@@ -39,10 +39,18 @@ in
 
     (pkgs.writeShellApplication {
       name = "ipod-sync";
-      runtimeInputs = [ pkgs.rsync ];
+      runtimeInputs = [
+        pkgs.rsync
+        playlist-download.rb-scrob
+        lastfm-wrapped
+      ];
       text = ''
         if [ -d "$IPOD_DIR" ]; then
           systemctl --user start transcode-music playlist-downloader
+          if [ -f "$IPOD_DIR/.rockbox/playback.log" ]; then
+            LOG_FILE="$(rb-parse)"
+            rb-scrobbler -f "''${LOG_FILE}"
+          fi
           rsync -vh --modify-window=1 --exclude="*.csv" --update --recursive --times --info=progress2 --no-inc-recursive "/volume1/Media/RockboxCover/" "''${IPOD_DIR}/.rockbox/albumart/" || true
           echo "Syncing playlists..."
           rsync -vh --modify-window=1 --exclude="*.csv" --update --recursive --times --info=progress2 --no-inc-recursive "''${PLAYLIST_DIR}/.ipod/" "''${IPOD_DIR}/Playlists/" || true
