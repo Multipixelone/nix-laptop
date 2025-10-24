@@ -10,7 +10,9 @@ deploy:
 
 minishb:
   nix build .#nixosConfigurations.minish.config.system.build.toplevel
-  attic push system result -j 2
+  attic push system result -j 3
+  nix build .#nixosConfigurations.marin.config.system.build.toplevel
+  attic push system result -j 3
   unlink result
 
 debug:
