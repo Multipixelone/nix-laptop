@@ -13,6 +13,18 @@ let
     source ${config.age.secrets."lastfm".path}
     ${lib.getExe inputs.rb-scrobbler.packages.${pkgs.system}.default} -n "keep" -o -4 $@
   '';
+  # TODO do this. literally any other way. this is dependent on so many external things its not even funny
+  rockbox-database = pkgs.writeShellApplication {
+    name = "rockbox-database";
+    runtimeInputs = [
+      pkgs.podman
+    ];
+    text = ''
+      DAP_ROOT_FOLDER=/volume1/Media/TranscodedMusic
+      SRC_FOLDER_PATH=/home/tunnel/Documents/Git/rockbox-docker/rockbox-git
+      podman run --rm -v "$SRC_FOLDER_PATH":/usr/src/rockbox -v "$DAP_ROOT_FOLDER":/mnt/dap --name rockboxdatabaserool$((RANDOM)) localhost/rockbox:latest /usr/src/rockbox/databasetool.sh
+    '';
+  };
 in
 {
   age.secrets = {
@@ -35,6 +47,7 @@ in
     playlist-download.default
     playlist-download.rb-scrob
     lastfm-wrapped
+    rockbox-database
     # self.packages.${pkgs.system}.bandcamp-dl
 
     (pkgs.writeShellApplication {
