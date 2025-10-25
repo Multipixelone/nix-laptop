@@ -92,6 +92,7 @@
     enable = true;
     package = inputs.nix-gaming.packages.${pkgs.system}.wine-cachyos;
     binfmt = true;
+    ntsync = true;
   };
   programs.steam = {
     enable = true;
