@@ -7,6 +7,7 @@
 {
   imports = [
     inputs.nix-gaming.nixosModules.platformOptimizations
+    inputs.nix-gaming.nixosModules.wine
   ];
   nixpkgs.overlays = [
     inputs.prismlauncher.overlays.default
@@ -86,6 +87,10 @@
           ];
       };
     };
+  };
+  programs.wine = {
+    enable = true;
+    package = inputs.nix-gaming.packages.${pkgs.system}.wine-cachyos;
   };
   programs.steam = {
     enable = true;
