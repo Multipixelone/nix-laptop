@@ -165,6 +165,18 @@ in
   ];
   # allow emulating ds5 controller
   boot.kernelModules = [ "uhid" ];
+  services.udev.extraRules = ''
+    KERNEL=="uinput", SUBSYSTEM=="misc", OPTIONS+="static_node=uinput", TAG+="uaccess"
+
+    # Allows Sunshine to access /dev/uhid
+    KERNEL=="uhid", TAG+="uaccess"
+
+    # Joypads
+    KERNEL=="hidraw*" ATTRS{name}=="Sunshine PS5 (virtual) pad" MODE="0660", TAG+="uaccess"
+    SUBSYSTEMS=="input", ATTRS{name}=="Sunshine X-Box One (virtual) pad", MODE="0660", TAG+="uaccess"
+    SUBSYSTEMS=="input", ATTRS{name}=="Sunshine gamepad (virtual) motion sensors", MODE="0660", TAG+="uaccess"
+    SUBSYSTEMS=="input", ATTRS{name}=="Sunshine Nintendo (virtual) pad", MODE="0660", TAG+="uaccess"
+  '';
   services.sunshine = {
     enable = true;
     capSysAdmin = true;
