@@ -91,6 +91,7 @@
   programs.wine = {
     enable = true;
     package = inputs.nix-gaming.packages.${pkgs.system}.wine-cachyos;
+    binfmt = true;
   };
   programs.steam = {
     enable = true;
