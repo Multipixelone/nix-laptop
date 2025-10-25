@@ -178,6 +178,8 @@ in
       back_button_timeout = 2000;
       # decrease fec percentage because I am not dropping many packets
       fec_percentage = "12";
+      av1_mode = "3";
+      hevc_mode = "3";
     };
     applications = {
       env = {
