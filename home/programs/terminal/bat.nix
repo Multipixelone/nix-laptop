@@ -21,6 +21,9 @@ in
     fish.shellAliases.cat = lib.getExe bat-wrapped;
     bat = {
       enable = true;
+      config = {
+        pager = "${lib.getExe pkgs.ov} --quit-if-one-screen --header 3";
+      };
     };
   };
 }
