@@ -29,8 +29,10 @@ let
   #   pkgs.runCommand "${lib.nameFromURL url "."}.png" {} ''${pkgs.imagemagick}/bin/convert ${image} -background none -gravity center -extent 600x800 $out'';
   # implementation from https://github.com/TophC7/dot.nix/blob/724e87bb986f4e722490b0b739b8cbf57f1d5fcc/home/global/common/gaming/gamescope.nix
   gamescope-env = ''
-    set -x ENABLE_GAMESCOPE_WSI 0
-    set -x ENABLE_HDR_WSI 0
+    set -x ENABLE_GAMESCOPE_WSI 1
+    set -x ENABLE_HDR_WSI 1
+    set -x DXVK_HDR 1
+    set -x DISABLE_HDR_WSI 1
     set -x AMD_VULKAN_ICD RADV
     set -x RADV_PERFTEST aco
     set -x SDL_VIDEODRIVER wayland
@@ -53,6 +55,10 @@ let
     "--expose-wayland"
     "--backend"
     "wayland"
+    "--hdr-enabled"
+    "--hdr-debug-force-output"
+    "--hdr-sdr-content-nits"
+    "600"
     "--rt"
     "--immediate-flips"
   ];
