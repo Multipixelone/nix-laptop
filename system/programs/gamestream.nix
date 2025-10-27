@@ -123,7 +123,7 @@ let
           width=''${1:-3840}
           height=''${2:-2160}
           refresh_rate=''${3:-60}
-          mon_string="SUNSHINE,''${width}x''${height}@''${refresh_rate},0x1920,1"
+          mon_string="SUNSHINE,''${width}x''${height}@''${refresh_rate},0x1920,1,cm,hdr"
           # Unlock PC (so I don't have to type password on Steam Deck)
           # pkill -USR1 hyprlock || true
           hyprctl output create headless SUNSHINE
