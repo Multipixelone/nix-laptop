@@ -522,6 +522,7 @@ in
           threads = 6;
           format = "flac";
           embed = true;
+          delete_originals = true;
           copy_album_art = true;
           formats = {
             mp3.command = "${ffmpeg} -i $source -ab 320k -ac 2 -ar 44100 -joint_stereo 0 $dest";
