@@ -18,8 +18,14 @@ minishb:
 debug:
 	nixos-rebuild switch --flake . --use-remote-sudo --show-trace --verbose
 
-update:
+[parallel]
+update: update-flake update-npins
+
+update-flake:
 	nix flake update
+
+update-npins:
+	npins update
 
 history:
 	nix profile history --profile /nix/var/nix/profiles/system
