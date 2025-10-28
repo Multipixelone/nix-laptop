@@ -15,6 +15,7 @@
           slskd-stats = pkgs.python3Packages.callPackage ./slskd-stats args;
           # bandcamp-dl = pkgs.python3Packages.callPackage ./bandcamp-dl args;
           izotope = pkgs.callPackage ./izotope { };
+          lossywav = pkgs.callPackage ./lossywav { };
           subway = pkgs.callPackage ./aequilibrae/gtfs-subway.nix { };
         };
     };
