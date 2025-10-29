@@ -16,6 +16,7 @@ let
   beets-config = "${beets-dir}/config.yaml";
   detect-file = "${download-dir}/download-finished";
   ffmpeg = lib.getExe pkgs.ffmpeg-full;
+  lossywav = lib.getExe self.packages.${pkgs.system}.lossywav;
   # use my custom build of beets with included plugins
   beets-plugins = inputs.beets-plugins.packages.${pkgs.system}.default;
   beets-import = pkgs.writeShellApplication {
@@ -101,6 +102,15 @@ let
     end
 
     rockbox_art_converter $argv
+  '';
+  # lossyflac converter for super-duper transparent lossy archival
+  convert-lossyflac = pkgs.writeScriptBin "convert_lossyflac" ''
+    #!${lib.getExe pkgs.fish}
+
+    set input_file $argv[1]
+    set output_file $argv[2]
+
+    ${ffmpeg} -i $input_file -f wav - | ${lossywav} - --quality extreme --stdout | ${ffmpeg} -i pipe: -blocksize 512 -compression_level 12 -sample_fmt s16 -ar 44100 -y -acodec flac $output_file
   '';
   # TODO break out this script into a global thing!
   convert-mpc = pkgs.writeScriptBin "convert_mpc" ''
@@ -380,6 +390,7 @@ in
   age.secrets."beets-plex".file = "${inputs.secrets}/media/plexbeets.age";
   home.packages = [
     convert-mpc
+    convert-lossyflac
     rb-albumart
     euphony-wrapped
   ];
@@ -528,6 +539,10 @@ in
           formats = {
             mp3.command = "${ffmpeg} -i $source -ab 320k -ac 2 -ar 44100 -joint_stereo 0 $dest";
             flac.command = "${ffmpeg} -i $source -sample_fmt s16 -ar 44100 -y -acodec flac $dest";
+            lossyflac = {
+              command = "${lib.getExe convert-lossyflac} $source $dest";
+              extension = "lossy.flac";
+            };
             wav.command = "${ffmpeg} -i $source -sample_fmt s16 -ar 44100 $dest";
             opus.command = "${ffmpeg} -i $source -c:a libopus -b:a 128K $dest";
             musepack = {
