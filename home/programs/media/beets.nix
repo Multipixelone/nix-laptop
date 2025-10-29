@@ -400,7 +400,7 @@ in
         ];
         plugins = [
           # "albumtypes"
-          "alternatives"
+          # "alternatives"
           "badfiles"
           "chroma"
           "convert"
@@ -510,12 +510,12 @@ in
             items = [ "bitrate" ];
           };
         };
-        alternatives.ipod = {
-          directory = transcoded-music;
-          query = "";
-          formats = "musepack";
-          removable = false;
-        };
+        # alternatives.ipod = {
+        #   directory = transcoded-music;
+        #   query = "";
+        #   formats = "musepack";
+        #   removable = false;
+        # };
         convert = {
           auto = true;
           never_convert_lossy_files = true;
