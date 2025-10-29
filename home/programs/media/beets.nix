@@ -811,40 +811,9 @@ in
               return str(items[0].media) + ', '
           '';
         };
-        item_fields = {
-          multidisc = "1 if disctotal > 1 else 0";
-          is_single = "1 if disctotal == 1 and tracktotal == 1 else 0";
-          disc_and_track = ''
-            f"{disc:02}-{track:02}" if disctotal > 1 else f"{track:02}"
-          '';
-          # fallback first artist if no albumartists_sort field
-          first_artist = ''
-            # import an album to another artists directory, like:
-            # Tom Jones │1999│ Burning Down the House [Single, CD, FLAC]
-            # to The Cardigans/+singles/Tom Jones & the Cardigans │1999│ Burning Down the House [Single, CD, FLAC]
-            # https://github.com/beetbox/beets/discussions/4012#discussioncomment-1021414
-            # beet import --set myartist='The Cardigans'
-            # we must first check to see if myartist is defined, that is, given on
-            # import time, or we raise an NameError exception.
-            try:
-              myartist
-            except NameError:
-              import re
-              return re.split(r',|\s+(feat(.?|uring)|&|(Vs|Ft).)', albumartist, 1, flags=re.IGNORECASE)[0]
-            else:
-              return myartist
-          '';
-
-          first_artist_singleton = ''
-            try:
-              myartist
-            except NameError:
-              import re
-              return re.split(r',|\s+(feat(.?|uring)|&|(Vs|Ft).)', artist, 1, flags=re.IGNORECASE)[0]
-            else:
-              return myartist
-          '';
-        };
+        item_fields.disc_and_track = ''
+          f"{disc:02}-{track:02}" if disctotal > 1 else f"{track:02}"
+        '';
         aunique = {
           keys = "albumartist
             albumtype
