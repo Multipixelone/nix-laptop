@@ -73,7 +73,7 @@ in
       fzf = "fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'";
       mkdir = "mkdir -pv";
       tree = "eza -s type -a -T -I '.git|node_modules|.next'";
-      du = lib.getExe pkgs.ncdu + " --color dark -rr -x";
+      du = lib.getExe pkgs.ncdu + " --color dark -x";
       df = lib.getExe pkgs.duf;
       clip = "${cliphist} list | fzf | ${cliphist} decode | ${wl-copy}";
       ping = lib.getExe pkgs.prettyping;
