@@ -35,7 +35,7 @@ let
       ffmpeg-headless
       imagemagick
       libnotify
-      mpc-cli
+      mpc
       playerctl
       procps
     ];

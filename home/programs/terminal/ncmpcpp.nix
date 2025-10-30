@@ -8,7 +8,7 @@ let
         pkgs.libnotify
         pkgs.playerctl
         pkgs.imagemagick
-        pkgs.mpc-cli
+        pkgs.mpc
       ];
       text = ''
         # i don't need to be making a playerctl and a mpc call, but then I have to write code to parse the output and I am Lazy
