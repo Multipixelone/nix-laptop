@@ -20,7 +20,7 @@
 
       # windows fonts
       corefonts
-      vistafonts
+      vista-fonts
 
       # macos fonts
       inputs.apple-fonts.packages.${pkgs.system}.ny
