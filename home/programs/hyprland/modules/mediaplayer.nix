@@ -6,7 +6,7 @@
   glib,
   gobject-introspection,
   fetchFromGitHub,
-  wrapGAppsHook,
+  wrapGAppsHook3,
 }:
 python3.pkgs.buildPythonApplication rec {
   pname = "mediaplayer";
@@ -19,7 +19,7 @@ python3.pkgs.buildPythonApplication rec {
   };
   nativeBuildInputs = [
     gobject-introspection
-    wrapGAppsHook
+    wrapGAppsHook3
     pkgs.playerctl
   ];
   buildInputs = [
