@@ -537,8 +537,9 @@ in
           copy_album_art = true;
           max_bitrate = 1500;
           formats = {
+            # DEFAULT flac 16-44.1khz with highest compression level (unsure if this matters, but whatever LOL)
+            flac.command = "${ffmpeg} -i $source -compression_level 12 -sample_fmt s16 -ar 44100 -y -acodec flac $dest";
             mp3.command = "${ffmpeg} -i $source -ab 320k -ac 2 -ar 44100 -joint_stereo 0 $dest";
-            flac.command = "${ffmpeg} -i $source -sample_fmt s16 -ar 44100 -y -acodec flac $dest";
             lossyflac = {
               command = "${lib.getExe convert-lossyflac} $source $dest";
               extension = "lossy.flac";
