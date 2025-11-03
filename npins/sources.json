@@ -9,9 +9,9 @@
       },
       "branch": "master",
       "submodules": true,
-      "revision": "8a63cfbf2581ed35c7c771bcaa5516678238acc3",
+      "revision": "bbf50ef812c4bfd0cbbb39a29b3cc755d3605a0b",
       "url": null,
-      "hash": "02lqzyrfqvqni56r1f3bq7djh38giins2xhs2zzrgkbjfwn6aaak"
+      "hash": "0dl26n3wx0r98lcpmp6xw5q1avfmzbblij68vk17s6ny5dvpby3h"
     },
     "bandcamp-dl": {
       "type": "GitRelease",
@@ -88,10 +88,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": false,
-      "version": "v0.1.0",
-      "revision": "78479d9f41c4cc21a9d0b260c83eeb973d361334",
-      "url": "https://api.github.com/repos/Arairon/slskd-stats/tarball/v0.1.0",
-      "hash": "0avqxy739hjf82d7jsj6cx0vy971ja3vznggzgdj15qz50qfrpzz"
+      "version": "v0.1.2",
+      "revision": "dbb8588e39bf93cae0dcf11316e50e3759268724",
+      "url": "https://api.github.com/repos/Arairon/slskd-stats/tarball/v0.1.2",
+      "hash": "15lz81zhrilkgz8p7svlfjhl454w7cxrjlq4vwhw2h6y6ffr9lif"
     },
     "snapcast": {
       "type": "GitRelease",
@@ -133,10 +133,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": true,
-      "version": "v2025.1021.185115",
-      "revision": "8df1003b01872b8bdd8cfb9817faa65056a5b681",
+      "version": "v2025.1027.181930",
+      "revision": "e657df0c476bbaaa3493f1db7a6714e14abaf0b3",
       "url": null,
-      "hash": "0dgnzr4cc5wcsx1j3jjhhkrf84lds6kysaf5b9w1nhlhp8clxifl"
+      "hash": "19in7f7h2ls0j11rh9160sxkphnpgadaxrjq9gg1krnv86kha8q1"
     },
     "yt-dlp-YTNSigDeno": {
       "type": "GitRelease",
