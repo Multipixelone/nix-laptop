@@ -39,6 +39,7 @@ let
     set -x STEAM_FORCE_DESKTOPUI_SCALING 1
     set -x STEAM_GAMEPADUI 1
     set -x STEAM_GAMESCOPE_CLIENT 1
+    set -x STEAM_GAMESCOPE_HDR_SUPPORTED 1
   '';
   gamescope-base-opts = [
     "--fade-out-duration"
