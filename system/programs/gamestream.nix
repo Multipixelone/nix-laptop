@@ -62,6 +62,8 @@ let
     "600"
     "--rt"
     "--immediate-flips"
+    "--hide-cursor-delay"
+    "3000"
   ];
   # exec ${config.security.wrappers.gamescope.program} $final_args -- $argv
   gamescope-run = pkgs.writeScriptBin "gamescope-run" ''
