@@ -239,7 +239,8 @@ in
           name = "Steam (Big Picture)";
           cmd =
             let
-              steam-gamescope = ''${lib.getExe gamescope-run} -x "-e" ${lib.getExe pkgs.steam} -tenfoot -steamdeck -gamepadui'';
+              # args poached from https://gitlab.com/evlaV/jupiter-PKGBUILD/-/blob/master/gamescope/steam-launcher?ref_type=heads
+              steam-gamescope = ''${lib.getExe gamescope-run} -x "-e" ${lib.getExe pkgs.steam} -steamos3 -steampal -steamdeck -gamepadui'';
             in
             ''${hypr-dispatch} "${steam-gamescope}"'';
           prep-cmd = [
