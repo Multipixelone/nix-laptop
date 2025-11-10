@@ -131,7 +131,9 @@ let
           # Unlock PC (so I don't have to type password on Steam Deck)
           # pkill -USR1 hyprlock || true
           hyprctl output create headless SUNSHINE
+          sleep 2
           hyprctl keyword monitor "$mon_string"
+          sleep 2
           hyprctl dispatch moveworkspacetomonitor 7 2
           # wait before we switch to the new workspace
           sleep 2
