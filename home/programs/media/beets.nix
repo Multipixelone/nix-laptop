@@ -103,6 +103,15 @@ let
 
     rockbox_art_converter $argv
   '';
+  beets-lossyflac = pkgs.writeScriptBin "beets-lossyflac" ''
+    #!${lib.getExe pkgs.fish}
+    set query $argv[1]
+
+    beet modify -awm $query format=lossyFLAC
+    beet convert -y -a -f lossyflac -k -d ~/tmpTranscoded $query
+    # not entirely sure why i have to run it twice, but it only works the second time for some reason.
+    beet convert -y -a -f lossyflac -k -d ~/tmpTranscoded $query
+  '';
   # lossyflac converter for super-duper transparent lossy archival
   convert-lossyflac = pkgs.writeScriptBin "convert_lossyflac" ''
     #!${lib.getExe pkgs.fish}
@@ -391,6 +400,7 @@ in
   home.packages = [
     convert-mpc
     convert-lossyflac
+    beets-lossyflac
     rb-albumart
     euphony-wrapped
   ];
