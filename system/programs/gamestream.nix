@@ -62,6 +62,7 @@ let
     "600"
     "--rt"
     "--immediate-flips"
+    "--force-grab-cursor"
     "--hide-cursor-delay"
     "3000"
   ];
