@@ -17,6 +17,7 @@
       pkg:
       builtins.elem (lib.getName pkg) [
         "mbedtls"
+        "broadcom-sta"
       ];
   };
   age.secrets = {

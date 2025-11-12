@@ -29,14 +29,6 @@
     extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
   };
 
-  nixpkgs.config = {
-    allowInsecurePredicate =
-      pkg:
-      builtins.elem (lib.getName pkg) [
-        "broadcom-sta" # aka “wl”
-      ];
-  };
-
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-uuid/c2c80df4-eb6e-446f-97ba-008f494c3817";
