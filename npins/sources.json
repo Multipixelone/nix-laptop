@@ -9,9 +9,9 @@
       },
       "branch": "master",
       "submodules": true,
-      "revision": "bbf50ef812c4bfd0cbbb39a29b3cc755d3605a0b",
+      "revision": "269e7c6115c2f7017aab6b22811445e229184588",
       "url": null,
-      "hash": "0dl26n3wx0r98lcpmp6xw5q1avfmzbblij68vk17s6ny5dvpby3h"
+      "hash": "0139ls15jymcnqaz3vrby0m907jslwchf8nbssb81k5i8fqya29k"
     },
     "bandcamp-dl": {
       "type": "GitRelease",
@@ -56,10 +56,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": false,
-      "version": "6.0.1",
-      "revision": "325d6e1c6a81d3a110397f1e2b418ae082db3617",
-      "url": "https://api.github.com/repos/furglitch/modorganizer2-linux-installer/tarball/6.0.1",
-      "hash": "1q40g5anvi8idknfaf2l3h9qmiw0imi8y730kxwiqfs369f70sky"
+      "version": "6.0.2",
+      "revision": "22362515c612e2132e081e632b65444319920026",
+      "url": "https://api.github.com/repos/furglitch/modorganizer2-linux-installer/tarball/6.0.2",
+      "hash": "184qzb34sqc5c22spngkpi174aj2xjpq71mjghfy3jgzn0y2qzwa"
     },
     "moondeck-buddy": {
       "type": "GitRelease",
