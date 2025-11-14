@@ -841,6 +841,9 @@ in
         item_fields.disc_and_track = ''
           f"{disc:02}-{track:02}" if disctotal > 1 else f"{track:02}"
         '';
+        rewrite = {
+          # "artist Ye" = "Kanye West";
+        };
         aunique = {
           keys = "albumartist
             albumtype
