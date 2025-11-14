@@ -446,6 +446,7 @@ in
           # "plexsync"
           "replaygain"
           "replace"
+          "rewrite"
           "scrub"
           "smartplaylist"
           # "stylize"
