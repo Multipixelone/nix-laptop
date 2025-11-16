@@ -9,9 +9,9 @@
       },
       "branch": "master",
       "submodules": true,
-      "revision": "269e7c6115c2f7017aab6b22811445e229184588",
+      "revision": "a6b890a48d75325d47587131c74764b8e9a06a53",
       "url": null,
-      "hash": "0139ls15jymcnqaz3vrby0m907jslwchf8nbssb81k5i8fqya29k"
+      "hash": "1wlbimzxny3l11a33jrb5vmh99nr2wcxvvls8hgfnb1i129y92p7"
     },
     "bandcamp-dl": {
       "type": "GitRelease",
@@ -149,10 +149,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": false,
-      "version": "2025.07.05",
-      "revision": "4e02b2e1c8d7c738297bc690fb8aa85cb911338a",
-      "url": "https://api.github.com/repos/bashonly/yt-dlp-YTNSigDeno/tarball/2025.07.05",
-      "hash": "0r77m2cdnsr32qxyw0n97n740dgc0smfb7wy5jbbnyvargwap8vg"
+      "version": "2025.11.11",
+      "revision": "1904df9afa6fb4651d8427def465bfa5a3150ee1",
+      "url": "https://api.github.com/repos/bashonly/yt-dlp-YTNSigDeno/tarball/2025.11.11",
+      "hash": "0x9qrix71ab6qar7294fbnqajr710kcswsz5qqdi366ih739hqji"
     }
   },
   "version": 5
