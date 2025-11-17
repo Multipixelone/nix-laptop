@@ -771,17 +771,6 @@ in
 
             return ", ".join(o)
           '';
-          # mp3_bitrate_setting = ''
-          #   o = [f for f in brm] if brm else []
-
-          #   return ", ".join(o)
-          # '';
-          # mp3_encoder = ''
-          #   brm = set([i.encoder_settings for i in items])
-          #   o = [f for f in brm] if brm else []
-
-          #   return ", ".join(o)
-          # '';
           # use custom_artist field if defined, otherwise fall back to first artist in albumartists_sort
           first_artist = ''
             try:
