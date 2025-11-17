@@ -218,7 +218,8 @@ let
   paths =
     let
       # this lovely snippet pulls the first artist from the albumartists_sort field :-)
-      first_artist = "%the{%tcp{%ifdef{albumartists_sort,%first{$albumartists_sort,1,0,\␀},$first_artist}}}";
+      # first_artist = "%the{%tcp{%ifdef{albumartists_sort,%first{$albumartists_sort,1,0,\␀},$first_artist}}}";
+      first_artist = "%the{%tcp{%ifdef{albumartists_sort,$first_artist,$albumartist}}}";
       # if no month and day just display year, otherwise display all three
       date = "%if{$original_year,($original_year%if{$original_month,.$original_month.$original_day}) ,) }";
       # ex. 01-01. Tyler, the Creator ft. Frank Ocean - Slater.wav
@@ -780,6 +781,15 @@ in
 
           #   return ", ".join(o)
           # '';
+          # use custom_artist field if defined, otherwise fall back to first artist in albumartists_sort
+          first_artist = ''
+            try:
+              custom_artist
+            except NameError:
+              return albumartists_sort[0]
+            else:
+              return custom_artist
+          '';
           source = ''
             format = set([i.format for i in items])
             tbr = sum([i.bitrate for i in items])
