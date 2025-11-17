@@ -528,7 +528,8 @@ in
           keep_existing = true;
         };
         duplicates = {
-          checksum = false;
+          # checksum = "${lib.getExe' pkgs.chromaprint "fpcalc"} -plain {file}";
+          checksum = "${ffmpeg} -i {file} -f crc -";
           tiebreak = {
             items = [ "bitrate" ];
           };
