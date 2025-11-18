@@ -45,9 +45,13 @@
         prefixLength = 24;
       }
     ];
+    # defaultGateway = {
+    #   address = "192.168.7.1";
+    #   interface = "enp3s0f0";
+    # };
     defaultGateway = {
-      address = "192.168.7.1";
-      interface = "enp3s0f0";
+      address = "192.168.5.1";
+      interface = "wlp2s0";
     };
   };
 }
