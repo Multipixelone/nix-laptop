@@ -31,6 +31,10 @@
           editor = "hx";
           whitespace = "fix,-indent-with-non-tab,trailing-space,cr-at-eol";
         };
+        user = {
+          name = "Multipixelone";
+          email = "finn@cnwr.net";
+        };
         pull = {
           ff = "only";
           rebase = false;
