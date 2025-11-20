@@ -223,14 +223,14 @@ let
       # if no month and day just display year, otherwise display all three
       date = "%if{$original_year,($original_year%if{$original_month,.$original_month.$original_day}) ,) }";
       # ex. 01-01. Tyler, the Creator ft. Frank Ocean - Slater.wav
-      track_path = "$disc_and_track. $artist - $title";
+      track_path = "$disc_and_track$artist - $title";
       # show my custom field if there is a re-release or tagged disambiguation
       disambig_rerelease = "%if{$disambig,($disambig) }";
     in
     [
       {
         category = "genre:mt, genre:broadway, genre:Musical";
-        path = "0. Musicals/%the{$album} ${disambig_rerelease}${date}[$media_type$source]/$disc_and_track. $title";
+        path = "0. Musicals/%the{$album} ${disambig_rerelease}${date}[$media_type$source]/$disc_and_track$title";
       }
       {
         category = "albumtype:soundtrack, genre:Soundtrack";
@@ -839,7 +839,12 @@ in
           '';
         };
         item_fields.disc_and_track = ''
-          f"{disc:02}-{track:02}" if disctotal > 1 else f"{track:02}"
+          if not track or (tracktotal and tracktotal == 1):
+            return '''
+          elif disctotal > 1:
+            return f"{disc:02}-{track:02}. "
+          else:
+            return f"{track:02}. "
         '';
         rewrite = {
           # "artist Ye" = "Kanye West";
