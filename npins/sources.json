@@ -9,9 +9,9 @@
       },
       "branch": "master",
       "submodules": true,
-      "revision": "269e7c6115c2f7017aab6b22811445e229184588",
+      "revision": "946383b502e82e85d7b5f49701da2c952ac0a551",
       "url": null,
-      "hash": "0139ls15jymcnqaz3vrby0m907jslwchf8nbssb81k5i8fqya29k"
+      "hash": "1akkn4z5rjcl5yipkfcpnclxvijgva2zh57h3faki1s06gpd5d2c"
     },
     "bandcamp-dl": {
       "type": "GitRelease",
@@ -56,10 +56,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": false,
-      "version": "6.0.2",
-      "revision": "22362515c612e2132e081e632b65444319920026",
-      "url": "https://api.github.com/repos/furglitch/modorganizer2-linux-installer/tarball/6.0.2",
-      "hash": "184qzb34sqc5c22spngkpi174aj2xjpq71mjghfy3jgzn0y2qzwa"
+      "version": "6.0.6",
+      "revision": "93f64fdd08e06c61f92306a4a67b18701554a95a",
+      "url": "https://api.github.com/repos/furglitch/modorganizer2-linux-installer/tarball/6.0.6",
+      "hash": "1hg26sqfn5gh0q9lyq3qkl10r4lkdqm9ar4rmki769s8jyjk9yig"
     },
     "moondeck-buddy": {
       "type": "GitRelease",
@@ -133,10 +133,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": true,
-      "version": "v2025.1027.181930",
-      "revision": "e657df0c476bbaaa3493f1db7a6714e14abaf0b3",
+      "version": "v2025.1127.34355",
+      "revision": "a1ff239bbe66cfdfcc79df85e3eb22e70f7e39dc",
       "url": null,
-      "hash": "19in7f7h2ls0j11rh9160sxkphnpgadaxrjq9gg1krnv86kha8q1"
+      "hash": "00whc41xnib95pwxsq8wfqnzfa7pa7907q9zn77js7cn46a2jhjw"
     },
     "yt-dlp-YTNSigDeno": {
       "type": "GitRelease",
@@ -149,10 +149,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": false,
-      "version": "2025.07.05",
-      "revision": "4e02b2e1c8d7c738297bc690fb8aa85cb911338a",
-      "url": "https://api.github.com/repos/bashonly/yt-dlp-YTNSigDeno/tarball/2025.07.05",
-      "hash": "0r77m2cdnsr32qxyw0n97n740dgc0smfb7wy5jbbnyvargwap8vg"
+      "version": "2025.11.11",
+      "revision": "1904df9afa6fb4651d8427def465bfa5a3150ee1",
+      "url": "https://api.github.com/repos/bashonly/yt-dlp-YTNSigDeno/tarball/2025.11.11",
+      "hash": "0x9qrix71ab6qar7294fbnqajr710kcswsz5qqdi366ih739hqji"
     }
   },
   "version": 5
