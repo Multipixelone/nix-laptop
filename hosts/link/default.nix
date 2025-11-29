@@ -10,6 +10,7 @@
     ./hardware-configuration.nix
     ./hyprland.nix
     ./valhalla.nix
+    ./wireguard.nix
     # ./ollama.nix
     ./printer.nix
     ./snapclient.nix
