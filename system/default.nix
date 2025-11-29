@@ -29,6 +29,7 @@ let
     ./network/networkman.nix
     ./network/zerotier.nix
     ./network/printing.nix
+    ./network/wireguard.nix
 
     ./hardware/g502.nix
     ./hardware/fwupd.nix
