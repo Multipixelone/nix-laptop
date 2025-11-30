@@ -90,7 +90,8 @@
   };
   programs.wine = {
     enable = true;
-    package = inputs.nix-gaming.packages.${pkgs.system}.wine-cachyos;
+    # package = inputs.nix-gaming.packages.${pkgs.system}.wine-cachyos;
+    package = pkgs.wine-staging;
     binfmt = true;
     ntsync = true;
   };
