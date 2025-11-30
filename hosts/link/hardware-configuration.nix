@@ -63,8 +63,21 @@
         "space_cache"
       ];
     };
-    # extra drives!
-    "/media/TeraData" = {
+    # 2TB NVME Drive (Games & Nix Store)
+    "/nix" = {
+      device = "/dev/disk/by-label/TeraData";
+      fsType = "btrfs";
+      neededForBoot = true;
+      options = [
+        "subvol=/@nix"
+        "compress=zstd:3"
+        "noatime"
+        "ssd"
+        "discard=async"
+        "space_cache=v2"
+      ];
+    };
+    "/media/Games" = {
       device = "/dev/disk/by-label/TeraData";
       fsType = "btrfs";
       options = [
@@ -76,35 +89,12 @@
         "space_cache=v2"
       ];
     };
-    "/media/Data" = {
-      device = "/dev/disk/by-label/TeraData";
-      fsType = "btrfs";
-      options = [
-        "subvol=/@data"
-        "compress=zstd:3"
-        "relatime"
-        "ssd"
-        "discard=async"
-        "space_cache=v2"
-      ];
-    };
-    "/home/tunnel/Games/ROMs" = {
-      device = "/dev/disk/by-label/TeraData";
-      fsType = "btrfs";
-      options = [
-        "subvol=/@roms"
-        "compress=zstd:3"
-        "relatime"
-        "ssd"
-        "discard=async"
-        "space_cache=v2"
-      ];
-    };
+    # Music Library on 4TB NVMe
     "/volume1/Media" = {
-      device = "/dev/disk/by-label/TeraData";
+      device = "/dev/disk/by-label/4Tera";
       fsType = "btrfs";
       options = [
-        "subvol=/@data"
+        "subvol=/@music"
         "compress=zstd:3"
         "relatime"
         "ssd"
@@ -112,11 +102,12 @@
         "space_cache=v2"
       ];
     };
-    "/media/BigData" = {
-      device = "/dev/disk/by-label/BigData";
+    # Mount to old mountpoint for backwards compatability
+    "/media/Data" = {
+      device = "/dev/disk/by-label/4Tera";
       fsType = "btrfs";
       options = [
-        "subvol=/"
+        "subvol=/@music"
         "compress=zstd:3"
         "relatime"
         "ssd"
@@ -124,6 +115,7 @@
         "space_cache=v2"
       ];
     };
+    # HDD
     "/media/SlowData" = {
       device = "/dev/disk/by-label/SlowData";
       fsType = "btrfs";
