@@ -26,6 +26,7 @@
     polarity = "dark";
     targets = {
       grub.enable = false;
+      plymouth.enable = false;
     };
     image = builtins.fetchurl {
       url = "https://drive.usercontent.google.com/download?id=1OrRpU17DU78sIh--SNOVI6sl4BxE06Zi";

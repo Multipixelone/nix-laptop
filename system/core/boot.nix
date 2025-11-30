@@ -6,11 +6,11 @@
 {
   boot = {
     plymouth = {
-      enable = false;
-      theme = "nixos-bgrt";
-      themePackages = with pkgs; [
-        nixos-bgrt-plymouth
-      ];
+      enable = true;
+      # theme = "nixos-bgrt";
+      # themePackages = with pkgs; [
+      #   nixos-bgrt-plymouth
+      # ];
     };
     loader.grub = {
       enable = lib.mkDefault true;
