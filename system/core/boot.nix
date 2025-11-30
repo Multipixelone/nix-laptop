@@ -23,7 +23,7 @@
     consoleLogLevel = 0;
     initrd.verbose = false;
     # hide os choice
-    loader.timeout = 0;
+    loader.timeout = 5;
     kernelParams = [
       # "quiet"
       "rd.udev.log_level=3"
