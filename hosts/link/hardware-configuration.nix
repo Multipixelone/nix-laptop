@@ -6,6 +6,7 @@
 {
   boot = {
     initrd = {
+      supportedFilesystems = [ "btrfs" ];
       availableKernelModules = [
         "nvme"
         "xhci_pci"
