@@ -302,7 +302,7 @@ let
 
     [aggregated_library]
     path = "${transcoded-music}"
-    transcode_threads = 6
+    transcode_threads = 8
     failure_max_retries = 2
     failure_delay_seconds = 2
   '';
