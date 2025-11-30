@@ -17,7 +17,7 @@
   ];
 
   boot = {
-    kernelPackages = lib.mkForce pkgs.linuxPackages_cachyos;
+    # kernelPackages = lib.mkForce pkgs.linuxPackages_cachyos;
     initrd.kernelModules = [ "amdgpu" ];
     kernelModules = [
       "kvm-amd"
