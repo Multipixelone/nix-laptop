@@ -186,7 +186,6 @@ let
     if test -n "$genre_tag";  set -a mpcenc_cmd --genre "$genre_tag"; end
 
     if test -n "$album_artist_tag"; set -a mpcenc_cmd --tag "Album Artist=$album_artist_tag"; end
-    if test -n "$disc_tag";   set -a mpcenc_cmd --tag "Disc=$disc_tag"; end
 
     set -a mpcenc_cmd "$file_to_encode" "$output_file"
 
