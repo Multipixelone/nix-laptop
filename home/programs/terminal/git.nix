@@ -13,7 +13,17 @@
       '';
   programs = {
     gh.enable = true;
-    lazygit.enable = true;
+    lazygit = {
+      enable = true;
+      settings = {
+        notARepository = "quit";
+        disableStartupPopups = true;
+        gui = {
+          nerdFontsVersion = "3";
+          showBranchCommitHash = true;
+        };
+      };
+    };
     delta = {
       enable = true;
       enableGitIntegration = true;
