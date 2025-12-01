@@ -15,6 +15,7 @@
     flavor = "mocha";
     accent = "mauve";
   };
+  stylix.enableReleaseChecks = false;
   stylix.targets = lib.mkForce {
     waybar.enable = false;
     hyprpaper.enable = false;
