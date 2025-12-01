@@ -8,7 +8,7 @@
 {
   imports = [
     ./desktop.nix
-    inputs.nix-hardware.nixosModules.dell-xps-15-9560-intel
+    # inputs.nix-hardware.nixosModules.dell-xps-15-9560-intel
   ];
   # specialisation = {
   #   nvidia-sync.configuration = {
@@ -44,10 +44,29 @@
       ];
       kernelModules = [ ];
     };
-    kernelModules = [ "kvm-intel" ];
+    kernelModules = [
+      "kvm-intel"
+      "vfio-pci"
+    ];
+    kernelParams = [
+      "intel_iommu=on"
+      "iommu=pt"
+    ];
+    blacklistedKernelModules = [
+      "nouveau"
+      "nvidiafb"
+      "nvidia"
+      "nvidia-uvm"
+      "nvidia-drm"
+      "nvidia-modeset"
+    ];
     extraModprobeConfig = ''
       options snd_hda_intel power_save=5
       options iwlwifi power_save=1
+      softdep drm pre: vfio-pci
+      softdeop nvidia pre: vfio-pci
+      # CHANGE THIS TO GPU ID
+      options vfio-pci ids=10de:249d
     '';
     extraModulePackages = [ ];
     loader = {
