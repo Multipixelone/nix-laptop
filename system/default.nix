@@ -42,6 +42,8 @@ let
     ./hardware/backlight.nix
     ./hardware/power.nix
 
+    ./programs/looking-glass.nix
+
     ./network
   ];
 in
