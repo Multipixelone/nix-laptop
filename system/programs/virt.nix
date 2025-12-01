@@ -24,7 +24,7 @@
       onShutdown = "shutdown";
       qemu = {
         package = pkgs.qemu_kvm;
-        runAsRoot = true;
+        # runAsRoot = true;
         swtpm.enable = true;
       };
     };
