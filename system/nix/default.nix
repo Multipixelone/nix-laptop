@@ -46,7 +46,8 @@
           "root"
           "nix-ssh"
         ];
-        auto-optimise-store = true;
+        # this is disabled because I have my store on a massive drive now, so I shouldn't waste CPU cycles trying to save space
+        # auto-optimise-store = true;
         experimental-features = [
           "nix-command"
           "flakes"
