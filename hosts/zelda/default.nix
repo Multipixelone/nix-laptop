@@ -176,6 +176,7 @@
     useDHCP = lib.mkDefault true;
     hostName = "zelda";
     wg-quick.interfaces.wg0 = {
+      autostart = false;
       address = [ "10.100.0.2/24" ];
       mtu = 1000;
       dns = [ "10.100.0.1" ];
