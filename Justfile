@@ -13,6 +13,8 @@ minishb:
   attic push system result -j 3
   nix build .#nixosConfigurations.marin.config.system.build.toplevel
   attic push system result -j 3
+  nix build .#nixosConfigurations.zelda.config.system.build.toplevel
+  attic push system result -j 3
   unlink result
 
 debug:
