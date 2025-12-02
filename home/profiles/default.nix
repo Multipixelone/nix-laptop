@@ -5,6 +5,12 @@
     ./link
   ];
 
+  # main laptop (razer)
+  "tunnel@zelda" = [
+    ../.
+    ./zelda
+  ];
+
   # music server
   "tunnel@marin" = [
     ../.

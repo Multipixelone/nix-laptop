@@ -7,7 +7,7 @@
 }:
 {
   imports = [
-    ./desktop.nix
+    # ./desktop.nix
     # inputs.nix-hardware.nixosModules.dell-xps-15-9560-intel
   ];
   # specialisation = {
@@ -27,6 +27,7 @@
   #     };
   #   };
   # };
+  services.logrotate.checkConfig = false;
   boot = {
     # use ram for /tmp
     tmp = {
@@ -45,6 +46,7 @@
       kernelModules = [ ];
     };
     kernelModules = [
+      "iwlwifi"
       "kvm-intel"
       "vfio-pci"
     ];
@@ -60,13 +62,10 @@
       "nvidia-drm"
       "nvidia-modeset"
     ];
+    # options snd_hda_intel power_save=5
+    # options iwlwifi power_save=1
     extraModprobeConfig = ''
-      options snd_hda_intel power_save=5
-      options iwlwifi power_save=1
-      softdep drm pre: vfio-pci
-      softdeop nvidia pre: vfio-pci
-      # CHANGE THIS TO GPU ID
-      options vfio-pci ids=10de:249d
+      options vfio-pci ids=10de:2757,10de:22bb
     '';
     extraModulePackages = [ ];
     loader = {
@@ -99,13 +98,13 @@
         };
       };
       folders = {
-        "4bvms-ufujg" = {
-          path = "/home/tunnel/Music/Library";
-          devices = [
-            "link"
-            "alexandria"
-          ];
-        };
+        # "4bvms-ufujg" = {
+        #   path = "/home/tunnel/Music/Library";
+        #   devices = [
+        #     "link"
+        #     "alexandria"
+        #   ];
+        # };
         "playlists" = {
           path = "/home/tunnel/Music/Playlists";
           devices = [
@@ -253,7 +252,7 @@
       ];
     };
     "/boot" = {
-      device = "/dev/disk/by-uuid/6164-2046";
+      device = "/dev/disk/by-uuid/78C1-6430";
       fsType = "vfat";
     };
   };
@@ -272,7 +271,7 @@
     graphics.extraPackages = with pkgs; [
       # intel-media-sdk
       intel-media-driver
-      vaapiVdpau
+      # vaapiVdpau
       libvdpau-va-gl
     ];
   };

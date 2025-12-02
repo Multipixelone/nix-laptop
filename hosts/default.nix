@@ -13,7 +13,7 @@
 
       mod = "${self}/system";
       # get the basic config to build on top of
-      inherit (import mod) desktop server;
+      inherit (import mod) desktop laptop server;
 
       # get these into the module system
       specialArgs = { inherit inputs self; };
@@ -44,6 +44,32 @@
           {
             home-manager = {
               users.tunnel.imports = homeImports."tunnel@link";
+              extraSpecialArgs = specialArgs;
+              backupFileExtension = ".hm-backup";
+            };
+          }
+          inputs.musnix.nixosModules.musnix
+          inputs.quadlet-nix.nixosModules.quadlet
+          inputs.agenix.nixosModules.default
+          inputs.chaotic.nixosModules.default
+          inputs.nur.modules.nixos.default
+        ];
+      };
+
+      zelda = nixosSystem {
+        inherit specialArgs;
+        modules = laptop ++ [
+          ./zelda
+
+          "${mod}/programs/media.nix"
+          "${mod}/services/jdownloader.nix"
+
+          "${mod}/network/dnscrypt.nix"
+
+          "${mod}/programs/home-manager.nix"
+          {
+            home-manager = {
+              users.tunnel.imports = homeImports."tunnel@zelda";
               extraSpecialArgs = specialArgs;
               backupFileExtension = ".hm-backup";
             };
