@@ -1,13 +1,17 @@
 {
+  pkgs,
   config,
   lib,
   ...
 }:
-# TODO run tuigreet inside of kmscon
-# kmscon = "${pkgs.kmscon}/libexec/kmscon/kmscon";
-# tuigreet = lib.getExe' pkgs.greetd.tuigreet "tuigreet";
-# hyprland = lib.getExe' config.programs.hyprland.package "Hyprland";
-# hyprland-session = "${config.programs.hyprland.package}/share/wayland-sessions";
+let
+  # TODO run tuigreet inside of kmscon
+  # kmscon = "${pkgs.kmscon}/libexec/kmscon/kmscon";
+  tuigreet = lib.getExe pkgs.tuigreet;
+  uwsm = lib.getExe config.programs.uwsm.package;
+  hypr-cmd = "${uwsm} start hyprland-uwsm.desktop"; # hyprland = lib.getExe' config.programs.hyprland.package "Hyprland";
+  # hyprland-session = "${config.programs.hyprland.package}/share/wayland-sessions";
+in
 {
   # required for keyring to unlock on boot
   security.pam.services.greetd.enableGnomeKeyring = true;
@@ -26,20 +30,24 @@
     greetd =
       let
         session = {
-          command = "${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop";
+          command = hypr-cmd;
           user = "tunnel";
         };
       in
       {
         enable = true;
-        settings = {
-          initial_session = session;
-          default_session = session;
-          # default_session = {
-          #   command = "${tuigreet} --greeting \"hi finn :)\" --time --remember --remember-session --sessions ${hyprland-session}";
-          #   user = "greeter";
-          # };
-        };
+        settings = lib.mkMerge [
+          (lib.mkIf (config.networking.hostName == "link") {
+            initial_session = session;
+            default_session = session;
+          })
+          (lib.mkIf (config.networking.hostName == "zelda") {
+            default_session = {
+              command = "${tuigreet} --greeting \"hi finn :)\" --time --remember --remember-session --cmd '${hypr-cmd}'";
+              user = "greeter";
+            };
+          })
+        ];
       };
   };
   # this is a life saver.
