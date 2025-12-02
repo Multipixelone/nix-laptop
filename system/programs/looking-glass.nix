@@ -7,6 +7,6 @@
   boot.kernelModules = [ "kvmfr" ];
 
   services.udev.extraRules = ''
-    SUBSYSTEM=="kvmfr", OWNER="root", GROUP="libvirtd", MODE="0660"
+    SUBSYSTEM=="kvmfr", OWNER="tunnel", GROUP="libvirtd", MODE="0660"
   '';
 }
