@@ -80,6 +80,10 @@ _: {
       "workspace 7 silent,class:^(org.prismlauncher.*)$"
       "workspace 7 silent,class:^(Minecraft)$"
 
+      # looking-glass-client
+      "workspace 7, class:looking-glass-client"
+      "fullscreen, class:looking-glass-client"
+
       # gw2
       "bordersize 0,title:^(Guild Wars 2)$"
       "opaque,title:^(Guild Wars 2)$"
