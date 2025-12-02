@@ -32,9 +32,6 @@
   # hint epp to use maximum cpu performance
   powerManagement.cpuFreqGovernor = "performance";
 
-  # nh default flake
-  environment.variables.NH_FLAKE = "/home/tunnel/Documents/Git/nix-laptop";
-
   # fan control
   hardware.amdgpu.overdrive.enable = true;
   # FIXME service not starting for some reason?
