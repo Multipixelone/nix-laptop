@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  import = [
+  imports = [
     inputs.auto-cpufreq.nixosModules.default
   ];
   powerManagement = {
