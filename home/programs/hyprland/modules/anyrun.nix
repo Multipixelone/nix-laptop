@@ -5,8 +5,32 @@
   ...
 }:
 {
-  programs.anyrun = {
+  programs.rofi = {
     enable = true;
+    plugins = with pkgs; [
+      rofi-emoji
+    ];
+    extraConfig = {
+      show-icons = true;
+      steal-focus = true;
+      matching = "fuzzy";
+      drun-match-fields = "name,generic,categories,keywords";
+      drun-display-format = "{name}";
+      sorting-method = "fzf";
+      combi-hide-mode-prefix = true;
+      click-to-exit = true;
+      modes = [ "combi" ];
+      combi-modes = [
+        "drun"
+        "emoji"
+        "ssh"
+      ];
+    };
+
+  };
+  programs.anyrun = {
+    # TEMP: fix this. it's so busted but I'm too lazy to figure out why its busted
+    enable = false;
     config = {
       width = {
         fraction = 0.3;

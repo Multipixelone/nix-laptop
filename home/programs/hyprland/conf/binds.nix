@@ -117,7 +117,7 @@ in
           ", Print, exec, ${lib.getExe grimblast} --notify --cursor copysave output"
           "ALT , Print, exec, ${lib.getExe screenshot-area}"
           "SHIFT , Print, exec, ${lib.getExe screenshot-area-ocr}"
-          "$mod, SPACE, exec, ${toggle "anyrun"}"
+          "$mod, SPACE, exec, ${toggle "rofi"} -show combi"
           "$mod, ESCAPE, exec, ${lib.getExe pkgs.wlogout}"
           "$mod, V, togglefloating"
           "SUPER, F, fullscreen"

@@ -17,6 +17,7 @@
   };
   stylix.enableReleaseChecks = false;
   stylix.targets = lib.mkForce {
+    rofi.enable = false;
     waybar.enable = false;
     hyprpaper.enable = false;
     hyprland.enable = false;
