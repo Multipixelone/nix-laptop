@@ -199,13 +199,13 @@ in
       [pyprland]
       plugins = ["scratchpads", "toggle_dpms"]
 
-      [scratchpads.music]
-      animation = "fromLeft"
-      command = "uwsm app -- foot -a foot-music ncmpcpp"
-      class = "foot-music"
-      size = "40% 90%"
-      unfocus = "hide"
-      lazy = false
+      # [scratchpads.music]
+      # animation = "fromLeft"
+      # command = "uwsm app -- foot -a foot-music ncmpcpp"
+      # class = "foot-music"
+      # size = "40% 90%"
+      # unfocus = "hide"
+      # lazy = false
 
       [scratchpads.gpt]
       animation = "fromLeft"
