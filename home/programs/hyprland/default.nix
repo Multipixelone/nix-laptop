@@ -84,7 +84,7 @@ in
             "HDMI-A-1,disabled"
           ];
         })
-        (lib.mkIf (osConfig.networking.hostName == "zelda") { monitor = [ ",highres,auto,2" ]; })
+        (lib.mkIf (osConfig.networking.hostName == "zelda") { monitor = [ ",highres,auto,1.333333" ]; })
       ];
       exec-once = [
         "uwsm finalize"
