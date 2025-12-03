@@ -88,6 +88,7 @@ in
           "ALT_SHIFT, D, exec, ${runOnce "discord"}"
           "ALT_SHIFT, S, exec, ${runOnce "steam"}"
           "ALT_SHIFT, Y, exec, ${lib.getExe yt-mpv}"
+          "ALT_SHIFT, O, exec, uwsm app -- win"
           # focus keybinds
           (mvfocus "h" "l")
           (mvfocus "j" "d")
