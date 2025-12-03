@@ -1,13 +1,13 @@
 { inputs, ... }:
 {
   imports = [
-    inputs.auto-cpufreq.nixosModules.default
+    # inputs.auto-cpufreq.nixosModules.default
   ];
   powerManagement = {
     enable = true;
     powertop.enable = true;
   };
-  programs.auto-cpufreq = {
+  services.auto-cpufreq = {
     enable = true;
     settings = {
       charger = {
