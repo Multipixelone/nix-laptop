@@ -53,32 +53,41 @@ let
       '';
 in
 {
-  home.file.".config/waybar-mediaplayer.json".text = ''
-    {
-      "refresh_interval": 500,
-      "is_notification": false,
-      "notification_min_interval": 2,
-      "widget_length": 37,
-      "sepchar": "",
-      "surface_color": "gray",
-      "overlay_color": "cyan",
-      "interval": 1,
-      "text_rot_int": 1000,
-      "image_signal": 4,
-      "length_factor": 1,
-      "player_name": "Plexamp",
-      "convert_to_jpeg": false,
-      "album_art_placeholder": "no",
-      "lyrics_providers": [
-        "Lrclib",
-        "Musixmatch",
-        "NetEase",
-        "Megalobiz"
-      ],
-      "lyrics_span_before": 2,
-      "lyrics_span_after": 2
-    }
-  '';
+  xdg.configFile = {
+    "gcalcli/config.toml".text = ''
+      [calendars]
+      default-calendars = ["School", "Theatre", "Finn Rutis"]
+
+      [output]
+      week-start = "monday"
+    '';
+    "waybar-mediaplayer.json".text = ''
+      {
+        "refresh_interval": 500,
+        "is_notification": false,
+        "notification_min_interval": 2,
+        "widget_length": 37,
+        "sepchar": "",
+        "surface_color": "gray",
+        "overlay_color": "cyan",
+        "interval": 1,
+        "text_rot_int": 1000,
+        "image_signal": 4,
+        "length_factor": 1,
+        "player_name": "Plexamp",
+        "convert_to_jpeg": false,
+        "album_art_placeholder": "no",
+        "lyrics_providers": [
+          "Lrclib",
+          "Musixmatch",
+          "NetEase",
+          "Megalobiz"
+        ],
+        "lyrics_span_before": 2,
+        "lyrics_span_after": 2
+      }
+    '';
+  };
   # wayland.windowManager.hyprland.settings.exec-once = [(dynamic + "/bin/dynamic &")];
   programs.waybar = {
     enable = true;
