@@ -1,9 +1,10 @@
-{ ... }:
+{ lib, pkgs, ... }:
 {
   programs.looking-glass-client = {
     enable = true;
     settings = {
       app.shmFile = "/dev/kvmfr0";
+      app.allowDMA = "yes";
       input.escapeKey = 119;
       input.rawMouse = "yes";
       spice.enable = "yes";
@@ -11,6 +12,7 @@
       win.fullScreen = "yes";
       win.jitRender = "yes";
       win.quickSplash = "yes";
+      wayland.fractionScale = "no";
     };
   };
   home.packages = [
