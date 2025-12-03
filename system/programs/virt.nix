@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   programs.virt-manager.enable = true;
+  networking.firewall.trustedInterfaces = [ "virbr0" ];
   environment.systemPackages = [ pkgs.distrobox ];
   boot.initrd = {
     availableKernelModules = [
