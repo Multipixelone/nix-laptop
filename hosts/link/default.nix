@@ -11,7 +11,7 @@
     ./hyprland.nix
     ./valhalla.nix
     ./wireguard.nix
-    # ./ollama.nix
+    ./ollama.nix
     ./printer.nix
     ./snapclient.nix
   ];
