@@ -47,6 +47,9 @@ in
       submap=reset
     '';
     settings = {
+      gesture = [
+        "3, horizontal, workspace"
+      ];
       "$mod" = "ALT";
       bind =
         let
