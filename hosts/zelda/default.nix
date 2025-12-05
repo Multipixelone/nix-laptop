@@ -27,6 +27,13 @@
   #     };
   #   };
   # };
+  hardware = {
+    firmware = [ pkgs.sof-firmware ];
+    openrazer = {
+      enable = true;
+      users = [ "tunnel" ];
+    };
+  };
   services.logrotate.checkConfig = false;
   boot = {
     # use ram for /tmp
