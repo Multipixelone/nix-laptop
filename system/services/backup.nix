@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   lib,
   inputs,
@@ -37,6 +38,21 @@ in
     #"restic/repo".file = "${inputs.secrets}/restic/repo.age";
     "restic/password".file = "${inputs.secrets}/restic/password.age";
     "restic/rclone".file = "${inputs.secrets}/restic/${config.networking.hostName}rclone.age";
+  };
+  systemd.services.restic-check-repo = {
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${lib.getExe config.services.restic.backups.home.package} -r ${default-restic-options.repository} -p ${default-restic-options.passwordFile} check --read-data-subset=25%";
+      Path = [ pkgs.rclone ];
+      Environment = "RCLONE_CONFIG=${default-restic-options.rcloneConfigFile}";
+    };
+  };
+  systemd.timers.restic-check-repo = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "monthly";
+      Persistent = true;
+    };
   };
   services.restic.backups = {
     home = default-restic-options // {
