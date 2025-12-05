@@ -30,40 +30,6 @@ let
       RandomizedDelaySec = "20m";
     };
   };
-  home-folders = {
-    paths = [
-      "/home/tunnel"
-    ];
-    exclude = [
-      ".cache"
-      ".local/share/Steam"
-      ".local/share/baloo"
-      ".local/share/flatpak"
-      ".local/share/Trash"
-      ".local/share/bottles"
-      ".local/share/lutris/runners"
-      ".config/steamtinkerlaunch"
-      ".config/libvirt"
-      ".config/Ryujinx"
-      ".config/discord"
-      "Documents/Git"
-      "Music/Library"
-      "Downloads"
-      ".var/app"
-      ".mozilla"
-      ".cargo"
-      ".winebroke"
-      "Games"
-    ];
-  };
-  # TODO pull this from systemd tmp file declaration
-  srv-folders = {
-    paths = [
-      "/srv/grocy"
-      "/srv/jdownloader"
-      "/srv/slskd"
-    ];
-  };
 in
 {
   age.secrets = {
@@ -73,13 +39,38 @@ in
     "restic/rclone".file = "${inputs.secrets}/restic/${config.networking.hostName}rclone.age";
   };
   services.restic.backups = {
-    home = lib.mkMerge [
-      default-restic-options
-      home-folders
-    ];
-    srv = lib.mkMerge [
-      default-restic-options
-      srv-folders
-    ];
+    home = default-restic-options // {
+      paths = [
+        "/home/tunnel"
+      ];
+      exclude = [
+        ".local/share/Steam"
+        ".local/share/baloo"
+        ".local/share/flatpak"
+        ".local/share/Trash"
+        ".local/share/bottles"
+        ".local/share/lutris/runners"
+        ".config/steamtinkerlaunch"
+        ".config/libvirt"
+        ".config/Ryujinx"
+        ".config/discord"
+        "Documents/Git"
+        "Music/Library"
+        "Downloads"
+        ".var/app"
+        ".mozilla"
+        ".cargo"
+        ".winebroke"
+        "Games"
+      ];
+    };
+    # TODO pull this from systemd tmp file declaration
+    srv = default-restic-options // {
+      paths = [
+        "/srv/grocy"
+        "/srv/jdownloader"
+        "/srv/slskd"
+      ];
+    };
   };
 }
