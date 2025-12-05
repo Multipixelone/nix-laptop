@@ -96,6 +96,7 @@
         "deck" = {
           id = "WPTWVQC-SJIKJOM-6SXC474-A6AJXVA-CBS5WQB-SREKAIH-XP6YCHN-PGK7KQE";
         };
+        "minish".id = "36AQOJE-HBX7O7L-M7C3UHJ-5SVQOZU-Y4ZOMVQ-ZRCXL77-MMQT2XK-6OYGXQR";
       };
       folders = {
         # "4bvms-ufujg" = {
@@ -118,6 +119,7 @@
             "link"
             "alexandria"
             "deck"
+            "minish"
           ];
         };
         "multimc-icons" = {
@@ -126,6 +128,7 @@
             "link"
             "alexandria"
             "deck"
+            "minish"
           ];
         };
         "sakft-erofr" = {
