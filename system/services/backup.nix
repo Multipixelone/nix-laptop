@@ -27,7 +27,7 @@ let
     timerConfig = {
       OnCalendar = "00:00";
       Persistent = true;
-      RandomizedDelaySec = "10m";
+      RandomizedDelaySec = "20m";
     };
   };
   home-folders = {
