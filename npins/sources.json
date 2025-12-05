@@ -9,9 +9,9 @@
       },
       "branch": "master",
       "submodules": true,
-      "revision": "c1d67aa740995c87a496fe88b207cfcfbc345c09",
+      "revision": "21b113200ca058d2027a36da781730996ac3c293",
       "url": null,
-      "hash": "08h25zikrs0lf4lzhzvf4f0ymna2115jkkvd5isdzg1dp7wzaiqc"
+      "hash": "0gxjn7kx149dxadycbxvvg9p8qx59i4vj2sp6xl2n3cg82700vzh"
     },
     "bandcamp-dl": {
       "type": "GitRelease",
