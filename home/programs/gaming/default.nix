@@ -25,6 +25,7 @@ in
   imports = [
     ./mangohud.nix
     ./moondeck.nix
+    ./vr.nix
   ];
   home.packages = with pkgs; [
     amdgpu_top
