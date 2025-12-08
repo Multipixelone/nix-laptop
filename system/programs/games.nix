@@ -81,21 +81,43 @@
         "steam"
       ];
     config.packageOverrides = pkgs: {
-      steam = pkgs.steam.override {
-        extraPkgs =
-          pkgs: with pkgs; [
-            xorg.libXcursor
-            xorg.libXi
-            xorg.libXinerama
-            xorg.libXScrnSaver
-            libpng
-            libpulseaudio
-            libvorbis
-            stdenv.cc.cc.lib
-            libkrb5
-            keyutils
-          ];
-      };
+      steam =
+        let
+          patchedBwrap = pkgs.bubblewrap.overrideAttrs (o: {
+            patches = (o.patches or [ ]) ++ [
+              ./bwrap.patch
+            ];
+          });
+        in
+        pkgs.steam.override {
+          buildFHSEnv = (
+            args:
+            (
+              (pkgs.buildFHSEnv.override {
+                bubblewrap = patchedBwrap;
+              })
+              (
+                args
+                // {
+                  extraBwrapArgs = (args.extraBwrapArgs or [ ]) ++ [ "--cap-add ALL" ];
+                }
+              )
+            )
+          );
+          extraPkgs =
+            pkgs: with pkgs; [
+              xorg.libXcursor
+              xorg.libXi
+              xorg.libXinerama
+              xorg.libXScrnSaver
+              libpng
+              libpulseaudio
+              libvorbis
+              stdenv.cc.cc.lib
+              libkrb5
+              keyutils
+            ];
+        };
     };
   };
   programs.wine = {
