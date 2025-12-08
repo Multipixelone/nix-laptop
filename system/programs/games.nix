@@ -43,15 +43,15 @@
     };
   };
   # vr stuff
-  # services.monado = {
-  #   enable = true;
-  #   defaultRuntime = true;
-  # };
-  # systemd.user.services.monado.environment = {
-  #   STEAMVR_LH_ENABLE = "1";
-  #   XRT_COMPOSITOR_COMPUTE = "1";
-  # };
-  programs.envision.enable = true;
+  services.monado = {
+    enable = true;
+    defaultRuntime = true;
+  };
+  systemd.user.services.monado.environment = {
+    STEAMVR_LH_ENABLE = "1";
+    XRT_COMPOSITOR_COMPUTE = "1";
+  };
+  # programs.envision.enable = true;
   environment.systemPackages = [
     # inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
     inputs.nix-gaming.packages.${pkgs.system}.winetricks-git
@@ -104,6 +104,12 @@
               )
             )
           );
+          extraProfile = ''
+            # Fixes timezones
+            unset TZ
+            # Allows Monado to be used
+            export PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1
+          '';
           extraPkgs =
             pkgs: with pkgs; [
               xorg.libXcursor
