@@ -47,10 +47,10 @@ in
     #   inherit umu mangohud;
     #   location = "/media/BigData/Games/silent-hill-2-directors-cut";
     # })
-    (callPackage ../../../pkgs/games/legends-of-runeterra {
-      inherit umu mangohud;
-      location = "/media/BigData/Games/legends-of-runeterra";
-    })
+    #(callPackage ../../../pkgs/games/legends-of-runeterra {
+    #  inherit umu mangohud;
+    #  location = "/media/BigData/Games/legends-of-runeterra";
+    #})
     # (callPackage ../../../pkgs/games/gw2 {
     #   inherit umu;
     #   exe = "/media/BigData/Games/SteamLibrary/steamapps/common/Guild Wars 2";
