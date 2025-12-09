@@ -8,6 +8,7 @@
   imports = [
     inputs.nix-gaming.nixosModules.platformOptimizations
     inputs.nix-gaming.nixosModules.wine
+    inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
   ];
   nixpkgs.overlays = [
     inputs.prismlauncher.overlays.default
@@ -37,6 +38,7 @@
   };
   chaotic.mesa-git.enable = true;
   hardware = {
+    steam-hardware.enable = true;
     graphics = {
       # 32 bit support
       enable32Bit = true;
@@ -90,20 +92,20 @@
           });
         in
         pkgs.steam.override {
-          buildFHSEnv = (
-            args:
-            (
-              (pkgs.buildFHSEnv.override {
-                bubblewrap = patchedBwrap;
-              })
-              (
-                args
-                // {
-                  extraBwrapArgs = (args.extraBwrapArgs or [ ]) ++ [ "--cap-add ALL" ];
-                }
-              )
-            )
-          );
+          # buildFHSEnv = (
+          #   args:
+          #   (
+          #     (pkgs.buildFHSEnv.override {
+          #       bubblewrap = patchedBwrap;
+          #     })
+          #     (
+          #       args
+          #       // {
+          #         extraBwrapArgs = (args.extraBwrapArgs or [ ]) ++ [ "--cap-add ALL" ];
+          #       }
+          #     )
+          #   )
+          # );
           extraProfile = ''
             # Fixes timezones
             unset TZ
@@ -122,6 +124,9 @@
               stdenv.cc.cc.lib
               libkrb5
               keyutils
+              # Steam VR
+              procps
+              usbutils
             ];
         };
     };
@@ -133,6 +138,7 @@
     binfmt = true;
     ntsync = true;
   };
+  programs.alvr.enable = true;
   programs.steam = {
     enable = true;
     gamescopeSession.enable = false;
