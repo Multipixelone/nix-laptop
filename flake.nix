@@ -103,6 +103,7 @@
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
     ucodenix.url = "github:e-tho/ucodenix";
     base16.url = "github:SenchoPens/base16.nix";
+    nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
     prismlauncher = {
       url = "github:PrismLauncher/PrismLauncher";
       inputs.nixpkgs.follows = "nixpkgs";
