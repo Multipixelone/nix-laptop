@@ -60,6 +60,8 @@
     kernelParams = [
       "intel_iommu=on"
       "iommu=pt"
+      # ignore split lock detections
+      "split_lock_detect=off"
     ];
     blacklistedKernelModules = [
       "nouveau"
