@@ -10,9 +10,9 @@
     inputs.nix-gaming.nixosModules.wine
     inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
   ];
-  nixpkgs.overlays = [
-    inputs.prismlauncher.overlays.default
-  ];
+  # nixpkgs.overlays = [
+  #   inputs.prismlauncher.overlays.default
+  # ];
   boot = {
     kernelParams = [
       "tsc=reliable"

@@ -1648,22 +1648,6 @@
         "type": "github"
       }
     },
-    "libnbtplusplus": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1744811532,
-        "narHash": "sha256-qhmjaRkt+O7A+gu6HjUkl7QzOEb4r8y8vWZMG2R/C6o=",
-        "owner": "PrismLauncher",
-        "repo": "libnbtplusplus",
-        "rev": "531449ba1c930c98e0bcf5d332b237a8566f9d78",
-        "type": "github"
-      },
-      "original": {
-        "owner": "PrismLauncher",
-        "repo": "libnbtplusplus",
-        "type": "github"
-      }
-    },
     "monocle": {
       "inputs": {
         "crane": "crane",
@@ -2363,27 +2347,6 @@
         "type": "github"
       }
     },
-    "prismlauncher": {
-      "inputs": {
-        "libnbtplusplus": "libnbtplusplus",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1765228155,
-        "narHash": "sha256-MJ4WCeXRr1ABLPNdVt4XsnrCOc4DdDezo6/2l2Au8fU=",
-        "owner": "PrismLauncher",
-        "repo": "PrismLauncher",
-        "rev": "c10681831c34814eb7cf0b5406e69aeec91558b3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "PrismLauncher",
-        "repo": "PrismLauncher",
-        "type": "github"
-      }
-    },
     "qtscrob": {
       "inputs": {
         "flake-utils": [
@@ -2486,7 +2449,6 @@
         "nur": "nur",
         "playlist-download": "playlist-download",
         "pre-commit-hooks": "pre-commit-hooks_2",
-        "prismlauncher": "prismlauncher",
         "qtscrob": "qtscrob",
         "quadlet-nix": "quadlet-nix",
         "rb-scrobbler": "rb-scrobbler",

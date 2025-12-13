@@ -104,10 +104,7 @@
     ucodenix.url = "github:e-tho/ucodenix";
     base16.url = "github:SenchoPens/base16.nix";
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
-    prismlauncher = {
-      url = "github:PrismLauncher/PrismLauncher";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # prismlauncher.url = "github:PrismLauncher/PrismLauncher";
     apple-emoji = {
       url = "github:samuelngs/apple-emoji-linux";
       inputs.nixpkgs.follows = "nixpkgs";
