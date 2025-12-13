@@ -29,6 +29,12 @@
     ];
   };
 
+  # uncomment for plasma if you want LOL
+  # services.displayManager.sddm.enable = true;
+  # services.displayManager.sddm.wayland.enable = true;
+  # services.desktopManager.plasma6.enable = true;
+  # services.greetd.enable = lib.mkForce false;
+
   # hint epp to use maximum cpu performance
   powerManagement.cpuFreqGovernor = "performance";
 
