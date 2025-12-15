@@ -53,6 +53,9 @@
           "flakes"
         ];
         flake-registry = "/etc/nix/registry.json";
+        # for direnv GC roots
+        keep-derivations = true;
+        keep-outputs = true;
         netrc-file = config.age.secrets."attic".path;
       };
     };
