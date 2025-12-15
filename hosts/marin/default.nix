@@ -28,7 +28,6 @@
   networking = {
     hostName = "marin";
     # useDHCP = false;
-    networkmanager.enable = true;
     nameservers = [
       "8.8.8.8"
       "1.1.1.1"

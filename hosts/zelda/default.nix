@@ -181,10 +181,6 @@
     };
   };
   networking = {
-    networkmanager = {
-      enable = true;
-      dns = "none";
-    };
     useDHCP = lib.mkDefault true;
     hostName = "zelda";
     wg-quick.interfaces.wg0 = {

@@ -4,6 +4,13 @@
     enable = true;
     openFirewall = true;
   };
+  networking = {
+    networkmanager = {
+      enable = lib.mkDefault true;
+      wifi.powersave = false;
+      dns = "none";
+    };
+  };
   services = {
     fail2ban.enable = false;
     openssh = {

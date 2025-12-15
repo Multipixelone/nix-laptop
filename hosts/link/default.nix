@@ -53,6 +53,7 @@
 
   # network address & hostname
   networking = {
+    networkmanager.enable = false;
     hostName = "link";
     interfaces.enp6s0.ipv4.addresses = [
       {
