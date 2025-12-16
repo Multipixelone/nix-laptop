@@ -1,117 +1,158 @@
-_: {
+{ lib, ... }:
+{
   wayland.windowManager.hyprland.settings = {
-    windowrulev2 = [
+    windowrule = [
       # workspace rules
-      "workspace 5 silent, title:^(Spotify( Premium)?)$"
-      "workspace 5 silent, class:^(Plexamp)$"
-      "workspace 5 silent, class:^(vlc)$"
-      "workspace 5 silent, class:^(mpd)"
-      "workspace 5 silent, class:^(com.rafaelmardojai.Blanket)$"
-      "workspace 4 silent, class:^(obsidian)$"
-      "workspace 6 silent, class:^(bluebubbles)$"
-      "workspace 6 silent, class:^(discord)$"
+      "match:title ^(Spotify( Premium)?)$, workspace 5 silent"
+      "match:class ^(Plexamp)$, workspace 5 silent"
+      "match:class ^(vlc)$, workspace 5 silent"
+      "match:class ^(mpd)$, workspace 5 silent"
+      "match:class ^(com.rafaelmardojai.Blanket)$, workspace 5 silent"
+      "match:class ^(obsidian)$, workspace 4 silent"
+      "match:class ^(bluebubbles)$, workspace 6 silent"
+      "match:class ^(discord)$, workspace 6 silent"
 
       # center dialogs
-      "center, title:^(Open File)(.*)$"
-      "center, title:^(Select a File)(.*)$"
-      "center, title:^(Choose wallpaper)(.*)$"
-      "center, title:^(Open Folder)(.*)$"
-      "center, title:^(Save As)(.*)$"
-      "center, title:^(Library)(.*)$"
-      "center, title:^(File Upload)(.*)$"
-      "dimaround, class:^(gcr-prompter)$"
-      "dimaround, class:^(xdg-desktop-portal-gtk)$"
-      "dimaround, class:^(polkit-gnome-authentication-agent-1)$"
+      "match:title ^(Open File)(.*)$, center on"
+      "match:title ^(Select a File)(.*)$, center on"
+      "match:title ^(Choose wallpaper)(.*)$, center on"
+      "match:title ^(Open Folder)(.*)$, center on"
+      "match:title ^(Save As)(.*)$, center on"
+      "match:title ^(Library)(.*)$, center on"
+      "match:title ^(File Upload)(.*)$, center on"
+
+      "match:class ^(gcr-prompter)$, dim_around on"
+      "match:class ^(xdg-desktop-portal-gtk)$, dim_around on"
+      "match:class ^(polkit-gnome-authentication-agent-1)$, dim_around on"
 
       # idle inhibit while watching videos
-      "idleinhibit focus, class:^(mpv|.+exe|celluloid)$"
-      "idleinhibit focus, class:^(firefox)$, title:^(.*YouTube.*)$"
-      "idleinhibit always, title:^(Zoom Meeting)$"
-      "idleinhibit fullscreen, class:^(firefox)$"
+      "match:class ^(mpv|.+exe|celluloid)$, idle_inhibit focus"
+      "match:class ^(firefox)$, match:title ^(.*YouTube.*)$, idle_inhibit focus"
+      "match:title ^(Zoom Meeting)$, idle_inhibit always"
+      "match:class ^(firefox)$, idle_inhibit fullscreen"
+
       # idle inhibit while pdf reader open
-      "idleinhibit always, class:^(org.kde.okular)$"
-      "idleinhibit always, class:^(org.pwmt.zathura)$"
+      "match:class ^(org.kde.okular)$, idle_inhibit always"
+      "match:class ^(org.pwmt.zathura)$, idle_inhibit always"
 
       # float rules
-      "float,class:^(Plexamp)$"
-      "float,class:^(com.rafaelmardojai.Blanket)$"
-      "float,class:^(vlc)$"
-      "float,class:^(mpd)"
-      "float,title:^(Spotify( Premium)?)$"
-      "float,class:^(nm-applet)$"
-      "float,class:^(foot-files)$"
+      "match:class ^(Plexamp)$, float on"
+      "match:class ^(com.rafaelmardojai.Blanket)$, float on"
+      "match:class ^(vlc)$, float on"
+      "match:class ^(mpd)$, float on"
+      "match:title ^(Spotify( Premium)?)$, float on"
+      "match:class ^(nm-applet)$, float on"
+      "match:class ^(foot-files)$, float on"
 
       ## app specific rules
       # reaper dropdowns
-      # "move cursor,class:REAPER,floating:1"
-      "noanim,class:REAPER"
-      # "nofocus,class:REAPER,title:^(menu)$"
-      "nofocus,class:REAPER,title:^$"
-      # "idleinhibit always, class:REAPER"
+      "match:class REAPER, no_anim on"
+      "match:class REAPER, match:title ^$, no_focus on"
+
       # firefox pin pip
-      "float, title:^(Picture-in-Picture)$"
-      "pin, title:^(Picture-in-Picture)$"
+      "match:title ^(Picture-in-Picture)$, float on"
+      "match:title ^(Picture-in-Picture)$, pin on"
+
       # qalculate
-      "float, class:^(qalculate-gtk)$"
-      "pin, class:^(qalculate-gtk)$"
-      "move 100%-40% 10%, class:^(qalculate-gtk)$"
+      "match:class ^(qalculate-gtk)$, float on"
+      "match:class ^(qalculate-gtk)$, pin on"
+      "match:class ^(qalculate-gtk)$, move 100%-40% 10%"
+
       # pin ripdrag
-      "pin, class:^(it.catboy.ripdrag)$"
+      "match:class ^(it.catboy.ripdrag)$, pin on"
 
       ## gaming rules
       # steam rules
-      "workspace 7 silent,class:^(steam)$"
-      "fullscreen, title:^(Steam Big Picture Mode)$" # fix keep steam big picture fullscreen
-      "idleinhibit always, title:^(Steam Big Picture Mode)$"
-      "idleinhibit focus, class:^(steam)$"
-      "float,class:^(steam)$,title:^(Friends List)$"
-      "size 500 1225,class:^(steam)$,title:^(Friends List)$"
-      "float,class:^(steam)$,title:^(Steam Settings)$"
+      "match:class ^(steam)$, workspace 7 silent"
+      "match:title ^(Steam Big Picture Mode)$, fullscreen on"
+      "match:title ^(Steam Big Picture Mode)$, idle_inhibit always"
+      "match:class ^(steam)$, idle_inhibit focus"
+
+      "match:class ^(steam)$, match:title ^(Friends List)$, float on"
+      "match:class ^(steam)$, match:title ^(Friends List)$, size 500 1225"
+      "match:class ^(steam)$, match:title ^(Steam Settings)$, float on"
 
       # steam game rules
-      "workspace 7 silent,class:^(steam_app_.*)$"
-      "immediate, class:^(steam_app_)(.*)$"
-      "fullscreen, class:^(steam_app_)(.*)$"
-      "immediate,class:^(cs2)$"
-      "immediate,class:^(dota2)$"
-      "idleinhibit always, class:^(steam_app_.*)$"
+      "match:class ^(steam_app_.*)$, workspace 7 silent"
+      "match:class ^(steam_app_)(.*)$, immediate on"
+      "match:class ^(steam_app_)(.*)$, fullscreen on"
+      "match:class ^(cs2)$, immediate on"
+      "match:class ^(dota2)$, immediate on"
+      "match:class ^(steam_app_.*)$, idle_inhibit always"
 
       # minecraft
-      "workspace 7 silent,class:^(org.prismlauncher.*)$"
-      "workspace 7 silent,class:^(Minecraft)$"
+      "match:class ^(org.prismlauncher.*)$, workspace 7 silent"
+      "match:class ^(Minecraft)$, workspace 7 silent"
 
       # looking-glass-client
-      "workspace 7, class:looking-glass-client"
-      "fullscreen, class:looking-glass-client"
+      "match:class looking-glass-client, workspace 7"
+      "match:class looking-glass-client, fullscreen on"
 
       # gw2
-      "bordersize 0,title:^(Guild Wars 2)$"
-      "opaque,title:^(Guild Wars 2)$"
-      "noblur,title:^(Guild Wars 2)$"
-      "noshadow,title:^(Guild Wars 2)$"
-      "norounding,title:^(Guild Wars 2)$"
-      # "stayfocused,title:^(Guild Wars 2)$"
-      # "allowsinput,title:^(Guild Wars 2)$"
+      "match:title ^(Guild Wars 2)$, border_size 0"
+      "match:title ^(Guild Wars 2)$, opaque on"
+      "match:title ^(Guild Wars 2)$, no_blur on"
+      "match:title ^(Guild Wars 2)$, no_shadow on"
+      "match:title ^(Guild Wars 2)$, rounding 0"
 
       # blish hud
-      "noblur,title:^(Blish HUD)$"
-      "float, title:^(Blish HUD)$"
-      "center, title:^(Blish HUD)$"
-      "nofocus, title:^(Blish HUD)$"
-      "noinitialfocus, title:^(Blish HUD)$"
-      "noborder, title:^(Blish HUD)$"
-      "pin, title:^(Blish HUD)$"
-      "opacity 0.10 0.10, title:^(Blish HUD)$"
+      "match:title ^(Blish HUD)$, no_blur on"
+      "match:title ^(Blish HUD)$, float on"
+      "match:title ^(Blish HUD)$, center on"
+      "match:title ^(Blish HUD)$, no_focus on"
+      "match:title ^(Blish HUD)$, no_initial_focus on"
+      "match:title ^(Blish HUD)$, border_size 0"
+      "match:title ^(Blish HUD)$, pin on"
+      "match:title ^(Blish HUD)$, opacity 0.10 0.10"
     ];
-    layerrule = [
-      #"blur,waybar"
-      "blur,notifications"
-      "ignorezero,notifications"
-      "blur,swaync-notification-window"
-      "ignorezero,swaync-notification-window"
-      "blur,swaync-control-center"
-      "ignorezero,swaync-control-center"
-      "blur,logout_dialog"
-    ];
+    layerrule =
+      let
+        toRegex =
+          list:
+          let
+            elements = lib.concatStringsSep "|" list;
+          in
+          "match:namespace ^(${elements})$";
+
+        lowopacity = [
+          "bar"
+          "swaync-notification-window"
+          "swaync-control-center"
+          "calendar"
+          "notifications"
+          "system-menu"
+        ];
+
+        highopacity = [
+          "anyrun"
+          "osd"
+          "logout_dialog"
+          "quickshell:sidebar"
+        ];
+
+        blurred = lib.concatLists [
+          lowopacity
+          highopacity
+        ];
+      in
+      [
+        "${toRegex blurred}, blur true"
+        "match:namespace ^quickshell.*$, blur_popups true"
+        "${
+          toRegex [
+            "bar"
+            "quickshell:bar"
+          ]
+        }, xray true"
+        "${toRegex (highopacity ++ [ "music" ])}, ignore_alpha 0.5"
+        "${toRegex lowopacity}, ignore_alpha 0.2"
+        "${
+          toRegex [
+            "notifications"
+            "quickshell:notifications:overlay"
+            "quickshell:notifictaions:panel"
+          ]
+        }, no_anim true"
+      ];
   };
 }
