@@ -5,20 +5,14 @@
 }:
 {
   systemd.user.services.pyprland = {
-    Unit.Description = "pyprland plugin for hyprland";
-
-    Install = {
-      WantedBy = [ "graphical-session.target" ];
-      Wants = [ "graphical-session.target" ];
-      After = [ "graphical-session.target" ];
+    Unit = {
+      Description = "Pyprland daemon";
+      PartOf = [ "graphical-session.target" ];
     };
-
     Service = {
-      Type = "simple";
       ExecStart = lib.getExe pkgs.pyprland;
       Restart = "on-failure";
-      RestartSec = 1;
-      TimeoutStopSec = 10;
     };
+    Install.WantedBy = [ "graphical-session.target" ];
   };
 }
