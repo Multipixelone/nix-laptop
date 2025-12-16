@@ -62,6 +62,10 @@ in
   ];
   programs = {
     aria2.enable = true;
+    fish.functions.rs = ''
+      #!/bin/fish
+      ${lib.getExe pkgs.streamrip} search qobuz album "$argv"
+    '';
     yt-dlp = {
       enable = true;
       package = pkgs.yt-dlp.overrideAttrs (prev: {
