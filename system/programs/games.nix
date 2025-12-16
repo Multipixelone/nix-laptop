@@ -58,6 +58,7 @@
     # inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
     inputs.nix-gaming.packages.${pkgs.system}.winetricks-git
     pkgs.prismlauncher
+    pkgs.vintagestory
     # inputs.humble-key.packages.${pkgs.system}.default
   ];
   systemd.tmpfiles.rules = [
