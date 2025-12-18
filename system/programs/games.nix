@@ -55,11 +55,11 @@
   };
   # programs.envision.enable = true;
   environment.systemPackages = [
-    # inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
-    inputs.nix-gaming.packages.${pkgs.system}.winetricks-git
+    # inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}.wine-tkg
+    inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}.winetricks-git
     pkgs.prismlauncher
     pkgs.vintagestory
-    # inputs.humble-key.packages.${pkgs.system}.default
+    # inputs.humble-key.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
   systemd.tmpfiles.rules = [
     # https://wiki.archlinux.org/title/Gaming#Make_the_changes_permanent
@@ -134,7 +134,7 @@
   };
   programs.wine = {
     enable = true;
-    # package = inputs.nix-gaming.packages.${pkgs.system}.wine-cachyos;
+    # package = inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}.wine-cachyos;
     package = pkgs.wine-staging;
     binfmt = true;
     ntsync = true;

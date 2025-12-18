@@ -32,7 +32,7 @@ in
   services.hypridle = {
     # FIXME: crashing hyprlock with moonlight and I'm too lazy to troubleshoot
     enable = false;
-    package = inputs.hypridle.packages.${pkgs.system}.hypridle;
+    package = inputs.hypridle.packages.${pkgs.stdenv.hostPlatform.system}.hypridle;
     settings = {
       general = {
         lock_cmd = "pgrep hyprlock || ${lib.getExe config.programs.hyprlock.package}";

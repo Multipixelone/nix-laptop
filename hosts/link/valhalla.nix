@@ -1,5 +1,5 @@
 _:
-# subway = self.packages.${pkgs.system}.subway;
+# subway = self.packages.${pkgs.stdenv.hostPlatform.system}.subway;
 {
   systemd = {
     tmpfiles.rules = [

@@ -10,7 +10,7 @@ let
   hypr-dispatch =
     lib.getExe' config.programs.hyprland.package "hyprctl" + " dispatch exec [workspace 7]";
   steam = lib.getExe config.programs.steam.package + " --";
-  # pkgs-stable = inputs.nixpkgs-stable.legacyPackages.${pkgs.system};
+  # pkgs-stable = inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system};
   # moondeck = pkgs.qt6.callPackage ../../pkgs/moondeck/default.nix {
   #   inherit (pkgs-stable) qt6;
   #   inherit (pkgs-stable) procps;
@@ -257,7 +257,7 @@ in
         }
         {
           name = "MoonDeckStream";
-          cmd = "${self.packages.${pkgs.system}.moondeck}/bin/MoonDeckStream";
+          cmd = "${self.packages.${pkgs.stdenv.hostPlatform.system}.moondeck}/bin/MoonDeckStream";
           prep-cmd = [ prep ];
           image-path = mk-icon { icon-name = "moonlight"; };
           auto-detatch = false;

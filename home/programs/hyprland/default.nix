@@ -50,7 +50,7 @@ in
     package = null;
     portalPackage = null;
     plugins = [
-      # inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+      # inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
     ];
     systemd = {
       enable = false;

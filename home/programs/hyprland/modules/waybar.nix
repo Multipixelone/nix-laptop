@@ -7,8 +7,8 @@
   ...
 }:
 let
-  nextmeeting = lib.getExe inputs.nextmeeting.packages.${pkgs.system}.default;
-  waybar-mediaplayer = lib.getExe inputs.waybar-mediaplayer.packages.${pkgs.system}.default;
+  nextmeeting = lib.getExe inputs.nextmeeting.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  waybar-mediaplayer = lib.getExe inputs.waybar-mediaplayer.packages.${pkgs.stdenv.hostPlatform.system}.default;
   todoist-script =
     pkgs.writers.writePython3Bin "todoist"
       {

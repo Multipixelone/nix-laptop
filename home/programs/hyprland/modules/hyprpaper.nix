@@ -57,7 +57,7 @@
   # systemd.user.services.hyprpaper.Unit.After = lib.mkForce "graphical-session.target";
   services.hyprpaper = {
     enable = true;
-    package = inputs.hyprpaper.packages.${pkgs.system}.default;
+    package = inputs.hyprpaper.packages.${pkgs.stdenv.hostPlatform.system}.default;
     settings = {
       ipc = "on";
       splash = false;

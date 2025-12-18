@@ -7,7 +7,7 @@
 with lib;
 let
   yabridge-enabled = config.tunnel.yabridge.enable;
-  # wine = inputs.nix-gaming.packages.${pkgs.system}.wine-tkg;
+  # wine = inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}.wine-tkg;
   wine = pkgs.wineWowPackages.yabridge;
 in
 {

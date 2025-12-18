@@ -16,9 +16,9 @@ let
   beets-config = "${beets-dir}/config.yaml";
   detect-file = "${download-dir}/download-finished";
   ffmpeg = lib.getExe pkgs.ffmpeg-full;
-  lossywav = lib.getExe self.packages.${pkgs.system}.lossywav;
+  lossywav = lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.lossywav;
   # use my custom build of beets with included plugins
-  beets-plugins = inputs.beets-plugins.packages.${pkgs.system}.default;
+  beets-plugins = inputs.beets-plugins.packages.${pkgs.stdenv.hostPlatform.system}.default;
   beets-import = pkgs.writeShellApplication {
     name = "beets-import";
     runtimeInputs = [
@@ -175,7 +175,7 @@ let
 
     # Start with the base command and options
     set -l mpcenc_cmd ${
-      lib.getExe' self.packages.${pkgs.system}.musepack "mpcenc"
+      lib.getExe' self.packages.${pkgs.stdenv.hostPlatform.system}.musepack "mpcenc"
     } --overwrite --quality 5 --ape2
 
     if test -n "$artist_tag"; set -a mpcenc_cmd --artist "$artist_tag"; end
@@ -196,7 +196,7 @@ let
     if $mpcenc_cmd
         echo "Successfully created '$output_file'"
         echo "Adding replaygain information"
-        ${lib.getExe' self.packages.${pkgs.system}.musepack "mpcgain"} $output_file
+        ${lib.getExe' self.packages.${pkgs.stdenv.hostPlatform.system}.musepack "mpcgain"} $output_file
     else
         echo "Error: mpcenc failed to encode the file." >&2
         if test -n "$temp_file"
@@ -413,7 +413,7 @@ let
     failure_delay_seconds = 2
   '';
   euphony-wrapped = pkgs.writeShellScriptBin "euphony" ''
-    ${lib.getExe' inputs.euphony.packages.${pkgs.system}.default "euphony"} -c ${configFile} $@
+    ${lib.getExe' inputs.euphony.packages.${pkgs.stdenv.hostPlatform.system}.default "euphony"} -c ${configFile} $@
   '';
 in
 {
@@ -476,7 +476,7 @@ in
             music-dir
             transcoded-music
           ];
-          ExecStart = lib.getExe inputs.playlist-download.packages.${pkgs.system}.default;
+          ExecStart = lib.getExe inputs.playlist-download.packages.${pkgs.stdenv.hostPlatform.system}.default;
         };
       };
     };

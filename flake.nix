@@ -25,7 +25,7 @@
               pkgs.just
               pkgs.attic-client
               pkgs.npins
-              inputs.agenix.packages.${pkgs.system}.default
+              inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
             ];
             name = "dots";
             DIRENV_LOG_FORMAT = "";
@@ -36,7 +36,7 @@
 
           # TODO fix build with cmake 4
           packages = {
-            musepack = inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.callPackage ./pkgs/musepack { };
+            musepack = inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.callPackage ./pkgs/musepack { };
           };
 
           pre-commit.settings = {

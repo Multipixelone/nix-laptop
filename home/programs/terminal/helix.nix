@@ -55,7 +55,7 @@ in
   programs.helix = {
     enable = true;
     defaultEditor = true;
-    package = inputs.helix.packages.${pkgs.system}.default;
+    package = inputs.helix.packages.${pkgs.stdenv.hostPlatform.system}.default;
     extraPackages = packages;
     settings = {
       editor = {
@@ -216,7 +216,7 @@ in
           };
         };
         uwu-colors = {
-          command = "${inputs.uwu-colors.packages.${pkgs.system}.default}/bin/uwu_colors";
+          command = "${inputs.uwu-colors.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/uwu_colors";
         };
 
         vscode-css-language-server = {

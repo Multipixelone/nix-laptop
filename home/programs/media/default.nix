@@ -31,7 +31,7 @@
     alsa-scarlett-gui
     scarlett2
     # (callPackage ../../../pkgs/foobar2000 {
-    #   wine = inputs.nix-gaming.packages.${pkgs.system}.wine-tkg;
+    #   wine = inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}.wine-tkg;
     #   # location = "/media/TeraData/Games/cities-skylines-ii";
     # })
   ];

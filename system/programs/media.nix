@@ -6,12 +6,12 @@
   ...
 }:
 let
-  playlist-download = inputs.playlist-download.packages.${pkgs.system};
+  playlist-download = inputs.playlist-download.packages.${pkgs.stdenv.hostPlatform.system};
   # wrap secret into lastfm scrobbler
   lastfm-wrapped = pkgs.writeShellScriptBin "rb-scrobbler" ''
     set -o allexport
     source ${config.age.secrets."lastfm".path}
-    ${lib.getExe inputs.rb-scrobbler.packages.${pkgs.system}.default} -n "keep" -o -4 $@
+    ${lib.getExe inputs.rb-scrobbler.packages.${pkgs.stdenv.hostPlatform.system}.default} -n "keep" -o -4 $@
   '';
   # TODO do this. literally any other way. this is dependent on so many external things its not even funny
   rockbox-database = pkgs.writeShellApplication {
@@ -43,12 +43,12 @@ in
   };
   services.playerctld.enable = true;
   environment.systemPackages = [
-    inputs.khinsider.packages.${pkgs.system}.default
+    inputs.khinsider.packages.${pkgs.stdenv.hostPlatform.system}.default
     playlist-download.default
     playlist-download.rb-scrob
     lastfm-wrapped
     rockbox-database
-    # self.packages.${pkgs.system}.bandcamp-dl
+    # self.packages.${pkgs.stdenv.hostPlatform.system}.bandcamp-dl
 
     (pkgs.writeShellApplication {
       name = "ipod-sync";
