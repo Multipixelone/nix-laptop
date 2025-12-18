@@ -1,5 +1,37 @@
 { lib, pkgs, ... }:
+let
+  sunpaper = pkgs.sunpaper.overrideAttrs (oldAttrs: {
+    postPatch = ''
+      substituteInPlace sunpaper.sh \
+        --replace-fail "sunwait" "${lib.getExe pkgs.sunwait}" \
+        --replace-fail "setwallpaper" "${lib.getExe' pkgs.wallutils "setwallpaper"}" \
+        --replace-fail '$HOME/sunpaper/images/Corporate-Synergy' "$out/share/sunpaper/images/Lakeside" \
+        --replace-fail '/usr/share' '/etc'
+    '';
+    buildInputs = oldAttrs.buildInputs ++ [
+      pkgs.swww
+      pkgs.bc
+    ];
+  });
+in
 {
+  xdg.configFile."sunpaper/config".text = ''
+    latitude="40.680271N"
+    longitude="73.944893W"
+
+    swww_enable="true"
+    swww_fps="240"
+    swww_step="30"
+  '';
+  systemd.user.services.sunpaper = {
+    Unit.Description = "automatic wallpaper set based on sun";
+    Install.WantedBy = [ "graphical-session.target" ];
+    Service = {
+      Type = "forking";
+      ExecStart = "${lib.getExe sunpaper} -d";
+      restart = "on-failure";
+    };
+  };
   programs.looking-glass-client = {
     enable = true;
     settings = {
@@ -16,6 +48,7 @@
     };
   };
   home.packages = [
+    sunpaper
     (pkgs.writeScriptBin "win" ''
       #!${lib.getExe pkgs.fish}
       #!/usr/bin/env fish
