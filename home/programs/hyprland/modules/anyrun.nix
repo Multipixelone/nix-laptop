@@ -6,7 +6,7 @@
 }:
 {
   programs.rofi = {
-    enable = true;
+    enable = false;
     plugins = with pkgs; [
       rofi-emoji
     ];
@@ -30,7 +30,8 @@
   };
   programs.anyrun = {
     # TEMP: fix this. it's so busted but I'm too lazy to figure out why its busted
-    enable = false;
+    enable = true;
+    package = inputs.anyrun.packages.x86_64-linux.default;
     config = {
       width = {
         fraction = 0.3;
@@ -40,13 +41,13 @@
       };
       hideIcons = false;
       hidePluginInfo = true;
-      plugins = with inputs.anyrun.packages.${pkgs.system}; [
-        applications
+      plugins = with inputs.anyrun.packages.${pkgs.stdenv.hostPlatform.system}; [
+        uwsm_app
         shell
         # symbols
         # dictionary
         # websearch
-        inputs.anyrun-nixos-options.packages.${pkgs.system}.default
+        inputs.anyrun-nixos-options.packages.${pkgs.stdenv.hostPlatform.system}.default
       ];
     };
     # thank u fufexan (https://github.com/fufexan/dotfiles/blob/41612095fbebb01a0f2fe0980ec507cf02196392/home/programs/anyrun/style-dark.css)
@@ -102,14 +103,10 @@
       }
     '';
     extraConfigFiles = {
-      "applications.ron".text = ''
+      "uwsm_app.ron".text = ''
         Config(
-        desktop_actions: true,
+          desktop_actions: false,
           max_entries: 5,
-          terminal: Some(Terminal(
-            command: "foot",
-            args: "{}",
-          )),
         )
       '';
       "dictionary.ron".text = ''
@@ -126,7 +123,7 @@
         let
           nixos-options = osConfig.system.build.manual.optionsJSON + "/share/doc/nixos/options.json";
           hm-options =
-            inputs.home-manager.packages.${pkgs.system}.docs-json + "/share/doc/home-manager/options.json";
+            inputs.home-manager.packages.${pkgs.stdenv.hostPlatform.system}.docs-json + "/share/doc/home-manager/options.json";
           options = builtins.toJSON {
             ":nix" = [ nixos-options ];
             ":hm" = [ hm-options ];
