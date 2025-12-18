@@ -1,8 +1,20 @@
 {
+  config,
   pkgs,
   lib,
   ...
 }:
+let
+  wallpaper-set-link = pkgs.writeShellApplication {
+    name = "wallpaper-set";
+    runtimeInputs = [ pkgs.swww ];
+    text = ''
+      sleep 5
+      swww img -o DP-1 --transition-fps 240 --transition-type wave --transition-angle 60 --transition-step 30 ${config.theme.wallpaper}
+      swww img -o DP-3 --transition-fps 60 --transition-type wave --transition-angle 120 --transition-step 30 ${config.theme.side-wallpaper}
+    '';
+  };
+in
 {
   imports = [
   ];
@@ -23,6 +35,14 @@
     Install.WantedBy = [ "graphical-session.target" ];
     Service = {
       ExecStart = lib.getExe pkgs.ledfx;
+    };
+  };
+  systemd.user.services.set-wallpaper = {
+    Unit.Description = "set wallpaper on startup";
+    Install.WantedBy = [ "graphical-session.target" ];
+    Service = {
+      Type = "oneshot";
+      ExecStart = lib.getExe wallpaper-set-link;
     };
   };
 }

@@ -5,16 +5,6 @@
   # lib,
   ...
 }:
-# TODO I really need to write this in a better way, but my laptop hates swww for some reason...
-# wallpaper-set-link = pkgs.writeShellApplication {
-#   name = "wallpaper-set";
-#   runtimeInputs = [pkgs.swww];
-#   text = ''
-#     sleep 10
-#     swww img -o DP-1 --transition-fps 240 --transition-type wave --transition-angle 60 --transition-step 30 ${config.theme.wallpaper}
-#     swww img -o DP-3 --transition-fps 60 --transition-type wave --transition-angle 120 --transition-step 30 ${config.theme.side-wallpaper}
-#   '';
-# };
 # wallpaper-set-zelda = let
 #   morning = pkgs.fetchurl {
 #     url = "https://github.com/zhichaoh/catppuccin-wallpapers/blob/main/landscapes/tropic_island_morning.jpg?raw=true";
@@ -54,9 +44,10 @@
 #     '';
 #   };
 {
+  services.swww.enable = true;
   # systemd.user.services.hyprpaper.Unit.After = lib.mkForce "graphical-session.target";
   services.hyprpaper = {
-    enable = true;
+    enable = false;
     package = inputs.hyprpaper.packages.${pkgs.stdenv.hostPlatform.system}.default;
     settings = {
       ipc = "on";
