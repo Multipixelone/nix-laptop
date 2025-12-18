@@ -644,6 +644,7 @@ in
             items = [ "bitrate" ];
           };
         };
+        # switched to euphony for speed. alternatives ain't doing something right.
         # alternatives.ipod = {
         #   directory = transcoded-music;
         #   query = "";
