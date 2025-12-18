@@ -1,5 +1,4 @@
-{ inputs, ... }:
-{
+_: {
   imports = [
     # inputs.auto-cpufreq.nixosModules.default
   ];
@@ -20,9 +19,16 @@
       };
     };
   };
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=300s
+  '';
   services = {
     thermald.enable = true;
     tlp.enable = false;
+    logind.settings.Login = {
+      HandleLidSwitch = "suspend-then-hibernate";
+      HandleLidSwitchExernalPower = "suspend-then-hibernate";
+    };
     # # testing undervolting
     # undervolt = {
     #   enable = true;
