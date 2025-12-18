@@ -602,8 +602,12 @@ in
           log = "${beets-dir}/logs/import.log";
         };
         match = {
-          strong_rec_thresh = 0.1;
-          max_rec.missing_tracks = "low";
+          strong_rec_thresh = 0.075;
+          medium_rec_thresh = 0.125;
+          max_rec = {
+            missing_tracks = "medium";
+            unmatched_tracks = "strong";
+          };
           preferred = {
             countries = [
               "XW"
