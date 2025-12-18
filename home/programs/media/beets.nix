@@ -624,14 +624,23 @@ in
           # this makes beets not show what tracks an album is missing. ever. LOL
           # ignored = "missing_tracks unmatched_tracks";
         };
-        # fetch and embed external_ids from musicbrainz
-        musicbrainz.external_ids = {
-          discogs = true;
-          spotify = true;
-          bandcamp = true;
-          beatport = true;
-          deezer = true;
-          tidal = true;
+        musicbrainz = {
+          extra_tags = [
+            "year"
+            "catalognum"
+            "country"
+            "media"
+            "label"
+          ];
+          # fetch and embed external_ids from musicbrainz
+          external_ids = {
+            discogs = true;
+            spotify = true;
+            bandcamp = true;
+            beatport = true;
+            deezer = true;
+            tidal = true;
+          };
         };
         lastgenre = {
           force = false;
