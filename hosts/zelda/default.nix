@@ -36,12 +36,14 @@
   };
   services.logrotate.checkConfig = false;
   boot = {
+    resumeDevice = "/dev/disk/by-uuid/576fdcd4-d642-4229-9073-90724eb72043";
     # use ram for /tmp
     tmp = {
       useTmpfs = true;
       tmpfsSize = "30%";
     };
     initrd = {
+      systemd.enable = true;
       availableKernelModules = [
         "xhci_pci"
         "ahci"
@@ -62,6 +64,8 @@
       "iommu=pt"
       # ignore split lock detections
       "split_lock_detect=off"
+      # btrfs hibernate resume
+      "resume_offset=213741148"
     ];
     blacklistedKernelModules = [
       "nouveau"
