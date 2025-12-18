@@ -9,7 +9,7 @@ in
     provider = "geoclue2";
     temperature = {
       day = 6500;
-      night = 4000;
+      night = 4300;
     };
     # https://gitlab.com/chinstrap/gammastep/-/blob/master/gammastep.conf.sample?ref_type=heads
     settings = {
