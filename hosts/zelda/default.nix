@@ -169,6 +169,15 @@
             "alexandria"
           ];
         };
+        "vintage-story" = {
+          path = "/home/tunnel/Games/vintage-story";
+          devices = [
+            "link"
+            "alexandria"
+            "deck"
+            "minish"
+          ];
+        };
         "tvhrc-cfaky" = {
           path = "/home/tunnel/.local/share/Steam/userdata/122579086/config/grid";
           devices = [
