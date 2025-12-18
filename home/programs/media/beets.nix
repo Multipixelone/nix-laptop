@@ -625,6 +625,8 @@ in
           # ignored = "missing_tracks unmatched_tracks";
         };
         musicbrainz = {
+          # truthfully i'm not sure at all why i'd ever want to penalize tracks in this manner.
+          data_source_mismatch_penalty = 0;
           extra_tags = [
             "year"
             "catalognum"
