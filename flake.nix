@@ -36,7 +36,9 @@
 
           # TODO fix build with cmake 4
           packages = {
-            musepack = inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.callPackage ./pkgs/musepack { };
+            musepack =
+              inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.callPackage ./pkgs/musepack
+                { };
           };
 
           pre-commit.settings = {

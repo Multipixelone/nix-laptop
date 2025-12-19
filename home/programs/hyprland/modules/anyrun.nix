@@ -123,7 +123,8 @@
         let
           nixos-options = osConfig.system.build.manual.optionsJSON + "/share/doc/nixos/options.json";
           hm-options =
-            inputs.home-manager.packages.${pkgs.stdenv.hostPlatform.system}.docs-json + "/share/doc/home-manager/options.json";
+            inputs.home-manager.packages.${pkgs.stdenv.hostPlatform.system}.docs-json
+            + "/share/doc/home-manager/options.json";
           options = builtins.toJSON {
             ":nix" = [ nixos-options ];
             ":hm" = [ hm-options ];

@@ -11,7 +11,9 @@ let
   lastfm-wrapped = pkgs.writeShellScriptBin "rb-scrobbler" ''
     set -o allexport
     source ${config.age.secrets."lastfm".path}
-    ${lib.getExe inputs.rb-scrobbler.packages.${pkgs.stdenv.hostPlatform.system}.default} -n "keep" -o -4 $@
+    ${
+      lib.getExe inputs.rb-scrobbler.packages.${pkgs.stdenv.hostPlatform.system}.default
+    } -n "keep" -o -4 $@
   '';
   # TODO do this. literally any other way. this is dependent on so many external things its not even funny
   rockbox-database = pkgs.writeShellApplication {

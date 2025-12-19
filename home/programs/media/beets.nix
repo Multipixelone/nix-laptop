@@ -413,7 +413,9 @@ let
     failure_delay_seconds = 2
   '';
   euphony-wrapped = pkgs.writeShellScriptBin "euphony" ''
-    ${lib.getExe' inputs.euphony.packages.${pkgs.stdenv.hostPlatform.system}.default "euphony"} -c ${configFile} $@
+    ${
+      lib.getExe' inputs.euphony.packages.${pkgs.stdenv.hostPlatform.system}.default "euphony"
+    } -c ${configFile} $@
   '';
 in
 {
