@@ -18,7 +18,7 @@ in
         brightness-day = "1.0";
         brightness-night = "0.8";
         gamma-day = "1.0";
-        gamma-night = "0.8";
+        gamma-night = "1.0";
       };
     };
   };
