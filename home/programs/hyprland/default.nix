@@ -108,7 +108,7 @@ in
         shadow = {
           offset = "1 3";
           # only enable drop shadow on link
-          enabled = lib.mkIf (osConfig.networking.hostName == "link") true;
+          enabled = true;
           ignore_window = true;
           range = 30;
           render_power = 4;
@@ -117,8 +117,7 @@ in
         };
         active_opacity = 1;
         inactive_opacity = 1;
-        # enable blur on desktop (costly)
-        blur = lib.mkIf (osConfig.networking.hostName == "link") {
+        blur = {
           enabled = true;
           xray = true;
           brightness = 1.1;
