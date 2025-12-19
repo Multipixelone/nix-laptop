@@ -15,6 +15,9 @@ let
   });
 in
 {
+  imports = [
+    ./programs/hyprland/modules/battery.nix
+  ];
   xdg.configFile."sunpaper/config".text = ''
     latitude="40.680271N"
     longitude="73.944893W"
