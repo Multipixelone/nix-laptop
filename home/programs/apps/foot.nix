@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  osConfig,
   ...
 }:
 {
@@ -33,7 +32,7 @@
         beam-thickness = 1;
       };
       colors = {
-        alpha = lib.mkIf (osConfig.networking.hostName == "link") "0.85";
+        alpha = "0.85";
       };
     };
   };
