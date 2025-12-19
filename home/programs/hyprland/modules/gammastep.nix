@@ -16,7 +16,7 @@ in
       general = {
         fade = "1";
         brightness-day = "1.0";
-        brightness-night = "0.8";
+        brightness-night = "0.9";
         gamma-day = "1.0";
         gamma-night = "1.0";
       };
