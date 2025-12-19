@@ -26,13 +26,28 @@ in
     swww_fps="240"
     swww_step="30"
   '';
-  systemd.user.services.sunpaper = {
-    Unit.Description = "automatic wallpaper set based on sun";
-    Install.WantedBy = [ "graphical-session.target" ];
-    Service = {
-      Type = "forking";
-      ExecStart = "${lib.getExe sunpaper} -d";
-      restart = "on-failure";
+  systemd.user = {
+    timers.sunpaper = {
+      Install.WantedBy = [ "timers.target" ];
+      Timer = {
+        OnCalendar = "*:0/1";
+      };
+    };
+    services.sunpaper = {
+      Unit.Description = "automatic wallpaper set based on sun";
+      Install.WantedBy = [ "graphical-session.target" ];
+      Service = {
+        ExecStart = lib.getExe sunpaper;
+      };
+    };
+    services.sunpaper-cache = {
+      Unit.Description = "clear sunpaper cache on startup";
+      Install.WantedBy = [ "graphical-session.target" ];
+      Service = {
+        Type = "oneshot";
+        RemainAfterExit = "no";
+        ExecStart = "${lib.getExe sunpaper} -c";
+      };
     };
   };
   programs.looking-glass-client = {
