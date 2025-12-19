@@ -9,11 +9,13 @@ deploy:
   attic push system /run/current-system -j 2
 
 minishb:
-  nix build .#nixosConfigurations.minish.config.system.build.toplevel
+  # nix build .#nixosConfigurations.minish.config.system.build.toplevel
+  # attic push system result -j 3
+  # nix build .#nixosConfigurations.marin.config.system.build.toplevel
+  nh os build -H marin
   attic push system result -j 3
-  nix build .#nixosConfigurations.marin.config.system.build.toplevel
-  attic push system result -j 3
-  nix build .#nixosConfigurations.zelda.config.system.build.toplevel
+  # nix build .#nixosConfigurations.zelda.config.system.build.toplevel
+  nh os build -H zelda
   attic push system result -j 3
   unlink result
 
