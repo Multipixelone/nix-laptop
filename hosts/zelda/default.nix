@@ -35,6 +35,7 @@
     };
   };
   services.logrotate.checkConfig = false;
+  services.automatic-timezoned.enable = true;
   boot = {
     resumeDevice = "/dev/disk/by-uuid/576fdcd4-d642-4229-9073-90724eb72043";
     # use ram for /tmp
