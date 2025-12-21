@@ -32,8 +32,7 @@ in
 {
   systemd.user.services.hypridle.Unit.After = lib.mkForce "graphical-session.target";
   services.hypridle = {
-    # FIXME: crashing hyprlock with moonlight and I'm too lazy to troubleshoot
-    enable = false;
+    enable = lib.mkIf (osConfig.networking.hostName == "zelda") true;
     package = inputs.hypridle.packages.${pkgs.stdenv.hostPlatform.system}.hypridle;
     settings = {
       general = {
