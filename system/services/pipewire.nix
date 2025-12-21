@@ -12,7 +12,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
-    lowLatency.enable = true;
+    lowLatency.enable = false;
     wireplumber.enable = true;
     wireplumber.extraConfig = {
       "dualsense" = {
