@@ -40,14 +40,14 @@ in
         before_sleep_cmd = lib.getExe' pkgs.systemd "loginctl" + " lock-session";
       };
       listener = [
-        {
-          timeout = timeout - 40;
-          on-timeout = "${brillo} -s dell::kbd_backlight -S 0";
-          on-resume = "${brillo} -s dell::kbd_backlight -S 100";
-        }
+        # {
+        #   timeout = timeout - 40;
+        #   on-timeout = "${brillo} -s dell::kbd_backlight -S 0";
+        #   on-resume = "${brillo} -s dell::kbd_backlight -S 100";
+        # }
         {
           timeout = timeout - 20;
-          on-timeout = "${brillo} -O; ${brillo} -u 1000000 -S 0.06";
+          on-timeout = "${brillo} -O; ${brillo} -u 1000000 -S 5.00";
           on-resume = "${brillo} -I -u 500000";
         }
         {
@@ -55,15 +55,15 @@ in
           on-timeout = "loginctl lock-session";
         }
         # TODO this is rlllyyy jank. please refactor a module system SO SOON PLEASE.
-        (lib.mkIf (osConfig.networking.hostName == "zelda") {
-          timeout = timeout + 30;
-          on-timeout = "${hyprctl} dispatch dpms off";
-          on-resume = "${hyprctl} dispatch dpms on";
-        })
-        (lib.mkIf (osConfig.networking.hostName == "zelda") {
+        # (lib.mkIf (osConfig.networking.hostName == "zelda") {
+        #   timeout = timeout + 30;
+        #   on-timeout = "${hyprctl} dispatch dpms off";
+        #   on-resume = "${hyprctl} dispatch dpms on";
+        # })
+        {
           timeout = timeout + 60;
           on-timeout = lib.getExe suspend-script;
-        })
+        }
       ];
     };
   };
