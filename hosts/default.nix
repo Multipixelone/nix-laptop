@@ -65,6 +65,7 @@
           "${mod}/services/jdownloader.nix"
 
           "${mod}/network/dnscrypt.nix"
+          "${mod}/hardware/secure-boot.nix"
 
           "${mod}/programs/home-manager.nix"
           {
@@ -75,6 +76,7 @@
             };
           }
           inputs.musnix.nixosModules.musnix
+          inputs.lanzaboote.nixosModules.lanzaboote
           inputs.quadlet-nix.nixosModules.quadlet
           inputs.agenix.nixosModules.default
           inputs.chaotic.nixosModules.default

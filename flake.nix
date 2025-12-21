@@ -239,6 +239,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
+    # lanzaboote
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.0.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # hyprland wm
     hyprland.url = "github:hyprwm/hyprland";
     hyprland-plugins = {
