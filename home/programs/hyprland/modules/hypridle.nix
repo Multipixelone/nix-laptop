@@ -20,9 +20,11 @@ let
     text = ''
       # only suspend if audio isn't running & not plugged in
       playing() { playerctl -a status | rg Playing -q; }
-      charging() { rg -q 1 /sys/class/power_supply/AC/online; }
-      if ! charging && ! playing; then
-        systemctl suspend
+      BAT_STATUS=/sys/class/power_supply/BAT0/status
+      currentStatus=$(cat "$BAT_STATUS")
+
+      if [ "$currentStatus" = "Discharging" ] && ! playing; then
+        systemctl suspend-then-hibernate
       fi
     '';
   };
