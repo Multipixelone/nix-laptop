@@ -76,7 +76,7 @@ in
         "text_rot_int": 1000,
         "image_signal": 4,
         "length_factor": 1,
-        "player_name": "Plexamp",
+        "player_name": "mpd",
         "convert_to_jpeg": false,
         "album_art_placeholder": "no",
         "lyrics_providers": [
