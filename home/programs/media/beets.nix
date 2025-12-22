@@ -514,9 +514,12 @@ in
     euphony-wrapped
   ];
   programs = {
-    fish.shellAbbrs = {
-      bi = "beet import";
-    };
+    fish.functions.bi = ''
+      #!/bin/fish
+      set -l path (path resolve "$argv")
+      ${lib.getExe md5_fixer} -r "$path"
+      ${lib.getExe beets-plugins} import "$path"
+    '';
     beets = {
       enable = true;
       package = beets-plugins;
@@ -749,10 +752,10 @@ in
               event = "import_begin";
               command = "${lib.getExe log-timestamp} Import begin";
             }
-            {
-              event = "import_begin";
-              command = "${lib.getExe md5_fixer} -r /home/tunnel/StreamripDownloads";
-            }
+            # {
+            #   event = "import_begin";
+            #   command = "${lib.getExe md5_fixer} -r /home/tunnel/StreamripDownloads";
+            # }
             {
               event = "import";
               command = "${lib.getExe log-timestamp} Import end";
