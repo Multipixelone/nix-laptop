@@ -802,13 +802,6 @@ in
             ];
           };
         };
-        llm = {
-          search = {
-            provider = "ollama";
-            model = "deepseek-r1:7b-qwen-distill-q4_K_M";
-            ollama_host = "http://localhost:11434";
-          };
-        };
         missing = {
           format = "$albumartist - $album - $track $title";
           count = true;
