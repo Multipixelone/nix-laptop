@@ -787,6 +787,7 @@ in
           threads = 6;
         };
         plexsync = {
+          manual_search = true;
           use_llm_search = true;
           playlists = {
             defaults.maxtracks = 20;
