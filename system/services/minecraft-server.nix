@@ -4,7 +4,8 @@ let
 in
 {
   systemd.tmpfiles.rules = [
-    "d ${atm-folder} 0770 tunnel users -"
+    "d ${atm-folder}/data 0770 tunnel users -"
+    "d ${atm-folder}/modpacks 0770 tunnel users -"
     # "d /srv/games/velocity 0770 tunnel users -"
   ];
   # age.secrets = {
@@ -17,22 +18,21 @@ in
   # };
   virtualisation.oci-containers.containers = {
     minecraft-atm10 = {
-      autoStart = false;
+      autoStart = true;
       image = "itzg/minecraft-server:latest";
-      ports = [ "25555:25555" ];
+      ports = [ "25565:25565" ];
       # environmentFiles = [config.age.secrets."curseforge".path];
       environment = {
         EULA = "TRUE";
         ONLINE_MODE = "TRUE";
-        MOD_PLATFORM = "AUTO_CURSEFORGE";
-        # None of my api keys were working so this is the ferium one LOL
-        CF_API_KEY = "$2a$10$sI.yRk4h4R49XYF94IIijOrO4i3W3dAFZ4ssOlNE10GYrDhc2j8K.";
-        CF_PAGE_URL = "https://www.curseforge.com/minecraft/modpacks/all-the-mods-9";
-        CF_FILENAME_MATCHER = "2.45";
-        MEMORY = "10G";
+        # MOD_PLATFORM = "AUTO_CURSEFORGE";
+        TYPE = "CURSEFORGE";
+        CF_SERVER_MOD = "/modpacks/ServerFiles-5.4.zip";
+        MEMORY = "16G";
       };
       volumes = [
-        "${atm-folder}:/data"
+        "${atm-folder}/modpacks:/modpacks:ro"
+        "${atm-folder}/data:/data"
       ];
     };
     # minecraft-proxy = {

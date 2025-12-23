@@ -28,6 +28,8 @@
           "${mod}/programs/gamestream.nix"
           "${mod}/programs/games.nix"
 
+          "${mod}/services/minecraft-server.nix"
+
           "${mod}/programs/media.nix"
           "${mod}/services/jdownloader.nix"
           "${mod}/services/slskd.nix"
