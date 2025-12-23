@@ -555,7 +555,7 @@ in
           "missing"
           "musicbrainz"
           "play"
-          # "plexsync"
+          "plexsync"
           "replaygain"
           "replace"
           "rewrite"
