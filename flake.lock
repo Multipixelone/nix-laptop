@@ -272,8 +272,26 @@
         "type": "github"
       }
     },
+    "beets-plexsync": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1763930181,
+        "narHash": "sha256-DdpxojrpWgyhq2P3BqlHLMBt9WCnkd3xeBvPqDSxrJQ=",
+        "owner": "arsaboo",
+        "repo": "beets-plexsync",
+        "rev": "3fec888340d907d568e6711efeab7fd70fdef7f1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arsaboo",
+        "repo": "beets-plexsync",
+        "type": "github"
+      }
+    },
     "beets-plugins": {
       "inputs": {
+        "beets-plexsync": "beets-plexsync",
+        "beets-stylize": "beets-stylize",
         "flake-utils": [
           "flake-utils"
         ],
@@ -282,16 +300,32 @@
         ]
       },
       "locked": {
-        "lastModified": 1763491394,
-        "narHash": "sha256-R+WvyGv6QaUzklpCXTlaOjB2zNzBPuz8Pib8P7F4I+s=",
+        "lastModified": 1766489984,
+        "narHash": "sha256-ULp/YvFB9pwoRGH28EDlxAJTFyKaLYDdUvuQyLgogYA=",
         "owner": "Multipixelone",
         "repo": "beets-plugins",
-        "rev": "9815a780bfcb1d881d4ab4ef8038ada48650de01",
+        "rev": "c4409f8e9b3f0e81eb226f686c8a4b0d8c4b548d",
         "type": "github"
       },
       "original": {
         "owner": "Multipixelone",
         "repo": "beets-plugins",
+        "type": "github"
+      }
+    },
+    "beets-stylize": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1733241897,
+        "narHash": "sha256-JLUwEBfV6VNzB9xl0/aJ5gwLIg0069fO+cPI6bZI9w8=",
+        "owner": "kergoth",
+        "repo": "beets-stylize",
+        "rev": "15d2b038458959f3ba6e29fc633c258ec662950f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kergoth",
+        "repo": "beets-stylize",
         "type": "github"
       }
     },
@@ -2723,11 +2757,11 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1764947873,
-        "narHash": "sha256-IMhSQoqlc0CS8FNk8EHaa0QstRhIEJb+FkiR8ciaEYo=",
+        "lastModified": 1766489427,
+        "narHash": "sha256-zp8ma08jHwp3Uy9Y/giccz1EekEHIvxN5KfhqpnX+hM=",
         "ref": "refs/heads/main",
-        "rev": "758cc9e4b9d2955e1342cdc1c41bca20a7e5658f",
-        "revCount": 58,
+        "rev": "5d5c7c7a5105a2745124fd5c8393cb778b8e4a71",
+        "revCount": 59,
         "type": "git",
         "url": "ssh://git@github.com/Multipixelone/nix-secrets.git"
       },
