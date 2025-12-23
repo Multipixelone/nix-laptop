@@ -32,34 +32,18 @@ let
   song-change = pkgs.writeShellApplication {
     name = "song-change";
     runtimeInputs = with pkgs; [
-      ffmpeg-headless
-      imagemagick
       libnotify
-      mpc
-      playerctl
+      rmpc
       procps
     ];
     text = ''
       COVER=/tmp/waybar-mediaplayer-art.jpg
-      MUSIC_DIR=${config.home.sessionVariables.MUSIC_DIR}
-      ffmpeg -i "$MUSIC_DIR/$(mpc current -f %file%)" "$COVER" -y &> /dev/null
-      STATUS=$?
 
-      # Check if the file has a embbeded album art
-      if [ "$STATUS" -eq 0 ];then
-          true
-      else
-          DIR="$MUSIC_DIR$(dirname "$(mpc current -f %file%)")"
+      # get cover out of rmpc
+      rmpc albumart --output "$COVER"
+      notify-send -r 27072 -i "''${COVER}" "$TITLE" "by $ARTIST on $ALBUM"
 
-          for CANDIDATE in "$DIR/cover."{png,jpg,webp}; do
-              if [ -f "$CANDIDATE" ]; then
-                  convert "$CANDIDATE" $COVER &> /dev/null
-              fi
-          done
-      fi
-
-      notify-send -r 27072 "$(mpc --format '%title% \n%artist% - %album%' current)" -i /tmp/waybar-mediaplayer-art.jpg
-
+      sleep 5
       # update waybar
       pkill -RTMIN+5 waybar || true
       # update hyprlock
