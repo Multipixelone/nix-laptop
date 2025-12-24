@@ -6,6 +6,7 @@
     ./spicetify.nix
     ./beets.nix
     # ./mopidy.nix
+    ./ipod.nix
     ./mpd.nix
   ];
   home.packages = with pkgs; [
