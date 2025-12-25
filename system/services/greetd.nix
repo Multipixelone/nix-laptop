@@ -9,12 +9,14 @@ let
   # kmscon = "${pkgs.kmscon}/libexec/kmscon/kmscon";
   tuigreet = lib.getExe pkgs.tuigreet;
   uwsm = lib.getExe config.programs.uwsm.package;
-  hypr-cmd = "${uwsm} start hyprland-uwsm.desktop"; # hyprland = lib.getExe' config.programs.hyprland.package "Hyprland";
+  hypr-cmd = "${uwsm} start -e -D Hyprland hyprland-uwsm.desktop"; # hyprland = lib.getExe' config.programs.hyprland.package "Hyprland";
   # hyprland-session = "${config.programs.hyprland.package}/share/wayland-sessions";
 in
 {
   # required for keyring to unlock on boot
   security.pam.services.greetd.enableGnomeKeyring = true;
+  programs.uwsm.waylandCompositors.hyprland.binPath =
+    lib.mkForce "/run/current-system/sw/bin/start-hyprland";
   services = {
     # seatd.enable = true;
     # kmscon = {
