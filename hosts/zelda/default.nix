@@ -113,13 +113,10 @@
         "minish".id = "36AQOJE-HBX7O7L-M7C3UHJ-5SVQOZU-Y4ZOMVQ-ZRCXL77-MMQT2XK-6OYGXQR";
       };
       folders = {
-        # "4bvms-ufujg" = {
-        #   path = "/home/tunnel/Music/Library";
-        #   devices = [
-        #     "link"
-        #     "alexandria"
-        #   ];
-        # };
+        "transcoded-music" = {
+          path = "/home/tunnel/Music/Library";
+          devices = [ "link" ];
+        };
         "playlists" = {
           path = "/home/tunnel/Music/Playlists";
           devices = [
