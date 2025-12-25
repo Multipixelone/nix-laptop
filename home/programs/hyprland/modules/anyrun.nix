@@ -54,7 +54,7 @@
     extraCss = ''
       * {
         all: unset;
-        font-family: "Apple Color Emoji", "PragmataPro Liga";
+        font-family: "PragmataPro Liga", "Apple Color Emoji";
         font-size: 1.2rem;
       }
 
