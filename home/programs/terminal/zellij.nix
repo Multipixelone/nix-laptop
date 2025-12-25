@@ -95,6 +95,13 @@ in
         zjstatus-hints
       }
       keybinds {
+        shared {
+          bind "Ctrl Tab" { GoToNextTab; }
+          bind "Ctrl Shift Tab" { GoToPreviousTab; }
+          bind "Alt Enter" { NewPane "Right"; SwitchToMode "Normal"; }
+          bind "Alt Shift Q" {CloseFocusedPane; SwitchToMode "Normal"; }:
+          bind "Alt Shift Enter" { NewPane "Down"; SwitchToMode "Normal"; }
+        }
         shared_except "locked" {
           bind "Alt m" {
             LaunchPlugin "file://${monocle}/bin/monocle.wasm" {
