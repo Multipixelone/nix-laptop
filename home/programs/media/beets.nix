@@ -419,6 +419,9 @@ let
   '';
 in
 {
+  # Plex API token for playlist-downloader
+  age.secrets."plexapi".file = "${inputs.secrets}/media/plexapi.age";
+  home.sessionVariables.PLEXAPI_CONFIG_PATH = config.age.secrets."plexapi".path;
   systemd.user = {
     paths.beets = {
       Unit.Description = "Watch download directory for new music";
@@ -474,9 +477,8 @@ in
         Unit.Description = "Download playlists from Plex";
         Service = {
           Type = "oneshot";
-          ReadWritePaths = [
-            music-dir
-            transcoded-music
+          Environment = [
+            "PLEXAPI_CONFIG_PATH=\"${config.age.secrets."plexapi".path}\""
           ];
           ExecStart = lib.getExe inputs.playlist-download.packages.${pkgs.stdenv.hostPlatform.system}.default;
         };
