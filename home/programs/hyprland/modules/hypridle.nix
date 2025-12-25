@@ -54,14 +54,13 @@ in
           inherit timeout;
           on-timeout = "loginctl lock-session";
         }
-        # TODO this is rlllyyy jank. please refactor a module system SO SOON PLEASE.
-        # (lib.mkIf (osConfig.networking.hostName == "zelda") {
-        #   timeout = timeout + 30;
-        #   on-timeout = "${hyprctl} dispatch dpms off";
-        #   on-resume = "${hyprctl} dispatch dpms on";
-        # })
         {
           timeout = timeout + 60;
+          on-timeout = "${hyprctl} dispatch dpms off";
+          on-resume = "${hyprctl} dispatch dpms on";
+        }
+        {
+          timeout = timeout + 120;
           on-timeout = lib.getExe suspend-script;
         }
       ];
