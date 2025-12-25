@@ -1,9 +1,13 @@
 {
+  inputs,
   pkgs,
   config,
   ...
 }:
 let
+  zjstatus = inputs.zjstatus.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  monocle = inputs.monocle.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  zjstatus-hints = inputs.zjstatus-hints.packages.${pkgs.stdenv.hostPlatform.system}.default;
   inherit (config.lib.stylix) colors;
   zjstatus-conf = ''
     plugin location="zjstatus" {
@@ -79,8 +83,8 @@ in
       pane_frames false
       show_startup_tips false
       plugins {
-          zjstatus location="file://${pkgs.zjstatus}/bin/zjstatus.wasm"
-          zjstatus-hints location="file://${pkgs.zjstatus-hints}/bin/zjstatus-hints.wasm" {
+          zjstatus location="file://${zjstatus}/bin/zjstatus.wasm"
+          zjstatus-hints location="file://${zjstatus-hints}/bin/zjstatus-hints.wasm" {
             max_length 0
             overflow_str "..."
             pipe_name "zjstatus_hints"
@@ -93,7 +97,7 @@ in
       keybinds {
         shared_except "locked" {
           bind "Alt m" {
-            LaunchPlugin "file://${pkgs.monocle}/bin/monocle.wasm" {
+            LaunchPlugin "file://${monocle}/bin/monocle.wasm" {
               in_place true
               kiosk true
             };
