@@ -27,36 +27,44 @@ let
     max_age = off
   '';
   rclone-wrapped = pkgs.writeShellScriptBin "rclone" ''
-    ${lib.getExe pkgs.rclone} --config="${rclone-config}" $@
+    ${lib.getExe pkgs.rclone} --config="${rclone-config}" "$@"
   '';
-  ipod-sync = pkgs.writeShellApplication {
-    name = "ipod-sync";
-    runtimeInputs = [
-      pkgs.rsync
-      rclone-wrapped
-      playlist-download.rb-scrob
-      lastfm-wrapped
-    ];
-    text = ''
-      if [ -d "$IPOD_DIR" ]; then
-        systemctl --user start transcode-music playlist-downloader
-        if [ -f "$IPOD_DIR/.rockbox/playback.log" ]; then
-          LOG_FILE="$(rb-parse)"
-          rb-scrobbler -f "''${LOG_FILE}"
-        fi
-        rsync -vh --modify-window=1 --exclude="*.csv" --update --recursive --times --info=progress2 --no-inc-recursive "/volume1/Media/RockboxCover/" "''${IPOD_DIR}/.rockbox/albumart/" || true
-        echo "Syncing playlists..."
-        rsync -vh --modify-window=1 --exclude="*.csv" --update --recursive --times --info=progress2 --no-inc-recursive "''${PLAYLIST_DIR}/.ipod/" "''${IPOD_DIR}/Playlists/" || true
-        echo "Syncing music..."
-        rclone sync "/media/Data/TranscodedMusic/" "ipod_hasher:/" \
-          --checksum \
-          --buffer-size 0 \
-          --transfers 1 \
-          --checkers 4 \
-          --progress
-      fi
-    '';
-  };
+  rclone-base-opts = [
+    "--progress"
+    "--buffer-size"
+    "0"
+    "--transfers"
+    "1"
+    "--checkers"
+    "4"
+  ];
+  ipod-sync = pkgs.writeScriptBin "ipod-sync" ''
+    #!${lib.getExe pkgs.fish}
+    #!/usr/bin/env fish
+
+    set -l rclone_args ${lib.concatStringsSep " " rclone-base-opts}
+
+    if test -d "$IPOD_DIR"
+      ${lib.getExe' pkgs.systemd "systemctl"} --user start transcode-music playlist-downloader
+      if test -f "$IPOD_DIR/.rockbox/playback.log"
+        set LOG_FILE (${lib.getExe playlist-download.rb-scrob})
+        ${lib.getExe lastfm-wrapped} -f "$LOG_FILE"
+      end
+      ${lib.getExe rclone-wrapped} sync \
+        "/volume1/Media/RockboxCover/" \
+        "$IPOD_DIR/.rockbox/albumart/" \
+        $rclone_args
+      ${lib.getExe rclone-wrapped} sync \
+        "$PLAYLIST_DIR/.ipod/" \
+        "$IPOD_DIR/Playlists/" \
+        $rclone_args
+      echo "Syncing music..."
+      # ${lib.getExe rclone-wrapped} sync \
+      #   "/media/Data/TranscodedMusic/" \
+      #   "ipod_hasher:/" \
+      #   $rclone_args --checksum 
+    end
+  '';
 
   # TODO do this. literally any other way. this is dependent on so many external things its not even funny
   rockbox-database = pkgs.writeShellApplication {
