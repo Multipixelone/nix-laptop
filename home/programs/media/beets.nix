@@ -80,7 +80,7 @@ let
             set -l clean_album (string replace -r '[\"]' '\''' -- $underscores_album)
 
             set -l new_filename "$clean_artist-$clean_album.bmp"
-            set -l output_path "/volume1/Media/RockboxCover/$new_filename"
+            set -l output_path "${config.home.sessionVariables.ARTWORK_DIR}/$new_filename"
 
             echo "Converting to: $output_path"
 

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   imports = [
   ];
@@ -15,6 +15,8 @@
   home.sessionVariables = {
     EDITOR = "hx";
     MUSIC_DIR = "/media/Data/Music";
+    TRANSCODED_MUSIC = "/volume1/Media/TranscodedMusic";
+    ARTWORK_DIR = "/volume1/Media/RockboxCover";
     MOPIDY_PLAYLISTS = "/home/tunnel/.local/share/mopidy/m3u";
     IPOD_DIR = "/run/media/tunnel/FINNR_S IPO";
     PLAYLIST_DIR = "/home/tunnel/Music/Playlists";

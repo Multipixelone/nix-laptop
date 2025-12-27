@@ -36,7 +36,7 @@ let
     "--transfers"
     "1"
     "--checkers"
-    "4"
+    "6"
   ];
   ipod-sync = pkgs.writeScriptBin "ipod-sync" ''
     #!${lib.getExe pkgs.fish}
@@ -51,7 +51,7 @@ let
         ${lib.getExe lastfm-wrapped} -f "$LOG_FILE"
       end
       ${lib.getExe rclone-wrapped} sync \
-        "/volume1/Media/RockboxCover/" \
+        "${config.home.sessionVariables.ARTWORK_DIR}/" \
         "$IPOD_DIR/.rockbox/albumart/" \
         $rclone_args
       ${lib.getExe rclone-wrapped} sync \
@@ -59,10 +59,10 @@ let
         "$IPOD_DIR/Playlists/" \
         $rclone_args
       echo "Syncing music..."
-      # ${lib.getExe rclone-wrapped} sync \
-      #   "/media/Data/TranscodedMusic/" \
-      #   "ipod_hasher:/" \
-      #   $rclone_args --checksum 
+      ${lib.getExe rclone-wrapped} sync \
+        "${config.home.sessionVariables.TRANSCODED_MUSIC}/" \
+        "ipod_hasher:/" \
+        $rclone_args --checksum 
     end
   '';
 
