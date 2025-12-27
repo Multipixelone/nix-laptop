@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 let
   sunpaper = pkgs.sunpaper.overrideAttrs (oldAttrs: {
     postPatch = ''
@@ -18,6 +23,14 @@ in
   imports = [
     ./programs/hyprland/modules/battery.nix
   ];
+  home.sessionVariables = lib.mkForce {
+    MUSIC_DIR = "${config.xdg.userDirs.music}/Library";
+    TRANSCODED_MUSIC = "${config.xdg.userDirs.music}/Library";
+    ARTWORK_DIR = "${config.xdg.userDirs.music}/RockboxCover";
+    MOPIDY_PLAYLISTS = "/home/tunnel/.local/share/mopidy/m3u";
+    IPOD_DIR = "/run/media/tunnel/FINNR_S IPO";
+    PLAYLIST_DIR = "/home/tunnel/Music/Playlists";
+  };
   xdg.configFile."sunpaper/config".text = ''
     latitude="40.680271N"
     longitude="73.944893W"
