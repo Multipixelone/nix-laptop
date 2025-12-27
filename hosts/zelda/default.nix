@@ -260,17 +260,6 @@
         "mode=1777"
       ];
     };
-    "/media/Data/Music" = {
-      device = "/dev/disk/by-uuid/576fdcd4-d642-4229-9073-90724eb72043";
-      fsType = "btrfs";
-      options = [
-        "subvol=@music"
-        "compress=zstd:4"
-        "ssd"
-        "relatime"
-        "discard=async"
-      ];
-    };
     "/boot" = {
       device = "/dev/disk/by-uuid/78C1-6430";
       fsType = "vfat";
