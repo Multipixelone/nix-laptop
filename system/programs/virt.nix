@@ -62,6 +62,7 @@
             "/dev/ptmx", "/dev/kvm",
             "/dev/kvmfr0"
           ]
+          hugetlbfs_mount = "/dev/hugepages"
         '';
       };
     };
