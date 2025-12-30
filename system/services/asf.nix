@@ -19,6 +19,7 @@
   services.archisteamfarm = {
     enable = true;
     web-ui.enable = true;
+    ipcPasswordFile = config.age.secrets."steam".path;
     bots.multipixelone = {
       passwordFile = config.age.secrets."steam".path;
       settings = {
