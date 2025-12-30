@@ -9,7 +9,7 @@
   services.udev.extraRules = ''
     SUBSYSTEM=="kvmfr", GROUP="kvm", MODE="0660", TAG+="systemd"
   '';
-  kernel.sysctl = {
+  boot.kernel.sysctl = {
     "vm.compaction_proactiveness" = 0;
   };
   boot.kernelParams = [
