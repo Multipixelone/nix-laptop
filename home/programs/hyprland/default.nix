@@ -169,7 +169,6 @@ in
       render = lib.mkIf (osConfig.networking.hostName == "link") {
         direct_scanout = true;
       };
-      experimental.xx_color_management_v4 = true;
       cursor = {
         persistent_warps = true;
         inactive_timeout = 5;
