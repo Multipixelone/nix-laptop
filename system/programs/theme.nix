@@ -27,6 +27,7 @@
     polarity = "dark";
     targets = {
       grub.enable = false;
+      limine.enable = false;
       plymouth.enable = false;
     };
     image = builtins.fetchurl {
