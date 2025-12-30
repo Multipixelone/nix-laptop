@@ -20,6 +20,15 @@
     enable = true;
     web-ui.enable = true;
     ipcPasswordFile = config.age.secrets."steam".path;
+    ipcSettings = {
+      Kestrel = {
+        Endpoints = {
+          HTTP = {
+            Url = "http://*:1242";
+          };
+        };
+      };
+    };
     bots.multipixelone = {
       passwordFile = config.age.secrets."steam".path;
       settings = {
