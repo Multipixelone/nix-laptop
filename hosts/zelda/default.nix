@@ -83,7 +83,20 @@
     '';
     extraModulePackages = [ ];
     loader = {
-      systemd-boot.enable = true;
+      systemd-boot.enable = false;
+      limine = {
+        enable = true;
+        panicOnChecksumMismatch = true;
+        style.wallpapers = [ ];
+        additionalFiles = {
+          "efi/memtest86+/memtest.efi" = "${pkgs.memtest86plus}/mt86plus.efi";
+        };
+        extraEntries = ''
+          /Memtest86+
+          	protocol: chainload
+          	path: boot():///efi/memtest86+/memtest.efi
+        '';
+      };
       grub.enable = false;
       efi = {
         efiSysMountPoint = "/boot";
