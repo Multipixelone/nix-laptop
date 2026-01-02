@@ -95,6 +95,9 @@
           /Memtest86+
           	protocol: chainload
           	path: boot():///efi/memtest86+/memtest.efi
+          /Windows 11
+          	protocol: efi
+          	path: boot():/EFI/Microsoft/Boot/bootmgfw.efi
         '';
       };
       grub.enable = false;
