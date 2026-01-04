@@ -19,7 +19,7 @@
     # use kernel <6.15 while waiting for https://github.com/NixOS/nixpkgs/pull/421163 to be merged
     kernelPackages = pkgs.linuxPackages_xanmod;
     loader = {
-      grub.enable = false;
+      limine.enable = false;
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
