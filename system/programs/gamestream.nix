@@ -134,7 +134,7 @@ let
           sleep 2
           hyprctl keyword monitor "$mon_string"
           sleep 2
-          hyprctl dispatch moveworkspacetomonitor 7 2
+          hyprctl dispatch moveworkspacetomonitor 7 SUNSHINE
           # wait before we switch to the new workspace
           sleep 2
           hyprctl dispatch workspace 7
