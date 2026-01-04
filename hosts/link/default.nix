@@ -17,6 +17,11 @@
   ];
 
   boot = {
+    loader.limine.extraEntries = ''
+      /Windows 11
+      	protocol: efi
+      	path: boot():/EFI/Microsoft/Boot/bootmgfw.efi
+    '';
     # kernelPackages = lib.mkForce pkgs.linuxPackages_cachyos;
     initrd.kernelModules = [ "amdgpu" ];
     kernelModules = [

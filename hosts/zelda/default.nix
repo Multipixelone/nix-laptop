@@ -84,22 +84,11 @@
     extraModulePackages = [ ];
     loader = {
       systemd-boot.enable = false;
-      limine = {
-        enable = true;
-        panicOnChecksumMismatch = true;
-        style.wallpapers = [ ];
-        additionalFiles = {
-          "efi/memtest86+/memtest.efi" = "${pkgs.memtest86plus}/mt86plus.efi";
-        };
-        extraEntries = ''
-          /Memtest86+
-          	protocol: chainload
-          	path: boot():///efi/memtest86+/memtest.efi
-          /Windows 11
-          	protocol: efi
-          	path: boot():/EFI/Microsoft/Boot/bootmgfw.efi
-        '';
-      };
+      limine.extraEntries = ''
+        /Windows 11
+        	protocol: efi
+        	path: boot():/EFI/Microsoft/Boot/bootmgfw.efi
+      '';
       grub.enable = false;
       efi = {
         efiSysMountPoint = "/boot";
