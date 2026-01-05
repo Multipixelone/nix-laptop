@@ -37,6 +37,7 @@
 
           "${mod}/hardware/rgb.nix"
           "${mod}/hardware/ucode.nix"
+          "${mod}/hardware/secure-boot.nix"
 
           "${mod}/network/cloudflared.nix"
           "${mod}/network/dnscrypt.nix"
