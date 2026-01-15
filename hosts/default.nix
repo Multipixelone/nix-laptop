@@ -42,6 +42,7 @@
           "${mod}/network/cloudflared.nix"
           "${mod}/network/dnscrypt.nix"
           "${mod}/network/duckdns.nix"
+          "${mod}/network/nas.nix"
 
           "${mod}/programs/home-manager.nix"
           {
