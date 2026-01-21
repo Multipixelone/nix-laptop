@@ -15,8 +15,10 @@ in
 {
   # required for keyring to unlock on boot
   security.pam.services.greetd.enableGnomeKeyring = true;
-  programs.uwsm.waylandCompositors.hyprland.binPath =
-    lib.mkForce "/run/current-system/sw/bin/start-hyprland";
+  programs.uwsm.waylandCompositors.hyprland = {
+    binPath = lib.mkForce "/run/current-system/sw/bin/start-hyprland";
+    prettyName = "Hyprland";
+  };
   services = {
     # seatd.enable = true;
     # kmscon = {
