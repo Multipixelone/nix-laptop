@@ -25,9 +25,9 @@
         style = "bold italic bright-blue";
         format = "([$ahead_behind$staged$modified$untracked$renamed$deleted$conflicted$stashed]($style))";
         conflicted = "[◪◦](italic bright-magenta)";
-        ahead = ''[▴│[''${count}](bold white)│](italic green)'';
-        behind = ''[▿│[''${count}](bold white)│](italic red)'';
-        diverged = ''[◇ ▴┤[''${ahead_count}](regular white)│▿┤[''${behind_count}](regular white)│](italic bright-magenta)'';
+        ahead = "[▴│[\${count}](bold white)│](italic green)";
+        behind = "[▿│[\${count}](bold white)│](italic red)";
+        diverged = "[◇ ▴┤[\${ahead_count}](regular white)│▿┤[\${behind_count}](regular white)│](italic bright-magenta)";
         untracked = "[◌◦](italic bright-yellow)";
         stashed = "[◃◈](italic white)";
         modified = "[●◦](italic yellow)";

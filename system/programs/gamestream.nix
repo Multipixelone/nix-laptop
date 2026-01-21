@@ -19,7 +19,7 @@ let
   mk-icon =
     { icon-name }:
     pkgs.runCommand "${icon-name}-scaled.png" { }
-      ''${pkgs.imagemagick}/bin/convert -density 1200 -resize 500x -background none ${pkgs.papirus-icon-theme}/share/icons/Papirus-Dark/128x128/apps/${icon-name}.svg -gravity center -extent 600x800 $out'';
+      "${pkgs.imagemagick}/bin/convert -density 1200 -resize 500x -background none ${pkgs.papirus-icon-theme}/share/icons/Papirus-Dark/128x128/apps/${icon-name}.svg -gravity center -extent 600x800 $out";
   # download-image = {
   #   url,
   #   hash,

@@ -362,7 +362,7 @@ in
           "tray"
         ];
         "custom/playerlabel" = {
-          format = ''{}'';
+          format = "{}";
           return-type = "json";
           max-length = 37;
           min-length = 37;

@@ -30,7 +30,7 @@ let
       rm -f ${detect-file}
     '';
   };
-  hr = ''${lib.getExe pkgs.hr} ━'';
+  hr = "${lib.getExe pkgs.hr} ━";
   rb-albumart = pkgs.writeScriptBin "rb-albumart" ''
     #!${lib.getExe pkgs.fish}
     #!/usr/bin/env fish
@@ -744,7 +744,7 @@ in
             }
             {
               event = "album_imported";
-              command = ''${lib.getExe rb-albumart} {album.path}'';
+              command = "${lib.getExe rb-albumart} {album.path}";
             }
             {
               event = "before_choose_candidate";
