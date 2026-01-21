@@ -17,21 +17,21 @@
       #     src = pins.modorganizer2-linux-installer;
       #   };
       # })
-      (self: super: {
-        openrgb = super.openrgb.overrideAttrs {
-          version = pins.OpenRGB.revision;
-          src = pins.OpenRGB;
-          patches = [ ];
-          postPatch = ''
-            patchShebangs scripts/build-udev-rules.sh
-            # substituteInPlace OpenRGB.pro \
-              # --replace-fail "/etc/systemd/system" "$out/etc/systemd/system"
-            substituteInPlace scripts/build-udev-rules.sh \
-              --replace-fail "/usr/bin/env" "${lib.getExe' pkgs.coreutils "env"}" \
-              --replace-fail chmod "${lib.getExe' pkgs.coreutils "chmod"}"
-          '';
-        };
-      })
+      # (self: super: {
+      #   openrgb = super.openrgb.overrideAttrs {
+      #     version = pins.OpenRGB.revision;
+      #     src = pins.OpenRGB;
+      #     patches = [ ];
+      #     postPatch = ''
+      #       patchShebangs scripts/build-udev-rules.sh
+      #       # substituteInPlace OpenRGB.pro \
+      #         # --replace-fail "/etc/systemd/system" "$out/etc/systemd/system"
+      #       substituteInPlace scripts/build-udev-rules.sh \
+      #         --replace-fail "/usr/bin/env" "${lib.getExe' pkgs.coreutils "env"}" \
+      #         --replace-fail chmod "${lib.getExe' pkgs.coreutils "chmod"}"
+      #     '';
+      #   };
+      # })
       # (self: super: {
       #   snapcast = super.snapcast.overrideAttrs {
       #     version = pins.snapcast.revision;
