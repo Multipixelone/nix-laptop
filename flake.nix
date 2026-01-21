@@ -48,7 +48,7 @@
                 excludes = [ "npins" ];
               in
               {
-                nixfmt-rfc-style = {
+                nixfmt = {
                   inherit excludes;
                   enable = true;
                 };
