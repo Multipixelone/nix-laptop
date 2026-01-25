@@ -1,4 +1,9 @@
-{ inputs, ... }:
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
   imports = [
     inputs.nixos-wsl.nixosModules.default
@@ -11,6 +16,7 @@
     MUSIC_DIR = "C:\\Users\\Finn Rutis\\Music\\Library";
     PLAYLIST_DIR = "/mnt/c/Users/Finn Rutis/Music/Playlists";
   };
+  system.build.installBootLoader = lib.mkForce "${pkgs.coreutils}/bin/true";
 
   networking.hostName = "minish";
   wsl = {
