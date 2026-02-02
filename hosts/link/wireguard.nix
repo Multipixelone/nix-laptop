@@ -44,8 +44,8 @@
             allowedIPs = [ "10.100.0.2/32" ];
           }
           {
-            # nougat
-            publicKey = "CgAqN+0T70Exkduy1j0IyOHThHSSIPUmFPzdupLXUUk=";
+            # ipad
+            publicKey = "YHW9LGJkWRaa5GtBCmqFd1IVS9fyVRUP3orDXeCC8l8=";
             allowedIPs = [ "10.100.0.50/32" ];
           }
         ];
