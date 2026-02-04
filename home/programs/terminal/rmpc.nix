@@ -56,15 +56,15 @@ in
   home.packages = [
     song-change
     pkgs.cava
-    (pkgs.makeDesktopItem {
-      name = "rmpc";
-      desktopName = "rmpc music player";
-      exec = "uwsm app -- foot -a foot-music rmpc";
-      terminal = false;
-      type = "Application";
-      icon = "apple-music";
-    })
   ];
+  xdg.desktopEntries."rmpc" = {
+    name = "rmpc";
+    comment = "rmpc music player";
+    exec = "uwsm app -- foot -a foot-music rmpc";
+    terminal = false;
+    type = "Application";
+    icon = "apple-music";
+  };
   xdg.configFile = {
     "rmpc/themes/cat.ron".text = ''
       #![enable(implicit_some)]
