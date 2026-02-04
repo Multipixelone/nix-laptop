@@ -44,15 +44,15 @@
       #     ];
       #   };
       # })
-      (self: super: {
-        vintagestory = super.vintagestory.overrideAttrs rec {
-          version = "1.21.6";
-          src = pkgs.fetchurl {
-            url = "https://cdn.vintagestory.at/gamefiles/stable/vs_client_linux-x64_${version}.tar.gz";
-            hash = "sha256-LkiL/8W9MKpmJxtK+s5JvqhOza0BLap1SsaDvbLYR0c=";
-          };
-        };
-      })
+      # (self: super: {
+      #   vintagestory = super.vintagestory.overrideAttrs rec {
+      #     version = "1.21.6";
+      #     src = pkgs.fetchurl {
+      #       url = "https://cdn.vintagestory.at/gamefiles/stable/vs_client_linux-x64_${version}.tar.gz";
+      #       hash = "sha256-LkiL/8W9MKpmJxtK+s5JvqhOza0BLap1SsaDvbLYR0c=";
+      #     };
+      #   };
+      # })
       (self: super: {
         # temporary until https://github.com/NixOS/nixpkgs/pull/446141 is merged
         sunshine = super.sunshine.overrideAttrs (
