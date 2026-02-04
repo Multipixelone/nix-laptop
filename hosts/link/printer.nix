@@ -4,18 +4,18 @@
   ...
 }:
 {
-  hardware.printers = {
-    ensurePrinters = [
-      {
-        name = "Canon_MG3222";
-        location = "Office";
-        deviceUri = "usb://Canon/MG3200%20series?serial=3131AC&interface=1";
-        model = "gutenprint.${lib.versions.majorMinor (lib.getVersion pkgs.gutenprint)}://bjc-PIXMA-MG3222/expert";
-        description = "Office Printer";
-      }
-    ];
-    ensureDefaultPrinter = "Canon_MG3222";
-  };
+  # hardware.printers = {
+  #   ensurePrinters = [
+  #     {
+  #       name = "Canon_MG3222";
+  #       location = "Office";
+  #       deviceUri = "usb://Canon/MG3200%20series?serial=3131AC&interface=1";
+  #       model = "gutenprint.${lib.versions.majorMinor (lib.getVersion pkgs.gutenprint)}://bjc-PIXMA-MG3222/expert";
+  #       description = "Office Printer";
+  #     }
+  #   ];
+  #   ensureDefaultPrinter = "Canon_MG3222";
+  # };
   services = {
     printing = {
       enable = true;
