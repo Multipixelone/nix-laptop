@@ -5,7 +5,7 @@
   ...
 }:
 let
-  rain-pipe = "/run/snapserver/rain";
+  # rain-pipe = "/run/snapserver/rain";
   # librespot = pkgs.librespot.overrideAttrs rec {
   #   rev = "80c27ec476666b40aba98327b3ba52d620dd6d06";
   #   cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
@@ -66,7 +66,7 @@ in
         stream = {
           source = [
             "airplay://${pkgs.shairport-sync}/bin/shairport-sync?name=Airplay&devicename=Speakers"
-            "pipe://${rain-pipe}?name=Rain"
+            # "pipe://${rain-pipe}?name=Rain"
             "librespot://${lib.getExe pkgs.librespot}?name=Spotify&devicename=Speakers"
             "meta:///Airplay/Spotify?name=Combined"
           ];
@@ -119,9 +119,9 @@ in
     ];
   };
   systemd = {
-    tmpfiles.rules = [
-      "p+ ${rain-pipe} 666 root root - -"
-    ];
+    # tmpfiles.rules = [
+    #   "p+ ${rain-pipe} 666 root root - -"
+    # ];
     user.services = {
       wireplumber.wantedBy = [ "default.target" ];
       snapclient = {
@@ -158,34 +158,34 @@ in
       #     RestartSec = "5s";
       #   };
       # };
-      ambience-rain =
-        let
-          rain-sound = pkgs.fetchurl {
-            url = "https://media.rainymood.com/0.mp3";
-            hash = "sha256-++BUqQf/qiiD062q/fXCd/sZNzbYA+/zTOsIE4LkKFc=";
-          };
-        in
-        {
-          enable = true;
-          description = "Play ambient rain on loop";
-          wants = [ "sound.target" ];
-          after = [ "sound.target" ];
-          wantedBy = [ "multi-user.target" ];
-          partOf = [ "snapserver.service" ];
-          serviceConfig = {
-            DynamicUser = true;
-            Group = "audio";
+      # ambience-rain =
+      #   let
+      #     rain-sound = pkgs.fetchurl {
+      #       url = "https://media.rainymood.com/0.mp3";
+      #       hash = "sha256-++BUqQf/qiiD062q/fXCd/sZNzbYA+/zTOsIE4LkKFc=";
+      #     };
+      #   in
+      #   {
+      #     enable = true;
+      #     description = "Play ambient rain on loop";
+      #     wants = [ "sound.target" ];
+      #     after = [ "sound.target" ];
+      #     wantedBy = [ "multi-user.target" ];
+      #     partOf = [ "snapserver.service" ];
+      #     serviceConfig = {
+      #       DynamicUser = true;
+      #       Group = "audio";
 
-            ExecStart = "${pkgs.mpv}/bin/mpv --audio-display=no --audio-channels=stereo --audio-samplerate=48000 --audio-format=s16 --ao=pcm --ao-pcm-file=${rain-pipe} --loop=inf ${rain-sound}";
-            NoNewPrivileges = true;
-            ProtectHome = true;
-            ProtectKernelTunables = true;
-            ProtectControlGroups = true;
-            ProtectKernelModules = true;
-            RestrictAddressFamilies = "";
-            RestrictNamespaces = true;
-          };
-        };
+      #       ExecStart = "${pkgs.mpv}/bin/mpv --audio-display=no --audio-channels=stereo --audio-samplerate=48000 --audio-format=s16 --ao=pcm --ao-pcm-file=${rain-pipe} --loop=inf ${rain-sound}";
+      #       NoNewPrivileges = true;
+      #       ProtectHome = true;
+      #       ProtectKernelTunables = true;
+      #       ProtectControlGroups = true;
+      #       ProtectKernelModules = true;
+      #       RestrictAddressFamilies = "";
+      #       RestrictNamespaces = true;
+      #     };
+      #   };
     };
   };
 }
