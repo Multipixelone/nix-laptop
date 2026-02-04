@@ -187,7 +187,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru.updateScript = nix-update-script { };
   meta = with lib; {
-    description = "Powerful & intuitive soundboard app for managing audio cues";
+    description = "Powerful yet intuitive soundboard app for live triggering audio cues";
     homepage = "https://soundshow.app";
     license = licenses.unfree;
     platforms = [ "x86_64-linux" ];
