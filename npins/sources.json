@@ -9,9 +9,9 @@
       },
       "branch": "master",
       "submodules": true,
-      "revision": "21b113200ca058d2027a36da781730996ac3c293",
+      "revision": "b4ca00040244a3b7c5430c5ecc6839d06283844d",
       "url": null,
-      "hash": "0gxjn7kx149dxadycbxvvg9p8qx59i4vj2sp6xl2n3cg82700vzh"
+      "hash": "sha256-6C73Fb/kV9xAx8oMOWF6d63cV0uYQECLrDuOQZVqWGI="
     },
     "bandcamp-dl": {
       "type": "GitRelease",
@@ -27,7 +27,7 @@
       "version": "v0.0.17",
       "revision": "d7b4c4d6e7bfe365ee36514d6c608caf883e4476",
       "url": "https://api.github.com/repos/iheanyi/bandcamp-dl/tarball/v0.0.17",
-      "hash": "074kni0wdvmmlavvi8di5cavw3jvfbi87lyl08s72c8i7h9rbp1w"
+      "hash": "sha256-PNyVEzwRMXE0AtTTg+JyWw6+FSuxobi3orXuxkG0kxw="
     },
     "bgutil-ytdlp-pot-provider": {
       "type": "GitRelease",
@@ -43,7 +43,7 @@
       "version": "1.2.2",
       "revision": "9c3cc1a21d10606e0a55ec3aa9d6d861ec9100ec",
       "url": "https://api.github.com/repos/Brainicism/bgutil-ytdlp-pot-provider/tarball/1.2.2",
-      "hash": "19jfhjnkylwq65ah84z0ry88xay14yzzq900vd62k32624djd8i8"
+      "hash": "sha256-KKImGxFGjClM2wAk/L8nwauOkM/gEwRVMZhTP62ETqY="
     },
     "modorganizer2-linux-installer": {
       "type": "GitRelease",
@@ -59,7 +59,7 @@
       "version": "6.0.6",
       "revision": "93f64fdd08e06c61f92306a4a67b18701554a95a",
       "url": "https://api.github.com/repos/furglitch/modorganizer2-linux-installer/tarball/6.0.6",
-      "hash": "1hg26sqfn5gh0q9lyq3qkl10r4lkdqm9ar4rmki769s8jyjk9yig"
+      "hash": "sha256-L/o0pZdIJ3PirJlklSpuk5IMAp14YE8TBvAV67A24sE="
     },
     "moondeck-buddy": {
       "type": "GitRelease",
@@ -72,10 +72,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": true,
-      "version": "v1.9.1",
-      "revision": "7c616b5df1f17d1e8a2aad96bf5682cd5a62677f",
+      "version": "v1.9.2",
+      "revision": "4173de475b87e112352a0b4e6cf054232d583cf5",
       "url": null,
-      "hash": "10gi3r547325112mk3w1m0r2jbbbdv4wlv2fn7sfrk0b27588ah1"
+      "hash": "sha256-GhZlmdI+oa5BjEzr9bkR2sY/nVpd1nuJlT2hYYv6zGU="
     },
     "slskd-stats": {
       "type": "GitRelease",
@@ -91,7 +91,7 @@
       "version": "v0.1.2",
       "revision": "dbb8588e39bf93cae0dcf11316e50e3759268724",
       "url": "https://api.github.com/repos/Arairon/slskd-stats/tarball/v0.1.2",
-      "hash": "15lz81zhrilkgz8p7svlfjhl454w7cxrjlq4vwhw2h6y6ffr9lif"
+      "hash": "sha256-LtKUnTPeQMEh3wRTmTs7nBRCoXR063PRf5PGDH9An5Y="
     },
     "snapcast": {
       "type": "GitRelease",
@@ -107,7 +107,7 @@
       "version": "v0.34.0",
       "revision": "bfb812101a383d6cc01b40ea51992c86e5026f91",
       "url": "https://api.github.com/repos/badaix/snapcast/tarball/v0.34.0",
-      "hash": "0jqzzjw1njixapj89yvgbhk7yrfc14xsfd94pf6z6lfna8c01yq4"
+      "hash": "sha256-BPsAGFLWUfONuyQ1pzsJzGV/Jlxv+4TkVT1KG7j8H0s="
     },
     "spotify-downloader": {
       "type": "Git",
@@ -120,7 +120,7 @@
       "submodules": false,
       "revision": "0b5158067982c8f840db9e7573991242a427c9ed",
       "url": "https://github.com/spotDL/spotify-downloader/archive/0b5158067982c8f840db9e7573991242a427c9ed.tar.gz",
-      "hash": "0sh5qf4lc8gw1xqys48x5j95zq6v7y3yr43bldpfqizci1qxp5m2"
+      "hash": "sha256-opbbcYjsR+xuo2uQ7Ic/2+BfkiwdEe1xD/whRonDBWo="
     },
     "sunshine": {
       "type": "GitRelease",
@@ -133,10 +133,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": true,
-      "version": "v2025.1027.181930",
-      "revision": "e657df0c476bbaaa3493f1db7a6714e14abaf0b3",
+      "version": "v2026.203.160441",
+      "revision": "66cdaf9d14c890e165b10a1f94be8452afd67b76",
       "url": null,
-      "hash": "19in7f7h2ls0j11rh9160sxkphnpgadaxrjq9gg1krnv86kha8q1"
+      "hash": "sha256-HRsuMGHiWrs/k/a9puG0nA9xYeRpcomYLvCxZCbJNiA="
     },
     "yt-dlp-YTNSigDeno": {
       "type": "GitRelease",
@@ -152,8 +152,8 @@
       "version": "2025.11.11",
       "revision": "1904df9afa6fb4651d8427def465bfa5a3150ee1",
       "url": "https://api.github.com/repos/bashonly/yt-dlp-YTNSigDeno/tarball/2025.11.11",
-      "hash": "0x9qrix71ab6qar7294fbnqajr710kcswsz5qqdi366ih739hqji"
+      "hash": "sha256-UWKYxoHRmBEbxuVrrtkE4WSpsF2OJHGywmapcHrMOHU="
     }
   },
-  "version": 5
+  "version": 7
 }
