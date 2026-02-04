@@ -48,10 +48,10 @@
   users.extraGroups.vboxusers.members = [ "tunnel" ];
   virtualisation = {
     # oci-containers.backend = "docker";
-    virtualbox.host = {
-      enable = true;
-      enableExtensionPack = true;
-    };
+    # virtualbox.host = {
+    #   enable = true;
+    #   enableExtensionPack = true;
+    # };
     libvirtd = {
       enable = true;
       onBoot = "ignore";
