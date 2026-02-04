@@ -194,5 +194,6 @@ stdenv.mkDerivation (finalAttrs: {
       Multipixelone
     ];
     platforms = [ "x86_64-linux" ];
+    sourceProvenance = [ lib.sourceTypes.binaryNativeCode ];
   };
 })
