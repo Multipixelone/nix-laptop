@@ -15,7 +15,7 @@
       # get the basic config to build on top of
       inherit (import mod) desktop laptop server;
       replaceStdenvModule = {
-        nixpkgs.config.replaceStdenv = { pkgs }: _: pkgs.stdenv;
+        nixpkgs.config.replaceStdenv = { pkgs }: oldStdenv: pkgs.stdenv;
       };
 
       # get these into the module system
