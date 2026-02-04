@@ -56,7 +56,6 @@
           inputs.musnix.nixosModules.musnix
           inputs.quadlet-nix.nixosModules.quadlet
           inputs.agenix.nixosModules.default
-          inputs.chaotic.nixosModules.default
           inputs.nur.modules.nixos.default
         ];
       };
@@ -84,7 +83,6 @@
           inputs.lanzaboote.nixosModules.lanzaboote
           inputs.quadlet-nix.nixosModules.quadlet
           inputs.agenix.nixosModules.default
-          inputs.chaotic.nixosModules.default
           inputs.nur.modules.nixos.default
         ];
       };
@@ -105,7 +103,6 @@
           }
           inputs.agenix.nixosModules.default
           inputs.quadlet-nix.nixosModules.quadlet
-          inputs.chaotic.nixosModules.default
           inputs.musnix.nixosModules.musnix
           inputs.nur.modules.nixos.default
         ];
@@ -127,7 +124,6 @@
           }
           inputs.agenix.nixosModules.default
           inputs.quadlet-nix.nixosModules.quadlet
-          inputs.chaotic.nixosModules.default
         ];
       };
     };
