@@ -14,6 +14,9 @@
       mod = "${self}/system";
       # get the basic config to build on top of
       inherit (import mod) desktop laptop server;
+      replaceStdenvModule = {
+        nixpkgs.config.replaceStdenv = { pkgs }: pkgs.stdenv;
+      };
 
       # get these into the module system
       specialArgs = { inherit inputs self; };
@@ -58,6 +61,7 @@
           inputs.agenix.nixosModules.default
           inputs.chaotic.nixosModules.default
           inputs.nur.modules.nixos.default
+          replaceStdenvModule
         ];
       };
 
@@ -86,6 +90,7 @@
           inputs.agenix.nixosModules.default
           inputs.chaotic.nixosModules.default
           inputs.nur.modules.nixos.default
+          replaceStdenvModule
         ];
       };
 
@@ -108,6 +113,7 @@
           inputs.chaotic.nixosModules.default
           inputs.musnix.nixosModules.musnix
           inputs.nur.modules.nixos.default
+          replaceStdenvModule
         ];
       };
 
@@ -128,6 +134,7 @@
           inputs.agenix.nixosModules.default
           inputs.quadlet-nix.nixosModules.quadlet
           inputs.chaotic.nixosModules.default
+          replaceStdenvModule
         ];
       };
     };
