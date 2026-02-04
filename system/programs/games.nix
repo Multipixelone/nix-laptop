@@ -36,7 +36,6 @@
       "vm.vfs_cache_pressure" = 50;
     };
   };
-  chaotic.mesa-git.enable = true;
   hardware = {
     steam-hardware.enable = true;
     graphics = {
