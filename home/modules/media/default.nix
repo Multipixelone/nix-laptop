@@ -25,7 +25,8 @@ in
     home.packages = with pkgs; [
       reaper
       yabridgectl
-      (yabridge.override { inherit wine; })
+      # (yabridge.override { inherit wine; })
+      yabridge
       (callPackage ../../../pkgs/izotope {
         inherit wine;
         location = config.tunnel.yabridge.izotope-location;
