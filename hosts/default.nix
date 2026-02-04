@@ -15,6 +15,7 @@
       # get the basic config to build on top of
       inherit (import mod) desktop laptop server;
       replaceStdenvModule = {
+        # Provide a safe default to avoid null replaceStdenv overrides during evaluation.
         nixpkgs.config.replaceStdenv = { pkgs }: _oldStdenv: pkgs.stdenv;
       };
 
