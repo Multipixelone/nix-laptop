@@ -185,7 +185,7 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   meta = with lib; {
-    description = "A powerful and flexible audio visualization tool";
+    description = "Powerful & intuitive soundboard app for managing audio cues";
     homepage = "https://soundshow.app";
     license = licenses.unfree;
     platforms = [ "x86_64-linux" ];
