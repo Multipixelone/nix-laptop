@@ -1,6 +1,7 @@
 {
   lib,
   stdenv,
+  nix-update-script,
   fetchzip,
   autoPatchelfHook,
   makeWrapper,
@@ -184,6 +185,7 @@ stdenv.mkDerivation (finalAttrs: {
       "$out/libexec/soundshow-display/UnityPlayer.so"
   '';
 
+  passthru.updateScript = nix-update-script { };
   meta = with lib; {
     description = "Powerful & intuitive soundboard app for managing audio cues";
     homepage = "https://soundshow.app";
