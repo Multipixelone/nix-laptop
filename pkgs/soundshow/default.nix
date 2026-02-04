@@ -190,6 +190,9 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Powerful yet intuitive soundboard app for live triggering audio cues";
     homepage = "https://soundshow.app";
     license = licenses.unfree;
+    maintainers = with lib.maintainers; [
+      Multipixelone
+    ];
     platforms = [ "x86_64-linux" ];
   };
 })
