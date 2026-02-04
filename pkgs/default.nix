@@ -16,6 +16,7 @@
           # bandcamp-dl = pkgs.python3Packages.callPackage ./bandcamp-dl args;
           izotope = pkgs.callPackage ./izotope { };
           lossywav = pkgs.callPackage ./lossywav { };
+          soundshow = pkgs.callPackage ./soundshow { };
           subway = pkgs.callPackage ./aequilibrae/gtfs-subway.nix { };
         };
     };
