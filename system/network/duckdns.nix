@@ -1,10 +1,14 @@
 {
+  self,
   config,
   inputs,
   lib,
   ...
 }:
 {
+  imports = [
+    self.nixosModules.duckdns
+  ];
   age.secrets = {
     "duckdns".file = "${inputs.secrets}/wireguard/duckdns.age";
   };
