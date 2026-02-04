@@ -16,9 +16,15 @@
         {
           config,
           pkgs,
+          system,
           ...
         }:
         {
+          # Configure nixpkgs to allow unfree packages
+          _module.args.pkgs = import inputs.nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
           devShells.default = pkgs.mkShell {
             packages = [
               pkgs.nixfmt
