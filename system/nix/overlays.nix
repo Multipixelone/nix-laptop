@@ -53,38 +53,38 @@
       #     };
       #   };
       # })
-      (self: super: {
-        # temporary until https://github.com/NixOS/nixpkgs/pull/446141 is merged
-        sunshine = super.sunshine.overrideAttrs (
-          final: prev: {
-            inherit (pins.sunshine) version;
-            src = pins.sunshine;
-            cmakeFlags = prev.cmakeFlags ++ [
-              (lib.cmakeFeature "SYSTEMD_MODULES_LOAD_DIR" "lib/modules-load.d")
-            ];
+      #   (self: super: {
+      #     # temporary until https://github.com/NixOS/nixpkgs/pull/446141 is merged
+      #     sunshine = super.sunshine.overrideAttrs (
+      #       final: prev: {
+      #         inherit (pins.sunshine) version;
+      #         src = pins.sunshine;
+      #         cmakeFlags = prev.cmakeFlags ++ [
+      #           (lib.cmakeFeature "SYSTEMD_MODULES_LOAD_DIR" "lib/modules-load.d")
+      #         ];
 
-            ui = pkgs.buildNpmPackage {
-              inherit (final) version src;
-              pname = "sunshine-ui";
-              npmDepsHash = "sha256-KUzJLwdZhs3BFoWTGWhUy1sxQgY8OUrgBtumnHnMjPI=";
+      #         ui = pkgs.buildNpmPackage {
+      #           inherit (final) version src;
+      #           pname = "sunshine-ui";
+      #           npmDepsHash = "sha256-KUzJLwdZhs3BFoWTGWhUy1sxQgY8OUrgBtumnHnMjPI=";
 
-              # use generated package-lock.json as upstream does not provide one
-              postPatch = ''
-                cp ${./package-lock.json} ./package-lock.json
-              '';
+      #           # use generated package-lock.json as upstream does not provide one
+      #           postPatch = ''
+      #             cp ${./package-lock.json} ./package-lock.json
+      #           '';
 
-              installPhase = ''
-                runHook preInstall
+      #           installPhase = ''
+      #             runHook preInstall
 
-                mkdir -p "$out"
-                cp -a . "$out"/
+      #             mkdir -p "$out"
+      #             cp -a . "$out"/
 
-                runHook postInstall
-              '';
-            };
+      #             runHook postInstall
+      #           '';
+      #         };
 
-          }
-        );
-      })
+      #       }
+      #     );
+      #   })
     ];
 }
