@@ -1,4 +1,10 @@
-{ pkgs, self, ... }:
+{ pkgs, inputs, ... }:
+let
+  nixpkgs-mine = import inputs.nixpkgs-mine {
+    system = pkgs.stdenv.hostPlatform.system;
+    config.allowUnfree = true;
+  };
+in
 {
   imports = [
     ./mpv.nix
@@ -16,7 +22,7 @@
     ffmpeg
     gifski
     mediainfo
-    inputs.nixpkgs-mine.legacyPackages.${pkgs.stdenv.hostPlatform.system}.soundshow
+    nixpkgs-mine.soundshow
 
     # FIX qt doesn't honor QT_QPA_PLATFORM if DISPLAY is set??
     (pkgs.symlinkJoin {
