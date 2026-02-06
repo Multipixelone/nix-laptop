@@ -1940,6 +1940,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-mine": {
+      "locked": {
+        "lastModified": 1770264493,
+        "narHash": "sha256-d2tJCoCb/lBbatEdGR0h0PEnrsUKL51rt1Uq6no6PO4=",
+        "owner": "Multipixelone",
+        "repo": "nixpkgs",
+        "rev": "3e4fd80906b8575752c4e2fd603a25f5f2fb46d6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Multipixelone",
+        "ref": "init-soundshow",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1767313136,
@@ -2511,6 +2527,7 @@
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_11",
         "nixpkgs-cloudflared": "nixpkgs-cloudflared",
+        "nixpkgs-mine": "nixpkgs-mine",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-xr": "nixpkgs-xr",
         "nur": "nur",

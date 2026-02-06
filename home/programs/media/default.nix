@@ -16,7 +16,8 @@
     ffmpeg
     gifski
     mediainfo
-    self.packages.${pkgs.stdenv.hostPlatform.system}.soundshow
+    inputs.nixpkgs-mine.legacyPackages.${pkgs.stdenv.hostPlatform.system}.soundshow
+
     # FIX qt doesn't honor QT_QPA_PLATFORM if DISPLAY is set??
     (pkgs.symlinkJoin {
       name = "vlc";

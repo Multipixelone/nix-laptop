@@ -70,6 +70,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-cloudflared.url = "github:wrbbz/nixpkgs/cloudflared-2025.4.0";
+    nixpkgs-mine.url = "github:Multipixelone/nixpkgs/init-soundshow";
 
     # nixpkgs for zoom screensharing
     systems.url = "github:nix-systems/default-linux";
