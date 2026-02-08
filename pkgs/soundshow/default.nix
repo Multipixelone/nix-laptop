@@ -40,6 +40,10 @@
   nss,
   pango,
   libpulseaudio,
+  # Fix file browser: invisible text, oversized icons, and Wayland drag-and-drop
+  adwaita-icon-theme,
+  hicolor-icon-theme,
+  gsettings-desktop-schemas,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -96,6 +100,11 @@ stdenv.mkDerivation (finalAttrs: {
     libXcomposite
     libXdamage
     libXfixes
+
+    # Icon themes and schemas for file browser
+    adwaita-icon-theme
+    hicolor-icon-theme
+    gsettings-desktop-schemas
   ];
 
   desktopItem = makeDesktopItem {
@@ -130,7 +139,12 @@ stdenv.mkDerivation (finalAttrs: {
     # Create wrapper scripts
     mkdir -p "$out/bin"
     makeWrapper "$out/libexec/soundshow/SoundShow.x86_64" "$out/bin/soundshow" \
-      --chdir "$out/libexec/soundshow"
+      --chdir "$out/libexec/soundshow" \
+      --unset WAYLAND_DISPLAY \
+      --set GTK_THEME Adwaita \
+      --prefix XDG_DATA_DIRS : "$XDG_ICON_DIRS" \
+      --prefix XDG_DATA_DIRS : "$GSETTINGS_SCHEMAS_PATH" \
+      --prefix XDG_DATA_DIRS : "${adwaita-icon-theme}/share"
     makeWrapper "$out/libexec/soundshow-display/SoundShowDisplay.x86_64" "$out/bin/soundshow-display" \
       --chdir "$out/libexec/soundshow-display"
 
