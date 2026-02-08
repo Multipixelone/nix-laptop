@@ -18,6 +18,11 @@
   libXrandr,
   libXScrnSaver,
   libXxf86vm,
+  libxcb,
+  libX11,
+  libXcomposite,
+  libXdamage,
+  libXfixes,
   udev,
   vulkan-loader,
   wayland,
@@ -34,17 +39,16 @@
   nspr,
   nss,
   pango,
-  xorg,
   libpulseaudio,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "soundshow";
-  version = "2025.12.14";
+  version = "2026.02.04";
 
   src = fetchzip {
     url = "https://github.com/soundshow-app/soundshow-downloads/releases/download/v${finalAttrs.version}/SoundShow-linux-x64.zip";
-    hash = "sha256-3v4Pr+eibp2w9CEJYDSpdLwr88Zkxgwkq64e6/+UU3Y=";
+    hash = "sha256-J0mzP9+SMNNHCXc6kARjlAf/pyOoQr+xSm/UQ6GgUZM=";
   };
 
   nativeBuildInputs = [
@@ -87,11 +91,11 @@ stdenv.mkDerivation (finalAttrs: {
     nspr
     nss
     pango
-    xorg.libxcb
-    xorg.libX11
-    xorg.libXcomposite
-    xorg.libXdamage
-    xorg.libXfixes
+    libxcb
+    libX11
+    libXcomposite
+    libXdamage
+    libXfixes
   ];
 
   desktopItem = makeDesktopItem {
@@ -187,11 +191,12 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru.updateScript = nix-update-script { };
   meta = with lib; {
-    description = "Powerful yet intuitive soundboard app for live triggering audio cues";
+    description = "Soundboard and multimedia player for live triggering audio cues";
     homepage = "https://soundshow.app";
+    mainProgram = "soundshow";
     license = licenses.unfree;
     maintainers = with lib.maintainers; [
-      Multipixelone
+      tunnelmaker
     ];
     platforms = [ "x86_64-linux" ];
     sourceProvenance = [ lib.sourceTypes.binaryNativeCode ];
