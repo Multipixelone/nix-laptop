@@ -143,8 +143,7 @@ stdenv.mkDerivation (finalAttrs: {
       --unset WAYLAND_DISPLAY \
       --set GTK_THEME Adwaita \
       --prefix XDG_DATA_DIRS : "$XDG_ICON_DIRS" \
-      --prefix XDG_DATA_DIRS : "$GSETTINGS_SCHEMAS_PATH" \
-      --prefix XDG_DATA_DIRS : "${adwaita-icon-theme}/share"
+      --prefix XDG_DATA_DIRS : "$GSETTINGS_SCHEMAS_PATH"
     makeWrapper "$out/libexec/soundshow-display/SoundShowDisplay.x86_64" "$out/bin/soundshow-display" \
       --chdir "$out/libexec/soundshow-display"
 
