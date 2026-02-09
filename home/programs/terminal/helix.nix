@@ -14,6 +14,7 @@ let
   zellij-args = ":sh zellij run -c -f -x 10%% -y 10%% --width 80%% --height 80%% --";
   packages = with pkgs; [
     nixfmt
+    tinymist
     gpt-wrapped
     marksman
     nodePackages.prettier
@@ -159,6 +160,21 @@ in
     };
     languages = {
       language-server = {
+        tinymist = {
+          command = "tinymist";
+          config = {
+            exportPdf = "onType";
+            outputPath = "$dir/out/$name";
+            preview.background = {
+              enabled = true;
+              args = [
+                "--data-plane-host=127.0.0.1:23635"
+                "--invert-colors=never"
+                "--open"
+              ];
+            };
+          };
+        };
         gpt = {
           command = "helix-gpt";
           args = [
@@ -347,6 +363,13 @@ in
             file-types = [ "tex" ];
             language-servers = [ "texlab" ];
             text-width = 120;
+          }
+          {
+            name = "typst";
+            formatter.command = lib.getExe pkgs.typstyle;
+            auto-format = true;
+            file-types = [ "typ" ];
+            language-servers = [ "tinymist" ];
           }
           {
             name = "css";
