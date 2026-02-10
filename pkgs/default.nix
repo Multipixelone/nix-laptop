@@ -17,6 +17,7 @@
           izotope = pkgs.callPackage ./izotope { };
           lossywav = pkgs.callPackage ./lossywav { };
           soundshow = pkgs.callPackage ./soundshow { };
+          soundshow-win = pkgs.callPackage ./soundshow-win { };
           subway = pkgs.callPackage ./aequilibrae/gtfs-subway.nix { };
         };
     };
