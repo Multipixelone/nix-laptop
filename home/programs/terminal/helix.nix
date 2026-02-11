@@ -164,7 +164,6 @@ in
           command = "tinymist";
           config = {
             exportPdf = "onType";
-            outputPath = "$dir/out/$name";
             preview.background = {
               enabled = true;
               args = [
