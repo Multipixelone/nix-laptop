@@ -167,7 +167,7 @@ in
             preview.background = {
               enabled = true;
               args = [
-                "--data-plane-host=127.0.0.1:23635"
+                "--data-plane-host=127.0.0.1:0" # 0: pick a random port
                 "--invert-colors=never"
                 "--open"
               ];
