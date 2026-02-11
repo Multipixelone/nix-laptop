@@ -15,6 +15,7 @@ let
   packages = with pkgs; [
     nixfmt
     tinymist
+    typstyle
     gpt-wrapped
     marksman
     nodePackages.prettier
@@ -374,7 +375,7 @@ in
           }
           {
             name = "typst";
-            formatter.command = lib.getExe pkgs.typstyle;
+            formatter.command = "typstyle";
             auto-format = true;
             file-types = [ "typ" ];
             language-servers = [ "tinymist" ];
