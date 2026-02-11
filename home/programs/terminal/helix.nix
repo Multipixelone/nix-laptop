@@ -164,6 +164,8 @@ in
           command = "tinymist";
           config = {
             exportPdf = "onType";
+            formatterMode = "typstyle";
+            formatterPrintWidth = 80;
             preview.background = {
               enabled = true;
               args = [
