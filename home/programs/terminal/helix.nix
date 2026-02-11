@@ -181,6 +181,13 @@ in
             "copilot"
           ];
         };
+        taplo = {
+          command = lib.getExe pkgs.taplo;
+          args = [
+            "lsp"
+            "stdio"
+          ];
+        };
         nixd = {
           command = lib.getExe pkgs.nixd;
           args = [ "--inlay-hints=true" ];
@@ -369,6 +376,16 @@ in
             auto-format = true;
             file-types = [ "typ" ];
             language-servers = [ "tinymist" ];
+          }
+          {
+            name = "toml";
+            auto-format = true;
+            formatter.command = lib.getExe pkgs.taplo;
+            formatter.args = [
+              "fmt"
+              "-"
+            ];
+            language-servers = [ "taplo" ];
           }
           {
             name = "css";
