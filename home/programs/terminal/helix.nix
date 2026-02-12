@@ -14,7 +14,6 @@ let
   zellij-args = ":sh zellij run -c -f -x 10%% -y 10%% --width 80%% --height 80%% --";
   packages = with pkgs; [
     nixfmt
-    tinymist
     typstyle
     gpt-wrapped
     marksman
