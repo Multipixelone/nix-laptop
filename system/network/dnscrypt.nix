@@ -9,9 +9,7 @@
     enable = true;
     settings = {
       listen_addresses = [
-        "127.0.0.1:5353"
-        "[::1]:5353"
-        "10.100.0.1:5353"
+        "127.0.0.1:6000"
       ];
       ipv6_servers = true;
       require_dnssec = true;
