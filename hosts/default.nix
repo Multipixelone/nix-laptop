@@ -41,6 +41,8 @@
           "${mod}/hardware/secure-boot.nix"
 
           "${mod}/network/cloudflared.nix"
+          "${mod}/network/pihole.nix"
+          "${mod}/network/unbound.nix"
           "${mod}/network/dnscrypt.nix"
           "${mod}/network/duckdns.nix"
           "${mod}/network/nas.nix"
@@ -68,6 +70,8 @@
           "${mod}/programs/media.nix"
           "${mod}/services/jdownloader.nix"
 
+          "${mod}/network/pihole.nix"
+          "${mod}/network/unbound.nix"
           "${mod}/network/dnscrypt.nix"
           "${mod}/hardware/secure-boot.nix"
 

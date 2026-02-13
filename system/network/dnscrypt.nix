@@ -9,12 +9,10 @@
     enable = true;
     settings = {
       listen_addresses = [
-        "127.0.0.1:53"
-        "10.100.0.1:53"
+        "127.0.0.1:6000"
       ];
       ipv6_servers = true;
       require_dnssec = true;
-      blocked_names.blocked_names_file = "${inputs.blocklist}/hosts";
       sources.public-resolvers = {
         urls = [
           "https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md"
