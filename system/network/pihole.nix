@@ -1,5 +1,8 @@
 { inputs, ... }:
 {
+  # Disable systemd-resolved to allow blocky to bind to port 53
+  services.resolved.enable = false;
+  
   services.blocky = {
     enable = true;
     settings = {
