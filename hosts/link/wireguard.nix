@@ -28,17 +28,20 @@
         privateKeyFile = config.age.secrets."wireguard".path;
 
         extraOptions = {
-          H1 = 256;
-          H2 = 512;
-          H3 = 1024;
-          H4 = 2048;
-          Jc = 4;
-          Jmax = 32;
-          Jmin = 16;
-          S1 = 16;
-          S2 = 17;
-          S3 = 18;
-          S4 = 19;
+          # Header obfuscation
+          H1 = 3552562;
+          H2 = 3289397;
+          H3 = 7481934;
+          H4 = 5765241;
+          # Junk packets
+          Jc = 5;
+          Jmin = 50;
+          Jmax = 500;
+          # Packet size padding
+          S1 = 71;
+          S2 = 93;
+          S3 = 47;
+          S4 = 62;
         };
 
         peers = [
