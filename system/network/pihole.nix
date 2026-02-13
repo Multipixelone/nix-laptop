@@ -4,7 +4,7 @@
     enable = true;
     settings = {
       # Port configuration - listen on 53 for client queries
-      ports.dns = 53;
+      port = 53;
       
       # Upstream DNS servers - forward to unbound
       upstreams = {
@@ -17,7 +17,7 @@
       
       # Enable blocking of ads and tracking domains
       blocking = {
-        blackLists = {
+        blockLists = {
           ads = [
             # Use the same blocklist that dnscrypt was using
             "${inputs.blocklist}/hosts"
