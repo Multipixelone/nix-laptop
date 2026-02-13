@@ -5,6 +5,9 @@
     "::1"
   ];
 
+  # Disable systemd-resolved to prevent port 53 conflict with dnscrypt-proxy
+  services.resolved.enable = false;
+
   services.dnscrypt-proxy = {
     enable = true;
     settings = {
