@@ -47,4 +47,10 @@
       ];
     };
   };
+  
+  # Ensure proper service ordering
+  systemd.services.unbound = {
+    after = [ "dnscrypt-proxy.service" ];
+    requires = [ "dnscrypt-proxy.service" ];
+  };
 }
