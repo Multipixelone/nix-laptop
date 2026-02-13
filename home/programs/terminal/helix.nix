@@ -7,9 +7,9 @@
 }:
 let
   # wrap secret into helix-gpt
-  gpt-wrapped = pkgs.writeShellScriptBin "helix-gpt" ''
-    export COPILOT_API_KEY=$(cat ${config.age.secrets."copilot".path})
-    ${lib.getExe pkgs.helix-gpt} $@
+  gpt-wrapped = pkgs.writeShellScriptBin "copilot-language-server" ''
+    export GITHUB_COPILOT_TOKEN=$(cat ${config.age.secrets."copilot".path})
+    ${lib.getExe pkgs.copilot-language-server} $@
   '';
   zellij-args = ":sh zellij run -c -f -x 10%% -y 10%% --width 80%% --height 80%% --";
   packages = with pkgs; [
@@ -177,11 +177,20 @@ in
           };
         };
         gpt = {
-          command = "helix-gpt";
+          command = "copilot-language-server";
           args = [
-            "--handler"
-            "copilot"
+            "--stdio"
           ];
+          config = {
+            editorInfo = {
+              name = "Helix";
+              version = "25.01";
+            };
+            editorPluginIngo = {
+              name = "helix-copilot";
+              version = "0.1.0";
+            };
+          };
         };
         taplo = {
           command = lib.getExe pkgs.taplo;
