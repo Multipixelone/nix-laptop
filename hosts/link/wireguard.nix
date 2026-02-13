@@ -5,7 +5,10 @@
 }:
 {
   networking = {
-    firewall.allowedUDPPorts = [ 443 ];
+    firewall = {
+      allowedUDPPorts = [ 443 ];
+      trustedInterfaces = [ "wg0" ];
+    };
     nat = {
       enable = true;
       externalInterface = "enp6s0";
