@@ -106,7 +106,9 @@
     catppuccin.url = "github:catppuccin/nix";
     nix-hardware.url = "github:NixOS/nixos-hardware/master";
     zjstatus.url = "github:dj95/zjstatus";
-    helix.url = "github:helix-editor/helix";
+    # helix fork with support for copilot-language-server
+    helix.url = "github:devmanuelli/helix/textDocument/inlineCompletion";
+    # helix.url = "github:helix-editor/helix";
     yazi.url = "github:sxyazi/yazi";
     nixcord.url = "github:kaylorben/nixcord";
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
