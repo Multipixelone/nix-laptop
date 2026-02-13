@@ -4,8 +4,8 @@
     enable = true;
     settings = {
       # Port configuration - listen on 53 for client queries
-      port = 53;
-      
+      ports.dns = 53;
+
       # Upstream DNS servers - forward to unbound
       upstreams = {
         groups = {
@@ -15,23 +15,37 @@
           ];
         };
       };
-      
+
       # Enable blocking of ads and tracking domains
       blocking = {
-        blockLists = {
+        denylists = {
           ads = [
-            # Use the same blocklist that dnscrypt was using
-            "${inputs.blocklist}/hosts"
+            "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
+            "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/pro.txt"
           ];
+          fakenews = [
+            "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-only/hosts"
+          ];
+          gambling = [
+            "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/gambling-only/hosts"
+          ];
+          # adult = [
+          #   "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn-only/hosts"
+          # ];
         };
-        # Add common ad/tracking domains
+
         clientGroupsBlock = {
-          default = [ "ads" ];
+          default = [
+            "ads"
+            "fakenews"
+            "gambling"
+            # "adult"
+          ];
         };
         blockType = "zeroIp";
         blockTTL = "1m";
       };
-      
+
       # Caching
       caching = {
         minTime = "5m";
@@ -40,7 +54,7 @@
       };
     };
   };
-  
+
   # Ensure proper service ordering
   systemd.services.blocky = {
     after = [ "unbound.service" ];
