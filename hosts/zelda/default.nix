@@ -201,10 +201,27 @@
     hostName = "zelda";
     wg-quick.interfaces.wg0 = {
       autostart = false;
+      type = "amneziawg";
       address = [ "10.100.0.2/24" ];
       mtu = 1000;
       dns = [ "10.100.0.1" ];
       privateKeyFile = config.age.secrets."wireguard".path;
+      extraOptions = {
+        # Header obfuscation
+        H1 = 3552562;
+        H2 = 3289397;
+        H3 = 7481934;
+        H4 = 5765241;
+        # Junk packets
+        Jc = 5;
+        Jmin = 50;
+        Jmax = 500;
+        # Packet size padding
+        S1 = 71;
+        S2 = 93;
+        S3 = 47;
+        S4 = 62;
+      };
       peers = [
         {
           publicKey = "VsMThxcXgr5nNNDQ6rSKlQQ9T6rWkedULuTHE4/jA24=";
