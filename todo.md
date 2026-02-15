@@ -28,7 +28,13 @@ tags: []
   - [ ] encrypted partition
   - [ ] lanzaboote for cold boot attacks
   - [ ] gaming specialization that switches to NVIDIA only & loads up steam?
-  - [ ] inspect iPod creation playlist format and write a script to sync rock box playlists back to Plex 
+  - [ ] inspect iPod creation playlist format and write a script to sync rock box playlists back to Plex
   - [ ] izotope package wine
+
+# All My Computers Are Belong to Nix
+
+- [ ] colmena
+- [ ] more modular with dendritic
+- [ ] usb stick generator for recovery
 
 Package: aequilibrae openmatrix
