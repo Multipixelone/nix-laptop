@@ -1,4 +1,8 @@
-{ inputs, ... }:
+{
+  lib,
+  config,
+  ...
+}:
 {
   # Disable systemd-resolved to allow blocky to bind to port 53
   services.resolved.enable = false;
@@ -9,7 +13,8 @@
       # Port configuration - listen on 53 for client queries
       ports.dns = [
         "127.0.0.1:53"
-        "10.100.0.1:53"
+        # I need some kind of toml metadata solution for my hosts. pleaseee
+        (lib.mkIf (config.networking.hostName == "link") "10.100.0.1:53")
       ];
 
       # Upstream DNS servers - forward to unbound
