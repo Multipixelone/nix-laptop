@@ -7,9 +7,9 @@
       systems = [ "x86_64-linux" ];
 
       imports = [
+        (inputs.import-tree ./modules)
         ./hosts
         ./pkgs
-        ./modules
         inputs.pre-commit-hooks.flakeModule
       ];
 
@@ -101,6 +101,7 @@
         flake-compat.follows = "flake-compat";
       };
     };
+    import-tree.url = "github:vic/import-tree";
     nur.url = "github:nix-community/NUR";
     musnix.url = "github:musnix/musnix";
     catppuccin.url = "github:catppuccin/nix";
