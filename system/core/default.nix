@@ -9,6 +9,7 @@
     ../programs/fish.nix
   ];
   hardware.enableRedistributableFirmware = true;
+  networking.domain = "finnrut.is";
 
   documentation.dev.enable = true;
 
