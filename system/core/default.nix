@@ -38,6 +38,9 @@
     }
   ];
 
+  # Cleanup stuff included by default
+  services.speechd.enable = false;
+
   # don't touch this
   system.stateVersion = lib.mkDefault "23.11";
 
