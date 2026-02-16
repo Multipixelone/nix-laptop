@@ -55,8 +55,10 @@
         experimental-features = [
           "nix-command"
           # "flake-self-attrs"
+          "recursive-nix"
           "flakes"
         ];
+        extra-system-features = [ "recursive-nix" ];
         flake-registry = "/etc/nix/registry.json";
         # for direnv GC roots
         keep-derivations = true;
