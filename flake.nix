@@ -128,6 +128,7 @@
     base16.url = "github:SenchoPens/base16.nix";
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
     # prismlauncher.url = "github:PrismLauncher/PrismLauncher";
+    nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
     apple-emoji = {
       url = "github:samuelngs/apple-emoji-linux";
       inputs.nixpkgs.follows = "nixpkgs";
