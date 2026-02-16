@@ -1,6 +1,17 @@
 {
   description = "Multipixelone (Finn)'s nix + HomeManager config";
 
+  nixConfig = {
+    abort-on-warn = true;
+    extra-experimental-features = [
+      "flake-self-attrs"
+      "pipe-operators"
+    ];
+    allow-import-from-derivation = false;
+  };
+
+  inputs.self.submodules = true;
+
   outputs =
     inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
@@ -12,6 +23,8 @@
         ./pkgs
         inputs.pre-commit-hooks.flakeModule
       ];
+
+      _module.args.rootPath = ./.;
 
       perSystem =
         {
