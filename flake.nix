@@ -2,7 +2,7 @@
   description = "Multipixelone (Finn)'s nix + HomeManager config";
 
   nixConfig = {
-    # abort-on-warn = true;
+    abort-on-warn = true;
     extra-experimental-features = [
       "flake-self-attrs"
       "pipe-operators"
