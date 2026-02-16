@@ -50,6 +50,7 @@
         # auto-optimise-store = true;
         experimental-features = [
           "nix-command"
+          "flake-self-attrs"
           "flakes"
         ];
         flake-registry = "/etc/nix/registry.json";
