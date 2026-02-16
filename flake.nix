@@ -7,7 +7,7 @@
       "flake-self-attrs"
       "pipe-operators"
     ];
-    # allow-import-from-derivation = false;
+    allow-import-from-derivation = false;
   };
 
   outputs =
