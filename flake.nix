@@ -10,8 +10,6 @@
     # allow-import-from-derivation = false;
   };
 
-  inputs.self.submodules = true;
-
   outputs =
     inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
