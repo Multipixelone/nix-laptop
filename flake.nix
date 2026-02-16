@@ -1,14 +1,14 @@
 {
   description = "Multipixelone (Finn)'s nix + HomeManager config";
 
-  # nixConfig = {
-  #   # abort-on-warn = true;
-  #   extra-experimental-features = [
-  #     "flake-self-attrs"
-  #     "pipe-operators"
-  #   ];
-  #   # allow-import-from-derivation = false;
-  # };
+  nixConfig = {
+    # abort-on-warn = true;
+    extra-experimental-features = [
+      "flake-self-attrs"
+      "pipe-operators"
+    ];
+    # allow-import-from-derivation = false;
+  };
 
   inputs.self.submodules = true;
 
