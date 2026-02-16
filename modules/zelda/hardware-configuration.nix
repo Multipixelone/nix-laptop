@@ -28,13 +28,6 @@
     #     };
     #   };
     # };
-    hardware = {
-      firmware = [ pkgs.sof-firmware ];
-      openrazer = {
-        enable = true;
-        users = [ "tunnel" ];
-      };
-    };
     services.logrotate.checkConfig = false;
     services.automatic-timezoned.enable = true;
     boot = {
