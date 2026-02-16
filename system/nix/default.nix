@@ -48,6 +48,10 @@
         ];
         # this is disabled because I have my store on a massive drive now, so I shouldn't waste CPU cycles trying to save space
         # auto-optimise-store = true;
+        #
+        extra-experimental-features = [
+          "pipe-operator"
+        ];
         experimental-features = [
           "nix-command"
           "flake-self-attrs"
