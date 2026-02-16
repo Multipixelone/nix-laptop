@@ -34,7 +34,7 @@
       flakeInputs = lib.filterAttrs (_: v: lib.isType "flake" v) inputs;
     in
     {
-      package = pkgs.lix;
+      # package = pkgs.lix;
       registry = lib.mapAttrs (_: v: { flake = v; }) flakeInputs;
       nixPath = lib.mapAttrsToList (key: _: "${key}=flake:${key}") config.nix.registry;
       extraOptions = ''
@@ -50,11 +50,11 @@
         # auto-optimise-store = true;
         #
         extra-experimental-features = [
-          "pipe-operator"
+          "pipe-operators"
         ];
         experimental-features = [
           "nix-command"
-          "flake-self-attrs"
+          # "flake-self-attrs"
           "flakes"
         ];
         flake-registry = "/etc/nix/registry.json";
