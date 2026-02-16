@@ -4,6 +4,7 @@
     imports = with config.flake.modules.nixos; [
       efi
       pc
+      gaming
     ];
   };
 }
