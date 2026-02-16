@@ -6,7 +6,7 @@
       packages.system = pkgs.writeShellScriptBin "system" "nix-instantiate --eval --expr builtins.currentSystem --raw";
     };
   flake.modules.homeManager.base =
-    { pkgs, ... }:
+    { pkgs, lib, ... }:
     {
       home.packages =
         (with pkgs; [
@@ -19,6 +19,13 @@
         ++ [
           (withSystem pkgs.stdenv.hostPlatform.system (psArgs: psArgs.config.packages.system))
         ];
-      programs.nh.enable = true;
+      environment.variables.NH_FLAKE = lib.mkDefault "/home/tunnel/Documents/Git/nix-laptop";
+      programs.nh = {
+        enable = true;
+        clean = {
+          enable = true;
+          extraArgs = "--keep-since 30d --keep 10";
+        };
+      };
     };
 }
