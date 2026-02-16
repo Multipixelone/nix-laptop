@@ -1,14 +1,14 @@
 {
   description = "Multipixelone (Finn)'s nix + HomeManager config";
 
-  nixConfig = {
-    abort-on-warn = true;
-    extra-experimental-features = [
-      "flake-self-attrs"
-      "pipe-operators"
-    ];
-    allow-import-from-derivation = false;
-  };
+  # nixConfig = {
+  #   # abort-on-warn = true;
+  #   extra-experimental-features = [
+  #     "flake-self-attrs"
+  #     "pipe-operators"
+  #   ];
+  #   # allow-import-from-derivation = false;
+  # };
 
   inputs.self.submodules = true;
 
@@ -19,64 +19,62 @@
 
       imports = [
         (inputs.import-tree ./modules)
-        ./hosts
-        ./pkgs
-        inputs.pre-commit-hooks.flakeModule
+        # inputs.pre-commit-hooks.flakeModule
       ];
 
       _module.args.rootPath = ./.;
 
-      perSystem =
-        {
-          config,
-          pkgs,
-          system,
-          ...
-        }:
-        {
-          # Configure nixpkgs to allow unfree packages
-          _module.args.pkgs = import inputs.nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-          };
-          devShells.default = pkgs.mkShell {
-            packages = [
-              pkgs.nixfmt
-              pkgs.just
-              pkgs.attic-client
-              pkgs.npins
-              inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
-            ];
-            name = "dots";
-            DIRENV_LOG_FORMAT = "";
-            shellHook = ''
-              ${config.pre-commit.installationScript}
-            '';
-          };
+      # perSystem =
+      #   {
+      #     config,
+      #     pkgs,
+      #     system,
+      #     ...
+      #   }:
+      #   {
+      #     # Configure nixpkgs to allow unfree packages
+      #     _module.args.pkgs = import inputs.nixpkgs {
+      #       inherit system;
+      #       config.allowUnfree = true;
+      #     };
+      #     devShells.default = pkgs.mkShell {
+      #       packages = [
+      #         pkgs.nixfmt
+      #         pkgs.just
+      #         pkgs.attic-client
+      #         pkgs.npins
+      #         inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
+      #       ];
+      #       name = "dots";
+      #       DIRENV_LOG_FORMAT = "";
+      #       shellHook = ''
+      #         ${config.pre-commit.installationScript}
+      #       '';
+      #     };
 
-          # TODO fix build with cmake 4
-          packages = {
-            musepack =
-              inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.callPackage ./pkgs/musepack
-                { };
-          };
+      #     # TODO fix build with cmake 4
+      #     packages = {
+      #       musepack =
+      #         inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.callPackage ./pkgs/musepack
+      #           { };
+      #     };
 
-          pre-commit.settings = {
-            hooks =
-              let
-                # probably a better way to do this
-                excludes = [ "npins" ];
-              in
-              {
-                nixfmt = {
-                  inherit excludes;
-                  enable = true;
-                };
-              };
-          };
+      #     pre-commit.settings = {
+      #       hooks =
+      #         let
+      #           # probably a better way to do this
+      #           excludes = [ "npins" ];
+      #         in
+      #         {
+      #           nixfmt = {
+      #             inherit excludes;
+      #             enable = true;
+      #           };
+      #         };
+      #     };
 
-          formatter = pkgs.nixfmt;
-        };
+      #     formatter = pkgs.nixfmt;
+      #   };
     };
 
   inputs = {
