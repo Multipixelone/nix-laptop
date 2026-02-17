@@ -15,6 +15,10 @@
             base
             gui
           ];
+          gaming = with config.flake.modules.homeManager; [
+            base
+            gui
+          ];
         }
         |> lib.mapAttrs' (
           name: modules: {
