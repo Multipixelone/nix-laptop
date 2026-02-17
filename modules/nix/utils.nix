@@ -19,6 +19,10 @@
         ++ [
           (withSystem pkgs.stdenv.hostPlatform.system (psArgs: psArgs.config.packages.system))
         ];
+    };
+  flake.modules.nixos.base =
+    { pkgs, lib, ... }:
+    {
       environment.variables.NH_FLAKE = lib.mkDefault "/home/tunnel/Documents/Git/nix-laptop";
       programs.nh = {
         enable = true;
