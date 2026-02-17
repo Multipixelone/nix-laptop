@@ -124,6 +124,10 @@
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
     ucodenix.url = "github:e-tho/ucodenix";
     base16.url = "github:SenchoPens/base16.nix";
+    tinted-schemes = {
+      flake = false;
+      url = "github:tinted-theming/schemes";
+    };
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
     # prismlauncher.url = "github:PrismLauncher/PrismLauncher";
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
@@ -206,7 +210,13 @@
     };
     stylix = {
       url = "github:danth/stylix";
-      inputs.base16.follows = "base16";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+        nur.follows = "nur";
+        systems.follows = "systems";
+        tinted-schemes.follows = "tinted-schemes";
+      };
     };
     auto-cpufreq = {
       url = "github:AdnanHodzic/auto-cpufreq";
