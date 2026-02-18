@@ -30,7 +30,7 @@
           enable = true;
           endpoints."last.fm" = {
             username = "Tunnelmaker";
-            passwordFile = config.age.secrets."scribblepw".path;
+            passwordFile = hmArgs.config.age.secrets."scribblepw".path;
           };
         };
       };
