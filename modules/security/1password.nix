@@ -1,6 +1,7 @@
 {
   nixpkgs.config.allowUnfreePackages = [
     "1password"
+    "onepassword-password-manager"
   ];
   flake.modules.nixos.pc =
     { lib, ... }:
