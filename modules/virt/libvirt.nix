@@ -1,5 +1,10 @@
 { inputs, config, ... }:
 {
+  flake.modules.homeManager.base = {
+    imports = [
+      inputs.quadlet-nix.homeManagerModules.quadlet
+    ];
+  };
   flake.modules.nixos.base =
     { pkgs, ... }:
     {
