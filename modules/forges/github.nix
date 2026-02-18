@@ -14,8 +14,15 @@
 
       homeManager = {
         base =
-          { pkgs, ... }:
+          { lib, pkgs, ... }:
           {
+            xdg.configFile."fish/completions/gh.fish".source =
+              pkgs.runCommand "gh-completion"
+                {
+                }
+                ''
+                  ${lib.getExe pkgs.gh} completion -s fish > $out
+                '';
             programs.gh = {
               package = pkgs.gh.overrideAttrs (oldAttrs: {
                 buildInputs = oldAttrs.buildInputs or [ ] ++ [ pkgs.makeWrapper ];
