@@ -28,7 +28,7 @@
         consoleLogLevel = 0;
         initrd.verbose = false;
         # hide os choice
-        loader.timeout = 3;
+        loader.timeout = lib.mkDefault 3;
         # xanmod or zen
         # kernelPackages = pkgs.linuxPackages_xanmod_latest;
         kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
