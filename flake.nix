@@ -120,7 +120,7 @@
     helix.url = "github:devmanuelli/helix/textDocument/inlineCompletion";
     # helix.url = "github:helix-editor/helix";
     yazi.url = "github:sxyazi/yazi";
-    nixcord.url = "github:kaylorben/nixcord";
+    nixcord.url = "github:ScarsTRF/nixcord/pnpmFix";
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
     ucodenix.url = "github:e-tho/ucodenix";
     base16.url = "github:SenchoPens/base16.nix";
