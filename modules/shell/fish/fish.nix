@@ -36,6 +36,7 @@
         # + pure-config;
       in
       {
+        home.shell.enableFishIntegration = true;
         # source other functions
         xdg.configFile = {
           "fish/functions" = {
@@ -47,6 +48,7 @@
         };
         # allow apps like uwsm to read HM vars
         programs.bash.enable = true;
+        programs.carapace.enable = true;
         programs.fish = {
           enable = true;
           shellAbbrs =
