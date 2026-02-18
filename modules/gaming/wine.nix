@@ -21,6 +21,8 @@
       {
         home.packages = [
           inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}.winetricks-git
+          pkgs.protontricks
+          pkgs.umu-launcher
         ];
       };
   };
