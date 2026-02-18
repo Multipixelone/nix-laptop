@@ -9,6 +9,7 @@
       programs = {
         ripgrep.enable = true;
         fd.enable = true;
+        jq.enable = true;
         fzf = {
           enable = true;
           defaultCommand = "fd --type file --follow"; # FZF_DEFAULT_COMMAND
