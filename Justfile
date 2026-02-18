@@ -19,6 +19,9 @@ minishb:
   attic push system result -j 3
   unlink result
 
+iso:
+  nix build .#nixosConfigurations.iso.config.system.build.isoImage
+
 debug:
 	nixos-rebuild switch --flake . --use-remote-sudo --show-trace --verbose
 
