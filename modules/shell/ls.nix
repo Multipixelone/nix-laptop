@@ -6,14 +6,14 @@
       ...
     }:
     {
+      home.packages = with pkgs; [
+        grc
+      ];
       programs = {
         zoxide.enable = true;
         dircolors = {
           enable = true;
         };
-        home.packages = with pkgs; [
-          grc
-        ];
         eza = {
           inherit (hmArgs.config.home.shell) enableFishIntegration;
           enable = true;
