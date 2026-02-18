@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   flake = {
     meta.accounts.github = {
@@ -14,8 +15,16 @@
 
       homeManager = {
         base =
-          { lib, pkgs, ... }:
+          hmArgs@{ lib, pkgs, ... }:
+          let
+            # wrap secret into gh cli
+            gh-wrapped = pkgs.writeShellScriptBin "gh" ''
+              export GITHUB_TOKEN=$(cat ${hmArgs.config.age.secrets."gh".path})
+              ${lib.getExe pkgs.gh} "$@"
+            '';
+          in
           {
+            age.secrets."gh".file = "${inputs.secrets}/github/ghcli.age";
             xdg.configFile."fish/completions/gh.fish".source =
               pkgs.runCommand "gh-completion"
                 {
@@ -24,12 +33,7 @@
                   ${lib.getExe pkgs.gh} completion -s fish > $out
                 '';
             programs.gh = {
-              package = pkgs.gh.overrideAttrs (oldAttrs: {
-                buildInputs = oldAttrs.buildInputs or [ ] ++ [ pkgs.makeWrapper ];
-                postInstall = oldAttrs.postInstall or "" + ''
-                  wrapProgram $out/bin/gh --unset GITHUB_TOKEN
-                '';
-              });
+              package = gh-wrapped;
               enable = true;
               settings.git_protocol = "ssh";
             };
