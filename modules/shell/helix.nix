@@ -1,5 +1,6 @@
 { inputs, ... }:
 {
+  nixpkgs.config.allowUnfreePackages = [ "copilot-language-server" ];
   flake.modules = {
     homeManager.base =
       hmArgs@{
@@ -9,15 +10,15 @@
       }:
       let
         # wrap secret into helix-gpt
-        # gpt-wrapped = pkgs.writeShellScriptBin "copilot-language-server" ''
-        #   export GITHUB_COPILOT_TOKEN=$(cat ${config.age.secrets."copilot".path})
-        #   ${lib.getExe pkgs.copilot-language-server} $@
-        # '';
+        gpt-wrapped = pkgs.writeShellScriptBin "copilot-language-server" ''
+          export GITHUB_COPILOT_TOKEN=$(cat ${hmArgs.config.age.secrets."copilot".path})
+          ${lib.getExe pkgs.copilot-language-server} $@
+        '';
         zellij-args = ":sh zellij run -c -f -x 10%% -y 10%% --width 80%% --height 80%% --";
         packages = with pkgs; [
           nixfmt
           typstyle
-          # gpt-wrapped
+          gpt-wrapped
           marksman
           nodePackages.prettier
           wl-clipboard
@@ -27,11 +28,11 @@
       {
         # also install packages to main environment
         home.packages = packages;
-        # age.secrets = {
-        #   "copilot" = {
-        #     file = "${inputs.secrets}/github/copilot.age";
-        #   };
-        # };
+        age.secrets = {
+          "copilot" = {
+            file = "${inputs.secrets}/github/copilot.age";
+          };
+        };
         home.file.".dprint.json".source = builtins.toFile "dprint.json" (
           builtins.toJSON {
             lineWidth = 80;
