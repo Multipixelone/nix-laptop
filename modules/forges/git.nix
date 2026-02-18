@@ -22,7 +22,6 @@
 
         ignores = [
           "*result*"
-          ".direnv"
         ];
         settings = {
           core = {
