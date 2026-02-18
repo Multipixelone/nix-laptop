@@ -70,6 +70,14 @@ in
                 identitiesOnly = true;
                 hashKnownHosts = false;
                 identityFile = "${args.config.home.homeDirectory}/.ssh/id_ed25519";
+                forwardAgent = true;
+                addKeysToAgent = "yes";
+                serverAliveInterval = 0;
+                serverAliveCountMax = 3;
+                userKnownHostsFile = "~/.ssh/known_hosts";
+                controlMaster = "no";
+                controlPath = "~/.ssh/master-%r@%n:%p";
+                controlPersist = "no";
               };
             }
           ]
