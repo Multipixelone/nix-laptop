@@ -1,10 +1,6 @@
 {
-  config,
-  ...
-}:
-{
   flake.modules.homeManager.base =
-    {
+    hmArgs@{
       pkgs,
       lib,
       ...
@@ -14,7 +10,7 @@
       bat-wrapped = pkgs.writeShellApplication {
         name = "cat";
         runtimeInputs = [
-          config.programs.bat.package
+          hmArgs.config.programs.bat.package
         ];
         text = ''
           bat --style=header -P "$@"
