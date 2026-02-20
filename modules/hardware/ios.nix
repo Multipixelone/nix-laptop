@@ -1,8 +1,8 @@
 {
-  flake.modules =
-    { pkgs, ... }:
-    {
-      nixos.pc = {
+  flake.modules = {
+    nixos.pc =
+      { pkgs, ... }:
+      {
         environment.systemPackages = with pkgs; [
           libimobiledevice
           ifuse
@@ -15,7 +15,7 @@
         };
 
       };
-      homeManager.gui = {
-      };
+    homeManager.gui = {
     };
+  };
 }
