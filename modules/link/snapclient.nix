@@ -3,10 +3,10 @@
   ...
 }:
 {
-  configurations.nixos.link.module = {
-    systemd.user.services =
-      { pkgs, ... }:
-      {
+  configurations.nixos.link.module =
+    { pkgs, ... }:
+    {
+      systemd.user.services = {
         snapclient = {
           description = "SnapCast client";
           after = [ "pipewire.service" ];
@@ -17,5 +17,5 @@
           };
         };
       };
-  };
+    };
 }

@@ -1,10 +1,6 @@
 {
-  config,
-  ...
-}:
-{
   configurations.nixos.link.module =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
     {
       networking = {
         firewall = {
