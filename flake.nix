@@ -245,6 +245,10 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    colmena = {
+      url = "github:zhaofengli/colmena";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     quadlet-nix = {
       url = "github:SEIAROTg/quadlet-nix";
     };
