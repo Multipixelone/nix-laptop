@@ -1,5 +1,5 @@
 {
   flake.modules.nixos.laptop = {
-    programs.brillo.enable = true;
+    hardware.brillo.enable = true;
   };
 }
