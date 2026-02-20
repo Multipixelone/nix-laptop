@@ -231,11 +231,11 @@
         failure_max_retries = 2
         failure_delay_seconds = 2
       '';
-      # euphony-wrapped = pkgs.writeShellScriptBin "euphony" ''
-      #   ${
-      #     lib.getExe' inputs.euphony.packages.${pkgs.stdenv.hostPlatform.system}.default "euphony"
-      #   } -c ${configFile} $@
-      # '';
+      euphony-wrapped = pkgs.writeShellScriptBin "euphony" ''
+        ${
+          lib.getExe' inputs.euphony.packages.${pkgs.stdenv.hostPlatform.system}.default "euphony"
+        } -c ${configFile} $@
+      '';
     in
     {
       # Plex API token for playlist-downloader
@@ -289,7 +289,7 @@
                 music-dir
                 transcoded-music
               ];
-              # ExecStart = "${lib.getExe' euphony-wrapped "euphony"} transcode --bare-terminal";
+              ExecStart = "${lib.getExe' euphony-wrapped "euphony"} transcode --bare-terminal";
             };
           };
           playlist-downloader = {
@@ -326,13 +326,16 @@
         '';
       };
       age.secrets."beets-plex".file = "${inputs.secrets}/media/plexbeets.age";
+      home.sessionVariables = {
+        TRANSCODED_MUSIC = "/volume1/Media/TranscodedMusic";
+      };
       home.packages = [
         md5_fixer
         # convert-mpc
         # convert-lossyflac
         # beets-lossyflac
         # rb-albumart
-        # euphony-wrapped
+        euphony-wrapped
       ];
       programs = {
         fish.functions.bi = ''
