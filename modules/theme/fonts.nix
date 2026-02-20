@@ -13,7 +13,11 @@
         pragmata = pkgs.callPackage "${rootPath}/pkgs/pragmata" { };
       };
     };
-  nixpkgs.config.allowUnfreePackages = [ "apple-emoji" ];
+  nixpkgs.config.allowUnfreePackages = [
+    "vista-fonts"
+    "corefonts"
+    "apple-emoji"
+  ];
   flake.modules.nixos.pc =
     { pkgs, ... }:
     let
