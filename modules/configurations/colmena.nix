@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, inputs, ... }:
 let
   deployableHosts = lib.filterAttrs (_: cfg: cfg.deployment != null) config.configurations.nixos;
   nixosConfigs = config.flake.nixosConfigurations;
@@ -10,15 +10,19 @@ let
     if nixos != null then nixos.config.networking.fqdn else name;
 in
 {
-  config.flake.colmena = lib.mapAttrs (
-    name: cfg:
+  config.flake.colmenaHive =
     {
-      deployment = {
-        targetHost =
-          if cfg.deployment.targetHost != null then cfg.deployment.targetHost else (defaultTargetHost name);
-        inherit (cfg.deployment) targetUser tags allowLocalDeployment;
-      };
-      imports = [ cfg.module ];
+      meta.nixpkgs = inputs.nixpkgs;
     }
-  ) deployableHosts;
+    // lib.mapAttrs (
+      name: cfg:
+      {
+        deployment = {
+          targetHost =
+            if cfg.deployment.targetHost != null then cfg.deployment.targetHost else (defaultTargetHost name);
+          inherit (cfg.deployment) targetUser tags allowLocalDeployment;
+        };
+        imports = [ cfg.module ];
+      }
+    ) deployableHosts;
 }
