@@ -1,4 +1,9 @@
-{ lib, config, inputs, ... }:
+{
+  lib,
+  config,
+  inputs,
+  ...
+}:
 let
   deployableHosts = lib.filterAttrs (_: cfg: cfg.deployment != null) config.configurations.nixos;
   nixosConfigs = config.flake.nixosConfigurations;
@@ -10,19 +15,20 @@ let
     if nixos != null then nixos.config.networking.fqdn else name;
 in
 {
-  config.flake.colmenaHive =
+  config.flake.colmenaHive = inputs.colmena.lib.makeHive (
     {
-      meta.nixpkgs = inputs.nixpkgs;
+      meta.nixpkgs = import inputs.nixpkgs {
+        system = "x86_64-linux";
+        overlays = [ ];
+      };
     }
-    // lib.mapAttrs (
-      name: cfg:
-      {
-        deployment = {
-          targetHost =
-            if cfg.deployment.targetHost != null then cfg.deployment.targetHost else (defaultTargetHost name);
-          inherit (cfg.deployment) targetUser tags allowLocalDeployment;
-        };
-        imports = [ cfg.module ];
-      }
-    ) deployableHosts;
+    // lib.mapAttrs (name: cfg: {
+      deployment = {
+        targetHost =
+          if cfg.deployment.targetHost != null then cfg.deployment.targetHost else (defaultTargetHost name);
+        inherit (cfg.deployment) targetUser tags allowLocalDeployment;
+      };
+      imports = [ cfg.module ];
+    }) deployableHosts
+  );
 }
