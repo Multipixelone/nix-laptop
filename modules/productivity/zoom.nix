@@ -1,5 +1,5 @@
 {
-  nixpkgs.config.allowUnfreePackages = [ "zoom-us" ];
+  nixpkgs.config.allowUnfreePackages = [ "zoom" ];
   flake.modules.homeManager.gui =
     { pkgs, ... }:
     {
