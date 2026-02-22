@@ -1,5 +1,12 @@
 { lib, ... }:
 {
+  flake.modules.nixos.pc = {
+    stylix.targets = {
+      grub.enable = false;
+      limine.enable = false;
+      plymouth.enable = false;
+    };
+  };
   flake.modules.nixos.base =
     { pkgs, ... }:
     {
