@@ -2,7 +2,7 @@
   flake.modules.nixos.base = {
     security = {
       # bee sudo lecture
-      sudo.configFile = ''
+      sudo-rs.configFile = ''
         Defaults lecture=always
         Defaults lecture_file = ${
           builtins.fetchurl {
