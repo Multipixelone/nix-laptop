@@ -1,4 +1,11 @@
 {
+  flake.modules.homeManager.gui =
+    { pkgs, ... }:
+    {
+      home.packages = [
+        pkgs.piper
+      ];
+    };
   flake.modules.nixos.pc = {
     services = {
       ratbagd.enable = true;

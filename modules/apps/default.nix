@@ -5,7 +5,6 @@
     {
       home.packages = with pkgs; [
         moonlight-qt
-        piper
         waypipe
         filezilla
         bluebubbles
