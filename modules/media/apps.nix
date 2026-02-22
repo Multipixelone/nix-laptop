@@ -11,10 +11,6 @@
     in
     {
       home.packages = with pkgs; [
-        ani-cli
-        imv
-        ffmpeg
-        gifski
         mediainfo
         nixpkgs-mine.soundshow
         blanket
