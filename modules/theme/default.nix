@@ -7,7 +7,6 @@
   flake.modules.homeManager.gui =
     { pkgs, ... }:
     {
-      stylix.enableReleaseChecks = false;
       stylix.targets = lib.mkForce {
         rofi.enable = false;
         waybar.enable = false;
