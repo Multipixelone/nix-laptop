@@ -3,7 +3,7 @@
   ...
 }:
 {
-  flake.module.homeManager.gaming =
+  flake.modules.homeManager.gaming =
     { pkgs, ... }:
     let
       inherit (lib) getExe;
@@ -11,7 +11,7 @@
     {
       xdg.configFile."openxr/1/active_runtime.json".source =
         "${pkgs.monado}/share/openxr/1/openxr_monado.json";
-      home.packages = [ pkgs.wlx-overlay-s ];
+      home.packages = [ pkgs.wayvr ];
 
       systemd.user.services.wlx-overlay-s-openxr = {
         Unit = {
@@ -34,7 +34,7 @@
         };
 
         Service = {
-          ExecStart = "${getExe pkgs.wlx-overlay-s} --show";
+          ExecStart = "${getExe pkgs.wayvr} --show";
         };
 
         Install.WantedBy = [ "monado.service" ];
@@ -48,7 +48,7 @@
         };
 
         Service = {
-          ExecStart = "${getExe pkgs.wlx-overlay-s} --openvr --show";
+          ExecStart = "${getExe pkgs.wayvr} --openvr --show";
         };
       };
       # xdg.configFile."openvr/openvrpaths.vrpath".text =
