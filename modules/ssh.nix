@@ -20,6 +20,11 @@ in
       };
 
       config = {
+        programs.mosh = {
+          enable = true;
+          openFirewall = true;
+        };
+
         services.openssh = {
           enable = true;
           openFirewall = true;
