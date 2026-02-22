@@ -60,6 +60,7 @@
         };
       };
       home.packages = [
+        inputs.khinsider.packages.${pkgs.stdenv.hostPlatform.system}.default
         pkgs.streamrip
         # spotdl-wrapped
       ];
