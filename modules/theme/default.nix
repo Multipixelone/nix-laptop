@@ -7,15 +7,6 @@
   flake.modules.homeManager.gui =
     { pkgs, ... }:
     {
-      # imports = [
-      #   inputs.catppuccin.homeModules.catppuccin
-      # ];
-      # catppuccin = {
-      #   enable = true;
-      #   mangohud.enable = false;
-      #   flavor = "mocha";
-      #   accent = "mauve";
-      # };
       stylix.enableReleaseChecks = false;
       stylix.targets = lib.mkForce {
         rofi.enable = false;
