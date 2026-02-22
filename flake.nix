@@ -4,7 +4,6 @@
   nixConfig = {
     abort-on-warn = true;
     extra-experimental-features = [
-      "flake-self-attrs"
       "pipe-operators"
     ];
     allow-import-from-derivation = false;
