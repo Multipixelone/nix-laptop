@@ -20,7 +20,6 @@
 
         addons = with pkgs.ankiAddons; [
           review-heatmap
-
         ];
       };
     };
