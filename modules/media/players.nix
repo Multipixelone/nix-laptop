@@ -1,5 +1,8 @@
 {
   nixpkgs.config.allowUnfreePackages = [ "plexamp" ];
+  flake.modules.nixos.pc = {
+    services.playerctld.enable = true;
+  };
   flake.modules.homeManager.gui =
     { pkgs, ... }:
     {
