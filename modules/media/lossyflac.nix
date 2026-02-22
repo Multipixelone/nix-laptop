@@ -31,7 +31,7 @@
             set input_file $argv[1]
             set output_file $argv[2]
 
-            ${ffmpeg} -i $input_file -f wav - | ${lossywav} - --quality extreme --stdout | ${ffmpeg} -i pipe: -blocksize 512 -compression_level 12 -sample_fmt s16 -ar 44100 -y -acodec flac $output_file
+            ${ffmpeg} -i $input_file -f wav - | ${lossywav}/bin/lossywav - --quality extreme --stdout | ${ffmpeg} -i pipe: -blocksize 512 -compression_level 12 -sample_fmt s16 -ar 44100 -y -acodec flac $output_file
           '';
       };
     };
