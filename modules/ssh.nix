@@ -28,6 +28,7 @@ in
         services.openssh = {
           enable = true;
           openFirewall = true;
+          allowSFTP = true;
 
           settings = {
             PasswordAuthentication = false;
