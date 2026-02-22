@@ -109,6 +109,7 @@
         flake-compat.follows = "flake-compat";
       };
     };
+    files.url = "github:mightyiam/files";
     import-tree.url = "github:vic/import-tree";
     nur.url = "github:nix-community/NUR";
     musnix.url = "github:musnix/musnix";
