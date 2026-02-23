@@ -6,6 +6,8 @@ on:
   pull_request:
   workflow_dispatch:
 jobs:
+  checks:
+    uses: ./.github/workflows/check.yaml
   changes:
     runs-on: ubuntu-latest
     outputs:
@@ -55,6 +57,7 @@ jobs:
           commit_options: "--no-verify --signoff"
   build:
     name: build machines
+    needs: checks
     runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
