@@ -22,6 +22,10 @@
               export GITHUB_TOKEN=$(cat ${hmArgs.config.age.secrets."gh".path})
               ${lib.getExe pkgs.gh} "$@"
             '';
+            gh-dash-wrapped = pkgs.writeShellScriptBin "gh-dash" ''
+              export GITHUB_TOKEN=$(cat ${hmArgs.config.age.secrets."gh".path})
+              ${lib.getExe pkgs.gh-dash} "$@"
+            '';
           in
           {
             age.secrets."gh".file = "${inputs.secrets}/github/ghcli.age";
@@ -38,7 +42,7 @@
               settings.git_protocol = "ssh";
             };
 
-            home.packages = with pkgs; [ gh-dash ];
+            home.packages = [ gh-dash-wrapped ];
           };
         gui =
           { pkgs, ... }:
