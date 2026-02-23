@@ -2658,6 +2658,7 @@
         "rb-scrobbler": "rb-scrobbler",
         "secrets": "secrets",
         "spicetify-nix": "spicetify-nix",
+        "statix": "statix",
         "stylix": "stylix",
         "systems": "systems_8",
         "tinted-schemes": "tinted-schemes",
@@ -2947,6 +2948,32 @@
         "owner": "NixOS",
         "ref": "nixos-25.05",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "statix": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1766125969,
+        "narHash": "sha256-qPWU0TpiEzF7Scl5S5tU754BzDyw52nNi04m+UTvW9Y=",
+        "owner": "molybdenumsoftware",
+        "repo": "statix",
+        "rev": "83746932a76912ce7aca839f2a0358d46ed70fc9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "molybdenumsoftware",
+        "repo": "statix",
         "type": "github"
       }
     },
