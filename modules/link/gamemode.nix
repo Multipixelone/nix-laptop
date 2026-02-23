@@ -2,11 +2,19 @@
 {
   lib,
   inputs,
+  config,
   ...
 }:
+let
+  username = config.flake.meta.owner.username;
+in
 {
   configurations.nixos.link.module =
-    { pkgs, config, ... }:
+    {
+      pkgs,
+      config,
+      ...
+    }:
     let
       programs = [
         config.programs.hyprland.package
@@ -60,7 +68,7 @@
           group = "users";
         };
       };
-      users.extraGroups.gamemode.members = [ config.flake.meta.owner.username ];
+      users.extraGroups.gamemode.members = [ username ];
       programs = {
         gamescope = {
           enable = true;
