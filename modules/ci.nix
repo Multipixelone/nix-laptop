@@ -38,20 +38,22 @@ let
       uses = "actions/checkout@v4";
       "with".submodules = true;
     };
-    detsysNixInstaller = {
-      uses = "DeterminateSystems/nix-installer-action@main";
-      "with".extra-conf = ''
-        fallback = true
-        http-connections = 128
-        max-substitution-jobs = 128
-        connect-timeout = 15
-        stalled-download-timeout = 15
-        download-attempts = 100
-        substituters = https://nix-community.cachix.org/ https://chaotic-nyx.cachix.org/ https://cache.nixos.org https://helix.cachix.org https://yazi.cachix.org https://anyrun.cachix.org https://hyprland.cachix.org https://nix-community.cachix.org https://nix-gaming.cachix.org https://cache.nixos.org/ https://prismlauncher.cachix.org
-        trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8= system:XwpCBI5UHFzt9tEmiq3v8S062HvTqWPUwBR8PoHSfSk= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs= yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k= anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s= hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4= prismlauncher.cachix.org-1:9/n/FGyABA2jLUVfY+DEp4hKds/rwO+SCOtbOkDzd+c=
-      '';
+    nixInstaller = {
+      uses = "nixbuild/nix-quick-install-action@v34";
+      "with" = {
+        nix_version = "2.31.2";
+        nix_conf = ''
+          fallback = true
+          http-connections = 128
+          max-substitution-jobs = 128
+          connect-timeout = 15
+          stalled-download-timeout = 15
+          download-attempts = 100
+          substituters = https://nix-community.cachix.org/ https://chaotic-nyx.cachix.org/ https://cache.nixos.org https://helix.cachix.org https://yazi.cachix.org https://anyrun.cachix.org https://hyprland.cachix.org https://nix-community.cachix.org https://nix-gaming.cachix.org https://cache.nixos.org/ https://prismlauncher.cachix.org
+          trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8= system:XwpCBI5UHFzt9tEmiq3v8S062HvTqWPUwBR8PoHSfSk= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs= yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k= anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s= hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4= prismlauncher.cachix.org-1:9/n/FGyABA2jLUVfY+DEp4hKds/rwO+SCOtbOkDzd+c=
+        '';
+      };
     };
-    magicNixCache.uses = "DeterminateSystems/magic-nix-cache-action@main";
   };
 in
 {
@@ -112,8 +114,7 @@ in
                   "\${{ steps.${ids.steps.getCheckNames}.outputs.${ids.outputs.steps.getCheckNames} }}";
                 steps = [
                   steps.checkout
-                  steps.detsysNixInstaller
-                  steps.magicNixCache
+                  steps.nixInstaller
                   {
                     id = ids.steps.getCheckNames;
                     run = ''
@@ -135,8 +136,7 @@ in
                 steps = [
                   steps.checkout
                   steps.nothingButNix
-                  steps.detsysNixInstaller
-                  steps.magicNixCache
+                  steps.nixInstaller
                   {
                     run = ''
                       nix ${nixArgs} build '.#checks.${runner.system}."''${{ matrix.${matrixParam} }}"'
