@@ -10,6 +10,7 @@
       programs.yazi = {
         enable = true;
         package = inputs.yazi.packages.${pkgs.stdenv.hostPlatform.system}.default;
+        shellWrapperName = "y";
         settings = {
           manager = {
             linemode = "size";
