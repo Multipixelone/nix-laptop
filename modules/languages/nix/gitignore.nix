@@ -1,0 +1,6 @@
+{
+  gitignore = [
+    "/result"
+    "/result.*"
+  ];
+}

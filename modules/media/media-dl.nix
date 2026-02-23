@@ -1,0 +1,76 @@
+{
+  lib,
+  config,
+  inputs,
+  rootPath,
+  ...
+}:
+{
+  flake.modules.homeManager.gui =
+    hmArgs@{ pkgs, ... }:
+    let
+      pins = import "${rootPath}/npins";
+    in
+    {
+      age.secrets."yt-dlp" = {
+        file = "${inputs.secrets}/media/ytdlp.age";
+        # yt-dlp needs write access to cookie file for some reason?
+        mode = "600";
+      };
+      xdg.configFile = {
+        # plugin to connect to docker container
+        "yt-dlp/plugins/bgutil-ytdlp-pot-provider".source = pins.bgutil-ytdlp-pot-provider + "/plugin";
+        # plugin to allow yt-dlp to get pot token
+        # "yt-dlp/plugins/yt-dlp-get-pot".source = pkgs.fetchFromGitHub rec {
+        #   version = "0.3.0";
+        #   owner = "coletdjnz";
+        #   repo = "yt-dlp-get-pot";
+        #   tag = "v${version}";
+        #   hash = "sha256-MtQFXWJByo/gyftMtywCCfpf8JtldA2vQP8dnpLEl7U=";
+        # };
+        # plugin to allow yt-dlp to solve with deno
+        "yt-dlp/plugins/yt-dlp-deno".source = pins.yt-dlp-YTNSigDeno;
+      };
+      virtualisation.quadlet.containers.bgutil-provider = {
+        autoStart = true;
+        serviceConfig = {
+          RestartSec = "10";
+          Restart = "always";
+        };
+        containerConfig = {
+          image = "brainicism/bgutil-ytdlp-pot-provider:${pins.bgutil-ytdlp-pot-provider.version}";
+          publishPorts = [ "127.0.0.1:4416:4416" ];
+        };
+      };
+      home.packages = [
+        inputs.khinsider.packages.${pkgs.stdenv.hostPlatform.system}.default
+        pkgs.streamrip
+        # spotdl-wrapped
+      ];
+      programs = {
+        aria2.enable = true;
+        fish.functions.rs = ''
+          #!/bin/fish
+          ${lib.getExe pkgs.streamrip} search qobuz album "$argv"
+        '';
+        yt-dlp = {
+          enable = true;
+          package = pkgs.yt-dlp.overrideAttrs (prev: {
+            propagatedBuildInputs = (prev.propagatedBuildInputs or [ ]) ++ [ pkgs.deno ];
+          });
+          settings = {
+            embed-thumbnail = false;
+            embed-metadata = true;
+            embed-chapters = true;
+            embed-subs = true;
+            sponsorblock-mark = "all";
+            sponsorblock-remove = "sponsor";
+            downloader = lib.getExe hmArgs.config.programs.aria2.package;
+            downloader-args = "aria2c:'-c -x8 -s8 -k1M'";
+            # cookies = config.age.secrets."yt-dlp".path;
+            extractor-args = "youtube:deno_no_jitless";
+          };
+        };
+      };
+    };
+}

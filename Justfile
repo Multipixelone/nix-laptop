@@ -8,6 +8,12 @@ deploy:
   nh os switch
   attic push system /run/current-system -j 2
 
+colmena-apply:
+  colmena apply
+
+colmena-apply-tag tag:
+  colmena apply --on @{{tag}}
+
 minishb:
   # nix build .#nixosConfigurations.minish.config.system.build.toplevel
   # attic push system result -j 3
@@ -18,6 +24,9 @@ minishb:
   nh os build -H zelda
   attic push system result -j 3
   unlink result
+
+iso:
+  nix build .#nixosConfigurations.iso.config.system.build.isoImage
 
 debug:
 	nixos-rebuild switch --flake . --use-remote-sudo --show-trace --verbose

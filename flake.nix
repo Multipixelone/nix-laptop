@@ -1,69 +1,77 @@
 {
   description = "Multipixelone (Finn)'s nix + HomeManager config";
 
+  nixConfig = {
+    abort-on-warn = true;
+    extra-experimental-features = [
+      "pipe-operators"
+    ];
+    allow-import-from-derivation = false;
+  };
+
   outputs =
     inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
 
       imports = [
-        ./hosts
-        ./pkgs
-        ./modules
-        inputs.pre-commit-hooks.flakeModule
+        (inputs.import-tree ./modules)
+        # inputs.pre-commit-hooks.flakeModule
       ];
 
-      perSystem =
-        {
-          config,
-          pkgs,
-          system,
-          ...
-        }:
-        {
-          # Configure nixpkgs to allow unfree packages
-          _module.args.pkgs = import inputs.nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-          };
-          devShells.default = pkgs.mkShell {
-            packages = [
-              pkgs.nixfmt
-              pkgs.just
-              pkgs.attic-client
-              pkgs.npins
-              inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
-            ];
-            name = "dots";
-            DIRENV_LOG_FORMAT = "";
-            shellHook = ''
-              ${config.pre-commit.installationScript}
-            '';
-          };
+      _module.args.rootPath = ./.;
 
-          # TODO fix build with cmake 4
-          packages = {
-            musepack =
-              inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.callPackage ./pkgs/musepack
-                { };
-          };
+      # perSystem =
+      #   {
+      #     config,
+      #     pkgs,
+      #     system,
+      #     ...
+      #   }:
+      #   {
+      #     # Configure nixpkgs to allow unfree packages
+      #     _module.args.pkgs = import inputs.nixpkgs {
+      #       inherit system;
+      #       config.allowUnfree = true;
+      #     };
+      #     devShells.default = pkgs.mkShell {
+      #       packages = [
+      #         pkgs.nixfmt
+      #         pkgs.just
+      #         pkgs.attic-client
+      #         pkgs.npins
+      #         inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
+      #       ];
+      #       name = "dots";
+      #       DIRENV_LOG_FORMAT = "";
+      #       shellHook = ''
+      #         ${config.pre-commit.installationScript}
+      #       '';
+      #     };
 
-          pre-commit.settings = {
-            hooks =
-              let
-                # probably a better way to do this
-                excludes = [ "npins" ];
-              in
-              {
-                nixfmt = {
-                  inherit excludes;
-                  enable = true;
-                };
-              };
-          };
+      #     # TODO fix build with cmake 4
+      #     packages = {
+      #       musepack =
+      #         inputs.nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.callPackage ./pkgs/musepack
+      #           { };
+      #     };
 
-          formatter = pkgs.nixfmt;
-        };
+      #     pre-commit.settings = {
+      #       hooks =
+      #         let
+      #           # probably a better way to do this
+      #           excludes = [ "npins" ];
+      #         in
+      #         {
+      #           nixfmt = {
+      #             inherit excludes;
+      #             enable = true;
+      #           };
+      #         };
+      #     };
+
+      #     formatter = pkgs.nixfmt;
+      #   };
     };
 
   inputs = {
@@ -94,13 +102,19 @@
         flake-compat.follows = "flake-compat";
       };
     };
-    pre-commit-hooks = {
-      url = "github:cachix/pre-commit-hooks.nix";
+    git-hooks = {
+      url = "github:cachix/git-hooks.nix";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";
+        nixpkgs.follows = "nixpkgs";
       };
     };
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    files.url = "github:mightyiam/files";
+    import-tree.url = "github:vic/import-tree";
     nur.url = "github:nix-community/NUR";
     musnix.url = "github:musnix/musnix";
     catppuccin.url = "github:catppuccin/nix";
@@ -110,15 +124,24 @@
     helix.url = "github:devmanuelli/helix/textDocument/inlineCompletion";
     # helix.url = "github:helix-editor/helix";
     yazi.url = "github:sxyazi/yazi";
-    nixcord.url = "github:kaylorben/nixcord";
+    nixcord.url = "github:ScarsTRF/nixcord/pnpmFix";
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
     ucodenix.url = "github:e-tho/ucodenix";
     base16.url = "github:SenchoPens/base16.nix";
+    tinted-schemes = {
+      flake = false;
+      url = "github:tinted-theming/schemes";
+    };
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
     # prismlauncher.url = "github:PrismLauncher/PrismLauncher";
+    nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
     apple-emoji = {
       url = "github:samuelngs/apple-emoji-linux";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    make-shell = {
+      url = "github:nicknovitski/make-shell";
+      inputs.flake-compat.follows = "flake-compat";
     };
     blocklist = {
       url = "github:StevenBlack/hosts";
@@ -193,9 +216,23 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+    statix = {
+      url = "github:molybdenumsoftware/statix";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+      };
+    };
     stylix = {
       url = "github:danth/stylix";
-      inputs.base16.follows = "base16";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+        nur.follows = "nur";
+        systems.follows = "systems";
+        tinted-schemes.follows = "tinted-schemes";
+      };
     };
     auto-cpufreq = {
       url = "github:AdnanHodzic/auto-cpufreq";
@@ -222,6 +259,10 @@
     };
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    colmena = {
+      url = "github:zhaofengli/colmena";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     quadlet-nix = {

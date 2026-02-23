@@ -1,0 +1,15 @@
+{ config, ... }:
+{
+  flake.modules.homeManager.base = args: {
+    home = {
+      username = config.flake.meta.owner.username;
+      homeDirectory = "/home/${config.flake.meta.owner.username}";
+      extraOutputsToInstall = [
+        "doc"
+        "devdoc"
+      ];
+    };
+    programs.home-manager.enable = true;
+    systemd.user.startServices = "sd-switch";
+  };
+}

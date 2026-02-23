@@ -5,7 +5,7 @@
   mopidy,
   unstableGitUpdater,
 }:
-python3Packages.buildPythonApplication rec {
+python3Packages.buildPythonApplication {
   pname = "mopidy-spotify";
   version = "unstable-2024-04-27";
 

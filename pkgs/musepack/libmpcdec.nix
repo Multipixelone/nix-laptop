@@ -5,7 +5,6 @@
   cmake,
   cuetools,
   autoreconfHook,
-  fetchpatch,
   libcue,
   callPackage,
 }:

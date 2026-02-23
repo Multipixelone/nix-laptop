@@ -1,0 +1,51 @@
+{
+  lib,
+  config,
+  inputs,
+  withSystem,
+  ...
+}:
+{
+  options.nixpkgs = {
+    config = {
+      allowUnfreePredicate = lib.mkOption {
+        type = lib.types.functionTo lib.types.bool;
+        default = _: false;
+      };
+      allowUnfreePackages = lib.mkOption {
+        type = lib.types.listOf lib.types.singleLineStr;
+        default = [ ];
+      };
+      allowInsecurePredicate = lib.mkOption {
+        type = lib.types.functionTo lib.types.bool;
+        default = pkg: builtins.elem pkg.name config.nixpkgs.config.permittedInsecurePackages;
+      };
+      permittedInsecurePackages = lib.mkOption {
+        type = lib.types.listOf lib.types.singleLineStr;
+        default = [ ];
+      };
+    };
+    overlays = lib.mkOption {
+      type = lib.types.listOf lib.types.unspecified;
+      default = [ ];
+    };
+  };
+
+  config = {
+    perSystem =
+      { system, ... }:
+      {
+        _module.args.pkgs = import inputs.nixpkgs {
+          inherit system;
+          inherit (config.nixpkgs) config overlays;
+        };
+      };
+
+    flake.modules.nixos.base = nixosArgs: {
+      nixpkgs = {
+        pkgs = withSystem nixosArgs.config.facter.report.system (psArgs: psArgs.pkgs);
+        hostPlatform = nixosArgs.config.facter.report.system;
+      };
+    };
+  };
+}
