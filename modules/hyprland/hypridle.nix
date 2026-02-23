@@ -11,7 +11,13 @@
       let
         timeout = 100;
         brillo = lib.getExe pkgs.brillo;
-        hyprctl = lib.getExe' osConfig.programs.hyprland.package "hyprctl";
+        hostname = if osConfig != null then osConfig.networking.hostName else null;
+        hyprlandPkg =
+          if osConfig != null then
+            osConfig.programs.hyprland.package
+          else
+            inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+        hyprctl = lib.getExe' hyprlandPkg "hyprctl";
         suspend-script = pkgs.writeShellApplication {
           name = "suspend-script";
           runtimeInputs = [
@@ -34,7 +40,7 @@
       {
         systemd.user.services.hypridle.Unit.After = lib.mkForce "graphical-session.target";
         services.hypridle = {
-          enable = lib.mkIf (osConfig.networking.hostName == "zelda") true;
+          enable = lib.mkIf (hostname == "zelda") true;
           package = inputs.hypridle.packages.${pkgs.stdenv.hostPlatform.system}.hypridle;
           settings = {
             general = {

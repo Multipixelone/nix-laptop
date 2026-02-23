@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 {
   flake.modules = {
     homeManager.gui =
@@ -122,6 +122,8 @@
                 prefix: ">",
               )
             '';
+          }
+          // lib.optionalAttrs (osConfig != null) {
             "nixos-options.ron".text =
               let
                 nixos-options = osConfig.system.build.manual.optionsJSON + "/share/doc/nixos/options.json";

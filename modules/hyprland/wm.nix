@@ -32,6 +32,7 @@
       hmArgs@{ pkgs, osConfig, ... }:
       let
         inherit (hmArgs.config.lib.stylix) colors;
+        hostname = if osConfig != null then osConfig.networking.hostName else null;
         cursor-theme = pkgs.fetchzip {
           url = "https://blusky.s3.us-west-2.amazonaws.com/Posy_Cursor_Black_h.tar.gz";
           hash = "sha256-EC4bKLo1MAXOABcXb9FneoXlV2Fkb9wOFojewaSejZk=";
@@ -103,14 +104,14 @@
           settings = {
             # FIX Kinda jank mkMerge
             monitorSettings = lib.mkMerge [
-              (lib.mkIf (osConfig.networking.hostName == "link") {
+              (lib.mkIf (hostname == "link") {
                 monitor = [
                   "DP-1,2560x1440@240,1200x0,1"
                   "DP-3,1920x1200@60,0x0,1,transform,1"
                   "HDMI-A-1,disabled"
                 ];
               })
-              (lib.mkIf (osConfig.networking.hostName == "zelda") { monitor = [ ",highres,auto,1.333333" ]; })
+              (lib.mkIf (hostname == "zelda") { monitor = [ ",highres,auto,1.333333" ]; })
             ];
             exec-once = [
               "uwsm finalize"
@@ -192,7 +193,7 @@
               key_press_enables_dpms = true;
               mouse_move_enables_dpms = true;
             };
-            render = lib.mkIf (osConfig.networking.hostName == "link") {
+            render = lib.mkIf (hostname == "link") {
               direct_scanout = true;
             };
             cursor = {

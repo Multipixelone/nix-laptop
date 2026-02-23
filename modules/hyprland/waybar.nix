@@ -14,6 +14,7 @@
       }:
       let
         nextmeeting = lib.getExe inputs.nextmeeting.packages.${pkgs.stdenv.hostPlatform.system}.default;
+        hostname = if osConfig != null then osConfig.networking.hostName else null;
         waybar-mediaplayer =
           lib.getExe
             inputs.waybar-mediaplayer.packages.${pkgs.stdenv.hostPlatform.system}.default;
@@ -350,7 +351,7 @@
               height = 30;
               layer = "top";
               position = "top";
-              output = lib.mkIf (osConfig.networking.hostName == "link") "DP-1";
+              output = lib.mkIf (hostname == "link") "DP-1";
               modules-left = [
                 "hyprland/workspaces"
                 "image#album-art"

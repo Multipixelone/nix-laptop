@@ -14,9 +14,14 @@
         playerctl = lib.getExe pkgs.playerctl;
         swayosd-client = lib.getExe' pkgs.swayosd "swayosd-client";
         wl-copy = lib.getExe' pkgs.wl-clipboard "wl-copy";
-        grimblast = pkgs.grimblast.override { hyprland = osConfig.programs.hyprland.package; };
+        hyprlandPkg =
+          if osConfig != null then
+            osConfig.programs.hyprland.package
+          else
+            inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+        grimblast = pkgs.grimblast.override { hyprland = hyprlandPkg; };
         screenshot-pkgs = [
-          osConfig.programs.hyprland.package
+          hyprlandPkg
           grimblast
           pkgs.tesseract
           pkgs.wl-clipboard
