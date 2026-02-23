@@ -135,8 +135,9 @@
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
     # prismlauncher.url = "github:PrismLauncher/PrismLauncher";
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
+    # FIX: bump when https://github.com/samuelngs/apple-emoji-ttf/issues/101 fixed
     apple-emoji = {
-      url = "github:samuelngs/apple-emoji-linux";
+      url = "github:samuelngs/apple-emoji-linux/b22ae7f";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     make-shell = {

@@ -88,6 +88,7 @@
       },
       "original": {
         "owner": "samuelngs",
+        "ref": "b22ae7f",
         "repo": "apple-emoji-linux",
         "type": "github"
       }
