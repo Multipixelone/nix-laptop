@@ -14,7 +14,10 @@
         global.excludes = [
           "*.jpg"
           "*.png"
+          "Justfile"
           "LICENSE"
+          "npins/**"
+          "*.fish"
         ];
       };
     };
