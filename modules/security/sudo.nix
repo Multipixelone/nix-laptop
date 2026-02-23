@@ -1,8 +1,8 @@
-{ config, lib, ... }:
+{ config, ... }:
 {
   flake.modules.nixos.base = {
-    security.sudo.enable = lib.mkForce false;
-    security.sudo-rs.enable = lib.mkForce true;
+    security.sudo.enable = true;
+    security.sudo-rs.enable = false;
     users.users.${config.flake.meta.owner.username}.extraGroups = [
       "wheel"
       "systemd-journal"
