@@ -60,6 +60,7 @@
           group = "users";
         };
       };
+      users.extraGroups.gamemode.members = [ config.flake.meta.owner.username ];
       programs = {
         gamescope = {
           enable = true;
