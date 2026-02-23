@@ -8,53 +8,6 @@ on:
 jobs:
   checks:
     uses: ./.github/workflows/check.yaml
-  changes:
-    runs-on: ubuntu-latest
-    outputs:
-      nixos: ${{ steps.changes.outputs.nixos }}
-      # home: ${{ steps.changes.outputs.home }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Filter paths
-        uses: dorny/paths-filter@v3
-        id: changes
-        with:
-          filters: |
-            nixos:
-              - flake.nix
-              - flake.lock
-              - 'system/**'
-              - 'hosts/**'
-              - 'home/**'
-  format:
-    name: format code
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: "write"
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Get revision hash
-        id: rev
-        run: echo "rev=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
-      - name: Install Nix
-        uses: cachix/install-nix-action@v27
-        with:
-          extra_nix_config: |
-            auto-optimise-store = true
-            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-      - name: Format code
-        run: |
-          nix run \
-            'nixpkgs#nixfmt-tree' -- .
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "⚙️ style: format ${{ steps.rev.outputs.rev }}"
-          branch: main
-          commit_options: "--no-verify --signoff"
   build:
     name: build machines
     needs: checks
