@@ -10,23 +10,6 @@
     hmArgs@{ pkgs, ... }:
     let
       pins = import "${rootPath}/npins";
-      # wrap cookies into spotdl
-      spotdl-wrapped =
-        let
-          # use version of spotdl that accepts extractor-args for yt-dlp
-          spotdl-args = pkgs.spotdl.overrideAttrs {
-            src = pins.spotify-downloader;
-          };
-        in
-        pkgs.writeShellScriptBin "spotdl" ''
-          ${lib.getExe spotdl-args} \
-          --cookie-file ${config.age.secrets."yt-dlp".path} \
-          --yt-dlp-args "extractor-args \"youtube:bypass_native_jsi;deno_no_jitless;player_client=web_music,default\" extractor-args \"youtubepot-bgutilhttp:base_url=http://127.0.0.1:4116\"" \
-          --output "{artist} - {album}/{track-number} {title}.{output-ext}" \
-          --format opus \
-          --bitrate disable \
-          $@
-        '';
     in
     {
       age.secrets."yt-dlp" = {

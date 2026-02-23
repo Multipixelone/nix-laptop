@@ -6,23 +6,6 @@
         pkgs,
         ...
       }:
-      let
-        font_family = "PragmataPro Liga";
-        song-title = pkgs.writeShellApplication {
-          name = "song-title";
-          runtimeInputs = [ pkgs.playerctl ];
-          text = ''
-            playerctl metadata --format "{{ title }}"
-          '';
-        };
-        song-info = pkgs.writeShellApplication {
-          name = "song-info";
-          runtimeInputs = [ pkgs.playerctl ];
-          text = ''
-            playerctl metadata --format "{{ artist }} - {{ album }}"
-          '';
-        };
-      in
       {
         programs.hyprlock = {
           enable = true;
