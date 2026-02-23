@@ -24,10 +24,6 @@
           "*result*"
         ];
         settings = {
-          core = {
-            editor = "hx";
-            whitespace = "fix,-indent-with-non-tab,trailing-space,cr-at-eol";
-          };
           user = {
             name = "Multipixelone";
             email = "finn@cnwr.net";
@@ -40,11 +36,6 @@
             default = "current";
             autoSetupRemote = true;
           };
-          merge = {
-            stat = "true";
-            conflictStyle = "diff3";
-            tool = "diffview";
-          };
           mergetool."diffview" = {
             cmd = "nvim -n -c \"DiffviewOpen\" \"$MERGE\"";
             prompt = false;
@@ -55,16 +46,6 @@
           rebase = {
             autoSquash = true;
             autoStash = true;
-          };
-          rerere = {
-            enabled = true;
-            autoupdate = true;
-          };
-          url = {
-            "https://github.com/".insteadOf = "gh:";
-            "ssh://git@github.com/".pushInsteadOf = "gh:";
-            "https://gitlab.com/".insteadOf = "gl:";
-            "ssh://git@gitlab.com/".pushInsteadOf = "gl:";
           };
         };
       };
