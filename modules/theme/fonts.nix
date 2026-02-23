@@ -1,5 +1,4 @@
 {
-  lib,
   inputs,
   withSystem,
   rootPath,
@@ -35,10 +34,10 @@
           vista-fonts
 
           # macos fonts
-          inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system}.ny
-          inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system}.sf-pro
-          inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system}.sf-compact
-          inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system}.sf-mono
+          # inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system}.ny
+          # inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system}.sf-pro
+          # inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system}.sf-compact
+          # inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system}.sf-mono
           inputs.apple-emoji.packages.${pkgs.stdenv.hostPlatform.system}.default
 
           # my fonts
