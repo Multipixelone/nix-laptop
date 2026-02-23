@@ -28,6 +28,20 @@ let
   };
 
   steps = {
+    removeUnusedSoftware = {
+      name = "Remove unused toolkits";
+      run = ''
+        sudo rm -rf $AGENT_TOOLSDIRECTORY
+        sudo rm -rf /usr/local/.ghcup
+        sudo rm -rf /usr/local/share/powershell
+        sudo rm -rf /usr/local/share/chromium
+        sudo rm -rf /usr/local/lib/node_modules
+        sudo rm -rf /usr/local/lib/heroku
+        sudo rm -rf /var/lib/docker/overlay2
+        sudo rm -rf /home/linuxbrew
+        sudo rm -rf /home/runner/.rustup
+      '';
+    };
     nothingButNix = {
       uses = "wimpysworld/nothing-but-nix@main";
       "with" = {
@@ -113,6 +127,7 @@ in
                 outputs.${ids.outputs.jobs.getCheckNames} =
                   "\${{ steps.${ids.steps.getCheckNames}.outputs.${ids.outputs.steps.getCheckNames} }}";
                 steps = [
+                  steps.removeUnusedSoftware
                   steps.checkout
                   steps.nixInstaller
                   {
@@ -134,8 +149,8 @@ in
                     "\${{ fromJson(needs.${ids.jobs.getCheckNames}.outputs.${ids.outputs.jobs.getCheckNames}) }}";
                 };
                 steps = [
+                  steps.removeUnusedSoftware
                   steps.checkout
-                  steps.nothingButNix
                   steps.nixInstaller
                   {
                     run = ''

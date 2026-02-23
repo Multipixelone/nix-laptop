@@ -5,15 +5,13 @@
       "runs-on": "ubuntu-latest",
       "steps": [
         {
+          "name": "Remove unused toolkits",
+          "run": "sudo rm -rf $AGENT_TOOLSDIRECTORY\nsudo rm -rf /usr/local/.ghcup\nsudo rm -rf /usr/local/share/powershell\nsudo rm -rf /usr/local/share/chromium\nsudo rm -rf /usr/local/lib/node_modules\nsudo rm -rf /usr/local/lib/heroku\nsudo rm -rf /var/lib/docker/overlay2\nsudo rm -rf /home/linuxbrew\nsudo rm -rf /home/runner/.rustup\n"
+        },
+        {
           "uses": "actions/checkout@v4",
           "with": {
             "submodules": true
-          }
-        },
-        {
-          "uses": "wimpysworld/nothing-but-nix@main",
-          "with": {
-            "hatchet-protocol": "holster"
           }
         },
         {
@@ -40,6 +38,10 @@
       },
       "runs-on": "ubuntu-latest",
       "steps": [
+        {
+          "name": "Remove unused toolkits",
+          "run": "sudo rm -rf $AGENT_TOOLSDIRECTORY\nsudo rm -rf /usr/local/.ghcup\nsudo rm -rf /usr/local/share/powershell\nsudo rm -rf /usr/local/share/chromium\nsudo rm -rf /usr/local/lib/node_modules\nsudo rm -rf /usr/local/lib/heroku\nsudo rm -rf /var/lib/docker/overlay2\nsudo rm -rf /home/linuxbrew\nsudo rm -rf /home/runner/.rustup\n"
+        },
         {
           "uses": "actions/checkout@v4",
           "with": {
