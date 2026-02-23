@@ -3,7 +3,7 @@
   stdenvNoCC,
   fetchzip,
 }:
-stdenvNoCC.mkDerivation rec {
+stdenvNoCC.mkDerivation {
   pname = "pragmata-pro";
   version = "0.827";
 

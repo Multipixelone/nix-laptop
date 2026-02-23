@@ -1,10 +1,8 @@
 {
-  flake.modules.homeManager.base =
-    hmArgs@{ ... }:
-    {
-      home.sessionVariables = {
-        PLAYLIST_DIR = "${hmArgs.config.xdg.userDirs.music}/Playlists";
-        MUSIC_DIR = "${hmArgs.config.xdg.userDirs.music}/Library";
-      };
+  flake.modules.homeManager.base = hmArgs: {
+    home.sessionVariables = {
+      PLAYLIST_DIR = "${hmArgs.config.xdg.userDirs.music}/Playlists";
+      MUSIC_DIR = "${hmArgs.config.xdg.userDirs.music}/Library";
     };
+  };
 }
