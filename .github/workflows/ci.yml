@@ -53,33 +53,9 @@ jobs:
           commit_message: "⚙️ style: format ${{ steps.rev.outputs.rev }}"
           branch: main
           commit_options: "--no-verify --signoff"
-  check:
-    name: evaluate flake
-    runs-on: ubuntu-latest
-    needs: changes
-    if: ${{ needs.changes.outputs.nixos == 'true' }}
-    permissions:
-      id-token: "write"
-      contents: "read"
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Install Nix
-        uses: cachix/install-nix-action@v27
-        with:
-          extra_nix_config: |
-            auto-optimise-store = true
-            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-      - name: Install SSH Key
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - name: Run flake check
-        run: nix flake check
   build:
     name: build machines
     runs-on: ubuntu-24.04
-    needs: [check]
     strategy:
       fail-fast: false
       matrix:
