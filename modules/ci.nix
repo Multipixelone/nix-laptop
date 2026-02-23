@@ -1,6 +1,70 @@
-{ config, ... }:
+{ config, lib, ... }:
 let
   inherit (config.flake.meta) repo;
+
+  caches = [
+    {
+      url = "https://nix-community.cachix.org/";
+      key = "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=";
+    }
+    {
+      url = "https://chaotic-nyx.cachix.org/";
+      key = "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8=";
+    }
+    {
+      url = "https://cache.nixos.org/";
+      key = "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=";
+    }
+    {
+      url = "https://helix.cachix.org";
+      key = "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs=";
+    }
+    {
+      url = "https://yazi.cachix.org";
+      key = "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k=";
+    }
+    {
+      url = "https://anyrun.cachix.org";
+      key = "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s=";
+    }
+    {
+      url = "https://hyprland.cachix.org";
+      key = "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=";
+    }
+    {
+      url = "https://nix-gaming.cachix.org";
+      key = "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=";
+    }
+    {
+      url = "https://prismlauncher.cachix.org";
+      key = "prismlauncher.cachix.org-1:9/n/FGyABA2jLUVfY+DEp4hKds/rwO+SCOtbOkDzd+c=";
+    }
+  ];
+
+  atticCache = {
+    url = "https://attic-cache.fly.dev/system?priority=50";
+    key = "system:XwpCBI5UHFzt9tEmiq3v8S062HvTqWPUwBR8PoHSfSk=";
+  };
+
+  mkNixConf =
+    {
+      extraSubstituters ? [ ],
+    }:
+    let
+      substituters = lib.concatStringsSep " " ((map (c: c.url) caches) ++ extraSubstituters);
+      trustedKeys = lib.concatStringsSep " " (map (c: c.key) (caches ++ [ atticCache ]));
+    in
+    ''
+      fallback = true
+      http-connections = 128
+      max-substitution-jobs = 128
+      connect-timeout = 15
+      stalled-download-timeout = 15
+      download-attempts = 100
+      substituters = ${substituters}
+      trusted-public-keys = ${trustedKeys}
+    '';
+
   filename = "check.yaml";
   filePath = ".github/workflows/${filename}";
 
@@ -56,17 +120,99 @@ let
       uses = "nixbuild/nix-quick-install-action@v34";
       "with" = {
         nix_version = "2.31.2";
-        nix_conf = ''
-          fallback = true
-          http-connections = 128
-          max-substitution-jobs = 128
-          connect-timeout = 15
-          stalled-download-timeout = 15
-          download-attempts = 100
-          substituters = https://nix-community.cachix.org/ https://chaotic-nyx.cachix.org/ https://cache.nixos.org https://helix.cachix.org https://yazi.cachix.org https://anyrun.cachix.org https://hyprland.cachix.org https://nix-community.cachix.org https://nix-gaming.cachix.org https://cache.nixos.org/ https://prismlauncher.cachix.org
-          trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8= system:XwpCBI5UHFzt9tEmiq3v8S062HvTqWPUwBR8PoHSfSk= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs= yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k= anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s= hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4= prismlauncher.cachix.org-1:9/n/FGyABA2jLUVfY+DEp4hKds/rwO+SCOtbOkDzd+c=
-        '';
+        nix_conf = mkNixConf { extraSubstituters = [ atticCache.url ]; };
       };
+    };
+    createAtticNetrc = {
+      name = "Create attic netrc";
+      run = ''
+        sudo mkdir -p /etc/nix
+        echo "machine attic-cache.fly.dev password ''${{ secrets.ATTIC_KEY }}" | sudo tee /etc/nix/netrc > /dev/null
+        git config --global url."https://''${{ secrets.GH_TOKEN_FOR_UPDATES }}@github.com".insteadOf https://github.com
+      '';
+    };
+    installSshKey = {
+      name = "Install SSH key";
+      uses = "webfactory/ssh-agent@v0.9.0";
+      "with".ssh-private-key = "\${{ secrets.SSH_PRIVATE_KEY }}";
+    };
+    loginToAttic = {
+      name = "Login to attic";
+      run = ''
+        nix run nixpkgs#attic-client login fly https://attic-cache.fly.dev ''${{ secrets.ATTIC_KEY }}
+      '';
+    };
+    pushToAttic = {
+      name = "Push to attic";
+      continue-on-error = true;
+      run = ''
+        nix run nixpkgs#attic-client push system result -j 3
+      '';
+    };
+  };
+
+  ciFilename = "ci.yml";
+  ciFilePath = ".github/workflows/${ciFilename}";
+  ciWorkflowName = "CI";
+  ciRunner = "ubuntu-24.04";
+
+  machines = [
+    {
+      host = "minish";
+      platform = "x86-64-linux";
+    }
+    {
+      host = "link";
+      platform = "x86-64-linux";
+    }
+    {
+      host = "marin";
+      platform = "x86-64-linux";
+    }
+  ];
+
+  ciSteps = {
+    mkdirNix = {
+      run = ''
+        sudo mkdir /nix
+      '';
+    };
+    maximizeDiskSpace = {
+      name = "Maximize disk space";
+      uses = "easimon/maximize-build-space@v10";
+      "with" = {
+        root-reserve-mb = 16384;
+        swap-size-mb = 1024;
+        build-mount-path = "/nix";
+        remove-dotnet = "true";
+        remove-android = "true";
+        remove-haskell = "true";
+        remove-codeql = "true";
+        remove-docker-images = "true";
+      };
+    };
+    chownNix = {
+      run = ''
+        sudo chown root:root /nix
+      '';
+    };
+    checkout = {
+      name = "Checkout repository";
+      uses = "actions/checkout@v4";
+    };
+    nixInstaller = {
+      name = "Install nix";
+      uses = "DeterminateSystems/nix-installer-action@v13";
+      "with" = {
+        github-token = "\${{ secrets.GH_TOKEN_FOR_UPDATES }}";
+        extra-conf = mkNixConf { extraSubstituters = [ atticCache.url ]; };
+      };
+    };
+    buildSystem = {
+      name = "Build system";
+      run = ''
+        nix build .#nixosConfigurations.''${{ matrix.machine.host }}.config.system.build.toplevel
+      '';
     };
   };
 in
@@ -129,7 +275,10 @@ in
                 steps = [
                   steps.removeUnusedSoftware
                   steps.checkout
+                  steps.createAtticNetrc
                   steps.nixInstaller
+                  steps.installSshKey
+                  steps.loginToAttic
                   {
                     id = ids.steps.getCheckNames;
                     run = ''
@@ -151,12 +300,54 @@ in
                 steps = [
                   steps.removeUnusedSoftware
                   steps.checkout
+                  steps.createAtticNetrc
                   steps.nixInstaller
+                  steps.installSshKey
+                  steps.loginToAttic
                   {
                     run = ''
                       nix ${nixArgs} build '.#checks.${runner.system}."''${{ matrix.${matrixParam} }}"'
                     '';
                   }
+                  steps.pushToAttic
+                ];
+              };
+            };
+          };
+        }
+        {
+          path_ = ciFilePath;
+          drv = pkgs.writers.writeJSON "gh-actions-workflow-ci.yml" {
+            name = ciWorkflowName;
+            on = {
+              push.branches = [ "main" ];
+              pull_request = { };
+              workflow_dispatch = { };
+            };
+            jobs = {
+              checks = {
+                uses = "./${filePath}";
+              };
+              build = {
+                name = "build machines";
+                needs = "checks";
+                runs-on = ciRunner;
+                strategy = {
+                  fail-fast = false;
+                  matrix.machine = machines;
+                };
+                steps = [
+                  ciSteps.mkdirNix
+                  steps.removeUnusedSoftware
+                  ciSteps.maximizeDiskSpace
+                  ciSteps.chownNix
+                  ciSteps.checkout
+                  steps.createAtticNetrc
+                  ciSteps.nixInstaller
+                  steps.installSshKey
+                  steps.loginToAttic
+                  ciSteps.buildSystem
+                  steps.pushToAttic
                 ];
               };
             };
@@ -164,6 +355,9 @@ in
         }
       ];
 
-      treefmt.settings.global.excludes = [ filePath ];
+      treefmt.settings.global.excludes = [
+        filePath
+        ciFilePath
+      ];
     };
 }
