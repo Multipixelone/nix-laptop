@@ -327,6 +327,7 @@ in
             jobs = {
               checks = {
                 uses = "./${filePath}";
+                secrets = "inherit";
               };
               build = {
                 name = "build machines";

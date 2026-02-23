@@ -87,6 +87,7 @@
       }
     },
     "checks": {
+      "secrets": "inherit",
       "uses": "./.github/workflows/check.yaml"
     }
   },
