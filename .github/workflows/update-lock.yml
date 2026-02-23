@@ -2,7 +2,7 @@ name: Update flake inputs
 on:
   workflow_dispatch: # allow manual triggering
   schedule:
-    - cron: '0 0 1-31/3 * *' # runs every third day
+    - cron: "0 0 1-31/3 * *" # runs every third day
 jobs:
   update-npins-deps:
     runs-on: ubuntu-latest
@@ -39,7 +39,7 @@ jobs:
         with:
           title: "chore: bump npins dependencies"
           branch: update_npins_lock_action
-          commit-message: '⚙️ bump npins'
+          commit-message: "⚙️ bump npins"
           token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
           assignees: Multipixelone
           labels: automated
@@ -63,8 +63,8 @@ jobs:
       - name: Update flake.lock
         uses: DeterminateSystems/update-flake-lock@v23
         with:
-          pr-title: 'chore: update flake.lock'
-          commit-msg: '⚙️ bump flake.lock'
+          pr-title: "chore: update flake.lock"
+          commit-msg: "⚙️ bump flake.lock"
           pr-assignees: Multipixelone
           pr-labels: automated
           token: ${{ secrets.GH_TOKEN_FOR_UPDATES }}
