@@ -4,7 +4,7 @@
 }:
 {
   configurations.nixos.zelda.module =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
     {
       imports = [
         # ./desktop.nix
@@ -192,40 +192,40 @@
       networking = {
         useDHCP = lib.mkDefault true;
         hostName = "zelda";
-        #wg-quick.interfaces.wg0 = {
-        #  autostart = true;
-        #  type = "amneziawg";
-        #  address = [ "10.100.0.2/24" ];
-        #  mtu = 1000;
-        #  dns = [ "10.100.0.1" ];
-        #  privateKeyFile = config.age.secrets."wireguard".path;
-        #  extraOptions = {
-        #    # Header obfuscation
-        #    H1 = 3552562;
-        #    H2 = 3289397;
-        #    H3 = 7481934;
-        #    H4 = 5765241;
-        #    # Junk packets
-        #    Jc = 5;
-        #    Jmin = 50;
-        #    Jmax = 500;
-        #    # Packet size padding
-        #    S1 = 71;
-        #    S2 = 93;
-        #    S3 = 47;
-        #    S4 = 62;
-        #  };
-        #  peers = [
-        #    {
-        #      publicKey = "VsMThxcXgr5nNNDQ6rSKlQQ9T6rWkedULuTHE4/jA24=";
-        #      presharedKeyFile = config.age.secrets."psk".path;
-        #      allowedIPs = [ "0.0.0.0/0" ];
-        #      endpoint = "frwgq.duckdns.org:443";
-        #      # endpoint = "68.237.124.182:51628";
-        #      persistentKeepalive = 25;
-        ##    }
-        #  ];
-        #};
+        wg-quick.interfaces.wg0 = {
+          autostart = true;
+          type = "amneziawg";
+          address = [ "10.100.0.2/24" ];
+          mtu = 1000;
+          dns = [ "10.100.0.1" ];
+          privateKeyFile = config.age.secrets."wireguard".path;
+          extraOptions = {
+            # Header obfuscation
+            H1 = 3552562;
+            H2 = 3289397;
+            H3 = 7481934;
+            H4 = 5765241;
+            # Junk packets
+            Jc = 5;
+            Jmin = 50;
+            Jmax = 500;
+            # Packet size padding
+            S1 = 71;
+            S2 = 93;
+            S3 = 47;
+            S4 = 62;
+          };
+          peers = [
+            {
+              publicKey = "VsMThxcXgr5nNNDQ6rSKlQQ9T6rWkedULuTHE4/jA24=";
+              presharedKeyFile = config.age.secrets."psk".path;
+              allowedIPs = [ "0.0.0.0/0" ];
+              endpoint = "frwgq.duckdns.org:443";
+              # endpoint = "68.237.124.182:51628";
+              persistentKeepalive = 25;
+            }
+          ];
+        };
       };
       fileSystems = {
         "/" = {
