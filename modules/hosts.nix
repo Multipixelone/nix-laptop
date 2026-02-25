@@ -78,6 +78,12 @@ in
         publicKey = "8mNNHB03ytgnnZMPv0AZOpgZVumEvy3tr+E7h3WBCUI=";
       };
     };
+    iot = {
+      isNixOS = true;
+      homeAddress = "192.168.8.111";
+      iotAddress = "192.168.5.3";
+      roles = [ "server" ];
+    };
     marin = {
       isNixOS = true;
       roles = [ "server" ];
