@@ -1,6 +1,6 @@
 { config, ... }:
 {
-  configurations.nixos.marin.module = {
+  configurations.nixos.iot.module = {
     imports = with config.flake.modules.nixos; [
       efi
       base
