@@ -41,6 +41,10 @@
               enable = true;
               settings.git_protocol = "ssh";
             };
+            programs.git.settings.url = {
+              "https://github.com/".insteadOf = "gh:";
+              "ssh://git@github.com/".pushInsteadOf = "gh:";
+            };
 
             home.packages = [ gh-dash-wrapped ];
           };
