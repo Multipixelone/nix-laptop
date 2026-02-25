@@ -1,4 +1,20 @@
 {
+  config,
+  lib,
+  ...
+}:
+let
+  hosts = config.hosts;
+  linkHost = hosts.link;
+  wgSubnet = "10.100.0.0/24";
+  wgPeerHosts =
+    hosts
+    |> lib.filterAttrs (
+      name: host:
+      name != "link" && host.wireguard.publicKey != null && host.wireguard.ipv4Address != null
+    );
+in
+{
   configurations.nixos.link.module =
     { pkgs, config, ... }:
     {
@@ -15,13 +31,13 @@
         wireguard.interfaces = {
           wg0 = {
             type = "amneziawg";
-            ips = [ "10.100.0.1/24" ];
+            ips = [ "${linkHost.wireguard.ipv4Address}/24" ];
             listenPort = 443;
             postSetup = ''
-              ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o enp6s0 -j MASQUERADE
+              ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s ${wgSubnet} -o enp6s0 -j MASQUERADE
             '';
             postShutdown = ''
-              ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o enp6s0 -j MASQUERADE
+              ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s ${wgSubnet} -o enp6s0 -j MASQUERADE
             '';
             privateKeyFile = config.age.secrets."wireguard".path;
 
@@ -42,24 +58,16 @@
               S4 = 62;
             };
 
-            peers = [
+            peers = lib.mapAttrsToList (
+              _name: host:
               {
-                # zelda
-                publicKey = "8mNNHB03ytgnnZMPv0AZOpgZVumEvy3tr+E7h3WBCUI=";
+                publicKey = host.wireguard.publicKey;
+                allowedIPs = [ "${host.wireguard.ipv4Address}/32" ];
+              }
+              // lib.optionalAttrs host.isNixOS {
                 presharedKeyFile = config.age.secrets."psk".path;
-                allowedIPs = [ "10.100.0.2/32" ];
               }
-              {
-                # ipad
-                publicKey = "YHW9LGJkWRaa5GtBCmqFd1IVS9fyVRUP3orDXeCC8l8=";
-                allowedIPs = [ "10.100.0.50/32" ];
-              }
-              {
-                # iphone
-                publicKey = "ORnW9c/rVHqOdaawcHJlpeTtg7pPvPxICtN2kXTlc3I=";
-                allowedIPs = [ "10.100.0.100/32" ];
-              }
-            ];
+            ) wgPeerHosts;
           };
         };
       };
