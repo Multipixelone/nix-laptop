@@ -41,6 +41,12 @@ let
           description = "Static home/LAN IPv4 address.";
           example = "192.168.6.6";
         };
+        iotAddress = lib.mkOption {
+          type = lib.types.nullOr lib.types.str;
+          default = null;
+          description = "Static home/IoT IPv4 address.";
+          example = "192.168.5.3";
+        };
         wireguard = lib.mkOption {
           type = wireguardSubmodule;
           default = { };
