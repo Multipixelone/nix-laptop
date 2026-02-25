@@ -68,7 +68,7 @@ in
           |> lib.mapAttrsToList (
             _name: nixos: {
               "${nixos.config.networking.fqdn}" = {
-                identityFile = "~/.ssh/keys/infra_ed25519";
+                identityFile = "~/.ssh/keys/id_ed25519";
               };
             }
           )
