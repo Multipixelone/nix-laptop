@@ -18,8 +18,14 @@ let
     name: cfg:
     if cfg.deployment.targetHost != null then
       cfg.deployment.targetHost
-    else if cfg.deployment.useWireguardAddress && (hosts.${name}.wireguard.ipv4Address or null) != null then
-      hosts.${name}.wireguard.ipv4Address
+    else if cfg.deployment.useWireguardAddress then
+      let
+        addr = (hosts.${name} or (throw "Host '${name}' has useWireguardAddress enabled but is not in the hosts registry")).wireguard.ipv4Address;
+      in
+      if addr != null then
+        addr
+      else
+        throw "Host '${name}' has useWireguardAddress enabled but no WireGuard address in the hosts registry"
     else
       (defaultTargetHost name);
 in
