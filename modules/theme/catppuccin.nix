@@ -12,6 +12,7 @@
       flavor = "mocha";
       accent = "mauve";
       mangohud.enable = false;
+      lazygit.enable = true;
       # these need IFD, so I disable
       firefox.enable = false;
       bottom.enable = false;

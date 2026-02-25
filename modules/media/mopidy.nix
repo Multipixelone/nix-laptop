@@ -3,7 +3,7 @@
   ...
 }:
 {
-  flake.modules.homeManager.gui =
+  flake.modules.homeManager.pc =
     { pkgs, config, ... }:
     {
       age = {

@@ -31,6 +31,11 @@
                     default = false;
                     description = "Allow colmena to deploy to the local machine.";
                   };
+                  useWireguardAddress = lib.mkOption {
+                    type = lib.types.bool;
+                    default = false;
+                    description = "When true and targetHost is null, use the host's WireGuard address from the hosts registry for deployment.";
+                  };
                 };
               }
             );
