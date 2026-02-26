@@ -3,7 +3,9 @@
   flake.modules.nixos.base = {
     services = {
       logind.settings.Login = {
-        HandleLidSwitchExernalPower = lib.mkDefault "ignore";
+        HandleLidSwitch = lib.mkDefault "ignore";
+        HandleLidSwitchExternalPower = lib.mkDefault "ignore";
+        HandleLidSwitchDocked = lib.mkDefault "ignore";
       };
     };
   };
