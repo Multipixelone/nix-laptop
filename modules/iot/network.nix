@@ -13,6 +13,10 @@ in
       age.secrets."wifi".file = "${inputs.secrets}/wifi/home.age";
 
       networking = {
+        nameservers = [
+          "8.8.8.8"
+          "1.1.1.1"
+        ];
         networkmanager = {
           enable = true;
           ensureProfiles = {
