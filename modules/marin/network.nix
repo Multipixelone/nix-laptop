@@ -38,7 +38,7 @@ in
                   psk = "$CJNFRW_IOT_PSK";
                 };
                 ipv4 = {
-                  address1 = "${marinHost.iotAddress}/24";
+                  address1 = "${marinHost.homeAddress}/24";
                   gateway = "192.168.5.1";
                   method = "manual";
                 };
@@ -53,7 +53,7 @@ in
                   type = "ethernet";
                 };
                 ipv4 = {
-                  address1 = "${marinHost.homeAddress}/24";
+                  address1 = "${marinHost.iotAddress}/24";
                   gateway = "192.168.7.1";
                   method = "manual";
                 };

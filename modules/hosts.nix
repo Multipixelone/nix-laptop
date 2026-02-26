@@ -86,8 +86,8 @@ in
     };
     marin = {
       isNixOS = true;
-      iotAddress = "192.168.5.21";
-      homeAddress = "192.168.7.3";
+      homeAddress = "192.168.5.21";
+      iotAddress = "192.168.7.3";
       roles = [ "server" ];
     };
     ipad = {
