@@ -8,7 +8,6 @@
         waypipe
         filezilla
         bluebubbles
-        gimp
       ];
     };
 }
