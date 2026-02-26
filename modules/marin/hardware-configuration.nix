@@ -27,6 +27,11 @@
           "kvm-intel"
           "wl"
         ];
+        # blacklist broken kernel modules for wifi card
+        blacklistedKernelModules = [
+          "b43"
+          "bcma"
+        ];
         extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
       };
 
