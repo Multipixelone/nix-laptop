@@ -194,6 +194,9 @@
       '';
       services.sunshine = {
         enable = true;
+        package = pkgs.sunshine.override {
+          boost = pkgs.boost187;
+        };
         capSysAdmin = true;
         openFirewall = true;
         settings = {

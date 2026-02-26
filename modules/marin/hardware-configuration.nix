@@ -3,7 +3,7 @@
 # to /etc/nixos/configuration.nix instead.
 {
   nixpkgs.config.permittedInsecurePackages = [
-    "broadcom-sta-6.30.223.271-59-6.12.68"
+    "broadcom-sta-6.30.223.271-59-6.12.74"
   ];
   nixpkgs.config.allowUnfreePackages = [ "broadcom-sta" ];
   configurations.nixos.marin.module =
