@@ -4,14 +4,13 @@
   ...
 }:
 let
-  hosts = config.hosts;
+  inherit (config) hosts;
   linkHost = hosts.link;
   wgSubnet = "10.100.0.0/24";
   wgPeerHosts =
     hosts
     |> lib.filterAttrs (
-      name: host:
-      name != "link" && host.wireguard.publicKey != null && host.wireguard.ipv4Address != null
+      name: host: name != "link" && host.wireguard.publicKey != null && host.wireguard.ipv4Address != null
     );
 in
 {
