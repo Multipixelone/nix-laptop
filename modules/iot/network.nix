@@ -27,6 +27,7 @@ in
                   id = "cjnfrw-iot";
                   type = "wifi";
                   interface-name = "wlp5s0";
+                  autoconnect = true;
                 };
                 wifi = {
                   mode = "infrastructure";
