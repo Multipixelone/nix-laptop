@@ -51,6 +51,7 @@ in
 
           settings = {
             PasswordAuthentication = false;
+            PermitRootLogin = "prohibit-password";
           };
 
           extraConfig = ''
