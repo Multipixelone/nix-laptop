@@ -86,6 +86,7 @@ in
     };
     marin = {
       isNixOS = true;
+      homeAddress = "192.168.5.21";
       roles = [ "server" ];
     };
     ipad = {
