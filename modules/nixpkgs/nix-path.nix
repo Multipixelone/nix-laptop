@@ -1,6 +1,6 @@
 { inputs, lib, ... }:
 {
-  flake.modules.nixos.base = nixosArgs: {
+  flake.modules.nixos.base = {
     nix =
       let
         flakeInputs = lib.filterAttrs (_: v: lib.isType "flake" v) inputs;
@@ -8,7 +8,7 @@
       {
         registry = lib.mapAttrs (_: v: { flake = v; }) flakeInputs;
         nixPath = [
-          "nixpkgs=${nixosArgs.config.nixpkgs.flake.source}"
+          "nixpkgs=${inputs.nixpkgs}"
         ];
       };
   };
