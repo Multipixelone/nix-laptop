@@ -24,9 +24,6 @@
         # hint electron apps to run on wayland
         environment.sessionVariables.NIXOS_OZONE_WL = "1";
         security.pam.services.hyprlock.text = "auth include login";
-        environment.systemPackages = with pkgs; [
-          pyprland
-        ];
       };
     homeManager.gui =
       hmArgs@{ pkgs, osConfig, ... }:
@@ -217,62 +214,7 @@
             };
           };
         };
-        home.file = {
-          ".local/share/icons/Posy_Cursor_Black_h".source = cursor-theme;
-          ".config/hypr/pyprland.toml".text = ''
-            [pyprland]
-            plugins = ["scratchpads", "toggle_dpms"]
-
-            # [scratchpads.music]
-            # animation = "fromLeft"
-            # command = "uwsm app -- foot -a foot-music ncmpcpp"
-            # class = "foot-music"
-            # size = "40% 90%"
-            # unfocus = "hide"
-            # lazy = false
-
-            [scratchpads.gpt]
-            animation = "fromLeft"
-            command = "uwsm app -- foot -a foot-gpt tgpt -m"
-            class = "foot-gpt"
-            size = "40% 90%"
-            unfocus = "hide"
-            lazy = true
-
-            [scratchpads.volume]
-            animation = "fromRight"
-            command = "uwsm app -- ${lib.getExe pkgs.pwvucontrol}"
-            class = "com.saivert.pwvucontrol"
-            size = "40% 90%"
-            unfocus = "hide"
-            lazy = true
-
-            [scratchpads.bluetooth]
-            animation = "fromRight"
-            command = "uwsm app -- ${lib.getExe' pkgs.blueman "blueman-manager"}"
-            class = ".blueman-manager-wrapped"
-            size = "40% 90%"
-            unfocus = "hide"
-            lazy = true
-
-            [scratchpads.helvum]
-            animation = "fromRight"
-            command = "uwsm app -- helvum"
-            class = "org.pipewire.Helvum"
-            size = "40% 90%"
-            unfocus = "hide"
-            lazy = true
-
-            [scratchpads.password]
-            animation = "fromBottom"
-            command = "uwsm app -- 1password"
-            class = "1Password"
-            size = "40% 30%"
-            max_size = "2560px 100%"
-            position = "1% 66%"
-            lazy = false
-          '';
-        };
+        home.file.".local/share/icons/Posy_Cursor_Black_h".source = cursor-theme;
       };
   };
 }
