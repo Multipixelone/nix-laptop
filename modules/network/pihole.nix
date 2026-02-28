@@ -9,10 +9,14 @@
       # Disable systemd-resolved to allow blocky to bind to port 53
       services.resolved.enable = false;
 
+      # Use blocky on localhost for DNS resolution
       networking.nameservers = [
         "127.0.0.1"
         "::1"
       ];
+
+      # Tell NetworkManager not to touch resolv.conf (blocky handles DNS)
+      networking.networkmanager.dns = lib.mkForce "none";
 
       services.dnscrypt-proxy = {
         enable = true;
