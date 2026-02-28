@@ -17,7 +17,6 @@
 
       imports = [
         (inputs.import-tree ./modules)
-        # inputs.pre-commit-hooks.flakeModule
       ];
 
       _module.args.rootPath = ./.;
