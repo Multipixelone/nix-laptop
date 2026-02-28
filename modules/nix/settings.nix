@@ -2,6 +2,9 @@
 {
   options.nix.settings = {
     keep-outputs = lib.mkOption { type = lib.types.bool; };
+    warn-dirty = lib.mkOption { type = lib.types.bool; };
+    abort-on-warn = lib.mkOption { type = lib.types.bool; };
+    allow-import-from-derivation = lib.mkOption { type = lib.types.bool; };
     experimental-features = lib.mkOption {
       type = lib.types.listOf lib.types.singleLineStr;
       default = [ ];
@@ -14,6 +17,9 @@
   config = {
     nix.settings = {
       keep-outputs = true;
+      warn-dirty = false;
+      abort-on-warn = true;
+      allow-import-from-derivation = false;
       experimental-features = [
         "nix-command"
         "flakes"

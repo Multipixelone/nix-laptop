@@ -1,13 +1,14 @@
 {
   description = "Multipixelone (Finn)'s nix + HomeManager config";
 
-  nixConfig = {
-    abort-on-warn = true;
-    extra-experimental-features = [
-      "pipe-operators"
-    ];
-    allow-import-from-derivation = false;
-  };
+  # FIX: I don't like the "Using saved setting for" warn. If there's a way to ignore this or not have to deal with it. I'm all ears
+  # nixConfig = {
+  #   abort-on-warn = true;
+  #   extra-experimental-features = [
+  #     "pipe-operators"
+  #   ];
+  #   allow-import-from-derivation = false;
+  # };
 
   outputs =
     inputs:
