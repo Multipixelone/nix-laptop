@@ -153,68 +153,24 @@ let
 
   ciFilename = "ci.yml";
   ciFilePath = ".github/workflows/${ciFilename}";
-  ciWorkflowName = "CI";
-  ciRunner = "ubuntu-24.04";
+  # ciWorkflowName = "CI";
+  # ciRunner = "ubuntu-24.04";
 
-  machines = [
-    {
-      host = "minish";
-      platform = "x86-64-linux";
-    }
-    {
-      host = "link";
-      platform = "x86-64-linux";
-    }
-    {
-      host = "marin";
-      platform = "x86-64-linux";
-    }
-  ];
+  # machines = [
+  #   {
+  #     host = "minish";
+  #     platform = "x86-64-linux";
+  #   }
+  #   {
+  #     host = "link";
+  #     platform = "x86-64-linux";
+  #   }
+  #   {
+  #     host = "marin";
+  #     platform = "x86-64-linux";
+  #   }
+  # ];
 
-  ciSteps = {
-    mkdirNix = {
-      run = ''
-        sudo mkdir /nix
-      '';
-    };
-    maximizeDiskSpace = {
-      name = "Maximize disk space";
-      uses = "easimon/maximize-build-space@v10";
-      "with" = {
-        root-reserve-mb = 16384;
-        swap-size-mb = 1024;
-        build-mount-path = "/nix";
-        remove-dotnet = "true";
-        remove-android = "true";
-        remove-haskell = "true";
-        remove-codeql = "true";
-        remove-docker-images = "true";
-      };
-    };
-    chownNix = {
-      run = ''
-        sudo chown root:root /nix
-      '';
-    };
-    checkout = {
-      name = "Checkout repository";
-      uses = "actions/checkout@v4";
-    };
-    nixInstaller = {
-      name = "Install nix";
-      uses = "DeterminateSystems/nix-installer-action@v13";
-      "with" = {
-        github-token = "\${{ secrets.GH_TOKEN_FOR_UPDATES }}";
-        extra-conf = mkNixConf { extraSubstituters = [ atticCache.url ]; };
-      };
-    };
-    buildSystem = {
-      name = "Build system";
-      run = ''
-        nix build .#nixosConfigurations.''${{ matrix.machine.host }}.config.system.build.toplevel
-      '';
-    };
-  };
 in
 {
   text.readme.parts = {
@@ -306,54 +262,54 @@ in
                   steps.loginToAttic
                   {
                     run = ''
-                      nix ${nixArgs} build '.#checks.${runner.system}."''${{ matrix.${matrixParam} }}"'
+                      nix run github:Mic92/nix-fast-build -- --skip-cached --no-nom --attic-cache system --flake '.#checks.${runner.system}."''${{ matrix.${matrixParam} }}"'
                     '';
                   }
-                  steps.pushToAttic
+                  # steps.pushToAttic
                 ];
               };
             };
           };
         }
-        {
-          path_ = ciFilePath;
-          drv = pkgs.writers.writeJSON "gh-actions-workflow-ci.yml" {
-            name = ciWorkflowName;
-            on = {
-              push.branches = [ "main" ];
-              pull_request = { };
-              workflow_dispatch = { };
-            };
-            jobs = {
-              checks = {
-                uses = "./${filePath}";
-                secrets = "inherit";
-              };
-              build = {
-                name = "build machines";
-                needs = "checks";
-                runs-on = ciRunner;
-                strategy = {
-                  fail-fast = false;
-                  matrix.machine = machines;
-                };
-                steps = [
-                  ciSteps.mkdirNix
-                  steps.removeUnusedSoftware
-                  ciSteps.maximizeDiskSpace
-                  ciSteps.chownNix
-                  ciSteps.checkout
-                  steps.createAtticNetrc
-                  ciSteps.nixInstaller
-                  steps.installSshKey
-                  steps.loginToAttic
-                  ciSteps.buildSystem
-                  steps.pushToAttic
-                ];
-              };
-            };
-          };
-        }
+        # {
+        #   path_ = ciFilePath;
+        #   drv = pkgs.writers.writeJSON "gh-actions-workflow-ci.yml" {
+        #     name = ciWorkflowName;
+        #     on = {
+        #       push.branches = [ "main" ];
+        #       pull_request = { };
+        #       workflow_dispatch = { };
+        #     };
+        #     jobs = {
+        #       checks = {
+        #         uses = "./${filePath}";
+        #         secrets = "inherit";
+        #       };
+        #       build = {
+        #         name = "build machines";
+        #         needs = "checks";
+        #         runs-on = ciRunner;
+        #         strategy = {
+        #           fail-fast = false;
+        #           matrix.machine = machines;
+        #         };
+        #         steps = [
+        #           ciSteps.mkdirNix
+        #           steps.removeUnusedSoftware
+        #           ciSteps.maximizeDiskSpace
+        #           ciSteps.chownNix
+        #           ciSteps.checkout
+        #           steps.createAtticNetrc
+        #           ciSteps.nixInstaller
+        #           steps.installSshKey
+        #           steps.loginToAttic
+        #           ciSteps.buildSystem
+        #           steps.pushToAttic
+        #         ];
+        #       };
+        #     };
+        #   };
+        # }
       ];
 
       treefmt.settings.global.excludes = [

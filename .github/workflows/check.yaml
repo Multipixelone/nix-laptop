@@ -37,12 +37,7 @@
           "run": "nix run nixpkgs#attic-client login fly https://attic-cache.fly.dev ${{ secrets.ATTIC_KEY }}\n"
         },
         {
-          "run": "nix --accept-flake-config build '.#checks.x86_64-linux.\"${{ matrix.checks }}\"'\n"
-        },
-        {
-          "continue-on-error": true,
-          "name": "Push to attic",
-          "run": "nix run nixpkgs#attic-client push system result -j 3\n"
+          "run": "nix run github:Mic92/nix-fast-build -- --skip-cached --no-nom --attic-cache system --flake '.#checks.x86_64-linux.\"${{ matrix.checks }}\"'\n"
         }
       ],
       "strategy": {
