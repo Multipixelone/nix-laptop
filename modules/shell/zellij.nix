@@ -3,7 +3,6 @@
   flake.modules.homeManager.base =
     hmArgs@{
       pkgs,
-      lib,
       ...
     }:
     let
