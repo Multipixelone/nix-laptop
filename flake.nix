@@ -189,7 +189,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zjstatus-hints = {
-      url = "github:Multipixelone/zjstatus-hints/nix-build";
+      url = "github:b0o/zjstatus-hints";
       # inputs.nixpkgs.follows = "zjstatus";
       # inputs.crane.follows = "zjstatus";
       # inputs.rust-overlay.follows = "zjstatus";
