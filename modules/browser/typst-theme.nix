@@ -11,27 +11,49 @@
             description = "Catppuccin Mocha theme for tinymist typst preview";
             content_scripts = [
               {
-                matches = [ "http://127.0.0.1/*" ];
+                matches = [
+                  "http://127.0.0.1/*"
+                  "http://localhost/*"
+                ];
                 css = [ "catppuccin-mocha.css" ];
-                run_at = "document_start";
+                js = [ "content.js" ];
+                run_at = "document_idle";
               }
             ];
           }
         );
 
+        "content.js" = pkgs.writeText "content.js" ''
+          // Overwrite the variables applied by the built-in script
+          const root = document.documentElement;
+
+          root.style.setProperty("--typst-preview-background-color", "#1e1e2e");
+          root.style.setProperty("--typst-preview-foreground-color", "#cdd6f4");
+          root.style.setProperty("--typst-preview-toolbar-fg-color", "#cdd6f4");
+          root.style.setProperty("--typst-preview-toolbar-border-color", "#313244");
+          root.style.setProperty("--typst-preview-toolbar-bg-color", "#181825");
+        '';
+
         "catppuccin-mocha.css" = pkgs.writeText "catppuccin-mocha.css" ''
           /* Catppuccin Mocha theme for tinymist typst preview */
+
+          /* Override the CSS variable used by the inline style on #typst-app */
+          :root {
+            --typst-preview-background-color: #1e1e2e !important; /* Mocha Base */
+            --typst-preview-foreground-color: #cdd6f4 !important; /* Mocha Text */
+            --typst-preview-toolbar-fg-color: #cdd6f4 !important; /* Mocha Text */
+            --typst-preview-toolbar-border-color: #313244 !important; /* Mocha Surface0 */
+            --typst-preview-toolbar-bg-color: #181825 !important; /* Mocha Mantle */
+          }
 
           body {
             background-color: #1e1e2e !important;
           }
 
-          #typst-app {
-            background-color: #1e1e2e !important;
-          }
-
-          /* Invert the white-on-black SVG render into Mocha colours */
-          #typst-app .typst-doc {
+          /* Invert the white-on-black SVG render into Mocha colours.
+             Use high specificity to beat tinymist's built-in .invert-colors rule. */
+          #typst-app .typst-doc,
+          #typst-app.invert-colors .typst-doc {
             filter:
               invert(1)
               hue-rotate(180deg)
@@ -41,7 +63,8 @@
           }
 
           /* Re-invert images so they aren't double-inverted */
-          #typst-app .typst-image {
+          #typst-app .typst-image,
+          #typst-app.invert-colors .typst-image {
             filter: invert(1) hue-rotate(180deg) !important;
           }
 
