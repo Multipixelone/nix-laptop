@@ -28,7 +28,7 @@
             ONLINE_MODE = "TRUE";
             # MOD_PLATFORM = "AUTO_CURSEFORGE";
             TYPE = "CURSEFORGE";
-            CF_SERVER_MOD = "/modpacks/ServerFiles-5.4.zip";
+            CF_SERVER_MOD = "/modpacks/ServerFiles-6.0.1.zip";
             MEMORY = "16G";
           };
           volumes = [
