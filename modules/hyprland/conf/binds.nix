@@ -114,7 +114,7 @@
                 (resizeactive "k" "0 -80")
                 (resizeactive "l" "80 0")
                 "$mod, p, pseudo"
-                "$mod, s, togglesplit"
+                "$mod, s, layoutmsg, togglesplit"
                 # pypr scratchpads
                 "Control_L&Alt_L, K, exec, pypr toggle password"
                 "Control_L&Alt_L, M, exec, pypr toggle music"
