@@ -98,7 +98,7 @@
         rb-albumart
       ];
       home.sessionVariables = {
-        ARTWORK_DIR = "${hmArgs.config.xdg.userDirs.music}/RockboxCover";
+        ARTWORK_DIR = "/volume1/Media/RockboxCover";
       };
     };
 }
