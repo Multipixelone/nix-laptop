@@ -721,7 +721,37 @@
       "split-channels": false
     },
     "plugins_order": [
-      "equalizer#0"
-    ]
+      "filter#0",
+      "equalizer#0",
+      "reverb#0"
+    ],
+    "reverb#0": {
+      "amount": -12.0,
+      "bass-cut": 150.0,
+      "bypass": false,
+      "decay-time": 1.8,
+      "diffusion": 0.9,
+      "dry": 0.0,
+      "hf-damp": 3000.0,
+      "input-gain": 0.0,
+      "output-gain": 0.0,
+      "predelay": 8.0,
+      "room-size": "Large",
+      "treble-cut": 4500.0
+    },
+    "filter#0": {
+      "balance": 0.0,
+      "bypass": false,
+      "equal-mode": "IIR",
+      "frequency": 5000.0,
+      "gain": 0.0,
+      "input-gain": 0.0,
+      "mode": "RLC (BT)",
+      "output-gain": 0.0,
+      "quality": 0.4,
+      "slope": "x1",
+      "type": "Low-pass",
+      "width": 4.0
+    }
   }
 }

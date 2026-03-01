@@ -721,7 +721,22 @@
       "split-channels": false
     },
     "plugins_order": [
-      "equalizer#0"
-    ]
+      "equalizer#0",
+      "reverb#0"
+    ],
+    "reverb#0": {
+      "amount": -10.0,
+      "bass-cut": 250.0,
+      "bypass": false,
+      "decay-time": 0.25,
+      "diffusion": 0.4,
+      "dry": 0.0,
+      "hf-damp": 3500.0,
+      "input-gain": 0.0,
+      "output-gain": 0.0,
+      "predelay": 1.0,
+      "room-size": "Small",
+      "treble-cut": 4000.0
+    }
   }
 }
