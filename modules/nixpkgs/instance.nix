@@ -16,6 +16,10 @@
         type = lib.types.listOf lib.types.singleLineStr;
         default = [ ];
       };
+      packageOverrides = lib.mkOption {
+        type = with lib.types; either attrs (functionTo attrs);
+        default = { };
+      };
       allowInsecurePredicate = lib.mkOption {
         type = lib.types.functionTo lib.types.bool;
         default = pkg: builtins.elem pkg.name config.nixpkgs.config.permittedInsecurePackages;
