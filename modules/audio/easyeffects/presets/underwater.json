@@ -721,7 +721,55 @@
       "split-channels": false
     },
     "plugins_order": [
-      "equalizer#0"
-    ]
+      "filter#0",
+      "equalizer#0",
+      "pitch#0",
+      "reverb#0"
+    ],
+    "filter#0": {
+      "balance": 0.0,
+      "bypass": false,
+      "equal-mode": "IIR",
+      "frequency": 400.0,
+      "gain": 0.0,
+      "input-gain": 0.0,
+      "mode": "RLC (BT)",
+      "output-gain": 0.0,
+      "quality": 0.5,
+      "slope": "x4",
+      "type": "Low-pass",
+      "width": 4.0
+    },
+    "reverb#0": {
+      "amount": -6.0,
+      "bass-cut": 50.0,
+      "bypass": false,
+      "decay-time": 2.5,
+      "diffusion": 1.0,
+      "dry": 0.0,
+      "hf-damp": 1500.0,
+      "input-gain": 0.0,
+      "output-gain": 0.0,
+      "predelay": 15.0,
+      "room-size": "Large",
+      "treble-cut": 2000.0
+    },
+    "pitch#0": {
+      "anti-alias": false,
+      "bypass": false,
+      "cents": -30.0,
+      "dry": -100.0,
+      "input-gain": 0.0,
+      "octaves": 0.0,
+      "output-gain": 0.0,
+      "overlap-length": 12,
+      "quick-seek": false,
+      "rate-difference": 0.0,
+      "seek-window": 15,
+      "semitones": 0.0,
+      "sequence-length": 60,
+      "tempo-difference": 0.0,
+      "wet": 0.0
+    }
   }
 }
