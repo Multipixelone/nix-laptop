@@ -18,6 +18,7 @@
         texlab
         # TODO Maybe move Libreoffice to some other kind of general editing module? This just seemed like the most sensible place rn
         libreoffice-fresh
+        evince
         jdk # Needed for libreoffice?
       ];
       programs.zathura = {
