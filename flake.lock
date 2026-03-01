@@ -2818,11 +2818,11 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1772055281,
-        "narHash": "sha256-cIz6LKAXcBL7/ZI4iVA+n5PG6FsYCGNjIXVbEMn3ZmI=",
+        "lastModified": 1772331237,
+        "narHash": "sha256-03TxO5Kgl7JS/2LOgnckP69NgGEMySYwrF094ZznDKI=",
         "ref": "refs/heads/main",
-        "rev": "b69e6edb51991c6b9836eaba765a824bac6d75c5",
-        "revCount": 64,
+        "rev": "176195c2b03a55615bba68e1b7517cb438a408d8",
+        "revCount": 65,
         "type": "git",
         "url": "ssh://git@github.com/Multipixelone/nix-secrets.git"
       },
