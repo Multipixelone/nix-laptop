@@ -8,7 +8,7 @@
         reduceMotion = true;
         minimalistMode = true;
 
-        sync = {
+        profiles."User 1".sync = {
           syncMedia = true;
           autoSync = true;
         };
