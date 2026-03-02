@@ -56,8 +56,8 @@ let
     in
     ''
       fallback = true
-      http-connections = 128
-      max-substitution-jobs = 128
+      http-connections = 25
+      max-substitution-jobs = 16
       connect-timeout = 15
       stalled-download-timeout = 15
       download-attempts = 100
@@ -248,8 +248,10 @@ in
               ${ids.jobs.check} = {
                 needs = ids.jobs.getCheckNames;
                 runs-on = runner.name;
+                timeout-minutes = 350;
                 strategy = {
                   fail-fast = false;
+                  max-parallel = 5;
                   matrix.${matrixParam} =
                     "\${{ fromJson(needs.${ids.jobs.getCheckNames}.outputs.${ids.outputs.jobs.getCheckNames}) }}";
                 };
@@ -262,7 +264,16 @@ in
                   steps.loginToAttic
                   {
                     run = ''
-                      nix run github:Mic92/nix-fast-build -- --skip-cached --no-nom --attic-cache system --flake '.#checks.${runner.system}."''${{ matrix.${matrixParam} }}"'
+                      nix run github:Mic92/nix-fast-build -- \
+                        --skip-cached \
+                        --no-nom \
+                        --attic-cache system \
+                        -j 1 \
+                        --eval-workers 1 \
+                        --eval-max-memory-size 2048 \
+                        --retries 2 \
+                        --no-link \
+                        --flake '.#checks.${runner.system}."''${{ matrix.${matrixParam} }}"'
                     '';
                   }
                   # steps.pushToAttic
