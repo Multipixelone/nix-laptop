@@ -53,5 +53,13 @@
         inputs.musnix.nixosModules.musnix
       ];
     };
+    homeManager.base =
+      { pkgs, ... }:
+      {
+        home.packages = with pkgs; [
+          wiremix
+          alsa-utils
+        ];
+      };
   };
 }
