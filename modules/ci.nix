@@ -100,6 +100,7 @@ let
         sudo rm -rf /var/lib/docker/overlay2
         sudo rm -rf /home/linuxbrew
         sudo rm -rf /home/runner/.rustup
+        sudo rm -rf /etc/ssh/sshd_config.d/50-cloud-init.conf
       '';
     };
     nothingButNix = {
