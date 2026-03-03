@@ -3,12 +3,12 @@
   flake.modules.nixos.wifi = {
     networking.networkmanager = {
       enable = true;
-      wifi.backend = "iwd"; # Faster and more reliable than wpa_supplicant
+      wifi.backend = lib.mkDefault "iwd"; # Faster and more reliable than wpa_supplicant
       dns = lib.mkDefault "systemd-resolved";
     };
 
     networking.wireless.iwd = {
-      enable = true;
+      enable = lib.mkDefault true;
       settings = {
         IPv6.Enabled = true;
         Settings.AutoConnect = true;
