@@ -720,10 +720,7 @@
       },
       "split-channels": false
     },
-    "plugins_order": [
-      "equalizer#0",
-      "reverb#0"
-    ],
+    "plugins_order": ["equalizer#0", "reverb#0"],
     "reverb#0": {
       "amount": -30.0,
       "bass-cut": 200.0,

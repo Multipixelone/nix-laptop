@@ -720,12 +720,7 @@
       },
       "split-channels": false
     },
-    "plugins_order": [
-      "filter#0",
-      "equalizer#0",
-      "pitch#0",
-      "reverb#0"
-    ],
+    "plugins_order": ["filter#0", "equalizer#0", "pitch#0", "reverb#0"],
     "filter#0": {
       "balance": 0.0,
       "bypass": false,
