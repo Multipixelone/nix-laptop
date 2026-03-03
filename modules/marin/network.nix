@@ -13,8 +13,11 @@ in
       age.secrets."wifi".file = "${inputs.secrets}/wifi/home.age";
 
       networking = {
+        # broken on broadcom-sta
+        wireless.iwd.enable = false;
         networkmanager = {
           enable = true;
+          wifi.backend = "wpa_supplicant";
           ensureProfiles = {
             environmentFiles = [ config.age.secrets."wifi".path ];
             profiles = {
