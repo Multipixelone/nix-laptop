@@ -12,10 +12,10 @@
       settings = {
         IPv6.Enabled = true;
         Settings.AutoConnect = true;
-        General = {
-          EnableNetworkConfiguration = true; # Built-in DHCP client
-          # AddressRandomization = "network"; # MAC randomization for privacy
-        };
+        # General = {
+        #   EnableNetworkConfiguration = true; # Built-in DHCP client
+        #   AddressRandomization = "network"; # MAC randomization for privacy
+        # };
         Network.EnableIPv6 = true;
       };
     };
