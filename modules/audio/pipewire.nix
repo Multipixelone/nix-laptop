@@ -61,5 +61,13 @@
           alsa-utils
         ];
       };
+    homeManager.gui =
+      { pkgs, ... }:
+      {
+        home.packages = with pkgs; [
+          pwvucontrol
+          helvum
+        ];
+      };
   };
 }

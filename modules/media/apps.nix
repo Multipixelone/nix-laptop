@@ -14,7 +14,6 @@
         mediainfo
         nixpkgs-mine.soundshow
         blanket
-        helvum
       ];
     };
 }
