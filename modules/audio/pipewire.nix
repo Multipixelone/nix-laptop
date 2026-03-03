@@ -1,7 +1,8 @@
-{ inputs, ... }:
+{ inputs, config, ... }:
 {
   flake.modules = {
     nixos.base = {
+      users.extraGroups.audio.members = [ config.flake.meta.owner.username ];
       services.pipewire = {
         enable = true;
         alsa.enable = true;
