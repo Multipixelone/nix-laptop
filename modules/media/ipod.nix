@@ -75,6 +75,9 @@
             "${hmArgs.config.home.sessionVariables.TRANSCODED_MUSIC}/" \
             "${hmArgs.config.home.sessionVariables.IPOD_DIR}/" \
             $rclone_args
+          echo "Flush write cache..."
+          sync "$IPOD_DIR"
+          echo "All music copied!"
         end
       '';
 
