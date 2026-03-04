@@ -4,8 +4,9 @@
     { pkgs, ... }:
     {
       programs.fish.shellAliases = {
-        du = lib.getExe pkgs.ncdu + " --color dark -x";
+        ncdu = lib.getExe pkgs.ncdu + " --color dark -x";
         df = lib.getExe pkgs.duf;
+        du = lib.getExe pkgs.dust;
       };
       home.packages = with pkgs; [
         ncdu
