@@ -1,5 +1,5 @@
 {
   configurations.nixos.iso.module = {
-    isoImage.configurationName = "Plasma (Finn)";
+    isoImage.configurationName = "Finn's Plasma Recovery";
   };
 }
