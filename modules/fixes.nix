@@ -25,5 +25,14 @@
         buildInputs = prev.anki.buildInputs ++ [ prev.qt6.qtwebengine ];
       };
     })
+    (final: prev: {
+      linuxPackages_xanmod_latest = prev.linuxPackages_xanmod_latest.extend (
+        lpself: lpsuper: {
+          amneziawg = lpsuper.amneziawg.overrideAttrs {
+            patches = lpsuper.amneziawg.patches ++ [ ./amnezia.patch ];
+          };
+        }
+      );
+    })
   ];
 }
