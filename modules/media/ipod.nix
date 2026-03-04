@@ -36,12 +36,19 @@
       '';
       rclone-base-opts = [
         "--progress"
+        "--delete-before"
+        "--inplace"
+        "--ignore-case"
+        "--modify-window"
+        "2s"
         "--buffer-size"
         "0"
+        "--bwlimit"
+        "8M"
         "--transfers"
         "1"
         "--checkers"
-        "6"
+        "2"
       ];
       ipod-sync = pkgs.writeScriptBin "ipod-sync" ''
         #!${lib.getExe pkgs.fish}
