@@ -20,11 +20,11 @@
       }
     )
     # https://github.com/NixOS/nixpkgs/pull/493604
-    (final: prev: {
-      anki = prev.anki.overrideAttrs {
-        buildInputs = prev.anki.buildInputs ++ [ prev.qt6.qtwebengine ];
-      };
-    })
+    # (final: prev: {
+    #   anki = prev.anki.overrideAttrs {
+    #     buildInputs = prev.anki.buildInputs ++ [ prev.qt6.qtwebengine ];
+    #   };
+    # })
     (final: prev: {
       linuxPackages_xanmod_latest = prev.linuxPackages_xanmod_latest.extend (
         lpself: lpsuper: {
