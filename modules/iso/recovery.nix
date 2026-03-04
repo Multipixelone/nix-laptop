@@ -5,6 +5,7 @@
       environment.systemPackages = with pkgs; [
         # disk recovery
         testdisk
+        testdisk-qt
         safecopy
         parted
         tparted
@@ -13,7 +14,6 @@
         partclone
         ddrescue
         ddrutility
-        testdisk-qt
 
         # cpu
         stress
@@ -22,6 +22,15 @@
 
         # memory
         memtester
+
+        # storage
+        nvme-cli
+        lvm2
+        mdadm
+        multipath-tools
+        pciutils
+        hdparm
+        sdparm
 
         # misc hardware
         dmidecode
@@ -47,6 +56,8 @@
         gptfdisk
 
         # filesystem support
+        dosfstools
+        dislocker
         go-mtpfs
         exfatprogs
         f2fs-tools
@@ -61,7 +72,6 @@
         # specific filesystem recovery tools
         ext4magic
         myrescue
-        safecopy
         extundelete
         xfs-undelete
         fatcat
@@ -71,10 +81,19 @@
         grub2
         efibootmgr
 
+        # os stuff
+        arch-install-scripts
+        nixos-install-tools
+        os-prober
+        syslinux
+
         # network tools
         iproute2
         tcpdump
         netcat-gnu
+        dnsutils
+        cifs-utils
+        nfs-utils
 
         # miscellaneous tools
         util-linux
