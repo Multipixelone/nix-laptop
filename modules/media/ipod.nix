@@ -116,7 +116,6 @@
         rockbox-database
 
         ipod-sync
-        rclone-wrapped
       ];
     };
 }
