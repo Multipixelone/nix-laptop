@@ -73,8 +73,8 @@
           echo "Syncing music..."
           ${lib.getExe rclone-wrapped} sync \
             "${hmArgs.config.home.sessionVariables.TRANSCODED_MUSIC}/" \
-            "ipod_hasher:/" \
-            $rclone_args --checksum 
+            "${hmArgs.config.home.sessionVariables.IPOD_DIR}/" \
+            $rclone_args
         end
       '';
 
