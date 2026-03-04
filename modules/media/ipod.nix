@@ -57,7 +57,7 @@
         set -l rclone_args ${lib.concatStringsSep " " rclone-base-opts}
 
         if test -d "$IPOD_DIR"
-          ${lib.getExe' pkgs.systemd "systemctl"} --user start transcode-music playlist-downloader
+          ${lib.getExe' pkgs.systemd "systemctl"} --user start --wait transcode-music playlist-downloader
           if test -f "$IPOD_DIR/.rockbox/playback.log"
             set LOG_FILE (${lib.getExe playlist-download.rb-scrob})
             ${lib.getExe lastfm-wrapped} -f "$LOG_FILE"
