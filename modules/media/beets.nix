@@ -18,6 +18,9 @@
       beets-config = "${beets-dir}/config.yaml";
       detect-file = "${download-dir}/download-finished";
       ffmpeg = lib.getExe pkgs.ffmpeg-full;
+      convert-mpc = withSystem pkgs.stdenv.hostPlatform.system (
+        psArgs: psArgs.config.packages.convert-mpc
+      );
       # use my custom build of beets with included plugins
       beets-plugins = inputs.beets-plugins.packages.${pkgs.stdenv.hostPlatform.system}.default;
       beets-import = pkgs.writeShellApplication {
@@ -199,7 +202,7 @@
 
         [tools]
         [tools.ffmpeg]
-        binary = "convert-mpc"
+        binary = "${lib.getExe convert-mpc}"
         audio_transcoding_args = ["{INPUT_FILE}", "{OUTPUT_FILE}"]
         audio_transcoding_output_extension = "mpc"
 
@@ -511,7 +514,7 @@
                 wav.command = "${ffmpeg} -i $source -sample_fmt s16 -ar 44100 $dest";
                 opus.command = "${ffmpeg} -i $source -c:a libopus -b:a 128K $dest";
                 musepack = {
-                  command = "convert-mpc $source $dest";
+                  command = "${lib.getExe convert-mpc} $source $dest";
                   extension = "mpc";
                 };
               };
