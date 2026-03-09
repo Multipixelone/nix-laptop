@@ -103,7 +103,8 @@
         # windows tooling
         rdesktop
         chntpw
-        samba4Full
+        # WARN: sphinx-9.1.0 not supported for interpreter python3.11
+        # samba4Full
 
         # file archive & compression tools
         gnutar
