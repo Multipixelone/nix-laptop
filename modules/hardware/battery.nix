@@ -21,9 +21,9 @@
           };
         };
       };
-      systemd.sleep.extraConfig = ''
-        HibernateDelaySec=300s
-      '';
+      systemd.sleep.settings.Sleep = {
+        HibernateDelaySec = "300s";
+      };
       services = {
         thermald.enable = true;
         tlp.enable = false;
