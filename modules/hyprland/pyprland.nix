@@ -9,6 +9,7 @@
       home.packages = with pkgs; [
         pyprland
       ];
+      # TODO: split this out and figure out module system.
       xdg.configFile."hypr/pyprland.toml".text = ''
         [pyprland]
         plugins = ["scratchpads", "toggle_dpms"]
@@ -45,13 +46,13 @@
         unfocus = "hide"
         lazy = true
 
-        [scratchpads.helvum]
-        animation = "fromRight"
-        command = "uwsm app -- helvum"
-        class = "org.pipewire.Helvum"
-        size = "40% 90%"
-        unfocus = "hide"
-        lazy = true
+        # [scratchpads.helvum]
+        # animation = "fromRight"
+        # command = "uwsm app -- helvum"
+        # class = "org.pipewire.Helvum"
+        # size = "40% 90%"
+        # unfocus = "hide"
+        # lazy = true
 
         [scratchpads.password]
         animation = "fromBottom"

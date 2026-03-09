@@ -66,7 +66,7 @@
       {
         home.packages = with pkgs; [
           pwvucontrol
-          helvum
+          crosspipe
         ];
       };
   };
