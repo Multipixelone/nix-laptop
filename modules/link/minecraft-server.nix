@@ -17,6 +17,9 @@
       #     group = "users";
       #   };
       # };
+      networking.firewall.allowedTCPPorts = [
+        25565
+      ];
       virtualisation.oci-containers.containers = {
         minecraft-atm10 = {
           autoStart = true;
