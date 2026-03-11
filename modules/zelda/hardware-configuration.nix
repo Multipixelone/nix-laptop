@@ -3,31 +3,50 @@
   ...
 }:
 {
+  nixpkgs.config.allowUnfreePackages = [
+    "nvidia-x11"
+    "nvidia-settings"
+    "nvidia-persistenced"
+  ];
   configurations.nixos.zelda.module =
     { pkgs, config, ... }:
     {
-      imports = [
-        # ./desktop.nix
-        # inputs.nix-hardware.nixosModules.dell-xps-15-9560-intel
-      ];
-      # specialisation = {
-      #   nvidia-sync.configuration = {
-      #     imports = [
-      #       inputs.nix-hardware.nixosModules.dell-xps-15-9560-nvidia
-      #     ];
-      #     hardware.nvidia = {
-      #       open = false;
-      #       prime = {
-      #         sync.enable = lib.mkForce true;
-      #         offload
-      #= {
-      #           enable = lib.mkForce false;
-      #           enableOffloadCmd = lib.mkForce false;
-      #         };
-      #       };
-      #     };
-      #   };
-      # };
+      specialisation.nvidia.configuration = {
+        system.nixos.tags = [ "nvidia" ];
+
+        # Remove VFIO passthrough and VM-related boot config
+        boot.kernelModules = lib.mkForce [
+          "iwlwifi"
+          "kvm-intel"
+        ];
+        boot.blacklistedKernelModules = lib.mkForce [ ];
+        boot.extraModprobeConfig = lib.mkForce "";
+        boot.extraModulePackages = lib.mkForce [ ];
+        boot.kernelParams = lib.mkForce [
+          "intel_iommu=on"
+          "iommu=pt"
+          "split_lock_detect=off"
+          "resume_offset=213741148"
+          "nvidia-drm.modeset=1"
+          "nvidia-drm.fbdev=1"
+        ];
+
+        # NVIDIA driver
+        services.xserver.videoDrivers = [ "nvidia" ];
+        hardware.nvidia = {
+          modesetting.enable = true;
+          open = true;
+          nvidiaSettings = true;
+          prime = {
+            offload = {
+              enable = true;
+              enableOffloadCmd = true;
+            };
+            intelBusId = "PCI:0:2:0";
+            nvidiaBusId = "PCI:1:0:0";
+          };
+        };
+      };
       services.logrotate.checkConfig = false;
       boot = {
         resumeDevice = "/dev/disk/by-uuid/576fdcd4-d642-4229-9073-90724eb72043";
