@@ -76,7 +76,7 @@
               lsabbrs = bat-args "abbr" "-l fish";
               mx = "chmod +x";
               lg = "lazygit";
-              nixlg = "cd ~/Documents/Git/${config.flake.meta.repo.name} && lazygit";
+              nixlg = "cd $PROJECTS_DIR/${config.flake.meta.repo.name} && lazygit";
               fetch = "nix run nixpkgs#nitch";
               upset = "nix run github:Multipixelone/upset";
               ff = "nix run nixpkgs#fastfetch";
