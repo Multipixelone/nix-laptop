@@ -8,7 +8,7 @@
 
 ## About
 
-We won!! It's finally [dendritic](https://github.com/mightyiam/dendritic)!! Everything is beautiful and is all modules built on top of flake-parts. Each file is a top level flake-parts module that is imported by import-tree.
+We won!! It's finally [dendritic](https://github.com/mightyiam/dendritic)!! Everything is beautiful and is all modules built on top of flake-parts. Each file is a top level flake-parts module that is imported by import-tree. This repository currently builds my laptop `zelda`, my desktop `link`, a Mac Mini as an Airport Express `marin` and an old Dell Laptop as my IoT server `iot`
 
 ## Things I Think Are Cool
 
