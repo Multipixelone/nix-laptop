@@ -6,6 +6,7 @@ let
   name = "infra";
   defaultBranch = "main";
   flakeUri = "git+https://${github.domain}/${owner}/${name}?submodules=1&shallow=1";
+  cloneUrl = "git@${github.domain}:${owner}/${name}.git";
 in
 {
   flake.meta.repo = {
@@ -15,6 +16,7 @@ in
       name
       defaultBranch
       flakeUri
+      cloneUrl
       ;
   };
 }

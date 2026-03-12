@@ -1,8 +1,6 @@
 { config, ... }:
 let
   inherit (config.flake.meta) repo;
-  inherit (config.flake.meta.accounts) github;
-  cloneUrl = "git@${github.domain}:${repo.owner}/${repo.name}.git";
 in
 {
   flake.modules.homeManager.base =
@@ -18,7 +16,7 @@ in
         if [ ! -d ${lib.escapeShellArg "${repoDir}/.git"} ]; then
           $DRY_RUN_CMD mkdir -p ${lib.escapeShellArg projectsDir}
           $DRY_RUN_CMD ${lib.getExe pkgs.git} clone --recurse-submodules \
-            ${lib.escapeShellArg cloneUrl} \
+            ${lib.escapeShellArg repo.cloneUrl} \
             ${lib.escapeShellArg repoDir} \
             || echo "Warning: failed to clone ${repo.name}. Clone it manually into ${lib.escapeShellArg projectsDir}."
         fi
