@@ -1,4 +1,4 @@
-{ withSystem, ... }:
+{ withSystem, config, ... }:
 {
   perSystem =
     { pkgs, ... }:
@@ -23,7 +23,7 @@
   flake.modules.nixos.base =
     { pkgs, lib, ... }:
     {
-      environment.variables.NH_FLAKE = lib.mkDefault "/home/tunnel/Documents/Git/nix-laptop";
+      environment.variables.NH_FLAKE = lib.mkDefault "/home/${config.flake.meta.owner.username}/Documents/Git/${config.flake.meta.repo.name}";
       programs.nh = {
         enable = true;
         clean = {
