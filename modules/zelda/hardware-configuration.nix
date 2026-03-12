@@ -12,6 +12,7 @@
     { pkgs, config, ... }:
     {
       specialisation.nvidia.configuration = {
+        imports = [ config.flake.modules.nixos.gaming ];
         system.nixos.tags = [ "nvidia" ];
 
         # Remove VFIO passthrough and VM-related boot config
