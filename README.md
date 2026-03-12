@@ -1,14 +1,14 @@
 <h1 align="center">finns ❄️ dots</h1>
 
 [![built with nix](https://img.shields.io/static/v1?logo=nixos&logoColor=white&label=&message=Built%20with%20Nix&color=41439a)](https://builtwithnix.org)
-[![CI](https://github.com/Multipixelone/nix-laptop/actions/workflows/check.yaml/badge.svg)](https://github.com/Multipixelone/nix-laptop/actions/workflows/ci.yml)
-![GitHub Language](https://img.shields.io/github/languages/top/Multipixelone/nix-laptop?color=c6a0f6)
-![GitHub Code Size](https://img.shields.io/github/languages/code-size/Multipixelone/nix-laptop?color=fab387)
-[![License](https://img.shields.io/github/license/Multipixelone/nix-laptop?color=a6e3a1)](https://github.com/Multipixelone/nix-laptop/blob/master/LICENSE)
+[![CI](https://github.com/Multipixelone/infra/actions/workflows/check.yaml/badge.svg)](https://github.com/Multipixelone/infra/actions/workflows/ci.yml)
+![GitHub Language](https://img.shields.io/github/languages/top/Multipixelone/infra?color=c6a0f6)
+![GitHub Code Size](https://img.shields.io/github/languages/code-size/Multipixelone/infra?color=fab387)
+[![License](https://img.shields.io/github/license/Multipixelone/infra?color=a6e3a1)](https://github.com/Multipixelone/infra/blob/master/LICENSE)
 
 ## About
 
-We won!! It's finally [dendritic](https://github.com/mightyiam/dendritic)!! Everything is beautiful and is all modules built on top of flake-parts. Each file is a top level flake-parts module that is imported by import-tree.
+We won!! It's finally [dendritic](https://github.com/mightyiam/dendritic)!! Everything is beautiful and is all modules built on top of flake-parts. Each file is a top level flake-parts module that is imported by import-tree. This repository currently builds my laptop `zelda`, my desktop `link`, a Mac Mini as an Airport Express `marin` and an old Dell Laptop as my IoT server `iot`
 
 ## Things I Think Are Cool
 

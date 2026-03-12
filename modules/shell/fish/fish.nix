@@ -1,3 +1,4 @@
+{ config, ... }:
 {
   flake.modules = {
     nixos.base =
@@ -75,7 +76,7 @@
               lsabbrs = bat-args "abbr" "-l fish";
               mx = "chmod +x";
               lg = "lazygit";
-              nixlg = "cd ~/Documents/Git/nix-laptop && lazygit";
+              nixlg = "cd $PROJECTS_DIR/${config.flake.meta.repo.name} && lazygit";
               fetch = "nix run nixpkgs#nitch";
               upset = "nix run github:Multipixelone/upset";
               ff = "nix run nixpkgs#fastfetch";
