@@ -10,7 +10,7 @@
         pyprland
       ];
       # TODO: split this out and figure out module system.
-      xdg.configFile."hypr/pyprland.toml".text = ''
+      xdg.configFile."pypr/config.toml".text = ''
         [pyprland]
         plugins = ["scratchpads", "toggle_dpms"]
 
@@ -70,7 +70,7 @@
           PartOf = [ "graphical-session.target" ];
           After = [ "graphical-session.target" ];
           ConditionEnvironment = "WAYLAND_DISPLAY";
-          X-Reload-Triggers = [ "${hmArgs.config.xdg.configFile."hypr/pyprland.toml".source}" ];
+          X-Reload-Triggers = [ "${hmArgs.config.xdg.configFile."pypr/config.toml".source}" ];
         };
         Install.WantedBy = [ "graphical-session.target" ];
         Service = with pkgs; {
