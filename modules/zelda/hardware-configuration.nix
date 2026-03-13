@@ -1,7 +1,11 @@
 {
   lib,
+  config,
   ...
 }:
+let
+  inherit (config.flake.modules.nixos) gaming;
+in
 {
   nixpkgs.config.allowUnfreePackages = [
     "nvidia-x11"
@@ -12,7 +16,7 @@
     { pkgs, config, ... }:
     {
       specialisation.nvidia.configuration = {
-        imports = [ config.flake.modules.nixos.gaming ];
+        imports = [ gaming ];
         system.nixos.tags = [ "nvidia" ];
 
         # Remove VFIO passthrough and VM-related boot config
@@ -43,8 +47,8 @@
               enable = true;
               enableOffloadCmd = true;
             };
-            intelBusId = "PCI:0:2:0";
-            nvidiaBusId = "PCI:1:0:0";
+            intelBusId = "PCI:0@0:2:0";
+            nvidiaBusId = "PCI:1@0:0:0";
           };
         };
       };
