@@ -213,7 +213,7 @@
         useDHCP = lib.mkDefault true;
         hostName = "zelda";
         wg-quick.interfaces.wg0 = {
-          autostart = true;
+          autostart = false;
           type = "amneziawg";
           address = [ "10.100.0.2/24" ];
           mtu = 1000;
