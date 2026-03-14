@@ -79,7 +79,6 @@
               nixlg = "cd $PROJECTS_DIR/${config.flake.meta.repo.name} && lazygit";
               fetch = "nix run nixpkgs#nitch";
               upset = "nix run github:Multipixelone/upset";
-              ff = "nix run nixpkgs#fastfetch";
               hypr-log = "tail -f /run/user/1000/hypr/$(find /run/user/1000/hypr/ -mindepth 1 -printf '%P\n' -prune)/hyprland.log";
               # TODO Split this into commands based on hostname
               pw-get = "pactl load-module module-null-sink media.class=Audio/Sink sink_name=music channel_map=stereo && pactl load-module module-native-protocol-tcp port=4656 listen=192.168.6.6";
