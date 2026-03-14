@@ -15,7 +15,7 @@ in
       home.activation.cloneSelf = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         if [ ! -d ${lib.escapeShellArg "${repoDir}/.git"} ]; then
           $DRY_RUN_CMD mkdir -p ${lib.escapeShellArg projectsDir}
-          $DRY_RUN_CMD env GIT_SSH_COMMAND=${lib.escapeShellArg "${lib.getExe pkgs.openssh}"} \
+          $DRY_RUN_CMD env GIT_SSH_COMMAND=${lib.escapeShellArg "${lib.getExe pkgs.openssh} -o BatchMode=yes -o StrictHostKeyChecking=accept-new"} \
             ${lib.getExe pkgs.git} clone --recurse-submodules \
             ${lib.escapeShellArg repo.cloneUrl} \
             ${lib.escapeShellArg repoDir} \
