@@ -98,6 +98,12 @@
           };
           shellInit = fish-config;
           interactiveShellInit = ''
+            # set $EDITOR in fish
+            set -gx EDITOR hx
+            set -gx VISUAL hx
+            set -gx NIXPKGS_ALLLOW_UNFREE 1
+            set -gx NIXPKGS_ALLOW_INSECURE 1
+
             if test "$TERM" != "dumb"
               ${lib.getExe pkgs.zellij} setup --generate-completion fish | source
             end
