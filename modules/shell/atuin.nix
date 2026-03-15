@@ -1,4 +1,4 @@
-{ inputs, config, ... }:
+{ inputs, ... }:
 {
   flake.modules.homeManager.base = hmArgs: {
     age.secrets = {
